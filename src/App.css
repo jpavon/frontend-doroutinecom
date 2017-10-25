@@ -1,0 +1,46 @@
+
+.App-header {
+  background-color: #222;
+  height: 30px;
+  padding: 10px;
+  color: white;
+}
+
+.App-logo {
+  float: left;
+  background-color: red;
+  width: 100px;
+  height: 100%;
+}
+
+.App-nav {
+  color: white;
+  float: right;
+  padding: 0;
+}
+
+.App-nav ul {
+  margin: 0;
+  list-style: none;
+}
+
+.App-nav li {
+  float: left;
+  margin-left: 20px;
+}
+
+.navbar {
+    background-color: #e68fd7;
+}
+
+.is-right {
+    text-align: right;
+}
+
+.is-center {
+    text-align: center;
+}
+
+.is-green {
+    color: green;
+}
