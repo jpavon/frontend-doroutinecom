@@ -9,40 +9,50 @@ class App extends Component {
         super(props);
         this.state = {
             api: false,
-            isToggleOn: true
+            isToggleOn: true,
+            user: null
         };
 
         // This binding is necessary to make `this` work in the callback
         this.handleClick = this.handleClick.bind(this);
     }
 
-  componentDidMount() {
-    axios.get('http://192.168.10.10')
-      .then(function (response) {
-        this.setState(prevState => ({
-              api: true
+    componentDidMount() {
+        axios.get('/user').then(function (response) {
+            this.setState(prevState => ({
+                user: response.data
             }));
-      }.bind(this))
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+        }.bind(this)).catch(function (error) {
+            console.log(error);
+        });
 
-  handleClick = (e) => {
-    this.setState(prevState => ({
+        axios.get('/workouts').then(function (response) {
+            this.setState(prevState => ({
+                workouts: response.data
+            }));
+        }.bind(this)).catch(function (error) {
+            console.log(error);
+        });
+    }
+
+    handleClick = (e) => {
+        axios.post('/workouts', {
+            reps: 123,
+            rm_percentage: 123,
+            weight: 23
+        })
+        .then(function (response) {
+            console.log(response);
+        });
+
+        this.setState(prevState => ({
           isToggleOn: !prevState.isToggleOn
         }));
-  }
+    }
 
   render() {
     return (
       <div className="App">
-        <button onClick={this.handleClick}>
-        Show
-      </button>
-        {this.state.api && <span>ON</span> || <span>OFF</span>}
-        {!this.state.isToggleOn && <div>Mia</div>}
-
         <nav className="navbar is-dark" aria-label="main navigation">
           <div className="navbar-brand">
               <a className="navbar-item">
@@ -66,32 +76,34 @@ class App extends Component {
 
         <div className="section">
             <div className="container">
-              <table className="table is-fullwidth">
-                <thead>
-                  <tr>
-                    <th>Workouts</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Day 1</td>
-                    <td className="is-right"><a className="button is-dark is-size-7">SEE WORKOUT</a></td>
-                  </tr>
-                  <tr>
-                    <td>Day 2</td>
-                    <td className="is-right"><a className="button is-dark is-size-7">SEE WORKOUT</a></td>
-                  </tr>
-                  <tr>
-                    <td>Day 3</td>
-                    <td className="is-right"><a className="button is-dark is-size-7">SEE WORKOUT</a></td>
-                  </tr>
-                  <tr>
-                    <td>Day 4</td>
-                    <td className="is-right"><a className="button is-dark is-size-7">SEE WORKOUT</a></td>
-                  </tr>
-                </tbody>
-              </table>
+                {this.state.workouts &&
+                    <table className="table is-fullwidth">
+                      <thead>
+                        <tr>
+                          <th>Workouts</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {this.state.workouts.map((workout) => (
+                            <tr key={workout.id}>
+                              <td>{workout.name} / {workout.day}
+                                <br />
+                                <div>
+                                    <strong>Exercises</strong>
+                                    <div>
+                                        {workout.exercises && workout.exercises.map((exercise) => (
+                                            <div key={exercise.id}>{exercise.lift.name}</div>
+                                        ))}
+                                    </div>
+                                </div>
+                              </td>
+                              <td className="is-right"><a className="button is-dark is-size-7">SEE WORKOUT</a></td>
+                            </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                }
             </div>
         </div>
 
