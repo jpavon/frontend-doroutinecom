@@ -1,23 +1,19 @@
-import { combineReducers } from 'redux'
-
-import * as ActionTypes from 'actions'
+import * as Types from 'workouts/types'
 
 const workouts = (state = {}, action) => {
-    const { type } = action
-
-    switch (type) {
-      case ActionTypes.WORKOUTS_REQUEST:
+    switch (action.type) {
+      case Types.WORKOUTS_REQUEST:
         return {
           ...state,
           isFetching: true
         }
-      case ActionTypes.WORKOUTS_SUCCESS:
+      case Types.WORKOUTS_SUCCESS:
         return {
           ...state,
           isFetching: false,
           data: action.response
         }
-      case ActionTypes.WORKOUTS_FAILURE:
+      case Types.WORKOUTS_FAILURE:
         return {
           ...state,
           isFetching: false
@@ -27,8 +23,4 @@ const workouts = (state = {}, action) => {
     }
 }
 
-const rootReducer = combineReducers({
-  workouts
-})
-
-export default rootReducer
+export default workouts
