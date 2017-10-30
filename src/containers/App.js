@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
+import axios from 'axios';
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+
+import { loadWorkouts } from 'actions'
+
 // import logo from './logo.svg';
 import './App.css';
-import axios from 'axios';
 
 class App extends Component {
 
+    static propTypes = {
+        loadWorkouts: PropTypes.func.isRequired,
+        workouts: PropTypes.object.isRequired
+    }
+
     constructor(props) {
         super(props);
+
         this.state = {
             api: false,
             isToggleOn: true,
@@ -18,21 +31,23 @@ class App extends Component {
     }
 
     componentDidMount() {
-        axios.get('/user').then(function (response) {
-            this.setState(prevState => ({
-                user: response.data
-            }));
-        }.bind(this)).catch(function (error) {
-            console.log(error);
-        });
+        // axios.get('/user').then(function (response) {
+        //     this.setState(prevState => ({
+        //         user: response.data
+        //     }));
+        // }.bind(this)).catch(function (error) {
+        //     console.log(error);
+        // });
 
-        axios.get('/workouts').then(function (response) {
-            this.setState(prevState => ({
-                workouts: response.data
-            }));
-        }.bind(this)).catch(function (error) {
-            console.log(error);
-        });
+        // axios.get('/workouts').then(function (response) {
+        //     this.setState(prevState => ({
+        //         workouts: response.data
+        //     }));
+        // }.bind(this)).catch(function (error) {
+        //     console.log(error);
+        // });
+
+        this.props.loadWorkouts();
     }
 
     handleClick = (e) => {
@@ -74,9 +89,13 @@ class App extends Component {
           </div>
         </nav>
 
+        <Link to="/test">
+            Test
+        </Link>
+
         <div className="section">
             <div className="container">
-                {this.state.workouts &&
+                {this.props.workouts.data &&
                     <table className="table is-fullwidth">
                       <thead>
                         <tr>
@@ -85,7 +104,7 @@ class App extends Component {
                         </tr>
                       </thead>
                       <tbody>
-                        {this.state.workouts.map((workout) => (
+                        {this.props.workouts.data.map((workout) => (
                             <tr key={workout.id}>
                               <td>{workout.name} / {workout.day}
                                 <br />
@@ -215,4 +234,12 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state, ownProps) => ({
+    workouts: state.workouts
+})
+
+const mapDispatchToProps = {
+    loadWorkouts
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
