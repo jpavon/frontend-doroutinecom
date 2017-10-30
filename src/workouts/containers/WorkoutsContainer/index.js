@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import { loadWorkouts } from 'workouts/actions'
+import Button from 'shared/components/Button'
 
 import './style.css'
 
@@ -32,7 +33,9 @@ class WorkoutsContainer extends Component {
     render() {
         return (
           <div className="workouts">
-
+            <Button to="lifts">
+                test
+            </Button>
             <Link to="/lifts">
                 Lifts
             </Link>

@@ -1,0 +1,35 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { Link } from 'react-router-dom'
+
+import './style.css'
+
+class Button extends React.Component {
+
+    static propTypes = {
+        href: PropTypes.string,
+        to: PropTypes.string,
+        className: PropTypes.string,
+        children: PropTypes.node,
+    }
+
+    render() {
+        const {
+            to,
+            href,
+            className,
+            children
+        } = this.props;
+
+        const Element = to ? Link : href ? 'a' : 'button'
+
+        return (
+            <Element className={classNames('button', className)} href={href} to={to}>
+                {children}
+            </Element>
+        )
+    }
+}
+
+export default Button;
