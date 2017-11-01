@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 
 import Layout from 'pages/Layout'
+import WorkoutContainer from 'data/workouts/containers/WorkoutContainer'
 
-class Lifts extends Component {
+class Workout extends Component {
 
     render() {
         return (
             <Layout>
                 <Helmet>
-                    <title>Lifts</title>
+                    <title>Workout</title>
                 </Helmet>
-                Lift container...
+                <WorkoutContainer id={Number(this.props.match.params.id)} />
             </Layout>
         )
     }
 }
 
-export default Lifts
+export default Workout

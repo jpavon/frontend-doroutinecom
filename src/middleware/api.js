@@ -62,8 +62,8 @@ export default store => next => action => {
     next(actionWith({ type: requestType }))
 
     return callApi(endpoint, method, data).then(
-        response => next(actionWith({
-            response,
+        payload => next(actionWith({
+            payload,
             type: successType
         })),
         error => next(actionWith({

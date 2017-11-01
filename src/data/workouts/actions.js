@@ -1,5 +1,5 @@
 import { CALL_API } from 'middleware/api'
-import * as Types from 'models/workouts/types'
+import * as Types from 'data/workouts/types'
 
 const fetchWorkouts = () => ({
     [CALL_API]: {
@@ -13,6 +13,8 @@ const fetchWorkouts = () => ({
     }
 })
 
+const shouldLoadWorkouts = (state) => state.workouts.entities.length === 0
+
 export const loadWorkouts = () => (dispatch, getState) => {
-    return dispatch(fetchWorkouts())
+    return shouldLoadWorkouts(getState()) && dispatch(fetchWorkouts())
 }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 
-import Layout from './Layout'
-import WorkoutsContainer from 'models/workouts/containers/WorkoutsContainer'
+import Layout from 'pages/Layout'
+import WorkoutsContainer from 'data/workouts/containers/WorkoutsContainer'
 
 class Home extends Component {
 

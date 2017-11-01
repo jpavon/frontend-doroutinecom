@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 // import 'bulma/css/bulma.css'
 
-import Root from 'containers/Root'
+import Root from 'rootContainer'
 import configureStore from 'store/configureStore'
 import registerServiceWorker from 'registerServiceWorker'
 

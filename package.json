@@ -9,6 +9,7 @@
     "classnames": "^2.2.5",
     "humps": "^2.0.1",
     "lodash": "^4.17.4",
+    "moment": "^2.19.1",
     "node-sass-chokidar": "0.0.3",
     "normalize.css": "^7.0.0",
     "normalizr": "^3.2.4",
@@ -20,7 +21,8 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/ --include-path ./src",

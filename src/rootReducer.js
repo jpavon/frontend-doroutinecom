@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import workouts from 'models/workouts/reducers'
+import workouts from 'data/workouts/reducers'
 
 const rootReducer = combineReducers({
     workouts

@@ -1,0 +1,36 @@
+.workout-single {
+}
+
+.workout-single-day {
+    font-size: .8rem;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+    text-align: center;
+}
+
+.workout-single-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.exercise {
+    background-color: #eee;
+    padding: .7rem;
+    margin-bottom: 2px;
+}
+
+.exercise-name {
+    font-weight: 700;
+    margin-bottom: .3rem;
+}
+
+.exercise-data-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.exercise-data {
+    margin-right: 1rem;
+}

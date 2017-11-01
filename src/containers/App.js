@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { loadWorkouts } from 'models/workouts/actions'
+import { loadWorkouts } from 'data/workouts/actions'
 
 // import logo from './logo.svg';
 import './App.css';
