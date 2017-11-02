@@ -8,20 +8,20 @@ const initialState = {
 
 const workouts = (state = initialState, action) => {
     switch (action.type) {
-        case types.WORKOUTS_REQUEST:
+        case types.WORKOUTS_FETCH_REQUEST:
             return Object.assign({}, state, {
                 ...state,
                 fetchStatus: fetchStatusTypes.LOADING
             })
 
-        case types.WORKOUTS_SUCCESS:
+        case types.WORKOUTS_FETCH_SUCCESS:
             return Object.assign({}, state, {
                 ...state,
                 fetchStatus: fetchStatusTypes.LOADED,
                 entities: action.payload
             })
 
-        case types.WORKOUTS_FAILURE:
+        case types.WORKOUTS_FETCH_FAILURE:
             return Object.assign({}, state, {
                 ...state,
                 fetchStatus: fetchStatusTypes.FAILED,

@@ -19,7 +19,11 @@ class Layout extends Component {
                     <title>Layout title</title>
                 </Helmet>
                 <Nav />
-                {this.props.children}
+                <div className="container">
+                    <div className="row">
+                        {this.props.children}
+                    </div>
+                </div>
             </div>
         )
     }

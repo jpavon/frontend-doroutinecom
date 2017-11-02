@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import logo from 'img/logo.svg'
 
@@ -15,25 +15,25 @@ class Nav extends Component {
         return (
             <div>
                 <nav className="nav">
-                    <Link to="/">
-                        <img className="nav-logo" src={logo} alt="Logo"/>
-                    </Link>
+                    <NavLink to="/" className="nav-logo" activeClassName="nav-link--active">
+                        <img src={logo} alt="Logo"/>
+                    </NavLink>
 
                     <ul className="nav-list">
                         <li className="nav-item">
-                            <Link to="/workouts" className="nav-link">
+                            <NavLink to="/workouts" className="nav-link" activeClassName="nav-link--active">
                                 Workouts
-                            </Link>
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link to="/lifts" className="nav-link">
+                            <NavLink to="/lifts" className="nav-link" activeClassName="nav-link--active">
                                 Lifts
-                            </Link>
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link to="/graphs" className="nav-link">
+                            <NavLink to="/graphs" className="nav-link" activeClassName="nav-link--active">
                                 Graphs
-                            </Link>
+                            </NavLink>
                         </li>
                     </ul>
                 </nav>

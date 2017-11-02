@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 
 import Layout from 'pages/Layout'
-import WorkoutContainer from 'data/workouts/containers/WorkoutContainer'
+import WorkoutContainer from 'containers/WorkoutContainer'
 
 class Workout extends Component {
 

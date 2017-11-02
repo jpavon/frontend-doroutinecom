@@ -1,5 +1,5 @@
 @import "~normalize.css/normalize.css";
-@import "scss/settings.scss";
+@import "scss/variables.scss";
 @import "scss/layout.scss";
 
 *, ::after, ::before {
@@ -8,4 +8,5 @@
 
 body {
     font-family: $font-family;
+    color: $color-font;
 }

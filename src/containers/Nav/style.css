@@ -4,9 +4,10 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: .5rem 10rem;
-  border-bottom: 10px solid #eee;
-  margin-bottom: 3rem; }
+  padding: .4rem 10rem .2rem;
+  border-bottom: 2px solid #222;
+  margin-bottom: 1rem;
+  background-color: #fff; }
   @media (max-width: 800px) {
     .nav {
       padding-left: 2rem;
@@ -16,8 +17,9 @@
   display: inline-block;
   margin-right: 1rem;
   line-height: inherit;
-  white-space: nowrap;
-  width: 100px; }
+  white-space: nowrap; }
+  .nav-logo img {
+    max-width: 160px; }
 
 .nav-list {
   display: flex;
@@ -33,7 +35,11 @@
 
 .nav-link {
   text-decoration: none;
-  color: #333;
+  font-weight: 700;
   text-transform: uppercase;
   font-size: .8rem;
-  letter-spacing: .1rem; }
+  letter-spacing: .05rem; }
+  .nav-link:visited {
+    color: #222; }
+  .nav-link.nav-link--active {
+    color: #D05252; }

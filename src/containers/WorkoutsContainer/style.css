@@ -1,7 +1,9 @@
 .workout {
   padding: 1rem;
-  background-color: #eee;
-  margin-bottom: 1rem; }
+  margin-bottom: 1rem;
+  background-color: #fefefe;
+  border: 2px solid #eee;
+  border-radius: 4px; }
 
 .workout-day {
   margin-bottom: .5rem;

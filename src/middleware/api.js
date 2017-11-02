@@ -6,13 +6,13 @@ const callApi = (endpoint, method, data) => {
         url: endpoint,
         method: method,
         baseURL: 'http://192.168.10.10/',
-        data: data,
+        data: decamelizeKeys(data),
         transformResponse: axios.defaults.transformResponse.concat((data) => camelizeKeys(data)),
-        transformRequest: axios.defaults.transformResponse.concat((data) => decamelizeKeys(data)),
     }).then((response) => {
         return response.data
     }).catch((err) => {
-        console.log('catch api error')
+        // console.log('catch api error')
+        return Promise.reject(err)
     })
 }
 
@@ -61,14 +61,13 @@ export default store => next => action => {
 
     next(actionWith({ type: requestType }))
 
-    return callApi(endpoint, method, data).then(
-        payload => next(actionWith({
+    return callApi(endpoint, method, data)
+        .then((payload) => next(actionWith({
             payload,
             type: successType
-        })),
-        error => next(actionWith({
+        })))
+        .catch((error) => next(actionWith({
             type: failureType,
-            error: error.message || 'Something bad happened'
-        }))
-    )
+            error: error.response.data || 'Something bad happened'
+        })))
 }
