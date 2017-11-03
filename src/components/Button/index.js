@@ -19,13 +19,14 @@ class Button extends React.Component {
             to,
             href,
             className,
-            children
+            children,
+            ...rest
         } = this.props;
 
         const Element = to ? Link : href ? 'a' : 'button'
 
         return (
-            <Element className={classNames('button', className)} href={href} to={to}>
+            <Element className={classNames('button', className)} href={href} to={to} {...rest}>
                 {children}
             </Element>
         )

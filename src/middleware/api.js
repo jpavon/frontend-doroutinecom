@@ -28,7 +28,7 @@ export default store => next => action => {
         return next(action)
     }
 
-    let { endpoint, method, data } = callAPI
+    let { endpoint, method, data, meta } = callAPI
     const { types } = callAPI
 
     if (typeof endpoint === 'function') {
@@ -61,10 +61,11 @@ export default store => next => action => {
 
     next(actionWith({ type: requestType }))
 
-    return callApi(endpoint, method, data)
+    return callApi(endpoint, method, data, meta)
         .then((payload) => next(actionWith({
             payload,
-            type: successType
+            type: successType,
+            meta
         })))
         .catch((error) => next(actionWith({
             type: failureType,

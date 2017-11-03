@@ -1,51 +1,65 @@
-import React from 'react'
-import { withFormik } from 'formik'
+import React, { Component } from 'react'
+import { withFormik, Field } from 'formik'
 
-const InnerForm = ({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
-    <form onSubmit={handleSubmit}>
-        <input
-            type="reps"
-            name="reps"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.reps}
-        />
-        {touched.reps && errors.reps && <div>{errors.reps}</div>}
-        <input
-            type="weight"
-            name="weight"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.weight}
-        />
-        {touched.weight && errors.weight && <div>{errors.weight}</div>}
-        <input
-            type="rmPercentage"
-            name="rmPercentage"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.rmPercentage}
-        />
-        {touched.rmPercentage && errors.rmPercentage && <div>{errors.rmPercentage}</div>}
-        <button type="submit" disabled={isSubmitting}>Submit</button>
-    </form>
-)
+class InnerForm extends Component {
 
-const Form = withFormik({
-    mapPropsToValues: props => ({ reps: '', weight: '', rmPercentage: '' }),
-    handleSubmit: (values, { props, setSubmitting, setErrors, /* setValues, setStatus, and other goodies */ }) => {
-        props.createWorkout(values)
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.values !== this.props.values) {
+            this.props.updateWorkout(nextProps.values.id, nextProps.values)
+        }
+    }
+
+    render() {
+        const {
+            values,
+            touched,
+            errors,
+            dirty,
+            isSubmitting,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            handleReset,
+        } = this.props
+
+        return (
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="name">Workout name:</label>
+                <Field
+                    id="name"
+                    name="name"
+                />
+
+                <label htmlFor="notes">Notes</label>
+                <Field
+                    id="notes"
+                    name="notes"
+                />
+
+                <button type="submit" disabled={isSubmitting}>Delete</button>
+            </form>
+        )
+    }
+}
+
+const formikEnhancer = withFormik({
+    mapPropsToValues: (props) => ({
+        id: props.workout.id || '',
+        name: props.workout.name || '',
+        notes: props.workout.notes || '',
+    }),
+    handleSubmit: (values, { props, setSubmitting, setErrors, setValues,/* setStatus, and other goodies */ }) => {
+        props.deleteWorkout(values.id)
             .then((data) => {
                 if (data.error) {
                     setSubmitting(false)
-                    setErrors({name: 'testst'})
-                    console.log('test here')
+                    setErrors(data.error.errors)
                 } else {
                     setSubmitting(false)
-                    console.log('test here 2', data)
+                    props.setRedirect()
                 }
             })
     }
-})(InnerForm)
+})
 
-export default Form
+export default formikEnhancer(InnerForm)
