@@ -54,10 +54,14 @@ const putWorkout = (id, data) => ({
     }
 })
 
-const debounceUpdateWorkout = debounce((dispatch, id, data) => dispatch(putWorkout(id, data)), 300)
+const updateWorkoutAction = (dispatch, id, data, resolve, reject ) => (
+    dispatch(putWorkout(id, data)).then(resolve).catch(reject)
+)
+
+const debounceUpdateWorkout = debounce(updateWorkoutAction, 300)
 
 export const updateWorkout = (id, data) => (dispatch, getState) => {
-    return debounceUpdateWorkout(dispatch, id, data)
+    return new Promise(debounceUpdateWorkout.bind(null, dispatch, id, data))
 }
 
 const deleteWorkout = (id) => ({

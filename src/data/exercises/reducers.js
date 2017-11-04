@@ -1,4 +1,4 @@
-import * as types from 'data/workouts/types'
+import * as types from 'data/exercises/types'
 import { fetchStatusTypes } from 'shared/types'
 import { updateItem, insertItem, deleteItem, defaultFetch, defaultFailure } from 'data/helpers'
 
@@ -7,64 +7,64 @@ const initialState = {
     entities: []
 }
 
-const workouts = (state = initialState, action) => {
+const exercises = (state = initialState, action) => {
     const { type, payload, error, meta } = action
 
     switch (type) {
-        case types.WORKOUTS_FETCH_REQUEST:
+        case types.EXERCISES_FETCH_REQUEST:
             return defaultFetch(state)
 
-        case types.WORKOUTS_FETCH_SUCCESS:
+        case types.EXERCISES_FETCH_SUCCESS:
             return {
                 ...state,
                 fetchStatus: fetchStatusTypes.LOADED,
                 entities: payload
             }
 
-        case types.WORKOUTS_FETCH_FAILURE:
+        case types.EXERCISES_FETCH_FAILURE:
             return defaultFailure(state, error)
 
-        case types.WORKOUT_POST_REQUEST:
+        case types.EXERCISE_POST_REQUEST:
             return defaultFetch(state)
 
-        case types.WORKOUT_POST_SUCCESS:
+        case types.EXERCISE_POST_SUCCESS:
             return {
                 ...state,
                 fetchStatus: fetchStatusTypes.LOADED,
                 entities: insertItem(state.entities, payload)
             }
 
-        case types.WORKOUT_POST_FAILURE:
+        case types.EXERCISE_POST_FAILURE:
             return {
                 ...state,
                 fetchStatus: fetchStatusTypes.FAILED,
                 error: error
             }
 
-        case types.WORKOUT_PUT_REQUEST:
+        case types.EXERCISE_PUT_REQUEST:
             return defaultFetch(state)
 
-        case types.WORKOUT_PUT_SUCCESS:
+        case types.EXERCISE_PUT_SUCCESS:
             return {
                 ...state,
                 fetchStatus: fetchStatusTypes.LOADED,
                 entities: updateItem(state.entities, payload)
             }
 
-        case types.WORKOUT_PUT_FAILURE:
+        case types.EXERCISE_PUT_FAILURE:
             return defaultFailure(state, error)
 
-        case types.WORKOUT_DELETE_REQUEST:
+        case types.EXERCISE_DELETE_REQUEST:
             return defaultFetch(state)
 
-        case types.WORKOUT_DELETE_SUCCESS:
+        case types.EXERCISE_DELETE_SUCCESS:
             return {
                 ...state,
                 fetchStatus: fetchStatusTypes.LOADED,
                 entities: deleteItem(state.entities, meta.id)
             }
 
-        case types.WORKOUT_DELETE_FAILURE:
+        case types.EXERCISE_DELETE_FAILURE:
             return defaultFailure(state, error)
 
         default:
@@ -72,4 +72,4 @@ const workouts = (state = initialState, action) => {
     }
 }
 
-export default workouts
+export default exercises

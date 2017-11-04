@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router'
+import { withRouter } from 'react-router'
 
 import Button from 'components/Button'
 import { fetchWorkouts, createWorkout, updateWorkout, removeWorkout } from 'data/workouts/actions'
 import { workoutSelector } from 'data/workouts/selectors'
 import WorkoutContainerForm from 'containers/WorkoutContainer/Form'
+import { fetchExercises, createExercise } from 'data/exercises/actions'
+import { exercisesSelector } from 'data/exercises/selectors'
+import { fetchSets, createSet } from 'data/sets/actions'
 
 import './style.css'
 
@@ -15,36 +18,35 @@ class WorkoutContainer extends Component {
     static propTypes = {
         id: PropTypes.number.isRequired,
         workout: PropTypes.object.isRequired,
+        exercises: PropTypes.array.isRequired,
+
         fetchWorkouts: PropTypes.func.isRequired,
         createWorkout: PropTypes.func.isRequired,
         updateWorkout: PropTypes.func.isRequired,
-        removeWorkout: PropTypes.func.isRequired
-    }
+        removeWorkout: PropTypes.func.isRequired,
 
-    constructor(props) {
-        super(props);
+        fetchExercises: PropTypes.func.isRequired,
+        createExercise: PropTypes.func.isRequired,
 
-        this.state = {
-            redirect: false
-        }
+        fetchSets: PropTypes.func.isRequired,
+        createSet: PropTypes.func.isRequired
     }
 
     componentDidMount() {
         this.props.fetchWorkouts();
+        this.props.fetchExercises();
+        this.props.fetchSets();
     }
 
-    handleRedirect = () => {
-        this.setState({
-            redirect: '/'
-        })
+    handleRemove = () => {
+        this.props.removeWorkout(this.props.id)
+            .then((data) => {
+                this.props.history.push('/')
+            })
     }
 
     render() {
-
-        if (this.state.redirect) {
-            return <Redirect push to={this.state.redirect} />
-        }
-
+        console.log(this.props.exercises)
         return (
             <div className="col">
                 <Button to="/">&lt; Go back</Button>
@@ -52,11 +54,19 @@ class WorkoutContainer extends Component {
                     <WorkoutContainerForm
                         workout={this.props.workout}
                         updateWorkout={this.props.updateWorkout}
-                        deleteWorkout={this.props.removeWorkout}
-                        setRedirect={this.handleRedirect}
                     />
                 }
 
+                {this.props.exercises.length > 0 && this.props.exercises.map((exercise, i) => (
+                    <div style={{padding: '20px', 'backgroundColor': '#eee'}} key={i}>
+                        {exercise.id}
+                        <Button onClick={() => this.props.createSet(exercise.id)}>New set</Button>
+                    </div>
+                ))}
+
+                <Button onClick={() => this.props.createExercise(this.props.workout.id)}>New exercise</Button>
+
+                <Button onClick={this.handleRemove}>Remove workout</Button>
                 {/*Object.keys(this.props.workout).length !== 0 &&
                     <div className="workout-single">
                         <WorkoutContainerForm workout={this.props.workout} createWorkout={this.props.createWorkout} />
@@ -80,14 +90,21 @@ class WorkoutContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    workout: workoutSelector(props.id)(state)
+    workout: workoutSelector(props.id)(state),
+    exercises: exercisesSelector(props.id)(state)
 })
 
 const mapDispatchToProps = {
     fetchWorkouts,
     createWorkout,
     updateWorkout,
-    removeWorkout
+    removeWorkout,
+
+    fetchExercises,
+    createExercise,
+
+    fetchSets,
+    createSet
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(WorkoutContainer)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(WorkoutContainer))

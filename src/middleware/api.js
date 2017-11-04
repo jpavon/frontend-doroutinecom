@@ -5,7 +5,7 @@ const callApi = (endpoint, method, data) => {
     return axios.request({
         url: endpoint,
         method: method,
-        baseURL: 'http://192.168.10.10/',
+        baseURL: 'http://192.168.10.10/api/',
         data: decamelizeKeys(data),
         transformResponse: axios.defaults.transformResponse.concat((data) => camelizeKeys(data)),
     }).then((response) => {

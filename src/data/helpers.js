@@ -1,3 +1,16 @@
+import { fetchStatusTypes } from 'shared/types'
+
+export const defaultFetch = (state) => ({
+    ...state,
+    fetchStatus: fetchStatusTypes.LOADING
+})
+
+export const defaultFailure = (state, error) => ({
+    ...state,
+    fetchStatus: fetchStatusTypes.FAILED,
+    error
+})
+
 export const insertItem = (array, item) => (
     [...array, item]
 )
