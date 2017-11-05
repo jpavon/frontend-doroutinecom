@@ -6,7 +6,6 @@ import { setsSelector } from 'data/sets/selectors'
 import { updateSet } from 'data/sets/actions'
 
 import SetsContainerForm from 'containers/SetsContainer/Form'
-import Button from 'components/Button'
 
 import './style.css'
 

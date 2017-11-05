@@ -33,6 +33,7 @@ class WorkoutsContainer extends Component {
     }
 
     render() {
+        console.log(this.props.monthlyWorkouts)
         return ([
             <div className="col" key={3}>
                 <Button onClick={this.handleCreateWorkout}>Create a new workout</Button>
@@ -44,7 +45,7 @@ class WorkoutsContainer extends Component {
                         <h3>{monthlyWorkout.month}</h3>
                         {monthlyWorkout.data.map((workout, i) => (
                             <div key={i} className="workout">
-                                <div className="workout-day">{workout.day}</div>
+                                <div className="workout-day">{workout.dayFormatted}</div>
                                 <div className="workout-name">{workout.name}</div>
                                 <div className="workout-button">
                                     <Button to={`/workouts/${workout.id}`}>See workout</Button>
@@ -61,7 +62,7 @@ class WorkoutsContainer extends Component {
                         <h3>{monthlyWorkout.month}</h3>
                         {monthlyWorkout.data.map((workout, i) => (
                             <div key={i} className="workout">
-                                <div className="workout-day">{workout.day}</div>
+                                <div className="workout-day">{workout.dayFormatted}</div>
                                 <div className="workout-name">{workout.name}</div>
                                 <div className="workout-button">
                                     <Button to={`/workouts/${workout.id}`}>See workout</Button>

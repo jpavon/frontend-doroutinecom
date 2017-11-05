@@ -31,15 +31,7 @@ class InnerForm extends Component {
 
     render() {
         const {
-            values,
-            touched,
-            errors,
-            dirty,
-            isSubmitting,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            handleReset,
+            errors
         } = this.props
 
         return (

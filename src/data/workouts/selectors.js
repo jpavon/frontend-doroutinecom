@@ -7,7 +7,7 @@ const formatWorkout = (workout) => ({
 })
 
 const formatMonthlyWorkouts = (workouts) => {
-    var reduced = workouts.entities.reduce((prev, curr) => {
+    var reduced = workouts.reduce((prev, curr) => {
         const month = moment(curr.day).format('M-YYYY')
         const workout = formatWorkout(curr)
 
@@ -26,16 +26,23 @@ const formatMonthlyWorkouts = (workouts) => {
     return Object.keys(reduced).map((k) => reduced[k])
 }
 
-export const monthlyWorkoutsSelector = createSelector(
+export const workoutsSelector = createSelector(
     [
-        state => state.workouts
+        state => state.workouts.entities
     ],
-    (workouts) => formatMonthlyWorkouts(workouts)
+    (workouts) => workouts.sort((a, b) => (new Date(b.day) - new Date(a.day)))
 )
 
 export const workoutSelector = (id) => createSelector(
     [
-        (state) => state.workouts
+        (state) => state.workouts.entities
     ],
-    (workouts) => workouts.entities.length ? formatWorkout(workouts.entities.find((workout) => (workout.id === id))) : {}
+    (workouts) => formatWorkout(workouts.find((workout) => (workout.id === id)))
+)
+
+export const monthlyWorkoutsSelector = createSelector(
+    [
+        workoutsSelector
+    ],
+    (workouts) => formatMonthlyWorkouts(workouts)
 )
