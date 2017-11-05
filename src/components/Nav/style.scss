@@ -49,9 +49,15 @@
     text-transform: uppercase;
     font-size: .8rem;
     letter-spacing: .05rem;
+    color: $color-font;
+    transition: color .2s;
 
     &:visited {
         color: $color-font;
+    }
+
+    &:hover {
+        color: $color-brand;
     }
 
     &.nav-link--active {

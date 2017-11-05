@@ -1,8 +1,14 @@
-import React, { Component } from 'react';
-import { Helmet } from 'react-helmet';
+import React, { Component } from 'react'
+import { Helmet } from 'react-helmet'
+import Loadable from 'react-loadable'
 
 import Layout from 'pages/Layout'
-import WorkoutsContainer from 'containers/WorkoutsContainer'
+import Loading from 'components/Loading'
+
+const Workouts = Loadable({
+    loader: () => import('containers/WorkoutsContainer'),
+    loading: Loading
+})
 
 class Home extends Component {
 
@@ -12,7 +18,7 @@ class Home extends Component {
                 <Helmet>
                     <title>Workouts</title>
                 </Helmet>
-                <WorkoutsContainer />
+                <Workouts />
             </Layout>
         )
     }

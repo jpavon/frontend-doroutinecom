@@ -1,8 +1,14 @@
-import React, { Component } from 'react';
-import { Helmet } from 'react-helmet';
+import React, { Component } from 'react'
+import { Helmet } from 'react-helmet'
+import Loadable from 'react-loadable'
 
 import Layout from 'pages/Layout'
-import WorkoutContainer from 'containers/WorkoutContainer'
+import Loading from 'components/Loading'
+
+const WorkoutContainer = Loadable({
+    loader: () => import('containers/WorkoutContainer'),
+    loading: Loading,
+})
 
 class Workout extends Component {
 

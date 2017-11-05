@@ -38,8 +38,12 @@
   font-weight: 700;
   text-transform: uppercase;
   font-size: .8rem;
-  letter-spacing: .05rem; }
+  letter-spacing: .05rem;
+  color: #222;
+  transition: color .2s; }
   .nav-link:visited {
     color: #222; }
+  .nav-link:hover {
+    color: #D05252; }
   .nav-link.nav-link--active {
     color: #D05252; }

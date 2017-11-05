@@ -31,7 +31,7 @@ class InnerForm extends Component {
         } = this.props
 
         return (
-            <form onSubmit={handleSubmit}>
+            <form>
                 <label htmlFor="name">Workout name:</label>
                 <Field
                     id="name"
@@ -44,8 +44,7 @@ class InnerForm extends Component {
                     id="notes"
                     name="notes"
                 />
-
-                <button type="submit" disabled={isSubmitting}>Delete</button>
+                {errors.notes && <div>{errors.notes}</div>}
             </form>
         )
     }
