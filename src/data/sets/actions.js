@@ -2,6 +2,7 @@ import debounce from 'lodash/debounce'
 
 import { CALL_API } from 'middleware/api'
 import * as types from 'data/sets/types'
+import * as helperTypes from 'data/types'
 
 const getSets = () => ({
     [CALL_API]: {
@@ -15,7 +16,7 @@ const getSets = () => ({
     }
 })
 
-const shouldFetchSets = (state) => state.sets.entities.length === 0
+const shouldFetchSets = (state) => state.sets.fetchStatus !== helperTypes.STATUS_LOADED
 
 export const fetchSets = () => (dispatch, getState) => {
     return shouldFetchSets(getState()) && dispatch(getSets())
@@ -25,9 +26,9 @@ export const fetchSets = () => (dispatch, getState) => {
 const postSet = (exerciseId) => ({
     [CALL_API]: {
         types: [
-            types.SET_POST_REQUEST,
-            types.SET_POST_SUCCESS,
-            types.SET_POST_FAILURE
+            types.SETS_POST_REQUEST,
+            types.SETS_POST_SUCCESS,
+            types.SETS_POST_FAILURE
         ],
         endpoint: 'sets',
         method: 'post',
@@ -44,9 +45,9 @@ export const createSet = (exerciseId) => (dispatch, getState) => {
 const putSet = (id, data) => ({
     [CALL_API]: {
         types: [
-            types.SET_PUT_REQUEST,
-            types.SET_PUT_SUCCESS,
-            types.SET_PUT_FAILURE
+            types.SETS_PUT_REQUEST,
+            types.SETS_PUT_SUCCESS,
+            types.SETS_PUT_FAILURE
         ],
         endpoint: `sets/${id}`,
         method: 'put',
@@ -70,9 +71,9 @@ export const updateSet = (id, data) => (dispatch, getState) => {
 const deleteSet = (id) => ({
     [CALL_API]: {
         types: [
-            types.SET_DELETE_REQUEST,
-            types.SET_DELETE_SUCCESS,
-            types.SET_DELETE_FAILURE
+            types.SETS_DELETE_REQUEST,
+            types.SETS_DELETE_SUCCESS,
+            types.SETS_DELETE_FAILURE
         ],
         endpoint: `sets/${id}`,
         method: 'delete',

@@ -2,6 +2,7 @@ import debounce from 'lodash/debounce'
 
 import { CALL_API } from 'middleware/api'
 import * as types from 'data/exercises/types'
+import * as helperTypes from 'data/types'
 
 const getExercises = () => ({
     [CALL_API]: {
@@ -15,7 +16,7 @@ const getExercises = () => ({
     }
 })
 
-const shouldFetchExercises = (state) => state.exercises.entities.length === 0
+const shouldFetchExercises = (state) => state.exercises.fetchStatus !== helperTypes.STATUS_LOADED
 
 export const fetchExercises = () => (dispatch, getState) => {
     return shouldFetchExercises(getState()) && dispatch(getExercises())
@@ -25,9 +26,9 @@ export const fetchExercises = () => (dispatch, getState) => {
 const postExercise = (workoutId) => ({
     [CALL_API]: {
         types: [
-            types.EXERCISE_POST_REQUEST,
-            types.EXERCISE_POST_SUCCESS,
-            types.EXERCISE_POST_FAILURE
+            types.EXERCISES_POST_REQUEST,
+            types.EXERCISES_POST_SUCCESS,
+            types.EXERCISES_POST_FAILURE
         ],
         endpoint: 'exercises',
         method: 'post',
@@ -44,9 +45,9 @@ export const createExercise = (workoutId) => (dispatch, getState) => {
 const putExercise = (id, data) => ({
     [CALL_API]: {
         types: [
-            types.EXERCISE_PUT_REQUEST,
-            types.EXERCISE_PUT_SUCCESS,
-            types.EXERCISE_PUT_FAILURE
+            types.EXERCISES_PUT_REQUEST,
+            types.EXERCISES_PUT_SUCCESS,
+            types.EXERCISES_PUT_FAILURE
         ],
         endpoint: `exercises/${id}`,
         method: 'put',
@@ -70,9 +71,9 @@ export const updateExercise = (id, data) => (dispatch, getState) => {
 const deleteExercise = (id) => ({
     [CALL_API]: {
         types: [
-            types.EXERCISE_DELETE_REQUEST,
-            types.EXERCISE_DELETE_SUCCESS,
-            types.EXERCISE_DELETE_FAILURE
+            types.EXERCISES_DELETE_REQUEST,
+            types.EXERCISES_DELETE_SUCCESS,
+            types.EXERCISES_DELETE_FAILURE
         ],
         endpoint: `exercises/${id}`,
         method: 'delete',

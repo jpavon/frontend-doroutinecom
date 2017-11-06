@@ -2,6 +2,7 @@ import debounce from 'lodash/debounce'
 
 import { CALL_API } from 'middleware/api'
 import * as types from 'data/workouts/types'
+import * as helperTypes from 'data/types'
 
 const getWorkouts = () => ({
     [CALL_API]: {
@@ -15,7 +16,7 @@ const getWorkouts = () => ({
     }
 })
 
-const shouldFetchWorkouts = (state) => state.workouts.entities.length === 0
+const shouldFetchWorkouts = (state) => state.workouts.fetchStatus !== helperTypes.STATUS_LOADED
 
 export const fetchWorkouts = () => (dispatch, getState) => {
     return shouldFetchWorkouts(getState()) && dispatch(getWorkouts())
@@ -25,9 +26,9 @@ export const fetchWorkouts = () => (dispatch, getState) => {
 const postWorkout = () => ({
     [CALL_API]: {
         types: [
-            types.WORKOUT_POST_REQUEST,
-            types.WORKOUT_POST_SUCCESS,
-            types.WORKOUT_POST_FAILURE
+            types.WORKOUTS_POST_REQUEST,
+            types.WORKOUTS_POST_SUCCESS,
+            types.WORKOUTS_POST_FAILURE
         ],
         endpoint: 'workouts',
         method: 'post'
@@ -41,9 +42,9 @@ export const createWorkout = () => (dispatch, getState) => {
 const putWorkout = (id, data) => ({
     [CALL_API]: {
         types: [
-            types.WORKOUT_PUT_REQUEST,
-            types.WORKOUT_PUT_SUCCESS,
-            types.WORKOUT_PUT_FAILURE
+            types.WORKOUTS_PUT_REQUEST,
+            types.WORKOUTS_PUT_SUCCESS,
+            types.WORKOUTS_PUT_FAILURE
         ],
         endpoint: `workouts/${id}`,
         method: 'put',
@@ -67,9 +68,9 @@ export const updateWorkout = (id, data) => (dispatch, getState) => {
 const deleteWorkout = (id) => ({
     [CALL_API]: {
         types: [
-            types.WORKOUT_DELETE_REQUEST,
-            types.WORKOUT_DELETE_SUCCESS,
-            types.WORKOUT_DELETE_FAILURE
+            types.WORKOUTS_DELETE_REQUEST,
+            types.WORKOUTS_DELETE_SUCCESS,
+            types.WORKOUTS_DELETE_FAILURE
         ],
         endpoint: `workouts/${id}`,
         method: 'delete',

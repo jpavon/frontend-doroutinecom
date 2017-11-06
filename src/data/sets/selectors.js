@@ -5,5 +5,5 @@ export const setsSelector = (exerciseId) => createSelector(
     [
         (state) => state.sets.entities
     ],
-    (sets) => sets.length > 0 ? sets.filter((set) => (set.exerciseId === exerciseId)) : []
+    (sets) => sets.filter((set) => (set.exerciseId === exerciseId))
 )

@@ -33,7 +33,6 @@ class WorkoutsContainer extends Component {
     }
 
     render() {
-        console.log(this.props.monthlyWorkouts)
         return ([
             <div className="col" key={3}>
                 <Button onClick={this.handleCreateWorkout}>Create a new workout</Button>

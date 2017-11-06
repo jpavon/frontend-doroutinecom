@@ -1,15 +1,26 @@
-import { fetchStatusTypes } from 'shared/types'
+import * as helperTypes from 'data/types'
 
 export const defaultFetch = (state) => ({
     ...state,
-    fetchStatus: fetchStatusTypes.LOADING
+    fetchStatus: helperTypes.STATUS_LOADING
 })
 
 export const defaultFailure = (state, error) => ({
     ...state,
-    fetchStatus: fetchStatusTypes.FAILED,
+    fetchStatus: helperTypes.STATUS_FAILED,
     error
 })
+
+export const defaultMounted = (state) => {
+    if (state.entities instanceof Array) {
+        return {
+            ...state,
+            fetchStatus: helperTypes.STATUS_LOADED,
+        }
+    }
+
+    return state
+}
 
 export const insertItem = (array, item) => (
     [...array, item]

@@ -1,4 +1,4 @@
-import * as types from 'data/workouts/types'
+import * as types from 'data/lifts/types'
 import * as helperTypes from 'data/types'
 import { updateItem, insertItem, deleteItem, defaultFetch, defaultFailure, defaultMounted } from 'data/helpers'
 
@@ -7,64 +7,64 @@ const initialState = {
     entities: []
 }
 
-const workouts = (state = initialState, action) => {
+const lifts = (state = initialState, action) => {
     const { type, payload, error, meta } = action
 
     switch (type) {
-        case types.WORKOUTS_FETCH_REQUEST:
+        case types.LIFTS_FETCH_REQUEST:
             return defaultFetch(state)
 
-        case types.WORKOUTS_FETCH_SUCCESS:
+        case types.LIFTS_FETCH_SUCCESS:
             return {
                 ...state,
                 fetchStatus: helperTypes.STATUS_LOADED,
                 entities: payload
             }
 
-        case types.WORKOUTS_FETCH_FAILURE:
+        case types.LIFTS_FETCH_FAILURE:
             return defaultFailure(state, error)
 
-        case types.WORKOUTS_POST_REQUEST:
+        case types.LIFTS_POST_REQUEST:
             return defaultFetch(state)
 
-        case types.WORKOUTS_POST_SUCCESS:
+        case types.LIFTS_POST_SUCCESS:
             return {
                 ...state,
                 fetchStatus: helperTypes.STATUS_LOADED,
                 entities: insertItem(state.entities, payload)
             }
 
-        case types.WORKOUTS_POST_FAILURE:
+        case types.LIFTS_POST_FAILURE:
             return {
                 ...state,
                 fetchStatus: helperTypes.STATUS_FAILED,
                 error: error
             }
 
-        case types.WORKOUTS_PUT_REQUEST:
+        case types.LIFTS_PUT_REQUEST:
             return defaultFetch(state)
 
-        case types.WORKOUTS_PUT_SUCCESS:
+        case types.LIFTS_PUT_SUCCESS:
             return {
                 ...state,
                 fetchStatus: helperTypes.STATUS_LOADED,
                 entities: updateItem(state.entities, payload)
             }
 
-        case types.WORKOUTS_PUT_FAILURE:
+        case types.LIFTS_PUT_FAILURE:
             return defaultFailure(state, error)
 
-        case types.WORKOUTS_DELETE_REQUEST:
+        case types.LIFTS_DELETE_REQUEST:
             return defaultFetch(state)
 
-        case types.WORKOUTS_DELETE_SUCCESS:
+        case types.LIFTS_DELETE_SUCCESS:
             return {
                 ...state,
                 fetchStatus: helperTypes.STATUS_LOADED,
                 entities: deleteItem(state.entities, meta.id)
             }
 
-        case types.WORKOUTS_DELETE_FAILURE:
+        case types.LIFTS_DELETE_FAILURE:
             return defaultFailure(state, error)
 
         case helperTypes.MOUNTED:
@@ -75,4 +75,4 @@ const workouts = (state = initialState, action) => {
     }
 }
 
-export default workouts
+export default lifts
