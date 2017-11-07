@@ -8,7 +8,7 @@ import Workout from 'pages/Workout'
 import Lifts from 'pages/Lifts'
 import NoMatch from 'pages/NoMatch'
 
-const Root = ({ store }) => (
+const Routes = ({ store }) => (
     <Provider store={store}>
         <Switch>
             <Route exact path="/" component={Home} />
@@ -19,8 +19,8 @@ const Root = ({ store }) => (
     </Provider>
 )
 
-Root.propTypes = {
+Routes.propTypes = {
     store: PropTypes.object.isRequired,
 }
 
-export default Root
+export default Routes
