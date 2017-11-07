@@ -1,10 +1,19 @@
 import { createSelector } from 'reselect'
-// import moment from 'moment'
 
-export const liftSelector = (exerciseId) => createSelector(
+const formatLift = (lift) => ({
+    ...lift
+})
+
+export const liftsSelector = createSelector(
     [
-        (state) => state.lifts.entities,
-        (state) => state.exercises.entities
+        (state) => state.lifts.entities
     ],
-    (lifts, exercises) => lifts.filter((set) => (set.exerciseId === exerciseId))
+    (lifts) => lifts.map((lift) => formatLift(lift))
+)
+
+export const liftSelector = (id) => createSelector(
+    [
+        (state) => state.lifts.entities
+    ],
+    (lifts) => formatLift(lifts.find((lift) => (lift.id === id)))
 )

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
-import { fetchWorkouts, createWorkout } from 'data/workouts/actions'
+import { createWorkout } from 'data/workouts/actions'
 import { monthlyWorkoutsSelector } from 'data/workouts/selectors'
 import Button from 'components/Button'
 
@@ -12,7 +12,6 @@ import './style.css'
 class WorkoutsContainer extends Component {
 
     static propTypes = {
-        fetchWorkouts: PropTypes.func.isRequired,
         createWorkout: PropTypes.func.isRequired,
         monthlyWorkouts: PropTypes.array.isRequired,
     }
@@ -22,7 +21,6 @@ class WorkoutsContainer extends Component {
     // }
 
     componentDidMount() {
-        this.props.fetchWorkouts()
     }
 
     handleCreateWorkout = (e) => {
@@ -80,7 +78,6 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = {
-    fetchWorkouts,
     createWorkout
 }
 

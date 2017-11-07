@@ -1,9 +1,14 @@
 import { createSelector } from 'reselect'
-// import moment from 'moment'
+
+const formatExercise = (exercise) => ({
+    ...exercise
+})
 
 export const exercisesSelector = (workoutId) => createSelector(
     [
         (state) => state.exercises.entities
     ],
-    (exercises) => exercises.filter((exercise) => (exercise.workoutId === workoutId))
+    (exercises) => exercises
+        .filter((exercise) => (exercise.workoutId === workoutId))
+        .map((exercise) => formatExercise(exercise))
 )

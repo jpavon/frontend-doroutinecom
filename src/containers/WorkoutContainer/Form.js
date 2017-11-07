@@ -1,7 +1,18 @@
 import React, { Component } from 'react'
 import { withFormik, Field } from 'formik'
+import { SingleDatePicker } from 'react-dates'
+import moment from 'moment'
 
 class InnerForm extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            date: this.props.values.day,
+            focused: false
+        }
+    }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.values !== this.props.values) {
@@ -19,7 +30,8 @@ class InnerForm extends Component {
 
     render() {
         const {
-            errors
+            errors,
+            setFieldValue
         } = this.props
 
         return (
@@ -30,6 +42,14 @@ class InnerForm extends Component {
                     name="name"
                 />
                 {errors.name && <div>{errors.name}</div>}
+
+                <SingleDatePicker
+                    date={moment(this.props.values.day)} // momentPropTypes.momentObj or null
+                    onDateChange={date => setFieldValue('day', date.format('YYYY-MM-DD hh:mm:ss'))} // PropTypes.func.isRequired
+                    focused={this.state.focused} // PropTypes.bool
+                    onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+                    numberOfMonths={1}
+                />
 
                 <label htmlFor="notes">Notes</label>
                 <Field
@@ -47,6 +67,7 @@ const formikEnhancer = withFormik({
         id: props.workout.id || '',
         name: props.workout.name || '',
         notes: props.workout.notes || '',
+        day: props.workout.day || ''
     })
 })
 

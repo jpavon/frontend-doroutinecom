@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router-dom'
 import Home from 'pages/Home'
 import Workout from 'pages/Workout'
 import Lifts from 'pages/Lifts'
+import Lift from 'pages/Lift'
 import NoMatch from 'pages/NoMatch'
 
 const Routes = ({ store }) => (
@@ -14,6 +15,7 @@ const Routes = ({ store }) => (
             <Route exact path="/" component={Home} />
             <Route exact path="/workouts/:id" component={Workout} />
             <Route exact path="/lifts" component={Lifts} />
+            <Route exact path="/lifts/:id" component={Lift} />
             <Route component={NoMatch}/>
         </Switch>
     </Provider>

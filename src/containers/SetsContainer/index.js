@@ -24,7 +24,7 @@ class SetsContainer extends Component {
         return (
             <div>
                 {this.props.sets.length > 0 && this.props.sets.map((set, i) => (
-                    <div key={i} className="set">
+                    <div key={i} className="set" style={{padding: '10px', 'backgroundColor': '#DDD'}}>
                         <SetsContainerForm
                             set={set}
                             updateSet={this.props.updateSet}
@@ -37,7 +37,7 @@ class SetsContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    sets: setsSelector(props.exerciseId)(state)
+    sets: setsSelector(props.exerciseId)(state),
 })
 
 const mapDispatchToProps = {

@@ -4,6 +4,11 @@ import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 
 import { mount } from 'data/actions'
+import { fetchWorkouts } from 'data/workouts/actions'
+import { fetchExercises } from 'data/exercises/actions'
+import { fetchLifts } from 'data/lifts/actions'
+import { fetchSets } from 'data/sets/actions'
+
 
 import Nav from 'components/Nav'
 
@@ -13,11 +18,19 @@ class Layout extends Component {
 
     static propTypes = {
         children: PropTypes.node.isRequired,
-        mount: PropTypes.func.isRequired
+        mount: PropTypes.func.isRequired,
+        fetchWorkouts: PropTypes.func.isRequired,
+        fetchExercises: PropTypes.func.isRequired,
+        fetchLifts: PropTypes.func.isRequired,
+        fetchSets: PropTypes.func.isRequired,
     }
 
     componentWillMount() {
         this.props.mount()
+        this.props.fetchWorkouts()
+        this.props.fetchExercises()
+        this.props.fetchLifts()
+        this.props.fetchSets()
     }
 
     render() {
@@ -40,7 +53,11 @@ class Layout extends Component {
 const mapStateToProps = (state, props) => ({})
 
 const mapDispatchToProps = {
-    mount
+    mount,
+    fetchWorkouts,
+    fetchExercises,
+    fetchLifts,
+    fetchSets
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout)

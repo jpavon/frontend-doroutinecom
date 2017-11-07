@@ -4,11 +4,9 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
 import Button from 'components/Button'
-import { fetchWorkouts, createWorkout, updateWorkout, removeWorkout } from 'data/workouts/actions'
+import { createWorkout, updateWorkout, removeWorkout } from 'data/workouts/actions'
 import { workoutSelector } from 'data/workouts/selectors'
 import WorkoutContainerForm from 'containers/WorkoutContainer/Form'
-import { fetchExercises } from 'data/exercises/actions'
-import { fetchSets } from 'data/sets/actions'
 import ExercisesContainer from 'containers/ExercisesContainer'
 
 import './style.css'
@@ -19,20 +17,12 @@ class WorkoutContainer extends Component {
         id: PropTypes.number.isRequired,
         workout: PropTypes.object.isRequired,
 
-        fetchWorkouts: PropTypes.func.isRequired,
         createWorkout: PropTypes.func.isRequired,
         updateWorkout: PropTypes.func.isRequired,
         removeWorkout: PropTypes.func.isRequired,
-
-        fetchExercises: PropTypes.func.isRequired,
-
-        fetchSets: PropTypes.func.isRequired,
     }
 
     componentDidMount() {
-        this.props.fetchWorkouts();
-        this.props.fetchExercises();
-        this.props.fetchSets();
     }
 
     handleRemove = () => {
@@ -67,14 +57,9 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = {
-    fetchWorkouts,
     createWorkout,
     updateWorkout,
     removeWorkout,
-
-    fetchExercises,
-
-    fetchSets,
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(WorkoutContainer))
