@@ -22,6 +22,11 @@ export const defaultMounted = (state) => {
     return state
 }
 
+export const shouldFetch = (name, state) => (
+    state[name].fetchStatus !== helperTypes.STATUS_LOADED &&
+    state.fetchStatus === helperTypes.STATUS_NONE
+)
+
 export const insertItem = (array, item) => (
     [...array, item]
 )

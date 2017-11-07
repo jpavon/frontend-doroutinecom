@@ -2,7 +2,7 @@ import debounce from 'lodash/debounce'
 
 import { CALL_API } from 'middleware/api'
 import * as types from 'data/exercises/types'
-import * as helperTypes from 'data/types'
+import { shouldFetch } from 'data/helpers'
 
 const getExercises = () => ({
     [CALL_API]: {
@@ -16,10 +16,8 @@ const getExercises = () => ({
     }
 })
 
-const shouldFetchExercises = (state) => state.exercises.fetchStatus !== helperTypes.STATUS_LOADED
-
 export const fetchExercises = () => (dispatch, getState) => {
-    return shouldFetchExercises(getState()) && dispatch(getExercises())
+    return shouldFetch(types.NAME, getState()) && dispatch(getExercises())
 }
 
 

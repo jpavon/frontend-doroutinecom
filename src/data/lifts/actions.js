@@ -2,7 +2,7 @@ import debounce from 'lodash/debounce'
 
 import { CALL_API } from 'middleware/api'
 import * as types from 'data/lifts/types'
-import * as helperTypes from 'data/types'
+import { shouldFetch } from 'data/helpers'
 
 const getLifts = () => ({
     [CALL_API]: {
@@ -16,10 +16,8 @@ const getLifts = () => ({
     }
 })
 
-const shouldFetchLifts = (state) => state.lifts.fetchStatus !== helperTypes.STATUS_LOADED
-
 export const fetchLifts = () => (dispatch, getState) => {
-    return shouldFetchLifts(getState()) && dispatch(getLifts())
+    return shouldFetch(types.NAME, getState()) && dispatch(getLifts())
 }
 
 
