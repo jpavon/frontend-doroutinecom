@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 import Button from 'components/Button'
 import { updateLift, removeLift } from 'data/lifts/actions'
@@ -35,8 +36,8 @@ class LiftContainer extends Component {
                 <Button to="/lifts">&lt; Go back</Button>
                 {Object.keys(this.props.lift).length !== 0 &&
                     <Form
-                        lift={this.props.lift}
-                        updateLift={this.props.updateLift}
+                        entity={this.props.lift}
+                        update={this.props.updateLift}
                     />
                 }
 
@@ -55,4 +56,4 @@ const mapDispatchToProps = {
     removeLift,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LiftContainer)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LiftContainer))

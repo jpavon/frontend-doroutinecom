@@ -25,6 +25,15 @@ class Layout extends Component {
         fetchSets: PropTypes.func.isRequired,
     }
 
+    constructor(props) {
+        super(props);
+        this.state = { hasError: false };
+    }
+
+    componentDidCatch(error, info) {
+        this.setState({ hasError: true });
+    }
+
     componentWillMount() {
         this.props.mount()
         this.props.fetchWorkouts()
@@ -42,7 +51,10 @@ class Layout extends Component {
                 <Nav />
                 <div className="container">
                     <div className="row">
-                        {this.props.children}
+                        {this.state.hasError ?
+                            <h1>Something went wrong.</h1> :
+                            this.props.children
+                        }
                     </div>
                 </div>
             </div>

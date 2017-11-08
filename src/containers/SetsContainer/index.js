@@ -26,8 +26,8 @@ class SetsContainer extends Component {
                 {this.props.sets.length > 0 && this.props.sets.map((set, i) => (
                     <div key={i} className="set" style={{padding: '10px', 'backgroundColor': '#DDD'}}>
                         <SetsContainerForm
-                            set={set}
-                            updateSet={this.props.updateSet}
+                            entity={set}
+                            update={this.props.updateSet}
                         />
                     </div>
                 ))}

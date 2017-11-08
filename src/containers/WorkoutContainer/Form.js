@@ -1,30 +1,16 @@
 import React, { Component } from 'react'
-import { withFormik, Field } from 'formik'
+import { Field } from 'formik'
+import withForm from 'components/Form'
 import { SingleDatePicker } from 'react-dates'
 import moment from 'moment'
 
-class InnerForm extends Component {
+class Form extends Component {
 
     constructor(props) {
         super(props)
 
         this.state = {
-            date: this.props.values.day,
             focused: false
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.values !== this.props.values) {
-            this.props.updateWorkout(nextProps.values.id, nextProps.values)
-                .then((payload) => {
-                    if (payload.error) {
-                        console.log(this.props)
-                        this.props.setErrors(payload.error.errors)
-                    } else {
-                        this.props.setErrors({})
-                    }
-                })
         }
     }
 
@@ -44,10 +30,10 @@ class InnerForm extends Component {
                 {errors.name && <div>{errors.name}</div>}
 
                 <SingleDatePicker
-                    date={moment(this.props.values.day)} // momentPropTypes.momentObj or null
-                    onDateChange={date => setFieldValue('day', date.format('YYYY-MM-DD hh:mm:ss'))} // PropTypes.func.isRequired
-                    focused={this.state.focused} // PropTypes.bool
-                    onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+                    date={moment(this.props.values.day)}
+                    onDateChange={date => setFieldValue('day', date.format('YYYY-MM-DD hh:mm:ss'))}
+                    focused={this.state.focused}
+                    onFocusChange={({ focused }) => this.setState({ focused })}
                     numberOfMonths={1}
                 />
 
@@ -62,13 +48,4 @@ class InnerForm extends Component {
     }
 }
 
-const formikEnhancer = withFormik({
-    mapPropsToValues: (props) => ({
-        id: props.workout.id || '',
-        name: props.workout.name || '',
-        notes: props.workout.notes || '',
-        day: props.workout.day || ''
-    })
-})
-
-export default formikEnhancer(InnerForm)
+export default withForm(Form)

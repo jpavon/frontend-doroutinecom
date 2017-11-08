@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 
 import './style.css'
 
-class Button extends React.Component {
+class Button extends Component {
 
     static propTypes = {
         href: PropTypes.string,

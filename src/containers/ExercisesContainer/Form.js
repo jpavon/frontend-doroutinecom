@@ -1,20 +1,8 @@
 import React, { Component } from 'react'
-import { withFormik, Field } from 'formik'
+import { Field } from 'formik'
+import withForm from 'components/Form'
 
-class InnerForm extends Component {
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.values !== this.props.values) {
-            this.props.updateExercise(nextProps.values.id, nextProps.values)
-                .then((payload) => {
-                    if (payload.error) {
-                        this.props.setErrors(payload.error.errors)
-                    } else {
-                        this.props.setErrors({})
-                    }
-                })
-        }
-    }
+class Form extends Component {
 
     render() {
         const {
@@ -38,11 +26,4 @@ class InnerForm extends Component {
     }
 }
 
-const formikEnhancer = withFormik({
-    mapPropsToValues: (props) => ({
-        id: props.exercise.id || '',
-        liftId: props.exercise.liftId || '',
-    })
-})
-
-export default formikEnhancer(InnerForm)
+export default withForm(Form)

@@ -39,8 +39,8 @@ class WorkoutContainer extends Component {
 
                 {Object.keys(this.props.workout).length !== 0 &&
                     <WorkoutContainerForm
-                        workout={this.props.workout}
-                        updateWorkout={this.props.updateWorkout}
+                        entity={this.props.workout}
+                        update={this.props.updateWorkout}
                     />
                 }
 

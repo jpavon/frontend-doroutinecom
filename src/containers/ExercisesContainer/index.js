@@ -34,8 +34,8 @@ class ExercisesContainer extends Component {
                 {this.props.exercises.length > 0 && this.props.exercises.map((exercise, i) => (
                     <div style={{padding: '20px', 'backgroundColor': '#eee'}} key={i}>
                         <Form
-                            updateExercise={this.props.updateExercise}
-                            exercise={exercise}
+                            update={this.props.updateExercise}
+                            entity={exercise}
                             lifts={this.props.lifts}
                         />
                         <SetsContainer exerciseId={exercise.id} />

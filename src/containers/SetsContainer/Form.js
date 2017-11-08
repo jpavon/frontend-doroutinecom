@@ -1,33 +1,8 @@
 import React, { Component } from 'react'
-import { withFormik, Field } from 'formik'
-import union from 'lodash/union'
-import keys from 'lodash/keys'
-import filter from 'lodash/filter'
+import { Field } from 'formik'
+import withForm from 'components/Form'
 
-class InnerForm extends Component {
-
-    componentWillReceiveProps(nextProps) {
-        const changedKeys = (o1, o2) => {
-            const k = union(keys(o1), keys(o2))
-            return filter(k, function(key) {
-                return o1[key] !== o2[key]
-            })
-        }
-
-
-        if (nextProps.values !== this.props.values) {
-            console.log('keys', changedKeys(nextProps.values, this.props.values))
-
-            this.props.updateSet(nextProps.values.id, nextProps.values)
-                .then((payload) => {
-                    if (payload.error) {
-                        this.props.setErrors(payload.error.errors)
-                    } else {
-                        this.props.setErrors({})
-                    }
-                })
-        }
-    }
+class Form extends Component {
 
     render() {
         const {
@@ -67,13 +42,4 @@ class InnerForm extends Component {
     }
 }
 
-const formikEnhancer = withFormik({
-    mapPropsToValues: (props) => ({
-        id: props.set.id || '',
-        reps: props.set.reps || '',
-        rmPercentage: props.set.rmPercentage || '',
-        weight: props.set.weight || '',
-    })
-})
-
-export default formikEnhancer(InnerForm)
+export default withForm(Form)
