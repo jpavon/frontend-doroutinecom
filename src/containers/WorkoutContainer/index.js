@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
-import Button from 'components/Button'
 import { createWorkout, updateWorkout, removeWorkout } from 'data/workouts/actions'
 import { workoutSelector } from 'data/workouts/selectors'
+
 import WorkoutContainerForm from 'containers/WorkoutContainer/Form'
 import ExercisesContainer from 'containers/ExercisesContainer'
+import Button from 'components/Button'
 
 import './style.css'
 
