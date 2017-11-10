@@ -49,18 +49,34 @@
   flex: 0 0 14.28571%;
   max-width: 14.28571%; }
 
+.col--offset1of7 {
+  margin-left: 14.28571%; }
+
 .col--offset2of7 {
   margin-left: 28.57143%; }
 
 .col--offset3of7 {
   margin-left: 42.85714%; }
 
+.col--offset4of7 {
+  margin-left: 57.14286%; }
+
+.col--offset5of7 {
+  margin-left: 71.42857%; }
+
+.col--offset6of7 {
+  margin-left: 85.71429%; }
+
+.calendar-week-names {
+  font-size: 1.4rem;
+  padding: .3rem .3rem 1rem;
+  text-align: right; }
+
 .calendar-day {
   font-size: 1.4rem;
   padding: .3rem .3rem 1rem;
   margin-bottom: 30px;
-  text-align: right;
-  background-color: #eee; }
+  text-align: right; }
 
 .Grid {
   display: flex;

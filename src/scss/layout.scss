@@ -66,19 +66,35 @@
     flex: 0 0 percentage(1/7);
     max-width: percentage(1/7);
 }
+.col--offset1of7 {
+    margin-left: percentage(1/7);
+}
 .col--offset2of7 {
     margin-left: percentage(2/7);
 }
 .col--offset3of7 {
     margin-left: percentage(3/7);
 }
+.col--offset4of7 {
+    margin-left: percentage(4/7);
+}
+.col--offset5of7 {
+    margin-left: percentage(5/7);
+}
+.col--offset6of7 {
+    margin-left: percentage(6/7);
+}
 
+.calendar-week-names {
+    font-size: 1.4rem;
+    padding: .3rem .3rem 1rem;
+    text-align: right;
+}
 .calendar-day {
     font-size: 1.4rem;
     padding: .3rem .3rem 1rem;
     margin-bottom: 30px;
     text-align: right;
-    background-color: #eee;
 }
 
 
