@@ -8,10 +8,14 @@
   border-bottom: 2px solid #222;
   margin-bottom: 1rem;
   background-color: #fff; }
+  @media (max-width: 1000px) {
+    .nav {
+      padding-left: 5rem;
+      padding-right: 5rem; } }
   @media (max-width: 800px) {
     .nav {
-      padding-left: 2rem;
-      padding-right: 2rem; } }
+      padding-left: 15px;
+      padding-right: 15px; } }
 
 .nav-logo {
   display: inline-block;
