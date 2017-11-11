@@ -15,7 +15,9 @@ const formatMonthlyWorkouts = (workouts) => {
             prev[month].data.push(workout)
         } else {
             prev[month] = {
-                month: moment(curr.day).format('MMMM YYYY'),
+                displayDate: moment(curr.day).format('MMMM YYYY'),
+                month: String(moment(curr.day).month() + 1),
+                year: moment(curr.day).format('YYYY'),
                 data: [workout]
             }
         }

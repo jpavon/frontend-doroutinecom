@@ -14,15 +14,15 @@ const moment = extendMoment(Moment)
 class Calendar extends Component {
 
     static propTypes = {
-
+        monthlyWorkouts: PropTypes.array.isRequired
     }
 
     constructor(props) {
         super(props)
 
         this.state = {
-            year: moment().year(),
-            month: moment().month() + 1,
+            year: String(moment().year()),
+            month: String(moment().month() + 1)
         }
     }
 
@@ -34,6 +34,10 @@ class Calendar extends Component {
     }
 
     render() {
+        const currentMonthWorkouts = this.props.monthlyWorkouts.find((workout) => (
+            workout.year === this.state.year && workout.month === this.state.month
+        ))
+
         moment.updateLocale('en', {
             week : {
                 dow : 1
@@ -50,9 +54,13 @@ class Calendar extends Component {
         const formatedDays = days.map((m) => ({
             weekDay: m.weekday(),
             displayDay: m.format('D'),
+            m,
+            workouts: currentMonthWorkouts && currentMonthWorkouts.data.filter((workout) => (
+                moment(workout.day).format('D') === m.format('D')
+            ))
         }))
 
-        console.log(this.state, now)
+        console.log(this.state, this.props.monthlyWorkouts, formatedDays, currentMonthWorkouts)
 
         return (
             <div className="row">
@@ -63,7 +71,7 @@ class Calendar extends Component {
                     </select>
                     <select name="month" value={this.state.month} onChange={this.handleChange}>
                         {moment.months().map((month, i) => (
-                            <option key={i} value={i < 9 ? `0${i + 1}` : i + 1}>{month}</option>
+                            <option key={i} value={i + 1}>{month}</option>
                         ))}
                     </select>
                 </div>
@@ -92,6 +100,10 @@ class Calendar extends Component {
                     <div className={classNames('col col--1of7', { [`col--offset${day.weekDay}of7`]: i === 0})} key={i}>
                         <div className="calendar-day">
                             {day.displayDay}
+                            <br />
+                            {day.workouts && day.workouts.map((workout, i) => (
+                                <i key={i}>{workout.name}<br/></i>
+                            ))}
                         </div>
                     </div>
                 ))}
