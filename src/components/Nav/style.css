@@ -1,12 +1,12 @@
 .nav {
   position: relative;
   display: flex;
+  margin-bottom: 1rem;
+  padding: .4rem 10rem .2rem;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: .4rem 10rem .2rem;
-  border-bottom: 2px solid #222;
-  margin-bottom: 1rem;
+  border-bottom: 4px solid #e3ebf5;
   background-color: #fff; }
   @media (max-width: 1000px) {
     .nav {

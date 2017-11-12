@@ -9,7 +9,7 @@ import { fetchExercises } from 'data/exercises/actions'
 import { fetchLifts } from 'data/lifts/actions'
 import { fetchSets } from 'data/sets/actions'
 
-
+import NotFound from 'components/NotFound'
 import Nav from 'components/Nav'
 
 import 'scss/global.css'
@@ -50,12 +50,10 @@ class Layout extends Component {
                 </Helmet>
                 <Nav />
                 <div className="container">
-                    <div className="row">
-                        {this.state.hasError ?
-                            <h1>Something went wrong.</h1> :
-                            this.props.children
-                        }
-                    </div>
+                    {this.state.hasError ?
+                        <NotFound /> :
+                        this.props.children
+                    }
                 </div>
             </div>
         )

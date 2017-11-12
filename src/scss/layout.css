@@ -67,17 +67,6 @@
 .col--offset6of7 {
   margin-left: 85.71429%; }
 
-.calendar-week-names {
-  font-size: 1.4rem;
-  padding: .3rem .3rem 1rem;
-  text-align: right; }
-
-.calendar-day {
-  font-size: 1.4rem;
-  padding: .3rem .3rem 1rem;
-  margin-bottom: 30px;
-  text-align: right; }
-
 .Grid {
   display: flex;
   flex-wrap: wrap;

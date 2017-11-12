@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Moment from 'moment'
 import { extendMoment } from 'moment-range'
 import classNames from 'classnames'
+import { Link } from 'react-router-dom'
 
 import Button from 'components/Button'
 
@@ -63,50 +64,53 @@ class Calendar extends Component {
         console.log(this.state, this.props.monthlyWorkouts, formatedDays, currentMonthWorkouts)
 
         return (
-            <div className="row">
-                <div className="col">
-                    <select name="year" value={this.state.year} onChange={this.handleChange}>
-                        <option value="2017">2017</option>
-                        <option value="2018">2018</option>
-                    </select>
-                    <select name="month" value={this.state.month} onChange={this.handleChange}>
-                        {moment.months().map((month, i) => (
-                            <option key={i} value={i + 1}>{month}</option>
-                        ))}
-                    </select>
-                </div>
-                <div className="col col--1of7">
-                    <div className="calendar-week-names">M</div>
-                </div>
-                <div className="col col--1of7">
-                    <div className="calendar-week-names">T</div>
-                </div>
-                <div className="col col--1of7">
-                    <div className="calendar-week-names">W</div>
-                </div>
-                <div className="col col--1of7">
-                    <div className="calendar-week-names">T</div>
-                </div>
-                <div className="col col--1of7">
-                    <div className="calendar-week-names">F</div>
-                </div>
-                <div className="col col--1of7">
-                    <div className="calendar-week-names">S</div>
-                </div>
-                <div className="col col--1of7">
-                    <div className="calendar-week-names">S</div>
-                </div>
-                {formatedDays.map((day, i) => (
-                    <div className={classNames('col col--1of7', { [`col--offset${day.weekDay}of7`]: i === 0})} key={i}>
-                        <div className="calendar-day">
-                            {day.displayDay}
-                            <br />
-                            {day.workouts && day.workouts.map((workout, i) => (
-                                <i key={i}>{workout.name}<br/></i>
+            <div className="calendar-wrapper">
+                <div className="row">
+                    <div className="col">
+                        <select name="year" value={this.state.year} onChange={this.handleChange}>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                        </select>
+                        <select name="month" value={this.state.month} onChange={this.handleChange}>
+                            {moment.months().map((month, i) => (
+                                <option key={i} value={i + 1}>{month}</option>
                             ))}
-                        </div>
+                        </select>
                     </div>
-                ))}
+                    <div className="col col--1of7">
+                        <div className="calendar-week-names">M</div>
+                    </div>
+                    <div className="col col--1of7">
+                        <div className="calendar-week-names">T</div>
+                    </div>
+                    <div className="col col--1of7">
+                        <div className="calendar-week-names">W</div>
+                    </div>
+                    <div className="col col--1of7">
+                        <div className="calendar-week-names">T</div>
+                    </div>
+                    <div className="col col--1of7">
+                        <div className="calendar-week-names">F</div>
+                    </div>
+                    <div className="col col--1of7">
+                        <div className="calendar-week-names">S</div>
+                    </div>
+                    <div className="col col--1of7">
+                        <div className="calendar-week-names">S</div>
+                    </div>
+                </div>
+                <div className="row row--calendar">
+                    {formatedDays.map((day, i) => (
+                        <div className={classNames('col col--calendar col--1of7', { [`col--offset${day.weekDay}of7`]: i === 0})} key={i}>
+                            <div className="calendar-day">
+                                <div className="calendar-number">{day.displayDay}</div>
+                                {day.workouts && day.workouts.map((workout, i) => (
+                                    <Link key={i} to={`/workouts/${workout.id}`} className="calendar-workout">{workout.name}</Link>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         )
     }

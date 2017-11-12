@@ -5,4 +5,9 @@ $color-font: #222;
 $color-primary: #1e6abb;
 $color-primary-hover: darken($color-primary, 7%);
 
+$color-button: #e3ebf5;
+$color-button-hover: darken($color-button, 7%);
+
+$color-border: $color-button;
+
 $color-brand: #D05252;

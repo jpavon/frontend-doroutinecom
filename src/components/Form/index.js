@@ -26,8 +26,6 @@ export default function withForm(WrappedComponent) {
                     .then((payload) => {
                         if (payload.error) {
                             this.props.setErrors(payload.error.errors)
-                        } else {
-                            this.props.setErrors({})
                         }
                     })
             }

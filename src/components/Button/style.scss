@@ -15,18 +15,29 @@
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: .1rem;
-    color: #fff;
-    background-color: $color-primary;
+    color: #444;
+    font-weight: 700;
+    background-color: $color-button;
     transition: background-color .2s;
+    cursor: pointer;
 
     &:hover {
-        background-color: $color-primary-hover;
+        background-color: $color-button-hover;
     }
 
     &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active {
-        color: #fff;
-        background-color: #0062cc;
-        border-color: #005cbf;
-        box-shadow: 0 0 0 0.2rem rgba(0,123,255,.5);
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem $color-button;
     }
+}
+
+.button-small {
+    @extend .button;
+
+    text-overflow: ellipsis;
+    font-size: .7rem;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 0;
 }

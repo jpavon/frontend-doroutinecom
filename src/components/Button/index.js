@@ -26,7 +26,11 @@ class Button extends Component {
         const Element = to ? Link : href ? 'a' : 'button'
 
         return (
-            <Element className={classNames('button', className)} href={href} to={to} {...rest}>
+            <Element
+                className={classNames('button', className)}
+                href={href}
+                to={to}
+                {...rest}>
                 {children}
             </Element>
         )

@@ -1,4 +1,4 @@
-.button {
+.button, .button-small {
   display: inline-block;
   font-weight: 400;
   text-align: center;
@@ -13,13 +13,21 @@
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: .1rem;
-  color: #fff;
-  background-color: #1e6abb;
-  transition: background-color .2s; }
-  .button:hover {
-    background-color: #19599c; }
-  .button:not([disabled]):not(.disabled).active, .button:not([disabled]):not(.disabled):active {
-    color: #fff;
-    background-color: #0062cc;
-    border-color: #005cbf;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); }
+  color: #444;
+  font-weight: 700;
+  background-color: #e3ebf5;
+  transition: background-color .2s;
+  cursor: pointer; }
+  .button:hover, .button-small:hover {
+    background-color: #c9d8ec; }
+  .button:not([disabled]):not(.disabled).active, .button-small:not([disabled]):not(.disabled).active, .button:not([disabled]):not(.disabled):active, .button-small:not([disabled]):not(.disabled):active {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #e3ebf5; }
+
+.button-small {
+  text-overflow: ellipsis;
+  font-size: .7rem;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  letter-spacing: 0; }
