@@ -30,13 +30,22 @@ class LiftsContainer extends Component {
     render() {
         return (
             <div className="col">
-                <div>
+                <div className="lift-create-button">
                     <Button onClick={this.handleCreate}>Create a new lift</Button>
                 </div>
                 {this.props.lifts.length > 0 && this.props.lifts.map((lift, i) => (
-                    <div key={i} className="set">
-                        {lift.name}
-                        <Button to={`lifts/${lift.id}`}>Edit</Button>
+                    <div key={i} className="lift">
+                        <div className="lift-info">
+                            <div className="lift-name">
+                                {lift.name}
+                            </div>
+                            <div className="lift-rm">
+                                RM: {lift.rm}
+                            </div>
+                        </div>
+                        <div className="lift-button">
+                            <Button to={`lifts/${lift.id}`}>Edit</Button>
+                        </div>
                     </div>
                 ))}
             </div>

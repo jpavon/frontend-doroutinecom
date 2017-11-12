@@ -12,7 +12,7 @@ class Form extends Component {
         return (
             <form>
                 <div className="form-field">
-                    <label htmlFor="reps">Reps:</label>
+                    {this.props.i === 0 && <label htmlFor="reps">Reps:</label>}
                     <Field
                         id="reps"
                         name="reps"
@@ -21,7 +21,7 @@ class Form extends Component {
                 </div>
 
                 <div className="form-field">
-                    <label htmlFor="rmPercentage">RM percentage:</label>
+                    {this.props.i === 0 && <label htmlFor="rmPercentage">RM percentage:</label>}
                     <Field
                         id="rmPercentage"
                         name="rmPercentage"
@@ -30,7 +30,7 @@ class Form extends Component {
                 </div>
 
                 <div className="form-field">
-                    <label htmlFor="weight">Weight:</label>
+                    {this.props.i === 0 && <label htmlFor="weight">Weight:</label>}
                     <Field
                         id="weight"
                         name="weight"

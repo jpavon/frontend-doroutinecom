@@ -45,7 +45,8 @@ class Calendar extends Component {
             }
         })
 
-        const now = moment().year(this.state.year).month(this.state.month)
+        const now = moment().set({'year': this.state.year, 'month': this.state.month - 1});
+
         const startOfMonth = now.clone().startOf('month')
         const endOfMonth = now.clone().endOf('month')
 
@@ -61,11 +62,14 @@ class Calendar extends Component {
             ))
         }))
 
-        console.log(this.state, this.props.monthlyWorkouts, formatedDays, currentMonthWorkouts)
+        // console.log(this.state, this.props.monthlyWorkouts, formatedDays, currentMonthWorkouts)
 
         return (
             <div className="calendar-wrapper">
                 <div className="row">
+                    <div className="col">
+                        <h1>{now.format('MMMM YYYY')}</h1>
+                    </div>
                     <div className="col">
                         <select name="year" value={this.state.year} onChange={this.handleChange}>
                             <option value="2017">2017</option>

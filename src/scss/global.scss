@@ -29,6 +29,7 @@ input {
     display: block;
     padding: .5rem;
     margin-bottom: 1rem;
+    border: 1px solid $color-border;
 }
 select {
     border: 1px solid #111;

@@ -1,0 +1,20 @@
+.lift-create-button {
+  text-align: center;
+  margin-bottom: 1rem; }
+
+.lift {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: .6rem;
+  border: 1px solid #e3ebf5; }
+
+.lift-name {
+  margin-bottom: .4rem;
+  font-size: 1.2rem; }
+
+.lift-rm {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: .8rem; }
