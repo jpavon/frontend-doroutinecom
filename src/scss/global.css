@@ -46,6 +46,10 @@
   padding-right: 15px;
   padding-left: 15px; }
 
+.col--1of3 {
+  flex: 0 0 33.33333%;
+  max-width: 33.33333%; }
+
 .col--1of7 {
   flex: 0 0 14.28571%;
   max-width: 14.28571%; }
@@ -221,7 +225,8 @@
 
 body {
   font-family: Helvetica, Arial, sans-serif;
-  color: #222; }
+  color: #222;
+  overflow-y: scroll; }
 
 p {
   font-size: 1.1rem; }
@@ -238,14 +243,13 @@ input {
   display: block;
   padding: .5rem;
   margin-bottom: 1rem;
-  border: 1px solid #e3ebf5; }
+  border: 1px solid #e48f8f; }
 
 select {
-  border: 1px solid #111;
   background: transparent;
   padding: 5px 35px 5px 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #e48f8f;
   height: 34px;
   appearance: none; }
 

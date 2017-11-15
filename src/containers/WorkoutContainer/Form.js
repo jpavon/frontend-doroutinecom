@@ -22,13 +22,6 @@ class Form extends Component {
 
         return (
             <form>
-                <label htmlFor="name">Workout name:</label>
-                <Field
-                    id="name"
-                    name="name"
-                />
-                {errors.name && <div>{errors.name}</div>}
-
                 <SingleDatePicker
                     date={moment(this.props.values.day)}
                     onDateChange={date => setFieldValue('day', date.format('YYYY-MM-DD hh:mm:ss'))}
@@ -36,6 +29,13 @@ class Form extends Component {
                     onFocusChange={({ focused }) => this.setState({ focused })}
                     numberOfMonths={1}
                 />
+
+                <label htmlFor="name">Workout name:</label>
+                <Field
+                    id="name"
+                    name="name"
+                />
+                {errors.name && <div>{errors.name}</div>}
 
                 <label htmlFor="notes">Notes</label>
                 <Field

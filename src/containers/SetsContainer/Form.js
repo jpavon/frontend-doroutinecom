@@ -2,40 +2,46 @@ import React, { Component } from 'react'
 import { Field } from 'formik'
 import withForm from 'components/Form'
 
+import Input from 'components/Input'
+
 class Form extends Component {
 
     render() {
         const {
-            errors
+            errors,
+            values
         } = this.props
 
         return (
             <form>
-                <div className="form-field">
-                    {this.props.i === 0 && <label htmlFor="reps">Reps:</label>}
-                    <Field
-                        id="reps"
-                        name="reps"
-                    />
-                    {errors.reps && <div>{errors.reps}</div>}
-                </div>
+                <div className="row">
+                    <div className="col col--1of3 form-field">
+                        <Input
+                            name="reps"
+                            value={values.reps}
+                            error={errors.reps}
+                            item={{
+                                name: 'Reps',
+                                position: 'right'
+                            }}
+                        />
+                    </div>
 
-                <div className="form-field">
-                    {this.props.i === 0 && <label htmlFor="rmPercentage">RM percentage:</label>}
-                    <Field
-                        id="rmPercentage"
-                        name="rmPercentage"
-                    />
-                    {errors.rmPercentage && <div>{errors.rmPercentage}</div>}
-                </div>
+                    <div className="col col--1of3 form-field">
+                        <Input
+                            name="rmPercentage"
+                            value={values.rmPercentage}
+                            error={errors.rmPercentage}
+                        />
+                    </div>
 
-                <div className="form-field">
-                    {this.props.i === 0 && <label htmlFor="weight">Weight:</label>}
-                    <Field
-                        id="weight"
-                        name="weight"
-                    />
-                    {errors.weight && <div>{errors.weight}</div>}
+                    <div className="col col--1of3 form-field">
+                        <Input
+                            name="weight"
+                            value={values.weight}
+                            error={errors.weight}
+                        />
+                    </div>
                 </div>
             </form>
         )

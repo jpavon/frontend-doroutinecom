@@ -9,7 +9,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 4px solid #e3ebf5;
+    border-bottom: 4px solid $color-primary;
     background-color: #fff;
 
     @media(max-width: 1000px) {
@@ -55,18 +55,19 @@
     text-transform: uppercase;
     font-size: .8rem;
     letter-spacing: .05rem;
-    color: $color-font;
-    transition: color .2s;
+    color: $color-primary;
+    transition: border .2s;
+    border-bottom: 2px solid transparent;
 
     &:visited {
-        color: $color-font;
+        color: $color-primary;
     }
 
     &:hover {
-        color: $color-brand;
+        border-bottom: 2px solid $color-primary;
     }
 
     &.nav-link--active {
-        color: $color-brand;
+        border-bottom: 2px solid $color-primary;
     }
 }

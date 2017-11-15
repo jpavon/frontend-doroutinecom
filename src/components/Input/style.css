@@ -1,0 +1,13 @@
+.form-input {
+  display: flex; }
+  .form-input input {
+    flex: 1;
+    text-align: right;
+    margin-bottom: 0; }
+
+.form-item {
+  background-color: #d03d3d;
+  color: #fff;
+  padding: .7rem;
+  font-size: .7rem;
+  text-transform: uppercase; }

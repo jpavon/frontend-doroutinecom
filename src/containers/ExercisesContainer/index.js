@@ -32,7 +32,7 @@ class ExercisesContainer extends Component {
         return (
             <div>
                 {this.props.exercises.length > 0 && this.props.exercises.map((exercise, i) => (
-                    <div style={{padding: '20px', 'backgroundColor': '#eee'}} key={i}>
+                    <div key={i} className="exercise">
                         <Form
                             update={this.props.updateExercise}
                             entity={exercise}

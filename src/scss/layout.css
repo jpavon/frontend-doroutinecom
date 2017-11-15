@@ -45,6 +45,10 @@
   padding-right: 15px;
   padding-left: 15px; }
 
+.col--1of3 {
+  flex: 0 0 33.33333%;
+  max-width: 33.33333%; }
+
 .col--1of7 {
   flex: 0 0 14.28571%;
   max-width: 14.28571%; }

@@ -9,6 +9,7 @@
 body {
     font-family: $font-family;
     color: $color-font;
+    overflow-y: scroll;
 }
 
 
@@ -32,11 +33,10 @@ input {
     border: 1px solid $color-border;
 }
 select {
-    border: 1px solid #111;
     background: transparent;
     padding: 5px 35px 5px 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid $color-border;
     height: 34px;
     appearance: none;
 }
