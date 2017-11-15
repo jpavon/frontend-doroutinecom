@@ -8,6 +8,7 @@ import { monthlyWorkoutsSelector } from 'data/workouts/selectors'
 
 import Calendar from 'components/Calendar'
 import Button from 'components/Button'
+import Panel from 'components/Panel'
 
 import './style.css'
 
@@ -34,18 +35,12 @@ class WorkoutsContainer extends Component {
 
     render() {
         return (
-            <div>
-                <div className="row">
-                    <Calendar key={4} monthlyWorkouts={this.props.monthlyWorkouts} />
-                </div>
+            <Panel>
+                <Calendar key={4} monthlyWorkouts={this.props.monthlyWorkouts} />
 
-                <div className="row">
-                    <div className="col" key={3}>
-                        <Button onClick={this.handleCreateWorkout}>Create a new workout</Button>
-                    </div>
-                </div>
+                <Button onClick={this.handleCreateWorkout}>Create a new workout</Button>
 
-                <div className="row">
+                {/*<div className="row">
                     <div key={1} className="col col--6">
                         <h2>Finished Workouts</h2>
                         {this.props.monthlyWorkouts.length > 0 && this.props.monthlyWorkouts.map((monthlyWorkout, i) => (
@@ -80,8 +75,8 @@ class WorkoutsContainer extends Component {
                             </div>
                         ))}
                     </div>
-                </div>
-            </div>
+                </div>*/}
+            </Panel>
         )
     }
 }

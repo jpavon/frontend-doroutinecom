@@ -5,9 +5,7 @@
     text-align: right;
     margin-bottom: 0; }
 
-.form-item {
-  background-color: #d03d3d;
-  color: #fff;
+.form-input-item {
   padding: .7rem;
   font-size: .7rem;
   text-transform: uppercase; }

@@ -15,15 +15,15 @@
   letter-spacing: .1rem;
   color: #444;
   font-weight: 700;
-  background-color: #d03d3d;
+  background-color: #2b82a5;
   transition: background-color .2s;
   cursor: pointer;
   color: #fff; }
   .button:hover, .button-small:hover, .calendar-workout:hover {
-    background-color: #bc2d2d; }
+    background-color: #246c89; }
   .button:not([disabled]):not(.disabled).active, .button-small:not([disabled]):not(.disabled).active, .calendar-workout:not([disabled]):not(.disabled).active, .button:not([disabled]):not(.disabled):active, .button-small:not([disabled]):not(.disabled):active, .calendar-workout:not([disabled]):not(.disabled):active {
     outline: 0;
-    box-shadow: 0 0 0 0.2rem #d03d3d; }
+    box-shadow: 0 0 0 0.2rem #2b82a5; }
 
 .button-small, .calendar-workout {
   text-overflow: ellipsis;
@@ -33,16 +33,20 @@
   overflow: hidden;
   letter-spacing: 0; }
 
+.calendar-selector {
+  text-align: center;
+  margin-bottom: 2rem; }
+
 .calendar-week-names {
   font-size: 1.4rem;
   padding: .3rem .3rem 1rem;
-  text-align: right; }
+  text-align: center; }
 
 .calendar-day {
   height: 80px;
   padding: .3rem;
   margin-bottom: 4px;
-  border: 1px solid #e48f8f; }
+  border: 1px solid #353535; }
 
 .calendar-number {
   font-size: 1rem;

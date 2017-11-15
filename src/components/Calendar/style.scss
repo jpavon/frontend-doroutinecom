@@ -1,10 +1,15 @@
 @import "scss/variables.scss";
 @import "components/Button/style.scss";
 
+.calendar-selector {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
 .calendar-week-names {
     font-size: 1.4rem;
     padding: .3rem .3rem 1rem;
-    text-align: right;
+    text-align: center;
 }
 
 .calendar-day {

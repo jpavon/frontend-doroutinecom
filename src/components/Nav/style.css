@@ -6,8 +6,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 4px solid #d03d3d;
-  background-color: #fff; }
+  background-color: #252525; }
   @media (max-width: 1000px) {
     .nav {
       padding-left: 5rem;
@@ -43,12 +42,12 @@
   text-transform: uppercase;
   font-size: .8rem;
   letter-spacing: .05rem;
-  color: #d03d3d;
+  color: #fefefe;
   transition: border .2s;
-  border-bottom: 2px solid transparent; }
+  border-bottom: 1px solid transparent; }
   .nav-link:visited {
-    color: #d03d3d; }
+    color: #fefefe; }
   .nav-link:hover {
-    border-bottom: 2px solid #d03d3d; }
+    border-bottom: 1px solid #fefefe; }
   .nav-link.nav-link--active {
-    border-bottom: 2px solid #d03d3d; }
+    border-bottom: 1px solid #fefefe; }

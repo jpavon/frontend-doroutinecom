@@ -1,12 +1,17 @@
 $font-family: Helvetica, Arial, sans-serif;
 
-$color-font: #222;
+$color-background: #222;
+$color-background-light: #252525;
 
-$color-primary: #d03d3d;
+$color-font: #fefefe;
+
+$color-primary: #fefefe;
 $color-primary-hover: darken($color-primary, 7%);
 
-$color-button: $color-primary;
+$color-button: #2b82a5;
 $color-button-hover: darken($color-button, 7%);
 
-$color-border: lighten($color-primary, 20%);
+$color-border: #353535;
 
+$color-border-input: #24414c;
+$color-border-input-active: lighten(#24414c, 10%);

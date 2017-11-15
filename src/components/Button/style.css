@@ -15,15 +15,15 @@
   letter-spacing: .1rem;
   color: #444;
   font-weight: 700;
-  background-color: #d03d3d;
+  background-color: #2b82a5;
   transition: background-color .2s;
   cursor: pointer;
   color: #fff; }
   .button:hover, .button-small:hover {
-    background-color: #bc2d2d; }
+    background-color: #246c89; }
   .button:not([disabled]):not(.disabled).active, .button-small:not([disabled]):not(.disabled).active, .button:not([disabled]):not(.disabled):active, .button-small:not([disabled]):not(.disabled):active {
     outline: 0;
-    box-shadow: 0 0 0 0.2rem #d03d3d; }
+    box-shadow: 0 0 0 0.2rem #2b82a5; }
 
 .button-small {
   text-overflow: ellipsis;

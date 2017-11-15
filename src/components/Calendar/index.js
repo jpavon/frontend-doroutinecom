@@ -66,20 +66,19 @@ class Calendar extends Component {
 
         return (
             <div className="calendar-wrapper">
-                <div className="row">
+                <div className="row row--calendar">
                     <div className="col">
-                        <h1>{now.format('MMMM YYYY')}</h1>
-                    </div>
-                    <div className="col">
-                        <select name="year" value={this.state.year} onChange={this.handleChange}>
-                            <option value="2017">2017</option>
-                            <option value="2018">2018</option>
-                        </select>
-                        <select name="month" value={this.state.month} onChange={this.handleChange}>
-                            {moment.months().map((month, i) => (
-                                <option key={i} value={i + 1}>{month}</option>
-                            ))}
-                        </select>
+                        <div className="calendar-selector">
+                            <select name="month" value={this.state.month} onChange={this.handleChange}>
+                                {moment.months().map((month, i) => (
+                                    <option key={i} value={i + 1}>{month}</option>
+                                ))}
+                            </select>
+                            <select name="year" value={this.state.year} onChange={this.handleChange}>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                            </select>
+                        </div>
                     </div>
                     <div className="col col--1of7">
                         <div className="calendar-week-names">M</div>

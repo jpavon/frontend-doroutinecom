@@ -1,0 +1,19 @@
+@import "scss/variables.scss";
+
+.panel {
+    position: relative;
+    padding: 1rem;
+    margin-bottom: 2px;
+
+    background-color: $color-background-light;
+    border: 2px solid $color-border;
+}
+
+.panel-header {
+    position: absolute;
+    top: -1rem;
+    z-index: 10;
+    padding: .4rem .8rem;
+    background-color: $color-background-light;
+    border: 2px solid $color-border;
+}

@@ -8,8 +8,9 @@ import { createSet } from 'data/sets/actions'
 import { liftsSelector } from 'data/lifts/selectors'
 
 import SetsContainer from 'containers/SetsContainer'
-import Button from 'components/Button'
 import Form from 'containers/ExercisesContainer/Form'
+import Button from 'components/Button'
+import Panel from 'components/Panel'
 
 import './style.css'
 
@@ -31,16 +32,19 @@ class ExercisesContainer extends Component {
     render() {
         return (
             <div>
+                <h3>Exercises</h3>
                 {this.props.exercises.length > 0 && this.props.exercises.map((exercise, i) => (
-                    <div key={i} className="exercise">
+                    <Panel key={i}>
                         <Form
                             update={this.props.updateExercise}
                             entity={exercise}
                             lifts={this.props.lifts}
                         />
+                        <br/>
                         <SetsContainer exerciseId={exercise.id} />
+                        <br/>
                         <Button onClick={() => this.props.createSet(exercise.id)}>New set</Button>
-                    </div>
+                    </Panel>
                 ))}
                 <Button onClick={() => this.props.createExercise(this.props.workoutId)}>New exercise</Button>
             </div>

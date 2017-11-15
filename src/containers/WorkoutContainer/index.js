@@ -9,6 +9,7 @@ import { workoutSelector } from 'data/workouts/selectors'
 import WorkoutContainerForm from 'containers/WorkoutContainer/Form'
 import ExercisesContainer from 'containers/ExercisesContainer'
 import Button from 'components/Button'
+import Panel from 'components/Panel'
 
 import './style.css'
 
@@ -38,16 +39,19 @@ class WorkoutContainer extends Component {
             <div className="col">
                 <Button to="/">&lt; Go back</Button>
 
-                {Object.keys(this.props.workout).length !== 0 &&
-                    <WorkoutContainerForm
-                        entity={this.props.workout}
-                        update={this.props.updateWorkout}
-                    />
-                }
+                <Panel>
+                    {Object.keys(this.props.workout).length !== 0 &&
+                        <WorkoutContainerForm
+                            entity={this.props.workout}
+                            update={this.props.updateWorkout}
+                        />
+                    }
 
-                <ExercisesContainer workoutId={this.props.id} />
+                    <ExercisesContainer workoutId={this.props.id} />
 
+                </Panel>
                 <Button onClick={this.handleRemove}>Remove workout</Button>
+
             </div>
         )
     }

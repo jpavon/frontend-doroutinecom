@@ -32,6 +32,10 @@ class Form extends Component {
                             name="rmPercentage"
                             value={values.rmPercentage}
                             error={errors.rmPercentage}
+                            item={{
+                                name: 'RM',
+                                position: 'right'
+                            }}
                         />
                     </div>
 
@@ -40,6 +44,10 @@ class Form extends Component {
                             name="weight"
                             value={values.weight}
                             error={errors.weight}
+                            item={{
+                                name: 'Weight',
+                                position: 'right'
+                            }}
                         />
                     </div>
                 </div>

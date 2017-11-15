@@ -10,6 +10,8 @@ body {
     font-family: $font-family;
     color: $color-font;
     overflow-y: scroll;
+    background-color: $color-background;
+    color: $color-font;
 }
 
 
@@ -25,20 +27,35 @@ label {
     text-transform: uppercase;
     font-size: .7rem;
 }
+
 input {
     width: 100%;
     display: block;
     padding: .5rem;
     margin-bottom: 1rem;
-    border: 1px solid $color-border;
+    color: #efefef;
+    background-color: $color-background-light;
+    border: 1px solid $color-border-input;
+
+    &:focus {
+        background-color: lighten($color-background-light, 5%);
+    }
+
 }
+
 select {
-    background: transparent;
     padding: 5px 35px 5px 10px;
-    font-size: 16px;
-    border: 1px solid $color-border;
     height: 34px;
+
     appearance: none;
+    font-size: 16px;
+    color: $color-font;
+    background-color: $color-background-light;
+    border: 1px solid $color-border-input;
+
+    &:focus {
+        background-color: lighten($color-background-light, 5%);
+    }
 }
 
 select {
