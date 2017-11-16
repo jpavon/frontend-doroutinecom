@@ -39,8 +39,8 @@ class Input extends Component {
                     <Field type={type || 'text'} name={name} {...rest} />
                     {item && item.position === 'right' && Item}
                 </div>
-                {errors && <div className="form-errors">{errors.map((error) => (
-                    <div className="form-error">{error}</div>
+                {errors && <div className="form-errors">{errors.map((error, i) => (
+                    <div key={i} className="form-error">{error}</div>
                 ))}</div>}
             </div>
         )

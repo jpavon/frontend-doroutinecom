@@ -19,6 +19,16 @@ p {
     font-size: 1.1rem;
 }
 
+a {
+    color: $color-font;
+}
+
+.message {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #b8bb3b;
+}
+
 // temp
 label {
     margin-top: 1rem;
@@ -36,6 +46,12 @@ input {
     color: #efefef;
     background-color: $color-background-light;
     border: 1px solid $color-border-input;
+
+    &[type="checkbox"] {
+        display: inline-block;
+        width: auto;
+        margin-right: .5rem;
+    }
 
     &:focus {
         background-color: lighten($color-background-light, 5%);

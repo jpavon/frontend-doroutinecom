@@ -7,6 +7,7 @@ import Home from 'pages/Home'
 import Workout from 'pages/Workout'
 import Lifts from 'pages/Lifts'
 import Lift from 'pages/Lift'
+import Graphs from 'pages/Graphs'
 import NoMatch from 'pages/NoMatch'
 
 const Routes = ({ store }) => (
@@ -16,6 +17,7 @@ const Routes = ({ store }) => (
             <Route exact path="/workouts/:id" component={Workout} />
             <Route exact path="/lifts" component={Lifts} />
             <Route exact path="/lifts/:id" component={Lift} />
+            <Route exact path="/graphs" component={Graphs} />
             <Route component={NoMatch}/>
         </Switch>
     </Provider>

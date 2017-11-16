@@ -17,3 +17,14 @@ export const liftSelector = (id) => createSelector(
     ],
     (lifts) => formatLift(lifts.find((lift) => (lift.id === id)))
 )
+
+export const exerciseLiftSelector = (exerciseId) => createSelector(
+    [
+        (state) => state.exercises.entities,
+        (state) => state.lifts.entities,
+    ],
+    (exercises, lifts) => {
+        const exercise = exercises.find((exercise) => (exercise.id === exerciseId))
+        return formatLift(lifts.find((lift) => (lift.id === exercise.liftId)))
+    }
+)

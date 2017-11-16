@@ -9,7 +9,9 @@ class Form extends Component {
     render() {
         const {
             errors,
-            values
+            values,
+            lift,
+            setFieldValue
         } = this.props
 
         return (
@@ -19,7 +21,7 @@ class Form extends Component {
                         <Input
                             name="reps"
                             value={values.reps}
-                            error={errors.reps}
+                            errors={errors.reps}
                             item={{
                                 name: 'Reps',
                                 position: 'right'
@@ -27,28 +29,50 @@ class Form extends Component {
                         />
                     </div>
 
-                    <div className="col col--1of3 form-field">
-                        <Input
-                            name="rmPercentage"
-                            value={values.rmPercentage}
-                            error={errors.rmPercentage}
-                            item={{
-                                name: 'RM',
-                                position: 'right'
-                            }}
-                        />
-                    </div>
+                    {values.isRmPercentageRequired &&
+                        <div className="col col--1of3 form-field">
+                            <Input
+                                name="rmPercentage"
+                                value={values.rmPercentage}
+                                errors={errors.rmPercentage}
+                                item={{
+                                    name: 'RM',
+                                    position: 'right'
+                                }}
+                            />
+                        </div>
+                    }
+                    {values.isRmPercentageRequired &&
+                        <div className="col col--1of3 form-field">
+                            <input
+                                value={values.rmPercentage * lift.rm / 100}
+                                disabled
+                            />
+                        </div>
+                    }
 
-                    <div className="col col--1of3 form-field">
-                        <Input
-                            name="weight"
-                            value={values.weight}
-                            error={errors.weight}
-                            item={{
-                                name: 'Weight',
-                                position: 'right'
-                            }}
+                    {!values.isRmPercentageRequired &&
+                        <div className="col col--1of3 form-field">
+                            <Input
+                                name="weight"
+                                value={values.weight}
+                                errors={errors.weight}
+                                item={{
+                                    name: 'Weight',
+                                    position: 'right'
+                                }}
+                                disabled={values.isRmPercentageRequired}
+                            />
+                        </div>
+                    }
+
+                    <div className="col">
+                        <Field
+                            type="checkbox"
+                            name="isRmPercentageRequired"
+                            checked={values.isRmPercentageRequired}
                         />
+                        <small>Use rm percentage to calculate weight?</small>
                     </div>
                 </div>
             </form>

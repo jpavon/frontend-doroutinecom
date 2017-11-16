@@ -21,7 +21,7 @@ export default function withForm(WrappedComponent) {
             if (nextProps.values !== this.props.values) {
 
                 const changedKey = Object.keys(nextProps.values).filter((key) => (nextProps.values[key] !== this.props.values[key]))[0]
-
+                console.log(Object.keys(nextProps.values).filter((key) => (nextProps.values[key] !== this.props.values[key])))
                 this.props.update(nextProps.values.id, { [changedKey]: nextProps.values[changedKey] })
                     .then((payload) => {
                         if (payload.error) {
