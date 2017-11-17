@@ -224,10 +224,10 @@
   box-sizing: border-box; }
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   color: #fefefe;
   overflow-y: scroll;
-  background-color: #222;
+  background-color: #1a1a1a;
   color: #fefefe; }
 
 p {
@@ -254,14 +254,14 @@ input {
   padding: .5rem;
   margin-bottom: 1rem;
   color: #efefef;
-  background-color: #252525;
+  background-color: #222;
   border: 1px solid #24414c; }
   input[type="checkbox"] {
     display: inline-block;
     width: auto;
     margin-right: .5rem; }
   input:focus {
-    background-color: #323232; }
+    background-color: #2f2f2f; }
 
 select {
   padding: 5px 35px 5px 10px;
@@ -269,13 +269,44 @@ select {
   appearance: none;
   font-size: 16px;
   color: #fefefe;
-  background-color: #252525;
+  background-color: #222;
   border: 1px solid #24414c; }
   select:focus {
-    background-color: #323232; }
+    background-color: #2f2f2f; }
 
 select {
   background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%);
   background-position: right 15px top .9em, right 10px top .9em;
   background-size: 5px 5px, 5px 5px;
   background-repeat: no-repeat; }
+
+.week-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -3px;
+  margin-left: -3px; }
+
+.week-column {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 3px;
+  padding-left: 3px; }
+
+.day {
+  background-color: #222; }
+
+.day-name {
+  padding: 7px 10px;
+  border-bottom: 1px solid #1a1a1a; }
+
+.day-lift-name {
+  padding: 7px 10px;
+  border-bottom: 1px solid #1a1a1a;
+  background-color: #2b82a5; }
+
+.day-lift-set {
+  font-size: .9rem;
+  padding: 5px 10px;
+  border-bottom: 1px solid #1a1a1a; }

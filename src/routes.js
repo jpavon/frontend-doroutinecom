@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom'
 
 import Home from 'pages/Home'
 import Workout from 'pages/Workout'
+import Workouts from 'pages/Workouts'
 import Lifts from 'pages/Lifts'
 import Lift from 'pages/Lift'
 import Graphs from 'pages/Graphs'
@@ -14,6 +15,7 @@ const Routes = ({ store }) => (
     <Provider store={store}>
         <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/workouts" component={Workouts} />
             <Route exact path="/workouts/:id" component={Workout} />
             <Route exact path="/lifts" component={Lifts} />
             <Route exact path="/lifts/:id" component={Lift} />

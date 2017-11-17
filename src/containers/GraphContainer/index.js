@@ -33,9 +33,10 @@ class GraphContainer extends Component {
                         150,
                         160
                     ],
-                    backgroundColor: 'transparent',
+                    backgroundColor: 'rgba(43, 129, 165, 0.1)',
                     borderColor: '#2b82a5',
                     pointBackgroundColor: '#2b82a5',
+                    lineTension: 0,
                 }]
             },
             options: {
