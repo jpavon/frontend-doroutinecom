@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Chart from 'chart.js'
 import moment from 'moment'
@@ -8,8 +8,8 @@ import './style.css'
 
 class GraphContainer extends Component {
 
-    static propTypes = {
-    }
+    // static propTypes = {
+    // }
 
     componentDidMount() {
         new Chart(this.graph, {

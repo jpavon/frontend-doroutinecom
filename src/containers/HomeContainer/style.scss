@@ -1,0 +1,70 @@
+@import "scss/variables.scss";
+
+// lifts
+
+.block-lifts {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -3px;
+    margin-left: -3px;
+}
+
+.block-lift {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 3px;
+    padding-left: 3px;
+
+    flex: 0 0 percentage(1/5);
+    max-width: percentage(1/5);
+}
+
+
+// block
+
+.block-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -3px;
+    margin-left: -3px;
+}
+.block-column {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    max-width: 33.3%;
+    min-height: 1px;
+    padding-right: 3px;
+    padding-left: 3px;
+}
+
+.block-button-create {
+    margin-top: 1rem;
+}
+
+// block-workout
+
+.block-workout {
+    background-color: $color-background-light;
+}
+
+.block-workout-name {
+    padding: 6px 10px;
+    border-bottom: 1px solid $color-background;
+}
+
+.block-workout-lift-name {
+    padding: 6px 10px;
+    border-radius: 3px;
+    border-bottom: 1px solid $color-background;
+    background-color: #315463;
+}
+
+.block-workout-lift-set {
+    padding: 4px 10px;
+    font-size: .9rem;
+    border-radius: 3px;
+    border-bottom: 1px solid $color-background;
+    background-color: #2f3c42;
+}

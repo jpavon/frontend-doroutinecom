@@ -21,7 +21,7 @@ class Panel extends Component {
         } = this.props;
 
         return (
-            <div className={classNames('panel', className)}>
+            <div className={classNames('panel', className)} {...rest}>
                 {header &&
                     <div className="panel-header">
                         {header}

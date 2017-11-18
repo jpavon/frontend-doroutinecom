@@ -228,7 +228,8 @@ body {
   color: #fefefe;
   overflow-y: scroll;
   background-color: #1a1a1a;
-  color: #fefefe; }
+  color: #fefefe;
+  margin-bottom: 10rem; }
 
 p {
   font-size: 1.1rem; }
@@ -279,34 +280,3 @@ select {
   background-position: right 15px top .9em, right 10px top .9em;
   background-size: 5px 5px, 5px 5px;
   background-repeat: no-repeat; }
-
-.week-row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -3px;
-  margin-left: -3px; }
-
-.week-column {
-  flex: 1;
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 3px;
-  padding-left: 3px; }
-
-.day {
-  background-color: #222; }
-
-.day-name {
-  padding: 7px 10px;
-  border-bottom: 1px solid #1a1a1a; }
-
-.day-lift-name {
-  padding: 7px 10px;
-  border-bottom: 1px solid #1a1a1a;
-  background-color: #2b82a5; }
-
-.day-lift-set {
-  font-size: .9rem;
-  padding: 5px 10px;
-  border-bottom: 1px solid #1a1a1a; }

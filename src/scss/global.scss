@@ -12,6 +12,7 @@ body {
     overflow-y: scroll;
     background-color: $color-background;
     color: $color-font;
+    margin-bottom: 10rem;
 }
 
 
@@ -85,42 +86,4 @@ select {
     5px 5px,
     5px 5px;
   background-repeat: no-repeat;
-}
-
-// temp home
-.week-row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -3px;
-    margin-left: -3px;
-}
-.week-column {
-    flex: 1;
-    position: relative;
-    width: 100%;
-    min-height: 1px;
-    padding-right: 3px;
-    padding-left: 3px;
-}
-
-
-.day {
-    background-color: $color-background-light;
-}
-
-.day-name {
-    padding: 7px 10px;
-    border-bottom: 1px solid $color-background;
-}
-
-.day-lift-name {
-    padding: 7px 10px;
-    border-bottom: 1px solid $color-background;
-    background-color: $color-button;
-}
-
-.day-lift-set {
-    font-size: .9rem;
-    padding: 5px 10px;
-    border-bottom: 1px solid $color-background;
 }

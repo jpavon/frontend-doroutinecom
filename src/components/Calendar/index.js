@@ -6,8 +6,6 @@ import { extendMoment } from 'moment-range'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 
-import Button from 'components/Button'
-
 import './style.css'
 
 const moment = extendMoment(Moment)

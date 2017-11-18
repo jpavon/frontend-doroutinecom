@@ -10,8 +10,7 @@ class Form extends Component {
         const {
             errors,
             values,
-            lift,
-            setFieldValue
+            lift
         } = this.props
 
         return (

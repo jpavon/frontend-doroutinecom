@@ -5,6 +5,7 @@ import { withRouter } from 'react-router'
 
 import { liftsSelector } from 'data/lifts/selectors'
 import { createLift, updateLift } from 'data/lifts/actions'
+
 import Button from 'components/Button'
 
 import './style.css'
