@@ -9,6 +9,7 @@ import Button from 'components/Button'
 class BlocksContainer extends Component {
 
     static propTypes = {
+        ui: PropTypes.object.isRequired
     }
 
     constructor(props) {
@@ -44,6 +45,7 @@ class BlocksContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
+    ui: state.ui
 })
 
 const mapDispatchToProps = {

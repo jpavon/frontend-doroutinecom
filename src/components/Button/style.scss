@@ -1,6 +1,17 @@
 @import "scss/variables.scss";
 
+@mixin button-color($color) {
+    color: #fff;
+    background-color: $color;
+
+    &:hover {
+        background-color: darken($color, 5%);
+    }
+}
+
 .button {
+    @include button-color($color-button);
+
     display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -15,16 +26,10 @@
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: .1rem;
-    color: #444;
     font-weight: 700;
     background-color: $color-button;
     transition: background-color .2s;
     cursor: pointer;
-    color: #fff;
-
-    &:hover {
-        background-color: $color-button-hover;
-    }
 
     &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active {
         outline: 0;
@@ -32,7 +37,7 @@
     }
 }
 
-.button-small {
+.button {
     @extend .button;
 
     text-overflow: ellipsis;
@@ -41,4 +46,8 @@
     white-space: nowrap;
     overflow: hidden;
     letter-spacing: 0;
+}
+
+.button--danger {
+    @include button-color($color-button-danger);
 }

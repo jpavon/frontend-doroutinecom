@@ -2,23 +2,6 @@
 
 // lifts
 
-.block-lifts {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -3px;
-    margin-left: -3px;
-}
-
-.block-lift {
-    position: relative;
-    width: 100%;
-    min-height: 1px;
-    padding-right: 3px;
-    padding-left: 3px;
-
-    flex: 0 0 percentage(1/5);
-    max-width: percentage(1/5);
-}
 
 
 // block

@@ -30,60 +30,67 @@ a {
     background-color: #b8bb3b;
 }
 
-// temp
-label {
-    margin-top: 1rem;
-    margin-bottom: .3rem;
-    display: block;
-    text-transform: uppercase;
-    font-size: .7rem;
-}
-
 input {
+    background-color: transparent;
+    border: 0;
     width: 100%;
-    display: block;
-    padding: .5rem;
-    margin-bottom: 1rem;
-    color: #efefef;
-    background-color: $color-background-light;
-    border: 1px solid $color-border-input;
-
-    &[type="checkbox"] {
-        display: inline-block;
-        width: auto;
-        margin-right: .5rem;
-    }
-
-    &:focus {
-        background-color: lighten($color-background-light, 5%);
-    }
-
+    color: #fff
 }
 
-select {
-    padding: 5px 35px 5px 10px;
-    height: 34px;
+// temp
+// label {
+//     margin-top: 1rem;
+//     margin-bottom: .3rem;
+//     display: block;
+//     text-transform: uppercase;
+//     font-size: .7rem;
+// }
 
-    appearance: none;
-    font-size: 16px;
-    color: $color-font;
-    background-color: $color-background-light;
-    border: 1px solid $color-border-input;
+// input {
+//     width: 100%;
+//     display: block;
+//     padding: .5rem;
+//     margin-bottom: 1rem;
+//     color: #efefef;
+//     background-color: $color-background-light;
+//     border: 1px solid $color-border-input;
 
-    &:focus {
-        background-color: lighten($color-background-light, 5%);
-    }
-}
+//     &[type="checkbox"] {
+//         display: inline-block;
+//         width: auto;
+//         margin-right: .5rem;
+//     }
 
-select {
-  background-image:
-    linear-gradient(45deg, transparent 50%, gray 50%),
-    linear-gradient(135deg, gray 50%, transparent 50%);
-  background-position:
-    right 15px top .9em,
-    right 10px top .9em;
-  background-size:
-    5px 5px,
-    5px 5px;
-  background-repeat: no-repeat;
-}
+//     &:focus {
+//         background-color: lighten($color-background-light, 5%);
+//     }
+
+// }
+
+// select {
+//     padding: 5px 35px 5px 10px;
+//     height: 34px;
+
+//     appearance: none;
+//     font-size: 16px;
+//     color: $color-font;
+//     background-color: $color-background-light;
+//     border: 1px solid $color-border-input;
+
+//     &:focus {
+//         background-color: lighten($color-background-light, 5%);
+//     }
+// }
+
+// select {
+//   background-image:
+//     linear-gradient(45deg, transparent 50%, gray 50%),
+//     linear-gradient(135deg, gray 50%, transparent 50%);
+//   background-position:
+//     right 15px top .9em,
+//     right 10px top .9em;
+//   background-size:
+//     5px 5px,
+//     5px 5px;
+//   background-repeat: no-repeat;
+// }

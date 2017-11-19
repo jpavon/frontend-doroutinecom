@@ -12,6 +12,8 @@ class Button extends Component {
         to: PropTypes.string,
         className: PropTypes.string,
         children: PropTypes.node,
+
+        danger: PropTypes.bool,
     }
 
     render() {
@@ -20,6 +22,7 @@ class Button extends Component {
             href,
             className,
             children,
+            danger,
             ...rest
         } = this.props;
 
@@ -27,7 +30,11 @@ class Button extends Component {
 
         return (
             <Element
-                className={classNames('button', className)}
+                className={classNames(
+                    'button',
+                    danger && 'button--danger',
+                    className
+                )}
                 href={href}
                 to={to}
                 {...rest}>

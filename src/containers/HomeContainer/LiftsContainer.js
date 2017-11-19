@@ -5,29 +5,9 @@ import { connect } from 'react-redux'
 import { liftsSelector } from 'data/lifts/selectors'
 import { createLift, updateLift, removeLift } from 'data/lifts/actions'
 
+import Lifts from 'components/Lift/Lifts'
+import Lift from 'components/Lift/Lift'
 import Button from 'components/Button'
-
-import { Field } from 'formik'
-import withForm from 'components/Form'
-
-const FormComponent = ({errors}) => (
-    <form>
-        <label htmlFor="name">Lift name:</label>
-        <Field
-            id="name"
-            name="name"
-        />
-        {errors.name && <div>{errors.name}</div>}
-
-        <label htmlFor="rm">Lift rm:</label>
-        <Field
-            id="rm"
-            name="rm"
-        />
-        {errors.rm && <div>{errors.rm}</div>}
-    </form>
-)
-const Form = withForm(FormComponent)
 
 class LiftsContainer extends Component {
 
@@ -49,41 +29,24 @@ class LiftsContainer extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Lifts</h2>
-                <div className="block-lifts">
-                    {this.props.lifts.length > 0 && this.props.lifts.map((lift, i) => (
-                        <div key={i} className="block-lift">
-                            {this.props.ui.isEditing ?
-                                <div>
-                                    <Form
-                                        entity={lift}
-                                        update={this.props.updateLift}
-                                    />
-                                    <Button onClick={() => this.handleRemove(lift.id)}>Remove</Button>
-                                </div>
-                            :
-                                <div>
-                                    {lift.name} <br/>
-                                    Rm: {lift.rm}
-                                </div>
-                            }
-                        </div>
-                    ))}
-                </div>
-
-                {this.props.ui.isEditing &&
-                    <div className="lift-create-button">
-                        <Button onClick={this.handleCreate}>Create a new lift</Button>
-                    </div>
-                }
-            </div>
+            <Lifts ui={this.props.ui} handleCreate={this.handleCreate}>
+                {this.props.lifts.length > 0 && this.props.lifts.map((lift, i) => (
+                    <Lift
+                        key={i}
+                        lift={lift}
+                        ui={this.props.ui}
+                        handleRemove={this.handleRemove}
+                        updateLift={this.props.updateLift}
+                    />
+                ))}
+            </Lifts>
         )
     }
 }
 
 const mapStateToProps = (state, props) => ({
-    lifts: liftsSelector(state)
+    lifts: liftsSelector(state),
+    ui: state.ui
 })
 
 const mapDispatchToProps = {
