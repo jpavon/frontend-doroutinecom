@@ -1,4 +1,6 @@
-.button, .button-small, .calendar-workout {
+.button, .calendar-workout {
+  color: #fff;
+  background-color: #2b82a5;
   display: inline-block;
   font-weight: 400;
   text-align: center;
@@ -13,25 +15,29 @@
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: .1rem;
-  color: #444;
   font-weight: 700;
   background-color: #2b82a5;
   transition: background-color .2s;
-  cursor: pointer;
-  color: #fff; }
-  .button:hover, .button-small:hover, .calendar-workout:hover {
-    background-color: #246c89; }
-  .button:not([disabled]):not(.disabled).active, .button-small:not([disabled]):not(.disabled).active, .calendar-workout:not([disabled]):not(.disabled).active, .button:not([disabled]):not(.disabled):active, .button-small:not([disabled]):not(.disabled):active, .calendar-workout:not([disabled]):not(.disabled):active {
+  cursor: pointer; }
+  .button:hover, .calendar-workout:hover {
+    background-color: #267291; }
+  .button:not([disabled]):not(.disabled).active, .calendar-workout:not([disabled]):not(.disabled).active, .button:not([disabled]):not(.disabled):active, .calendar-workout:not([disabled]):not(.disabled):active {
     outline: 0;
     box-shadow: 0 0 0 0.2rem #2b82a5; }
 
-.button-small, .calendar-workout {
+.button, .calendar-workout {
   text-overflow: ellipsis;
   font-size: .7rem;
   line-height: 1;
   white-space: nowrap;
   overflow: hidden;
   letter-spacing: 0; }
+
+.button--danger {
+  color: #fff;
+  background-color: #a52b2b; }
+  .button--danger:hover {
+    background-color: #912626; }
 
 .calendar-selector {
   text-align: center;

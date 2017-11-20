@@ -21,7 +21,7 @@ export const fetchWorkouts = () => (dispatch, getState) => {
 }
 
 
-const postWorkout = () => ({
+const postWorkout = (data) => ({
     [CALL_API]: {
         types: [
             types.WORKOUTS_POST_REQUEST,
@@ -29,12 +29,13 @@ const postWorkout = () => ({
             types.WORKOUTS_POST_FAILURE
         ],
         endpoint: 'workouts',
-        method: 'post'
+        method: 'post',
+        data
     }
 })
 
-export const createWorkout = () => (dispatch, getState) => {
-    return dispatch(postWorkout())
+export const createWorkout = (data) => (dispatch, getState) => {
+    return dispatch(postWorkout(data))
 }
 
 const putWorkout = (id, data) => ({

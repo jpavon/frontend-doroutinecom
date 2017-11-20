@@ -36,7 +36,8 @@ class WorkoutsContainer extends Component {
     }
 
     handleCreateWorkout = () => {
-        this.props.createWorkout({blockId: this.props.blockId})
+        const blockId = this.props.blockId
+        this.props.createWorkout({ blockId })
     }
 
     render() {
@@ -66,7 +67,7 @@ class WorkoutsContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    workouts: workoutsSelector(state),
+    workouts: workoutsSelector(props.blockId)(state),
     ui: state.ui
 })
 

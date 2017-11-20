@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
+import { blocksWorkoutsSelector } from 'data/workouts/selectors'
+
 import WorkoutsContainer from 'containers/HomeContainer/WorkoutsContainer'
 
 import Button from 'components/Button'
@@ -9,14 +11,15 @@ import Button from 'components/Button'
 class BlocksContainer extends Component {
 
     static propTypes = {
-        ui: PropTypes.object.isRequired
+        ui: PropTypes.object.isRequired,
+        blocks: PropTypes.array.isRequired
     }
 
     constructor(props) {
         super(props)
 
         this.state = {
-            blocks: [1, 2]
+            blocks: props.blocks
         }
     }
 
@@ -45,7 +48,8 @@ class BlocksContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    ui: state.ui
+    ui: state.ui,
+    blocks: blocksWorkoutsSelector(state)
 })
 
 const mapDispatchToProps = {

@@ -28,11 +28,12 @@ const formatMonthlyWorkouts = (workouts) => {
     return Object.keys(reduced).map((k) => reduced[k])
 }
 
-export const workoutsSelector = createSelector(
+export const workoutsSelector = (blockId) => createSelector(
     [
         state => state.workouts.entities
     ],
     (workouts) => workouts
+        .filter((workout) => (workout.blockId === blockId))
         .sort((a, b) => (new Date(a.day) - new Date(b.day)))
         .map((workout) => formatWorkout(workout))
 )
@@ -49,4 +50,13 @@ export const monthlyWorkoutsSelector = createSelector(
         workoutsSelector
     ],
     (workouts) => formatMonthlyWorkouts(workouts)
+)
+
+export const blocksWorkoutsSelector = createSelector(
+    [
+        (state) => state.workouts.entities
+    ],
+    (workouts) => {
+        return [...new Set(workouts.map((workout) => (workout.blockId)))]
+    }
 )

@@ -24,10 +24,17 @@ a {
     color: $color-font;
 }
 
+h2 {
+    background-color: #222;
+    text-align: center;
+    padding: .4rem 0;
+}
+
 .message {
+    font-size: .8rem;
     margin: 1rem 0;
-    padding: 1rem;
-    background-color: #b8bb3b;
+    padding: .5rem;
+    background-color: #ab2323;
 }
 
 input {
