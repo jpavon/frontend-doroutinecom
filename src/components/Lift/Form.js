@@ -20,6 +20,7 @@ const Form = ({errors}) => (
                     name: 'kg RM',
                     position: 'right'
                 }}
+                alignRight
             />
         </div>
     </form>

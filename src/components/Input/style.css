@@ -2,12 +2,21 @@
   display: flex; }
   .form-input input {
     flex: 1;
-    text-align: right;
     margin-bottom: 0;
     background-color: transparent;
     border: 1px rgba(255, 255, 255, 0.1) dashed;
     width: 100%;
     color: #fff; }
+    .form-input input.input-right {
+      text-align: right; }
+    .form-input input::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.3); }
+    .form-input input:-moz-placeholder {
+      color: rgba(255, 255, 255, 0.3); }
+    .form-input input::-moz-placeholder {
+      color: rgba(255, 255, 255, 0.3); }
+    .form-input input:-ms-input-placeholder {
+      color: rgba(255, 255, 255, 0.3); }
   .form-input .form-input-item {
     padding: .3rem 0 .3rem .3rem;
     font-size: .7rem;

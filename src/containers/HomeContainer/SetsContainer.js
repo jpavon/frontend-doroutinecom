@@ -13,33 +13,33 @@ import Button from 'components/Button'
 import Input from 'components/Input'
 
 const setForm = ({errors, values, lift}) => (
-    <form>
-        <div className="row">
-            <div className="col col--1of2 form-field">
-                <Input
-                    name="rmPercentage"
-                    value={values.rmPercentage}
-                    errors={errors.rmPercentage}
-                    item={{
-                        name: 'RM%',
-                        position: 'right'
-                    }}
-                />
-            </div>
-
-            <div className="col col--1of2 form-field">
-                <Input
-                    name="reps"
-                    value={values.reps}
-                    errors={errors.reps}
-                    item={{
-                        name: values.reps > 1 ? 'Reps' : 'Rep',
-                        position: 'right'
-                    }}
-                />
-            </div>
+    <div className="set-row">
+        <div className="set-col">
+            <Input
+                name="rmPercentage"
+                value={values.rmPercentage}
+                errors={errors.rmPercentage}
+                item={{
+                    name: 'RM%',
+                    position: 'right'
+                }}
+                alignRight
+            />
         </div>
-    </form>
+
+        <div className="set-col">
+            <Input
+                name="reps"
+                value={values.reps}
+                errors={errors.reps}
+                item={{
+                    name: values.reps > 1 ? 'Reps' : 'Rep',
+                    position: 'right'
+                }}
+                alignRight
+            />
+        </div>
+    </div>
 )
 
 const SetForm = withForm(setForm)
@@ -59,7 +59,7 @@ class SetsContainer extends Component {
     }
 
     render() {
-        const round5 = (x) => (Math.ceil(x/5)*5)
+        const round5 = (x) => (Math.ceil(x/2.5)*2.5)
 
         return (
             <div>
@@ -72,7 +72,9 @@ class SetsContainer extends Component {
                             lift={this.props.lift}
                         />
                         <div className="set-weight">
-                            {round5(set.rmPercentage * this.props.lift.rm / 100)}kg
+                            <div className="set-weight-value">
+                                @ {round5(set.rmPercentage * this.props.lift.rm / 100)} <span className="set-mass">KG</span>
+                            </div>
                         </div>
                     </div>
                 ))}
