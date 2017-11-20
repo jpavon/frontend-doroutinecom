@@ -11,11 +11,9 @@ const Lifts = ({children, ui, handleCreate}) => (
             {children}
         </div>
 
-        {ui.isEditing &&
-            <div className="lifts-create-button">
-                <Button onClick={handleCreate}>Create a new lift</Button>
-            </div>
-        }
+        <div className="lifts-create-button">
+            <Button onClick={handleCreate}>Create a new lift</Button>
+        </div>
     </div>
 )
 

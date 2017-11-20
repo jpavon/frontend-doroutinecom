@@ -11,17 +11,23 @@
         flex: 1;
         text-align: right;
         margin-bottom: 0;
+        background-color: transparent;
+        border: 1px rgba(255, 255, 255, .1) dashed;
+        width: 100%;
+        color: #fff;
+    }
+
+    .form-input-item {
+        padding: .3rem 0 .3rem .3rem;
+        font-size: .7rem;
+        text-transform: uppercase;
     }
 }
 
-.form-input-item {
-    padding: .7rem;
-    font-size: .7rem;
-    text-transform: uppercase;
-}
-
 .form-errors {
-
+    font-size: .8rem;
+    padding: .5rem;
+    background-color: #ab2323;
 }
 
 .form-error {

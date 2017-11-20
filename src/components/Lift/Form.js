@@ -1,24 +1,26 @@
 import React from 'react'
-import { Field } from 'formik'
+import Input from 'components/Input'
 import withForm from 'components/Form'
 
 const Form = ({errors}) => (
     <form className="lift-form">
         <div className="lift-name">
-            <Field
-                id="name"
+            <Input
                 name="name"
+                errors={errors.name}
                 placeholder="Lift name"
             />
-            {errors.name && <div>{errors.name}</div>}
         </div>
         <div className="lift-rm">
-            <Field
-                id="rm"
+            <Input
                 name="rm"
+                errors={errors.rm}
                 placeholder="Lift RM"
+                item={{
+                    name: 'kg RM',
+                    position: 'right'
+                }}
             />
-            {errors.rm && <div>{errors.rm}</div>}
         </div>
     </form>
 )

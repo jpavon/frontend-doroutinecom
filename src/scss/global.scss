@@ -25,9 +25,11 @@ a {
 }
 
 h2 {
+    padding: .4rem 0;
+    font-size: 1.2rem;
     background-color: #222;
     text-align: center;
-    padding: .4rem 0;
+    text-transform: uppercase;
 }
 
 .message {
@@ -35,13 +37,6 @@ h2 {
     margin: 1rem 0;
     padding: .5rem;
     background-color: #ab2323;
-}
-
-input {
-    background-color: transparent;
-    border: 0;
-    width: 100%;
-    color: #fff
 }
 
 // temp

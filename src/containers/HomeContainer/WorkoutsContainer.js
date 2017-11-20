@@ -1,24 +1,23 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Field } from 'formik'
-import withForm from 'components/Form'
 
 import { createWorkout, updateWorkout, removeWorkout } from 'data/workouts/actions'
 import { workoutsSelector } from 'data/workouts/selectors'
 
 import  ExercisesContainer from 'containers/HomeContainer/ExercisesContainer'
 
+import withForm from 'components/Form'
+import Input from 'components/Input'
 import Button from 'components/Button'
 
 const workoutForm = ({errors}) => (
     <form>
-        <Field
-            id="name"
+        <Input
             name="name"
             placeholder="Name..."
+            error={errors.name}
         />
-        {errors.name && <div>{errors.name}</div>}
     </form>
 )
 const WorkoutForm = withForm(workoutForm)

@@ -9,14 +9,11 @@ class Input extends Component {
     static propTypes = {
         type: PropTypes.string,
         name: PropTypes.string.isRequired,
-        value: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number
-        ]).isRequired,
         errors: PropTypes.array,
+        right: PropTypes.bool,
         item: PropTypes.shape({
-            name: PropTypes.string,
-            position: PropTypes.oneOf(['left', 'right'])
+            name: PropTypes.string.isRequired,
+            position: PropTypes.oneOf(['left', 'right']).isRequired
         })
     }
 
@@ -24,7 +21,6 @@ class Input extends Component {
         const {
             type,
             name,
-            value,
             item,
             errors,
             ...rest

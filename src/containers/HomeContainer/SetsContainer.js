@@ -20,6 +20,10 @@ const setForm = ({errors, values, lift}) => (
                     name="rmPercentage"
                     value={values.rmPercentage}
                     errors={errors.rmPercentage}
+                    item={{
+                        name: 'RM%',
+                        position: 'right'
+                    }}
                 />
             </div>
 
@@ -28,6 +32,10 @@ const setForm = ({errors, values, lift}) => (
                     name="reps"
                     value={values.reps}
                     errors={errors.reps}
+                    item={{
+                        name: values.reps > 1 ? 'Reps' : 'Rep',
+                        position: 'right'
+                    }}
                 />
             </div>
         </div>
@@ -57,18 +65,15 @@ class SetsContainer extends Component {
             <div>
                 {this.props.sets.map((set, i) => (
                     <div key={i} className="block-workout-lift-set">
-                        {this.props.ui.isEditing ?
-                            <SetForm
-                                i={i}
-                                entity={set}
-                                update={this.props.updateSet}
-                                lift={this.props.lift}
-                            />
-                        :
-                            <div>
-                                {round5(set.rmPercentage * this.props.lift.rm / 100)}kg x{set.reps}
-                            </div>
-                        }
+                        <SetForm
+                            i={i}
+                            entity={set}
+                            update={this.props.updateSet}
+                            lift={this.props.lift}
+                        />
+                        <div className="set-weight">
+                            {round5(set.rmPercentage * this.props.lift.rm / 100)}kg
+                        </div>
                     </div>
                 ))}
             </div>
