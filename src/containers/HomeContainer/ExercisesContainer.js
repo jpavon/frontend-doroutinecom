@@ -4,33 +4,25 @@ import { connect } from 'react-redux'
 
 import { createExercise, updateExercise } from 'data/exercises/actions'
 import { exercisesSelector } from 'data/exercises/selectors'
-import { createSet } from 'data/sets/actions'
 import { liftsSelector } from 'data/lifts/selectors'
 
 import SetsContainer from 'containers/HomeContainer/SetsContainer'
 import Button from 'components/Button'
-import Panel from 'components/Panel'
+import Select from 'components/Select'
 
 import './style.css'
 
-import { Field } from 'formik'
 import withForm from 'components/Form'
 
 const exerciseForm = ({errors, values, lifts}) => (
-    <form>
-        <div className="form-field">
-            {lifts &&
-                <Field component="select" name="liftId">
-                    {!values.liftId && <option>Select a lift...</option>}
-                    {lifts.map((lift, i) => (
-                        <option key={i} value={lift.id}>{lift.name}</option>
-                    ))}
-                </Field>
-            }
-            {lifts < 1 && <div className="message">No lift created, create one on the top of this page.</div>}
-            {errors.liftId && <div>{errors.liftId}</div>}
-        </div>
-    </form>
+    <Select
+        name="liftId"
+        options={lifts}
+        value={values.liftId}
+        errors={errors.liftId}
+        defaultOptionMessage="Select a lift..."
+        noOptionsMessage="No lift created, create one on the top of this page."
+    />
 )
 
 const ExerciseForm = withForm(exerciseForm)
@@ -45,7 +37,6 @@ class ExercisesContainer extends Component {
 
         createExercise: PropTypes.func.isRequired,
         updateExercise: PropTypes.func.isRequired,
-        createSet: PropTypes.func.isRequired
     }
 
     componentDidMount() {
@@ -64,10 +55,11 @@ class ExercisesContainer extends Component {
                             />
                         </div>
                         <SetsContainer exerciseId={exercise.id} />
-                        <Button onClick={() => this.props.createSet(exercise.id)}>New set</Button>
                     </div>
                 ))}
-                <Button onClick={() => this.props.createExercise(this.props.workoutId)}>New exercise</Button>
+                <div className="exercise-button">
+                    <Button onClick={() => this.props.createExercise(this.props.workoutId)}>New exercise</Button>
+                </div>
             </div>
         )
     }
@@ -80,8 +72,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = {
     createExercise,
-    updateExercise,
-    createSet
+    updateExercise
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExercisesContainer)

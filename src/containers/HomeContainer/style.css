@@ -73,3 +73,9 @@
   display: inline-block;
   background-color: rgba(0, 0, 0, 0.2);
   font-size: .7rem; }
+
+.set-button {
+  text-align: right; }
+  .set-button button {
+    position: relative;
+    top: -4px; }

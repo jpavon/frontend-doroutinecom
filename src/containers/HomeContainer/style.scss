@@ -102,3 +102,12 @@
 
 .set-mass {
 }
+
+.set-button {
+    text-align: right;
+
+    button {
+        position: relative;
+        top: -4px;
+    }
+}

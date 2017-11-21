@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Field } from 'formik'
 import withForm from 'components/Form'
 
 import { createSet, updateSet, removeSet } from 'data/sets/actions'
@@ -78,6 +77,9 @@ class SetsContainer extends Component {
                         </div>
                     </div>
                 ))}
+                <div className="set-button">
+                    <Button onClick={() => this.props.createSet(this.props.exerciseId)}>New set</Button>
+                </div>
             </div>
         )
     }

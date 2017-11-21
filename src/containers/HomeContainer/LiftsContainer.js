@@ -7,7 +7,6 @@ import { createLift, updateLift, removeLift } from 'data/lifts/actions'
 
 import Lifts from 'components/Lift/Lifts'
 import Lift from 'components/Lift/Lift'
-import Button from 'components/Button'
 
 class LiftsContainer extends Component {
 

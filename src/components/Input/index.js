@@ -24,6 +24,7 @@ class Input extends Component {
             name,
             item,
             errors,
+            alignRight,
             ...rest
         } = this.props;
 
@@ -37,7 +38,7 @@ class Input extends Component {
                         type={type || 'text'}
                         name={name}
                         className={classNames(
-                            this.props.alignRight && 'input-right'
+                            alignRight && 'input-right'
                         )}
                         {...rest}
                     />
