@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { blocksWorkoutsSelector } from 'data/workouts/selectors'
 
-import WorkoutsContainer from 'containers/HomeContainer/WorkoutsContainer'
+import WorkoutsContainer from 'containers/WorkoutsContainer'
 
 import Button from 'components/Button'
 

@@ -15,10 +15,3 @@
     color: rgba(255, 255, 255, 0.3); }
   .input:-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.3); }
-
-.form-input {
-  display: flex; }
-  .form-input .form-input-item {
-    padding: .3rem 0 .3rem .3rem;
-    font-size: .7rem;
-    text-transform: uppercase; }

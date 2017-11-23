@@ -1,12 +1,12 @@
 import React from 'react'
 import Button from 'components/Button'
-import Form from 'components/Lift/Form'
+import Form from 'components/Lifts/Form'
 
 const Lift = ({lift, ui, handleRemove, updateLift}) => (
     <div className="lift">
         <div>
             <Form
-                entity={lift}
+                data={lift}
                 update={updateLift}
             />
             <Button danger onClick={() => handleRemove(lift.id)}>Remove</Button>

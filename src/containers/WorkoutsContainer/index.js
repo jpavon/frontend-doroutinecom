@@ -1,92 +1,77 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
 
-import { createWorkout } from 'data/workouts/actions'
-import { monthlyWorkoutsSelector } from 'data/workouts/selectors'
+import { createWorkout, updateWorkout, removeWorkout } from 'data/workouts/actions'
+import { workoutsSelector } from 'data/workouts/selectors'
 
-import Calendar from 'components/Calendar'
+import ExercisesContainer from 'containers/ExercisesContainer'
+
+import withForm from 'components/Form/withForm'
+import Input from 'components/Form/Input'
 import Button from 'components/Button'
-import Panel from 'components/Panel'
 
-import './style.css'
+const workoutForm = () => (
+    <Input
+        name="name"
+        placeholder="Name..."
+    />
+)
+const WorkoutForm = withForm(workoutForm)
 
 class WorkoutsContainer extends Component {
 
     static propTypes = {
+        ui: PropTypes.object.isRequired,
+        blockId: PropTypes.number.isRequired,
+
+        workouts: PropTypes.array.isRequired,
         createWorkout: PropTypes.func.isRequired,
-        monthlyWorkouts: PropTypes.array.isRequired,
+        updateWorkout: PropTypes.func.isRequired,
+        removeWorkout: PropTypes.func.isRequired,
     }
 
-    // constructor(props) {
-    //     super(props);
-    // }
-
-    componentDidMount() {
-    }
-
-    handleCreateWorkout = (e) => {
-        this.props.createWorkout()
-            .then((data) => {
-                this.props.history.push(`/workouts/${data.payload.id}`)
-            })
+    handleCreateWorkout = () => {
+        const blockId = this.props.blockId
+        this.props.createWorkout({ blockId })
     }
 
     render() {
         return (
-            <Panel>
-                <Calendar key={4} monthlyWorkouts={this.props.monthlyWorkouts} />
+            <div>
+                <div className="block-row">
+                    {this.props.workouts.map((workout, i) => (
+                        <div key={i} className="block-column">
+                            <div className="block-workout">
+                                <div className="block-workout-name">
+                                    <WorkoutForm
+                                        data={workout}
+                                        update={this.props.updateWorkout}
+                                    />
+                                </div>
 
+                                <ExercisesContainer workoutId={workout.id} />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <br />
                 <Button onClick={this.handleCreateWorkout}>Create a new workout</Button>
-
-                {/*<div className="row">
-                    <div key={1} className="col col--6">
-                        <h2>Finished Workouts</h2>
-                        {this.props.monthlyWorkouts.length > 0 && this.props.monthlyWorkouts.map((monthlyWorkout, i) => (
-                            <div key={i}>
-                                <h3>{monthlyWorkout.month}</h3>
-                                {monthlyWorkout.data.map((workout, i) => (
-                                    <div key={i} className="workout">
-                                        <div className="workout-day">{workout.dayFormatted}</div>
-                                        <div className="workout-name">{workout.name}</div>
-                                        <div className="workout-button">
-                                            <Button to={`/workouts/${workout.id}`}>See workout</Button>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        ))}
-                    </div>
-                    <div key={2} className="col col--6">
-                        <h2>Upcoming Workouts</h2>
-                        {this.props.monthlyWorkouts.length > 0 && this.props.monthlyWorkouts.map((monthlyWorkout, i) => (
-                            <div key={i}>
-                                <h3>{monthlyWorkout.month}</h3>
-                                {monthlyWorkout.data.map((workout, i) => (
-                                    <div key={i} className="workout">
-                                        <div className="workout-day">{workout.dayFormatted}</div>
-                                        <div className="workout-name">{workout.name}</div>
-                                        <div className="workout-button">
-                                            <Button to={`/workouts/${workout.id}`}>See workout</Button>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        ))}
-                    </div>
-                </div>*/}
-            </Panel>
+            </div>
         )
     }
 }
 
 const mapStateToProps = (state, props) => ({
-    monthlyWorkouts: monthlyWorkoutsSelector(state)
+    workouts: workoutsSelector(props.blockId)(state),
+    ui: state.ui
 })
 
 const mapDispatchToProps = {
-    createWorkout
+    createWorkout,
+    updateWorkout,
+    removeWorkout
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(WorkoutsContainer))
+
+export default connect(mapStateToProps, mapDispatchToProps)(WorkoutsContainer)

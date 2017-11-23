@@ -1,66 +1,57 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
 
 import { liftsSelector } from 'data/lifts/selectors'
-import { createLift, updateLift } from 'data/lifts/actions'
+import { createLift, updateLift, removeLift } from 'data/lifts/actions'
 
-import Button from 'components/Button'
-
-import './style.css'
+import Lifts from 'components/Lifts/Lifts'
+import Lift from 'components/Lifts/Lift'
 
 class LiftsContainer extends Component {
 
     static propTypes = {
+        ui: PropTypes.object.isRequired,
         lifts: PropTypes.array.isRequired,
         createLift: PropTypes.func.isRequired,
         updateLift: PropTypes.func.isRequired,
+        removeLift: PropTypes.func.isRequired,
     }
 
-    componentDidMount() {
-    }
-
-    handleCreate = (e) => {
+    handleCreate = () => {
         this.props.createLift()
-            .then((data) => {
-                this.props.history.push(`/lifts/${data.payload.id}`)
-            })
+    }
+
+    handleRemove = (id) => {
+        this.props.removeLift(id)
     }
 
     render() {
         return (
-            <div className="col">
-                <div className="lift-create-button">
-                    <Button onClick={this.handleCreate}>Create a new lift</Button>
-                </div>
+            <Lifts ui={this.props.ui} handleCreate={this.handleCreate}>
                 {this.props.lifts.length > 0 && this.props.lifts.map((lift, i) => (
-                    <div key={i} className="lift">
-                        <div className="lift-info">
-                            <div className="lift-name">
-                                {lift.name}
-                            </div>
-                            <div className="lift-rm">
-                                RM: {lift.rm}
-                            </div>
-                        </div>
-                        <div className="lift-button">
-                            <Button to={`lifts/${lift.id}`}>Edit</Button>
-                        </div>
-                    </div>
+                    <Lift
+                        key={i}
+                        lift={lift}
+                        ui={this.props.ui}
+                        handleRemove={this.handleRemove}
+                        updateLift={this.props.updateLift}
+                    />
                 ))}
-            </div>
+            </Lifts>
         )
     }
 }
 
 const mapStateToProps = (state, props) => ({
-    lifts: liftsSelector(state)
+    lifts: liftsSelector(state),
+    ui: state.ui
 })
 
 const mapDispatchToProps = {
     updateLift,
-    createLift
+    createLift,
+    removeLift
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LiftsContainer))
+export default connect(mapStateToProps, mapDispatchToProps)(LiftsContainer)

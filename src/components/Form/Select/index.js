@@ -41,6 +41,7 @@ class Select extends Component {
                 key={1}
                 value={value || ''}
                 onChange={(event) => this.context.onChange(event, this.props.name)}
+                className="select"
                 {...rest}
             >
                 {!value && <option>{defaultOptionMessage}</option>}
@@ -52,11 +53,11 @@ class Select extends Component {
             </select>,
             <ErrorMessage
                 key={2}
-                errors={options < 1 && noOptionsMessage}
+                error={options < 1 ? noOptionsMessage : ''}
             />,
             <ErrorMessage
                 key={3}
-                errors={this.context.errors[this.props.name][0]}
+                error={Object.keys(this.context.errors).length !== 0 ? this.context.errors[this.props.name][0] : ''}
             />
         ]
     }

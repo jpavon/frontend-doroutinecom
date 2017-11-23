@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import LiftsContainer from 'containers/HomeContainer/LiftsContainer'
-import BlocksContainer from 'containers/HomeContainer/BlocksContainer'
+import LiftsContainer from 'containers/LiftsContainer'
+import BlocksContainer from 'containers/BlocksContainer'
 
 import './style.css'
 

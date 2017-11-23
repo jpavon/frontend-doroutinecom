@@ -4,6 +4,8 @@ import classNames from 'classnames'
 
 import ErrorMessage from 'components/Form/ErrorMessage'
 
+import './style.css'
+
 class Input extends Component {
 
     static propTypes = {
@@ -38,7 +40,7 @@ class Input extends Component {
             />,
             <ErrorMessage
                 key={2}
-                errors={this.context.errors[this.props.name][0]}
+                error={Object.keys(this.context.errors).length !== 0 ? this.context.errors[this.props.name][0] : ''}
             />
         ]
     }

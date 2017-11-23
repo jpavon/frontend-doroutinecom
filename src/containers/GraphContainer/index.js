@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import Chart from 'chart.js'
 import moment from 'moment'
 
-import './style.css'
-
 class GraphContainer extends Component {
 
     // static propTypes = {

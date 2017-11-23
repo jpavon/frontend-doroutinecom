@@ -10,9 +10,9 @@ class ErrorMessage extends Component {
     }
 
     render() {
-        return this.props.error && (
+        return this.props.error ? (
             <div className="error-message">{this.props.error}</div>
-        )
+        ) : null
     }
 }
 
