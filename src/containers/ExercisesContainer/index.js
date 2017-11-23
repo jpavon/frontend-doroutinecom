@@ -15,7 +15,7 @@ import Button from 'components/Button'
 const exerciseForm = ({lifts}) => (
     <Select
         name="liftId"
-        options={lifts}
+        options={lifts || []}
         defaultOptionMessage="Select a lift..."
         noOptionsMessage="No lift created, create one on the top of this page."
     />

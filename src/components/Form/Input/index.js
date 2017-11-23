@@ -27,6 +27,7 @@ class Input extends Component {
 
     render() {
         const { name, alignRight, ...rest } = this.props
+
         return [
             <input
                 key={1}

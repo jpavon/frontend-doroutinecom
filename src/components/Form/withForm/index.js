@@ -29,11 +29,12 @@ export default function withForm(WrappedComponent) {
         handleChange = (event, name) => {
             const value = event.target.value
 
-            this.setState({
+            this.setState((prevState) => ({
                 data: {
+                    ...prevState.data,
                     [name]: value
                 }
-            }, () => {
+            }), () => {
                 this.props.update(this.props.data.id, { [name]: value })
                     .then((payload) => {
                         if (payload.error) {
@@ -51,7 +52,10 @@ export default function withForm(WrappedComponent) {
 
         render() {
             return (
-                <WrappedComponent {...this.props} />
+                <WrappedComponent
+                    {...this.props}
+                    data={this.state.data}
+                />
             )
         }
     }

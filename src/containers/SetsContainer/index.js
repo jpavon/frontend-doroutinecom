@@ -12,7 +12,7 @@ import Input from 'components/Form/Input'
 import InputWrapper from 'components/Form/InputWrapper'
 import InputItem from 'components/Form/InputItem'
 
-const setForm = () => (
+const setForm = ({data}) => (
     <div className="set-row">
         <div className="set-col">
             <InputWrapper>
@@ -33,7 +33,7 @@ const setForm = () => (
                     alignRight
                 />
                 <InputItem
-                    item="Reps"
+                    item={data.reps > 1 ? 'Reps' : 'Rep'}
                 />
             </InputWrapper>
         </div>
