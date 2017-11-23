@@ -25,13 +25,10 @@ class Layout extends Component {
         fetchSets: PropTypes.func.isRequired,
     }
 
-    constructor(props) {
-        super(props);
-        this.state = { hasError: false };
-    }
+    state = { hasError: false }
 
     componentDidCatch(error, info) {
-        this.setState({ hasError: true });
+        this.setState({ hasError: true })
     }
 
     componentWillMount() {

@@ -21,3 +21,10 @@
 .lift-rm {
   background-color: #333;
   padding: .4rem; }
+
+.lifts-button-create {
+  margin-left: 1rem; }
+
+.lift-button-delete {
+  position: relative;
+  text-align: right; }

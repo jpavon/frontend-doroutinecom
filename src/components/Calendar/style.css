@@ -18,20 +18,21 @@
   font-weight: 700;
   background-color: #2b82a5;
   transition: background-color .2s;
-  cursor: pointer; }
-  .button:hover, .calendar-workout:hover {
-    background-color: #267291; }
-  .button:not([disabled]):not(.disabled).active, .calendar-workout:not([disabled]):not(.disabled).active, .button:not([disabled]):not(.disabled):active, .calendar-workout:not([disabled]):not(.disabled):active {
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem #2b82a5; }
-
-.button, .calendar-workout {
+  cursor: pointer;
   text-overflow: ellipsis;
   font-size: .7rem;
   line-height: 1;
   white-space: nowrap;
   overflow: hidden;
   letter-spacing: 0; }
+  .button:hover, .calendar-workout:hover {
+    background-color: #267291; }
+  .button:not([disabled]):not(.disabled).active, .calendar-workout:not([disabled]):not(.disabled).active, .button:not([disabled]):not(.disabled):active, .calendar-workout:not([disabled]):not(.disabled):active {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #2b82a5; }
+
+.button--small {
+  padding: .2rem .4rem; }
 
 .button--danger {
   color: #fff;

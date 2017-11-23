@@ -31,21 +31,21 @@
     transition: background-color .2s;
     cursor: pointer;
 
-    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active {
-        outline: 0;
-        box-shadow: 0 0 0 0.2rem $color-button;
-    }
-}
-
-.button {
-    @extend .button;
-
     text-overflow: ellipsis;
     font-size: .7rem;
     line-height: 1;
     white-space: nowrap;
     overflow: hidden;
     letter-spacing: 0;
+
+    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active {
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem $color-button;
+    }
+}
+
+.button--small {
+    padding: .2rem .4rem;
 }
 
 .button--danger {

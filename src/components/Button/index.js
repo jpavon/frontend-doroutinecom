@@ -13,6 +13,7 @@ class Button extends Component {
         className: PropTypes.string,
         children: PropTypes.node,
 
+        small: PropTypes.bool,
         danger: PropTypes.bool,
     }
 
@@ -23,6 +24,7 @@ class Button extends Component {
             className,
             children,
             danger,
+            small,
             ...rest
         } = this.props;
 
@@ -33,6 +35,7 @@ class Button extends Component {
                 className={classNames(
                     'button',
                     danger && 'button--danger',
+                    small && 'button--small',
                     className
                 )}
                 href={href}

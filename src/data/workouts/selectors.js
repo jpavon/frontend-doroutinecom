@@ -57,6 +57,6 @@ export const blocksWorkoutsSelector = createSelector(
         (state) => state.workouts.entities
     ],
     (workouts) => {
-        return [...new Set(workouts.map((workout) => (workout.blockId)))]
+        return [...new Set(workouts.map((workout) => (workout.blockId)))].filter(Number)
     }
 )

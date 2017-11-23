@@ -76,7 +76,7 @@ class SetsContainer extends Component {
                     </div>
                 ))}
                 <div className="set-button">
-                    <Button onClick={() => this.props.createSet(this.props.exerciseId)}>New set</Button>
+                    <Button small onClick={() => this.props.createSet(this.props.exerciseId)}>New set</Button>
                 </div>
             </div>
         )

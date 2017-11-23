@@ -53,7 +53,7 @@ class ExercisesContainer extends Component {
                         <SetsContainer exerciseId={exercise.id} />
                     </div>
                 ))}
-                <div className="exercise-button">
+                <div className="exercise-button-create">
                     <Button onClick={() => this.props.createExercise(this.props.workoutId)}>New exercise</Button>
                 </div>
             </div>

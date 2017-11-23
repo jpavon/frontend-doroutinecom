@@ -46,6 +46,7 @@
 
 .block-workout {
     background-color: $color-background-light;
+    margin-bottom: 1rem;
 }
 
 .block-workout-name {
@@ -110,4 +111,11 @@
         position: relative;
         top: -4px;
     }
+}
+
+
+.exercise-button-create {
+    position: relative;
+    text-align: center;
+    bottom: -10px;
 }

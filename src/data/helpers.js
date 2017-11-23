@@ -12,19 +12,19 @@ export const defaultFailure = (state, error) => ({
 })
 
 export const defaultMounted = (state) => {
-    if (state.entities instanceof Array) {
-        return {
-            ...state,
-            fetchStatus: helperTypes.STATUS_LOADED,
-        }
-    }
+    // if (state.entities instanceof Array) {
+    //     return {
+    //         ...state,
+    //         fetchStatus: helperTypes.STATUS_LOADED,
+    //     }
+    // }
 
     return state
 }
 
 export const shouldFetch = (name, state) => (
     state[name].fetchStatus !== helperTypes.STATUS_LOADED &&
-    state.fetchStatus === helperTypes.STATUS_NONE
+    state[name].fetchStatus === helperTypes.STATUS_NONE
 )
 
 export const insertItem = (array, item) => (

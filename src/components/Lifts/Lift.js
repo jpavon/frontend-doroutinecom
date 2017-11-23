@@ -9,7 +9,9 @@ const Lift = ({lift, ui, handleRemove, updateLift}) => (
                 data={lift}
                 update={updateLift}
             />
-            <Button danger onClick={() => handleRemove(lift.id)}>Remove</Button>
+            <div className="lift-button-delete">
+                <Button small danger onClick={() => handleRemove(lift.id)}>Remove lift</Button>
+            </div>
             <br />
         </div>
     </div>

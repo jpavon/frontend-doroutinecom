@@ -15,11 +15,13 @@ class BlocksContainer extends Component {
         blocks: PropTypes.array.isRequired
     }
 
-    constructor(props) {
-        super(props)
+    state = {
+        blocks: this.props.blocks
+    }
 
-        this.state = {
-            blocks: props.blocks
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.blocks !== this.state.blocks) {
+            this.setState({ blocks: nextProps.blocks })
         }
     }
 
