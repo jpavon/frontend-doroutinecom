@@ -8,6 +8,9 @@ import { createLift, updateLift, removeLift } from 'data/lifts/actions'
 import Lifts from 'components/Lifts/Lifts'
 import Lift from 'components/Lifts/Lift'
 
+// temp put style in components
+import '../HomeContainer/style.css'
+
 class LiftsContainer extends Component {
 
     static propTypes = {
