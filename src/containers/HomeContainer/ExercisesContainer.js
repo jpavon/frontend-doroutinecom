@@ -7,19 +7,17 @@ import { exercisesSelector } from 'data/exercises/selectors'
 import { liftsSelector } from 'data/lifts/selectors'
 
 import SetsContainer from 'containers/HomeContainer/SetsContainer'
+
+import withForm from 'components/Form/withForm'
+import Select from 'components/Form/Select'
 import Button from 'components/Button'
-import Select from 'components/Select'
 
 import './style.css'
 
-import withForm from 'components/Form'
-
-const exerciseForm = ({errors, values, lifts}) => (
+const exerciseForm = ({lifts}) => (
     <Select
         name="liftId"
         options={lifts}
-        value={values.liftId}
-        errors={errors.liftId}
         defaultOptionMessage="Select a lift..."
         noOptionsMessage="No lift created, create one on the top of this page."
     />
@@ -50,7 +48,7 @@ class ExercisesContainer extends Component {
                         <div className="block-workout-lift-name">
                             <ExerciseForm
                                 update={this.props.updateExercise}
-                                entity={exercise}
+                                data={exercise}
                                 lifts={this.props.lifts}
                             />
                         </div>

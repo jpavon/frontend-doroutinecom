@@ -9,19 +9,17 @@ import { exerciseLiftSelector } from 'data/lifts/selectors'
 
 import Button from 'components/Button'
 
-import Input from 'components/Input'
+import Input from 'components/Form/Input'
 
 const setForm = ({errors, values, lift}) => (
     <div className="set-row">
         <div className="set-col">
             <Input
                 name="rmPercentage"
-                value={values.rmPercentage}
-                errors={errors.rmPercentage}
-                item={{
-                    name: 'RM%',
-                    position: 'right'
-                }}
+                // item={{
+                //     name: 'RM%',
+                //     position: 'right'
+                // }}
                 alignRight
             />
         </div>
@@ -29,12 +27,10 @@ const setForm = ({errors, values, lift}) => (
         <div className="set-col">
             <Input
                 name="reps"
-                value={values.reps}
-                errors={errors.reps}
-                item={{
-                    name: values.reps > 1 ? 'Reps' : 'Rep',
-                    position: 'right'
-                }}
+                // item={{
+                //     name: values.reps > 1 ? 'Reps' : 'Rep',
+                //     position: 'right'
+                // }}
                 alignRight
             />
         </div>

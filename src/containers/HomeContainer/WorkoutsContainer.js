@@ -5,20 +5,17 @@ import { connect } from 'react-redux'
 import { createWorkout, updateWorkout, removeWorkout } from 'data/workouts/actions'
 import { workoutsSelector } from 'data/workouts/selectors'
 
-import  ExercisesContainer from 'containers/HomeContainer/ExercisesContainer'
+import ExercisesContainer from 'containers/HomeContainer/ExercisesContainer'
 
-import withForm from 'components/Form'
-import Input from 'components/Input'
+import withForm from 'components/Form/withForm'
+import Input from 'components/Form/Input'
 import Button from 'components/Button'
 
-const workoutForm = ({errors}) => (
-    <form>
-        <Input
-            name="name"
-            placeholder="Name..."
-            error={errors.name}
-        />
-    </form>
+const workoutForm = () => (
+    <Input
+        name="name"
+        placeholder="Name..."
+    />
 )
 const WorkoutForm = withForm(workoutForm)
 
@@ -48,7 +45,7 @@ class WorkoutsContainer extends Component {
                             <div className="block-workout">
                                 <div className="block-workout-name">
                                     <WorkoutForm
-                                        entity={workout}
+                                        data={workout}
                                         update={this.props.updateWorkout}
                                     />
                                 </div>
