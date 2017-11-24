@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 import './style.css'
 
@@ -10,9 +11,16 @@ class InputWrapper extends Component {
     }
 
     render() {
+        const { children, ...rest } = this.props
         return (
-            <div className="input-wrapper">
-                {this.props.children}
+            <div
+                className={classNames(
+                    'input-wrapper',
+                    this.props.className
+                )}
+                {...rest}
+            >
+                {children}
             </div>
         )
     }

@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Chart from 'chart.js'
 import moment from 'moment'
 
+import { graphDataSelector } from 'data/selectors'
+
 class GraphContainer extends Component {
 
-    // static propTypes = {
-    // }
+    static propTypes = {
+        graphData: PropTypes.object.isRequired
+    }
 
     componentDidMount() {
-        new Chart(this.graph, {
+        this.graph = new Chart(this.graph, {
             type: 'line',
             data: {
                 labels: [
@@ -61,21 +64,21 @@ class GraphContainer extends Component {
                     }]
                 }
             }
-        });
+        })
     }
 
     render() {
+        console.log('graphData', this.props.graphData)
         return (
             <div>
-                <canvas ref={(ref) => this.graph = ref}>
-                    Graph here.
-                </canvas>
+                <canvas ref={(ref) => this.graph = ref} />
             </div>
         )
     }
 }
 
 const mapStateToProps = (state, props) => ({
+    graphData: graphDataSelector(state),
 })
 
 const mapDispatchToProps = {

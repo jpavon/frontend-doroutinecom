@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 import './style.css'
 
@@ -10,9 +11,16 @@ class InputItem extends Component {
     }
 
     render() {
+        const { item, ...rest } = this.props
         return (
-            <div className="input-item">
-                {this.props.item}
+            <div
+                className={classNames(
+                    'input-item',
+                    this.props.className
+                )}
+                {...rest}
+            >
+                {item}
             </div>
         )
     }
