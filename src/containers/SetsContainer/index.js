@@ -6,36 +6,43 @@ import { createSet, updateSet, removeSet } from 'data/sets/actions'
 import { setsSelector } from 'data/sets/selectors'
 import { exerciseLiftSelector } from 'data/lifts/selectors'
 
-import Button from 'components/Button'
+import ButtonIcon from 'components/ButtonIcon'
 import withForm from 'components/Form/withForm'
 import Input from 'components/Form/Input'
 import InputWrapper from 'components/Form/InputWrapper'
 import InputItem from 'components/Form/InputItem'
 
-const setForm = ({data}) => (
-    <div className="set-row">
-        <div className="set-col">
-            <InputWrapper>
-                <Input
-                    name="rmPercentage"
-                    alignRight
-                />
-                <InputItem
-                    item="RM%"
-                />
-            </InputWrapper>
+const round5 = (x) => (Math.ceil(x/2.5)*2.5)
+
+const setForm = ({data, lift, i}) => (
+    <div>
+        <div className="set-row">
+            <div className="set-col">
+                Set {i + 1}
+            </div>
+            <div className="set-col">
+                <InputWrapper>
+                    <Input
+                        name="rmPercentage"
+                        alignRight
+                    />
+                    <InputItem
+                        item="RM%"
+                    />
+                </InputWrapper>
+            </div>
+
+
         </div>
 
-        <div className="set-col">
-            <InputWrapper>
+        <div className="set-weight">
+            <div className="set-weight-value">
                 <Input
                     name="reps"
                     alignRight
                 />
-                <InputItem
-                    item={data.reps > 1 ? 'Reps' : 'Rep'}
-                />
-            </InputWrapper>
+                REPS @ {round5(data.rmPercentage * lift.rm / 100)} <span className="set-mass">KG</span>
+            </div>
         </div>
     </div>
 )
@@ -57,8 +64,6 @@ class SetsContainer extends Component {
     }
 
     render() {
-        const round5 = (x) => (Math.ceil(x/2.5)*2.5)
-
         return (
             <div>
                 {this.props.sets.map((set, i) => (
@@ -67,16 +72,13 @@ class SetsContainer extends Component {
                             i={i}
                             data={set}
                             update={this.props.updateSet}
+                            lift={this.props.lift}
                         />
-                        <div className="set-weight">
-                            <div className="set-weight-value">
-                                @ {round5(set.rmPercentage * this.props.lift.rm / 100)} <span className="set-mass">KG</span>
-                            </div>
-                        </div>
+                        <ButtonIcon remove danger onClick={() => this.props.removeSet(set.id)} />
                     </div>
                 ))}
                 <div className="set-button">
-                    <Button small onClick={() => this.props.createSet(this.props.exerciseId)}>New set</Button>
+                    <ButtonIcon plus onClick={() => this.props.createSet(this.props.exerciseId)} />
                 </div>
             </div>
         )

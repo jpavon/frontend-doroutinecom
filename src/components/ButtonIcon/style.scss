@@ -1,0 +1,7 @@
+@import "components/Button/style.scss";
+
+.button-icon {
+    @extend .button;
+
+    padding: .2rem .4rem;
+}

@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from 'components/Button'
+import ButtonIcon from 'components/ButtonIcon'
 import Form from 'components/Lifts/Form'
 
 const Lift = ({lift, ui, handleRemove, updateLift}) => (
@@ -10,7 +10,7 @@ const Lift = ({lift, ui, handleRemove, updateLift}) => (
                 update={updateLift}
             />
             <div className="lift-button-delete">
-                <Button small danger onClick={() => handleRemove(lift.id)}>Remove lift</Button>
+                <ButtonIcon remove danger onClick={() => handleRemove(lift.id)}></ButtonIcon>
             </div>
             <br />
         </div>

@@ -7,6 +7,8 @@
   color: #fff; }
   .input.input-right {
     text-align: right; }
+  .input.input-center {
+    text-align: center; }
   .input::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.3); }
   .input:-moz-placeholder {

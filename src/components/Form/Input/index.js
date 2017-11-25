@@ -10,7 +10,8 @@ class Input extends Component {
 
     static propTypes = {
         name: PropTypes.string.isRequired,
-        alignRight: PropTypes.bool
+        alignRight: PropTypes.bool,
+        alignCenter: PropTypes.bool
     }
 
     static contextTypes = {
@@ -26,7 +27,12 @@ class Input extends Component {
     }
 
     render() {
-        const { name, alignRight, ...rest } = this.props
+        const {
+            name,
+            alignRight,
+            alignCenter,
+            ...rest
+        } = this.props
 
         return [
             <input
@@ -35,7 +41,8 @@ class Input extends Component {
                 onChange={(event) => this.context.onChange(event, this.props.name)}
                 className={classNames(
                     'input',
-                    alignRight && 'input-right'
+                    alignRight && 'input-right',
+                    alignCenter && 'input-center'
                 )}
                 {...rest}
             />,

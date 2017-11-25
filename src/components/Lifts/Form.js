@@ -10,6 +10,7 @@ const Form = () => (
             <Input
                 name="name"
                 placeholder="Lift name"
+                alignCenter
             />
         </div>
         <div className="lift-rm">

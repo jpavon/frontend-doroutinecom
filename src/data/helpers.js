@@ -31,8 +31,8 @@ export const insertItem = (array, item) => (
     [...array, item]
 )
 
-export const updateItem = (array, item) => {
-    return array.map((i) => {
+export const updateItem = (array, item) => (
+    array.map((i) => {
         if (i.id !== item.id) {
             return i;
         }
@@ -42,8 +42,9 @@ export const updateItem = (array, item) => {
             ...item
         }
     })
-}
-
-export const deleteItem = (array, id) => (
-    array.filter((i) => i.id !== id)
 )
+
+export const deleteItem = (array, id) => {
+    console.log(array, id, array.filter((i) => (i.id !== id)))
+    return array.filter((i) => (i.id !== id))
+}

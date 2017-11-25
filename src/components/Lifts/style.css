@@ -12,6 +12,10 @@
   padding-left: 3px;
   flex: 0 0 20%;
   max-width: 20%; }
+  @media (max-width: 876px) {
+    .lift {
+      flex: 0 0 33.33333%;
+      max-width: 33.33333%; } }
 
 .lift-name {
   position: relative;

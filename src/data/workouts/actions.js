@@ -16,8 +16,8 @@ const getWorkouts = () => ({
     }
 })
 
-export const fetchWorkouts = () => (dispatch, getState) => {
-    return shouldFetch(types.NAME, getState()) && dispatch(getWorkouts())
+export const fetchWorkouts = (force = false) => (dispatch, getState) => {
+    return (force || shouldFetch(types.NAME, getState())) && dispatch(getWorkouts())
 }
 
 

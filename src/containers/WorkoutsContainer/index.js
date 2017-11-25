@@ -15,6 +15,7 @@ const workoutForm = () => (
     <Input
         name="name"
         placeholder="Name..."
+        alignCenter
     />
 )
 const WorkoutForm = withForm(workoutForm)
