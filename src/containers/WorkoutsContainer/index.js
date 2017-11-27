@@ -10,6 +10,7 @@ import ExercisesContainer from 'containers/ExercisesContainer'
 import withForm from 'components/Form/withForm'
 import Input from 'components/Form/Input'
 import Button from 'components/Button'
+import ButtonIcon from 'components/ButtonIcon'
 
 const workoutForm = () => (
     <Input
@@ -53,6 +54,7 @@ class WorkoutsContainer extends Component {
 
                                 <ExercisesContainer workoutId={workout.id} />
                             </div>
+                            <ButtonIcon remove danger onClick={() => this.props.removeWorkout(workout.id)} />
                         </div>
                     ))}
                 </div>

@@ -10,6 +10,7 @@ class Input extends Component {
 
     static propTypes = {
         name: PropTypes.string.isRequired,
+        value: PropTypes.any.isRequired,
         alignRight: PropTypes.bool,
         alignCenter: PropTypes.bool
     }

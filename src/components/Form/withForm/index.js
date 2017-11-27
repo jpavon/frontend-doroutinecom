@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import isEqual from 'lodash.isequal'
 
 export default function withForm(WrappedComponent) {
     return class WithForm extends Component {
@@ -26,8 +27,24 @@ export default function withForm(WrappedComponent) {
             errors: {}
         }
 
+        isChanging = false
+
+        componentWillReceiveProps(nextProps) {
+            if (
+                !this.isChanging && !isEqual(nextProps.data, this.state.data)
+            ) {
+                this.setState({ data: nextProps.data })
+            }
+        }
+
+        // shouldComponentUpdate(nextProps) {
+        //     return !this.isChanging && !isEqual(this.state.data, nextProps.data)
+        // }
+
         handleChange = (event, name) => {
             const value = event.target.value
+
+            this.isChanging = true
 
             this.setState((prevState) => ({
                 data: {
@@ -37,6 +54,8 @@ export default function withForm(WrappedComponent) {
             }), () => {
                 this.props.update(this.props.data.id, { [name]: value })
                     .then((payload) => {
+                        this.isChanging = false
+
                         if (payload.error) {
                             this.setState({
                                 errors: payload.error.errors
@@ -54,7 +73,6 @@ export default function withForm(WrappedComponent) {
             return (
                 <WrappedComponent
                     {...this.props}
-                    data={this.state.data}
                 />
             )
         }
