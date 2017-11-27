@@ -208,23 +208,24 @@
 
 body {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  color: #fefefe;
+  color: #444;
   overflow-y: scroll;
-  background-color: #1a1a1a;
-  color: #fefefe;
+  background-color: #eee;
+  color: #444;
   margin-bottom: 10rem; }
 
 p {
   font-size: 1.1rem; }
 
 a {
-  color: #fefefe; }
+  color: #444; }
 
 h2 {
   padding: .4rem 1rem;
   font-size: 1.2rem;
-  background-color: #222;
-  text-transform: uppercase; }
+  background-color: #fff;
+  text-transform: uppercase;
+  border-bottom: 3px solid #ccc; }
 
 .message {
   font-size: .8rem;

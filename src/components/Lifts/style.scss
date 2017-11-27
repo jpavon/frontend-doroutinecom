@@ -1,7 +1,6 @@
 @import "scss/variables.scss";
 
 .lifts-container {
-
 }
 
 .lifts {
@@ -29,12 +28,17 @@
 
     .lift-name {
         position: relative;
-        background-color: #315463;
+        background-color: #63a2d3;
         padding: .4rem;
+        border-bottom: 3px solid darken(#63a2d3, 10%);
+
+        input {
+            color: #fff;
+        }
     }
 
     .lift-rm {
-        background-color: #222;
+        background-color: #fff;
         padding: .4rem;
     }
 

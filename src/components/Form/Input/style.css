@@ -2,9 +2,9 @@
   flex: 1;
   margin-bottom: 0;
   background-color: transparent;
-  border: 1px rgba(255, 255, 255, 0.1) dashed;
+  border: 1px rgba(255, 255, 255, 0.4) dashed;
   width: 100%;
-  color: #fff; }
+  color: #444; }
   .input.input-right {
     text-align: right; }
   .input.input-center {

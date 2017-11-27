@@ -45,20 +45,20 @@
 // block-workout
 
 .block-workout {
-    background-color: $color-background-light;
+    background-color: #fff;
     margin-bottom: 1rem;
 }
 
 .block-workout-name {
     padding: 6px 10px;
-    border-bottom: 1px solid $color-background;
+    border-bottom: 2px solid #ccc;
 }
 
 .block-workout-lift-name {
     padding: 6px 10px;
     border-radius: 3px;
     border-bottom: 1px solid $color-background;
-    background-color: #315463;
+    background-color: #fff;
 }
 
 .block-workout-lift-set {
@@ -66,7 +66,7 @@
     font-size: .9rem;
     border-radius: 3px;
     border-bottom: 1px solid $color-background;
-    background-color: #2f3c42;
+    background-color: #fff;
 }
 
 
@@ -98,7 +98,7 @@
     margin-top: .2rem;
     padding: .2rem .5rem;
     display: inline-block;
-    background-color: rgba(0,0,0,.2);
+    background-color: rgba(#444,.05);
     font-size: .7rem;
 
     input {

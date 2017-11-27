@@ -30,25 +30,25 @@
   margin-top: 1rem; }
 
 .block-workout {
-  background-color: #222;
+  background-color: #fff;
   margin-bottom: 1rem; }
 
 .block-workout-name {
   padding: 6px 10px;
-  border-bottom: 1px solid #1a1a1a; }
+  border-bottom: 2px solid #ccc; }
 
 .block-workout-lift-name {
   padding: 6px 10px;
   border-radius: 3px;
-  border-bottom: 1px solid #1a1a1a;
-  background-color: #315463; }
+  border-bottom: 1px solid #eee;
+  background-color: #fff; }
 
 .block-workout-lift-set {
   padding: 4px 10px;
   font-size: .9rem;
   border-radius: 3px;
-  border-bottom: 1px solid #1a1a1a;
-  background-color: #2f3c42; }
+  border-bottom: 1px solid #eee;
+  background-color: #fff; }
 
 .set-row {
   display: flex;
@@ -73,7 +73,7 @@
   margin-top: .2rem;
   padding: .2rem .5rem;
   display: inline-block;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(68, 68, 68, 0.05);
   font-size: .7rem; }
   .set-weight-value input {
     width: 20%;

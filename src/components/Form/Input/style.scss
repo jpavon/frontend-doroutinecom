@@ -4,9 +4,9 @@
     flex: 1;
     margin-bottom: 0;
     background-color: transparent;
-    border: 1px rgba(255, 255, 255, .1) dashed;
+    border: 1px rgba(255, 255, 255, .4) dashed;
     width: 100%;
-    color: #fff;
+    color: #444;
 
     &.input-right {
         text-align: right;
@@ -17,15 +17,15 @@
     }
 
     &::-webkit-input-placeholder {
-        color: rgba(255, 255, 255, .3);
+        color: rgba(#fff, .3);
     }
     &:-moz-placeholder {
-        color: rgba(255, 255, 255, .3);
+        color: rgba(#fff, .3);
     }
     &::-moz-placeholder {
-        color: rgba(255, 255, 255, .3);
+        color: rgba(#fff, .3);
     }
     &:-ms-input-placeholder {
-        color: rgba(255, 255, 255, .3);
+        color: rgba(#fff, .3);
     }
 }

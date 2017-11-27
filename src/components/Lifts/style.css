@@ -19,11 +19,14 @@
 
 .lift-name {
   position: relative;
-  background-color: #315463;
-  padding: .4rem; }
+  background-color: #63a2d3;
+  padding: .4rem;
+  border-bottom: 3px solid #3b8ac8; }
+  .lift-name input {
+    color: #fff; }
 
 .lift-rm {
-  background-color: #222;
+  background-color: #fff;
   padding: .4rem; }
 
 .lifts-button-create {
