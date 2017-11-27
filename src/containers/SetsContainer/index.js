@@ -67,7 +67,7 @@ class SetsContainer extends Component {
         return (
             <div>
                 {this.props.sets.map((set, i) => (
-                    <div key={i} className="block-workout-lift-set">
+                    <div key={set.id} className="block-workout-lift-set">
                         <SetForm
                             i={i}
                             data={set}
