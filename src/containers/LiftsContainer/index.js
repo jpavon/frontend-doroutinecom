@@ -34,7 +34,7 @@ class LiftsContainer extends Component {
             <Lifts ui={this.props.ui} handleCreate={this.handleCreate}>
                 {this.props.lifts.length > 0 && this.props.lifts.map((lift, i) => (
                     <Lift
-                        key={i}
+                        key={lift.id}
                         lift={lift}
                         ui={this.props.ui}
                         handleRemove={this.handleRemove}

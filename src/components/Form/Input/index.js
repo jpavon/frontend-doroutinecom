@@ -20,11 +20,11 @@ class Input extends Component {
         onChange: PropTypes.func.isRequired,
     }
 
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        const differentData = this.context.data[this.props.name] !== nextContext.data[this.props.name]
-        const differentErrors = this.context.errors[this.props.name] !== nextContext.errors[this.props.name]
-        return differentData || differentErrors
-    }
+    // shouldComponentUpdate(nextProps, nextState, nextContext) {
+    //     const differentData = this.context.data[this.props.name] !== nextContext.data[this.props.name]
+    //     const differentErrors = this.context.errors[this.props.name] !== nextContext.errors[this.props.name]
+    //     return differentData || differentErrors
+    // }
 
     render() {
         const {

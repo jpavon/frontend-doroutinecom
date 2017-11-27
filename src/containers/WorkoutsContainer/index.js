@@ -32,17 +32,12 @@ class WorkoutsContainer extends Component {
         removeWorkout: PropTypes.func.isRequired,
     }
 
-    handleCreateWorkout = () => {
-        const blockId = this.props.blockId
-        this.props.createWorkout({ blockId })
-    }
-
     render() {
         return (
             <div>
                 <div className="block-row">
                     {this.props.workouts.map((workout, i) => (
-                        <div key={i} className="block-column">
+                        <div key={workout.id} className="block-column">
                             <div className="block-workout">
                                 <div className="block-workout-name">
                                     <WorkoutForm
@@ -53,11 +48,12 @@ class WorkoutsContainer extends Component {
 
                                 <ExercisesContainer workoutId={workout.id} />
                             </div>
+                            <Button danger onClick={() => this.props.removeWorkout(workout.id)}>Remove workout</Button>
                         </div>
                     ))}
                 </div>
                 <br />
-                <Button onClick={this.handleCreateWorkout}>Create a new workout</Button>
+                <Button onClick={() => this.props.createWorkout({blockId: this.props.blockId})}>Create a new workout</Button>
             </div>
         )
     }

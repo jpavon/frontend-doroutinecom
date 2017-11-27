@@ -27,7 +27,7 @@ class BlocksContainer extends Component {
 
     handleCreate = () => {
         this.setState((prevState) => {
-            prevState.blocks.push(prevState.blocks[prevState.blocks.length - 1] + 1)
+            prevState.blocks.push(prevState.blocks.length > 0 ? prevState.blocks[prevState.blocks.length - 1] + 1 : 1)
             return { blocks: prevState.blocks }
         })
     }

@@ -12,13 +12,13 @@ import Input from 'components/Form/Input'
 import InputWrapper from 'components/Form/InputWrapper'
 import InputItem from 'components/Form/InputItem'
 
-const round5 = (x) => (Math.ceil(x/2.5)*2.5)
+const round = (x) => (Math.ceil(x/2.5) * 2.5)
 
-const setForm = ({data, lift, i}) => (
+const setForm = ({data, lift, index}) => (
     <div>
         <div className="set-row">
             <div className="set-col">
-                Set {i + 1}
+                Set {index + 1}
             </div>
             <div className="set-col">
                 <InputWrapper>
@@ -41,7 +41,7 @@ const setForm = ({data, lift, i}) => (
                     name="reps"
                     alignRight
                 />
-                REPS @ {round5(data.rmPercentage * lift.rm / 100)} <span className="set-mass">KG</span>
+                REPS @ {round(data.rmPercentage * lift.rm / 100)} <span className="set-mass">KG</span>
             </div>
         </div>
     </div>
@@ -69,7 +69,7 @@ class SetsContainer extends Component {
                 {this.props.sets.map((set, i) => (
                     <div key={set.id} className="block-workout-lift-set">
                         <SetForm
-                            i={i}
+                            index={i}
                             data={set}
                             update={this.props.updateSet}
                             lift={this.props.lift}

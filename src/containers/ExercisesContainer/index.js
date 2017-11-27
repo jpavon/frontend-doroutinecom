@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { createExercise, updateExercise } from 'data/exercises/actions'
+import { createExercise, updateExercise, removeExercise } from 'data/exercises/actions'
 import { exercisesSelector } from 'data/exercises/selectors'
 import { liftsSelector } from 'data/lifts/selectors'
 
@@ -35,14 +35,11 @@ class ExercisesContainer extends Component {
         updateExercise: PropTypes.func.isRequired,
     }
 
-    componentDidMount() {
-    }
-
     render() {
         return (
             <div>
                 {this.props.exercises.length > 0 && this.props.exercises.map((exercise, i) => (
-                    <div key={i} className="block-workout-lifts">
+                    <div key={exercise.id} className="block-workout-lifts">
                         <div className="block-workout-lift-name">
                             <ExerciseForm
                                 update={this.props.updateExercise}
@@ -51,6 +48,7 @@ class ExercisesContainer extends Component {
                             />
                         </div>
                         <SetsContainer exerciseId={exercise.id} />
+                        <Button danger onClick={() => this.props.removeExercise(exercise.id)}>Remove exercise</Button>
                     </div>
                 ))}
                 <div className="exercise-button-create">
@@ -68,7 +66,8 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = {
     createExercise,
-    updateExercise
+    updateExercise,
+    removeExercise
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExercisesContainer)
