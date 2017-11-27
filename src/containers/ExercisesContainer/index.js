@@ -12,9 +12,10 @@ import withForm from 'components/Form/withForm'
 import Select from 'components/Form/Select'
 import Button from 'components/Button'
 
-const exerciseForm = ({lifts}) => (
+const exerciseForm = ({data, lifts}) => (
     <Select
         name="liftId"
+        value={data.liftId}
         options={lifts || []}
         defaultOptionMessage="Select a lift..."
         noOptionsMessage="No lift created, create one on the top of this page."

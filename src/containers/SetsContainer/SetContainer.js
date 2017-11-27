@@ -23,6 +23,7 @@ const setForm = ({data, lift, i}) => (
                 <InputWrapper>
                     <Input
                         name="rmPercentage"
+                        value={data.rmPercentage}
                         alignRight
                     />
                     <InputItem
@@ -36,6 +37,7 @@ const setForm = ({data, lift, i}) => (
             <div className="set-weight-value">
                 <Input
                     name="reps"
+                    value={data.reps}
                     alignRight
                 />
                 REPS @ {round5(data.rmPercentage * lift.rm / 100)} <span className="set-mass">KG</span>
@@ -63,6 +65,7 @@ class SetsContainer extends Component {
 
         return (
             <div className="block-workout-lift-set">
+
                 <SetForm
                     i={this.props.index}
                     data={this.props.set}

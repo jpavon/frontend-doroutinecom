@@ -10,26 +10,31 @@ class Input extends Component {
 
     static propTypes = {
         name: PropTypes.string.isRequired,
-        value: PropTypes.any.isRequired,
+        value: PropTypes.any,
         alignRight: PropTypes.bool,
         alignCenter: PropTypes.bool
     }
 
     static contextTypes = {
-        data: PropTypes.object.isRequired,
         errors: PropTypes.object.isRequired,
-        onChange: PropTypes.func.isRequired,
+        update: PropTypes.func.isRequired,
     }
 
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        const differentData = this.context.data[this.props.name] !== nextContext.data[this.props.name]
-        const differentErrors = this.context.errors[this.props.name] !== nextContext.errors[this.props.name]
-        return differentData || differentErrors
+    state = {
+        value: this.props.value
+    }
+
+    handleChange = (event) => {
+        const value = event.target.value
+        const name = event.target.name
+
+        this.setState({value}, () => (this.context.update(name, value)))
     }
 
     render() {
         const {
             name,
+            value,
             alignRight,
             alignCenter,
             ...rest
@@ -38,8 +43,9 @@ class Input extends Component {
         return [
             <input
                 key={1}
-                value={this.context.data[this.props.name] || ''}
-                onChange={(event) => this.context.onChange(event, this.props.name)}
+                value={this.state.value || ''}
+                name={name}
+                onChange={this.handleChange}
                 className={classNames(
                     'input',
                     alignRight && 'input-right',

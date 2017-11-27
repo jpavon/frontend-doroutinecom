@@ -4,11 +4,12 @@ import InputWrapper from 'components/Form/InputWrapper'
 import InputItem from 'components/Form/InputItem'
 import withForm from 'components/Form/withForm'
 
-const Form = () => (
+const Form = ({data}) => (
     <form className="lift-form">
         <div className="lift-name">
             <Input
                 name="name"
+                value={data.name}
                 placeholder="Lift name"
                 alignCenter
             />
@@ -17,6 +18,7 @@ const Form = () => (
             <InputWrapper>
                 <Input
                     name="rm"
+                    value={data.rm}
                     placeholder="Lift RM"
                     alignRight
                 />

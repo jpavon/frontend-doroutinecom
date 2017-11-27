@@ -26,7 +26,7 @@ class SetsContainer extends Component {
             <div>
                 {this.props.sets.map((set, i) => (
                     <SetContainer
-                        key={i}
+                        key={set.id}
                         set={set}
                         index={i}
                         lift={this.props.lift}

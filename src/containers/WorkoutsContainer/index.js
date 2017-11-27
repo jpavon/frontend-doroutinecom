@@ -12,9 +12,10 @@ import Input from 'components/Form/Input'
 import Button from 'components/Button'
 import ButtonIcon from 'components/ButtonIcon'
 
-const workoutForm = () => (
+const workoutForm = ({data}) => (
     <Input
         name="name"
+        value={data.name}
         placeholder="Name..."
         alignCenter
     />

@@ -8,39 +8,44 @@ class Select extends Component {
 
     static propTypes = {
         name: PropTypes.string.isRequired,
+        value: PropTypes.any.isRequired,
         options: PropTypes.array.isRequired,
         defaultOptionMessage: PropTypes.string.isRequired,
         noOptionsMessage: PropTypes.string,
     }
 
     static contextTypes = {
-        data: PropTypes.object.isRequired,
         errors: PropTypes.object.isRequired,
-        onChange: PropTypes.func.isRequired,
+        update: PropTypes.func.isRequired,
     }
 
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        const differentData = this.context.data[this.props.name] !== nextContext.data[this.props.name]
-        const differentErrors = this.context.errors[this.props.name] !== nextContext.errors[this.props.name]
-        return differentData || differentErrors
+    state = {
+        value: this.props.value
+    }
+
+    handleChange = (event) => {
+        const value = event.target.value
+        const name = event.target.name
+
+        this.setState({value}, () => (this.context.update(name, value)))
     }
 
     render() {
         const {
             name,
+            value,
             options,
             defaultOptionMessage,
             noOptionsMessage,
             ...rest
         } = this.props
 
-        const value = this.context.data[this.props.name]
-
         return [
             <select
                 key={1}
-                value={value || ''}
-                onChange={(event) => this.context.onChange(event, this.props.name)}
+                value={this.state.value || ''}
+                name={name}
+                onChange={this.handleChange}
                 className="select"
                 {...rest}
             >
