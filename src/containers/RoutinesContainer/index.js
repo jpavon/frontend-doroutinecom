@@ -28,15 +28,12 @@ class RoutinesContainer extends Component {
     render() {
         return (
             <div>
-                <div>
-                    {this.props.routines.map((routine, i) => (
-                        <div key={routine.id}>
-                            <h2><Link to={`/r/${routine.slug}`}>{routine.name || 'No name set for routine'}</Link></h2>
-                        </div>
-                    ))}
-                </div>
-                <br />
                 <Button onClick={this.handleCreate}>Create a new routine</Button>
+                {this.props.routines.map((routine, i) => (
+                    <div key={routine.id}>
+                        <h2><Link to={`/r/${routine.slug}`}>{routine.name || 'No name set for routine'}</Link></h2>
+                    </div>
+                ))}
             </div>
         )
     }
