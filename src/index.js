@@ -9,7 +9,13 @@ import Routes from 'routes'
 import configureStore from 'store/configureStore'
 // import registerServiceWorker from 'registerServiceWorker'
 
-const store = configureStore(camelizeKeys(window.__INITIAL_STATE__))
+const initialState = camelizeKeys(window.__INITIAL_STATE__)
+let store
+if (initialState.noState) {
+    store = configureStore()
+} else {
+    store = configureStore(initialState)
+}
 delete window.__INITIAL_STATE__
 
 render(

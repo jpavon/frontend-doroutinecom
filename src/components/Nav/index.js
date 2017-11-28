@@ -26,6 +26,16 @@ class Nav extends Component {
                                 Settings
                             </NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink to="/login" className="nav-link" activeClassName="nav-link--active">
+                                Login
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to="/register" className="nav-link" activeClassName="nav-link--active">
+                                Register
+                            </NavLink>
+                        </li>
                     </ul>
                 </nav>
 

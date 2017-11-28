@@ -12,16 +12,25 @@ const user = (state = initialState, action) => {
 
     switch (type) {
         case types.USER_FETCH_REQUEST:
+        case types.USER_LOGIN_REQUEST:
+        case types.USER_REGISTER_REQUEST:
             return defaultFetch(state)
 
         case types.USER_FETCH_SUCCESS:
+        case types.USER_LOGIN_SUCCESS:
+        case types.USER_REGISTER_SUCCESS:
             return {
                 ...state,
-                ...payload,
                 fetchStatus: helperTypes.STATUS_LOADED,
+                entity: {
+                    ...state.entity,
+                    ...payload
+                }
             }
 
         case types.USER_FETCH_FAILURE:
+        case types.USER_LOGIN_FAILURE:
+        case types.USER_REGISTER_FAILURE:
             return defaultFailure(state, error)
 
         case types.USER_POST_REQUEST:
@@ -51,15 +60,18 @@ const user = (state = initialState, action) => {
             return defaultFailure(state, error)
 
         case types.USER_DELETE_REQUEST:
+        case types.USER_LOGOUT_REQUEST:
             return defaultFetch(state)
 
         case types.USER_DELETE_SUCCESS:
+        case types.USER_LOGOUT_SUCCESS:
             return {
                 id: null,
                 fetchStatus: helperTypes.STATUS_LOADED,
             }
 
         case types.USER_DELETE_FAILURE:
+        case types.USER_LOGOUT_FAILURE:
             return defaultFailure(state, error)
 
         case helperTypes.MOUNTED:

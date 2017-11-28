@@ -4,6 +4,9 @@ import { Provider } from 'react-redux'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
 import Home from 'pages/Home'
+import Login from 'pages/Login'
+import Register from 'pages/Register'
+
 import Routines from 'pages/Routines'
 import Routine from 'pages/Routine'
 import NoMatch from 'pages/NoMatch'
@@ -12,18 +15,30 @@ const getRoutes = (store) => {
 
     const PrivateRoute = ({ component: Component, ...rest }) => (
         <Route {...rest} render={(props) => (
-            store.getState().user.id ?
+            store.getState().user.entity.id ?
                 <Component {...props} /> :
                 <Redirect to='/login' />
         )} />
     )
 
+    const GuestRoute = ({ component: Component, ...rest }) => (
+        <Route {...rest} render={(props) => (
+            !store.getState().user.entity.id ?
+                <Component {...props} /> :
+                <Redirect to='/' />
+        )} />
+    )
+
     return (
         <Switch>
+            <GuestRoute exact path="/login" component={Login} />
+            <GuestRoute exact path="/register" component={Register} />
+
             <PrivateRoute exact path="/" component={Home} />
-            <Route exact path="/routines" component={Routines} />
-            <Route exact path="/r/:routineSlug" component={Routine} />
-            <Route component={NoMatch}/>
+            <PrivateRoute exact path="/routines" component={Routines} />
+            <PrivateRoute exact path="/r/:routineSlug" component={Routine} />
+
+            <PrivateRoute component={NoMatch}/>
         </Switch>
     )
 }

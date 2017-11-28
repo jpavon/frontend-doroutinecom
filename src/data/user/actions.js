@@ -76,3 +76,61 @@ export const updateUser = (data) => (dispatch, getState) => {
 // export const removeUser = () => (dispatch, getState) => {
 //     return dispatch(deleteUser())
 // }
+
+const loginUserAction = ({email, password}) => ({
+    [CALL_API]: {
+        types: [
+            types.USER_LOGIN_REQUEST,
+            types.USER_LOGIN_SUCCESS,
+            types.USER_LOGIN_FAILURE
+        ],
+        endpoint: 'login',
+        method: 'post',
+        data: {
+            email,
+            password
+        }
+    }
+})
+
+export const loginUser = ({email, password}) => (dispatch, getState) => {
+    return dispatch(loginUserAction({email, password}))
+}
+
+const registerUserAction = ({name, email, password, passwordConfirmation}) => ({
+    [CALL_API]: {
+        types: [
+            types.USER_REGISTER_REQUEST,
+            types.USER_REGISTER_SUCCESS,
+            types.USER_REGISTER_FAILURE
+        ],
+        endpoint: 'register',
+        method: 'post',
+        data: {
+            name,
+            email,
+            password,
+            passwordConfirmation
+        }
+    }
+})
+
+export const registerUser = ({name, email, password, passwordConfirmation}) => (dispatch, getState) => {
+    return dispatch(registerUserAction({name, email, password, passwordConfirmation}))
+}
+
+const logoutUserAction = () => ({
+    [CALL_API]: {
+        types: [
+            types.USER_LOGOUT_REQUEST,
+            types.USER_LOGOUT_SUCCESS,
+            types.USER_LOGOUT_FAILURE
+        ],
+        endpoint: 'logout',
+        method: 'post'
+    }
+})
+
+export const logoutUser = () => (dispatch, getState) => {
+    return dispatch(logoutUserAction())
+}
