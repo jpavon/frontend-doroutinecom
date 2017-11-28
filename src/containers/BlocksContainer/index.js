@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import union from 'lodash/union'
 
 import { blocksWorkoutsSelector } from 'data/workouts/selectors'
 
@@ -11,7 +12,8 @@ import Button from 'components/Button'
 class BlocksContainer extends Component {
 
     static propTypes = {
-        ui: PropTypes.object.isRequired,
+        routineId: PropTypes.number.isRequired,
+
         blocks: PropTypes.array.isRequired
     }
 
@@ -19,16 +21,18 @@ class BlocksContainer extends Component {
         blocks: this.props.blocks
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.blocks !== this.state.blocks) {
-            this.setState({ blocks: nextProps.blocks })
-        }
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     if (nextProps.blocks !== this.state.blocks) {
+    //         this.setState({ blocks: nextProps.blocks })
+    //     }
+    // }
 
     handleCreate = () => {
         this.setState((prevState) => {
-            prevState.blocks.push(prevState.blocks.length > 0 ? prevState.blocks[prevState.blocks.length - 1] + 1 : 1)
-            return { blocks: prevState.blocks }
+            const defaultArr = [1]
+            prevState.blocks.push(prevState.blocks[prevState.blocks.length - 1] + 1)
+
+            return { blocks: union(defaultArr, prevState.blocks) }
         })
     }
 
@@ -38,7 +42,7 @@ class BlocksContainer extends Component {
                 {this.state.blocks.map((blockId) => (
                     <div key={blockId} className="block">
                         <h2>Block {blockId}</h2>
-                        <WorkoutsContainer blockId={blockId} />
+                        <WorkoutsContainer blockId={blockId} routineId={this.props.routineId} />
                     </div>
                 ))}
                 <div className="block-button-create">
@@ -50,8 +54,7 @@ class BlocksContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    ui: state.ui,
-    blocks: blocksWorkoutsSelector(state)
+    blocks: blocksWorkoutsSelector(props.routineId)(state)
 })
 
 const mapDispatchToProps = {

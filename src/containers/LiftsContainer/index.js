@@ -14,15 +14,17 @@ import '../HomeContainer/style.css'
 class LiftsContainer extends Component {
 
     static propTypes = {
-        ui: PropTypes.object.isRequired,
+        routineId: PropTypes.number.isRequired,
+
         lifts: PropTypes.array.isRequired,
+
         createLift: PropTypes.func.isRequired,
         updateLift: PropTypes.func.isRequired,
         removeLift: PropTypes.func.isRequired,
     }
 
     handleCreate = () => {
-        this.props.createLift()
+        this.props.createLift(this.props.routineId)
     }
 
     handleRemove = (id) => {
@@ -47,8 +49,7 @@ class LiftsContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    lifts: liftsSelector(state),
-    ui: state.ui
+    lifts: liftsSelector(props.routineId)(state)
 })
 
 const mapDispatchToProps = {

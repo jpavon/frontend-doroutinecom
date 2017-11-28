@@ -34,11 +34,13 @@ class Input extends Component {
             ...rest
         } = this.props
 
+        console.log(this.context.errors, this.props.name)
+
         return [
             <input
                 key={1}
-                value={this.context.data[this.props.name] || ''}
-                onChange={(event) => this.context.onChange(event, this.props.name)}
+                value={this.context.data[name] || ''}
+                onChange={(event) => this.context.onChange(event, name)}
                 className={classNames(
                     'input',
                     alignRight && 'input-right',
@@ -48,7 +50,7 @@ class Input extends Component {
             />,
             <ErrorMessage
                 key={2}
-                error={Object.keys(this.context.errors).length !== 0 ? this.context.errors[this.props.name][0] : ''}
+                error={this.context.errors[name] || ''}
             />
         ]
     }

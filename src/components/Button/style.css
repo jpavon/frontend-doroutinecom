@@ -1,6 +1,6 @@
 .button {
   color: #fff;
-  background-color: #1b8ffe;
+  background-color: #63a2d3;
   display: inline-block;
   font-weight: 400;
   text-align: center;
@@ -16,7 +16,7 @@
   text-transform: uppercase;
   letter-spacing: .1rem;
   font-weight: 700;
-  background-color: #1b8ffe;
+  background-color: #63a2d3;
   transition: background-color .2s;
   cursor: pointer;
   text-overflow: ellipsis;
@@ -26,10 +26,10 @@
   overflow: hidden;
   letter-spacing: 0; }
   .button:hover {
-    background-color: #0283fe; }
+    background-color: #4f96cd; }
   .button:not([disabled]):not(.disabled).active, .button:not([disabled]):not(.disabled):active {
     outline: 0;
-    box-shadow: 0 0 0 0.2rem #1b8ffe; }
+    box-shadow: 0 0 0 0.2rem #63a2d3; }
 
 .button--small {
   padding: .2rem .4rem; }

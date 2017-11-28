@@ -73,7 +73,7 @@
   margin-top: .2rem;
   padding: .2rem .5rem;
   display: inline-block;
-  background-color: rgba(68, 68, 68, 0.05);
+  background-color: rgba(0, 0, 0, 0.03);
   font-size: .7rem; }
   .set-weight-value input {
     width: 20%;

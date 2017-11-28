@@ -26,6 +26,7 @@ const ExerciseForm = withForm(exerciseForm)
 class ExercisesContainer extends Component {
 
     static propTypes = {
+        routineId: PropTypes.number.isRequired,
         workoutId: PropTypes.number.isRequired,
 
         exercises: PropTypes.array.isRequired,
@@ -61,7 +62,7 @@ class ExercisesContainer extends Component {
 
 const mapStateToProps = (state, props) => ({
     exercises: exercisesSelector(props.workoutId)(state),
-    lifts: liftsSelector(state)
+    lifts: liftsSelector(props.routineId)(state)
 })
 
 const mapDispatchToProps = {

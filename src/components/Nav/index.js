@@ -17,18 +17,13 @@ class Nav extends Component {
 
                     <ul className="nav-list">
                         <li className="nav-item">
-                            <NavLink to="/workouts" className="nav-link" activeClassName="nav-link--active">
-                                Workouts
+                            <NavLink to="/routines" className="nav-link" activeClassName="nav-link--active">
+                                Routines
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/lifts" className="nav-link" activeClassName="nav-link--active">
-                                Lifts
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink to="/graphs" className="nav-link" activeClassName="nav-link--active">
-                                Graphs
+                            <NavLink to="/settings" className="nav-link" activeClassName="nav-link--active">
+                                Settings
                             </NavLink>
                         </li>
                     </ul>

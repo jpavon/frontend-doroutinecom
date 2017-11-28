@@ -4,14 +4,16 @@ import { Provider } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 
 import Home from 'pages/Home'
-import Graphs from 'pages/Graphs'
+import Routines from 'pages/Routines'
+import Routine from 'pages/Routine'
 import NoMatch from 'pages/NoMatch'
 
 const Routes = ({ store }) => (
     <Provider store={store}>
         <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/graphs" component={Graphs} />
+            <Route exact path="/routines" component={Routines} />
+            <Route exact path="/r/:routineSlug" component={Routine} />
             <Route component={NoMatch}/>
         </Switch>
     </Provider>

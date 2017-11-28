@@ -57,7 +57,7 @@ class Select extends Component {
             />,
             <ErrorMessage
                 key={3}
-                error={Object.keys(this.context.errors).length !== 0 ? this.context.errors[this.props.name][0] : ''}
+                error={this.context.errors[name] || ''}
             />
         ]
     }

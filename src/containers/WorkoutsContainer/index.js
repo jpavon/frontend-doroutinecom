@@ -23,13 +23,21 @@ const WorkoutForm = withForm(workoutForm)
 class WorkoutsContainer extends Component {
 
     static propTypes = {
-        ui: PropTypes.object.isRequired,
+        routineId: PropTypes.number.isRequired,
+
         blockId: PropTypes.number.isRequired,
 
         workouts: PropTypes.array.isRequired,
         createWorkout: PropTypes.func.isRequired,
         updateWorkout: PropTypes.func.isRequired,
         removeWorkout: PropTypes.func.isRequired,
+    }
+
+    handleCreate = () => {
+        this.props.createWorkout({
+            routineId: this.props.routineId,
+            blockId: this.props.blockId
+        })
     }
 
     render() {
@@ -46,22 +54,24 @@ class WorkoutsContainer extends Component {
                                     />
                                 </div>
 
-                                <ExercisesContainer workoutId={workout.id} />
+                                <ExercisesContainer
+                                    workoutId={workout.id}
+                                    routineId={this.props.routineId}
+                                />
                             </div>
                             <Button danger onClick={() => this.props.removeWorkout(workout.id)}>Remove workout</Button>
                         </div>
                     ))}
                 </div>
                 <br />
-                <Button onClick={() => this.props.createWorkout({blockId: this.props.blockId})}>Create a new workout</Button>
+                <Button onClick={this.handleCreate}>Create a new workout</Button>
             </div>
         )
     }
 }
 
 const mapStateToProps = (state, props) => ({
-    workouts: workoutsSelector(props.blockId)(state),
-    ui: state.ui
+    workouts: workoutsSelector(props.routineId, props.blockId)(state),
 })
 
 const mapDispatchToProps = {
