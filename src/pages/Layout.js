@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
+import Loadable from 'react-loadable'
 
 import { mount } from 'data/actions'
 import { fetchRoutines } from 'data/routines/actions'
@@ -11,15 +12,18 @@ import { fetchLifts } from 'data/lifts/actions'
 import { fetchSets } from 'data/sets/actions'
 import { logoutUser } from 'data/user/actions'
 
-import NotFound from 'components/NotFound'
+import ErrorApp from 'components/ErrorApp'
 import Nav from 'components/Nav'
+import Loading from 'components/Loading'
 
 import 'scss/global.css'
 
 class Layout extends Component {
 
     static propTypes = {
-        children: PropTypes.node.isRequired,
+        header: PropTypes.node.isRequired,
+        loader: PropTypes.func.isRequired,
+
         isAuthenticated: PropTypes.bool.isRequired,
 
         mount: PropTypes.func.isRequired,
@@ -67,10 +71,15 @@ class Layout extends Component {
     }
 
     render() {
+        const Container = Loadable({
+            loader: this.props.loader,
+            loading: Loading,
+        })
+
         return (
             <Fragment>
                 <Helmet>
-                    <title>Layout title</title>
+                    {this.props.header}
                 </Helmet>
                 <Nav
                     isAuthenticated={this.props.isAuthenticated}
@@ -78,8 +87,8 @@ class Layout extends Component {
                 />
                 <div className="container">
                     {this.state.hasError ?
-                        <NotFound /> :
-                        this.props.children
+                        <ErrorApp /> :
+                        <Container />
                     }
                 </div>
             </Fragment>

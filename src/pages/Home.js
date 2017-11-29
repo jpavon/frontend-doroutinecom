@@ -1,23 +1,13 @@
-import React, { Component, Fragment } from 'react'
-import { Helmet } from 'react-helmet'
-import Loadable from 'react-loadable'
-
+import React, { Component } from 'react'
 import Layout from 'pages/Layout'
 
-class Home extends Component {
+const Routines = () => (
+    <Layout
+        header={(
+            <title>Routines</title>
+        )}
+        loader={() => import('containers/RoutinesContainer')}
+    />
+)
 
-    render() {
-        return (
-            <Layout>
-                <Helmet>
-                    <title>Home</title>
-                </Helmet>
-                <Fragment>
-                    Home content.
-                </Fragment>
-            </Layout>
-        )
-    }
-}
-
-export default Home
+export default Routines
