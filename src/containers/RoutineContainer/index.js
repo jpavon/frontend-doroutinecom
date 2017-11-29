@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -20,12 +20,12 @@ class RoutineContainer extends Component {
     }
 
     render() {
-        return (
-            <div>
+        return this.props.routine.id ?
+            <Fragment>
                 <LiftsContainer routineId={this.props.routine.id} />
                 <BlocksContainer routineId={this.props.routine.id} />
-            </div>
-        )
+            </Fragment>
+        : null
     }
 }
 
@@ -38,6 +38,5 @@ const mapDispatchToProps = {
     updateRoutine,
     removeRoutine
 }
-
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RoutineContainer))

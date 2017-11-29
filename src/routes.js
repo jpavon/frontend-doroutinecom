@@ -6,7 +6,6 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import Home from 'pages/Home'
 import Login from 'pages/Login'
 import Register from 'pages/Register'
-
 import Routines from 'pages/Routines'
 import Routine from 'pages/Routine'
 import NoMatch from 'pages/NoMatch'
