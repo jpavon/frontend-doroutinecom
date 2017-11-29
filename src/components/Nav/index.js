@@ -25,9 +25,9 @@ const Nav = ({isAuthenticated, logoutUser}) => (
                         </NavLink>
                     </li>
                     <li className="nav-item">
-                        <button type="button" className="nav-link" onClick={logoutUser}>
+                        <a href="#" className="nav-link" onClick={logoutUser}>
                             Logout
-                        </button>
+                        </a>
                     </li>
                 </Fragment>
             }

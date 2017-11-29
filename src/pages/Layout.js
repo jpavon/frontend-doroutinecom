@@ -44,7 +44,6 @@ class Layout extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('here')
         this.fetchData()
     }
 
@@ -58,8 +57,13 @@ class Layout extends Component {
         }
     }
 
-    handleLogoutUser = () => {
-        //
+    handleLogoutUser = (event) => {
+        event.preventDefault()
+
+        this.props.logoutUser()
+            .then(() => {
+                window.location.reload()
+            })
     }
 
     render() {
@@ -70,7 +74,7 @@ class Layout extends Component {
                 </Helmet>
                 <Nav
                     isAuthenticated={this.props.isAuthenticated}
-                    logoutUser={this.props.logoutUser}
+                    logoutUser={this.handleLogoutUser}
                 />
                 <div className="container">
                     {this.state.hasError ?

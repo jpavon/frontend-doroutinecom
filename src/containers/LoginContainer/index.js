@@ -5,6 +5,8 @@ import { withRouter } from 'react-router-dom'
 
 import { loginUser } from 'data/user/actions'
 
+import Login from 'components/Login'
+
 class LoginContainer extends Component {
 
     static propTypes = {
@@ -31,26 +33,17 @@ class LoginContainer extends Component {
         })
     }
 
+    setRef = (ref, name) => {
+        this[name] = ref
+    }
+
     render() {
         return (
-            <form method="post" onSubmit={this.handleSubmit}>
-                {Object.keys(this.state.errors).length > 0 &&
-                    <div>
-                        {Object.keys(this.state.errors).map((error, i) => (
-                            <div key={i}>{this.state.errors[error]}</div>
-                        ))}
-                    </div>
-                }
-                <label>
-                    Email:
-                    <input id="email" type="text" ref={(ref) => this.email = ref} />
-                </label>
-                <label>
-                    Password:
-                    <input id="password" type="password" ref={(ref) => this.password = ref} />
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
+            <Login
+                handleSubmit={this.handleSubmit}
+                errors={this.state.errors}
+                setRef={this.setRef}
+            />
         )
     }
 }

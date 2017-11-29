@@ -32,7 +32,7 @@ class BlocksContainer extends Component {
             const defaultArr = [1]
             prevState.blocks.push(prevState.blocks[prevState.blocks.length - 1] + 1)
 
-            return { blocks: union(defaultArr, prevState.blocks) }
+            return { blocks: union(defaultArr, prevState.blocks).filter(Number) }
         })
     }
 

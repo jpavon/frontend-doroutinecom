@@ -1,5 +1,5 @@
-import { camelizeKeys, decamelizeKeys } from 'humps'
 import axios from 'axios'
+import { camelizeKeys, decamelizeKeys } from 'humps'
 
 const callApi = (endpoint, method, data) => {
     return axios.request({

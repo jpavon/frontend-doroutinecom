@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import ErrorMessage from 'components/Form/ErrorMessage'
+import ErrorMessage from 'components/ErrorMessage'
 
 import './style.css'
 
@@ -34,25 +34,23 @@ class Input extends Component {
             ...rest
         } = this.props
 
-        console.log(this.context.errors, this.props.name)
-
-        return [
-            <input
-                key={1}
-                value={this.context.data[name] || ''}
-                onChange={(event) => this.context.onChange(event, name)}
-                className={classNames(
-                    'input',
-                    alignRight && 'input-right',
-                    alignCenter && 'input-center'
-                )}
-                {...rest}
-            />,
-            <ErrorMessage
-                key={2}
-                error={this.context.errors[name] || ''}
-            />
-        ]
+        return (
+            <Fragment>
+                <input
+                    value={this.context.data[name] || ''}
+                    onChange={(event) => this.context.onChange(event, name)}
+                    className={classNames(
+                        'input',
+                        alignRight && 'input-right',
+                        alignCenter && 'input-center'
+                    )}
+                    {...rest}
+                />
+                <ErrorMessage
+                    error={this.context.errors[name] || ''}
+                />
+            </Fragment>
+        )
     }
 }
 

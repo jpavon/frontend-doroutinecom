@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import ErrorMessage from 'components/Form/ErrorMessage'
+import ErrorMessage from 'components/ErrorMessage'
 
 import './style.css'
 
@@ -36,30 +36,29 @@ class Select extends Component {
 
         const value = this.context.data[this.props.name]
 
-        return [
-            <select
-                key={1}
-                value={value || ''}
-                onChange={(event) => this.context.onChange(event, this.props.name)}
-                className="select"
-                {...rest}
-            >
-                {!value && <option>{defaultOptionMessage}</option>}
-                {options.length > 0 &&
-                    options.map((option, i) => (
-                        <option key={i} value={option.id}>{option.name}</option>
-                    ))
-                }
-            </select>,
-            <ErrorMessage
-                key={2}
-                error={options < 1 ? noOptionsMessage : ''}
-            />,
-            <ErrorMessage
-                key={3}
-                error={this.context.errors[name] || ''}
-            />
-        ]
+        return (
+            <Fragment>
+                <select
+                    value={value || ''}
+                    onChange={(event) => this.context.onChange(event, this.props.name)}
+                    className="select"
+                    {...rest}
+                >
+                    {!value && <option>{defaultOptionMessage}</option>}
+                    {options.length > 0 &&
+                        options.map((option, i) => (
+                            <option key={i} value={option.id}>{option.name}</option>
+                        ))
+                    }
+                </select>
+                <ErrorMessage
+                    error={options < 1 ? noOptionsMessage : ''}
+                />,
+                <ErrorMessage
+                    error={this.context.errors[name] || ''}
+                />
+            </Fragment>
+        )
     }
 }
 
