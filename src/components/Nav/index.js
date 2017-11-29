@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import logo from 'img/logo.svg'
@@ -25,7 +25,7 @@ const Nav = ({isAuthenticated, logoutUser}) => (
                         </NavLink>
                     </li>
                     <li className="nav-item">
-                        <a href="#" className="nav-link" onClick={logoutUser}>
+                        <a href="/logout" className="nav-link" onClick={logoutUser}>
                             Logout
                         </a>
                     </li>

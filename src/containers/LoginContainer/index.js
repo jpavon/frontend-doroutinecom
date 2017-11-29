@@ -28,7 +28,7 @@ class LoginContainer extends Component {
                 this.password.value = ''
                 this.setState({ errors: payload.error.errors })
             } else {
-                this.props.history.push('/')
+                this.props.history.push(this.props.location.state.from || '/')
             }
         })
     }

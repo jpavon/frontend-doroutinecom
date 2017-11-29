@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ErrorMessage from 'components/ErrorMessage'
 
 const Login = ({handleSubmit, errors, setRef}) => (

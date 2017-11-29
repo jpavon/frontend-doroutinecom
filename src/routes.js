@@ -17,7 +17,12 @@ const getRoutes = (store) => {
         <Route {...rest} render={(props) => (
             store.getState().user.entity.id ?
                 <Component {...props} /> :
-                <Redirect to='/login' />
+                <Redirect
+                    to={{
+                        pathname: '/login',
+                        state: { from: props.location }
+                    }}
+                />
         )} />
     )
 

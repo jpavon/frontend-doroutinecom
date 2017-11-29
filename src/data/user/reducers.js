@@ -1,6 +1,6 @@
 import * as types from 'data/user/types'
 import * as helperTypes from 'data/types'
-import { updateItem, insertItem, deleteItem, defaultFetch, defaultFailure, defaultMounted } from 'data/helpers'
+import { defaultFetch, defaultFailure, defaultMounted } from 'data/helpers'
 
 const initialState = {
     fetchStatus: helperTypes.STATUS_NONE,
@@ -8,7 +8,7 @@ const initialState = {
 }
 
 const user = (state = initialState, action) => {
-    const { type, payload, error, meta } = action
+    const { type, payload, error } = action
 
     switch (type) {
         case types.USER_FETCH_REQUEST:

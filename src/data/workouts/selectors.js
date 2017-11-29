@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect'
-import moment from 'moment'
 
 const formatWorkout = (workout) => ({
     ...workout,

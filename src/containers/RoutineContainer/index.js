@@ -9,8 +9,6 @@ import { routineSelector } from 'data/routines/selectors'
 import LiftsContainer from 'containers/LiftsContainer'
 import BlocksContainer from 'containers/BlocksContainer'
 
-import Button from 'components/Button'
-
 class RoutineContainer extends Component {
 
     static propTypes = {
