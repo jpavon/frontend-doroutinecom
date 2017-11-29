@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Helmet } from 'react-helmet'
 import Loadable from 'react-loadable'
 
@@ -12,9 +12,9 @@ class Home extends Component {
                 <Helmet>
                     <title>Home</title>
                 </Helmet>
-                <div>
+                <Fragment>
                     Home content.
-                </div>
+                </Fragment>
             </Layout>
         )
     }

@@ -39,8 +39,11 @@ const user = (state = initialState, action) => {
         case types.USER_POST_SUCCESS:
             return {
                 ...state,
-                ...payload,
                 fetchStatus: helperTypes.STATUS_LOADED,
+                entity: {
+                    ...state.entity,
+                    ...payload
+                }
             }
 
         case types.USER_POST_FAILURE:
@@ -52,8 +55,11 @@ const user = (state = initialState, action) => {
         case types.USER_PUT_SUCCESS:
             return {
                 ...state,
-                ...payload,
                 fetchStatus: helperTypes.STATUS_LOADED,
+                entity: {
+                    ...state.entity,
+                    ...payload
+                }
             }
 
         case types.USER_PUT_FAILURE:
@@ -66,8 +72,10 @@ const user = (state = initialState, action) => {
         case types.USER_DELETE_SUCCESS:
         case types.USER_LOGOUT_SUCCESS:
             return {
-                id: null,
                 fetchStatus: helperTypes.STATUS_LOADED,
+                entity: {
+                    id: null
+                }
             }
 
         case types.USER_DELETE_FAILURE:

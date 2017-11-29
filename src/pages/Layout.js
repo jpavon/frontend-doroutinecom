@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
@@ -9,6 +9,7 @@ import { fetchWorkouts } from 'data/workouts/actions'
 import { fetchExercises } from 'data/exercises/actions'
 import { fetchLifts } from 'data/lifts/actions'
 import { fetchSets } from 'data/sets/actions'
+import { logoutUser } from 'data/user/actions'
 
 import NotFound from 'components/NotFound'
 import Nav from 'components/Nav'
@@ -27,6 +28,7 @@ class Layout extends Component {
         fetchExercises: PropTypes.func.isRequired,
         fetchLifts: PropTypes.func.isRequired,
         fetchSets: PropTypes.func.isRequired,
+        logoutUser: PropTypes.func.isRequired,
     }
 
     state = { hasError: false }
@@ -38,46 +40,51 @@ class Layout extends Component {
     componentWillMount() {
         this.props.mount()
 
-        if (this.props.isAuthenticated) {
-            this.fetchData()
-        }
+        this.fetchData()
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
-        if (nextProps.isAuthenticated !== this.props.isAuthenticated) {
-            this.fetchData()
-        }
+        console.log('here')
+        this.fetchData()
     }
 
     fetchData = () => {
-        this.props.fetchRoutines()
-        this.props.fetchWorkouts()
-        this.props.fetchExercises()
-        this.props.fetchLifts()
-        this.props.fetchSets()
+        if (this.props.isAuthenticated) {
+            this.props.fetchRoutines()
+            this.props.fetchWorkouts()
+            this.props.fetchExercises()
+            this.props.fetchLifts()
+            this.props.fetchSets()
+        }
+    }
+
+    handleLogoutUser = () => {
+        //
     }
 
     render() {
         return (
-            <div>
+            <Fragment>
                 <Helmet>
                     <title>Layout title</title>
                 </Helmet>
-                <Nav />
+                <Nav
+                    isAuthenticated={this.props.isAuthenticated}
+                    logoutUser={this.props.logoutUser}
+                />
                 <div className="container">
                     {this.state.hasError ?
                         <NotFound /> :
                         this.props.children
                     }
                 </div>
-            </div>
+            </Fragment>
         )
     }
 }
 
 const mapStateToProps = (state, props) => ({
-    isAuthenticated: !!state.user.entity.id
+    isAuthenticated: !!state.user.entity.id,
 })
 
 const mapDispatchToProps = {
@@ -86,7 +93,8 @@ const mapDispatchToProps = {
     fetchWorkouts,
     fetchExercises,
     fetchLifts,
-    fetchSets
+    fetchSets,
+    logoutUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout)
