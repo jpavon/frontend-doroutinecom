@@ -124,9 +124,10 @@ const logoutUserAction = () => ({
 })
 
 export const logoutUser = () => (dispatch, getState) => {
+    localStorage.removeItem('token')
+    dispatch(logoutUserAction())
+
     return new Promise((resolve, reject) => {
-        localStorage.removeItem('token')
-        dispatch(logoutUserAction())
         resolve()
     })
 }

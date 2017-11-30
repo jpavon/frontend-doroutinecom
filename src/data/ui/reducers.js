@@ -1,7 +1,8 @@
 import * as types from 'data/ui/types'
 
 const initialState = {
-    isEditing: false
+    isEditing: false,
+    isLoading: true
 }
 
 const ui = (state = initialState, action) => {
@@ -12,6 +13,18 @@ const ui = (state = initialState, action) => {
             return {
                 ...state,
                 isEditing: !state.isEditing
+            }
+
+        case types.DISPLAY_LOADING:
+            return {
+                ...state,
+                isLoading: true
+            }
+
+        case types.REMOVE_LOADING:
+            return {
+                ...state,
+                isLoading: false
             }
 
         default:

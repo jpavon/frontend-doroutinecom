@@ -12,6 +12,7 @@ import { fetchExercises } from 'data/exercises/actions'
 import { fetchLifts } from 'data/lifts/actions'
 import { fetchSets } from 'data/sets/actions'
 import { logoutUser } from 'data/user/actions'
+import { removeLoading } from 'data/ui/actions'
 
 import ErrorApp from 'components/ErrorApp'
 import Nav from 'components/Nav'
@@ -34,10 +35,12 @@ class Layout extends Component {
         fetchLifts: PropTypes.func.isRequired,
         fetchSets: PropTypes.func.isRequired,
         logoutUser: PropTypes.func.isRequired,
+        removeLoading: PropTypes.func.isRequired
     }
 
     state = {
-        hasError: false
+        hasError: false,
+        isLoading: true
     }
 
     componentDidCatch(error, info) {
@@ -49,6 +52,8 @@ class Layout extends Component {
 
         if (this.props.isAuthenticated) {
             this.fetchData()
+        } else {
+            this.setState({ isLoading: false })
         }
     }
 
@@ -59,11 +64,15 @@ class Layout extends Component {
     }
 
     fetchData = () => {
-        this.props.fetchRoutines()
-        this.props.fetchWorkouts()
-        this.props.fetchExercises()
-        this.props.fetchLifts()
-        this.props.fetchSets()
+        Promise.all([
+            this.props.fetchRoutines(),
+            this.props.fetchWorkouts(),
+            this.props.fetchExercises(),
+            this.props.fetchLifts(),
+            this.props.fetchSets()
+        ]).then(() => {
+            this.setState({ isLoading: false })
+        })
     }
 
     handleLogoutUser = (event) => {
@@ -86,16 +95,21 @@ class Layout extends Component {
                 <Helmet>
                     {this.props.header}
                 </Helmet>
-                <Nav
-                    isAuthenticated={this.props.isAuthenticated}
-                    logoutUser={this.handleLogoutUser}
-                />
-                <div className="container">
-                    {this.state.hasError ?
-                        <ErrorApp /> :
-                        <Container />
-                    }
-                </div>
+                {this.state.isLoading ?
+                    <Loading show /> :
+                    <Fragment>
+                        <Nav
+                            isAuthenticated={this.props.isAuthenticated}
+                            logoutUser={this.handleLogoutUser}
+                        />
+                        <div className="container">
+                            {this.state.hasError ?
+                                <ErrorApp /> :
+                                <Container />
+                            }
+                        </div>
+                    </Fragment>
+                }
             </Fragment>
         )
     }
@@ -112,7 +126,8 @@ const mapDispatchToProps = {
     fetchExercises,
     fetchLifts,
     fetchSets,
-    logoutUser
+    logoutUser,
+    removeLoading
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Layout))

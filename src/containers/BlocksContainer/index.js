@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import union from 'lodash/union'
 
 import { blocksWorkoutsSelector } from 'data/workouts/selectors'
+import { workoutsSelector } from 'data/workouts/selectors'
 
 import WorkoutsContainer from 'containers/WorkoutsContainer'
 
@@ -21,11 +22,12 @@ class BlocksContainer extends Component {
         blocks: this.props.blocks
     }
 
-    // componentWillReceiveProps(nextProps) {
-    //     if (nextProps.blocks !== this.state.blocks) {
-    //         this.setState({ blocks: nextProps.blocks })
-    //     }
-    // }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.blocks !== this.state.blocks &&
+            nextProps.blocks.length > this.state.blocks.length) {
+            this.setState({ blocks: nextProps.blocks })
+        }
+    }
 
     handleCreate = () => {
         this.setState((prevState) => {

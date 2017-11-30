@@ -10,7 +10,6 @@ export const workoutsSelector = (routineId, blockId) => createSelector(
     ],
     (workouts) => workouts
         .filter((workout) => (workout.blockId === blockId && workout.routineId === routineId))
-        .sort((a, b) => (new Date(a.day) - new Date(b.day)))
         .map((workout) => formatWorkout(workout))
 )
 
