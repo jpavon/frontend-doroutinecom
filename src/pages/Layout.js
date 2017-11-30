@@ -4,14 +4,17 @@ import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import Loadable from 'react-loadable'
 import { withRouter } from 'react-router-dom'
+import axios from 'axios'
 
 import { mount } from 'data/actions'
+import { fetchUser } from 'data/user/actions'
 import { fetchRoutines } from 'data/routines/actions'
 import { fetchWorkouts } from 'data/workouts/actions'
 import { fetchExercises } from 'data/exercises/actions'
 import { fetchLifts } from 'data/lifts/actions'
 import { fetchSets } from 'data/sets/actions'
 import { logoutUser } from 'data/user/actions'
+import { displayLoading } from 'data/ui/actions'
 import { removeLoading } from 'data/ui/actions'
 
 import ErrorApp from 'components/ErrorApp'
@@ -26,21 +29,24 @@ class Layout extends Component {
         header: PropTypes.node.isRequired,
         loader: PropTypes.func.isRequired,
 
+        isFetchRequired: PropTypes.bool.isRequired,
         isAuthenticated: PropTypes.bool.isRequired,
+        isLoading: PropTypes.bool.isRequired,
 
         mount: PropTypes.func.isRequired,
+        fetchUser: PropTypes.func.isRequired,
         fetchRoutines: PropTypes.func.isRequired,
         fetchWorkouts: PropTypes.func.isRequired,
         fetchExercises: PropTypes.func.isRequired,
         fetchLifts: PropTypes.func.isRequired,
         fetchSets: PropTypes.func.isRequired,
         logoutUser: PropTypes.func.isRequired,
+        displayLoading: PropTypes.func.isRequired,
         removeLoading: PropTypes.func.isRequired
     }
 
     state = {
-        hasError: false,
-        isLoading: true
+        hasError: false
     }
 
     componentDidCatch(error, info) {
@@ -50,29 +56,37 @@ class Layout extends Component {
     componentWillMount() {
         this.props.mount()
 
-        if (this.props.isAuthenticated) {
+        if (this.props.isFetchRequired && this.props.isAuthenticated) {
             this.fetchData()
-        } else {
-            this.setState({ isLoading: false })
+        }
+
+        if (!this.props.isAuthenticated) {
+            this.props.removeLoading()
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.isAuthenticated) {
+        console.log('PROPS')
+        if (this.props.isFetchRequired &&
+            nextProps.isAuthenticated &&
+            (nextProps.isAuthenticated !== this.props.isAuthenticated)) {
             this.fetchData()
         }
     }
 
     fetchData = () => {
-        Promise.all([
+        this.props.displayLoading()
+
+        axios.all([
+            this.props.fetchUser(),
             this.props.fetchRoutines(),
             this.props.fetchWorkouts(),
             this.props.fetchExercises(),
             this.props.fetchLifts(),
             this.props.fetchSets()
-        ]).then(() => {
-            this.setState({ isLoading: false })
-        })
+        ]).then(axios.spread(() => {
+            this.props.removeLoading()
+        }))
     }
 
     handleLogoutUser = (event) => {
@@ -95,20 +109,18 @@ class Layout extends Component {
                 <Helmet>
                     {this.props.header}
                 </Helmet>
-                {this.state.isLoading ?
+                <Nav
+                    isAuthenticated={this.props.isAuthenticated}
+                    logoutUser={this.handleLogoutUser}
+                />
+                {this.props.isLoading ?
                     <Loading show /> :
-                    <Fragment>
-                        <Nav
-                            isAuthenticated={this.props.isAuthenticated}
-                            logoutUser={this.handleLogoutUser}
-                        />
-                        <div className="container">
-                            {this.state.hasError ?
-                                <ErrorApp /> :
-                                <Container />
-                            }
-                        </div>
-                    </Fragment>
+                    <div className="container">
+                        {this.state.hasError ?
+                            <ErrorApp /> :
+                            <Container />
+                        }
+                    </div>
                 }
             </Fragment>
         )
@@ -116,17 +128,21 @@ class Layout extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    isAuthenticated: !!state.user.entity.id,
+    isFetchRequired: !!(state.user.fetchStatus !== 'LOADED'),
+    isAuthenticated: !!(state.user.entity.apiToken || localStorage.getItem('token')),
+    isLoading: state.ui.isLoading
 })
 
 const mapDispatchToProps = {
     mount,
+    fetchUser,
     fetchRoutines,
     fetchWorkouts,
     fetchExercises,
     fetchLifts,
     fetchSets,
     logoutUser,
+    displayLoading,
     removeLoading
 }
 
