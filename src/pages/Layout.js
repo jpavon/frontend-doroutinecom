@@ -58,18 +58,19 @@ class Layout extends Component {
 
         if (this.props.isFetchRequired && this.props.isAuthenticated) {
             this.fetchData()
-        }
-
-        if (!this.props.isAuthenticated) {
-            this.props.removeLoading()
+        } else {
+            if (!this.props.isAuthenticated) {
+                this.props.removeLoading()
+            }
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('PROPS')
-        if (this.props.isFetchRequired &&
+        if (
+            nextProps.isFetchRequired &&
             nextProps.isAuthenticated &&
-            (nextProps.isAuthenticated !== this.props.isAuthenticated)) {
+            (nextProps.isAuthenticated !== this.props.isAuthenticated)
+        ) {
             this.fetchData()
         }
     }
@@ -77,16 +78,16 @@ class Layout extends Component {
     fetchData = () => {
         this.props.displayLoading()
 
-        axios.all([
-            this.props.fetchUser(),
+        Promise.all([
+            this.props.fetchUser(true),
             this.props.fetchRoutines(),
             this.props.fetchWorkouts(),
             this.props.fetchExercises(),
             this.props.fetchLifts(),
             this.props.fetchSets()
-        ]).then(axios.spread(() => {
+        ]).then(() => {
             this.props.removeLoading()
-        }))
+        })
     }
 
     handleLogoutUser = (event) => {
@@ -128,7 +129,7 @@ class Layout extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    isFetchRequired: !!(state.user.fetchStatus !== 'LOADED'),
+    isFetchRequired: !!(state.routines.fetchStatus !== 'LOADED'),
     isAuthenticated: !!(state.user.entity.apiToken || localStorage.getItem('token')),
     isLoading: state.ui.isLoading
 })
