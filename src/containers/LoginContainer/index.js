@@ -23,12 +23,17 @@ class LoginContainer extends Component {
         this.props.loginUser({
             email: this.email.value,
             password: this.password.value
-        }).then((payload) => {
-            if (payload.error) {
+        }).then((resp) => {
+            if (resp.error) {
                 this.password.value = ''
-                this.setState({ errors: payload.error.errors })
+                this.setState({ errors: resp.error.errors })
             } else {
-                this.props.history.push(this.props.location.state.from || '/')
+                localStorage.setItem('token', resp.payload.apiToken)
+                this.props.history.push(
+                    (this.props.location.state && this.props.location.state.from) ?
+                    this.props.location.state.from :
+                    '/'
+                )
             }
         })
     }

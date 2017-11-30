@@ -66,11 +66,9 @@ const user = (state = initialState, action) => {
             return defaultFailure(state, error)
 
         case types.USER_DELETE_REQUEST:
-        case types.USER_LOGOUT_REQUEST:
             return defaultFetch(state)
 
         case types.USER_DELETE_SUCCESS:
-        case types.USER_LOGOUT_SUCCESS:
             return {
                 fetchStatus: helperTypes.STATUS_LOADED,
                 entity: {
@@ -79,7 +77,6 @@ const user = (state = initialState, action) => {
             }
 
         case types.USER_DELETE_FAILURE:
-        case types.USER_LOGOUT_FAILURE:
             return defaultFailure(state, error)
 
         case helperTypes.MOUNTED:

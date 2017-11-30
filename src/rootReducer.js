@@ -7,8 +7,9 @@ import exercises from 'data/exercises/reducers'
 import sets from 'data/sets/reducers'
 import lifts from 'data/lifts/reducers'
 import ui from 'data/ui/reducers'
+import * as userTypes from 'data/user/types'
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
     user,
     routines,
     workouts,
@@ -18,4 +19,12 @@ const rootReducer = combineReducers({
     ui
 })
 
-export default rootReducer;
+const rootReducer = (state, action) => {
+    if (action.type === userTypes.USER_LOGOUT) {
+        state = undefined
+    }
+
+    return appReducer(state, action)
+}
+
+export default rootReducer

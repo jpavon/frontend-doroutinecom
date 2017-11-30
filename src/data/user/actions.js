@@ -120,17 +120,13 @@ export const registerUser = ({name, email, password, passwordConfirmation}) => (
 }
 
 const logoutUserAction = () => ({
-    [CALL_API]: {
-        types: [
-            types.USER_LOGOUT_REQUEST,
-            types.USER_LOGOUT_SUCCESS,
-            types.USER_LOGOUT_FAILURE
-        ],
-        endpoint: 'logout',
-        method: 'post'
-    }
+    type: types.USER_LOGOUT
 })
 
 export const logoutUser = () => (dispatch, getState) => {
-    return dispatch(logoutUserAction())
+    return new Promise((resolve, reject) => {
+        localStorage.removeItem('token')
+        dispatch(logoutUserAction())
+        resolve()
+    })
 }

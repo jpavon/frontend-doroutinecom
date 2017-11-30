@@ -1,10 +1,24 @@
 import React from 'react'
+import ErrorApp from 'components/ErrorApp'
 
-const Loading = ({error, pastDelay}) => {
+import './style.css'
+
+const Loading = ({error, pastDelay, show}) => {
     if (error) {
-        return <div>Error!</div>
-    } else if (pastDelay) {
-        return <div>Loading...</div>
+        return (
+            <ErrorApp />
+        )
+    } else if (pastDelay || show) {
+        return (
+            <div className="sk-wrapper">
+                <div className="sk-folding-cube">
+                    <div className="sk-cube1 sk-cube"></div>
+                    <div className="sk-cube2 sk-cube"></div>
+                    <div className="sk-cube4 sk-cube"></div>
+                    <div className="sk-cube3 sk-cube"></div>
+                </div>
+            </div>
+        )
     } else {
         return null
     }

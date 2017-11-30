@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import Loadable from 'react-loadable'
+import { withRouter } from 'react-router-dom'
 
 import { mount } from 'data/actions'
 import { fetchRoutines } from 'data/routines/actions'
@@ -35,7 +36,9 @@ class Layout extends Component {
         logoutUser: PropTypes.func.isRequired,
     }
 
-    state = { hasError: false }
+    state = {
+        hasError: false
+    }
 
     componentDidCatch(error, info) {
         this.setState({ hasError: true })
@@ -44,21 +47,23 @@ class Layout extends Component {
     componentWillMount() {
         this.props.mount()
 
-        this.fetchData()
+        if (this.props.isAuthenticated) {
+            this.fetchData()
+        }
     }
 
     componentWillReceiveProps(nextProps) {
-        this.fetchData()
+        if (nextProps.isAuthenticated) {
+            this.fetchData()
+        }
     }
 
     fetchData = () => {
-        if (this.props.isAuthenticated) {
-            this.props.fetchRoutines()
-            this.props.fetchWorkouts()
-            this.props.fetchExercises()
-            this.props.fetchLifts()
-            this.props.fetchSets()
-        }
+        this.props.fetchRoutines()
+        this.props.fetchWorkouts()
+        this.props.fetchExercises()
+        this.props.fetchLifts()
+        this.props.fetchSets()
     }
 
     handleLogoutUser = (event) => {
@@ -66,7 +71,7 @@ class Layout extends Component {
 
         this.props.logoutUser()
             .then(() => {
-                window.location.reload()
+                this.props.history.push('/login')
             })
     }
 
@@ -110,4 +115,4 @@ const mapDispatchToProps = {
     logoutUser
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Layout)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Layout))

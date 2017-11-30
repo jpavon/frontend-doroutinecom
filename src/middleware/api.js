@@ -1,17 +1,20 @@
 import axios from 'axios'
 import { camelizeKeys, decamelizeKeys } from 'humps'
 
-const callApi = (endpoint, method, data) => {
+const callApi = (endpoint, method, data, store) => {
     return axios.request({
         url: endpoint,
         method: method,
         baseURL: 'http://192.168.10.10/api/',
+        headers: {
+            'Authorization':
+            `Bearer ${store.getState().user.entity.apiToken || localStorage.getItem('token')}`
+        },
         data: decamelizeKeys(data),
         transformResponse: axios.defaults.transformResponse.concat((data) => camelizeKeys(data)),
     }).then((response) => {
-        return response.data
+        return Promise.resolve(response.data)
     }).catch((err) => {
-        // console.log('catch api error')
         return Promise.reject(err)
     })
 }
@@ -61,7 +64,7 @@ export default store => next => action => {
 
     next(actionWith({ type: requestType }))
 
-    return callApi(endpoint, method, data, meta)
+    return callApi(endpoint, method, data, store)
         .then((payload) => next(actionWith({
             payload,
             type: successType,
