@@ -10,8 +10,6 @@ import Routines from 'pages/Routines'
 import Routine from 'pages/Routine'
 import NoMatch from 'pages/NoMatch'
 
-import Loading from 'components/Loading'
-
 class Routes extends Component {
 
     static propTypes = {

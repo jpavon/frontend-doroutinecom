@@ -1,13 +1,15 @@
 import React from 'react'
 import Layout from 'pages/Layout'
+import RoutinesContainer from 'containers/RoutinesContainer'
 
 const Routines = () => (
     <Layout
         header={(
             <title>Routines</title>
         )}
-        loader={() => import('containers/RoutinesContainer')}
-    />
+    >
+        <RoutinesContainer />
+    </Layout>
 )
 
 export default Routines

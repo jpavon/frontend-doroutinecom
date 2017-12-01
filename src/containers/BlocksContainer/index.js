@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import union from 'lodash/union'
 
 import { blocksWorkoutsSelector } from 'data/workouts/selectors'
-import { workoutsSelector } from 'data/workouts/selectors'
 
 import WorkoutsContainer from 'containers/WorkoutsContainer'
 

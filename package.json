@@ -31,7 +31,7 @@
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/ --include-path ./src",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive --include-path ./src",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive --include-path ./src --importer node_modules/node-sass-glob-importer/dist/cli.js",
     "start-js": "react-scripts start",
     "start-flow": "npm run flow check",
     "start": "npm-run-all -p watch-css start-js",

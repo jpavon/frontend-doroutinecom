@@ -2,9 +2,7 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
-import Loadable from 'react-loadable'
 import { withRouter } from 'react-router-dom'
-import axios from 'axios'
 
 import { mount } from 'data/actions'
 import { fetchUser } from 'data/user/actions'
@@ -100,11 +98,6 @@ class Layout extends Component {
     }
 
     render() {
-        const Container = Loadable({
-            loader: this.props.loader,
-            loading: Loading,
-        })
-
         return (
             <Fragment>
                 <Helmet>
@@ -119,7 +112,7 @@ class Layout extends Component {
                     <div className="container">
                         {this.state.hasError ?
                             <ErrorApp /> :
-                            <Container />
+                            this.props.children
                         }
                     </div>
                 }

@@ -1,13 +1,15 @@
 import React from 'react'
 import Layout from 'pages/Layout'
+import RegisterContainer from 'containers/RegisterContainer'
 
 const Register = () => (
     <Layout
         header={(
             <title>Register</title>
         )}
-        loader={() => import('containers/RegisterContainer')}
-    />
+    >
+        <RegisterContainer />
+    </Layout>
 )
 
 export default Register
