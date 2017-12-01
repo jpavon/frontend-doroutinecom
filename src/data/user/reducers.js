@@ -12,13 +12,9 @@ const user = (state = initialState, action) => {
 
     switch (type) {
         case types.USER_FETCH_REQUEST:
-        case types.USER_LOGIN_REQUEST:
-        case types.USER_REGISTER_REQUEST:
             return defaultFetch(state)
 
         case types.USER_FETCH_SUCCESS:
-        case types.USER_LOGIN_SUCCESS:
-        case types.USER_REGISTER_SUCCESS:
             return {
                 ...state,
                 fetchStatus: helperTypes.STATUS_LOADED,
@@ -29,8 +25,6 @@ const user = (state = initialState, action) => {
             }
 
         case types.USER_FETCH_FAILURE:
-        case types.USER_LOGIN_FAILURE:
-        case types.USER_REGISTER_FAILURE:
             return defaultFailure(state, error)
 
         case types.USER_POST_REQUEST:

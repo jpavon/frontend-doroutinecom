@@ -53,10 +53,10 @@ class Layout extends Component {
 
         if (this.props.isFetchRequired && this.props.isAuthenticated) {
             this.fetchData()
-        } else {
-            if (!this.props.isAuthenticated) {
-                this.props.removeLoading()
-            }
+        }
+
+        if (!this.props.isAuthenticated) {
+            this.props.removeLoading()
         }
     }
 
@@ -74,13 +74,20 @@ class Layout extends Component {
         this.props.displayLoading()
 
         Promise.all([
-            this.props.fetchUser(true),
+            this.props.fetchUser(),
             this.props.fetchRoutines(),
             this.props.fetchWorkouts(),
             this.props.fetchExercises(),
             this.props.fetchLifts(),
             this.props.fetchSets()
-        ]).then(() => {
+        ]).then(([userResp]) => {
+            if (userResp.error && userResp.error.message === 'Unauthenticated.') {
+                this.props.logoutUser()
+                    .then(() => {
+                        this.props.history.push('/login')
+                    })
+            }
+
             this.props.removeLoading()
         })
     }
@@ -119,7 +126,7 @@ class Layout extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    isFetchRequired: !!(state.routines.fetchStatus !== 'LOADED'),
+    isFetchRequired: !!(state.user.fetchStatus !== 'LOADED'),
     isAuthenticated: !!(state.user.entity.apiToken || localStorage.getItem('token')),
     isLoading: state.ui.isLoading
 })

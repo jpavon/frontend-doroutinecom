@@ -7,9 +7,10 @@ import { blocksWorkoutsSelector } from 'data/workouts/selectors'
 
 import WorkoutsContainer from 'containers/WorkoutsContainer'
 
-import Button from 'components/Button'
+import WorkoutsBlocks from 'components/WorkoutsBlocks/WorkoutsBlocks'
+import WorkoutsBlock from 'components/WorkoutsBlocks/WorkoutsBlock'
 
-class BlocksContainer extends Component {
+class WorkoutsBlocksContainer extends Component {
 
     static propTypes = {
         routineId: PropTypes.number.isRequired,
@@ -39,17 +40,13 @@ class BlocksContainer extends Component {
 
     render() {
         return (
-            <div>
+            <WorkoutsBlocks handleCreate={this.handleCreate}>
                 {this.state.blocks.map((blockId) => (
-                    <div key={blockId} className="block">
-                        <h2>Block {blockId}</h2>
+                    <WorkoutsBlock key={blockId} blockId={blockId}>
                         <WorkoutsContainer blockId={blockId} routineId={this.props.routineId} />
-                    </div>
+                    </WorkoutsBlock>
                 ))}
-                <div className="block-button-create">
-                    <Button onClick={this.handleCreate} className="button-small">Create New Block</Button>
-                </div>
-            </div>
+            </WorkoutsBlocks>
         )
     }
 }
@@ -61,4 +58,4 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = {
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BlocksContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(WorkoutsBlocksContainer)

@@ -1,4 +1,25 @@
 @import url(~normalize.css/normalize.css);
+*, ::after, ::before {
+  box-sizing: border-box; }
+
+body {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  color: #444;
+  overflow-y: scroll;
+  background-color: #eee;
+  margin-bottom: 10rem; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: .4rem; }
+
+p {
+  font-size: 1.1rem; }
+
+a {
+  color: #444; }
+
 .container {
   width: 100%;
   padding-right: 30px;
@@ -202,126 +223,3 @@
     margin: -2em 0 2em -2em; }
   .large-Grid--guttersXl > .Grid-cell {
     padding: 2em 0 0 2em; } }
-
-*, ::after, ::before {
-  box-sizing: border-box; }
-
-body {
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  color: #444;
-  overflow-y: scroll;
-  background-color: #eee;
-  color: #444;
-  margin-bottom: 10rem; }
-
-p {
-  font-size: 1.1rem; }
-
-a {
-  color: #444; }
-
-h2 {
-  padding: .4rem 1rem;
-  font-size: 1.2rem;
-  background-color: #fff;
-  text-transform: uppercase;
-  border-bottom: 3px solid #ccc; }
-
-.message {
-  font-size: .8rem;
-  margin: 1rem 0;
-  padding: .5rem;
-  background-color: #ab2323; }
-
-.block-row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -3px;
-  margin-left: -3px; }
-
-.block-column {
-  flex: 1;
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 3px;
-  padding-left: 3px;
-  flex: 0 0 20%;
-  max-width: 20%; }
-  @media (max-width: 860px) {
-    .block-column {
-      flex: 0 0 25%;
-      max-width: 25%; } }
-  @media (max-width: 700px) {
-    .block-column {
-      flex: 0 0 33.33333%;
-      max-width: 33.33333%; } }
-  @media (max-width: 500px) {
-    .block-column {
-      flex: 0 0 50%;
-      max-width: 50%; } }
-
-.block-button-create {
-  margin-top: 1rem; }
-
-.block-workout {
-  background-color: #fff;
-  margin-bottom: 1rem; }
-
-.block-workout-name {
-  padding: 6px 10px;
-  border-bottom: 2px solid #ccc; }
-
-.block-workout-lift-name {
-  padding: 6px 10px;
-  border-radius: 3px;
-  border-bottom: 1px solid #eee;
-  background-color: #fff; }
-
-.block-workout-lift-set {
-  padding: 4px 10px;
-  font-size: .9rem;
-  border-radius: 3px;
-  border-bottom: 1px solid #eee;
-  background-color: #fff; }
-
-.set-row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -3px;
-  margin-left: -3px;
-  justify-content: center; }
-
-.set-col {
-  flex: 1;
-  position: relative;
-  width: 100%;
-  max-width: 50%;
-  min-height: 1px;
-  padding-right: 3px;
-  padding-left: 3px; }
-
-.set-weight {
-  text-align: center; }
-
-.set-weight-value {
-  margin-top: .2rem;
-  padding: .2rem .5rem;
-  display: inline-block;
-  background-color: rgba(0, 0, 0, 0.03);
-  font-size: .7rem; }
-  .set-weight-value input {
-    width: 20%;
-    font-size: .9rem;
-    margin-right: .5rem; }
-
-.set-button {
-  text-align: right; }
-  .set-button button {
-    position: relative;
-    margin-left: .2rem; }
-
-.exercise-button-create {
-  position: relative;
-  text-align: center;
-  bottom: -10px; }

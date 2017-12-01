@@ -1,0 +1,31 @@
+.exercises-container {
+
+}
+
+.exercises-button-create {
+
+}
+
+// single
+
+.exercise {
+    background-color: #efefef;
+    padding: .3rem;
+    margin-bottom: 4px;
+    border: 1px solid #ddd;
+}
+
+// form
+
+.exercise-form {
+    background-color: #fff;
+    margin-bottom: .3rem;
+
+    select {
+        background-color: transparent;
+        height: 30px;
+        &:focus {
+            background-color: transparent;
+        }
+    }
+}

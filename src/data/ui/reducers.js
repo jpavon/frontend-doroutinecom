@@ -1,7 +1,7 @@
 import * as types from 'data/ui/types'
 
 const initialState = {
-    isEditing: false,
+    // isEditing: false,
     isLoading: true
 }
 

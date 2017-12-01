@@ -3,9 +3,9 @@ import Button from 'components/Button'
 
 import './style.css'
 
-const Lifts = ({children, ui, handleCreate}) => (
+const Lifts = ({children, handleCreate}) => (
     <div className="lifts-container">
-        <h2>
+        <h2 className="lifts-header">
             Lifts
             <Button
                 small

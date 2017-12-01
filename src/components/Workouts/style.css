@@ -1,18 +1,11 @@
-.lifts {
+.workouts-row {
   display: flex;
   flex-wrap: wrap;
   margin-right: -3px;
   margin-left: -3px; }
 
-.lifts-header {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-  text-transform: uppercase; }
-
-.lifts-button-create {
-  margin-left: 1rem; }
-
-.lift {
+.workouts-column {
+  flex: 1;
   position: relative;
   width: 100%;
   min-height: 1px;
@@ -21,32 +14,27 @@
   flex: 0 0 20%;
   max-width: 20%; }
   @media (max-width: 860px) {
-    .lift {
+    .workouts-column {
       flex: 0 0 25%;
       max-width: 25%; } }
   @media (max-width: 700px) {
-    .lift {
+    .workouts-column {
       flex: 0 0 33.33333%;
       max-width: 33.33333%; } }
   @media (max-width: 500px) {
-    .lift {
+    .workouts-column {
       flex: 0 0 50%;
       max-width: 50%; } }
 
-.lift-name {
-  position: relative;
-  background-color: #333;
-  padding: .4rem;
-  border-bottom: 3px solid gray; }
-  .lift-name input {
-    color: #fff; }
+.workouts-button-create {
+  margin-bottom: 1rem; }
 
-.lift-rm {
+.workout {
   background-color: #fff;
-  padding: .4rem; }
+  margin-bottom: 1rem; }
 
-.lift-button-delete {
-  position: absolute;
-  text-align: right;
-  right: 0px;
-  top: -3px; }
+.workout-name {
+  background-color: #333;
+  padding: 6px 10px; }
+  .workout-name input {
+    color: #fff; }

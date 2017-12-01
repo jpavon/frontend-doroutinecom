@@ -28,7 +28,7 @@ class LoginContainer extends Component {
                 this.password.value = ''
                 this.setState({ errors: resp.error.errors })
             } else {
-                localStorage.setItem('token', resp.payload.apiToken)
+                localStorage.setItem('token', resp.payload.token)
                 this.props.history.push(
                     (this.props.location.state && this.props.location.state.from) ?
                     this.props.location.state.from :

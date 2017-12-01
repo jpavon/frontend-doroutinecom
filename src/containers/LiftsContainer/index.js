@@ -30,7 +30,7 @@ class LiftsContainer extends Component {
 
     render() {
         return (
-            <Lifts ui={this.props.ui} handleCreate={this.handleCreate}>
+            <Lifts handleCreate={this.handleCreate}>
                 {this.props.lifts.length > 0 && this.props.lifts.map((lift, i) => (
                     <Lift
                         key={lift.id}

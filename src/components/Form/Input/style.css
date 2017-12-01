@@ -4,7 +4,8 @@
   background-color: transparent;
   border: 1px rgba(0, 0, 0, 0.2) dashed;
   width: 100%;
-  color: #444; }
+  color: #444;
+  font-size: .9rem; }
   .input.input-right {
     text-align: right; }
   .input.input-center {

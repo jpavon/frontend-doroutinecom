@@ -7,7 +7,7 @@ import { createRoutine, updateRoutine, removeRoutine } from 'data/routines/actio
 import { routineSelector } from 'data/routines/selectors'
 
 import LiftsContainer from 'containers/LiftsContainer'
-import BlocksContainer from 'containers/BlocksContainer'
+import WorkoutsBlocksContainer from 'containers/WorkoutsBlocksContainer'
 
 class RoutineContainer extends Component {
 
@@ -23,7 +23,7 @@ class RoutineContainer extends Component {
         return this.props.routine.id ?
             <Fragment>
                 <LiftsContainer routineId={this.props.routine.id} />
-                <BlocksContainer routineId={this.props.routine.id} />
+                <WorkoutsBlocksContainer routineId={this.props.routine.id} />
             </Fragment>
         : null
     }

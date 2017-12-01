@@ -1,6 +1,5 @@
 @import "~normalize.css/normalize.css";
 @import "variables.scss";
-@import "layout.scss";
 
 *, ::after, ::before {
     box-sizing: border-box;
@@ -11,8 +10,13 @@ body {
     color: $color-font;
     overflow-y: scroll;
     background-color: $color-background;
-    color: $color-font;
     margin-bottom: 10rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: .4rem;
 }
 
 p {
@@ -23,21 +27,7 @@ a {
     color: $color-font;
 }
 
-h2 {
-    padding: .4rem 1rem;
-    font-size: 1.2rem;
-    background-color: #fff;
-    text-transform: uppercase;
-    border-bottom: 3px solid #ccc;
-}
-
-.message {
-    font-size: .8rem;
-    margin: 1rem 0;
-    padding: .5rem;
-    background-color: #ab2323;
-}
-
+@import "layout.scss";
 @import "extra.scss";
 
 // temp

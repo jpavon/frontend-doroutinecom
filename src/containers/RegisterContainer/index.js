@@ -29,7 +29,7 @@ class LoginContainer extends Component {
                 this.passwordConfirmation.value = ''
                 this.setState({ errors: resp.error.errors })
             } else {
-                localStorage.setItem('token', resp.payload.apiToken)
+                localStorage.setItem('token', resp.payload.token)
                 this.props.history.push('/')
             }
         })

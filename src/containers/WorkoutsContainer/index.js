@@ -6,19 +6,8 @@ import { createWorkout, updateWorkout, removeWorkout } from 'data/workouts/actio
 import { workoutsSelector } from 'data/workouts/selectors'
 
 import ExercisesContainer from 'containers/ExercisesContainer'
-
-import withForm from 'components/Form/withForm'
-import Input from 'components/Form/Input'
-import Button from 'components/Button'
-
-const workoutForm = () => (
-    <Input
-        name="name"
-        placeholder="Name..."
-        alignCenter
-    />
-)
-const WorkoutForm = withForm(workoutForm)
+import Workouts from 'components/Workouts/Workouts'
+import Workout from 'components/Workouts/Workout'
 
 class WorkoutsContainer extends Component {
 
@@ -42,30 +31,21 @@ class WorkoutsContainer extends Component {
 
     render() {
         return (
-            <div>
-                <div className="block-row">
-                    {this.props.workouts.map((workout, i) => (
-                        <div key={workout.id} className="block-column">
-                            <div className="block-workout">
-                                <div className="block-workout-name">
-                                    <WorkoutForm
-                                        data={workout}
-                                        update={this.props.updateWorkout}
-                                    />
-                                </div>
-
-                                <ExercisesContainer
-                                    workoutId={workout.id}
-                                    routineId={this.props.routineId}
-                                />
-                            </div>
-                            <Button danger onClick={() => this.props.removeWorkout(workout.id)}>Remove workout</Button>
-                        </div>
-                    ))}
-                </div>
-                <br />
-                <Button onClick={this.handleCreate}>Create a new workout</Button>
-            </div>
+            <Workouts handleCreate={this.handleCreate}>
+                {this.props.workouts.map((workout, i) => (
+                    <Workout
+                        key={workout.id}
+                        workout={workout}
+                        updateWorkout={this.props.updateWorkout}
+                        removeWorkout={this.props.removeWorkout}
+                    >
+                        <ExercisesContainer
+                            workoutId={workout.id}
+                            routineId={this.props.routineId}
+                        />
+                    </Workout>
+                ))}
+            </Workouts>
         )
     }
 }
