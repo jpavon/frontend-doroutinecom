@@ -1,9 +1,3 @@
-.workouts-blocks-header {
-  font-size: 1.3rem;
-  margin-bottom: .5rem;
-  text-transform: uppercase;
-  text-align: center; }
-
 .workouts-block {
   position: relative;
   padding: 1rem;
@@ -11,8 +5,8 @@
   margin-bottom: 2rem; }
 
 .workouts-block-title {
-  font-size: 1.3rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
   text-transform: uppercase;
-  border-top: 2px solid #444;
-  padding-top: .6rem; }
+  border-top: 2px solid #ddd;
+  padding-top: .4rem; }

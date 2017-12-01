@@ -70,9 +70,7 @@ class GraphContainer extends Component {
     render() {
         console.log('graphData', this.props.graphData)
         return (
-            <div>
-                <canvas ref={(ref) => this.graph = ref} />
-            </div>
+            <canvas ref={(ref) => this.graph = ref} />
         )
     }
 }

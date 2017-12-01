@@ -5,10 +5,6 @@ import './style.css'
 
 const WorkoutsBlocks = ({children, handleCreate}) => (
     <div className="workouts-blocks-container">
-        <h2 className="workouts-blocks-header">
-            Routine
-        </h2>
-
         <div className="workouts-blocks">
             {children}
         </div>

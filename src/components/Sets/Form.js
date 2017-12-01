@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import withForm from 'components/Form/withForm'
 import Input from 'components/Form/Input'
@@ -8,7 +8,7 @@ import InputItem from 'components/Form/InputItem'
 const round = (x) => (Math.ceil(x/2.5) * 2.5)
 
 const setForm = ({data, lift, index}) => (
-    <div>
+    <Fragment>
         <div className="set-row">
             <div className="set-col">
                 Set {index + 1}
@@ -37,7 +37,7 @@ const setForm = ({data, lift, index}) => (
                 REPS @ {round(data.rmPercentage * lift.rm / 100)} <span className="set-mass">KG</span>
             </div>
         </div>
-    </div>
+    </Fragment>
 )
 
 export default withForm(setForm)
