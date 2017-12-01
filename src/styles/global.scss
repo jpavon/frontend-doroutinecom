@@ -1,6 +1,6 @@
 @import "~normalize.css/normalize.css";
-@import "scss/variables.scss";
-@import "scss/layout.scss";
+@import "variables.scss";
+@import "layout.scss";
 
 *, ::after, ::before {
     box-sizing: border-box;
@@ -37,6 +37,8 @@ h2 {
     padding: .5rem;
     background-color: #ab2323;
 }
+
+@import "extra.scss";
 
 // temp
 // label {

@@ -2,7 +2,8 @@ import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 // import 'react-dates/initialize'
-// import 'react-dates/lib/css/_datepicker.css';
+// import 'react-dates/lib/css/_datepicker.css'
+import 'styles/global.css'
 
 import Routes from 'routes'
 import configureStore from 'store/configureStore'

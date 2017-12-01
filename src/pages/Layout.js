@@ -19,13 +19,10 @@ import ErrorApp from 'components/ErrorApp'
 import Nav from 'components/Nav'
 import Loading from 'components/Loading'
 
-import 'scss/global.css'
-
 class Layout extends Component {
 
     static propTypes = {
         header: PropTypes.node.isRequired,
-        loader: PropTypes.func.isRequired,
 
         isFetchRequired: PropTypes.bool.isRequired,
         isAuthenticated: PropTypes.bool.isRequired,

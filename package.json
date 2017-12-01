@@ -30,8 +30,8 @@
     "reselect": "^3.0.1"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/ -o src/ --include-path ./src",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive --include-path ./src --importer node_modules/node-sass-glob-importer/dist/cli.js",
+    "build-css": "node-sass src/ -o src/ --include-path ./src/styles --include-path ./src/components",
+    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive --include-path ./src/styles --include-path ./src/components",
     "start-js": "react-scripts start",
     "start-flow": "npm run flow check",
     "start": "npm-run-all -p watch-css start-js",
@@ -42,6 +42,7 @@
     "flow": "flow"
   },
   "devDependencies": {
+    "node-sass": "^4.7.2",
     "react-scripts": "1.0.17",
     "redux-devtools": "^3.4.0",
     "redux-devtools-dock-monitor": "^1.1.2",
