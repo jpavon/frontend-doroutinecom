@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Form from 'components/Exercises/Form'
-import Button from 'components/Button'
+import ButtonIcon from 'components/ButtonIcon'
 
 const Exercises = ({children, exercise, lifts, updateExercise, removeExercise}) => (
     <div className="exercise">
@@ -11,7 +11,15 @@ const Exercises = ({children, exercise, lifts, updateExercise, removeExercise}) 
             lifts={lifts}
         />
         {children}
-        <Button danger onClick={() => removeExercise(exercise.id)}>Remove exercise</Button>
+        <div className="exercise-button-remove">
+            <ButtonIcon
+                remove
+                danger
+                onClick={() => removeExercise(exercise.id)}
+            >
+                &nbsp;Exercise
+            </ButtonIcon>
+        </div>
     </div>
 )
 

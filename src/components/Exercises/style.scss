@@ -2,8 +2,10 @@
 
 }
 
-.exercises-button-create {
 
+.exercises-button-create {
+    position: relative;
+    text-align: center;
 }
 
 // single
@@ -13,6 +15,12 @@
     padding: .3rem;
     margin-bottom: 4px;
     border: 1px solid #ddd;
+}
+
+.exercise-button-remove {
+    button {
+        margin-left: auto;
+    }
 }
 
 // form

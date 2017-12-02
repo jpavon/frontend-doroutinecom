@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import './style.css'
+import removeIcon from 'media/minus.svg'
+import plusIcon from 'media/plus.svg'
 
-const plusIcon = (<svg xmlns="http://www.w3.org/2000/svg" width="9" height="12" viewBox="0 0 12 16" fill="#fff"><path fillRule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5z"/></svg>)
-const removeIcon = (<svg xmlns="http://www.w3.org/2000/svg" width="9" height="12" viewBox="0 0 8 16" fill="#fff"><path fillRule="evenodd" d="M0 7v2h8V7z"/></svg>)
+import './style.css'
 
 class ButtonIcon extends Component {
 
@@ -45,9 +45,9 @@ class ButtonIcon extends Component {
                 to={to}
                 {...rest}
             >
-                {plus && plusIcon}
-                {remove && removeIcon}
-                {children}
+                {plus && <img src={plusIcon} alt="Add"/>}
+                {remove && <img src={removeIcon} alt="Remove" />}
+                {children && <div className="button-icon-text">{children}</div>}
             </button>
         )
     }

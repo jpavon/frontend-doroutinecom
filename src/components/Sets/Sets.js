@@ -8,7 +8,9 @@ const Sets = ({children, createSet, exerciseId}) => (
     <div className="sets-container">
         {children}
         <div className="sets-button-create">
-            <ButtonIcon plus onClick={() => createSet(exerciseId)} />
+            <ButtonIcon plus onClick={() => createSet(exerciseId)}>
+                &nbsp;Set
+            </ButtonIcon>
         </div>
     </div>
 )

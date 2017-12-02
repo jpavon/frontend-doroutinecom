@@ -5,13 +5,20 @@ import ButtonIcon from 'components/ButtonIcon'
 
 const Set = ({set, i, updateSet, lift, removeSet}) => (
     <div className="set">
+        <div className="set-number">
+            Set {i + 1}
+        </div>
         <Form
-            index={i}
             data={set}
             update={updateSet}
             lift={lift}
         />
-        <ButtonIcon remove danger onClick={() => removeSet(set.id)} />
+        <ButtonIcon
+            remove
+            danger
+            className="set-button-remove"
+            onClick={() => removeSet(set.id)}
+        />
     </div>
 )
 

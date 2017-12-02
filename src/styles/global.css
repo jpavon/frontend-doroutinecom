@@ -1,25 +1,4 @@
 @import url(~normalize.css/normalize.css);
-*, ::after, ::before {
-  box-sizing: border-box; }
-
-body {
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  color: #444;
-  overflow-y: scroll;
-  background-color: #eee;
-  margin-bottom: 10rem; }
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  margin: 0;
-  margin-bottom: .4rem; }
-
-p {
-  font-size: 1.1rem; }
-
-a {
-  color: #444; }
-
 .container {
   width: 100%;
   padding-right: 30px;
@@ -223,3 +202,24 @@ a {
     margin: -2em 0 2em -2em; }
   .large-Grid--guttersXl > .Grid-cell {
     padding: 2em 0 0 2em; } }
+
+*, ::after, ::before {
+  box-sizing: border-box; }
+
+body {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  color: #444;
+  overflow-y: scroll;
+  background-color: #eee;
+  margin-bottom: 10rem; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: .4rem; }
+
+p {
+  font-size: 1.1rem; }
+
+a {
+  color: #444; }

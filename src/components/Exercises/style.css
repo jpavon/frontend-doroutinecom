@@ -1,14 +1,23 @@
+.exercises-button-create {
+  position: relative;
+  text-align: center; }
+
 .exercise {
   background-color: #efefef;
   padding: .3rem;
   margin-bottom: 4px;
   border: 1px solid #ddd; }
 
+.exercise-button-remove button {
+  margin-left: auto; }
+
 .exercise-form {
   background-color: #fff;
   margin-bottom: .3rem; }
-  .exercise-form select {
-    background-color: transparent;
-    height: 30px; }
-    .exercise-form select:focus {
-      background-color: transparent; }
+
+.exercise-form select {
+  background-color: transparent;
+  height: 30px; }
+
+.exercise-form select:focus {
+  background-color: transparent; }

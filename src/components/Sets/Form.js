@@ -2,39 +2,39 @@ import React, { Fragment } from 'react'
 
 import withForm from 'components/Form/withForm'
 import Input from 'components/Form/Input'
-import InputWrapper from 'components/Form/InputWrapper'
-import InputItem from 'components/Form/InputItem'
 
 const round = (x) => (Math.ceil(x/2.5) * 2.5)
 
-const setForm = ({data, lift, index}) => (
+const setForm = ({data, lift}) => (
     <Fragment>
         <div className="set-row">
             <div className="set-col">
-                Set {index + 1}
-            </div>
-            <div className="set-col">
-                <InputWrapper>
+                <div className="set-rmPercentage">
                     <Input
                         name="rmPercentage"
                         alignRight
                     />
-                    <InputItem
-                        item="RM%"
-                    />
-                </InputWrapper>
+                    <div className="set-label">
+                        RM%
+                    </div>
+                </div>
             </div>
-
-
-        </div>
-
-        <div className="set-weight">
-            <div className="set-weight-value">
-                <Input
-                    name="reps"
-                    alignRight
-                />
-                REPS @ {round(data.rmPercentage * lift.rm / 100)} <span className="set-mass">KG</span>
+            <div className="set-col">
+                <div className="set-reps">
+                    <Input
+                        name="reps"
+                        alignRight
+                    />
+                    <div className="set-label">
+                        Reps
+                    </div>
+                </div>
+            </div>
+            <div className="set-col">
+                <div className="set-weight">
+                    {round(data.rmPercentage * lift.rm / 100)}
+                    <div className="set-mass">KG</div>
+                </div>
             </div>
         </div>
     </Fragment>

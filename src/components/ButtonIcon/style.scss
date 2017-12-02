@@ -2,6 +2,15 @@
 
 .button-icon {
     @extend .button;
+    display: flex;
+    padding: 4px;
+    font-size: .6rem;
 
-    padding: .2rem .4rem;
+    img {
+    }
+
+    .button-icon-text {
+        position: relative;
+        top: 1px;
+    }
 }
