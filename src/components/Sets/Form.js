@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 import withForm from 'components/Form/withForm'
 import Input from 'components/Form/Input'
 
-const round = (x) => (Math.ceil(x/2.5) * 2.5)
+const round = (x) => (Math.ceil(x/2.5) * 2.5 || 0)
 
 const setForm = ({data, lift}) => (
     <Fragment>

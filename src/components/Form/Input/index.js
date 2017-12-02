@@ -11,7 +11,8 @@ class Input extends Component {
     static propTypes = {
         name: PropTypes.string.isRequired,
         alignRight: PropTypes.bool,
-        alignCenter: PropTypes.bool
+        alignCenter: PropTypes.bool,
+        darkBg: PropTypes.bool
     }
 
     static contextTypes = {
@@ -31,6 +32,7 @@ class Input extends Component {
             name,
             alignRight,
             alignCenter,
+            darkBg,
             ...rest
         } = this.props
 
@@ -42,7 +44,8 @@ class Input extends Component {
                     className={classNames(
                         'input',
                         alignRight && 'input-right',
-                        alignCenter && 'input-center'
+                        alignCenter && 'input-center',
+                        darkBg && 'input-dark-bg'
                     )}
                     {...rest}
                 />

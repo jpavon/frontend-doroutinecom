@@ -11,6 +11,7 @@ const Form = () => (
                 name="name"
                 placeholder="Lift name"
                 alignCenter
+                darkBg
             />
         </div>
         <div className="lift-rm">

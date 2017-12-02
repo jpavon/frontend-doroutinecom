@@ -10,7 +10,8 @@
 .lifts-header {
   font-size: 1.3rem;
   margin-bottom: 1rem;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  text-align: center; }
 
 .lifts-button-create {
   margin-left: 1rem; }

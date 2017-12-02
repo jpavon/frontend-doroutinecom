@@ -13,28 +13,38 @@
   padding-left: 3px;
   flex: 0 0 20%;
   max-width: 20%; }
-  @media (max-width: 860px) {
-    .workouts-column {
-      flex: 0 0 25%;
-      max-width: 25%; } }
-  @media (max-width: 700px) {
-    .workouts-column {
-      flex: 0 0 33.33333%;
-      max-width: 33.33333%; } }
-  @media (max-width: 500px) {
-    .workouts-column {
-      flex: 0 0 50%;
-      max-width: 50%; } }
+
+@media (max-width: 860px) {
+  .workouts-column {
+    flex: 0 0 25%;
+    max-width: 25%; } }
+
+@media (max-width: 700px) {
+  .workouts-column {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%; } }
+
+@media (max-width: 500px) {
+  .workouts-column {
+    flex: 0 0 50%;
+    max-width: 50%; } }
 
 .workouts-button-create {
   margin-bottom: 1rem; }
 
 .workout {
+  position: relative;
   background-color: #fff;
   margin-bottom: 1rem; }
 
 .workout-name {
   background-color: #333;
   padding: 6px 10px; }
-  .workout-name input {
-    color: #fff; }
+
+.workout-name input {
+  color: #fff; }
+
+.workout-button-remove {
+  position: absolute;
+  top: -3px;
+  right: -3px; }

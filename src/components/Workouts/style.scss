@@ -40,6 +40,7 @@
 // single
 
 .workout {
+    position: relative;
     background-color: #fff;
     margin-bottom: 1rem;
 }
@@ -53,3 +54,8 @@
     }
 }
 
+.workout-button-remove {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+}

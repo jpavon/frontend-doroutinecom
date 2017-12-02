@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Form from 'components/Workouts/Form'
-import Button from 'components/Button'
+import ButtonIcon from 'components/ButtonIcon'
 
 const Workout = ({children, workout, updateWorkout, removeWorkout}) => (
     <div className="workouts-column">
@@ -14,8 +14,15 @@ const Workout = ({children, workout, updateWorkout, removeWorkout}) => (
             </div>
 
             {children}
+
+            <div className="workout-button-remove">
+                <ButtonIcon
+                    remove
+                    danger
+                    onClick={() => removeWorkout(workout.id)}
+                />
+            </div>
         </div>
-        <Button danger onClick={() => removeWorkout(workout.id)}>Remove workout</Button>
     </div>
 )
 

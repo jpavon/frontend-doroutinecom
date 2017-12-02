@@ -6,9 +6,7 @@ import Input from 'components/Form/Input'
 const Form = () => (
     <Input
         name="name"
-        placeholder="Name..."
-        alignCenter
-        darkBg
+        placeholder="Title..."
     />
 )
 export default withForm(Form)

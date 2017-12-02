@@ -9,6 +9,8 @@ import { routineSelector } from 'data/routines/selectors'
 import LiftsContainer from 'containers/LiftsContainer'
 import WorkoutsBlocksContainer from 'containers/WorkoutsBlocksContainer'
 
+import RoutineSingle from 'components/Routines/RoutineSingle'
+
 class RoutineContainer extends Component {
 
     static propTypes = {
@@ -22,8 +24,14 @@ class RoutineContainer extends Component {
     render() {
         return this.props.routine.id ?
             <Fragment>
-                <LiftsContainer routineId={this.props.routine.id} />
-                <WorkoutsBlocksContainer routineId={this.props.routine.id} />
+                <RoutineSingle
+                    routine={this.props.routine}
+                    updateRoutine={this.props.updateRoutine}
+                    removeRoutine={this.props.removeRoutine}
+                >
+                    <LiftsContainer routineId={this.props.routine.id} />
+                    <WorkoutsBlocksContainer routineId={this.props.routine.id} />
+                </RoutineSingle>
             </Fragment>
         : null
     }

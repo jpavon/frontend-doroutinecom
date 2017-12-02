@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 import { createRoutine, updateRoutine, removeRoutine } from 'data/routines/actions'
 import { routinesSelector } from 'data/routines/selectors'
 
-import Button from 'components/Button'
+import Routines from 'components/Routines/Routines'
+import Routine from 'components/Routines/Routine'
 
 class RoutinesContainer extends Component {
 
@@ -27,14 +28,14 @@ class RoutinesContainer extends Component {
 
     render() {
         return (
-            <div>
-                <Button onClick={this.handleCreate}>Create a new routine</Button>
+            <Routines handleCreate={this.handleCreate}>
                 {this.props.routines.map((routine, i) => (
-                    <div key={routine.id}>
-                        <h2><Link to={`/r/${routine.slug}`}>{routine.name || 'No name set for routine'}</Link></h2>
-                    </div>
+                    <Routine
+                        key={routine.id}
+                        routine={routine}
+                    />
                 ))}
-            </div>
+            </Routines>
         )
     }
 }

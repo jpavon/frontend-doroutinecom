@@ -17,6 +17,10 @@
         text-align: center;
     }
 
+    &.input-dark-bg {
+        border: 1px rgba(255, 255, 255, .2) dashed;
+    }
+
     &::-webkit-input-placeholder {
         color: rgba(#fff, .3);
     }
