@@ -1,5 +1,6 @@
 @import "~normalize.css/normalize.css";
 @import "variables.scss";
+@import "layout.scss";
 
 *, ::after, ::before {
     box-sizing: border-box;
@@ -26,9 +27,6 @@ p {
 a {
     color: $color-font;
 }
-
-@import "layout.scss";
-@import "extra.scss";
 
 // temp
 // label {

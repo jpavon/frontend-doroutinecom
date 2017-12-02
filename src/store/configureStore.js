@@ -6,7 +6,7 @@ import api from 'middleware/api'
 import rootReducer from 'rootReducer'
 
 let middleware = [thunk, api]
-if (!process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
     middleware = [...middleware, createLogger()]
 }
 

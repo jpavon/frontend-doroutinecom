@@ -15,7 +15,7 @@
             <mask id="mask-2" fill="white">
                 <use xlink:href="#path-1"></use>
             </mask>
-            <use id="liftlogger" fill="#FEFEFE" xlink:href="#path-1"></use>
+            <use id="liftlogger" fill="#3B3B3B" xlink:href="#path-1"></use>
         </g>
     </g>
 </svg>
