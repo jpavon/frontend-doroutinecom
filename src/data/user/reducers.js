@@ -1,6 +1,6 @@
 import * as types from 'data/user/types'
-import * as helperTypes from 'data/types'
-import { defaultFetch, defaultFailure, defaultMounted } from 'data/helpers'
+import * as helperTypes from 'data/shared'
+import { defaultRequest, defaultFailure } from 'data/shared'
 
 const initialState = {
     fetchStatus: helperTypes.STATUS_NONE,
@@ -12,7 +12,7 @@ const user = (state = initialState, action) => {
 
     switch (type) {
         case types.USER_FETCH_REQUEST:
-            return defaultFetch(state)
+            return defaultRequest(state)
 
         case types.USER_FETCH_SUCCESS:
             return {
@@ -28,7 +28,7 @@ const user = (state = initialState, action) => {
             return defaultFailure(state, error)
 
         case types.USER_POST_REQUEST:
-            return defaultFetch(state)
+            return defaultRequest(state)
 
         case types.USER_POST_SUCCESS:
             return {
@@ -44,7 +44,7 @@ const user = (state = initialState, action) => {
             return defaultFailure(state, error)
 
         case types.USER_PUT_REQUEST:
-            return defaultFetch(state)
+            return defaultRequest(state)
 
         case types.USER_PUT_SUCCESS:
             return {
@@ -60,7 +60,7 @@ const user = (state = initialState, action) => {
             return defaultFailure(state, error)
 
         case types.USER_DELETE_REQUEST:
-            return defaultFetch(state)
+            return defaultRequest(state)
 
         case types.USER_DELETE_SUCCESS:
             return {
@@ -72,9 +72,6 @@ const user = (state = initialState, action) => {
 
         case types.USER_DELETE_FAILURE:
             return defaultFailure(state, error)
-
-        case helperTypes.MOUNTED:
-            return defaultMounted(state)
 
         default:
             return state

@@ -2,7 +2,7 @@ import debounce from 'lodash/debounce'
 
 import { CALL_API } from 'middleware/api'
 import * as types from 'data/user/types'
-import { shouldFetch } from 'data/helpers'
+import { shouldFetch } from 'data/shared'
 
 const getUser = () => ({
     [CALL_API]: {

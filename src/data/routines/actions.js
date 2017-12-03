@@ -2,7 +2,7 @@ import debounce from 'lodash/debounce'
 
 import { CALL_API } from 'middleware/api'
 import * as types from 'data/routines/types'
-import { shouldFetch } from 'data/helpers'
+import { shouldFetch } from 'data/shared'
 
 const getRoutines = () => ({
     [CALL_API]: {

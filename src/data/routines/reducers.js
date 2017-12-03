@@ -1,6 +1,12 @@
 import * as types from 'data/routines/types'
-import * as helperTypes from 'data/types'
-import { updateItem, insertItem, deleteItem, defaultFetch, defaultFailure, defaultMounted } from 'data/helpers'
+import * as helperTypes from 'data/shared'
+import {
+    updateItem,
+    insertItem,
+    deleteItem,
+    defaultRequest,
+    defaultFailure
+} from 'data/shared'
 
 const initialState = {
     fetchStatus: helperTypes.STATUS_NONE,
@@ -12,7 +18,7 @@ const routines = (state = initialState, action) => {
 
     switch (type) {
         case types.ROUTINES_FETCH_REQUEST:
-            return defaultFetch(state)
+            return defaultRequest(state)
 
         case types.ROUTINES_FETCH_SUCCESS:
             return {
@@ -25,7 +31,7 @@ const routines = (state = initialState, action) => {
             return defaultFailure(state, error)
 
         case types.ROUTINES_POST_REQUEST:
-            return defaultFetch(state)
+            return defaultRequest(state)
 
         case types.ROUTINES_POST_SUCCESS:
             return {
@@ -42,7 +48,7 @@ const routines = (state = initialState, action) => {
             }
 
         case types.ROUTINES_PUT_REQUEST:
-            return defaultFetch(state)
+            return defaultRequest(state)
 
         case types.ROUTINES_PUT_SUCCESS:
             return {
@@ -55,7 +61,7 @@ const routines = (state = initialState, action) => {
             return defaultFailure(state, error)
 
         case types.ROUTINES_DELETE_REQUEST:
-            return defaultFetch(state)
+            return defaultRequest(state)
 
         case types.ROUTINES_DELETE_SUCCESS:
             return {
@@ -66,9 +72,6 @@ const routines = (state = initialState, action) => {
 
         case types.ROUTINES_DELETE_FAILURE:
             return defaultFailure(state, error)
-
-        case helperTypes.MOUNTED:
-            return defaultMounted(state)
 
         default:
             return state
