@@ -21,22 +21,22 @@ export const fetchUser = (force = false) => (dispatch, getState) => {
 }
 
 
-const postUser = (data) => ({
-    [CALL_API]: {
-        types: [
-            types.USER_POST_REQUEST,
-            types.USER_POST_SUCCESS,
-            types.USER_POST_FAILURE
-        ],
-        endpoint: 'user',
-        method: 'post',
-        data
-    }
-})
+// const postUser = (data) => ({
+//     [CALL_API]: {
+//         types: [
+//             types.USER_POST_REQUEST,
+//             types.USER_POST_SUCCESS,
+//             types.USER_POST_FAILURE
+//         ],
+//         endpoint: 'user',
+//         method: 'post',
+//         data
+//     }
+// })
 
-export const createUser = (data) => (dispatch, getState) => {
-    return dispatch(postUser(data))
-}
+// export const createUser = (data) => (dispatch, getState) => {
+//     return dispatch(postUser(data))
+// }
 
 const putUser = (data) => ({
     [CALL_API]: {

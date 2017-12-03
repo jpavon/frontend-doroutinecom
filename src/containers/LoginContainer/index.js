@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import { loginUser } from 'data/user/actions'
+import userAuth from 'utils/userAuth'
 
 import Login from 'components/Login'
 
@@ -28,12 +29,7 @@ class LoginContainer extends Component {
                 this.password.value = ''
                 this.setState({ errors: resp.error.errors })
             } else {
-                localStorage.setItem('token', resp.payload.token)
-                this.props.history.push(
-                    (this.props.location.state && this.props.location.state.from) ?
-                    this.props.location.state.from :
-                    '/'
-                )
+                userAuth(resp.payload.token, this.props.history, this.props.location)
             }
         })
     }

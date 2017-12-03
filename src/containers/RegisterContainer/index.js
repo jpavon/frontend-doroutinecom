@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import { registerUser } from 'data/user/actions'
+import userAuth from 'utils/userAuth'
 
 class LoginContainer extends Component {
 
@@ -29,8 +30,7 @@ class LoginContainer extends Component {
                 this.passwordConfirmation.value = ''
                 this.setState({ errors: resp.error.errors })
             } else {
-                localStorage.setItem('token', resp.payload.token)
-                this.props.history.push('/')
+                userAuth(resp.payload.token, this.props.history, this.props.location)
             }
         })
     }
