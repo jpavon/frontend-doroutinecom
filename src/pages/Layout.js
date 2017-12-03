@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { mount } from 'data/actions'
 import { fetchUser } from 'data/user/actions'
 import { fetchRoutines } from 'data/routines/actions'
 import { fetchWorkouts } from 'data/workouts/actions'
@@ -28,7 +27,6 @@ class Layout extends Component {
         isAuthenticated: PropTypes.bool.isRequired,
         isLoading: PropTypes.bool.isRequired,
 
-        mount: PropTypes.func.isRequired,
         fetchUser: PropTypes.func.isRequired,
         fetchRoutines: PropTypes.func.isRequired,
         fetchWorkouts: PropTypes.func.isRequired,
@@ -49,8 +47,6 @@ class Layout extends Component {
     }
 
     componentWillMount() {
-        this.props.mount()
-
         if (this.props.isFetchRequired && this.props.isAuthenticated) {
             this.fetchData()
         }
@@ -132,7 +128,6 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = {
-    mount,
     fetchUser,
     fetchRoutines,
     fetchWorkouts,

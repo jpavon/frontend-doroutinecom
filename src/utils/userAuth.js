@@ -1,5 +1,3 @@
-
-
 const userAuth = (token, history, location) => {
     localStorage.setItem('token', token)
 
