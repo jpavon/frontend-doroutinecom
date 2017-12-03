@@ -1,13 +1,14 @@
 import { createSelector } from 'reselect'
 
-const formatUser = (user) => ({
-    ...user,
-    isAuthenticated: !!user.id
+import User from 'data/user/schema'
+
+const formatUser = (user) => User({
+    ...user
 })
 
-export const userSelector = (blockId) => createSelector(
+export const userSelector = createSelector(
     [
-        state => state.user
+        state => state.user.entity
     ],
     (user) => formatUser(user)
 )

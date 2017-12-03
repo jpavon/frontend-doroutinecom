@@ -8,6 +8,7 @@ import Login from 'pages/Login'
 import Register from 'pages/Register'
 import Routines from 'pages/Routines'
 import Routine from 'pages/Routine'
+import Settings from 'pages/Settings'
 import NoMatch from 'pages/NoMatch'
 
 class Routes extends Component {
@@ -49,6 +50,7 @@ class Routes extends Component {
                 <PrivateRoute exact path="/" component={Home} />
                 <PrivateRoute exact path="/routines" component={Routines} />
                 <PrivateRoute exact path="/r/:routineSlug" component={Routine} />
+                <PrivateRoute exact path="/settings" component={Settings} />
 
                 <PrivateRoute component={NoMatch}/>
             </Switch>

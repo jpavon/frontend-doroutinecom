@@ -1,6 +1,8 @@
 import { createSelector } from 'reselect'
 
-const formatWorkout = (workout) => ({
+import Workout from 'data/workouts/schema'
+
+const formatWorkout = (workout) => Workout({
     ...workout,
 })
 

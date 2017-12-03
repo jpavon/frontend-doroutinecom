@@ -11,15 +11,13 @@
   font-size: .8rem;
   background-color: #fff;
   text-decoration: none; }
-
-.routine a:hover {
-  color: blue; }
+  .routine a:hover {
+    color: blue; }
 
 .routine-single-form {
   padding: 1rem;
   margin-bottom: 2rem;
   background-color: #fff; }
-
-.routine-single-form input {
-  padding: .5rem;
-  font-size: 2rem; }
+  .routine-single-form input {
+    padding: .5rem;
+    font-size: 2rem; }

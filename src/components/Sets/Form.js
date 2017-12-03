@@ -3,9 +3,7 @@ import React, { Fragment } from 'react'
 import withForm from 'components/Form/withForm'
 import Input from 'components/Form/Input'
 
-const round = (x) => (Math.ceil(x/2.5) * 2.5 || 0)
-
-const setForm = ({data, lift}) => (
+const setForm = ({data}) => (
     <Fragment>
         <div className="set-row">
             <div className="set-col">
@@ -32,7 +30,7 @@ const setForm = ({data, lift}) => (
             </div>
             <div className="set-col">
                 <div className="set-weight">
-                    {round(data.rmPercentage * lift.rm / 100)}
+                    {data.weight}
                     <div className="set-mass">KG</div>
                 </div>
             </div>

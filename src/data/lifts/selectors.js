@@ -1,6 +1,8 @@
 import { createSelector } from 'reselect'
 
-const formatLift = (lift) => ({
+import Lift from 'data/lifts/schema'
+
+const formatLift = (lift) => Lift({
     ...lift
 })
 
@@ -20,13 +22,14 @@ export const liftSelector = (id) => createSelector(
     (lifts) => formatLift(lifts.find((lift) => (lift.id === id)))
 )
 
-export const exerciseLiftSelector = (exerciseId) => createSelector(
+export const liftExerciseSelector = (exerciseId) => createSelector(
     [
         (state) => state.exercises.entities,
         (state) => state.lifts.entities,
     ],
     (exercises, lifts) => {
         const exercise = exercises.find((exercise) => (exercise.id === exerciseId))
-        return formatLift(lifts.find((lift) => (lift.id === exercise.liftId)))
+        const lift = lifts.find((lift) => (lift.id === exercise.liftId))
+        return lift && Object.keys(lift).length !== 0 && formatLift(lift)
     }
 )

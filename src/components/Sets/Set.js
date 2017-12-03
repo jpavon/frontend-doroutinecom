@@ -3,7 +3,7 @@ import React from 'react'
 import Form from 'components/Sets/Form'
 import ButtonIcon from 'components/ButtonIcon'
 
-const Set = ({set, i, updateSet, lift, removeSet}) => (
+const Set = ({set, i, updateSet, removeSet}) => (
     <div className="set">
         <div className="set-number">
             Set {i + 1}
@@ -11,7 +11,6 @@ const Set = ({set, i, updateSet, lift, removeSet}) => (
         <Form
             data={set}
             update={updateSet}
-            lift={lift}
         />
         <ButtonIcon
             remove
