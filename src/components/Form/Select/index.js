@@ -52,10 +52,10 @@ class Select extends Component {
                     }
                 </select>
                 <ErrorMessage
-                    error={options < 1 ? noOptionsMessage : ''}
+                    error={options < 1 && noOptionsMessage}
                 />
                 <ErrorMessage
-                    error={this.context.errors[name] || ''}
+                    error={this.context.errors[name]}
                 />
             </Fragment>
         )

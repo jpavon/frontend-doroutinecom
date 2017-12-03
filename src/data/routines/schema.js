@@ -3,7 +3,7 @@ import validateData from 'utils/validateData'
 const Routine = validateData({
     id: 'number',
     userId: 'number',
-    name: 'string',
+    name: 'string|null',
     slug: 'string',
     weightMeasure: 'string',
     weightRoundTo: 'number',

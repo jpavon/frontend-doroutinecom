@@ -50,7 +50,7 @@ class Input extends Component {
                     {...rest}
                 />
                 <ErrorMessage
-                    error={this.context.errors[name] || ''}
+                    error={this.context.errors[name]}
                 />
             </Fragment>
         )

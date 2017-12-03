@@ -10,5 +10,5 @@ export const userSelector = createSelector(
     [
         state => state.user.entity
     ],
-    (user) => formatUser(user)
+    (user) => Object.keys(user).length > 0 && formatUser(user)
 )
