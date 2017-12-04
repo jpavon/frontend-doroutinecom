@@ -28,7 +28,7 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
-    "superstruct": "^0.4.0"
+    "superstruct": "^0.4.3"
   },
   "scripts": {
     "build-css": "node-sass src/ -o src/ --include-path ./src/styles --include-path ./src/components",

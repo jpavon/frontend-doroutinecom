@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { liftsSelector } from 'data/lifts/selectors'
+import { liftsRoutineSelector } from 'data/lifts/selectors'
 import { createLift, updateLift, removeLift } from 'data/lifts/actions'
 
 import Lifts from 'components/Lifts/Lifts'
@@ -46,7 +46,7 @@ class LiftsContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    lifts: liftsSelector(props.routineId)(state)
+    lifts: liftsRoutineSelector(props.routineId)(state)
 })
 
 const mapDispatchToProps = {

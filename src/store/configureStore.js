@@ -7,11 +7,10 @@ import rootReducer from 'rootReducer'
 
 const middleware = [thunk, api]
 if (process.env.NODE_ENV !== 'production') {
-    middleware.push(
-        createLogger({
-            collapsed: true
-        })
-    )
+    const logger = createLogger({
+        collapsed: true
+    })
+    middleware.push(logger)
 }
 
 const configureStore = (preloadedState) => {

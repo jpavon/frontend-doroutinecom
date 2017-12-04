@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { createExercise, updateExercise, removeExercise } from 'data/exercises/actions'
 import { exercisesSelector } from 'data/exercises/selectors'
-import { liftsSelector } from 'data/lifts/selectors'
+import { liftsRoutineSelector } from 'data/lifts/selectors'
 
 import SetsContainer from 'containers/SetsContainer'
 
@@ -46,7 +46,7 @@ class ExercisesContainer extends Component {
 
 const mapStateToProps = (state, props) => ({
     exercises: exercisesSelector(props.workoutId)(state),
-    lifts: liftsSelector(props.routineId)(state)
+    lifts: liftsRoutineSelector(props.routineId)(state)
 })
 
 const mapDispatchToProps = {

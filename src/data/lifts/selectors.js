@@ -6,7 +6,7 @@ const formatLift = (lift) => Lift({
     ...lift
 })
 
-export const liftsSelector = (routineId) => createSelector(
+export const liftsRoutineSelector = (routineId) => createSelector(
     [
         (state) => state.lifts.entities
     ],
