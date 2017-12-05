@@ -5,11 +5,11 @@ import withForm from 'components/Form/withForm'
 import Input from 'components/Form/Input'
 import Checkbox from 'components/Form/Checkbox'
 
-const Form = ({state}) => (
+const Form = ({hocState}) => (
     <Fragment>
         <div className={classNames(
             'workout-name',
-            state.data.isDone && 'workout-name--is-done'
+            hocState.data.isDone && 'workout-name--is-done'
         )}>
             <Input
                 name="name"
@@ -17,12 +17,12 @@ const Form = ({state}) => (
                 align="center"
                 background="dark"
             />
+
+
+            <Checkbox
+                name="isDone"
+            />
         </div>
-
-
-        <Checkbox
-            name="isDone"
-        />
     </Fragment>
 )
 export default withForm(Form)

@@ -26,7 +26,7 @@ class Button extends Component {
             danger,
             small,
             ...rest
-        } = this.props;
+        } = this.props
 
         const Element = to ? Link : href ? 'a' : 'button'
 

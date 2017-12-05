@@ -29,8 +29,8 @@ export default function withForm(WrappedComponent) {
         }
 
         handleChange = (event, name) => {
-            const target = event.target;
-            const value = target.type === 'checkbox' ? target.checked : target.value;
+            const target = event.target
+            const value = target.type === 'checkbox' ? target.checked : target.value
 
             this.setState((prevState) => ({
                 data: {
@@ -55,7 +55,10 @@ export default function withForm(WrappedComponent) {
 
         render() {
             return (
-                <WrappedComponent {...this.props} state={this.state} />
+                <WrappedComponent
+                    {...this.props}
+                    hocState={this.state}
+                />
             )
         }
     }
