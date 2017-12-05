@@ -37,7 +37,7 @@ export const fetchUser = (force = false) => (dispatch, getState) => {
 //     return dispatch(postUser(data))
 // }
 
-const putUser = (data) => ({
+const putUser = (id, data) => ({
     [CALL_API]: {
         types: [
             types.USER_PUT_REQUEST,

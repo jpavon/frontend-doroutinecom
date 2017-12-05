@@ -10,7 +10,7 @@ const WorkoutsBlocks = ({children, handleCreate}) => (
         </div>
 
         <div className="workouts-blocks-button-create">
-            <Button onClick={handleCreate} className="button-small">Create New Block</Button>
+            <Button onClick={handleCreate} className="button-small">Create a New Block</Button>
         </div>
     </div>
 )

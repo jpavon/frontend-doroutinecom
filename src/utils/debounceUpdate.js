@@ -7,7 +7,7 @@ const dispatchUpdate = (dispatch, resolve) => (
 const debounced = debounce(dispatchUpdate, 300)
 
 const debounceUpdate = (dispatch) => (
-    new Promise(debounced.bind(null, dispatch))
+    new Promise((resolve) => debounced(dispatch, resolve))
 )
 
 export default debounceUpdate

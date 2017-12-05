@@ -19,7 +19,7 @@ class WorkoutsBlocksContainer extends Component {
     }
 
     state = {
-        blocks: this.props.blocks
+        blocks: this.props.blocks.length > 0 ? this.props.blocks : [1]
     }
 
     componentWillReceiveProps(nextProps) {
