@@ -6,7 +6,6 @@ const Workout = validateData({
     routineId: 'number',
     blockId: 'number',
     name: 'string|null',
-    day: 'null',
     notes: 'string|null',
     createdAt: 'string',
     updatedAt: 'string'
