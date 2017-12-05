@@ -29,7 +29,8 @@ export default function withForm(WrappedComponent) {
         }
 
         handleChange = (event, name) => {
-            const value = event.target.value
+            const target = event.target;
+            const value = target.type === 'checkbox' ? target.checked : target.value;
 
             this.setState((prevState) => ({
                 data: {
