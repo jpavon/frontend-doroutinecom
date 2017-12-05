@@ -1,8 +1,7 @@
-import debounce from 'lodash/debounce'
-
 import { CALL_API } from 'middleware/api'
 import * as types from 'data/user/types'
 import { shouldFetch } from 'data/shared'
+import debounceUpdate from 'utils/debounceUpdate'
 
 const getUser = () => ({
     [CALL_API]: {
@@ -51,14 +50,8 @@ const putUser = (data) => ({
     }
 })
 
-const updateUserAction = (dispatch, data, resolve, reject ) => (
-    dispatch(putUser(data)).then(resolve).catch(reject)
-)
-
-const debounceUpdateUser = debounce(updateUserAction, 300)
-
-export const updateUser = (data) => (dispatch, getState) => {
-    return new Promise(debounceUpdateUser.bind(null, dispatch, data))
+export const updateUser = (id, data) => (dispatch, getState) => {
+    return debounceUpdate(() => dispatch(putUser(id, data)))
 }
 
 // const deleteUser = () => ({

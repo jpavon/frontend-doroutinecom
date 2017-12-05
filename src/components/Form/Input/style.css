@@ -6,17 +6,24 @@
   width: 100%;
   color: #444;
   font-size: .9rem; }
-  .input.input-right {
-    text-align: right; }
-  .input.input-center {
-    text-align: center; }
-  .input.input-dark-bg {
-    border: 1px rgba(255, 255, 255, 0.2) dashed; }
-  .input::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 0.3); }
-  .input:-moz-placeholder {
-    color: rgba(255, 255, 255, 0.3); }
-  .input::-moz-placeholder {
-    color: rgba(255, 255, 255, 0.3); }
-  .input:-ms-input-placeholder {
-    color: rgba(255, 255, 255, 0.3); }
+
+.input.input-right {
+  text-align: right; }
+
+.input.input-center {
+  text-align: center; }
+
+.input.input-background-dark {
+  border: 1px rgba(255, 255, 255, 0.2) dashed; }
+
+.input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.3); }
+
+.input:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.3); }
+
+.input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.3); }
+
+.input:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.3); }

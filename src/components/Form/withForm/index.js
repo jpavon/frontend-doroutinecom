@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+export const FORM_CONTEXT = '__FORM_CONTEXT__'
+
 export default function withForm(WrappedComponent) {
     return class WithForm extends Component {
 
@@ -10,15 +12,15 @@ export default function withForm(WrappedComponent) {
         }
 
         static childContextTypes = {
-            data: PropTypes.object.isRequired,
-            errors: PropTypes.object.isRequired,
-            onChange: PropTypes.func.isRequired,
+            [FORM_CONTEXT]: PropTypes.object.isRequired
         }
 
         getChildContext = () => ({
-            data: this.state.data,
-            errors: this.state.errors,
-            onChange: this.handleChange,
+            [FORM_CONTEXT] : {
+                data: this.state.data,
+                errors: this.state.errors,
+                onChange: this.handleChange
+            }
         })
 
         state = {
@@ -46,6 +48,9 @@ export default function withForm(WrappedComponent) {
                                 errors: {}
                             })
                         }
+                    })
+                    .catch((error) => {
+                        console.log(error)
                     })
             })
         }

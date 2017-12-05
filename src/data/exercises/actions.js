@@ -1,8 +1,7 @@
-import debounce from 'lodash/debounce'
-
 import { CALL_API } from 'middleware/api'
 import * as types from 'data/exercises/types'
 import { shouldFetch } from 'data/shared'
+import debounceUpdate from 'utils/debounceUpdate'
 
 const getExercises = () => ({
     [CALL_API]: {
@@ -56,14 +55,8 @@ const putExercise = (id, data) => ({
     }
 })
 
-const updateExerciseAction = (dispatch, id, data, resolve, reject ) => (
-    dispatch(putExercise(id, data)).then(resolve).catch(reject)
-)
-
-const debounceUpdateExercise = debounce(updateExerciseAction, 300)
-
 export const updateExercise = (id, data) => (dispatch, getState) => {
-    return new Promise(debounceUpdateExercise.bind(null, dispatch, id, data))
+    return debounceUpdate(() => dispatch(putExercise(id, data)))
 }
 
 const deleteExercise = (id) => ({

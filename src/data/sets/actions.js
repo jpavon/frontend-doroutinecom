@@ -1,8 +1,7 @@
-import debounce from 'lodash/debounce'
-
 import { CALL_API } from 'middleware/api'
 import * as types from 'data/sets/types'
 import { shouldFetch } from 'data/shared'
+import debounceUpdate from 'utils/debounceUpdate'
 
 const getSets = () => ({
     [CALL_API]: {
@@ -56,14 +55,8 @@ const putSet = (id, data) => ({
     }
 })
 
-const updateSetAction = (dispatch, id, data, resolve, reject ) => (
-    dispatch(putSet(id, data)).then(resolve).catch(reject)
-)
-
-const debounceUpdateSet = debounce(updateSetAction, 300)
-
 export const updateSet = (id, data) => (dispatch, getState) => {
-    return new Promise(debounceUpdateSet.bind(null, dispatch, id, data))
+    return debounceUpdate(() => dispatch(putSet(id, data)))
 }
 
 const deleteSet = (id) => ({

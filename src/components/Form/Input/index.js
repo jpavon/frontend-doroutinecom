@@ -1,60 +1,51 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import { FORM_CONTEXT } from 'components/Form/withForm'
 import ErrorMessage from 'components/ErrorMessage'
 
 import './style.css'
 
-class Input extends Component {
+const Input = (props, context) => {
 
-    static propTypes = {
-        name: PropTypes.string.isRequired,
-        alignRight: PropTypes.bool,
-        alignCenter: PropTypes.bool,
-        darkBg: PropTypes.bool
-    }
+    const {
+        name,
+        align,
+        background,
+        ...rest
+    } = props
 
-    static contextTypes = {
-        data: PropTypes.object.isRequired,
-        errors: PropTypes.object.isRequired,
-        onChange: PropTypes.func.isRequired,
-    }
+    const { data, errors, onChange } = context[FORM_CONTEXT]
 
-    // shouldComponentUpdate(nextProps, nextState, nextContext) {
-    //     const differentData = this.context.data[this.props.name] !== nextContext.data[this.props.name]
-    //     const differentErrors = this.context.errors[this.props.name] !== nextContext.errors[this.props.name]
-    //     return differentData || differentErrors
-    // }
+    return (
+        <Fragment>
+            <input
+                value={data[name] || ''}
+                onChange={(event) => onChange(event, name)}
+                className={classNames(
+                    'input',
+                    align === 'right' && 'input-right',
+                    align === 'center' && 'input-center',
+                    background === 'dark' && 'input-background-dark'
+                )}
+                {...rest}
+            />
+            <ErrorMessage
+                error={errors[name]}
+            />
+        </Fragment>
+    )
+}
 
-    render() {
-        const {
-            name,
-            alignRight,
-            alignCenter,
-            darkBg,
-            ...rest
-        } = this.props
+Input.propTypes = {
+    name: PropTypes.string.isRequired,
+    align: PropTypes.oneOf(['right', 'center']),
+    background: PropTypes.oneOf(['dark']),
+}
 
-        return (
-            <Fragment>
-                <input
-                    value={this.context.data[name] || ''}
-                    onChange={(event) => this.context.onChange(event, name)}
-                    className={classNames(
-                        'input',
-                        alignRight && 'input-right',
-                        alignCenter && 'input-center',
-                        darkBg && 'input-dark-bg'
-                    )}
-                    {...rest}
-                />
-                <ErrorMessage
-                    error={this.context.errors[name]}
-                />
-            </Fragment>
-        )
-    }
+Input.contextTypes = {
+    [FORM_CONTEXT]: PropTypes.object.isRequired
 }
 
 export default Input

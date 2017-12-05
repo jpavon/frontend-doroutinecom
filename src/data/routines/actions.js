@@ -1,8 +1,7 @@
-import debounce from 'lodash/debounce'
-
 import { CALL_API } from 'middleware/api'
 import * as types from 'data/routines/types'
 import { shouldFetch } from 'data/shared'
+import debounceUpdate from 'utils/debounceUpdate'
 
 const getRoutines = () => ({
     [CALL_API]: {
@@ -54,14 +53,8 @@ const putRoutine = (id, data) => ({
     }
 })
 
-const updateRoutineAction = (dispatch, id, data, resolve, reject ) => (
-    dispatch(putRoutine(id, data)).then(resolve).catch(reject)
-)
-
-const debounceUpdateRoutine = debounce(updateRoutineAction, 300)
-
 export const updateRoutine = (id, data) => (dispatch, getState) => {
-    return new Promise(debounceUpdateRoutine.bind(null, dispatch, id, data))
+    return debounceUpdate(() => dispatch(putRoutine(id, data)))
 }
 
 const deleteRoutine = (id) => ({

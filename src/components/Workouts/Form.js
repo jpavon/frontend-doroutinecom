@@ -7,8 +7,8 @@ const Form = () => (
     <Input
         name="name"
         placeholder="Name..."
-        alignCenter
-        darkBg
+        align="center"
+        background="dark"
     />
 )
 export default withForm(Form)

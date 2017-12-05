@@ -10,8 +10,8 @@ const Form = () => (
             <Input
                 name="name"
                 placeholder="Lift name"
-                alignCenter
-                darkBg
+                align="center"
+                background="dark"
             />
         </div>
         <div className="lift-rm">
@@ -19,7 +19,7 @@ const Form = () => (
                 <Input
                     name="rm"
                     placeholder="Lift RM"
-                    alignRight
+                    align="right"
                 />
                 <InputItem
                     item="kg RM"

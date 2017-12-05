@@ -1,8 +1,7 @@
-import debounce from 'lodash/debounce'
-
 import { CALL_API } from 'middleware/api'
 import * as types from 'data/lifts/types'
 import { shouldFetch } from 'data/shared'
+import debounceUpdate from 'utils/debounceUpdate'
 
 const getLifts = () => ({
     [CALL_API]: {
@@ -56,14 +55,8 @@ const putLift = (id, data) => ({
     }
 })
 
-const updateLiftAction = (dispatch, id, data, resolve, reject ) => (
-    dispatch(putLift(id, data)).then(resolve).catch(reject)
-)
-
-const debounceUpdateLift = debounce(updateLiftAction, 300)
-
 export const updateLift = (id, data) => (dispatch, getState) => {
-    return new Promise(debounceUpdateLift.bind(null, dispatch, id, data))
+    return debounceUpdate(() => dispatch(putLift(id, data)))
 }
 
 const deleteLift = (id) => ({

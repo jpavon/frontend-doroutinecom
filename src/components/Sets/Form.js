@@ -10,7 +10,7 @@ const setForm = ({data}) => (
                 <div className="set-rmPercentage">
                     <Input
                         name="rmPercentage"
-                        alignRight
+                        align="right"
                     />
                     <div className="set-label">
                         RM%
@@ -21,7 +21,7 @@ const setForm = ({data}) => (
                 <div className="set-reps">
                     <Input
                         name="reps"
-                        alignRight
+                        align="right"
                     />
                     <div className="set-label">
                         Reps

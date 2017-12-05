@@ -1,65 +1,59 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
+
+import { FORM_CONTEXT } from 'components/Form/withForm'
 import ErrorMessage from 'components/ErrorMessage'
 
 import './style.css'
 
-class Select extends Component {
+const Select = (props, context) => {
 
-    static propTypes = {
-        name: PropTypes.string.isRequired,
-        options: PropTypes.array.isRequired,
-        defaultOptionMessage: PropTypes.string.isRequired,
-        noOptionsMessage: PropTypes.string,
-    }
+    const {
+        name,
+        options,
+        defaultOptionMessage,
+        noOptionsMessage,
+        ...rest
+    } = props
 
-    static contextTypes = {
-        data: PropTypes.object.isRequired,
-        errors: PropTypes.object.isRequired,
-        onChange: PropTypes.func.isRequired,
-    }
+    const { data, errors, onChange } = context[FORM_CONTEXT]
 
-    // shouldComponentUpdate(nextProps, nextState, nextContext) {
-    //     const differentData = this.context.data[this.props.name] !== nextContext.data[this.props.name]
-    //     const differentErrors = this.context.errors[this.props.name] !== nextContext.errors[this.props.name]
-    //     return differentData || differentErrors
-    // }
+    const value = data[name]
 
-    render() {
-        const {
-            name,
-            options,
-            defaultOptionMessage,
-            noOptionsMessage,
-            ...rest
-        } = this.props
+    return (
+        <Fragment>
+            <select
+                value={value || ''}
+                onChange={(event) => onChange(event, name)}
+                className="select"
+                {...rest}
+            >
+                {!value && <option>{defaultOptionMessage}</option>}
+                {options.length > 0 &&
+                    options.map((option, i) => (
+                        <option key={i} value={option.id}>{option.name}</option>
+                    ))
+                }
+            </select>
+            <ErrorMessage
+                error={options < 1 && noOptionsMessage}
+            />
+            <ErrorMessage
+                error={errors[name]}
+            />
+        </Fragment>
+    )
+}
 
-        const value = this.context.data[this.props.name]
+Select.propTypes = {
+    name: PropTypes.string.isRequired,
+    options: PropTypes.array.isRequired,
+    defaultOptionMessage: PropTypes.string,
+    noOptionsMessage: PropTypes.string
+}
 
-        return (
-            <Fragment>
-                <select
-                    value={value || ''}
-                    onChange={(event) => this.context.onChange(event, this.props.name)}
-                    className="select"
-                    {...rest}
-                >
-                    {!value && <option>{defaultOptionMessage}</option>}
-                    {options.length > 0 &&
-                        options.map((option, i) => (
-                            <option key={i} value={option.id}>{option.name}</option>
-                        ))
-                    }
-                </select>
-                <ErrorMessage
-                    error={options < 1 && noOptionsMessage}
-                />
-                <ErrorMessage
-                    error={this.context.errors[name]}
-                />
-            </Fragment>
-        )
-    }
+Select.contextTypes = {
+    [FORM_CONTEXT]: PropTypes.object.isRequired
 }
 
 export default Select
