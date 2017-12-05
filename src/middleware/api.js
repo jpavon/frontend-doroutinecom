@@ -15,7 +15,7 @@ const callApi = (endpoint, method, data, store) => {
     }).then((response) => {
         return Promise.resolve(response.data)
     }).catch((err) => {
-        return Promise.reject(err)
+        return Promise.reject(err.response.data)
     })
 }
 
@@ -72,6 +72,6 @@ export default store => next => action => {
         })))
         .catch((error) => next(actionWith({
             type: failureType,
-            error: error.response.data || 'Something bad happened'
+            error: error || 'Something bad happened'
         })))
 }

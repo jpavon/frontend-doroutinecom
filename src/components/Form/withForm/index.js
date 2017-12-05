@@ -38,19 +38,16 @@ export default function withForm(WrappedComponent) {
                 }
             }), () => {
                 this.props.update(this.props.data.id, { [name]: value })
-                    .then((payload) => {
-                        if (payload.error) {
+                    .then((resp) => {
+                        if (resp.error) {
                             this.setState({
-                                errors: payload.error.errors
+                                errors: resp.error.errors
                             })
                         } else {
                             this.setState({
                                 errors: {}
                             })
                         }
-                    })
-                    .catch((error) => {
-                        console.log(error)
                     })
             })
         }

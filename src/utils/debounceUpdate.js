@@ -1,13 +1,13 @@
 import debounce from 'lodash/debounce'
 
-const dispatchUpdate = (fn, resolve, reject) => (
-    fn().then(resolve).catch(reject)
+const dispatchUpdate = (dispatch, resolve) => (
+    dispatch().then(resolve)
 )
 
-const debounceUpdateDispatch = debounce(dispatchUpdate, 300)
+const debounced = debounce(dispatchUpdate, 300)
 
-const debounceUpdate = (fn) => (
-    new Promise((debounceUpdateDispatch || dispatchUpdate).bind(null, fn))
+const debounceUpdate = (dispatch) => (
+    new Promise(debounced.bind(null, dispatch))
 )
 
 export default debounceUpdate
