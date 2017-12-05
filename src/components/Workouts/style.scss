@@ -45,17 +45,23 @@
     margin-bottom: 1rem;
 }
 
-.workout-name {
-    background-color: #333;
-    padding: 6px 10px;
-
-    input {
-        color: #fff;
-    }
-}
-
 .workout-button-remove {
     position: absolute;
     top: -3px;
     right: -3px;
 }
+
+// form
+
+.workout-name {
+    background-color: #333;
+    padding: 6px 10px;
+    transition: background-color .2s;
+
+    input {
+        color: #fff;
+    }
+}
+    .workout-name--is-done {
+        background-color: #349a40;
+    }

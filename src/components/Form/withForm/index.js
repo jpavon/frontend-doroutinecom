@@ -55,7 +55,7 @@ export default function withForm(WrappedComponent) {
 
         render() {
             return (
-                <WrappedComponent {...this.props} />
+                <WrappedComponent {...this.props} state={this.state} />
             )
         }
     }
