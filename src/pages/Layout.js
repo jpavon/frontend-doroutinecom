@@ -88,15 +88,6 @@ class Layout extends Component {
         })
     }
 
-    handleLogoutUser = (event) => {
-        event.preventDefault()
-
-        this.props.logoutUser()
-            .then(() => {
-                this.props.history.push('/login')
-            })
-    }
-
     render() {
         return (
             <Fragment>
@@ -105,7 +96,6 @@ class Layout extends Component {
                 </Helmet>
                 <Nav
                     isAuthenticated={this.props.isAuthenticated}
-                    logoutUser={this.handleLogoutUser}
                 />
                 {this.props.isLoading ?
                     <Loading show /> :

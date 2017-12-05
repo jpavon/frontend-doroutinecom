@@ -5,7 +5,7 @@ import logo from 'media/logo.svg'
 
 import './style.css'
 
-const Nav = ({isAuthenticated, logoutUser}) => (
+const Nav = ({isAuthenticated}) => (
     <nav className="nav">
         <NavLink to="/" className="nav-logo" activeClassName="nav-link--active">
             <img src={logo} alt="Logo"/>
@@ -23,11 +23,6 @@ const Nav = ({isAuthenticated, logoutUser}) => (
                         <NavLink to="/settings" className="nav-link" activeClassName="nav-link--active">
                             Settings
                         </NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <a href="/logout" className="nav-link" onClick={logoutUser}>
-                            Logout
-                        </a>
                     </li>
                 </Fragment>
             }
