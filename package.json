@@ -39,16 +39,25 @@
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
+    "jest": "jest",
     "eject": "react-scripts eject",
     "flow": "flow"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^21.2.0",
+    "babel-preset-env": "^1.6.1",
+    "faker": "^4.1.0",
+    "jest": "^21.2.1",
+    "jest-cli": "^21.2.1",
     "node-sass": "^4.7.2",
+    "puppeteer": "^0.13.0",
     "react-scripts": "1.0.17",
     "redux-devtools": "^3.4.0",
     "redux-devtools-dock-monitor": "^1.1.2",
     "redux-devtools-log-monitor": "^1.3.0",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "why-did-you-update": "^0.1.0"
   },
   "proxy": "http://localhost:3000"
 }

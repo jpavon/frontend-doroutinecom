@@ -45,7 +45,7 @@ class SettingsContainer extends Component {
     render() {
         return (
             <div>
-                <a href="/logout" onClick={this.handleLogoutUser}>
+                <a className="logout" href="/logout" onClick={this.handleLogoutUser}>
                     Logout
                 </a>
                 <h1>Hello {this.props.user.name}!</h1>
