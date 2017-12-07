@@ -24,6 +24,7 @@ const Select = (props, context) => {
         <Fragment>
             <select
                 value={value || ''}
+                name={name}
                 onChange={(event) => onChange(event, name)}
                 className="select"
                 {...rest}

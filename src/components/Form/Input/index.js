@@ -22,6 +22,7 @@ const Input = (props, context) => {
         <Fragment>
             <input
                 value={data[name] || ''}
+                name={name}
                 onChange={(event) => onChange(event, name)}
                 className={classNames(
                     'input',
