@@ -6,7 +6,9 @@ import { withRouter } from 'react-router-dom'
 import { registerUser } from 'data/user/actions'
 import userAuth from 'utils/userAuth'
 
-class LoginContainer extends Component {
+import Register from 'components/Register'
+
+class RegisterContainer extends Component {
 
     static propTypes = {
         registerUser: PropTypes.func.isRequired
@@ -35,46 +37,17 @@ class LoginContainer extends Component {
         })
     }
 
+    setRef = (ref, name) => {
+        this[name] = ref
+    }
+
     render() {
         return (
-            <form method="post" onSubmit={this.handleSubmit}>
-                {Object.keys(this.state.errors).length > 0 &&
-                    <div>
-                        {Object.keys(this.state.errors).map((error, i) => (
-                            <div key={i}>{this.state.errors[error]}</div>
-                        ))}
-                    </div>
-                }
-                <div>
-                    <label htmlFor="name">
-                        Name:
-                    </label>
-                    <input id="name" type="text" ref={(ref) => this.name = ref} />
-                </div>
-
-                <div>
-                    <label htmlFor="email">
-                        Email:
-                    </label>
-                    <input id="email" type="text" ref={(ref) => this.email = ref} />
-                </div>
-
-                <div>
-                    <label htmlFor="password">
-                        Password:
-                    </label>
-                    <input id="password" type="password" ref={(ref) => this.password = ref} />
-                </div>
-
-                <div>
-                    <label htmlFor="passwordConfirmation">
-                        Password confirmation:
-                    </label>
-                    <input id="passwordConfirmation" type="password" ref={(ref) => this.passwordConfirmation = ref} />
-                </div>
-
-                <input type="submit" value="Submit" />
-            </form>
+            <Register
+                errors={this.state.errors}
+                handleSubmit={this.handleSubmit}
+                setRef={this.setRef}
+            />
         )
     }
 }
@@ -86,4 +59,4 @@ const mapDispatchToProps = {
     registerUser
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginContainer))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RegisterContainer))

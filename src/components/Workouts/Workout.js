@@ -1,5 +1,4 @@
 import React from 'react'
-import classNames from 'classnames'
 
 import Form from 'components/Workouts/Form'
 import ButtonIcon from 'components/ButtonIcon'

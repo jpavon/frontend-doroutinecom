@@ -45,6 +45,7 @@ class SettingsContainer extends Component {
     render() {
         return (
             <div>
+                <h1>Settings</h1>
                 <a className="logout" href="/logout" onClick={this.handleLogoutUser}>
                     Logout
                 </a>

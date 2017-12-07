@@ -1,23 +1,18 @@
-import faker from 'faker'
 import puppeteer from 'puppeteer'
 
-const APP_URL = 'http://localhost:3000'
+import { expectSelectorToHaveText } from './utils'
 
-const user = {
-    name: 'TEST_USER_' + faker.name.firstName(),
-    email: 'TEST_USER_EMAIL_' + faker.internet.email(),
-    password: faker.internet.password(),
-}
+const APP_URL = 'http://localhost:3000'
 
 let page
 let browser
 const width = 1200
 const height = 800
 
-beforeAll(async() => {
+beforeAll(async () => {
     browser = await puppeteer.launch({
         headless: false,
-        slowMo: 10,
+        slowMo: 0,
         args: [`--window-size=${width},${height}`]
     })
     page = await browser.newPage()
@@ -29,35 +24,12 @@ afterAll(() => {
     browser.close()
 })
 
-describe('auth', () => {
-    test('user can register', async() => {
-        await page.goto(APP_URL + '/register')
-        await page.waitForSelector('form')
-        await page.click('input[id=name]')
-        await page.type('input[id=name]', user.name)
-        await page.click('input[id=email]')
-        await page.type('input[id=email]', user.email)
-        await page.click('input[id=password]')
-        await page.type('input[id=password]', user.password)
-        await page.click('input[id=passwordConfirmation]')
-        await page.type('input[id=passwordConfirmation]', user.password)
-        await page.click('input[type=submit]')
-        await page.waitForSelector('.routines')
-    }, 16000)
-
-    test('user can logout', async() => {
-        await page.goto(APP_URL + '/settings')
-        await page.waitForSelector('.logout')
-        await page.click('.logout')
-        await page.waitForSelector('form')
-    }, 16000)
-
-    test('user can login', async() => {
-        await page.click('input[id=email]')
-        await page.type('input[id=email]', user.email)
-        await page.click('input[id=password]')
-        await page.type('input[id=password]', user.password)
-        await page.click('input[type=submit]')
-        await page.waitForSelector('.routines')
+describe('app loads', () => {
+    test('load success', async () => {
+        await page.goto(APP_URL)
+        await expectSelectorToHaveText(page, 'h1', 'Login')
     }, 16000)
 })
+
+
+export { APP_URL, page, browser }
