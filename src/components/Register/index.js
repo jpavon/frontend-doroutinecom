@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import ErrorMessage from 'components/ErrorMessage'
 
 const Login = ({handleSubmit, errors, setRef}) => (
-    <Fragment>
+    <div className="register">
         <h1>Register</h1>
         <form method="post" onSubmit={handleSubmit}>
             <ErrorMessage error={errors} />
@@ -37,7 +37,7 @@ const Login = ({handleSubmit, errors, setRef}) => (
 
             <input type="submit" value="Submit" />
         </form>
-    </Fragment>
+    </div>
 )
 
 export default Login

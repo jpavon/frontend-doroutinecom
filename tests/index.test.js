@@ -48,14 +48,14 @@ describe('auth', async () => {
         await page.click('input[id=passwordConfirmation]')
         await page.type('input[id=passwordConfirmation]', user.password)
         await page.click('input[type=submit]')
-        await expectSelectorToHaveText(page, 'h1', 'Routines')
+        await expectSelectorToHaveText(page, '.routines', 'Routines')
     }, 16000)
 
     test('user can logout', async () => {
         await goTo(page, '/settings')
         await page.waitForSelector('.logout')
         await page.click('.logout')
-        await expectSelectorToHaveText(page, 'h1', 'Login')
+        await expectSelectorToHaveText(page, '.login', 'Login')
     }, 16000)
 
     test('user can login', async () => {
@@ -65,7 +65,7 @@ describe('auth', async () => {
         await page.click('input[id=password]')
         await page.type('input[id=password]', user.password)
         await page.click('input[type=submit]')
-        await expectSelectorToHaveText(page, 'h1', 'Routines')
+        await expectSelectorToHaveText(page, '.routines', 'Routines')
     }, 16000)
 })
 
