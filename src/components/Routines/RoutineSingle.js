@@ -6,7 +6,7 @@ import './style.css'
 
 const RoutineSingle = ({children, routine, updateRoutine, removeRoutine}) => (
     <div className="routine-single-container">
-        <div className="routine-single-form">
+        <div className="routine-single">
             <Form
                 data={routine}
                 update={updateRoutine}
