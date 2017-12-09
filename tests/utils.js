@@ -1,7 +1,7 @@
 import { APP_URL } from './index.test'
 
 export const goTo = async (page, url) => {
-    return await page.goto(APP_URL + url, { waitUntil: 'networkidle0' })
+    await page.goto(APP_URL + url, { waitUntil: 'networkidle0' })
 }
 
 export const expectSelectorToHaveText = async (page, selector, text) => {
@@ -23,7 +23,7 @@ export const expectSelectToHaveText = async (page, selector, text) => {
 }
 
 export const selectOption = async (page, selector, text) => {
-    return await page.evaluate((selector, text) => {
+    await page.evaluate((selector, text) => {
         const select = document.querySelector(selector)
 
         for (let i = 0; i < select.options.length; i++) {
