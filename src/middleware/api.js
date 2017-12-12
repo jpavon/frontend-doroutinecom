@@ -72,6 +72,7 @@ export default store => next => action => {
         })))
         .catch((error) => next(actionWith({
             type: failureType,
-            error: error || 'Something bad happened'
+            // error: error.errors ? error.errors : error || 'Server error.'
+            error: error || 'Server error.'
         })))
 }

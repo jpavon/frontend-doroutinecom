@@ -18,6 +18,39 @@ export const defaultFailure = (state, error) => ({
     error
 })
 
+export const fetchItems = (state, payload) => {
+    const reducedKeys = payload.reduce((acc, current) => {
+        let obj = {}
+
+        obj.entities = {
+            ...acc.entities,
+            [current.id]: current
+        }
+
+        // Object.keys(current).map((key) => {
+        //     if (key.endsWith('Id')) {
+        //         obj[key] = {
+        //             ...acc[key]
+        //         }
+
+        //         if (obj[key][current[key]]) {
+        //             obj[key][current[key]] = [...obj[key][current[key]], current.id]
+        //         } else {
+        //             obj[key][current[key]] = [current.id]
+        //         }
+        //     }
+        // })
+
+        return obj
+    }, {})
+
+    return {
+        ...state,
+        fetchStatus: STATUS_LOADED,
+        ...reducedKeys
+    }
+}
+
 export const insertItem = (array, item) => (
     [...array, item]
 )
