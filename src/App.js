@@ -11,7 +11,7 @@ import { fetchExercises } from 'data/exercises/actions'
 import { fetchLifts } from 'data/lifts/actions'
 import { fetchSets } from 'data/sets/actions'
 import { displayLoading, removeLoading } from 'data/ui/actions'
-import { STATUS_LOADED } from 'data/shared'
+import { STATUS_NONE } from 'data/shared'
 
 import Routes from 'Routes'
 import ErrorApp from 'components/ErrorApp'
@@ -24,7 +24,6 @@ class App extends Component {
     static propTypes = {
         isFetchRequired: PropTypes.bool.isRequired,
         isAuth: PropTypes.bool.isRequired,
-        isLoading: PropTypes.bool.isRequired,
 
         fetchUser: PropTypes.func.isRequired,
         fetchRoutines: PropTypes.func.isRequired,
@@ -38,7 +37,8 @@ class App extends Component {
     }
 
     state = {
-        isErrorApp: false
+        isErrorApp: false,
+        isLoading: true
     }
 
     componentDidCatch(error, info) {
@@ -56,16 +56,9 @@ class App extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (
-            nextProps.isFetchRequired &&
-            nextProps.isAuth &&
-            (nextProps.isAuth !== this.props.isAuth)
-        ) {
+        console.log('HERE');
+        if (nextProps.isFetchRequired && nextProps.isAuth && (nextProps.isAuth !== this.props.isAuth)) {
             this.fetchData()
-        }
-
-        if (!this.props.isAuth && (nextProps.isAuth !== this.props.isAuth)) {
-            this.props.removeLoading()
         }
     }
 
@@ -112,7 +105,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    isFetchRequired: !!(state.user.fetchStatus !== STATUS_LOADED),
+    isFetchRequired: !!(state.user.fetchStatus === STATUS_NONE),
     isAuth: state.user.isAuth,
     isLoading: state.ui.isLoading
 })

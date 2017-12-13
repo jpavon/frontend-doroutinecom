@@ -2,7 +2,7 @@ import * as types from 'data/ui/types'
 
 const initialState = {
     // isEditing: false,
-    isLoading: true
+    // isLoading: true
 }
 
 const ui = (state = initialState, action) => {

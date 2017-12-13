@@ -36,10 +36,7 @@ class SettingsContainer extends Component {
     handleLogoutUser = (event) => {
         event.preventDefault()
 
-        this.props.logoutUser()
-            .then(() => {
-                this.props.history.push('/login')
-            })
+        this.props.logoutUser(this.props.history)
     }
 
     render() {

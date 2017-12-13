@@ -3,15 +3,15 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { loginUser } from 'data/user/actions'
-import onUserAuth from 'utils/onUserAuth'
+import { loginUser, authUser } from 'data/user/actions'
 
 import Login from 'components/Login'
 
 class LoginContainer extends Component {
 
     static propTypes = {
-        loginUser: PropTypes.func.isRequired
+        loginUser: PropTypes.func.isRequired,
+        authUser: PropTypes.func.isRequired
     }
 
     state = {
@@ -29,7 +29,7 @@ class LoginContainer extends Component {
                 this.password.value = ''
                 this.setState({ errors: resp.error.errors })
             } else {
-                onUserAuth(resp.payload.token, this.props.history, this.props.location)
+                this.props.authUser(resp.payload.token, this.props.history, this.props.location)
             }
         })
     }
@@ -53,7 +53,8 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = {
-    loginUser
+    loginUser,
+    authUser
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginContainer))

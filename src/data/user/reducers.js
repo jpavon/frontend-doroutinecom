@@ -74,8 +74,7 @@ const user = (state = initialState, action) => {
         case types.USER_DELETE_FAILURE:
             return defaultFailure(state, error)
 
-        case types.USER_LOGIN_SUCCESS:
-        case types.USER_REGISTER_SUCCESS:
+        case types.USER_AUTH:
             return {
                 ...state,
                 isAuth: true

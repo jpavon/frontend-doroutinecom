@@ -112,15 +112,30 @@ export const registerUser = ({name, email, password, passwordConfirmation}) => (
     return dispatch(registerUserAction({name, email, password, passwordConfirmation}))
 }
 
+const authUserAction = () => ({
+    type: types.USER_AUTH
+})
+
+export const authUser = (token, history, location) => (dispatch, getState) => {
+    localStorage.setItem('token', token)
+
+    dispatch(authUserAction())
+
+    history.push(
+        (location.state && location.state.from) ?
+        location.state.from :
+        '/'
+    )
+}
+
 const logoutUserAction = () => ({
     type: types.USER_LOGOUT
 })
 
-export const logoutUser = () => (dispatch, getState) => {
+export const logoutUser = (history) => (dispatch, getState) => {
     localStorage.removeItem('token')
+
     dispatch(logoutUserAction())
 
-    return new Promise((resolve, reject) => {
-        resolve()
-    })
+    history.push('/login')
 }

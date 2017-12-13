@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Route, Switch, Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
 
 import Home from 'pages/Home'
 import Login from 'pages/Login'
