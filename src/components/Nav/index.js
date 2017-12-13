@@ -5,14 +5,14 @@ import logo from 'media/logo.svg'
 
 import './style.css'
 
-const Nav = ({isAuthenticated}) => (
+const Nav = ({isAuth}) => (
     <nav className="nav">
         <NavLink to="/" className="nav-logo" activeClassName="nav-link--active">
             <img src={logo} alt="Logo"/>
         </NavLink>
 
         <ul className="nav-list">
-            {isAuthenticated &&
+            {isAuth &&
                 <Fragment>
                     <li className="nav-item">
                         <NavLink to="/routines" className="nav-link" activeClassName="nav-link--active">
@@ -27,7 +27,7 @@ const Nav = ({isAuthenticated}) => (
                 </Fragment>
             }
 
-            {!isAuthenticated &&
+            {!isAuth &&
                 <Fragment>
                     <li className="nav-item">
                         <NavLink to="/login" className="nav-link" activeClassName="nav-link--active">

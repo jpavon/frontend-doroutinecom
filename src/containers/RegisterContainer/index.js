@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import { registerUser } from 'data/user/actions'
-import userAuth from 'utils/userAuth'
+import onUserAuth from 'utils/onUserAuth'
 
 import Register from 'components/Register'
 
@@ -32,7 +32,7 @@ class RegisterContainer extends Component {
                 this.passwordConfirmation.value = ''
                 this.setState({ errors: resp.error.errors })
             } else {
-                userAuth(resp.payload.token, this.props.history, this.props.location)
+                onUserAuth(resp.payload.token, this.props.history, this.props.location)
             }
         })
     }

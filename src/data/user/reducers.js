@@ -4,7 +4,8 @@ import { defaultRequest, defaultFailure } from 'data/shared'
 
 const initialState = {
     fetchStatus: helperTypes.STATUS_NONE,
-    entity: {}
+    entity: {},
+    isAuth: !!localStorage.getItem('token')
 }
 
 const user = (state = initialState, action) => {
@@ -72,6 +73,19 @@ const user = (state = initialState, action) => {
 
         case types.USER_DELETE_FAILURE:
             return defaultFailure(state, error)
+
+        case types.USER_LOGIN_SUCCESS:
+        case types.USER_REGISTER_SUCCESS:
+            return {
+                ...state,
+                isAuth: true
+            }
+
+        case types.USER_LOGOUT:
+            return {
+                ...state,
+                isAuth: false
+            }
 
         default:
             return state

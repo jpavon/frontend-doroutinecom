@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Provider } from 'react-redux'
 import { Route, Switch, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import Home from 'pages/Home'
 import Login from 'pages/Login'
@@ -14,16 +14,13 @@ import NoMatch from 'pages/NoMatch'
 class Routes extends Component {
 
     static propTypes = {
-        store: PropTypes.object.isRequired,
+        isAuth: PropTypes.bool.isRequired
     }
 
-    getRoutes = () => {
-
-        const isAuth = localStorage.getItem('token')
-
+    render() {
         const PrivateRoute = ({ component: Component, ...rest }) => (
             <Route {...rest} render={(props) => (
-                isAuth ?
+                this.props.isAuth ?
                     <Component {...props} /> :
                     <Redirect
                         to={{
@@ -36,7 +33,7 @@ class Routes extends Component {
 
         const GuestRoute = ({ component: Component, ...rest }) => (
             <Route {...rest} render={(props) => (
-                !isAuth ?
+                !this.props.isAuth ?
                     <Component {...props} /> :
                     <Redirect to='/' />
             )} />
@@ -54,14 +51,6 @@ class Routes extends Component {
 
                 <PrivateRoute component={NoMatch}/>
             </Switch>
-        )
-    }
-
-    render() {
-        return (
-            <Provider store={this.props.store}>
-                {this.getRoutes()}
-            </Provider>
         )
     }
 }

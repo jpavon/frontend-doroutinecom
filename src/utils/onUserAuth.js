@@ -1,4 +1,4 @@
-const userAuth = (token, history, location) => {
+const onUserAuth = (token, history, location) => {
     localStorage.setItem('token', token)
 
     history.push(
@@ -8,4 +8,4 @@ const userAuth = (token, history, location) => {
     )
 }
 
-export default userAuth
+export default onUserAuth

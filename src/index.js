@@ -1,18 +1,23 @@
 import React from 'react'
 import { render } from 'react-dom'
+import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
-import 'styles/global.css'
 
-import Routes from 'routes'
 import configureStore from 'store/configureStore'
 // import registerServiceWorker from 'registerServiceWorker'
+
+import App from 'App'
+
+import 'styles/global.css'
 
 const store = configureStore()
 
 render(
-    <Router>
-        <Routes store={store} />
-    </Router>,
+    <Provider store={store}>
+        <Router>
+            <App />
+        </Router>
+    </Provider>,
     document.getElementById('root')
 )
 // registerServiceWorker()

@@ -1,92 +1,7 @@
 import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-
-import { fetchUser } from 'data/user/actions'
-import { fetchRoutines } from 'data/routines/actions'
-import { fetchWorkouts } from 'data/workouts/actions'
-import { fetchExercises } from 'data/exercises/actions'
-import { fetchLifts } from 'data/lifts/actions'
-import { fetchSets } from 'data/sets/actions'
-import { logoutUser } from 'data/user/actions'
-import { displayLoading } from 'data/ui/actions'
-import { removeLoading } from 'data/ui/actions'
-
-import ErrorApp from 'components/ErrorApp'
-import Nav from 'components/Nav'
-import Loading from 'components/Loading'
 
 class Layout extends Component {
-
-    static propTypes = {
-        header: PropTypes.node.isRequired,
-
-        isFetchRequired: PropTypes.bool.isRequired,
-        isAuthenticated: PropTypes.bool.isRequired,
-        isLoading: PropTypes.bool.isRequired,
-
-        fetchUser: PropTypes.func.isRequired,
-        fetchRoutines: PropTypes.func.isRequired,
-        fetchWorkouts: PropTypes.func.isRequired,
-        fetchExercises: PropTypes.func.isRequired,
-        fetchLifts: PropTypes.func.isRequired,
-        fetchSets: PropTypes.func.isRequired,
-        logoutUser: PropTypes.func.isRequired,
-        displayLoading: PropTypes.func.isRequired,
-        removeLoading: PropTypes.func.isRequired
-    }
-
-    state = {
-        hasError: false
-    }
-
-    componentDidCatch(error, info) {
-        this.setState({ hasError: true })
-    }
-
-    componentWillMount() {
-        if (this.props.isFetchRequired && this.props.isAuthenticated) {
-            this.fetchData()
-        }
-
-        if (!this.props.isAuthenticated) {
-            this.props.removeLoading()
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (
-            nextProps.isFetchRequired &&
-            nextProps.isAuthenticated &&
-            (nextProps.isAuthenticated !== this.props.isAuthenticated)
-        ) {
-            this.fetchData()
-        }
-    }
-
-    fetchData = () => {
-        this.props.displayLoading()
-
-        Promise.all([
-            this.props.fetchUser(),
-            this.props.fetchRoutines(),
-            this.props.fetchWorkouts(),
-            this.props.fetchExercises(),
-            this.props.fetchLifts(),
-            this.props.fetchSets()
-        ]).then(([userResp]) => {
-            if (userResp.error && userResp.error.message === 'Unauthenticated.') {
-                this.props.logoutUser()
-                    .then(() => {
-                        this.props.history.push('/login')
-                    })
-            }
-
-            this.props.removeLoading()
-        })
-    }
 
     render() {
         return (
@@ -94,39 +9,12 @@ class Layout extends Component {
                 <Helmet>
                     {this.props.header}
                 </Helmet>
-                <Nav
-                    isAuthenticated={this.props.isAuthenticated}
-                />
-                {this.props.isLoading ?
-                    <Loading show /> :
-                    <div className="container">
-                        {this.state.hasError ?
-                            <ErrorApp /> :
-                            this.props.children
-                        }
-                    </div>
-                }
+                <div className="container">
+                    {this.props.children}
+                </div>
             </Fragment>
         )
     }
 }
 
-const mapStateToProps = (state, props) => ({
-    isFetchRequired: !!(state.user.fetchStatus !== 'LOADED'),
-    isAuthenticated: !!(state.user.entity.apiToken || localStorage.getItem('token')),
-    isLoading: state.ui.isLoading
-})
-
-const mapDispatchToProps = {
-    fetchUser,
-    fetchRoutines,
-    fetchWorkouts,
-    fetchExercises,
-    fetchLifts,
-    fetchSets,
-    logoutUser,
-    displayLoading,
-    removeLoading
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Layout))
+export default Layout
