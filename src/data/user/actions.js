@@ -2,7 +2,6 @@ import { CALL_API } from 'middleware/api'
 import * as types from 'data/user/types'
 import { shouldFetch } from 'data/shared'
 import debounceUpdate from 'utils/debounceUpdate'
-import history from 'utils/history'
 
 const getUser = () => ({
     [CALL_API]: {
@@ -131,9 +130,4 @@ export const logoutUser = (error) => (dispatch, getState) => {
     localStorage.removeItem('token')
 
     dispatch(logoutUserAction())
-
-    history.push({
-        pathname: '/login',
-        state: error && { error: error.error }
-    })
 }

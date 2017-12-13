@@ -21,13 +21,15 @@ const Form = () => (
     </div>
 )
 
-const Formed = withForm(Form)
+const UserForm = withForm(Form)
 
 class SettingsContainer extends Component {
 
     static propTypes = {
-        user: PropTypes.object.isRequired,
-
+        user: PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.object
+        ]).isRequired,
         logoutUser: PropTypes.func.isRequired,
         updateUser: PropTypes.func.isRequired,
     }
@@ -46,10 +48,12 @@ class SettingsContainer extends Component {
                     Logout
                 </a>
                 <h1>Hello {this.props.user.name}!</h1>
-                <Formed
-                    data={this.props.user}
-                    update={this.props.updateUser}
-                />
+                {this.props.user &&
+                    <UserForm
+                        data={this.props.user}
+                        update={this.props.updateUser}
+                    />
+                }
             </div>
         )
     }

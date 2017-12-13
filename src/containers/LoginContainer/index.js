@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import history from 'utils/history'
 import { loginUser, authUser } from 'data/user/actions'
 
 import Login from 'components/Login'
@@ -16,15 +15,6 @@ class LoginContainer extends Component {
 
     state = {
         errors: {}
-    }
-
-    componentDidMount() {
-        // setTimeout(() => {
-            console.log(history.location)
-            if (history.location.state && history.location.state.error) {
-                this.setState({ errors: history.location.state.error })
-            }
-        // }, 1000)
     }
 
     handleSubmit = (event) => {

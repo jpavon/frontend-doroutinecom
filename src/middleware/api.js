@@ -16,7 +16,6 @@ const callApi = (endpoint, method, data, store) => {
     }).then((response) => {
         return Promise.resolve(response.data)
     }).catch((err) => {
-        console.log(err.response.data)
         if (
             (err.response.data &&
             err.response.data.message === 'Unauthenticated.') ||
