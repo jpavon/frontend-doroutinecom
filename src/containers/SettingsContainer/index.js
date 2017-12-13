@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 
 import { updateUser } from 'data/user/actions'
 import { userSelector } from 'data/user/selectors'
@@ -36,7 +35,7 @@ class SettingsContainer extends Component {
     handleLogoutUser = (event) => {
         event.preventDefault()
 
-        this.props.logoutUser(this.props.history)
+        this.props.logoutUser()
     }
 
     render() {
@@ -66,4 +65,4 @@ const mapDispatchToProps = {
 }
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SettingsContainer))
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsContainer)

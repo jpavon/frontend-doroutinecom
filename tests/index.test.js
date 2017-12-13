@@ -82,6 +82,7 @@ describe('routines', async () => {
         await page.waitForSelector('.routine-single')
         await page.click('.routine-single input')
         await page.type('.routine-single input', routine.name)
+        await page.waitFor(1000)
     }, 16000)
 
     const lift = {
@@ -97,6 +98,7 @@ describe('routines', async () => {
         await page.waitFor(1000)
         await page.click('.lift input[name=rm]')
         await page.type('.lift input[name=rm]', lift.rm)
+        await page.waitFor(1000)
     }, 16000)
 
     const workout = {
@@ -108,6 +110,7 @@ describe('routines', async () => {
         await page.waitForSelector('.workout')
         await page.click('.workout input')
         await page.type('.workout input', workout.name)
+        await page.waitFor(1000)
     }, 16000)
 
     test('create a exercise', async () => {
@@ -129,10 +132,10 @@ describe('routines', async () => {
         await page.waitFor(1000)
         await page.click('.set-reps input')
         await page.type('.set-reps input', set.reps)
+        await page.waitFor(1000)
     }, 16000)
 
     test('routine is saved on reload', async () => {
-        await page.waitFor(1000)
         await page.reload()
 
         await page.waitForSelector('.routine-single')

@@ -2,6 +2,7 @@ import { CALL_API } from 'middleware/api'
 import * as types from 'data/user/types'
 import { shouldFetch } from 'data/shared'
 import debounceUpdate from 'utils/debounceUpdate'
+import history from 'utils/history'
 
 const getUser = () => ({
     [CALL_API]: {
@@ -86,8 +87,8 @@ const loginUserAction = ({email, password}) => ({
     }
 })
 
-export const loginUser = ({email, password}) => (dispatch, getState) => {
-    return dispatch(loginUserAction({email, password}))
+export const loginUser = (data) => (dispatch, getState) => {
+    return dispatch(loginUserAction(data))
 }
 
 const registerUserAction = ({name, email, password, passwordConfirmation}) => ({
@@ -108,34 +109,31 @@ const registerUserAction = ({name, email, password, passwordConfirmation}) => ({
     }
 })
 
-export const registerUser = ({name, email, password, passwordConfirmation}) => (dispatch, getState) => {
-    return dispatch(registerUserAction({name, email, password, passwordConfirmation}))
+export const registerUser = (data) => (dispatch, getState) => {
+    return dispatch(registerUserAction(data))
 }
 
 const authUserAction = () => ({
     type: types.USER_AUTH
 })
 
-export const authUser = (token, history, location) => (dispatch, getState) => {
+export const authUser = (token) => (dispatch, getState) => {
     localStorage.setItem('token', token)
 
     dispatch(authUserAction())
-
-    history.push(
-        (location.state && location.state.from) ?
-        location.state.from :
-        '/'
-    )
 }
 
 const logoutUserAction = () => ({
     type: types.USER_LOGOUT
 })
 
-export const logoutUser = (history) => (dispatch, getState) => {
+export const logoutUser = (error) => (dispatch, getState) => {
     localStorage.removeItem('token')
 
     dispatch(logoutUserAction())
 
-    history.push('/login')
+    history.push({
+        pathname: '/login',
+        state: error && { error: error.error }
+    })
 }

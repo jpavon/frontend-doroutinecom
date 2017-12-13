@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+
+import history from 'utils/history'
 
 import { createRoutine, updateRoutine, removeRoutine } from 'data/routines/actions'
 import { routinesSelector } from 'data/routines/selectors'
@@ -22,7 +23,7 @@ class RoutinesContainer extends Component {
     handleCreate = () => {
         this.props.createRoutine()
             .then((resp) => {
-                this.props.history.push(`/r/${resp.payload.slug}`)
+                history.push(`/r/${resp.payload.slug}`)
             })
     }
 
@@ -51,4 +52,4 @@ const mapDispatchToProps = {
 }
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RoutinesContainer))
+export default connect(mapStateToProps, mapDispatchToProps)(RoutinesContainer)

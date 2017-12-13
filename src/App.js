@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { fetchUser, logoutUser } from 'data/user/actions'
+import { fetchUser } from 'data/user/actions'
 import { fetchRoutines } from 'data/routines/actions'
 import { fetchWorkouts } from 'data/workouts/actions'
 import { fetchExercises } from 'data/exercises/actions'
@@ -31,7 +31,6 @@ class App extends Component {
         fetchExercises: PropTypes.func.isRequired,
         fetchLifts: PropTypes.func.isRequired,
         fetchSets: PropTypes.func.isRequired,
-        logoutUser: PropTypes.func.isRequired,
         displayLoading: PropTypes.func.isRequired,
         removeLoading: PropTypes.func.isRequired
     }
@@ -56,7 +55,6 @@ class App extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('HERE');
         if (nextProps.isFetchRequired && nextProps.isAuth && (nextProps.isAuth !== this.props.isAuth)) {
             this.fetchData()
         }
@@ -72,14 +70,7 @@ class App extends Component {
             this.props.fetchExercises(),
             this.props.fetchLifts(),
             this.props.fetchSets()
-        ]).then(([userResp]) => {
-            if (userResp.error && userResp.error.message === 'Unauthenticated.') {
-                this.props.logoutUser()
-                    .then(() => {
-                        this.props.history.push('/login')
-                    })
-            }
-
+        ]).then(() => {
             this.props.removeLoading()
         })
     }
@@ -117,7 +108,6 @@ const mapDispatchToProps = {
     fetchExercises,
     fetchLifts,
     fetchSets,
-    logoutUser,
     displayLoading,
     removeLoading
 }

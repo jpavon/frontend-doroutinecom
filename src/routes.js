@@ -24,7 +24,7 @@ class Routes extends Component {
                     <Redirect
                         to={{
                             pathname: '/login',
-                            state: { from: props.location }
+                            state: { from: props.location.pathname }
                         }}
                     />
             )} />
@@ -34,7 +34,11 @@ class Routes extends Component {
             <Route {...rest} render={(props) => (
                 !this.props.isAuth ?
                     <Component {...props} /> :
-                    <Redirect to='/' />
+                    <Redirect to={{
+                        pathname: (props.location.state && props.location.state.from) ?
+                            props.location.state.from :
+                            '/'
+                    }} />
             )} />
         )
 

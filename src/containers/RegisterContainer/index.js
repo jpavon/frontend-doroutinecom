@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 
 import { registerUser, authUser } from 'data/user/actions'
 
@@ -32,7 +31,7 @@ class RegisterContainer extends Component {
                 this.passwordConfirmation.value = ''
                 this.setState({ errors: resp.error.errors })
             } else {
-                this.props.authUser(resp.payload.token, this.props.history, this.props.location)
+                this.props.authUser(resp.payload.token)
             }
         })
     }
@@ -60,4 +59,4 @@ const mapDispatchToProps = {
     authUser
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RegisterContainer))
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterContainer)

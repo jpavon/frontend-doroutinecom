@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { camelizeKeys, decamelizeKeys } from 'humps'
+import { logoutUser } from 'data/user/actions'
 
 const callApi = (endpoint, method, data, store) => {
     return axios.request({
@@ -15,7 +16,17 @@ const callApi = (endpoint, method, data, store) => {
     }).then((response) => {
         return Promise.resolve(response.data)
     }).catch((err) => {
-        return Promise.reject(err.response.data)
+        console.log(err.response.data)
+        if (
+            (err.response.data &&
+            err.response.data.message === 'Unauthenticated.') ||
+            err.response.data.exception
+        ) {
+            store.dispatch(logoutUser({ error: 'An error ocurred, try to log in again.' }))
+            return Promise.reject()
+        } else {
+            return Promise.reject(err.response.data)
+        }
     })
 }
 
@@ -72,7 +83,6 @@ export default store => next => action => {
         })))
         .catch((error) => next(actionWith({
             type: failureType,
-            // error: error.errors ? error.errors : error || 'Server error.'
             error: error || 'Server error.'
         })))
 }

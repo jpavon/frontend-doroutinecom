@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 
+import history from 'utils/history'
 import { loginUser, authUser } from 'data/user/actions'
 
 import Login from 'components/Login'
@@ -18,6 +18,15 @@ class LoginContainer extends Component {
         errors: {}
     }
 
+    componentDidMount() {
+        // setTimeout(() => {
+            console.log(history.location)
+            if (history.location.state && history.location.state.error) {
+                this.setState({ errors: history.location.state.error })
+            }
+        // }, 1000)
+    }
+
     handleSubmit = (event) => {
         event.preventDefault()
 
@@ -29,7 +38,7 @@ class LoginContainer extends Component {
                 this.password.value = ''
                 this.setState({ errors: resp.error.errors })
             } else {
-                this.props.authUser(resp.payload.token, this.props.history, this.props.location)
+                this.props.authUser(resp.payload.token)
             }
         })
     }
@@ -57,4 +66,4 @@ const mapDispatchToProps = {
     authUser
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginContainer))
+export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)

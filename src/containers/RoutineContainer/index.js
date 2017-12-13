@@ -14,6 +14,8 @@ import RoutineSingle from 'components/Routines/RoutineSingle'
 class RoutineContainer extends Component {
 
     static propTypes = {
+        match: PropTypes.object.isRequired,
+
         routine: PropTypes.object.isRequired,
 
         createRoutine: PropTypes.func.isRequired,
@@ -22,7 +24,7 @@ class RoutineContainer extends Component {
     }
 
     render() {
-        return this.props.routine.id ?
+        return this.props.routine ?
             <Fragment>
                 <RoutineSingle
                     routine={this.props.routine}

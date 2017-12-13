@@ -2,12 +2,25 @@
   "name": "gym-app",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "build-css": "node-sass src/ -o src/ --include-path ./src/styles --include-path ./src/components",
+    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive --include-path ./src/styles --include-path ./src/components",
+    "start-js": "react-scripts start",
+    "start-flow": "npm run flow check",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js",
+    "test": "jest",
+    "eject": "react-scripts eject",
+    "flow": "flow"
+  },
   "dependencies": {
     "axios": "^0.17.1",
     "chart.js": "^2.7.1",
     "classnames": "^2.2.5",
     "flow-bin": "^0.59.0",
     "formik": "^0.9.4",
+    "history": "^4.7.2",
     "humps": "^2.0.1",
     "lodash": "^4.17.4",
     "moment": "^2.19.2",
@@ -29,18 +42,6 @@
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "superstruct": "^0.4.3"
-  },
-  "scripts": {
-    "build-css": "node-sass src/ -o src/ --include-path ./src/styles --include-path ./src/components",
-    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive --include-path ./src/styles --include-path ./src/components",
-    "start-js": "react-scripts start",
-    "start-flow": "npm run flow check",
-    "start": "npm-run-all -p watch-css start-js",
-    "build-js": "react-scripts build",
-    "build": "npm-run-all build-css build-js",
-    "test": "jest",
-    "eject": "react-scripts eject",
-    "flow": "flow"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

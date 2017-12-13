@@ -18,7 +18,7 @@ export const routineSelector = (slug) => createSelector(
     [
         (state) => state.routines.entities
     ],
-    (routines) => formatRoutine(
+    (routines) => routines.length > 0 && formatRoutine(
         routines.find((routine) => (routine.slug === slug))
     )
 )
