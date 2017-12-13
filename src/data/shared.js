@@ -75,6 +75,5 @@ export const deleteItem = (array, id) => {
 // action helpers
 
 export const shouldFetch = (name, state) => (
-    state[name].fetchStatus !== STATUS_LOADED &&
-    state[name].fetchStatus === STATUS_NONE
+    state[name].fetchStatus !== STATUS_LOADED
 )

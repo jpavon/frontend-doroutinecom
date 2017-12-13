@@ -42,7 +42,7 @@ class SettingsContainer extends Component {
 
     render() {
         return (
-            <div>
+            <div className="settings">
                 <h1>Settings</h1>
                 <a className="logout" href="/logout" onClick={this.handleLogoutUser}>
                     Logout

@@ -65,7 +65,7 @@ describe('auth', async () => {
         await page.click('input[id=password]')
         await page.type('input[id=password]', user.password)
         await page.click('input[type=submit]')
-        await expectSelectorToHaveText(page, '.routines', 'Routines')
+        await expectSelectorToHaveText(page, '.settings', 'Settings')
     }, 16000)
 })
 
