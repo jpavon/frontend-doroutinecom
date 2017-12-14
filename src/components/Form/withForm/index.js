@@ -19,13 +19,15 @@ export default function withForm(WrappedComponent) {
             [FORM_CONTEXT] : {
                 data: this.state.data,
                 errors: this.state.errors,
-                onChange: this.handleChange
+                onChange: this.handleChange,
+                updated: this.state.updated
             }
         })
 
         state = {
             data: this.props.data,
-            errors: {}
+            errors: {},
+            updated: null
         }
 
         handleChange = (event, name) => {
@@ -35,6 +37,7 @@ export default function withForm(WrappedComponent) {
             this.setState((prevState) => ({
                 data: {
                     ...prevState.data,
+                    updated: null,
                     [name]: value
                 }
             }), () => {
@@ -42,15 +45,24 @@ export default function withForm(WrappedComponent) {
                     .then((resp) => {
                         if (resp.error) {
                             this.setState({
-                                errors: resp.error.errors
+                                errors: resp.error.errors,
                             })
                         } else {
                             this.setState({
-                                errors: {}
+                                errors: {},
+                                updated: name
+                            }, () => {
+                                this.clearUpdatedTimer = setTimeout(() => {
+                                    this.setState({updated: false})
+                                }, 1000)
                             })
                         }
                     })
             })
+        }
+
+        componentWillUnmount() {
+            clearTimeout(this.clearUpdatedTimer)
         }
 
         render() {

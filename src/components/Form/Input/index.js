@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 import { FORM_CONTEXT } from 'components/Form/withForm'
 import ErrorMessage from 'components/ErrorMessage'
+import FlashMessage from 'components/FlashMessage'
 
 import './style.css'
 
@@ -16,10 +17,15 @@ const Input = (props, context) => {
         ...rest
     } = props
 
-    const { data, errors, onChange } = context[FORM_CONTEXT]
+    const { data, errors, onChange, updated } = context[FORM_CONTEXT]
 
     return (
         <Fragment>
+            <FlashMessage
+                visible={updated === name}
+            >
+                Updated.
+            </FlashMessage>
             <input
                 value={data[name] || ''}
                 name={name}
