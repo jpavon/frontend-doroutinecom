@@ -1,7 +1,8 @@
 import { CALL_API } from 'middleware/api'
+import debounceUpdate from 'utils/debounceUpdate'
 import * as types from 'data/user/types'
 import { shouldFetch } from 'data/shared'
-import debounceUpdate from 'utils/debounceUpdate'
+import { addError } from 'data/ui/actions'
 
 const getUser = () => ({
     [CALL_API]: {
@@ -130,4 +131,6 @@ export const logoutUser = (error) => (dispatch, getState) => {
     localStorage.removeItem('token')
 
     dispatch(logoutUserAction())
+
+    error && dispatch(addError(error))
 }

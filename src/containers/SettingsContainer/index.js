@@ -2,26 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { updateUser } from 'data/user/actions'
+import { updateUser, logoutUser } from 'data/user/actions'
 import { userSelector } from 'data/user/selectors'
-import { logoutUser } from 'data/user/actions'
 
-import Input from 'components/Form/Input'
-import withForm from 'components/Form/withForm'
-
-const Form = () => (
-    <div>
-        <Input
-            name="name"
-        />
-        <br />
-        <Input
-            name="email"
-        />
-    </div>
-)
-
-const UserForm = withForm(Form)
+import Settings from 'components/Settings'
 
 class SettingsContainer extends Component {
 
@@ -42,19 +26,11 @@ class SettingsContainer extends Component {
 
     render() {
         return (
-            <div className="settings">
-                <h1>Settings</h1>
-                <a className="logout" href="/logout" onClick={this.handleLogoutUser}>
-                    Logout
-                </a>
-                <h1>Hello {this.props.user.name}!</h1>
-                {this.props.user &&
-                    <UserForm
-                        data={this.props.user}
-                        update={this.props.updateUser}
-                    />
-                }
-            </div>
+            <Settings
+                user={this.props.user}
+                updateUser={this.props.updateUser}
+                handleLogoutUser={this.handleLogoutUser}
+            />
         )
     }
 }

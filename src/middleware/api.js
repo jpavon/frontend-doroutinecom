@@ -21,7 +21,7 @@ const callApi = (endpoint, method, data, store) => {
             err.response.data.message === 'Unauthenticated.') ||
             err.response.data.exception
         ) {
-            store.dispatch(logoutUser({ error: 'An error ocurred, try to log in again.' }))
+            store.dispatch(logoutUser('An error ocurred, try to log in again.'))
             return Promise.reject()
         } else {
             return Promise.reject(err.response.data)

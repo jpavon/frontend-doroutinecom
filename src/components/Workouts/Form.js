@@ -18,11 +18,11 @@ const Form = ({hocState}) => (
                 background="dark"
             />
 
-
             <Checkbox
                 name="isDone"
             />
         </div>
     </Fragment>
 )
+
 export default withForm(Form)

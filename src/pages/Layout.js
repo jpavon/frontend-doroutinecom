@@ -1,7 +1,31 @@
 import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
+import { connect } from 'react-redux'
+
+import history from 'utils/history'
+import { removeError } from 'data/ui/actions'
+
+import ErrorMessage from 'components/ErrorMessage'
 
 class Layout extends Component {
+
+    static propTypes = {
+        error: PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.string
+        ]).isRequired,
+
+        removeError: PropTypes.func.isRequired
+    }
+
+    constructor(props) {
+        super(props)
+
+        history.listen((location, action) => {
+            this.props.error && this.props.removeError()
+        })
+    }
 
     render() {
         return (
@@ -10,6 +34,7 @@ class Layout extends Component {
                     {this.props.header}
                 </Helmet>
                 <div className="container">
+                    <ErrorMessage error={this.props.error} />
                     {this.props.children}
                 </div>
             </Fragment>
@@ -17,4 +42,13 @@ class Layout extends Component {
     }
 }
 
-export default Layout
+
+const mapStateToProps = (state, props) => ({
+    error: state.ui.error
+})
+
+const mapDispatchToProps = {
+    removeError
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout)
