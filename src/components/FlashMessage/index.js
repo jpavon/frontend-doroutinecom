@@ -35,7 +35,7 @@ class FlashMessage extends Component {
 
     render() {
         return this.state.visible
-            ? (<div className="flash-message">this.props.children</div>)
+            ? (<div className="flash-message">{this.props.children}</div>)
             : null
     }
 }

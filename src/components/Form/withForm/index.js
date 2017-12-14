@@ -37,7 +37,6 @@ export default function withForm(WrappedComponent) {
             this.setState((prevState) => ({
                 data: {
                     ...prevState.data,
-                    updated: null,
                     [name]: value
                 }
             }), () => {
@@ -52,17 +51,11 @@ export default function withForm(WrappedComponent) {
                                 errors: {},
                                 updated: name
                             }, () => {
-                                this.clearUpdatedTimer = setTimeout(() => {
-                                    this.setState({updated: false})
-                                }, 1000)
+                                this.setState({updated: null})
                             })
                         }
                     })
             })
-        }
-
-        componentWillUnmount() {
-            clearTimeout(this.clearUpdatedTimer)
         }
 
         render() {

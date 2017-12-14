@@ -11,7 +11,6 @@ import { fetchExercises } from 'data/exercises/actions'
 import { fetchLifts } from 'data/lifts/actions'
 import { fetchSets } from 'data/sets/actions'
 import { displayLoading, removeLoading } from 'data/ui/actions'
-import { STATUS_LOADED } from 'data/shared'
 
 import Routes from 'Routes'
 import ErrorApp from 'components/ErrorApp'
