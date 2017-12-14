@@ -38,7 +38,7 @@ export default function withForm(WrappedComponent) {
                     [name]: value
                 }
             }), () => {
-                this.props.update(this.props.data.id, { [name]: value })
+                this.props.update(this.state.data.id, { [name]: value })
                     .then((resp) => {
                         if (resp.error) {
                             this.setState({

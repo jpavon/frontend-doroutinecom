@@ -151,4 +151,27 @@ describe('routines', async () => {
         await expectSelectorToHaveText(page, '.set-rmPercentage', set.rmPercentage)
         await expectSelectorToHaveText(page, '.set-reps', set.reps)
     }, 16000)
+
+    const userUpdated = {
+        name: 'TEST_USER_' + faker.name.firstName(),
+        email: 'TEST_USER_EMAIL_' + faker.internet.email(),
+    }
+
+    test('update user settings', async () => {
+        await goTo(page, '/settings')
+        await page.waitForSelector('.settings')
+        await page.click('.settings-name input')
+        await page.type('.settings-name input', userUpdated.name)
+        await page.waitFor(1000)
+        await page.click('.settings-email input')
+        await page.type('.settings-email input', userUpdated.email)
+        await page.waitFor(1000)
+    }, 16000)
+
+    test('user info is saved on reload', async () => {
+        await page.reload()
+
+        await expectSelectorToHaveText(page, '.settings-name', userUpdated.name)
+        await expectSelectorToHaveText(page, '.settings-email', userUpdated.email)
+    }, 16000)
 })

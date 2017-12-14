@@ -96,7 +96,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    isFetchRequired: !!(state.user.fetchStatus !== STATUS_LOADED),
+    isFetchRequired: Object.keys(state.user.entity).length === 0,
     isAuth: state.user.isAuth,
     isLoading: state.ui.isLoading
 })

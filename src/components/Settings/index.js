@@ -9,12 +9,10 @@ const Settings = ({user, updateUser, handleLogoutUser}) => (
             Logout
         </a>
         <h1>Hello {user.name}!</h1>
-        {user &&
-            <Form
-                data={user}
-                update={updateUser}
-            />
-        }
+        <Form
+            data={user}
+            update={updateUser}
+        />
     </div>
 )
 
