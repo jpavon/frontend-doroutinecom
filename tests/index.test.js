@@ -30,12 +30,14 @@ afterAll(() => {
     browser.close()
 })
 
+
+const user = {
+    name: 'TEST_USER_' + faker.name.firstName(),
+    email: 'TEST_USER_EMAIL_' + faker.internet.email(),
+    password: '123123',
+}
+
 describe('auth', async () => {
-    const user = {
-        name: 'TEST_USER_' + faker.name.firstName(),
-        email: 'TEST_USER_EMAIL_' + faker.internet.email(),
-        password: '123123',
-    }
 
     test('user can register', async () => {
         await goTo(page, '/register')
@@ -153,8 +155,8 @@ describe('routines', async () => {
     }, 16000)
 
     const userUpdated = {
-        name: 'TEST_USER_' + faker.name.firstName(),
-        email: 'TEST_USER_EMAIL_' + faker.internet.email(),
+        name: 'updated',
+        email: 'updated',
     }
 
     test('update user settings', async () => {
@@ -171,7 +173,7 @@ describe('routines', async () => {
     test('user info is saved on reload', async () => {
         await page.reload()
 
-        await expectSelectorToHaveText(page, '.settings-name', userUpdated.name)
-        await expectSelectorToHaveText(page, '.settings-email', userUpdated.email)
+        await expectSelectorToHaveText(page, '.settings-name', user.name + userUpdated.name)
+        await expectSelectorToHaveText(page, '.settings-email', user.email + userUpdated.email)
     }, 16000)
 })
