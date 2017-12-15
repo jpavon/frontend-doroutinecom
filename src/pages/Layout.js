@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 
-import history from 'utils/history'
 import { removeError } from 'data/ui/actions'
 
 import ErrorMessage from 'components/ErrorMessage'
@@ -22,9 +21,7 @@ class Layout extends Component {
     constructor(props) {
         super(props)
 
-        history.listen((location, action) => {
-            this.props.error && this.props.removeError()
-        })
+        this.props.error && this.props.removeError()
     }
 
     render() {
