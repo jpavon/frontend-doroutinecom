@@ -2,10 +2,10 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 
-import api from 'middleware/api'
-import rootReducer from 'rootReducer'
+import apiMiddleware from 'utils/apiMiddleware'
+import rootReducer from 'data/rootReducer'
 
-const middleware = [thunk, api]
+const middleware = [thunk, apiMiddleware]
 if (process.env.NODE_ENV !== 'production') {
     const logger = createLogger({
         collapsed: true
@@ -25,7 +25,7 @@ const configureStore = (preloadedState) => {
     if (process.env.NODE_ENV !== 'production') {
         if (module.hot) {
             module.hot.accept('rootReducer', () => {
-                const nextRootReducer = require('rootReducer').default
+                const nextRootReducer = require('data/rootReducer').default
                 store.replaceReducer(nextRootReducer)
             })
         }

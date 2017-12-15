@@ -1,4 +1,4 @@
-import { CALL_API } from 'middleware/api'
+import { CALL_API } from 'utils/apiMiddleware'
 import debounceUpdate from 'utils/debounceUpdate'
 import * as types from 'data/user/types'
 import { shouldFetch } from 'data/shared'

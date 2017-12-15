@@ -1,4 +1,4 @@
-import { CALL_API } from 'middleware/api'
+import { CALL_API } from 'utils/apiMiddleware'
 import * as types from 'data/workouts/types'
 import { shouldFetch } from 'data/shared'
 import debounceUpdate from 'utils/debounceUpdate'

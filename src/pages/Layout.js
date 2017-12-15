@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import { removeError } from 'data/ui/actions'
 
+import Footer from 'components/Footer'
 import ErrorMessage from 'components/ErrorMessage'
 
 class Layout extends Component {
@@ -33,6 +34,7 @@ class Layout extends Component {
                 <div className="container">
                     <ErrorMessage error={this.props.error} />
                     {this.props.children}
+                    <Footer />
                 </div>
             </Fragment>
         )
