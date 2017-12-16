@@ -1,6 +1,6 @@
 import { CALL_API } from 'utils/apiMiddleware'
 import * as types from 'data/routines/types'
-import { shouldFetch } from 'data/shared'
+import { shouldFetch } from 'data/utils'
 import debounceUpdate from 'utils/debounceUpdate'
 
 const getRoutines = () => ({

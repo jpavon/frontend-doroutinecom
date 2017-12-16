@@ -1,6 +1,9 @@
 import * as types from 'data/user/types'
-import * as helperTypes from 'data/shared'
-import { defaultRequest, defaultFailure } from 'data/shared'
+import * as helperTypes from 'data/utils'
+import {
+    request,
+    failure
+} from 'data/utils'
 
 const initialState = {
     fetchStatus: helperTypes.STATUS_NONE,
@@ -13,7 +16,7 @@ const user = (state = initialState, action) => {
 
     switch (type) {
         case types.USER_FETCH_REQUEST:
-            return defaultRequest(state)
+            return request(state)
 
         case types.USER_FETCH_SUCCESS:
             return {
@@ -26,10 +29,10 @@ const user = (state = initialState, action) => {
             }
 
         case types.USER_FETCH_FAILURE:
-            return defaultFailure(state, error)
+            return failure(state, error)
 
         case types.USER_POST_REQUEST:
-            return defaultRequest(state)
+            return request(state)
 
         case types.USER_POST_SUCCESS:
             return {
@@ -42,10 +45,10 @@ const user = (state = initialState, action) => {
             }
 
         case types.USER_POST_FAILURE:
-            return defaultFailure(state, error)
+            return failure(state, error)
 
         case types.USER_PUT_REQUEST:
-            return defaultRequest(state)
+            return request(state)
 
         case types.USER_PUT_SUCCESS:
             return {
@@ -58,21 +61,19 @@ const user = (state = initialState, action) => {
             }
 
         case types.USER_PUT_FAILURE:
-            return defaultFailure(state, error)
+            return failure(state, error)
 
         case types.USER_DELETE_REQUEST:
-            return defaultRequest(state)
+            return request(state)
 
         case types.USER_DELETE_SUCCESS:
             return {
                 fetchStatus: helperTypes.STATUS_LOADED,
-                entity: {
-                    id: null
-                }
+                entity: {}
             }
 
         case types.USER_DELETE_FAILURE:
-            return defaultFailure(state, error)
+            return failure(state, error)
 
         case types.USER_AUTH:
             return {

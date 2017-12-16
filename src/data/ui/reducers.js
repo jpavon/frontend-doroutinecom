@@ -1,8 +1,7 @@
 import * as types from 'data/ui/types'
 
 const initialState = {
-    // isEditing: false,
-    // isLoading: true,
+    isLoading: true,
     error: false
 }
 
@@ -10,12 +9,6 @@ const ui = (state = initialState, action) => {
     const { type, message } = action
 
     switch (type) {
-        case types.TOGGLE_IS_EDITING:
-            return {
-                ...state,
-                isEditing: !state.isEditing
-            }
-
         case types.DISPLAY_LOADING:
             return {
                 ...state,

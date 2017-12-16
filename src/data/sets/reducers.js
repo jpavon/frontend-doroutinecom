@@ -1,12 +1,12 @@
 import * as types from 'data/sets/types'
-import * as helperTypes from 'data/shared'
+import * as helperTypes from 'data/utils'
 import {
     updateItem,
     insertItem,
     deleteItem,
-    defaultRequest,
-    defaultFailure
-} from 'data/shared'
+    request,
+    failure
+} from 'data/utils'
 
 const initialState = {
     fetchStatus: helperTypes.STATUS_NONE,
@@ -18,7 +18,7 @@ const exercises = (state = initialState, action) => {
 
     switch (type) {
         case types.SETS_FETCH_REQUEST:
-            return defaultRequest(state)
+            return request(state)
 
         case types.SETS_FETCH_SUCCESS:
             return {
@@ -28,10 +28,10 @@ const exercises = (state = initialState, action) => {
             }
 
         case types.SETS_FETCH_FAILURE:
-            return defaultFailure(state, error)
+            return failure(state, error)
 
         case types.SETS_POST_REQUEST:
-            return defaultRequest(state)
+            return request(state)
 
         case types.SETS_POST_SUCCESS:
             return {
@@ -41,10 +41,10 @@ const exercises = (state = initialState, action) => {
             }
 
         case types.SETS_POST_FAILURE:
-            return defaultFailure(state, error)
+            return failure(state, error)
 
         case types.SETS_PUT_REQUEST:
-            return defaultRequest(state)
+            return request(state)
 
         case types.SETS_PUT_SUCCESS:
             return {
@@ -54,10 +54,10 @@ const exercises = (state = initialState, action) => {
             }
 
         case types.SETS_PUT_FAILURE:
-            return defaultFailure(state, error)
+            return failure(state, error)
 
         case types.SETS_DELETE_REQUEST:
-            return defaultRequest(state)
+            return request(state)
 
         case types.SETS_DELETE_SUCCESS:
             return {
@@ -67,7 +67,7 @@ const exercises = (state = initialState, action) => {
             }
 
         case types.SETS_DELETE_FAILURE:
-            return defaultFailure(state, error)
+            return failure(state, error)
 
         default:
             return state

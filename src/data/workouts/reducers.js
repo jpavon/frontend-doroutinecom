@@ -1,12 +1,12 @@
 import * as types from 'data/workouts/types'
-import * as helperTypes from 'data/shared'
+import * as helperTypes from 'data/utils'
 import {
     updateItem,
     insertItem,
     deleteItem,
-    defaultRequest,
-    defaultFailure
-} from 'data/shared'
+    request,
+    failure
+} from 'data/utils'
 
 const initialState = {
     fetchStatus: helperTypes.STATUS_NONE,
@@ -18,7 +18,7 @@ const workouts = (state = initialState, action) => {
 
     switch (type) {
         case types.WORKOUTS_FETCH_REQUEST:
-            return defaultRequest(state)
+            return request(state)
 
         case types.WORKOUTS_FETCH_SUCCESS:
             return {
@@ -28,10 +28,10 @@ const workouts = (state = initialState, action) => {
             }
 
         case types.WORKOUTS_FETCH_FAILURE:
-            return defaultFailure(state, error)
+            return failure(state, error)
 
         case types.WORKOUTS_POST_REQUEST:
-            return defaultRequest(state)
+            return request(state)
 
         case types.WORKOUTS_POST_SUCCESS:
             return {
@@ -41,10 +41,10 @@ const workouts = (state = initialState, action) => {
             }
 
         case types.WORKOUTS_POST_FAILURE:
-            return defaultFailure(state, error)
+            return failure(state, error)
 
         case types.WORKOUTS_PUT_REQUEST:
-            return defaultRequest(state)
+            return request(state)
 
         case types.WORKOUTS_PUT_SUCCESS:
             return {
@@ -54,10 +54,10 @@ const workouts = (state = initialState, action) => {
             }
 
         case types.WORKOUTS_PUT_FAILURE:
-            return defaultFailure(state, error)
+            return failure(state, error)
 
         case types.WORKOUTS_DELETE_REQUEST:
-            return defaultRequest(state)
+            return request(state)
 
         case types.WORKOUTS_DELETE_SUCCESS:
             return {
@@ -67,7 +67,7 @@ const workouts = (state = initialState, action) => {
             }
 
         case types.WORKOUTS_DELETE_FAILURE:
-            return defaultFailure(state, error)
+            return failure(state, error)
 
         default:
             return state
