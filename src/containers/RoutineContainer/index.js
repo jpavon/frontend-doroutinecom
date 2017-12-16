@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 
 import { createRoutine, updateRoutine, removeRoutine } from 'data/routines/actions'
 import { routineSelector } from 'data/routines/selectors'
@@ -14,7 +13,7 @@ import RoutineSingle from 'components/Routines/RoutineSingle'
 class RoutineContainer extends Component {
 
     static propTypes = {
-        match: PropTypes.object.isRequired,
+        routineSlug: PropTypes.string.isRequired,
 
         routine: PropTypes.oneOfType([
             PropTypes.bool,
@@ -41,7 +40,7 @@ class RoutineContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    routine: routineSelector(props.match.params.routineSlug)(state),
+    routine: routineSelector(props.routineSlug)(state),
 })
 
 const mapDispatchToProps = {
@@ -50,4 +49,4 @@ const mapDispatchToProps = {
     removeRoutine
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RoutineContainer))
+export default connect(mapStateToProps, mapDispatchToProps)(RoutineContainer)

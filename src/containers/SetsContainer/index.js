@@ -30,9 +30,7 @@ class SetsContainer extends Component {
                         set={set}
                         updateSet={this.props.updateSet}
                         removeSet={this.props.removeSet}
-                    >
-
-                    </Set>
+                    />
                 ))}
             </Sets>
         )
