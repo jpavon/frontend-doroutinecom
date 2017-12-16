@@ -27,8 +27,10 @@ export const blocksWorkoutsSelector = (routineId) => createSelector(
         (state) => state.workouts.entities
     ],
     (workouts) => {
-        return [...new Set(workouts
-            .filter((workout) => (workout.routineId === routineId))
-            .map((workout) => (workout.blockId)))].filter(Number)
+        return [...new Set(
+            workouts
+                .filter((workout) => (workout.routineId === routineId))
+                .map((workout) => (workout.blockId))
+        )].filter(Number)
     }
 )

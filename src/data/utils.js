@@ -5,7 +5,6 @@ export const STATUS_LOADING = 'LOADING'
 export const STATUS_LOADED = 'LOADED'
 export const STATUS_FAILED = 'FAILED'
 
-
 // reducer utils
 
 export const request = (state) => ({
@@ -49,9 +48,11 @@ export const update = (state, payload) => ({
     })
 })
 
-export const remove = (state, id) => (
-    state.entities.filter((i) => (i.id !== id))
-)
+export const remove = (state, id) => ({
+    ...state,
+    fetchStatus: STATUS_LOADED,
+    entities: state.entities.filter((i) => (i.id !== id))
+})
 
 // action utils
 
