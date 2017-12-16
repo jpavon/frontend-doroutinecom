@@ -41,11 +41,7 @@ const lifts = (state = initialState, action) => {
             }
 
         case types.LIFTS_POST_FAILURE:
-            return {
-                ...state,
-                fetchStatus: helperTypes.STATUS_FAILED,
-                error: error
-            }
+            return defaultFailure(state, error)
 
         case types.LIFTS_PUT_REQUEST:
             return defaultRequest(state)

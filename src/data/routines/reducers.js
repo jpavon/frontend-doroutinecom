@@ -41,11 +41,7 @@ const routines = (state = initialState, action) => {
             }
 
         case types.ROUTINES_POST_FAILURE:
-            return {
-                ...state,
-                fetchStatus: helperTypes.STATUS_FAILED,
-                error: error
-            }
+            return defaultFailure(state, error)
 
         case types.ROUTINES_PUT_REQUEST:
             return defaultRequest(state)

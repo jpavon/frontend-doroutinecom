@@ -41,11 +41,7 @@ const workouts = (state = initialState, action) => {
             }
 
         case types.WORKOUTS_POST_FAILURE:
-            return {
-                ...state,
-                fetchStatus: helperTypes.STATUS_FAILED,
-                error: error
-            }
+            return defaultFailure(state, error)
 
         case types.WORKOUTS_PUT_REQUEST:
             return defaultRequest(state)
