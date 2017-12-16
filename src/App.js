@@ -35,8 +35,7 @@ class App extends Component {
     }
 
     state = {
-        isErrorApp: false,
-        isLoading: true
+        isErrorApp: false
     }
 
     componentDidCatch(error, info) {

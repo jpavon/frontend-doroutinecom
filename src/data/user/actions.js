@@ -20,24 +20,6 @@ export const fetchUser = (force = false) => (dispatch, getState) => {
     return (force || shouldFetch(types.NAME, getState())) && dispatch(getUser())
 }
 
-
-// const postUser = (data) => ({
-//     [CALL_API]: {
-//         types: [
-//             types.USER_POST_REQUEST,
-//             types.USER_POST_SUCCESS,
-//             types.USER_POST_FAILURE
-//         ],
-//         endpoint: 'user',
-//         method: 'post',
-//         data
-//     }
-// })
-
-// export const createUser = (data) => (dispatch, getState) => {
-//     return dispatch(postUser(data))
-// }
-
 const putUser = (id, data) => ({
     [CALL_API]: {
         types: [
@@ -54,22 +36,6 @@ const putUser = (id, data) => ({
 export const updateUser = (id, data) => (dispatch, getState) => {
     return debounceUpdate(() => dispatch(putUser(id, data)))
 }
-
-// const deleteUser = () => ({
-//     [CALL_API]: {
-//         types: [
-//             types.USER_DELETE_REQUEST,
-//             types.USER_DELETE_SUCCESS,
-//             types.USER_DELETE_FAILURE
-//         ],
-//         endpoint: 'user',
-//         method: 'delete'
-//     }
-// })
-
-// export const removeUser = () => (dispatch, getState) => {
-//     return dispatch(deleteUser())
-// }
 
 const loginUserAction = ({email, password}) => ({
     [CALL_API]: {

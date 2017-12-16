@@ -1,7 +1,7 @@
 import * as types from 'data/ui/types'
 
 const initialState = {
-    isLoading: true,
+    isLoading: false,
     error: false
 }
 

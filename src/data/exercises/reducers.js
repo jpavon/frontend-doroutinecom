@@ -1,9 +1,10 @@
 import * as types from 'data/exercises/types'
 import * as helperTypes from 'data/utils'
 import {
-    updateItem,
-    insertItem,
-    deleteItem,
+    fetch,
+    create,
+    update,
+    remove,
     request,
     failure
 } from 'data/utils'
@@ -21,11 +22,7 @@ const exercises = (state = initialState, action) => {
             return request(state)
 
         case types.EXERCISES_FETCH_SUCCESS:
-            return {
-                ...state,
-                fetchStatus: helperTypes.STATUS_LOADED,
-                entities: payload
-            }
+            return fetch(state, payload)
 
         case types.EXERCISES_FETCH_FAILURE:
             return failure(state, error)
@@ -34,11 +31,7 @@ const exercises = (state = initialState, action) => {
             return request(state)
 
         case types.EXERCISES_POST_SUCCESS:
-            return {
-                ...state,
-                fetchStatus: helperTypes.STATUS_LOADED,
-                entities: insertItem(state.entities, payload)
-            }
+            return create(state, payload)
 
         case types.EXERCISES_POST_FAILURE:
             return failure(state, error)
@@ -47,11 +40,7 @@ const exercises = (state = initialState, action) => {
             return request(state)
 
         case types.EXERCISES_PUT_SUCCESS:
-            return {
-                ...state,
-                fetchStatus: helperTypes.STATUS_LOADED,
-                entities: updateItem(state.entities, payload)
-            }
+            return update(state, payload)
 
         case types.EXERCISES_PUT_FAILURE:
             return failure(state, error)
@@ -60,11 +49,7 @@ const exercises = (state = initialState, action) => {
             return request(state)
 
         case types.EXERCISES_DELETE_SUCCESS:
-            return {
-                ...state,
-                fetchStatus: helperTypes.STATUS_LOADED,
-                entities: deleteItem(state.entities, meta.id)
-            }
+            return remove(state, meta.id)
 
         case types.EXERCISES_DELETE_FAILURE:
             return failure(state, error)
