@@ -224,3 +224,10 @@ p {
 
 a {
   color: #444; }
+
+.global-h1 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  border-bottom: 2px solid #444;
+  padding-bottom: .2rem;
+  margin-bottom: 1rem; }

@@ -9,10 +9,6 @@
 
 .routine {
 
-    h1 {
-        margin-bottom: .2rem;
-    }
-
     a {
         display: block;
         margin-bottom: 1rem;
@@ -24,6 +20,10 @@
         &:hover {
             color: blue;
         }
+    }
+
+    .routine-title {
+        margin-bottom: .2rem;
     }
 }
 

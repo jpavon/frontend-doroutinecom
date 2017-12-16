@@ -1,9 +1,6 @@
 .routines-button-create {
   margin-bottom: 1rem; }
 
-.routine h1 {
-  margin-bottom: .2rem; }
-
 .routine a {
   display: block;
   margin-bottom: 1rem;
@@ -13,6 +10,9 @@
   text-decoration: none; }
   .routine a:hover {
     color: blue; }
+
+.routine .routine-title {
+  margin-bottom: .2rem; }
 
 .routine-single {
   padding: 1rem;
