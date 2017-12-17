@@ -34,11 +34,13 @@ class Routes extends Component {
             <Route {...rest} render={(props) => (
                 !this.props.isAuth ?
                     <Component {...props} /> :
-                    <Redirect to={{
-                        pathname: (props.location.state && props.location.state.from) ?
+                    <Redirect
+                        to={
+                            (props.location.state && props.location.state.from) ?
                             props.location.state.from :
                             '/'
-                    }} />
+                        }
+                    />
             )} />
         )
 
