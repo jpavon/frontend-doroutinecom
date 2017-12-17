@@ -40,10 +40,6 @@ class App extends Component {
         if (this.props.isFetchRequired && this.props.isAuth) {
             this.fetchData()
         }
-
-        if (!this.props.isAuth) {
-            this.props.removeLoading()
-        }
     }
 
     state = {
@@ -51,10 +47,8 @@ class App extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.isFetchRequired &&
-            nextProps.isAuth &&
-            (nextProps.isAuth !== this.props.isAuth)) {
-                this.fetchData()
+        if (nextProps.isFetchRequired && nextProps.isAuth) {
+            this.fetchData()
         }
     }
 
