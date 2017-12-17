@@ -59,6 +59,5 @@
     "redux-devtools-log-monitor": "^1.3.0",
     "redux-logger": "^3.0.6",
     "why-did-you-update": "^0.1.0"
-  },
-  "proxy": "http://localhost:3000"
+  }
 }

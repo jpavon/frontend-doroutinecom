@@ -34,15 +34,9 @@ class App extends Component {
         removeLoading: PropTypes.func.isRequired
     }
 
-    state = {
-        isErrorApp: false
-    }
+    constructor(props) {
+        super(props)
 
-    componentDidCatch(error, info) {
-        this.setState({ isErrorApp: true })
-    }
-
-    componentWillMount() {
         if (this.props.isFetchRequired && this.props.isAuth) {
             this.fetchData()
         }
@@ -52,10 +46,20 @@ class App extends Component {
         }
     }
 
+    state = {
+        isErrorApp: false
+    }
+
     componentWillReceiveProps(nextProps) {
-        if (nextProps.isFetchRequired && nextProps.isAuth && (nextProps.isAuth !== this.props.isAuth)) {
-            this.fetchData()
+        if (nextProps.isFetchRequired &&
+            nextProps.isAuth &&
+            (nextProps.isAuth !== this.props.isAuth)) {
+                this.fetchData()
         }
+    }
+
+    componentDidCatch(error, info) {
+        this.setState({ isErrorApp: true })
     }
 
     fetchData = () => {
