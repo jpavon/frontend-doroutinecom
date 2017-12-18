@@ -7,6 +7,7 @@ import './style.css'
 const RoutineSingle = ({children, routine, updateRoutine, removeRoutine}) => (
     <div className="routine-single-container">
         <div className="routine-single">
+            <h1 className="global-header">Title</h1>
             <Form
                 data={routine}
                 update={updateRoutine}

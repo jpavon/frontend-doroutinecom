@@ -3,23 +3,26 @@
 .input {
     flex: 1;
     margin-bottom: 0;
-    background-color: transparent;
-    border: 1px rgba(0, 0, 0, .2) dashed;
+    background-color: #333;
+    // border: 1px rgba(0, 0, 0, .2) dashed;
     width: 100%;
-    color: #444;
+    color: #fff;
     font-size: .9rem;
+    border: 0;
+    border: 1px solid #666;
+    padding: .3rem;
 
-    &.input-right {
-        text-align: right;
-    }
+    // &.input-right {
+    //     text-align: right;
+    // }
 
-    &.input-center {
-        text-align: center;
-    }
+    // &.input-center {
+    //     text-align: center;
+    // }
 
-    &.input-background-dark {
-        border: 1px rgba(255, 255, 255, .2) dashed;
-    }
+    // &.input-background-dark {
+    //     border: 1px rgba(255, 255, 255, .2) dashed;
+    // }
 
     &::-webkit-input-placeholder {
         color: rgba(#fff, .3);

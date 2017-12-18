@@ -4,19 +4,12 @@
   text-align: right; }
 
 .exercise {
-  background-color: #efefef;
   padding: .3rem;
   margin-top: 3px;
-  border: 1px solid #ddd; }
+  border: 1px solid #555; }
 
 .exercise-button-remove button {
   margin-left: auto; }
 
 .exercise-form {
-  background-color: #fff;
   margin-bottom: .3rem; }
-  .exercise-form select {
-    background-color: transparent;
-    height: 30px; }
-    .exercise-form select:focus {
-      background-color: transparent; }

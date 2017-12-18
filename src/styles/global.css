@@ -208,9 +208,9 @@
 
 body {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  color: #444;
+  color: #eee;
   overflow-y: scroll;
-  background-color: #eee;
+  background-color: #222;
   margin-bottom: 10rem; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -222,11 +222,11 @@ p {
   font-size: 1.1rem; }
 
 a {
-  color: #444; }
+  color: #eee; }
 
-.global-h1 {
-  font-size: 1rem;
+.global-header {
+  font-size: .9rem;
   text-transform: uppercase;
-  border-bottom: 2px solid #444;
-  padding-bottom: .2rem;
-  margin-bottom: 1rem; }
+  margin-bottom: 1rem;
+  font-weight: 400;
+  letter-spacing: .1rem; }

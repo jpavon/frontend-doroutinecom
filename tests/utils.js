@@ -1,4 +1,4 @@
-import { APP_URL } from './main.test'
+import { APP_URL } from './index.test'
 
 export const goTo = async (page, url) => {
     await page.goto(APP_URL + url, { waitUntil: 'networkidle0' })

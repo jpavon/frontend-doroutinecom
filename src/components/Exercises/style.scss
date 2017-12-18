@@ -12,10 +12,10 @@
 // single
 
 .exercise {
-    background-color: #efefef;
+    // background-color: #555;
     padding: .3rem;
     margin-top: 3px;
-    border: 1px solid #ddd;
+    border: 1px solid #555;
 }
 
 .exercise-button-remove {
@@ -27,14 +27,14 @@
 // form
 
 .exercise-form {
-    background-color: #fff;
+    // background-color: #fff;
     margin-bottom: .3rem;
 
-    select {
-        background-color: transparent;
-        height: 30px;
-        &:focus {
-            background-color: transparent;
-        }
-    }
+    // select {
+    //     background-color: transparent;
+    //     height: 30px;
+    //     &:focus {
+    //         background-color: transparent;
+    //     }
+    // }
 }

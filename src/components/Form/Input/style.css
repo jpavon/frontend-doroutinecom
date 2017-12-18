@@ -1,17 +1,13 @@
 .input {
   flex: 1;
   margin-bottom: 0;
-  background-color: transparent;
-  border: 1px rgba(0, 0, 0, 0.2) dashed;
+  background-color: #333;
   width: 100%;
-  color: #444;
-  font-size: .9rem; }
-  .input.input-right {
-    text-align: right; }
-  .input.input-center {
-    text-align: center; }
-  .input.input-background-dark {
-    border: 1px rgba(255, 255, 255, 0.2) dashed; }
+  color: #fff;
+  font-size: .9rem;
+  border: 0;
+  border: 1px solid #666;
+  padding: .3rem; }
   .input::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.3); }
   .input:-moz-placeholder {

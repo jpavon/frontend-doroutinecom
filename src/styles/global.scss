@@ -30,10 +30,10 @@ a {
 
 // global styles
 
-.global-h1 {
-    font-size: 1rem;
+.global-header {
+    font-size: .9rem;
     text-transform: uppercase;
-    border-bottom: 2px solid #444;
-    padding-bottom: .2rem;
     margin-bottom: 1rem;
+    font-weight: 400;
+    letter-spacing: .1rem;
 }

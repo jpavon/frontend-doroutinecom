@@ -2,6 +2,8 @@
 
 .lifts-container {
     margin-bottom: 2rem;
+    padding: .5rem;
+    background-color: #333;
 }
 
 .lifts {
@@ -18,11 +20,11 @@
     // background-color: #fff;
     text-transform: uppercase;
     // border-bottom: 3px solid #ccc;
-    text-align: center;
+    // text-align: center;
 }
 
 .lifts-button-create {
-    margin-left: 1rem;
+    margin-bottom: .5rem;
 }
 
 // single
@@ -57,8 +59,8 @@
     .lift-name {
         position: relative;
         background-color: #333;
-        padding: .4rem;
-        border-bottom: 3px solid lighten(#333, 30%);
+        // padding: .4rem;
+        // border-bottom: 3px solid lighten(#333, 30%);
 
         input {
             color: #fff;
@@ -66,8 +68,8 @@
     }
 
     .lift-rm {
-        background-color: #fff;
-        padding: .4rem;
+        // background-color: #fff;
+        // padding: .4rem;
     }
 
 .lift-button-delete {
