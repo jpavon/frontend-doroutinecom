@@ -11,6 +11,7 @@ let page
 
 beforeAll(async () => {
     page = await global.__BROWSER__.newPage()
+    await page.setViewport({ width: 1200, height: 800})
 }, global.TIMEOUT)
 
 describe('auth', async () => {

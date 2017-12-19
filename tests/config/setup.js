@@ -11,8 +11,7 @@ module.exports = async function() {
     console.log(chalk.green('Setup Puppeteer Environment.'))
     const browser = await puppeteer.launch({
         headless: false,
-        slowMo: 0,
-        args: ['--window-size=1200,800']
+        slowMo: 0
     })
     global.__BROWSER__ = browser
     mkdirp.sync(DIR)
