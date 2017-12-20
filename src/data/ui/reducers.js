@@ -2,7 +2,8 @@ import * as types from 'data/ui/types'
 
 const initialState = {
     isLoading: false,
-    error: false
+    error: false,
+    isServerError: false
 }
 
 const ui = (state = initialState, action) => {
@@ -31,6 +32,12 @@ const ui = (state = initialState, action) => {
             return {
                 ...state,
                 error: false
+            }
+
+        case types.SET_SERVER_ERROR:
+            return {
+                ...state,
+                isServerError: true
             }
 
         default:

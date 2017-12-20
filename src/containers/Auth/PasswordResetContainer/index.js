@@ -2,36 +2,36 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { registerUser, authUser } from 'data/user/actions'
+import { passwordReset } from 'data/user/actions'
 
-import Register from 'components/Register'
+import PasswordReset from 'components/Auth/PasswordReset'
 
-class RegisterContainer extends Component {
+class PasswordResetContainer extends Component {
 
     static propTypes = {
-        registerUser: PropTypes.func.isRequired,
-        authUser: PropTypes.func.isRequired,
+        token: PropTypes.string.isRequired,
+
+        passwordReset: PropTypes.func.isRequired,
     }
 
     state = {
-        errors: {}
+        errors: {},
+        success: false
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
 
-        this.props.registerUser({
-            name: this.name.value,
+        this.props.passwordReset({
+            token: this.props.token,
             email: this.email.value,
             password: this.password.value,
-            passwordConfirmation: this.password.value
+            passwordConfirmation: this.passwordConfirmation.value
         }).then((resp) => {
             if (resp.error) {
-                this.password.value = ''
-                this.passwordConfirmation.value = ''
                 this.setState({ errors: resp.error.errors })
             } else {
-                this.props.authUser(resp.payload.token)
+                this.setState({ success: 'Your password has been reset, login again.' })
             }
         })
     }
@@ -42,9 +42,10 @@ class RegisterContainer extends Component {
 
     render() {
         return (
-            <Register
-                errors={this.state.errors}
+            <PasswordReset
                 handleSubmit={this.handleSubmit}
+                errors={this.state.errors}
+                success={this.state.success}
                 setRef={this.setRef}
             />
         )
@@ -55,8 +56,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = {
-    registerUser,
-    authUser
+    passwordReset
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(PasswordResetContainer)

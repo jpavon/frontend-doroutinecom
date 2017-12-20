@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { loginUser, authUser } from 'data/user/actions'
+import { registerUser, authUser } from 'data/user/actions'
 
-import Login from 'components/Login'
+import Register from 'components/Auth/Register'
 
-class LoginContainer extends Component {
+class RegisterContainer extends Component {
 
     static propTypes = {
-        loginUser: PropTypes.func.isRequired,
-        authUser: PropTypes.func.isRequired
+        registerUser: PropTypes.func.isRequired,
+        authUser: PropTypes.func.isRequired,
     }
 
     state = {
@@ -20,12 +20,15 @@ class LoginContainer extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
 
-        this.props.loginUser({
+        this.props.registerUser({
+            name: this.name.value,
             email: this.email.value,
-            password: this.password.value
+            password: this.password.value,
+            passwordConfirmation: this.passwordConfirmation.value
         }).then((resp) => {
             if (resp.error) {
                 this.password.value = ''
+                this.passwordConfirmation.value = ''
                 this.setState({ errors: resp.error.errors })
             } else {
                 this.props.authUser(resp.payload.token)
@@ -39,9 +42,9 @@ class LoginContainer extends Component {
 
     render() {
         return (
-            <Login
-                handleSubmit={this.handleSubmit}
+            <Register
                 errors={this.state.errors}
+                handleSubmit={this.handleSubmit}
                 setRef={this.setRef}
             />
         )
@@ -52,8 +55,8 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = {
-    loginUser,
+    registerUser,
     authUser
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterContainer)

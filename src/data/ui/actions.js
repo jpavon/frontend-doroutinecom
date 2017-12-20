@@ -16,3 +16,7 @@ export const addError = (message) => ({
 export const removeError = () => ({
     type: types.REMOVE_ERROR
 })
+
+export const setServerError = () => ({
+    type: types.SET_SERVER_ERROR
+})

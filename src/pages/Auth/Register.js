@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from 'pages/Layout'
-import RegisterContainer from 'containers/RegisterContainer'
+import RegisterContainer from 'containers/Auth/RegisterContainer'
 
 const Register = () => (
     <Layout

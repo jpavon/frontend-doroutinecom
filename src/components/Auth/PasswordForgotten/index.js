@@ -1,22 +1,19 @@
 import React from 'react'
 import ErrorMessage from 'components/ErrorMessage'
 
-const Login = ({handleSubmit, errors, setRef}) => (
-    <div className="login">
-        <h1>Login</h1>
+const PasswordForgotten = ({handleSubmit, errors, success, setRef}) => (
+    <div className="password-forgotten">
+        <h1>Password Forgotten</h1>
+        {success && <div className="message-success">{success}</div>}
         <form method="post" onSubmit={handleSubmit}>
             <ErrorMessage error={errors} />
             <label htmlFor="email">
                 Email:
             </label>
             <input id="email" type="text" ref={(ref) => setRef(ref, 'email')} />
-            <label htmlFor="password">
-                Password:
-            </label>
-            <input id="password" type="password" ref={(ref) => setRef(ref, 'password')} />
             <input type="submit" value="Submit" />
         </form>
     </div>
 )
 
-export default Login
+export default PasswordForgotten

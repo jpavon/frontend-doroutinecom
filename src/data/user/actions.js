@@ -79,6 +79,47 @@ export const registerUser = (data) => (dispatch, getState) => {
     return dispatch(registerUserAction(data))
 }
 
+const passwordForgottenAction = ({email}) => ({
+    [CALL_API]: {
+        types: [
+            types.USER_PASSWORD_FORGOTTEN_REQUEST,
+            types.USER_PASSWORD_FORGOTTEN_SUCCESS,
+            types.USER_PASSWORD_FORGOTTEN_FAILURE
+        ],
+        endpoint: 'password/email',
+        method: 'post',
+        data: {
+            email
+        }
+    }
+})
+
+export const passwordForgotten = (data) => (dispatch, getState) => {
+    return dispatch(passwordForgottenAction(data))
+}
+
+const passwordResetAction = ({token, email, password, passwordConfirmation}) => ({
+    [CALL_API]: {
+        types: [
+            types.USER_PASSWORD_RESET_REQUEST,
+            types.USER_PASSWORD_RESET_SUCCESS,
+            types.USER_PASSWORD_RESET_FAILURE
+        ],
+        endpoint: 'password/reset',
+        method: 'post',
+        data: {
+            token,
+            email,
+            password,
+            passwordConfirmation
+        }
+    }
+})
+
+export const passwordReset = (data) => (dispatch, getState) => {
+    return dispatch(passwordResetAction(data))
+}
+
 const authUserAction = () => ({
     type: types.USER_AUTH
 })

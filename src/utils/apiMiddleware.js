@@ -1,8 +1,11 @@
 import axios from 'axios'
 import { camelizeKeys, decamelizeKeys } from 'humps'
+
 import { logoutUser } from 'data/user/actions'
+import { setServerError } from 'data/ui/actions'
 
 const UNAUTH = 'Unauthenticated.'
+const SERVER_ERROR = 'SERVER_ERROR'
 
 const callApi = (endpoint, method, data, store) => {
     return axios.request({
@@ -18,13 +21,10 @@ const callApi = (endpoint, method, data, store) => {
     }).then((response) => {
         return Promise.resolve(response.data)
     }).catch((err) => {
-        if (
-            (err.response.data &&
-            err.response.data.message === UNAUTH) ||
-            err.response.data.exception
-        ) {
-            store.dispatch(logoutUser('An error ocurred, try to log in again.'))
+        if (err.response.data.message === UNAUTH) {
             return Promise.reject(UNAUTH)
+        } else if (err.response.data.exception) {
+            return Promise.reject(SERVER_ERROR)
         } else {
             return Promise.reject(err.response.data)
         }
@@ -82,8 +82,16 @@ export default store => next => action => {
             type: successType,
             meta
         })))
-        .catch((error) => error !== UNAUTH && next(actionWith({
-            type: failureType,
-            error: error || 'Server error.'
-        })))
+        .catch((error) => {
+            if (error === UNAUTH) {
+                store.dispatch(logoutUser('An error ocurred, try to log in again.'))
+            } else if (error === SERVER_ERROR) {
+                store.dispatch(setServerError())
+            } else {
+                return next(actionWith({
+                    type: failureType,
+                    error: error || 'Server error.'
+                }))
+            }
+        })
 }

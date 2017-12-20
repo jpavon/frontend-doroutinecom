@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
+import Login from 'pages/Auth/Login'
+import Register from 'pages/Auth/Register'
+import PasswordForgotten from 'pages/Auth/PasswordForgotten'
+import PasswordReset from 'pages/Auth/PasswordReset'
 import Home from 'pages/Home'
-import Login from 'pages/Login'
-import Register from 'pages/Register'
 import Routines from 'pages/Routines'
 import Routine from 'pages/Routine'
 import Settings from 'pages/Settings'
@@ -48,6 +50,8 @@ class Routes extends Component {
             <Switch>
                 <GuestRoute exact path="/login" component={Login} />
                 <GuestRoute exact path="/register" component={Register} />
+                <GuestRoute exact path="/password-forgotten" component={PasswordForgotten} />
+                <GuestRoute exact path="/password-reset/:token" component={PasswordReset} />
 
                 <PrivateRoute exact path="/" component={Home} />
                 <PrivateRoute exact path="/routines" component={Routines} />

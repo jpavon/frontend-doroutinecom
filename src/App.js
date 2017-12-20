@@ -17,12 +17,12 @@ import ErrorApp from 'components/ErrorApp'
 import Nav from 'components/Nav'
 import Loading from 'components/Loading'
 
-
 class App extends Component {
 
     static propTypes = {
         isFetchRequired: PropTypes.bool.isRequired,
         isAuth: PropTypes.bool.isRequired,
+        isServerError: PropTypes.bool.isRequired,
 
         fetchUser: PropTypes.func.isRequired,
         fetchRoutines: PropTypes.func.isRequired,
@@ -49,6 +49,10 @@ class App extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.isFetchRequired && nextProps.isAuth) {
             this.fetchData()
+        }
+
+        if (nextProps.isServerError && nextProps.isServerError !== this.props.isServerError) {
+            this.setState({ isErrorApp: true })
         }
     }
 
@@ -94,7 +98,8 @@ class App extends Component {
 const mapStateToProps = (state, props) => ({
     isFetchRequired: Object.keys(state.user.entity).length === 0,
     isAuth: state.user.isAuth,
-    isLoading: state.ui.isLoading
+    isLoading: state.ui.isLoading,
+    isServerError: state.ui.isServerError
 })
 
 const mapDispatchToProps = {
