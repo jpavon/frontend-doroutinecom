@@ -34,7 +34,8 @@
 
 .workout {
   position: relative;
-  margin-bottom: 1rem; }
+  margin-bottom: 1rem;
+  background-color: #444; }
 
 .workout-button-remove {
   position: absolute;

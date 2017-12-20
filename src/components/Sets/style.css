@@ -50,6 +50,7 @@
 
 .set-button {
   text-align: right; }
-  .set-button button {
-    position: relative;
-    margin-left: .2rem; }
+
+.set-button button {
+  position: relative;
+  margin-left: .2rem; }

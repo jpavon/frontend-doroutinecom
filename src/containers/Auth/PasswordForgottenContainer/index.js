@@ -26,7 +26,10 @@ class PasswordForgottenContainer extends Component {
             if (resp.error) {
                 this.setState({ errors: resp.error.errors })
             } else {
-                this.setState({ success: 'A password reset email has been sent.' })
+                this.setState({
+                    errors: {},
+                    success: 'A password reset email has been sent.'
+                })
             }
         })
     }

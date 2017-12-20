@@ -29,9 +29,14 @@ class PasswordResetContainer extends Component {
             passwordConfirmation: this.passwordConfirmation.value
         }).then((resp) => {
             if (resp.error) {
+                this.password.value = ''
+                this.passwordConfirmation.value = ''
                 this.setState({ errors: resp.error.errors })
             } else {
-                this.setState({ success: 'Your password has been reset, login again.' })
+                this.setState({
+                    errors: {},
+                    success: 'Your password has been reset, login again.'
+                })
             }
         })
     }
