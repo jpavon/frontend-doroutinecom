@@ -2,8 +2,7 @@
 
 .lifts-container {
     margin-bottom: 2rem;
-    padding: .5rem;
-    background-color: #333;
+
 }
 
 .lifts {
@@ -55,10 +54,15 @@
         max-width: percentage(1/2);
     }
 }
+    .lift-inner {
+        padding: .4rem;
+        border: 1px solid #555;
+    }
 
     .lift-name {
         position: relative;
         background-color: #333;
+        margin-bottom: .4rem;
         // padding: .4rem;
         // border-bottom: 3px solid lighten(#333, 30%);
 

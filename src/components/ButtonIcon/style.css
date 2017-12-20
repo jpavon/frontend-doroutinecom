@@ -25,11 +25,13 @@
   white-space: nowrap;
   overflow: hidden;
   letter-spacing: 0; }
-  .button:hover, .button-icon:hover {
-    background-color: #4f96cd; }
-  .button:not([disabled]):not(.disabled).active, .button-icon:not([disabled]):not(.disabled).active, .button:not([disabled]):not(.disabled):active, .button-icon:not([disabled]):not(.disabled):active {
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem #63a2d3; }
+
+.button:hover, .button-icon:hover {
+  background-color: #4f96cd; }
+
+.button:not([disabled]):not(.disabled).active, .button-icon:not([disabled]):not(.disabled).active, .button:not([disabled]):not(.disabled):active, .button-icon:not([disabled]):not(.disabled):active {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem #63a2d3; }
 
 .button--small {
   padding: .2rem .4rem; }
@@ -37,13 +39,15 @@
 .button--danger {
   color: #fff;
   background-color: #a52b2b; }
-  .button--danger:hover {
-    background-color: #912626; }
+
+.button--danger:hover {
+  background-color: #912626; }
 
 .button-icon {
   display: flex;
   padding: 4px;
   font-size: .6rem; }
-  .button-icon .button-icon-text {
-    position: relative;
-    top: 1px; }
+
+.button-icon .button-icon-text {
+  position: relative;
+  top: 1px; }

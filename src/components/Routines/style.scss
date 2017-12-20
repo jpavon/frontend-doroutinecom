@@ -14,11 +14,12 @@
         margin-bottom: 1rem;
         padding: .4rem 1rem;
         font-size: .8rem;
-        // background-color: #fff;
         text-decoration: none;
+        border: 1px solid #444;
+        transition: border-color .2s;
 
         &:hover {
-            color: blue;
+            border: 1px solid #888;
         }
     }
 

@@ -6,15 +6,19 @@
   margin-bottom: 1rem;
   padding: .4rem 1rem;
   font-size: .8rem;
-  text-decoration: none; }
-  .routine a:hover {
-    color: blue; }
+  text-decoration: none;
+  border: 1px solid #444;
+  transition: border-color .2s; }
+
+.routine a:hover {
+  border: 1px solid #888; }
 
 .routine .routine-title {
   margin-bottom: .2rem; }
 
 .routine-single {
   margin-bottom: 2rem; }
-  .routine-single input {
-    padding: .5rem;
-    font-size: 1.4rem; }
+
+.routine-single input {
+  padding: .5rem;
+  font-size: 1.4rem; }

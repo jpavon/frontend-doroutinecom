@@ -17,12 +17,12 @@ const Input = (props, context) => {
         ...rest
     } = props
 
-    const { data, errors, onChange, updated } = context[FORM_CONTEXT]
+    const { data, errors, onChange, updatedKey } = context[FORM_CONTEXT]
 
     return (
         <Fragment>
             <FlashMessage
-                visible={updated === name}
+                visible={updatedKey === name}
             >
                 Updated.
             </FlashMessage>

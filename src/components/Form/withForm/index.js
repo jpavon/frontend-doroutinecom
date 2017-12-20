@@ -20,14 +20,14 @@ export default function withForm(WrappedComponent) {
                 data: this.state.data,
                 errors: this.state.errors,
                 onChange: this.handleChange,
-                updated: this.state.updated
+                updatedKey: this.state.updatedKey
             }
         })
 
         state = {
             data: this.props.data,
             errors: {},
-            updated: null
+            updatedKey: null
         }
 
         handleChange = (event, name) => {
@@ -49,9 +49,9 @@ export default function withForm(WrappedComponent) {
                         } else {
                             this.setState({
                                 errors: {},
-                                updated: name
+                                updatedKey: name
                             }, () => {
-                                this.setState({updated: null})
+                                this.setState({updatedKey: null})
                             })
                         }
                     })

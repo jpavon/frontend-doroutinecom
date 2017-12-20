@@ -5,11 +5,12 @@
   margin-right: auto;
   margin-left: auto;
   max-width: 960px; }
-  @media (max-width: 576px) {
-    .container {
-      max-width: 540px;
-      padding-right: 15px;
-      padding-left: 15px; } }
+
+@media (max-width: 576px) {
+  .container {
+    max-width: 540px;
+    padding-right: 15px;
+    padding-left: 15px; } }
 
 .row {
   display: flex;

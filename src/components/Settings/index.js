@@ -7,19 +7,18 @@ import './style.css'
 
 const Settings = ({user, updateUser, handleLogoutUser}) => (
     <div className="settings">
+        <h1 className="global-header">Settings</h1>
         <div className="settings-button-logout">
             <Button
                 className="logout"
                 href="/logout"
                 onClick={handleLogoutUser}
                 align="right"
+                danger
             >
                 Logout
             </Button>
         </div>
-        <h1>Settings</h1>
-
-        <h3>Hello {user.name}!</h3>
         <Form
             data={user}
             update={updateUser}

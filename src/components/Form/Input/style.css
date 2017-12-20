@@ -8,11 +8,15 @@
   border: 0;
   border: 1px solid #666;
   padding: .3rem; }
-  .input::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 0.3); }
-  .input:-moz-placeholder {
-    color: rgba(255, 255, 255, 0.3); }
-  .input::-moz-placeholder {
-    color: rgba(255, 255, 255, 0.3); }
-  .input:-ms-input-placeholder {
-    color: rgba(255, 255, 255, 0.3); }
+
+.input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.3); }
+
+.input:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.3); }
+
+.input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.3); }
+
+.input:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.3); }
