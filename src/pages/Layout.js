@@ -42,10 +42,12 @@ class Layout extends Component {
                     {this.props.header}
                 </Helmet>
                 <div className="container">
-                    <Alert
-                        type={this.props.alert && this.props.alert.type}
-                        message={this.props.alert && this.props.alert.message}
-                    />
+                    {this.props.alert &&
+                        <Alert
+                            type={this.props.alert.type}
+                            message={this.props.alert.message}
+                        />
+                    }
                     {this.props.children}
                     <Footer />
                 </div>
