@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 
 import { removeAlert } from 'data/ui/actions'
 
-import Footer from 'components/Footer'
 import Alert from 'components/Alert'
 
 class Layout extends Component {
@@ -49,7 +48,6 @@ class Layout extends Component {
                         />
                     }
                     {this.props.children}
-                    <Footer />
                 </div>
             </Fragment>
         )

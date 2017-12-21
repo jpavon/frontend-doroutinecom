@@ -16,6 +16,7 @@ import Routes from 'Routes'
 import ErrorApp from 'components/ErrorApp'
 import Nav from 'components/Nav'
 import Loading from 'components/Loading'
+import Footer from 'components/Footer'
 
 class App extends Component {
 
@@ -88,7 +89,10 @@ class App extends Component {
                     <Loading show /> :
                     this.state.isErrorApp ?
                         <ErrorApp /> :
-                        <Routes isAuth={this.props.isAuth} />
+                        <Fragment>
+                            <Routes isAuth={this.props.isAuth} />
+                            <Footer />
+                        </Fragment>
                 }
             </Fragment>
         )
