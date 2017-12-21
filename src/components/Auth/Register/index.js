@@ -1,12 +1,9 @@
 import React from 'react'
-import ErrorMessage from 'components/ErrorMessage'
 
 const Login = ({handleSubmit, errors, setRef}) => (
     <div className="register">
         <h1>Register</h1>
         <form method="post" onSubmit={handleSubmit}>
-            <ErrorMessage error={errors} />
-
             <div>
                 <label htmlFor="name">
                     Name:

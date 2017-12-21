@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 import { FORM_CONTEXT } from 'components/Form/withForm'
-import ErrorMessage from 'components/ErrorMessage'
+import Alert from 'components/Alert'
 
 import './style.css'
 
@@ -36,11 +36,13 @@ const Select = (props, context) => {
                     ))
                 }
             </select>
-            <ErrorMessage
-                error={options < 1 && noOptionsMessage}
+            <Alert
+                error
+                message={options < 1 && noOptionsMessage}
             />
-            <ErrorMessage
-                error={errors[name]}
+            <Alert
+                error
+                message={errors[name]}
             />
         </Fragment>
     )

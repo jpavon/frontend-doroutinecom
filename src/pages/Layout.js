@@ -3,26 +3,36 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 
-import { removeError } from 'data/ui/actions'
+import { removeAlert } from 'data/ui/actions'
 
 import Footer from 'components/Footer'
-import ErrorMessage from 'components/ErrorMessage'
+import Alert from 'components/Alert'
 
 class Layout extends Component {
 
     static propTypes = {
-        error: PropTypes.oneOfType([
-            PropTypes.bool,
-            PropTypes.string
-        ]).isRequired,
-
-        removeError: PropTypes.func.isRequired
+        alert: PropTypes.shape({
+            type: PropTypes.string.isRequired,
+            message: PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.array,
+                PropTypes.object,
+                PropTypes.bool
+            ]).isRequired
+        }),
+        removeAlert: PropTypes.func.isRequired,
     }
 
     constructor(props) {
         super(props)
 
-        this.props.error && this.props.removeError()
+        this.props.alert && this.props.removeAlert()
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.alert && nextProps.alert === this.props.alert) {
+            this.props.removeAlert()
+        }
     }
 
     render() {
@@ -32,7 +42,10 @@ class Layout extends Component {
                     {this.props.header}
                 </Helmet>
                 <div className="container">
-                    <ErrorMessage error={this.props.error} />
+                    <Alert
+                        type={this.props.alert && this.props.alert.type}
+                        message={this.props.alert && this.props.alert.message}
+                    />
                     {this.props.children}
                     <Footer />
                 </div>
@@ -43,11 +56,11 @@ class Layout extends Component {
 
 
 const mapStateToProps = (state, props) => ({
-    error: state.ui.error
+    alert: state.ui.alert
 })
 
 const mapDispatchToProps = {
-    removeError
+    removeAlert
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout)

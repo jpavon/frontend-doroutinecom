@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { FORM_CONTEXT } from 'components/Form/withForm'
-import ErrorMessage from 'components/ErrorMessage'
+import Alert from 'components/Alert'
 
 import './style.css'
 
@@ -27,8 +27,9 @@ const Checkbox = (props, context) => {
                 )}
                 {...rest}
             />
-            <ErrorMessage
-                error={errors[name]}
+            <Alert
+                error
+                message={errors[name]}
             />
         </Fragment>
     )

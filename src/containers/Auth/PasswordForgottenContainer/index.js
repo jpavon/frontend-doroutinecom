@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { passwordForgotten } from 'data/user/actions'
+import { showAlert } from 'data/ui/actions'
 
 import PasswordForgotten from 'components/Auth/PasswordForgotten'
 
@@ -10,11 +11,7 @@ class PasswordForgottenContainer extends Component {
 
     static propTypes = {
         passwordForgotten: PropTypes.func.isRequired,
-    }
-
-    state = {
-        errors: {},
-        success: false
+        showAlert: PropTypes.func.isRequired,
     }
 
     handleSubmit = (event) => {
@@ -24,12 +21,9 @@ class PasswordForgottenContainer extends Component {
             email: this.email.value
         }).then((resp) => {
             if (resp.error) {
-                this.setState({ errors: resp.error.errors })
+                this.props.showAlert('error', resp.error.errors)
             } else {
-                this.setState({
-                    errors: {},
-                    success: 'A password reset email has been sent.'
-                })
+                this.props.showAlert('success', 'A password reset email has been sent.')
             }
         })
     }
@@ -42,8 +36,6 @@ class PasswordForgottenContainer extends Component {
         return (
             <PasswordForgotten
                 handleSubmit={this.handleSubmit}
-                errors={this.state.errors}
-                success={this.state.success}
                 setRef={this.setRef}
             />
         )
@@ -54,7 +46,8 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = {
-    passwordForgotten
+    passwordForgotten,
+    showAlert
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PasswordForgottenContainer)

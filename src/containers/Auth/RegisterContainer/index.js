@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { registerUser, authUser } from 'data/user/actions'
+import { showAlert } from 'data/ui/actions'
 
 import Register from 'components/Auth/Register'
 
@@ -11,10 +12,7 @@ class RegisterContainer extends Component {
     static propTypes = {
         registerUser: PropTypes.func.isRequired,
         authUser: PropTypes.func.isRequired,
-    }
-
-    state = {
-        errors: {}
+        showAlert: PropTypes.func.isRequired
     }
 
     handleSubmit = (event) => {
@@ -29,7 +27,7 @@ class RegisterContainer extends Component {
             if (resp.error) {
                 this.password.value = ''
                 this.passwordConfirmation.value = ''
-                this.setState({ errors: resp.error.errors })
+                this.props.showAlert('error', resp.error.errors)
             } else {
                 this.props.authUser(resp.payload.token)
             }
@@ -43,7 +41,6 @@ class RegisterContainer extends Component {
     render() {
         return (
             <Register
-                errors={this.state.errors}
                 handleSubmit={this.handleSubmit}
                 setRef={this.setRef}
             />
@@ -56,7 +53,8 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = {
     registerUser,
-    authUser
+    authUser,
+    showAlert
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterContainer)

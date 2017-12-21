@@ -2,15 +2,15 @@ import * as types from 'data/ui/types'
 
 const initialState = {
     isLoading: false,
-    error: false,
+    alert: null,
     isServerError: false
 }
 
 const ui = (state = initialState, action) => {
-    const { type, message } = action
+    const { type, alert } = action
 
     switch (type) {
-        case types.DISPLAY_LOADING:
+        case types.SHOW_LOADING:
             return {
                 ...state,
                 isLoading: true
@@ -22,16 +22,19 @@ const ui = (state = initialState, action) => {
                 isLoading: false
             }
 
-        case types.ADD_ERROR:
+        case types.SHOW_ALERT:
             return {
                 ...state,
-                error: message
+                alert: {
+                    type: alert.type,
+                    message: alert.message
+                }
             }
 
-        case types.REMOVE_ERROR:
+        case types.REMOVE_ALERT:
             return {
                 ...state,
-                error: false
+                alert: null
             }
 
         case types.SET_SERVER_ERROR:

@@ -1,12 +1,9 @@
 import React from 'react'
-import ErrorMessage from 'components/ErrorMessage'
 
 const PasswordReset = ({handleSubmit, errors, success, setRef}) => (
     <div className="password-reset">
         <h1>Password Reset</h1>
-        {success && <div className="message-success">{success}</div>}
         <form method="post" onSubmit={handleSubmit}>
-            <ErrorMessage error={errors} />
             <label htmlFor="email">
                 Email:
             </label>

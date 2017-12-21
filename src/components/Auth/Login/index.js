@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import ErrorMessage from 'components/ErrorMessage'
+import Alert from 'components/Alert'
 
 const Login = ({handleSubmit, errors, setRef}) => (
     <div className="login">
         <h1>Login</h1>
         <form method="post" onSubmit={handleSubmit}>
-            <ErrorMessage error={errors} />
+            <Alert error message={errors} />
             <label htmlFor="email">
                 Email:
             </label>

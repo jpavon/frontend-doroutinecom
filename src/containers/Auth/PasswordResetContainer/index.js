@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { passwordReset } from 'data/user/actions'
+import { showAlert } from 'data/ui/actions'
 
 import PasswordReset from 'components/Auth/PasswordReset'
 
@@ -12,11 +13,7 @@ class PasswordResetContainer extends Component {
         token: PropTypes.string.isRequired,
 
         passwordReset: PropTypes.func.isRequired,
-    }
-
-    state = {
-        errors: {},
-        success: false
+        showAlert: PropTypes.func.isRequired,
     }
 
     handleSubmit = (event) => {
@@ -31,12 +28,9 @@ class PasswordResetContainer extends Component {
             if (resp.error) {
                 this.password.value = ''
                 this.passwordConfirmation.value = ''
-                this.setState({ errors: resp.error.errors })
+                this.props.showAlert('error', resp.error.errors)
             } else {
-                this.setState({
-                    errors: {},
-                    success: 'Your password has been reset, login again.'
-                })
+                this.props.showAlert('success', 'Your password has been reset, login again.')
             }
         })
     }
@@ -49,8 +43,6 @@ class PasswordResetContainer extends Component {
         return (
             <PasswordReset
                 handleSubmit={this.handleSubmit}
-                errors={this.state.errors}
-                success={this.state.success}
                 setRef={this.setRef}
             />
         )
@@ -61,7 +53,8 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = {
-    passwordReset
+    passwordReset,
+    showAlert,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PasswordResetContainer)

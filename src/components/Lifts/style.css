@@ -24,21 +24,18 @@
   margin-bottom: 10px;
   flex: 0 0 20%;
   max-width: 20%; }
-
-@media (max-width: 860px) {
-  .lift {
-    flex: 0 0 25%;
-    max-width: 25%; } }
-
-@media (max-width: 700px) {
-  .lift {
-    flex: 0 0 33.33333%;
-    max-width: 33.33333%; } }
-
-@media (max-width: 500px) {
-  .lift {
-    flex: 0 0 50%;
-    max-width: 50%; } }
+  @media (max-width: 860px) {
+    .lift {
+      flex: 0 0 25%;
+      max-width: 25%; } }
+  @media (max-width: 700px) {
+    .lift {
+      flex: 0 0 33.33333%;
+      max-width: 33.33333%; } }
+  @media (max-width: 500px) {
+    .lift {
+      flex: 0 0 50%;
+      max-width: 50%; } }
 
 .lift-inner {
   padding: .4rem;
@@ -48,9 +45,8 @@
   position: relative;
   background-color: #333;
   margin-bottom: .4rem; }
-
-.lift-name input {
-  color: #fff; }
+  .lift-name input {
+    color: #fff; }
 
 .lift-button-delete {
   position: absolute;

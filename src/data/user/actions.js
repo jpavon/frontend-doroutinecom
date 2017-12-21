@@ -2,7 +2,7 @@ import { CALL_API } from 'utils/apiMiddleware'
 import debounceUpdate from 'utils/debounceUpdate'
 import * as types from 'data/user/types'
 import { shouldFetch } from 'data/utils'
-import { addError } from 'data/ui/actions'
+import { showAlert } from 'data/ui/actions'
 
 const getUser = () => ({
     [CALL_API]: {
@@ -139,5 +139,5 @@ export const logoutUser = (error) => (dispatch, getState) => {
 
     dispatch(logoutUserAction())
 
-    error && dispatch(addError(error))
+    error && dispatch(showAlert('error', error))
 }

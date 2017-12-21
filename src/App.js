@@ -10,7 +10,7 @@ import { fetchWorkouts } from 'data/workouts/actions'
 import { fetchExercises } from 'data/exercises/actions'
 import { fetchLifts } from 'data/lifts/actions'
 import { fetchSets } from 'data/sets/actions'
-import { displayLoading, removeLoading } from 'data/ui/actions'
+import { showLoading, removeLoading } from 'data/ui/actions'
 
 import Routes from 'Routes'
 import ErrorApp from 'components/ErrorApp'
@@ -30,7 +30,7 @@ class App extends Component {
         fetchExercises: PropTypes.func.isRequired,
         fetchLifts: PropTypes.func.isRequired,
         fetchSets: PropTypes.func.isRequired,
-        displayLoading: PropTypes.func.isRequired,
+        showLoading: PropTypes.func.isRequired,
         removeLoading: PropTypes.func.isRequired
     }
 
@@ -61,7 +61,7 @@ class App extends Component {
     }
 
     fetchData = () => {
-        this.props.displayLoading()
+        this.props.showLoading()
 
         Promise.all([
             this.props.fetchUser(),
@@ -109,7 +109,7 @@ const mapDispatchToProps = {
     fetchExercises,
     fetchLifts,
     fetchSets,
-    displayLoading,
+    showLoading,
     removeLoading
 }
 

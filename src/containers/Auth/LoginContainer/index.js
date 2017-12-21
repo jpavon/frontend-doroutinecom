@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { loginUser, authUser } from 'data/user/actions'
+import { showAlert } from 'data/ui/actions'
 
 import Login from 'components/Auth/Login'
 
@@ -10,11 +11,8 @@ class LoginContainer extends Component {
 
     static propTypes = {
         loginUser: PropTypes.func.isRequired,
-        authUser: PropTypes.func.isRequired
-    }
-
-    state = {
-        errors: {}
+        authUser: PropTypes.func.isRequired,
+        showAlert: PropTypes.func.isRequired
     }
 
     handleSubmit = (event) => {
@@ -26,7 +24,7 @@ class LoginContainer extends Component {
         }).then((resp) => {
             if (resp.error) {
                 this.password.value = ''
-                this.setState({ errors: resp.error.errors })
+                this.props.showAlert('error', resp.error.errors)
             } else {
                 this.props.authUser(resp.payload.token)
             }
@@ -41,7 +39,6 @@ class LoginContainer extends Component {
         return (
             <Login
                 handleSubmit={this.handleSubmit}
-                errors={this.state.errors}
                 setRef={this.setRef}
             />
         )
@@ -53,7 +50,8 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = {
     loginUser,
-    authUser
+    authUser,
+    showAlert
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)

@@ -1,0 +1,30 @@
+.alert {
+    display: block;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1rem;
+    background-color: #ab2323;
+    color: #fff;
+    line-height: 1.5;
+    opacity: 1;
+}
+
+    .alert--success {
+        background-color: #4ea24e;
+        border: 2px solid lighten(#4ea24e, 10%)
+    }
+
+    .alert--error {
+        background-color: #9c4545;
+        border: 2px solid lighten(#9c4545, 10%)
+    }
+
+    .alert--fade-in {
+        animation: fadeIn 1s;
+    }
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
