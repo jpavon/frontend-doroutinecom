@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build-css": "node-sass src/ -o src/ --include-path ./src/styles --include-path ./src/components",
-    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive --include-path ./src/styles --include-path ./src/components",
+    "build-css": "node-sass-chokidar src/ -o src/ --include-path ./src/styles --include-path ./src/components",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive --include-path ./src/styles --include-path ./src/components",
     "start-js": "react-scripts start",
     "start-flow": "npm run flow check",
     "start": "npm-run-all -p watch-css start-js",
@@ -44,16 +44,16 @@
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "seamless-immutable": "^7.1.2",
-    "superstruct": "^0.4.11"
+    "superstruct": "^0.5.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-jest": "^22.0.3",
+    "babel-jest": "^22.0.4",
     "babel-preset-env": "^1.6.1",
     "chalk": "^2.3.0",
     "faker": "^4.1.0",
-    "jest": "^22.0.3",
-    "jest-cli": "^22.0.3",
+    "jest": "^22.0.4",
+    "jest-cli": "^22.0.4",
     "node-sass": "^4.7.2",
     "puppeteer": "^0.13.0",
     "react-scripts": "1.0.17",

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './style.css'
+
 const Login = ({handleSubmit, errors, setRef}) => (
     <div className="register">
         <h1>Register</h1>
