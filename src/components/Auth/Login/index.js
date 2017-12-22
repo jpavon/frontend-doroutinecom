@@ -1,24 +1,38 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import Alert from 'components/Alert'
+import Input from 'components/Form/Input'
+import Button from 'components/Button'
+import Label from 'components/Form/Label'
+
+import './style.css'
 
 const Login = ({handleSubmit, errors, setRef}) => (
     <div className="login">
         <h1>Login</h1>
         <form method="post" onSubmit={handleSubmit}>
-            <Alert error message={errors} />
-            <label htmlFor="email">
+            <Label htmlFor="email">
                 Email:
-            </label>
-            <input id="email" type="text" ref={(ref) => setRef(ref, 'email')} />
-            <label htmlFor="password">
+            </Label>
+            <Input
+                id="email"
+                name="email"
+                inputRef={(ref) => setRef(ref, 'email')}
+            />
+            <Label htmlFor="password">
                 Password:
-            </label>
-            <input id="password" type="password" ref={(ref) => setRef(ref, 'password')} />
-            <input type="submit" value="Submit" />
+            </Label>
+            <Input
+                id="password"
+                name="password"
+                type="password"
+                inputRef={(ref) => setRef(ref, 'password')}
+            />
+            <Button type="submit">Login</Button>
         </form>
-        <Link to="/password-forgotten">Password forgotten?</Link>
+        <div className="login-password-forgotten">
+            <Link to="/password-forgotten">Password forgotten?</Link>
+        </div>
     </div>
 )
 

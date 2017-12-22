@@ -21,19 +21,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 a {
     color: $color-font;
+    text-decoration: none;
 }
 
+input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px #333 inset; /* Change the color to your own background color */
+    -webkit-text-fill-color: #fff;
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px #333 inset;
+    -webkit-text-fill-color: #fff;
+}
 // global styles
 
-.global-header {
+h1 {
     font-size: .9rem;
     text-transform: uppercase;
     margin-bottom: 1rem;
     font-weight: 400;
     letter-spacing: .1rem;
+}
+
+.global-form-field {
+
 }

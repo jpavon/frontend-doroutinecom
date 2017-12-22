@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import classNames from 'classnames'
 
-import withForm from 'components/Form/withForm'
-import Input from 'components/Form/Input'
-import Checkbox from 'components/Form/Checkbox'
+import withForm from 'components/withForm'
+import Input from 'components/withForm/Input'
+import Checkbox from 'components/withForm/Checkbox'
 
 const Form = ({hocState}) => (
     <Fragment>

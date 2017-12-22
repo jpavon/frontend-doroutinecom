@@ -1,5 +1,10 @@
 .flash-message {
-  animation: fadein 2s; }
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: fadein 1s; }
+  .flash-message .spinner {
+    background-color: #7ac142; }
 
 @keyframes fadein {
   0% {

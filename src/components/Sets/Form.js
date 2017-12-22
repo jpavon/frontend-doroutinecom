@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
-import withForm from 'components/Form/withForm'
-import Input from 'components/Form/Input'
+import withForm from 'components/withForm'
+import Input from 'components/withForm/Input'
 
 const setForm = ({data}) => (
     <Fragment>

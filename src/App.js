@@ -86,7 +86,7 @@ class App extends Component {
                     isAuth={this.props.isAuth}
                 />
                 {this.props.isLoading ?
-                    <Loading show /> :
+                    <Loading /> :
                     this.state.isErrorApp ?
                         <ErrorApp /> :
                         <Fragment>

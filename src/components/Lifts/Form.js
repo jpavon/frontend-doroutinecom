@@ -1,8 +1,6 @@
 import React from 'react'
-import Input from 'components/Form/Input'
-import InputWrapper from 'components/Form/InputWrapper'
-import InputItem from 'components/Form/InputItem'
-import withForm from 'components/Form/withForm'
+import Input from 'components/withForm/Input'
+import withForm from 'components/withForm'
 
 const Form = () => (
     <form className="lift-form">
@@ -15,16 +13,16 @@ const Form = () => (
             />
         </div>
         <div className="lift-rm">
-            <InputWrapper>
+            <div className="input-wrapper">
                 <Input
                     name="rm"
                     placeholder="Lift RM"
                     align="right"
                 />
-                <InputItem
-                    item="kg RM"
-                />
-            </InputWrapper>
+                <div className="input-item">
+                    kg RM
+                </div>
+            </div>
         </div>
     </form>
 )

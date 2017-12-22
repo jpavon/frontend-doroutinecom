@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Loading from 'components/Loading'
 
 import './style.css'
 
@@ -6,7 +7,7 @@ class FlashMessage extends Component {
 
     state = {
         visible: this.props.visible,
-        delay: this.props.delay || 1000
+        delay: 1000
     }
 
     componentWillReceiveProps(nextProps) {
@@ -35,7 +36,7 @@ class FlashMessage extends Component {
 
     render() {
         return this.state.visible
-            ? (<div className="flash-message">{this.props.children}</div>)
+            ? (<div className="flash-message"><Loading /></div>)
             : null
     }
 }

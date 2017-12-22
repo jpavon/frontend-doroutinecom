@@ -1,59 +1,44 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { FORM_CONTEXT } from 'components/Form/withForm'
-import Alert from 'components/Alert'
-import FlashMessage from 'components/FlashMessage'
-
 import './style.css'
 
-const Input = (props, context) => {
+const Input = (props) => {
 
     const {
         name,
+        type,
+        className,
+        inputRef,
         align,
         background,
         ...rest
     } = props
 
-    const { data, errors, onChange, updatedKey } = context[FORM_CONTEXT]
-
     return (
-        <Fragment>
-            <FlashMessage
-                visible={updatedKey === name}
-            >
-                Updated.
-            </FlashMessage>
-            <input
-                value={data[name] || ''}
-                name={name}
-                onChange={(event) => onChange(event, name)}
-                className={classNames(
-                    'input',
-                    align === 'right' && 'input-right',
-                    align === 'center' && 'input-center',
-                    background === 'dark' && 'input-background-dark'
-                )}
-                {...rest}
-            />
-            <Alert
-                error
-                message={errors[name]}
-            />
-        </Fragment>
+        <input
+            name={name}
+            type={type || 'text'}
+            ref={inputRef}
+            className={classNames(
+                'input',
+                align === 'right' && 'input-right',
+                align === 'center' && 'input-center',
+                background === 'dark' && 'input-background-dark',
+                className
+            )}
+            {...rest}
+        />
     )
 }
 
 Input.propTypes = {
     name: PropTypes.string.isRequired,
+    type: PropTypes.string,
+    className: PropTypes.string,
     align: PropTypes.oneOf(['right', 'center']),
     background: PropTypes.oneOf(['dark']),
-}
-
-Input.contextTypes = {
-    [FORM_CONTEXT]: PropTypes.object.isRequired
 }
 
 export default Input

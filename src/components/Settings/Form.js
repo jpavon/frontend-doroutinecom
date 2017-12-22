@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
-import Input from 'components/Form/Input'
-import withForm from 'components/Form/withForm'
+import Input from 'components/withForm/Input'
+import withForm from 'components/withForm'
 
 const Form = () => (
     <Fragment>

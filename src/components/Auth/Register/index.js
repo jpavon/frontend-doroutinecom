@@ -32,7 +32,7 @@ const Login = ({handleSubmit, errors, setRef}) => (
                 <input id="passwordConfirmation" type="password" ref={(ref) => setRef(ref, 'passwordConfirmation')} />
             </div>
 
-            <input type="submit" value="Submit" />
+            <button type="submit">Submit</button>
         </form>
     </div>
 )

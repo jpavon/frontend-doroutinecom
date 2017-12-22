@@ -4,31 +4,31 @@ import classNames from 'classnames'
 
 import './style.css'
 
-const Checkbox = (props) => {
+const Label = (props) => {
 
     const {
-        name,
+        children,
         className,
         ...rest
     } = props
 
     return (
-        <input
-            name={name}
-            type="checkbox"
+        <label
             className={classNames(
-                'checkbox',
+                'label',
                 className
             )}
             {...rest}
-        />
+        >
+            {children}
+        </label>
     )
 }
 
-Checkbox.propTypes = {
-    name: PropTypes.string.isRequired,
-    checked: PropTypes.bool,
+Label.propTypes = {
+    children: PropTypes.node.isRequired,
+    htmlFor: PropTypes.string.isRequired,
     className: PropTypes.string
 }
 
-export default Checkbox
+export default Label

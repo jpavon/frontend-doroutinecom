@@ -1,7 +1,7 @@
 import React from 'react'
 
-import withForm from 'components/Form/withForm'
-import Select from 'components/Form/Select'
+import withForm from 'components/withForm'
+import Select from 'components/withForm/Select'
 
 const Form = ({lifts}) => (
     <div className="exercise-form">

@@ -26,7 +26,7 @@ describe('auth', async () => {
         await page.type('input[id=password]', global.USER.password)
         await page.click('input[id=passwordConfirmation]')
         await page.type('input[id=passwordConfirmation]', global.USER.password)
-        await page.click('input[type=submit]')
+        await page.click('button[type=submit]')
         await expectSelectorToHaveText(page, '.routines', 'Routines')
     }, global.TIMEOUT)
 
@@ -43,7 +43,7 @@ describe('auth', async () => {
         await page.type('input[id=email]', global.USER.email)
         await page.click('input[id=password]')
         await page.type('input[id=password]', global.USER.password)
-        await page.click('input[type=submit]')
+        await page.click('button[type=submit]')
         await expectSelectorToHaveText(page, '.settings', 'Settings')
     }, global.TIMEOUT)
 })
