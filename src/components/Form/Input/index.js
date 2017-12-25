@@ -7,6 +7,7 @@ import './style.css'
 const Input = (props) => {
 
     const {
+        id,
         name,
         type,
         className,
@@ -18,6 +19,7 @@ const Input = (props) => {
 
     return (
         <input
+            id={id || name}
             name={name}
             type={type || 'text'}
             ref={inputRef}
@@ -34,7 +36,8 @@ const Input = (props) => {
 }
 
 Input.propTypes = {
-    name: PropTypes.string.isRequired,
+    id: PropTypes.string,
+    name: PropTypes.string,
     type: PropTypes.string,
     className: PropTypes.string,
     align: PropTypes.oneOf(['right', 'center']),

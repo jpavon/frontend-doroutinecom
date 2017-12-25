@@ -233,10 +233,3 @@ input:-webkit-autofill {
 input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 50px #333 inset;
   -webkit-text-fill-color: #fff; }
-
-h1 {
-  font-size: .9rem;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  font-weight: 400;
-  letter-spacing: .1rem; }

@@ -2,19 +2,18 @@ import React, { Fragment } from 'react'
 
 import Input from 'components/withForm/Input'
 import withForm from 'components/withForm'
+import Label from 'components/Form/Label'
 
 const Form = () => (
     <Fragment>
-        <div className="settings-name">
-            <Input
-                name="name"
-            />
-        </div>
-        <div className="settings-email">
-            <Input
-                name="email"
-            />
-        </div>
+        <Label htmlFor="name">Name</Label>
+        <Input
+            name="name"
+        />
+        <Label htmlFor="name">Email</Label>
+        <Input
+            name="email"
+        />
     </Fragment>
 )
 

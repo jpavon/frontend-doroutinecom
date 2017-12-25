@@ -1,18 +1,18 @@
 import React from 'react'
 
 import Form from 'components/Routines/Form'
+import Section from 'components/Section'
 
 import './style.css'
 
 const RoutineSingle = ({children, routine, updateRoutine, removeRoutine}) => (
     <div className="routine-single-container">
-        <div className="routine-single">
-            <h1 className="global-header">Title</h1>
+        <Section title="Routine" className="routine-single">
             <Form
                 data={routine}
                 update={updateRoutine}
             />
-        </div>
+        </Section>
         {children}
     </div>
 )

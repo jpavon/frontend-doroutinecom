@@ -1,27 +1,40 @@
 import React from 'react'
 
-const PasswordReset = ({handleSubmit, errors, success, setRef}) => (
-    <div className="password-reset">
-        <h1>Password Reset</h1>
-        <form method="post" onSubmit={handleSubmit}>
-            <label htmlFor="email">
-                Email:
-            </label>
-            <input id="email" type="email" ref={(ref) => setRef(ref, 'email')} />
-            <br/>
-            <label htmlFor="password">
-                New password:
-            </label>
-            <input id="password" type="password" ref={(ref) => setRef(ref, 'password')} />
-            <br/>
-            <label htmlFor="passwordConfirmation">
-                Type new password again:
-            </label>
-            <input id="passwordConfirmation" type="password" ref={(ref) => setRef(ref, 'passwordConfirmation')} />
+import Section from 'components/Section'
+import Input from 'components/Form/Input'
+import Button from 'components/Button'
+import Label from 'components/Form/Label'
 
-            <input type="submit" value="Submit" />
+const PasswordReset = ({handleSubmit, errors, success, setRef}) => (
+    <Section small className="password-reset" title="Password Reset">
+        <form method="post" onSubmit={handleSubmit}>
+            <Label htmlFor="email">
+                Email:
+            </Label>
+            <Input
+                id="email"
+                type="email"
+                inputRef={(ref) => setRef(ref, 'email')}
+            />
+            <Label htmlFor="password">
+                New password:
+            </Label>
+            <Input
+                id="password"
+                type="password"
+                inputRef={(ref) => setRef(ref, 'password')}
+            />
+            <Label htmlFor="passwordConfirmation">
+                Type new password again:
+            </Label>
+            <Input
+                id="passwordConfirmation"
+                type="password"
+                inputRef={(ref) => setRef(ref, 'passwordConfirmation')}
+            />
+            <Button type="submit">Submit</Button>
         </form>
-    </div>
+    </Section>
 )
 
 export default PasswordReset

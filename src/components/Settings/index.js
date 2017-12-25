@@ -2,12 +2,16 @@ import React from 'react'
 
 import Button from 'components/Button'
 import Form from 'components/Settings/Form'
+import Section from 'components/Section'
 
 import './style.css'
 
 const Settings = ({user, updateUser, handleLogoutUser}) => (
-    <div className="settings">
-        <h1 className="global-header">Settings</h1>
+    <Section title="Settings" className="settings">
+        <Form
+            data={user}
+            update={updateUser}
+        />
         <div className="settings-button-logout">
             <Button
                 className="logout"
@@ -19,11 +23,7 @@ const Settings = ({user, updateUser, handleLogoutUser}) => (
                 Logout
             </Button>
         </div>
-        <Form
-            data={user}
-            update={updateUser}
-        />
-    </div>
+    </Section>
 )
 
 export default Settings

@@ -1,42 +1,50 @@
 import React from 'react'
 
+import Section from 'components/Section'
+import Input from 'components/Form/Input'
+import Button from 'components/Button'
+import Label from 'components/Form/Label'
+
 import './style.css'
 
 const Login = ({handleSubmit, errors, setRef}) => (
-    <div className="register">
-        <h1>Register</h1>
+    <Section small className="register" title="Register">
         <form method="post" onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="name">
-                    Name:
-                </label>
-                <input id="name" type="text" ref={(ref) => setRef(ref, 'name')} />
-            </div>
-
-            <div>
-                <label htmlFor="email">
-                    Email:
-                </label>
-                <input id="email" type="text" ref={(ref) => setRef(ref, 'email')} />
-            </div>
-
-            <div>
-                <label htmlFor="password">
-                    Password:
-                </label>
-                <input id="password" type="password" ref={(ref) => setRef(ref, 'password')} />
-            </div>
-
-            <div>
-                <label htmlFor="passwordConfirmation">
-                    Password confirmation:
-                </label>
-                <input id="passwordConfirmation" type="password" ref={(ref) => setRef(ref, 'passwordConfirmation')} />
-            </div>
-
-            <button type="submit">Submit</button>
+            <Label htmlFor="name">
+                Name:
+            </Label>
+            <Input
+                id="name"
+                type="text"
+                inputRef={(ref) => setRef(ref, 'name')}
+            />
+            <Label htmlFor="email">
+                Email:
+            </Label>
+            <Input
+                id="email"
+                type="text"
+                inputRef={(ref) => setRef(ref, 'email')}
+            />
+            <Label htmlFor="password">
+                Password:
+            </Label>
+            <Input
+                id="password"
+                type="password"
+                inputRef={(ref) => setRef(ref, 'password')}
+            />
+            <Label htmlFor="passwordConfirmation">
+                Password confirmation:
+            </Label>
+            <Input
+                id="passwordConfirmation"
+                type="password"
+                inputRef={(ref) => setRef(ref, 'passwordConfirmation')}
+            />
+            <Button type="submit">Submit</Button>
         </form>
-    </div>
+    </Section>
 )
 
 export default Login

@@ -20,23 +20,20 @@
     user-select: none;
     border: 1px solid transparent;
     padding: .375rem .75rem;
-    font-size: .8rem;
+    font-size: .7rem;
     line-height: 1.5;
-    border-radius: .2rem;
+    border-radius: .1rem;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: .1rem;
-    font-weight: 700;
     background-color: $color-button;
     transition: background-color .2s;
     cursor: pointer;
 
     text-overflow: ellipsis;
-    font-size: .7rem;
     line-height: 1;
     white-space: nowrap;
     overflow: hidden;
-    letter-spacing: 0;
 
     &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active {
         outline: 0;

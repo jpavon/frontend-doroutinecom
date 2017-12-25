@@ -1,16 +1,17 @@
 import React from 'react'
+
 import Button from 'components/Button'
+import Section from 'components/Section'
 
 import './style.css'
 
 const Routine = ({children, handleCreate}) => (
-    <div className="routines">
-        <h1 className="global-header">Routines</h1>
+    <Section title="Routines" className="routines">
         <div className="routines-button-create">
             <Button onClick={handleCreate}>New routine</Button>
         </div>
         {children}
-    </div>
+    </Section>
 )
 
 export default Routine

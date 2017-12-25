@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom'
 import Input from 'components/Form/Input'
 import Button from 'components/Button'
 import Label from 'components/Form/Label'
+import Section from 'components/Section'
 
 import './style.css'
 
 const Login = ({handleSubmit, errors, setRef}) => (
-    <div className="login">
-        <h1>Login</h1>
+    <Section small title="Login" className="login">
         <form method="post" onSubmit={handleSubmit}>
             <Label htmlFor="email">
-                Email:
+                Email
             </Label>
             <Input
                 id="email"
@@ -20,7 +20,7 @@ const Login = ({handleSubmit, errors, setRef}) => (
                 inputRef={(ref) => setRef(ref, 'email')}
             />
             <Label htmlFor="password">
-                Password:
+                Password
             </Label>
             <Input
                 id="password"
@@ -33,7 +33,7 @@ const Login = ({handleSubmit, errors, setRef}) => (
         <div className="login-password-forgotten">
             <Link to="/password-forgotten">Password forgotten?</Link>
         </div>
-    </div>
+    </Section>
 )
 
 export default Login

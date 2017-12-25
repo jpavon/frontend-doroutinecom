@@ -119,18 +119,18 @@ describe('settings', async () => {
     test('update user settings', async () => {
         await goTo(page, '/settings')
         await page.waitForSelector('.settings')
-        await page.click('.settings-name input')
-        await page.type('.settings-name input', 'updated')
+        await page.click('#name')
+        await page.type('#name', 'updated')
         await page.waitFor(1000)
-        await page.click('.settings-email input')
-        await page.type('.settings-email input', 'updated')
+        await page.click('#email')
+        await page.type('#email', 'updated')
         await page.waitFor(1000)
     }, global.TIMEOUT)
 
     test('user info is saved on reload', async () => {
         await page.reload()
 
-        await expectSelectorToHaveText(page, '.settings-name', global.USER.name + 'updated')
-        await expectSelectorToHaveText(page, '.settings-email', global.USER.email + 'updated')
+        await expectSelectorToHaveText(page, '.settings', global.USER.name + 'updated')
+        await expectSelectorToHaveText(page, '.settings', global.USER.email + 'updated')
     }, global.TIMEOUT)
 })

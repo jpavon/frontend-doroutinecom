@@ -31,8 +31,20 @@ export const selectOption = async (page, selector, text) => {
             }
         }
 
-        select.dispatchEvent(new Event('change', {
-            'bubbles': true
-        }))
+        const event = new Event('change', { bubbles: true })
+        event.simulated = true
+        select.dispatchEvent(event)
     }, selector, text)
+}
+
+export const typeUpdate = async (page, selector, updatedText) => {
+    await page.evaluate((selector, updatedText) => {
+        const input = document.querySelector(selector)
+
+        input.value = input.value + updatedText
+
+        const event = new Event('change', { bubbles: true })
+        event.simulated = true
+        input.dispatchEvent(event)
+    }, selector, updatedText)
 }

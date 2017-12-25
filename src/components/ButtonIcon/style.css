@@ -9,22 +9,19 @@
   user-select: none;
   border: 1px solid transparent;
   padding: .375rem .75rem;
-  font-size: .8rem;
+  font-size: .7rem;
   line-height: 1.5;
-  border-radius: .2rem;
+  border-radius: .1rem;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: .1rem;
-  font-weight: 700;
   background-color: #63a2d3;
   transition: background-color .2s;
   cursor: pointer;
   text-overflow: ellipsis;
-  font-size: .7rem;
   line-height: 1;
   white-space: nowrap;
-  overflow: hidden;
-  letter-spacing: 0; }
+  overflow: hidden; }
   .button:hover, .button-icon:hover {
     background-color: #4f96cd; }
   .button:not([disabled]):not(.disabled).active, .button-icon:not([disabled]):not(.disabled).active, .button:not([disabled]):not(.disabled):active, .button-icon:not([disabled]):not(.disabled):active {

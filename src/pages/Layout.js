@@ -40,7 +40,7 @@ class Layout extends Component {
                 <Helmet>
                     {this.props.header}
                 </Helmet>
-                <div className="container">
+                <main className="container">
                     {this.props.alert &&
                         <Alert
                             type={this.props.alert.type}
@@ -48,7 +48,7 @@ class Layout extends Component {
                         />
                     }
                     {this.props.children}
-                </div>
+                </main>
             </Fragment>
         )
     }
