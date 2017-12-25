@@ -5,8 +5,8 @@ const Set = validateData({
     userId: 'number',
     exerciseId: 'number',
     reps: 'number|null',
-    rmPercentage: 'number|null',
-    weight: 'number',
+    rmPercentage: 'number',
+    weight: 'number|null',
     createdAt: 'string',
     updatedAt: 'string'
 })

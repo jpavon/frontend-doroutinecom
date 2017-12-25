@@ -6,7 +6,7 @@ import ButtonIcon from 'components/ButtonIcon'
 const Set = ({set, i, updateSet, removeSet}) => (
     <div className="set">
         <div className="set-number">
-            Set {i + 1}
+            Set {i + 1} - RM%: {set.rmPercentage}
         </div>
         <Form
             data={set}

@@ -8,10 +8,12 @@ const Form = () => (
     <Fragment>
         <Label htmlFor="name">Name</Label>
         <Input
+            id="name"
             name="name"
         />
-        <Label htmlFor="name">Email</Label>
+        <Label htmlFor="email">Email</Label>
         <Input
+            id="email"
             name="email"
         />
     </Fragment>
