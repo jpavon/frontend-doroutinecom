@@ -15,6 +15,8 @@ const PasswordReset = ({handleSubmit, errors, success, setRef}) => (
                 id="email"
                 type="email"
                 inputRef={(ref) => setRef(ref, 'email')}
+                size="large"
+
             />
             <Label htmlFor="password">
                 New password:
@@ -23,6 +25,8 @@ const PasswordReset = ({handleSubmit, errors, success, setRef}) => (
                 id="password"
                 type="password"
                 inputRef={(ref) => setRef(ref, 'password')}
+                size="large"
+
             />
             <Label htmlFor="passwordConfirmation">
                 Type new password again:
@@ -31,6 +35,8 @@ const PasswordReset = ({handleSubmit, errors, success, setRef}) => (
                 id="passwordConfirmation"
                 type="password"
                 inputRef={(ref) => setRef(ref, 'passwordConfirmation')}
+                size="large"
+
             />
             <Button type="submit">Submit</Button>
         </form>

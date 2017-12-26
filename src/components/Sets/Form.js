@@ -8,7 +8,7 @@ const setForm = ({hocState, data}) => (
     <Fragment>
         <div className="set-row">
             <div className="set-col">
-                <div className="set-rmPercentage">
+                <div className="set-weight">
                     <InputWrapper item="KG">
                         <Input
                             name="weight"

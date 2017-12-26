@@ -17,6 +17,7 @@ const Login = ({handleSubmit, errors, setRef}) => (
                 id="name"
                 type="text"
                 inputRef={(ref) => setRef(ref, 'name')}
+                size="large"
             />
             <Label htmlFor="email">
                 Email:
@@ -25,6 +26,7 @@ const Login = ({handleSubmit, errors, setRef}) => (
                 id="email"
                 type="text"
                 inputRef={(ref) => setRef(ref, 'email')}
+                size="large"
             />
             <Label htmlFor="password">
                 Password:
@@ -33,6 +35,7 @@ const Login = ({handleSubmit, errors, setRef}) => (
                 id="password"
                 type="password"
                 inputRef={(ref) => setRef(ref, 'password')}
+                size="large"
             />
             <Label htmlFor="passwordConfirmation">
                 Password confirmation:
@@ -41,6 +44,7 @@ const Login = ({handleSubmit, errors, setRef}) => (
                 id="passwordConfirmation"
                 type="password"
                 inputRef={(ref) => setRef(ref, 'passwordConfirmation')}
+                size="large"
             />
             <Button type="submit">Submit</Button>
         </form>

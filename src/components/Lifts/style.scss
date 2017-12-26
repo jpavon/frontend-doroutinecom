@@ -2,7 +2,6 @@
 
 .lifts-container {
     margin-bottom: 2rem;
-
 }
 
 .lifts {
@@ -10,16 +9,6 @@
     flex-wrap: wrap;
     margin-right: -3px;
     margin-left: -3px;
-}
-
-.lifts-header {
-    // padding: .4rem 1rem;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    // background-color: #fff;
-    text-transform: uppercase;
-    // border-bottom: 3px solid #ccc;
-    // text-align: center;
 }
 
 .lifts-button-create {
@@ -57,9 +46,9 @@
     }
 }
     .lift-inner {
-        padding: .3rem;
-        border: 1px solid #555;
-        background-color: #444;
+        // padding: .3rem;
+        // border: 1px solid #555;
+        // background-color: #444;
     }
 
     .lift-name {

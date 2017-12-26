@@ -13,6 +13,9 @@
     text-align: right; }
   .input.input--center {
     text-align: center; }
+  .input.input--large {
+    padding: .5rem;
+    font-size: 1.4rem; }
   .input::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.3); }
   .input:-moz-placeholder {

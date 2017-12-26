@@ -1,13 +1,19 @@
 .footer {
-    margin-top: 2rem;
+    margin-top: 4rem;
     padding-top: 2rem;
-    border-top: 4px solid #444;
-    text-align: center;
+    padding-bottom: 10rem;
+    text-align: right;
+    background-color: #191919;
 }
 
     .footer-item {
         text-decoration: none;
-        margin: 0 1rem;
+        margin-left: 1rem;
         text-transform: uppercase;
         font-size: .8rem;
+        font-weight: 700;
+    }
+
+    span.footer-item {
+        color: #999;
     }

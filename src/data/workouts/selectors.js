@@ -27,10 +27,14 @@ export const blocksWorkoutsSelector = (routineId) => createSelector(
         (state) => state.workouts.entities
     ],
     (workouts) => {
-        return [...new Set(
-            workouts
-                .filter((workout) => (workout.routineId === routineId))
-                .map((workout) => (workout.blockId))
-        )].filter(Number)
+        const max = Math.max(
+            ...new Set(
+                workouts
+                    .filter((workout) => (workout.routineId === routineId))
+                    .map((workout) => (workout.blockId))
+            )
+        )
+
+        return max > 0 ? [...Array(max)].map((n, i) => i + 1) : [1]
     }
 )

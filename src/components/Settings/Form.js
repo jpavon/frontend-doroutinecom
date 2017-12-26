@@ -10,11 +10,13 @@ const Form = () => (
         <Input
             id="name"
             name="name"
+            size="large"
         />
         <Label htmlFor="email">Email</Label>
         <Input
             id="email"
             name="email"
+            size="large"
         />
     </Fragment>
 )

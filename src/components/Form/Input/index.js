@@ -12,6 +12,7 @@ const Input = (props) => {
         className,
         inputRef,
         align,
+        size,
         ...rest
     } = props
 
@@ -24,6 +25,7 @@ const Input = (props) => {
                 'input',
                 align === 'right' && 'input--right',
                 align === 'center' && 'input--center',
+                size === 'large' && 'input--large',
                 className
             )}
             {...rest}
@@ -36,6 +38,7 @@ Input.propTypes = {
     type: PropTypes.string,
     className: PropTypes.string,
     align: PropTypes.oneOf(['right', 'center']),
+    size: PropTypes.oneOf(['large']),
 }
 
 export default Input

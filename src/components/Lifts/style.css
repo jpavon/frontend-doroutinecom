@@ -7,11 +7,6 @@
   margin-right: -3px;
   margin-left: -3px; }
 
-.lifts-header {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-  text-transform: uppercase; }
-
 .lifts-button-create {
   position: absolute;
   top: 0;
@@ -38,11 +33,6 @@
     .lift {
       flex: 0 0 50%;
       max-width: 50%; } }
-
-.lift-inner {
-  padding: .3rem;
-  border: 1px solid #555;
-  background-color: #444; }
 
 .lift-button-delete {
   position: absolute;

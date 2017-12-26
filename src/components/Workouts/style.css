@@ -41,6 +41,7 @@
   right: -3px; }
 
 .workout-name {
+  position: relative;
   background-color: #333;
   padding: .3rem;
   transition: background-color .2s; }
@@ -48,4 +49,4 @@
     color: #fff; }
 
 .workout-name--is-done {
-  background-color: #349a40; }
+  background-color: #6fa25a; }

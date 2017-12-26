@@ -11,6 +11,7 @@ const Form = ({data}) => (
             id={`name${data.id}`}
             name="name"
             placeholder="Title..."
+            size="large"
         />
     </Fragment>
 )

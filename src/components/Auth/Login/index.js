@@ -17,6 +17,7 @@ const Login = ({handleSubmit, errors, setRef}) => (
             <Input
                 id="email"
                 name="email"
+                size="large"
                 inputRef={(ref) => setRef(ref, 'email')}
             />
             <Label htmlFor="password">
@@ -26,6 +27,7 @@ const Login = ({handleSubmit, errors, setRef}) => (
                 id="password"
                 name="password"
                 type="password"
+                size="large"
                 inputRef={(ref) => setRef(ref, 'password')}
             />
             <Button type="submit">Login</Button>

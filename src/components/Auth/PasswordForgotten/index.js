@@ -15,6 +15,7 @@ const PasswordForgotten = ({handleSubmit, errors, success, setRef}) => (
                 id="email"
                 name="email"
                 type="text"
+                size="large"
                 inputRef={(ref) => setRef(ref, 'email')}
             />
             <Button type="submit">Submit</Button>

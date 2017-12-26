@@ -19,7 +19,7 @@ class WorkoutsBlocksContainer extends Component {
     }
 
     state = {
-        blocks: this.props.blocks.length > 0 ? this.props.blocks : [1]
+        blocks: this.props.blocks
     }
 
     componentWillReceiveProps(nextProps) {
@@ -31,10 +31,9 @@ class WorkoutsBlocksContainer extends Component {
 
     handleCreate = () => {
         this.setState((prevState) => {
-            const defaultArr = [1]
             prevState.blocks.push(prevState.blocks[prevState.blocks.length - 1] + 1)
 
-            return { blocks: union(defaultArr, prevState.blocks).filter(Number) }
+            return { blocks: prevState.blocks.filter(Number) }
         })
     }
 

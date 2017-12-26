@@ -56,6 +56,7 @@
 // form
 
 .workout-name {
+    position: relative;
     background-color: #333;
     padding: .3rem;
     transition: background-color .2s;
@@ -65,5 +66,5 @@
     }
 }
     .workout-name--is-done {
-        background-color: #349a40;
+        background-color: $color-button;
     }

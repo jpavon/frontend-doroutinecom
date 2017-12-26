@@ -17,7 +17,7 @@ const Nav = ({isAuth = false, renderItems = null}) => (
                     isAuth ?
                         <Fragment>
                             <li className="nav-item">
-                                <NavLink to="/routines" className="nav-link" activeClassName="nav-link--active">
+                                <NavLink exact to="/" className="nav-link" activeClassName="nav-link--active">
                                     Routines
                                 </NavLink>
                             </li>

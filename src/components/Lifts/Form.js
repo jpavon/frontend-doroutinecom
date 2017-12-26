@@ -9,7 +9,7 @@ const Form = () => (
         <div className="lift-name">
             <Input
                 name="name"
-                placeholder="Lift name"
+                placeholder="Name..."
                 background="dark"
             />
         </div>
@@ -17,7 +17,6 @@ const Form = () => (
             <InputWrapper item="kg RM">
                 <Input
                     name="rm"
-                    placeholder="Lift RM"
                     item="kg RM"
                 />
             </InputWrapper>

@@ -1,3 +1,5 @@
+@import "variables.scss";
+
 .sets {
 }
 
@@ -23,6 +25,10 @@
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: .4rem;
+}
+
+.set-rmPercentage {
+    color: lighten($color-button, 15%);
 }
 
 .set-button-remove {
@@ -52,24 +58,9 @@
     max-width: percentage(1/2);
 }
 
-.set-label {
-    margin-top: 2px;
-    font-size: .7rem;
-    text-align: right;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
 .set-weight {
-    margin-top: 2px;
-    text-align: right;
-    font-size: 1.1rem;
-    font-weight: 700;
 }
 
-.set-mass {
-    font-size: .7rem;
-}
 
 .set-button {
     text-align: right;

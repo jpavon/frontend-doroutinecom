@@ -1,9 +1,13 @@
 import { createSelector } from 'reselect'
+import isFinite from 'lodash/isFinite'
 
 import { liftExerciseSelector } from 'data/lifts/selectors'
 import Set from 'data/sets/schema'
 
-const round = (x) => Math.round(x * 10) / 10
+const round = (x) => {
+    const number = Math.round(x * 10) / 10
+    return isFinite(number) ? number : 0
+}
 
 const formatSet = (set, lift) => Set({
     ...set,
