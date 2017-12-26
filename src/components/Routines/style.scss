@@ -4,29 +4,29 @@
 }
 
 .routines-button-create {
-    margin-bottom: 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .routine {
-
-    a {
-        display: block;
-        margin-bottom: 1rem;
-        padding: .4rem 1rem;
-        font-size: .8rem;
-        text-decoration: none;
-        border: 1px solid #444;
-        transition: border-color .2s;
-
-        &:hover {
-            border: 1px solid #888;
-        }
-    }
+}
 
     .routine-title {
         margin-bottom: .2rem;
+        display: block;
+        margin-bottom: 2rem;
+        padding: .4rem 1rem;
+        font-size: .8rem;
+        text-decoration: none;
+        border-bottom: 2px solid #444;
+        border-left: 8px solid #444;
+        transition: border-color .2s;
+
+        &:hover {
+            border-color: #eee;
+        }
     }
-}
 
 
 // single page

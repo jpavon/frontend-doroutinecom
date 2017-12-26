@@ -13,7 +13,9 @@
   text-transform: uppercase; }
 
 .lifts-button-create {
-  margin-bottom: .5rem; }
+  position: absolute;
+  top: 0;
+  right: 0; }
 
 .lift {
   position: relative;
@@ -38,15 +40,9 @@
       max-width: 50%; } }
 
 .lift-inner {
-  padding: .4rem;
-  border: 1px solid #555; }
-
-.lift-name {
-  position: relative;
-  background-color: #333;
-  margin-bottom: .4rem; }
-  .lift-name input {
-    color: #fff; }
+  padding: .3rem;
+  border: 1px solid #555;
+  background-color: #444; }
 
 .lift-button-delete {
   position: absolute;

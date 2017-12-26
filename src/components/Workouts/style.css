@@ -27,12 +27,13 @@
       max-width: 50%; } }
 
 .workouts-button-create {
-  margin-bottom: 1rem; }
+  position: absolute;
+  top: 0;
+  right: 0; }
 
 .workout {
   position: relative;
-  margin-bottom: 1rem;
-  background-color: #444; }
+  margin-bottom: 1rem; }
 
 .workout-button-remove {
   position: absolute;
@@ -41,7 +42,7 @@
 
 .workout-name {
   background-color: #333;
-  padding: 6px 10px;
+  padding: .3rem;
   transition: background-color .2s; }
   .workout-name input {
     color: #fff; }

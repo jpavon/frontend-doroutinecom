@@ -5,12 +5,16 @@ import './style.css'
 
 const Workouts = ({children, handleCreate}) => (
     <div className="workouts-container">
-        <Button className="workouts-button-create" onClick={handleCreate}>Create a new workout</Button>
+        <Button
+            className="workouts-button-create"
+            onClick={handleCreate}
+        >
+            New workout
+        </Button>
 
         <div className="workouts-row">
             {children}
         </div>
-        <br />
     </div>
 )
 

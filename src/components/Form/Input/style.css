@@ -1,4 +1,5 @@
 .input {
+  position: relative;
   flex: 1;
   margin-bottom: 0;
   background-color: #333;
@@ -8,6 +9,10 @@
   border: 0;
   border: 1px solid #666;
   padding: .3rem; }
+  .input.input--right {
+    text-align: right; }
+  .input.input--center {
+    text-align: center; }
   .input::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.3); }
   .input:-moz-placeholder {

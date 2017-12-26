@@ -23,7 +23,9 @@
 }
 
 .lifts-button-create {
-    margin-bottom: .5rem;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 // single
@@ -55,25 +57,15 @@
     }
 }
     .lift-inner {
-        padding: .4rem;
+        padding: .3rem;
         border: 1px solid #555;
+        background-color: #444;
     }
 
     .lift-name {
-        position: relative;
-        background-color: #333;
-        margin-bottom: .4rem;
-        // padding: .4rem;
-        // border-bottom: 3px solid lighten(#333, 30%);
-
-        input {
-            color: #fff;
-        }
     }
 
     .lift-rm {
-        // background-color: #fff;
-        // padding: .4rem;
     }
 
 .lift-button-delete {

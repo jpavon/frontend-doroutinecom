@@ -8,7 +8,12 @@ const Exercises = ({children, createExercise, workoutId}) => (
     <div className="exercises-container">
         {children}
         <div className="exercises-button-create">
-            <Button onClick={() => createExercise(workoutId)}>New exercise</Button>
+            <Button
+                small
+                onClick={() => createExercise(workoutId)}
+            >
+                New exercise
+            </Button>
         </div>
     </div>
 )

@@ -12,7 +12,6 @@ const setForm = ({hocState, data}) => (
                     <InputWrapper item="KG">
                         <Input
                             name="weight"
-                            align="right"
                         />
                     </InputWrapper>
                 </div>
@@ -22,7 +21,6 @@ const setForm = ({hocState, data}) => (
                     <InputWrapper item={hocState.data.reps > 1 ? 'reps' : 'rep'}>
                         <Input
                             name="reps"
-                            align="right"
                         />
                     </InputWrapper>
                 </div>

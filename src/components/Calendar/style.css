@@ -31,7 +31,9 @@
     margin-top: 1rem; }
 
 .button--small {
-  padding: .2rem .4rem; }
+  display: flex;
+  padding: 4px;
+  font-size: .6rem; }
 
 .button--danger {
   color: #fff;

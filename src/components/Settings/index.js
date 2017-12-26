@@ -17,7 +17,6 @@ const Settings = ({user, updateUser, handleLogoutUser}) => (
                 className="logout"
                 href="/logout"
                 onClick={handleLogoutUser}
-                align="right"
                 danger
             >
                 Logout

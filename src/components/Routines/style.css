@@ -1,19 +1,20 @@
 .routines-button-create {
-  margin-bottom: 1rem; }
+  position: absolute;
+  top: 0;
+  right: 0; }
 
-.routine a {
+.routine-title {
+  margin-bottom: .2rem;
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   padding: .4rem 1rem;
   font-size: .8rem;
   text-decoration: none;
-  border: 1px solid #444;
+  border-bottom: 2px solid #444;
+  border-left: 8px solid #444;
   transition: border-color .2s; }
-  .routine a:hover {
-    border: 1px solid #888; }
-
-.routine .routine-title {
-  margin-bottom: .2rem; }
+  .routine-title:hover {
+    border-color: #eee; }
 
 .routine-single {
   margin-bottom: 2rem; }

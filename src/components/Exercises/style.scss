@@ -5,8 +5,11 @@
 
 .exercises-button-create {
     position: relative;
-    margin-top: 5px;
-    text-align: right;
+    margin-top: .5rem;
+
+    button {
+        margin: auto;
+    }
 }
 
 // single
@@ -16,6 +19,7 @@
     padding: .3rem;
     margin-top: 3px;
     border: 1px solid #555;
+    background-color: #444;
 }
 
 .exercise-button-remove {

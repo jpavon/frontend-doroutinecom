@@ -14,7 +14,6 @@ const Form = ({hocState}) => (
             <Input
                 name="name"
                 placeholder="Name..."
-                align="center"
                 background="dark"
             />
 

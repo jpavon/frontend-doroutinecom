@@ -12,10 +12,9 @@ const Lifts = ({children, handleCreate}) => (
         </div>
         <div className="lifts-button-create">
             <Button
-                small
                 onClick={handleCreate}
             >
-                Create a new lift
+                New lift
             </Button>
         </div>
     </Section>

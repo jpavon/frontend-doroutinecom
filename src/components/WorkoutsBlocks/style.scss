@@ -8,7 +8,9 @@
 }
 
 .workouts-blocks-button-create {
-
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 // single
@@ -26,4 +28,5 @@
     text-transform: uppercase;
     border-top: 2px solid #ddd;
     padding-top: .4rem;
+    background-color: #444;
 }
