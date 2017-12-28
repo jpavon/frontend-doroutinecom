@@ -9,6 +9,10 @@
   line-height: 1.5;
   opacity: 1; }
 
+.alert--small {
+  padding: .3rem;
+  font-size: .8rem; }
+
 .alert--success {
   background-color: #4ea24e;
   border: 2px solid #6bb86b; }

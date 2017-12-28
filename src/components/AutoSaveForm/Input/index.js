@@ -19,9 +19,7 @@ const Input = (props, context) => {
         <Fragment>
             <FlashMessage
                 visible={updatedKey === name}
-            >
-                Updated.
-            </FlashMessage>
+            />
             <UncontrolledInput
                 name={name}
                 value={values[name] || ''}
@@ -29,6 +27,7 @@ const Input = (props, context) => {
                 {...rest}
             />
             <Alert
+                small
                 type="error"
                 message={errors[name]}
             />

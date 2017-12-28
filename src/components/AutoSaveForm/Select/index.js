@@ -27,11 +27,13 @@ const Select = (props, context) => {
                 {...rest}
             />
             <Alert
-                error
+                small
+                type="error"
                 message={options < 1 && noOptionsMessage}
             />
             <Alert
-                error
+                small
+                type="error"
                 message={errors[name]}
             />
         </Fragment>

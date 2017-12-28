@@ -23,7 +23,8 @@ const Checkbox = (props, context) => {
                 {...rest}
             />
             <Alert
-                error
+                small
+                type="error"
                 message={errors[name]}
             />
         </Fragment>

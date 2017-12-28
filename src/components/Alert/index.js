@@ -18,18 +18,20 @@ class Alert extends Component {
             PropTypes.array,
             PropTypes.object,
             PropTypes.bool
-        ])
+        ]),
+        small: PropTypes.bool
     }
 
     render() {
-        const { type, message } = this.props
+        const { type, message, small } = this.props
 
         if (!type || !message) return null
 
         const className = classnames(
             'alert',
             type === 'success' && 'alert--success',
-            type === 'error' && 'alert--error'
+            type === 'error' && 'alert--error',
+            small && 'alert--small'
         )
 
         const Message = () => {
