@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import { FORM_CONTEXT } from 'components/withForm'
+import { FORM_CONTEXT } from 'components/AutoSaveForm'
 import Alert from 'components/Alert'
 import UncontrolledCheckbox from 'components/Form/Checkbox'
 
@@ -12,14 +12,14 @@ const Checkbox = (props, context) => {
         ...rest
     } = props
 
-    const { data, errors, onChange } = context[FORM_CONTEXT]
+    const { values, errors, onChange } = context[FORM_CONTEXT]
 
     return (
         <Fragment>
             <UncontrolledCheckbox
                 name={name}
-                checked={data[name]}
-                onChange={(event) => onChange(event, name)}
+                checked={values[name]}
+                onChange={onChange}
                 {...rest}
             />
             <Alert

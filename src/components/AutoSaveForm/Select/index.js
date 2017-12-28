@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import { FORM_CONTEXT } from 'components/withForm'
+import { FORM_CONTEXT } from 'components/AutoSaveForm'
 import Alert from 'components/Alert'
 import UncontrolledSelect from 'components/Form/Select'
 
@@ -14,17 +14,15 @@ const Select = (props, context) => {
         ...rest
     } = props
 
-    const { data, errors, onChange } = context[FORM_CONTEXT]
-
-    const value = data[name]
+    const { values, errors, onChange } = context[FORM_CONTEXT]
 
     return (
         <Fragment>
             <UncontrolledSelect
-                value={value || ''}
                 name={name}
+                value={values[name] || ''}
                 options={options}
-                onChange={(event) => onChange(event, name)}
+                onChange={onChange}
                 className="select"
                 {...rest}
             />

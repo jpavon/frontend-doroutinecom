@@ -1,14 +1,24 @@
 import React from 'react'
 
-import Form from 'components/Exercises/Form'
+import AutoSaveForm from 'components/AutoSaveForm'
 import ButtonIcon from 'components/ButtonIcon'
+import Select from 'components/AutoSaveForm/Select'
 
 const Exercises = ({children, exercise, lifts, updateExercise, removeExercise}) => (
     <div className="exercise">
-        <Form
+        <AutoSaveForm
             update={updateExercise}
-            data={exercise}
-            lifts={lifts}
+            initialValues={exercise}
+            render={() => (
+                <div className="exercise-form">
+                    <Select
+                        name="liftId"
+                        options={lifts || []}
+                        defaultOptionMessage="Select a lift..."
+                        noOptionsMessage="No lift created, create one on the top of this page."
+                    />
+                </div>
+            )}
         />
         {children}
         <div className="exercise-button-remove">

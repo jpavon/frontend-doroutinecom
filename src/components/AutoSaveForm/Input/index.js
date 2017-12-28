@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import { FORM_CONTEXT } from 'components/withForm'
+import { FORM_CONTEXT } from 'components/AutoSaveForm'
 import Alert from 'components/Alert'
 import FlashMessage from 'components/FlashMessage'
 import UncontrolledInput from 'components/Form/Input'
@@ -13,7 +13,7 @@ const Input = (props, context) => {
         ...rest
     } = props
 
-    const { data, errors, onChange, updatedKey } = context[FORM_CONTEXT]
+    const { values, errors, onChange, updatedKey } = context[FORM_CONTEXT]
 
     return (
         <Fragment>
@@ -24,8 +24,8 @@ const Input = (props, context) => {
             </FlashMessage>
             <UncontrolledInput
                 name={name}
-                value={data[name] || ''}
-                onChange={(event) => onChange(event, name)}
+                value={values[name] || ''}
+                onChange={onChange}
                 {...rest}
             />
             <Alert
