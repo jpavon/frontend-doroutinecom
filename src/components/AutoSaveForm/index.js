@@ -27,14 +27,13 @@ class AutoSaveForm extends Component {
         this.state = {
             values: props.initialValues,
             errors: {},
-            updatedKey: null,
-            isUpdating: false
+            updating: null
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if (
-            this.state.isUpdating === false &&
+            this.state.isUpdating === null &&
             !isEqual(nextProps.initialValues, this.props.initialValues)
         ) {
             this.setState({
@@ -49,7 +48,7 @@ class AutoSaveForm extends Component {
         const value = target.type === 'checkbox' ? target.checked : target.value
 
         this.setState((prevState) => ({
-            isUpdating: true,
+            updating: name,
             values: {
                 ...prevState.values,
                 [name]: value
@@ -63,14 +62,11 @@ class AutoSaveForm extends Component {
                         })
                     } else {
                         this.setState({
-                            errors: {},
-                            updatedKey: name
-                        }, () => {
-                            this.setState({updatedKey: null})
+                            errors: {}
                         })
                     }
 
-                    this.setState({isUpdating: false})
+                    this.setState({updating: null})
                 })
         })
     }

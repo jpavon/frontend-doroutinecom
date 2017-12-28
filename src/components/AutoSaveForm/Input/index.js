@@ -12,13 +12,13 @@ const Input = (props, context) => {
         ...rest
     } = props
 
-    const { values, errors, onChange, updatedKey } = context.formContext
+    const { values, errors, onChange, updating } = context.formContext
 
     return (
         <Fragment>
-            {updatedKey === name &&
-                <FlashMessage />
-            }
+            <FlashMessage
+                visible={updating === name}
+            />
             <UncontrolledInput
                 name={name}
                 value={values[name] || ''}
