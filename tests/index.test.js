@@ -74,8 +74,8 @@ describe('routines', async () => {
     test('create a workout', async () => {
         await page.click('.workouts-button-create')
         await page.waitForSelector('.workout')
-        await page.click('.workout input')
-        await page.type('.workout input', global.WORKOUT.name)
+        await page.click('.workout input[name=name]')
+        await page.type('.workout input[name=name]', global.WORKOUT.name)
         await page.waitFor(1000)
     }, global.TIMEOUT)
 
@@ -88,8 +88,8 @@ describe('routines', async () => {
     test('create a set', async () => {
         await page.click('.sets-button-create button')
         await page.waitForSelector('.set')
-        await page.click('.set-rmPercentage input')
-        await page.type('.set-rmPercentage input', global.SET.rmPercentage)
+        await page.click('.set-weight input')
+        await page.type('.set-weight input', global.SET.weight)
         await page.waitFor(1000)
         await page.click('.set-reps input')
         await page.type('.set-reps input', global.SET.reps)
@@ -101,15 +101,23 @@ describe('routines', async () => {
 
         await page.waitForSelector('.routine-single')
         await expectSelectorToHaveText(page, '.routine-single', ROUTINE.name)
+    }, global.TIMEOUT)
 
+    test('lift is saved on reload', async () => {
         await expectSelectorToHaveText(page, '.lift-name', global.LIFT.name)
         await expectSelectorToHaveText(page, '.lift-rm', global.LIFT.rm)
+    }, global.TIMEOUT)
 
+    test('workout is saved on reload', async () => {
         await expectSelectorToHaveText(page, '.workout', global.WORKOUT.name)
+    }, global.TIMEOUT)
 
+    test('exercise is saved on reload', async () => {
         await expectSelectorToHaveText(page, '.exercise select', global.LIFT.name)
+    }, global.TIMEOUT)
 
-        await expectSelectorToHaveText(page, '.set-rmPercentage', global.SET.rmPercentage)
+    test('set is saved on reload', async () => {
+        await expectSelectorToHaveText(page, '.set-weight', global.SET.weight)
         await expectSelectorToHaveText(page, '.set-reps', global.SET.reps)
     }, global.TIMEOUT)
 })

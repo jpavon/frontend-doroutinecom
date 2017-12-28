@@ -8,8 +8,8 @@ module.exports = {
         APP_URL: 'http://localhost:3000',
         TIMEOUT: 10000,
         USER: {
-            name: 'TEST_USER_' + faker.name.firstName(),
-            email: 'TEST_USER_EMAIL_' + faker.internet.email(),
+            name: '_T_' + faker.name.firstName(),
+            email: '_T_' + faker.internet.email(),
             password: '123123',
         },
         ROUTINE: {
@@ -23,7 +23,7 @@ module.exports = {
             name: faker.lorem.words()
         },
         SET: {
-            rmPercentage: String(faker.random.number()),
+            weight: String(faker.random.number()),
             reps: String(faker.random.number())
         }
     }
