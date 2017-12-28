@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import union from 'lodash/union'
 
 import { blocksWorkoutsSelector } from 'data/workouts/selectors'
 
