@@ -54,7 +54,7 @@ const putRoutine = (id, data) => ({
 })
 
 export const updateRoutine = (id, data) => (dispatch, getState) => {
-    return debounceUpdate(() => dispatch(putRoutine(id, data)))
+    return dispatch(putRoutine(id, data))
 }
 
 const deleteRoutine = (id) => ({

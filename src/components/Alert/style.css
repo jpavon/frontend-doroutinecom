@@ -12,7 +12,8 @@
 .alert--small {
   padding: .3rem;
   font-size: .8rem;
-  line-height: 1.1; }
+  line-height: 1.1;
+  margin-bottom: 0; }
 
 .alert--success {
   background-color: #4ea24e;

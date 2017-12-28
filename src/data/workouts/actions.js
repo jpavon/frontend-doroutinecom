@@ -57,7 +57,7 @@ const putWorkout = (id, data) => ({
 })
 
 export const updateWorkout = (id, data) => (dispatch, getState) => {
-    return debounceUpdate(() => dispatch(putWorkout(id, data)))
+    return dispatch(putWorkout(id, data))
 }
 
 const deleteWorkout = (id) => ({

@@ -56,7 +56,7 @@ const putExercise = (id, data) => ({
 })
 
 export const updateExercise = (id, data) => (dispatch, getState) => {
-    return debounceUpdate(() => dispatch(putExercise(id, data)))
+    return dispatch(putExercise(id, data))
 }
 
 const deleteExercise = (id) => ({

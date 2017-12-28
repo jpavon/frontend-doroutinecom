@@ -34,7 +34,7 @@ const putUser = (id, data) => ({
 })
 
 export const updateUser = (id, data) => (dispatch, getState) => {
-    return debounceUpdate(() => dispatch(putUser(id, data)))
+    return dispatch(putUser(id, data))
 }
 
 const loginUserAction = ({email, password}) => ({

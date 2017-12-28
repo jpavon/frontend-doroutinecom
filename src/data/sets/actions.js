@@ -56,7 +56,7 @@ const putSet = (id, data) => ({
 })
 
 export const updateSet = (id, data) => (dispatch, getState) => {
-    return debounceUpdate(() => dispatch(putSet(id, data)))
+    return dispatch(putSet(id, data))
 }
 
 const deleteSet = (id) => ({

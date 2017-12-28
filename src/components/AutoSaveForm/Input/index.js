@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Alert from 'components/Alert'
 import FlashMessage from 'components/FlashMessage'
 import UncontrolledInput from 'components/Form/Input'
+import Saving from 'components/Saving'
 
 const Input = (props, context) => {
 
@@ -16,9 +17,7 @@ const Input = (props, context) => {
 
     return (
         <Fragment>
-            <FlashMessage
-                visible={updating === name}
-            />
+            {updating === name && <Saving />}
             <UncontrolledInput
                 name={name}
                 value={values[name] || ''}

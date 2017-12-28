@@ -57,7 +57,7 @@ const putLift = (id, data) => ({
 })
 
 export const updateLift = (id, data) => (dispatch, getState) => {
-    return debounceUpdate(() => dispatch(putLift(id, data)))
+    return dispatch(putLift(id, data))
 }
 
 const deleteLift = (id) => ({

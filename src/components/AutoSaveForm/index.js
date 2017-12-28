@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import PropTypes from 'prop-types'
 import isEqual from 'lodash/isEqual'
+import debounce from 'lodash/debounce'
 
 class AutoSaveForm extends Component {
 
@@ -48,28 +49,35 @@ class AutoSaveForm extends Component {
         const value = target.type === 'checkbox' ? target.checked : target.value
 
         this.setState((prevState) => ({
-            updating: name,
             values: {
                 ...prevState.values,
                 [name]: value
             }
         }), () => {
-            this.props.update(this.state.values.id, { [name]: value })
-                .then((resp) => {
-                    if (resp.error) {
-                        this.setState({
-                            errors: resp.error.errors,
-                        })
-                    } else {
-                        this.setState({
-                            errors: {}
-                        })
-                    }
-
-                    this.setState({updating: null})
-                })
+            this.update(this.state.values.id, name, value)
         })
     }
+
+    update = debounce((id, name, value) => {
+        this.setState({updating: name})
+
+        this.props.update(id, { [name]: value })
+            .then((resp) => {
+                if (resp.error) {
+                    this.setState({
+                        errors: resp.error.errors,
+                    })
+                } else {
+                    this.setState({
+                        errors: {}
+                    })
+                }
+
+                setTimeout(() => {
+                    this.setState({updating: null})
+                }, 400)
+            })
+    }, 250)
 
     render() {
         return this.props.render(this.state)
