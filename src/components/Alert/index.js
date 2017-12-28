@@ -19,11 +19,11 @@ class Alert extends Component {
             PropTypes.object,
             PropTypes.bool
         ]),
-        small: PropTypes.bool
+        size: PropTypes.string
     }
 
     render() {
-        const { type, message, small } = this.props
+        const { type, message, size } = this.props
 
         if (!type || !message) return null
 
@@ -31,7 +31,7 @@ class Alert extends Component {
             'alert',
             type === 'success' && 'alert--success',
             type === 'error' && 'alert--error',
-            small && 'alert--small'
+            size === 'small' && 'alert--small'
         )
 
         const Message = () => {

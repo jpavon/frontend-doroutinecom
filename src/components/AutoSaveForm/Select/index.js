@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import { FORM_CONTEXT } from 'components/AutoSaveForm'
 import Alert from 'components/Alert'
 import UncontrolledSelect from 'components/Form/Select'
 
@@ -14,7 +13,7 @@ const Select = (props, context) => {
         ...rest
     } = props
 
-    const { values, errors, onChange } = context[FORM_CONTEXT]
+    const { values, errors, onChange } = context.formContext
 
     return (
         <Fragment>
@@ -27,12 +26,12 @@ const Select = (props, context) => {
                 {...rest}
             />
             <Alert
-                small
+                size="small"
                 type="error"
                 message={options < 1 && noOptionsMessage}
             />
             <Alert
-                small
+                size="small"
                 type="error"
                 message={errors[name]}
             />
@@ -45,7 +44,7 @@ Select.propTypes = {
 }
 
 Select.contextTypes = {
-    [FORM_CONTEXT]: PropTypes.object.isRequired
+    formContext: PropTypes.object.isRequired
 }
 
 export default Select

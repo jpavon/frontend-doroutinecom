@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import { FORM_CONTEXT } from 'components/AutoSaveForm'
 import Alert from 'components/Alert'
 import FlashMessage from 'components/FlashMessage'
 import UncontrolledInput from 'components/Form/Input'
@@ -13,13 +12,13 @@ const Input = (props, context) => {
         ...rest
     } = props
 
-    const { values, errors, onChange, updatedKey } = context[FORM_CONTEXT]
+    const { values, errors, onChange, updatedKey } = context.formContext
 
     return (
         <Fragment>
-            <FlashMessage
-                visible={updatedKey === name}
-            />
+            {updatedKey === name &&
+                <FlashMessage />
+            }
             <UncontrolledInput
                 name={name}
                 value={values[name] || ''}
@@ -27,7 +26,7 @@ const Input = (props, context) => {
                 {...rest}
             />
             <Alert
-                small
+                size="small"
                 type="error"
                 message={errors[name]}
             />
@@ -40,7 +39,7 @@ Input.propTypes = {
 }
 
 Input.contextTypes = {
-    [FORM_CONTEXT]: PropTypes.object.isRequired
+    formContext: PropTypes.object.isRequired
 }
 
 export default Input

@@ -2,8 +2,6 @@ import { Component } from 'react'
 import PropTypes from 'prop-types'
 import isEqual from 'lodash/isEqual'
 
-export const FORM_CONTEXT = '__FORM_CONTEXT__'
-
 class AutoSaveForm extends Component {
 
     static propTypes = {
@@ -13,11 +11,11 @@ class AutoSaveForm extends Component {
     }
 
     static childContextTypes = {
-        [FORM_CONTEXT]: PropTypes.object.isRequired
+        formContext: PropTypes.object.isRequired
     }
 
     getChildContext = () => ({
-        [FORM_CONTEXT] : {
+        formContext : {
             ...this.state,
             onChange: this.handleChange,
         }

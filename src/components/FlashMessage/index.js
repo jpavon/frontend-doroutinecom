@@ -6,7 +6,6 @@ import './style.css'
 class FlashMessage extends Component {
 
     state = {
-        visible: this.props.visible,
         delay: 1000
     }
 
@@ -35,9 +34,7 @@ class FlashMessage extends Component {
     }
 
     render() {
-        return this.state.visible
-            ? (<div className="flash-message"><Loading /></div>)
-            : null
+        return <div className="flash-message"><Loading /></div>
     }
 }
 

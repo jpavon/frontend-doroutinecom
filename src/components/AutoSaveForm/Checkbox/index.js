@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import { FORM_CONTEXT } from 'components/AutoSaveForm'
 import Alert from 'components/Alert'
 import UncontrolledCheckbox from 'components/Form/Checkbox'
 
@@ -12,7 +11,7 @@ const Checkbox = (props, context) => {
         ...rest
     } = props
 
-    const { values, errors, onChange } = context[FORM_CONTEXT]
+    const { values, errors, onChange } = context.formContext
 
     return (
         <Fragment>
@@ -23,7 +22,7 @@ const Checkbox = (props, context) => {
                 {...rest}
             />
             <Alert
-                small
+                size="small"
                 type="error"
                 message={errors[name]}
             />
@@ -36,7 +35,7 @@ Checkbox.propTypes = {
 }
 
 Checkbox.contextTypes = {
-    [FORM_CONTEXT]: PropTypes.object.isRequired
+    formContext: PropTypes.object.isRequired
 }
 
 export default Checkbox
