@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import isEqual from 'lodash/isEqual'
 
 export const FORM_CONTEXT = '__FORM_CONTEXT__'
 
@@ -17,17 +18,31 @@ export default function withForm(WrappedComponent) {
 
         getChildContext = () => ({
             [FORM_CONTEXT] : {
-                data: this.state.data,
-                errors: this.state.errors,
+                ...this.state,
                 onChange: this.handleChange,
-                updatedKey: this.state.updatedKey
             }
         })
 
-        state = {
-            data: this.props.data,
-            errors: {},
-            updatedKey: null
+        constructor(props) {
+            super(props)
+
+            this.state = {
+                data: props.data,
+                errors: {},
+                updatedKey: null,
+                isUpdating: false
+            }
+        }
+
+        componentWillReceiveProps(nextProps) {
+            if (
+                this.state.isUpdating === false &&
+                !isEqual(nextProps.data, this.props.data)
+            ) {
+                this.setState({
+                    data: nextProps.data
+                })
+            }
         }
 
         handleChange = (event, name) => {
@@ -35,6 +50,7 @@ export default function withForm(WrappedComponent) {
             const value = target.type === 'checkbox' ? target.checked : target.value
 
             this.setState((prevState) => ({
+                isUpdating: true,
                 data: {
                     ...prevState.data,
                     [name]: value
@@ -54,6 +70,8 @@ export default function withForm(WrappedComponent) {
                                 this.setState({updatedKey: null})
                             })
                         }
+
+                        this.setState({isUpdating: false})
                     })
             })
         }
