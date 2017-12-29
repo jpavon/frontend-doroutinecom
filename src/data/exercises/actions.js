@@ -1,7 +1,6 @@
 import { CALL_API } from 'utils/apiMiddleware'
 import * as types from 'data/exercises/types'
 import { shouldFetch } from 'data/utils'
-import debounceUpdate from 'utils/debounceUpdate'
 
 const getExercises = () => ({
     [CALL_API]: {

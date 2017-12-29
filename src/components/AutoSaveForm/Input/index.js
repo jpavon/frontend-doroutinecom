@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 import Alert from 'components/Alert'
-import FlashMessage from 'components/FlashMessage'
 import UncontrolledInput from 'components/Form/Input'
 import Saving from 'components/Saving'
 
