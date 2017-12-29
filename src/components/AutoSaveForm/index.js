@@ -28,19 +28,24 @@ class AutoSaveForm extends Component {
         this.state = {
             values: props.initialValues,
             errors: {},
-            updating: null
+            updating: null,
+            reinitialize: true
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if (
-            this.state.updating === null &&
-            !isEqual(nextProps.initialValues, this.props.initialValues)
+            this.state.reinitialize &&
+            !isEqual(this.props.initialValues, nextProps.initialValues)
         ) {
-            this.setState({
-                values: nextProps.initialValues
-            })
+            this.initialize(nextProps.initialValues)
         }
+    }
+
+    initialize = (values) => {
+        this.setState({
+            values
+        })
     }
 
     handleChange = (event) => {
@@ -49,35 +54,38 @@ class AutoSaveForm extends Component {
         const value = target.type === 'checkbox' ? target.checked : target.value
 
         this.setState((prevState) => ({
+            reinitialize: false,
             values: {
                 ...prevState.values,
                 [name]: value
             }
-        }), () => {
+        }))
+
+        if (target.type === 'text') {
+            this.debounceUpdate(this.state.values.id, name, value)
+        } else {
             this.update(this.state.values.id, name, value)
-        })
+        }
     }
 
-    update = debounce((id, name, value) => {
-        this.setState({updating: name})
+    debounceUpdate = debounce((id, name, value) => {
+        this.update(id, name, value)
+    }, 500)
 
+    update = (id, name, value) => {
         this.props.update(id, { [name]: value })
             .then((resp) => {
-                if (resp.error) {
-                    this.setState({
-                        errors: resp.error.errors,
-                    })
-                } else {
-                    this.setState({
-                        errors: {}
-                    })
-                }
+                this.setState({
+                    errors: resp.error ? resp.error.errors : {},
+                    updating: resp.error ? null : name,
+                    reinitialize: true
+                })
 
                 setTimeout(() => {
                     this.setState({updating: null})
-                }, 400)
+                }, 500)
             })
-    }, 250)
+    }
 
     render() {
         return this.props.render(this.state)

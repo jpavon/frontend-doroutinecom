@@ -45,6 +45,12 @@
     position: relative;
     // background-color: #fff;
     margin-bottom: 1rem;
+
+    label {
+        display: inline-block;
+        margin: 0;
+        margin-left: .4rem;
+    }
 }
 
 .workout-button-remove {
@@ -55,16 +61,16 @@
 
 // form
 
-.workout-name {
+.workout-form {
     position: relative;
     background-color: #333;
     padding: .3rem;
     transition: background-color .2s;
 
-    input {
-        color: #fff;
-    }
-}
-    .workout-name--is-done {
+    &.workout-form--is-done {
         background-color: $color-button;
     }
+}
+
+.workout-name {
+}

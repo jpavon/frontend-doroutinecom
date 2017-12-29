@@ -14,23 +14,23 @@ const Workout = ({children, workout, updateWorkout, removeWorkout}) => (
                 initialValues={workout}
                 update={updateWorkout}
                 render={({values}) => (
-                    <Fragment>
-                        <Label htmlFor={`workout${values.id}`}>Completed</Label>
+                    <div className={classNames(
+                        'workout-form',
+                        values.isDone && 'workout-form--is-done'
+                    )}>
                         <Checkbox
                             id={`workout${values.id}`}
                             name="isDone"
                         />
-                        <div className={classNames(
-                            'workout-name',
-                            values.isDone && 'workout-name--is-done'
-                        )}>
+                        <Label htmlFor={`workout${values.id}`}>Completed</Label>
+                        <div className="workout-name">
                             <Input
                                 name="name"
                                 placeholder="Name..."
                                 background="dark"
                             />
                         </div>
-                    </Fragment>
+                    </div>
                 )}
             />
 

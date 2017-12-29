@@ -34,19 +34,20 @@
 .workout {
   position: relative;
   margin-bottom: 1rem; }
+  .workout label {
+    display: inline-block;
+    margin: 0;
+    margin-left: .4rem; }
 
 .workout-button-remove {
   position: absolute;
   top: -3px;
   right: -3px; }
 
-.workout-name {
+.workout-form {
   position: relative;
   background-color: #333;
   padding: .3rem;
   transition: background-color .2s; }
-  .workout-name input {
-    color: #fff; }
-
-.workout-name--is-done {
-  background-color: #6fa25a; }
+  .workout-form.workout-form--is-done {
+    background-color: #6fa25a; }
