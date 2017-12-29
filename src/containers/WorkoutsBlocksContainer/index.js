@@ -8,6 +8,7 @@ import WorkoutsContainer from 'containers/WorkoutsContainer'
 
 import WorkoutsBlocks from 'components/WorkoutsBlocks/WorkoutsBlocks'
 import WorkoutsBlock from 'components/WorkoutsBlocks/WorkoutsBlock'
+import Tabs from 'components/Tabs'
 
 class WorkoutsBlocksContainer extends Component {
 
@@ -39,11 +40,20 @@ class WorkoutsBlocksContainer extends Component {
     render() {
         return (
             <WorkoutsBlocks handleCreate={this.handleCreate}>
-                {this.state.blocks.map((blockId) => (
-                    <WorkoutsBlock key={blockId} blockId={blockId}>
-                        <WorkoutsContainer blockId={blockId} routineId={this.props.routineId} />
-                    </WorkoutsBlock>
-                ))}
+                <Tabs
+                    renderTabList={(
+                        this.state.blocks.map((blockId) => (
+                            <div>{blockId}</div>
+                        ))
+                    )}
+                    renderTabPanel={(
+                        this.state.blocks.map((blockId) => (
+                            <WorkoutsBlock blockId={blockId}>
+                                <WorkoutsContainer blockId={blockId} routineId={this.props.routineId} />
+                            </WorkoutsBlock>
+                        ))
+                    )}
+                />
             </WorkoutsBlocks>
         )
     }
