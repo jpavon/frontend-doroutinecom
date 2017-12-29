@@ -34,7 +34,7 @@ class AutoSaveForm extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (
-            this.state.isUpdating === null &&
+            this.state.updating === null &&
             !isEqual(nextProps.initialValues, this.props.initialValues)
         ) {
             this.setState({
