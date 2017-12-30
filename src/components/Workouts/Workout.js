@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 
 import AutoSaveForm from 'components/AutoSaveForm'

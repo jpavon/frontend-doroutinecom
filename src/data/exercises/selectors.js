@@ -12,5 +12,6 @@ export const exercisesSelector = (workoutId) => createSelector(
     ],
     (exercises) => exercises
         .filter((exercise) => (exercise.workoutId === workoutId))
+        .sort((a, b) => (a.order - b.order))
         .map((exercise) => formatExercise(exercise))
 )

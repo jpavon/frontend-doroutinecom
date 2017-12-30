@@ -38,7 +38,7 @@ export const update = (state, payload) => ({
     fetchStatus: STATUS_LOADED,
     entities: state.entities.map((currentItem) => {
         if (currentItem.id !== payload.id) {
-            return currentItem;
+            return currentItem
         }
 
         return {

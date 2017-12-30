@@ -5,7 +5,7 @@ const Exercise = validateData({
     userId: 'number',
     liftId: 'number|null',
     workoutId: 'number',
-    order: 'number|null',
+    order: 'number',
     createdAt: 'string',
     updatedAt: 'string'
 })

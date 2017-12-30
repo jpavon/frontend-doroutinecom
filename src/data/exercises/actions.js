@@ -58,6 +58,29 @@ export const updateExercise = (id, data) => (dispatch, getState) => {
     return dispatch(putExercise(id, data))
 }
 
+const putExerciseOrder = (data) => ({
+    [CALL_API]: {
+        types: [
+            types.EXERCISES_ORDER_PUT_REQUEST,
+            types.EXERCISES_ORDER_PUT_SUCCESS,
+            types.EXERCISES_ORDER_PUT_FAILURE
+        ],
+        endpoint: 'exercises/order',
+        method: 'put',
+        data
+    }
+})
+
+const exercisesOrder = (data) => ({
+    type: types.EXERCISES_ORDER,
+    data
+})
+
+export const updateExerciseOrder = (data) => (dispatch, getState) => {
+    dispatch(exercisesOrder(data))
+    return dispatch(putExerciseOrder(data))
+}
+
 const deleteExercise = (id) => ({
     [CALL_API]: {
         types: [

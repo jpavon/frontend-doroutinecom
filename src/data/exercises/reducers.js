@@ -54,6 +54,27 @@ const exercises = (state = initialState, action) => {
         case types.EXERCISES_DELETE_FAILURE:
             return failure(state, error)
 
+        case types.EXERCISES_ORDER:
+            let index = 1
+
+            const orderedEntities = action.data.ids.map((id) => {
+                const entity = state.entities.find((entity) => entity.id === id)
+                return {
+                    ...entity,
+                    order: index++
+                }
+            })
+
+            const restEntities = state.entities.filter((entity) => (!action.data.ids.includes(entity.id)))
+
+            return {
+                ...state,
+                entities: [
+                    ...restEntities,
+                    ...orderedEntities
+                ]
+            }
+
         default:
             return state
     }

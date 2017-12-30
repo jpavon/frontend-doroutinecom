@@ -27,11 +27,13 @@ class SettingsContainer extends Component {
     render() {
         return (
             this.props.user &&
-                <Settings
-                    user={this.props.user}
-                    updateUser={this.props.updateUser}
-                    handleLogoutUser={this.handleLogoutUser}
-                />
+                <div>
+                    <Settings
+                        user={this.props.user}
+                        updateUser={this.props.updateUser}
+                        handleLogoutUser={this.handleLogoutUser}
+                    />
+                </div>
         )
     }
 }
