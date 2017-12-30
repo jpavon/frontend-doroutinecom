@@ -41,7 +41,7 @@ class DragnDrop extends Component {
             result.destination.index
         )
 
-        console.log(result)
+        // console.log(result)
 
         this.props.updateOrder({ ids: children.map(item => item.props.id) })
     }
@@ -57,26 +57,24 @@ class DragnDrop extends Component {
                             ref={provided.innerRef}
                             style={getListStyle(snapshot.isDraggingOver)}
                         >
-                            {React.Children.map(this.props.children, (item) => (
-                                React.cloneElement(
-                                    <Draggable key={item.props.id} draggableId={item.props.id}>
-                                        {(provided, snapshot) => (
-                                            <Fragment>
-                                                <div
-                                                    ref={provided.innerRef}
-                                                    style={getItemStyle(
-                                                        provided.draggableStyle,
-                                                        snapshot.isDragging
-                                                    )}
-                                                    {...provided.dragHandleProps}
-                                                >
-                                                    {item}
-                                                </div>
-                                                {provided.placeholder}
-                                            </Fragment>
-                                        )}
-                                    </Draggable>
-                                )
+                            {this.props.children.map((item) => (
+                                <Draggable key={item.props.id} draggableId={item.props.id}>
+                                    {(provided, snapshot) => (
+                                        <Fragment>
+                                            <div
+                                                ref={provided.innerRef}
+                                                style={getItemStyle(
+                                                    provided.draggableStyle,
+                                                    snapshot.isDragging
+                                                )}
+                                                {...provided.dragHandleProps}
+                                            >
+                                                {item}
+                                            </div>
+                                            {provided.placeholder}
+                                        </Fragment>
+                                    )}
+                                </Draggable>
                             ))}
                             {provided.placeholder}
                         </div>
