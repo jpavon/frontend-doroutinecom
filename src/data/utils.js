@@ -1,4 +1,4 @@
-// types utils
+// type utils
 
 export const STATUS_NONE = 'NONE'
 export const STATUS_LOADING = 'LOADING'

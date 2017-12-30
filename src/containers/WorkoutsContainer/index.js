@@ -35,6 +35,7 @@ class WorkoutsContainer extends Component {
                 {this.props.workouts.map((workout, i) => (
                     <Workout
                         key={workout.id}
+                        index={i}
                         workout={workout}
                         updateWorkout={this.props.updateWorkout}
                         removeWorkout={this.props.removeWorkout}

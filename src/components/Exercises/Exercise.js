@@ -15,7 +15,7 @@ const Exercises = ({children, exercise, lifts, updateExercise, removeExercise}) 
                         name="liftId"
                         options={lifts || []}
                         defaultOptionMessage="Select a lift..."
-                        noOptionsMessage="No lift created, create one on the top of this page."
+                        noOptionsMessage="No lift created."
                     />
                 </div>
             )}
