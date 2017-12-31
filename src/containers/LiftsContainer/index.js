@@ -7,6 +7,7 @@ import { createLift, updateLift, removeLift } from 'data/lifts/actions'
 
 import Lifts from 'components/Lifts/Lifts'
 import Lift from 'components/Lifts/Lift'
+import NoData from 'components/NoData'
 
 class LiftsContainer extends Component {
 
@@ -31,15 +32,22 @@ class LiftsContainer extends Component {
     render() {
         return (
             <Lifts handleCreate={this.handleCreate}>
-                {this.props.lifts.length > 0 && this.props.lifts.map((lift, i) => (
-                    <Lift
-                        key={lift.id}
-                        lift={lift}
-                        ui={this.props.ui}
-                        handleRemove={this.handleRemove}
-                        updateLift={this.props.updateLift}
+                {this.props.lifts.length > 0 ?
+                    this.props.lifts.map((lift, i) => (
+                        <Lift
+                            key={lift.id}
+                            lift={lift}
+                            ui={this.props.ui}
+                            handleRemove={this.handleRemove}
+                            updateLift={this.props.updateLift}
+                        />
+                    )) :
+                    <NoData
+                        buttonText="Create lift"
+                        text="No lift created."
+                        create={this.handleCreate}
                     />
-                ))}
+                }
             </Lifts>
         )
     }

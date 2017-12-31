@@ -8,6 +8,7 @@ import { workoutsSelector } from 'data/workouts/selectors'
 import ExercisesContainer from 'containers/ExercisesContainer'
 import Workouts from 'components/Workouts/Workouts'
 import Workout from 'components/Workouts/Workout'
+import NoData from 'components/NoData'
 
 class WorkoutsContainer extends Component {
 
@@ -32,20 +33,27 @@ class WorkoutsContainer extends Component {
     render() {
         return (
             <Workouts handleCreate={this.handleCreate}>
-                {this.props.workouts.map((workout, i) => (
-                    <Workout
-                        key={workout.id}
-                        index={i}
-                        workout={workout}
-                        updateWorkout={this.props.updateWorkout}
-                        removeWorkout={this.props.removeWorkout}
-                    >
-                        <ExercisesContainer
-                            workoutId={workout.id}
-                            routineId={this.props.routineId}
-                        />
-                    </Workout>
-                ))}
+                {this.props.workouts.length > 0 ?
+                    this.props.workouts.map((workout, i) => (
+                        <Workout
+                            key={workout.id}
+                            index={i}
+                            workout={workout}
+                            updateWorkout={this.props.updateWorkout}
+                            removeWorkout={this.props.removeWorkout}
+                        >
+                            <ExercisesContainer
+                                workoutId={workout.id}
+                                routineId={this.props.routineId}
+                            />
+                        </Workout>
+                    )) :
+                    <NoData
+                        buttonText="Create workout"
+                        text="No workout created."
+                        create={this.handleCreate}
+                    />
+                }
             </Workouts>
         )
     }

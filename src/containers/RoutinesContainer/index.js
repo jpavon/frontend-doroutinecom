@@ -9,6 +9,7 @@ import { routinesSelector } from 'data/routines/selectors'
 
 import Routines from 'components/Routines/Routines'
 import Routine from 'components/Routines/Routine'
+import NoData from 'components/NoData'
 
 class RoutinesContainer extends Component {
 
@@ -30,12 +31,19 @@ class RoutinesContainer extends Component {
     render() {
         return (
             <Routines handleCreate={this.handleCreate}>
-                {this.props.routines.map((routine, i) => (
-                    <Routine
-                        key={routine.id}
-                        routine={routine}
+                {this.props.routines.length > 0 ?
+                    this.props.routines.map((routine, i) => (
+                        <Routine
+                            key={routine.id}
+                            routine={routine}
+                        />
+                    )) :
+                    <NoData
+                        buttonText="Create routine"
+                        text="No routine created."
+                        create={this.handleCreate}
                     />
-                ))}
+                }
             </Routines>
         )
     }
