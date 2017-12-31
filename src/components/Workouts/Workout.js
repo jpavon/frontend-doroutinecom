@@ -18,13 +18,17 @@ const Workout = ({index, children, workout, updateWorkout, removeWorkout}) => (
                         'workout-form',
                         values.isDone && 'workout-form--is-done'
                     )}>
-                        <Checkbox
-                            id={`workout${values.id}`}
-                            name="isDone"
-                        />
-                        <Label htmlFor={`workout${values.id}`}>DAY {index + 1}</Label>
+                        <Label htmlFor={`workout-done${values.id}`} className="workout-checkbox">
+                            <Checkbox
+                                id={`workout-done${values.id}`}
+                                name="isDone"
+                            />
+                            <div className="workout-checkbox-text">finished</div>
+                        </Label>
+                        <Label htmlFor={`workout-name${values.id}`}>DAY {index + 1}</Label>
                         <div className="workout-name">
                             <Input
+                                id={`workout-name${values.id}`}
                                 name="name"
                                 placeholder="Name..."
                                 background="dark"
