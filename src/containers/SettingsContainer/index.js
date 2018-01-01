@@ -31,7 +31,7 @@ class SettingsContainer extends Component {
                     <Settings
                         user={this.props.user}
                         updateUser={this.props.updateUser}
-                        handleLogoutUser={this.handleLogoutUser}
+                        logoutUser={this.handleLogoutUser}
                     />
                 </div>
         )

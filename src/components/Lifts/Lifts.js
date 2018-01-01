@@ -5,14 +5,14 @@ import Section from 'components/Section'
 
 import './style.css'
 
-const Lifts = ({children, handleCreate}) => (
+const Lifts = ({children, create}) => (
     <Section title="Lifts" className="lifts-container">
         <div className="lifts">
             {children}
         </div>
         <div className="lifts-button-create">
             <Button
-                onClick={handleCreate}
+                onClick={create}
             >
                 New lift
             </Button>

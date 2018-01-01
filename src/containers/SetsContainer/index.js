@@ -22,14 +22,14 @@ class SetsContainer extends Component {
 
     render() {
         return (
-            <Sets createSet={this.props.createSet} exerciseId={this.props.exerciseId}>
+            <Sets create={this.props.createSet} exerciseId={this.props.exerciseId}>
                 {this.props.sets.map((set, i) => (
                     <Set
                         key={set.id}
                         i={i}
                         set={set}
-                        updateSet={this.props.updateSet}
-                        removeSet={this.props.removeSet}
+                        update={this.props.updateSet}
+                        remove={this.props.removeSet}
                     />
                 ))}
             </Sets>

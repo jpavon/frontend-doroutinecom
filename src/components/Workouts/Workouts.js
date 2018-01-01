@@ -3,11 +3,11 @@ import Button from 'components/Button'
 
 import './style.css'
 
-const Workouts = ({children, handleCreate}) => (
+const Workouts = ({children, create}) => (
     <div className="workouts-container">
         <Button
             className="workouts-button-create"
-            onClick={handleCreate}
+            onClick={create}
         >
             New workout
         </Button>

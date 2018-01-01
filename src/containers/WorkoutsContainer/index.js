@@ -32,15 +32,15 @@ class WorkoutsContainer extends Component {
 
     render() {
         return (
-            <Workouts handleCreate={this.handleCreate}>
+            <Workouts create={this.handleCreate}>
                 {this.props.workouts.length > 0 ?
                     this.props.workouts.map((workout, i) => (
                         <Workout
                             key={workout.id}
                             index={i}
                             workout={workout}
-                            updateWorkout={this.props.updateWorkout}
-                            removeWorkout={this.props.removeWorkout}
+                            update={this.props.updateWorkout}
+                            remove={this.props.removeWorkout}
                         >
                             <ExercisesContainer
                                 workoutId={workout.id}

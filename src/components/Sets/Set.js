@@ -5,14 +5,14 @@ import Input from 'components/AutoSaveForm/Input'
 import InputWrapper from 'components/Form/InputWrapper'
 import ButtonIcon from 'components/ButtonIcon'
 
-const Set = ({set, i, updateSet, removeSet}) => (
+const Set = ({set, i, update, remove}) => (
     <div className="set">
         <div className="set-number">
             Set {i + 1} - <span className="set-rmPercentage">RM% {set.rmPercentage}</span>
         </div>
         <AutoSaveForm
             initialValues={set}
-            update={updateSet}
+            update={update}
             render={({values}) => (
                 <Fragment>
                     <div className="set-row">
@@ -42,7 +42,7 @@ const Set = ({set, i, updateSet, removeSet}) => (
             remove
             danger
             className="set-button-remove"
-            onClick={() => removeSet(set.id)}
+            onClick={() => remove(set.id)}
         />
     </div>
 )

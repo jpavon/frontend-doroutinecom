@@ -7,12 +7,12 @@ import Checkbox from 'components/AutoSaveForm/Checkbox'
 import Label from 'components/Form/Label'
 import ButtonIcon from 'components/ButtonIcon'
 
-const Workout = ({index, children, workout, updateWorkout, removeWorkout}) => (
+const Workout = ({index, children, workout, update, remove}) => (
     <div className="workouts-column">
         <div className="workout">
             <AutoSaveForm
                 initialValues={workout}
-                update={updateWorkout}
+                update={update}
                 render={({values}) => (
                     <div className={classNames(
                         'workout-form',
@@ -23,7 +23,7 @@ const Workout = ({index, children, workout, updateWorkout, removeWorkout}) => (
                                 id={`workout-done${values.id}`}
                                 name="isDone"
                             />
-                            <div className="workout-checkbox-text">finished</div>
+                            <div className="workout-checkbox-text">Completed</div>
                         </Label>
                         <Label htmlFor={`workout-name${values.id}`}>DAY {index + 1}</Label>
                         <div className="workout-name">
@@ -44,7 +44,7 @@ const Workout = ({index, children, workout, updateWorkout, removeWorkout}) => (
                 <ButtonIcon
                     remove
                     danger
-                    onClick={() => removeWorkout(workout.id)}
+                    onClick={() => remove(workout.id)}
                 />
             </div>
         </div>

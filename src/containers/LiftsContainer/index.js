@@ -31,14 +31,14 @@ class LiftsContainer extends Component {
 
     render() {
         return (
-            <Lifts handleCreate={this.handleCreate}>
+            <Lifts create={this.handleCreate}>
                 {this.props.lifts.length > 0 ?
                     this.props.lifts.map((lift, i) => (
                         <Lift
                             key={lift.id}
                             lift={lift}
                             ui={this.props.ui}
-                            handleRemove={this.handleRemove}
+                            remove={this.handleRemove}
                             updateLift={this.props.updateLift}
                         />
                     )) :

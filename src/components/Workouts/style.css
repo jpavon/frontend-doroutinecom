@@ -35,19 +35,25 @@
   position: relative;
   margin-bottom: 1rem;
   margin-top: 1rem; }
-  .workout .workout-checkbox {
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    text-align: center; }
-  .workout .workout-checkbox-text {
-    margin-left: .4rem;
-    display: inline-block; }
   .workout label {
     display: block;
     text-align: center;
     margin: 0;
     margin-bottom: .2rem; }
+
+.workout-checkbox {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  text-align: center; }
+
+.workout-checkbox-text {
+  margin-left: .4rem;
+  display: inline-block;
+  color: #555; }
+  .workout-form--is-done .workout-checkbox-text {
+    color: #fff; }
 
 .workout-button-remove {
   position: absolute;

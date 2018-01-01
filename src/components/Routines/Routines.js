@@ -5,10 +5,10 @@ import Section from 'components/Section'
 
 import './style.css'
 
-const Routine = ({children, handleCreate}) => (
+const Routine = ({children, create}) => (
     <Section title="Routines" className="routines">
         <div className="routines-button-create">
-            <Button onClick={handleCreate}>New routine</Button>
+            <Button onClick={create}>New routine</Button>
         </div>
         {children}
     </Section>

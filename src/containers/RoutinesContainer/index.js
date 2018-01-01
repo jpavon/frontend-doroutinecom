@@ -30,7 +30,7 @@ class RoutinesContainer extends Component {
 
     render() {
         return (
-            <Routines handleCreate={this.handleCreate}>
+            <Routines create={this.handleCreate} remove={this.props.removeRoutine}>
                 {this.props.routines.length > 0 ?
                     this.props.routines.map((routine, i) => (
                         <Routine

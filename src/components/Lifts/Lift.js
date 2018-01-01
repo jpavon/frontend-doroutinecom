@@ -5,7 +5,7 @@ import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
 import InputWrapper from 'components/Form/InputWrapper'
 
-const Lift = ({lift, ui, handleRemove, updateLift}) => (
+const Lift = ({lift, ui, remove, updateLift}) => (
     <div className="lift">
         <div className="lift-inner">
             <AutoSaveForm
@@ -32,7 +32,7 @@ const Lift = ({lift, ui, handleRemove, updateLift}) => (
                 )}
             />
             <div className="lift-button-delete">
-                <ButtonIcon remove danger onClick={() => handleRemove(lift.id)} />
+                <ButtonIcon remove danger onClick={() => remove(lift.id)} />
             </div>
         </div>
     </div>

@@ -31,12 +31,19 @@ class RoutineContainer extends Component {
         }
     }
 
+    handleRemove = () => {
+        this.props.removeRoutine(this.props.routine.id)
+            .then(() => {
+                history.push('/')
+            })
+    }
+
     render() {
         return this.props.routine ?
             <RoutineSingle
                 routine={this.props.routine}
-                updateRoutine={this.props.updateRoutine}
-                removeRoutine={this.props.removeRoutine}
+                update={this.props.updateRoutine}
+                remove={this.handleRemove}
             >
                 <LiftsContainer routineId={this.props.routine.id} />
                 <WorkoutsBlocksContainer routineId={this.props.routine.id} />

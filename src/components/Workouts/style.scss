@@ -47,18 +47,6 @@
     margin-bottom: 1rem;
     margin-top: 1rem;
 
-    .workout-checkbox {
-        position: absolute;
-        bottom: 100%;
-        left: 0;
-        text-align: center;
-    }
-
-    .workout-checkbox-text {
-        margin-left: .4rem;
-        display: inline-block;
-    }
-
     label {
         display: block;
         text-align: center;
@@ -66,6 +54,23 @@
         margin-bottom: .2rem;
     }
 }
+    .workout-checkbox {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .workout-checkbox-text {
+        margin-left: .4rem;
+        display: inline-block;
+        color: #555;
+
+        .workout-form--is-done & {
+            color: #fff;
+        }
+    }
 
 .workout-button-remove {
     position: absolute;
