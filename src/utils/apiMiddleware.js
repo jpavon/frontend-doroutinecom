@@ -4,6 +4,7 @@ import { camelizeKeys, decamelizeKeys } from 'humps'
 import { logoutUser } from 'data/user/actions'
 import { setServerError } from 'data/ui/actions'
 
+export const CALL_API = 'CALL_API'
 const UNAUTH = 'Unauthenticated.'
 const SERVER_ERROR = 'SERVER_ERROR'
 
@@ -31,11 +32,6 @@ const callApi = (endpoint, method, data, store) => {
     })
 }
 
-// Action key that carries API call info interpreted by this Redux middleware.
-export const CALL_API = 'CALL_API'
-
-// A Redux middleware that interprets actions with CALL_API info specified.
-// Performs the call and promises when such actions are dispatched.
 export default store => next => action => {
     const callAPI = action[CALL_API]
 
@@ -84,6 +80,7 @@ export default store => next => action => {
         })))
         .catch((error) => {
             if (error === UNAUTH) {
+                if (!store.getState().user.isAuth) return
                 store.dispatch(logoutUser('An error ocurred, try to log in again.'))
             } else if (error === SERVER_ERROR) {
                 store.dispatch(setServerError())

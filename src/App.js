@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
@@ -48,7 +47,7 @@ class App extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.isFetchRequired && nextProps.isAuth) {
+        if (nextProps.isFetchRequired && nextProps.isAuth && !nextProps.isLoading) {
             this.fetchData()
         }
 
@@ -79,9 +78,6 @@ class App extends Component {
     render() {
         return (
             <Fragment>
-                <Helmet>
-                    {this.props.header}
-                </Helmet>
                 <Nav
                     isAuth={this.props.isAuth}
                 />
