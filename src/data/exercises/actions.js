@@ -71,13 +71,13 @@ const putExerciseOrder = (data) => ({
     }
 })
 
-const exercisesOrder = (data) => ({
+const exercisesOrder = (ids) => ({
     type: types.EXERCISES_ORDER,
-    data
+    ids
 })
 
 export const updateExerciseOrder = (data) => (dispatch, getState) => {
-    dispatch(exercisesOrder(data))
+    dispatch(exercisesOrder(data.ids))
     return dispatch(putExerciseOrder(data))
 }
 
