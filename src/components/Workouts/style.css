@@ -35,11 +35,6 @@
   position: relative;
   margin-bottom: 1rem;
   margin-top: 1rem; }
-  .workout label {
-    display: block;
-    text-align: center;
-    margin: 0;
-    margin-bottom: .2rem; }
 
 .workout-checkbox {
   position: absolute;
@@ -67,3 +62,15 @@
   transition: background-color .2s; }
   .workout-form.workout-form--is-done {
     background-color: #6fa25a; }
+  .workout-form label {
+    display: block;
+    text-align: center;
+    margin: 0;
+    margin-bottom: .2rem; }
+
+.workout-notes {
+  position: relative;
+  margin-top: 1rem; }
+  .workout-notes label {
+    margin: 0;
+    margin-bottom: .2rem; }

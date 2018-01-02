@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
 import Checkbox from 'components/AutoSaveForm/Checkbox'
+import Textarea from 'components/AutoSaveForm/Textarea'
 import Label from 'components/Form/Label'
 import ButtonIcon from 'components/ButtonIcon'
 
@@ -47,6 +48,20 @@ const Workout = ({index, children, workout, update, remove}) => (
                     onClick={() => remove(workout.id)}
                 />
             </div>
+
+            <AutoSaveForm
+                initialValues={workout}
+                update={update}
+                render={({values}) => (
+                    <div className="workout-notes">
+                        <Label htmlFor={`notes${values.id}`}>Notes</Label>
+                        <Textarea
+                            id={`notes${values.id}`}
+                            name="notes"
+                        />
+                    </div>
+                )}
+            />
         </div>
     </div>
 )

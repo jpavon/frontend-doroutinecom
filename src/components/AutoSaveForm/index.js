@@ -61,10 +61,10 @@ class AutoSaveForm extends Component {
             }
         }))
 
-        if (target.type === 'text') {
-            this.debounceUpdate(this.state.values.id, name, value)
-        } else {
+        if (target.type === 'select' || target.type === 'checkbox') {
             this.update(this.state.values.id, name, value)
+        } else {
+            this.debounceUpdate(this.state.values.id, name, value)
         }
     }
 
