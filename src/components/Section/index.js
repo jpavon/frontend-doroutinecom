@@ -5,7 +5,7 @@ import Header from 'components/Header'
 
 import './style.css'
 
-const Section = ({children, className, title, small}) => (
+const Section = ({children, className, title, small, headerSmall}) => (
     <section
         className={classNames(
             'section',
@@ -13,7 +13,7 @@ const Section = ({children, className, title, small}) => (
             className
         )}
     >
-        <Header>{title}</Header>
+        <Header small={headerSmall}>{title}</Header>
         {children}
     </section>
 )

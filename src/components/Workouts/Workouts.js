@@ -1,10 +1,11 @@
 import React from 'react'
 import Button from 'components/Button'
+import Section from 'components/Section'
 
 import './style.css'
 
 const Workouts = ({children, create}) => (
-    <div className="workouts-container">
+    <Section headerSmall title="Workouts" className="workouts-container">
         <Button
             className="workouts-button-create"
             onClick={create}
@@ -15,7 +16,7 @@ const Workouts = ({children, create}) => (
         <div className="workouts-row">
             {children}
         </div>
-    </div>
+    </Section>
 )
 
 export default Workouts

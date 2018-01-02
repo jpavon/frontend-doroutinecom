@@ -1,13 +1,19 @@
 import React from 'react'
 import { Tab, Tabs as ReactTabs, TabList, TabPanel } from 'react-tabs'
 
-import './style.css'
-
-const Tabs = ({renderTabList, renderTabPanel, ...rest}) => (
+const Tabs = ({renderTabList, renderTabPanel, tabListClassName, tabClassName, selectedTabClassName, ...rest}) => (
     <ReactTabs {...rest}>
-        <TabList>
+        <TabList
+            className={tabListClassName}
+        >
             {renderTabList.map((item, i) => (
-                <Tab key={i}>{item}</Tab>
+                <Tab
+                    key={i}
+                    className={tabClassName}
+                    selectedClassName={selectedTabClassName}
+                >
+                    {item}
+                </Tab>
             ))}
         </TabList>
         {renderTabPanel.map((item, i) => (

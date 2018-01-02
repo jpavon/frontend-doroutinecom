@@ -16,7 +16,7 @@ const Lift = ({lift, ui, remove, updateLift}) => (
                         <div className="lift-name">
                             <Input
                                 name="name"
-                                placeholder="Name..."
+                                placeholder="Lift name"
                                 background="dark"
                             />
                         </div>
