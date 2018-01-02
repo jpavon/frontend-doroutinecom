@@ -25,7 +25,7 @@
     background-color: #649251; }
   .button:not([disabled]):not(.disabled).active, .button:not([disabled]):not(.disabled):active {
     outline: 0;
-    box-shadow: 0 0 0 0.2rem #6fa25a; }
+    box-shadow: 0 0 1px 3px #6fa25a, inset 0 0 2px 0 rgba(0, 0, 0, 0.2); }
   input + .button {
     margin-top: 1rem; }
 
@@ -39,3 +39,6 @@
   background-color: #a52b2b; }
   .button--danger:hover {
     background-color: #912626; }
+  .button--danger:not([disabled]):not(.disabled).active, .button--danger:not([disabled]):not(.disabled):active {
+    outline: 0;
+    box-shadow: 0 0 1px 3px #a52b2b, inset 0 0 2px 0 rgba(0, 0, 0, 0.2); }

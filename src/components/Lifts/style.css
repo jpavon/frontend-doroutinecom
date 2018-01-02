@@ -19,8 +19,12 @@
   padding-right: 3px;
   padding-left: 3px;
   margin-bottom: 10px;
-  flex: 0 0 20%;
-  max-width: 20%; }
+  flex: 0 0 16.66667%;
+  max-width: 16.66667%; }
+  @media (max-width: 1040px) {
+    .lift {
+      flex: 0 0 20%;
+      max-width: 20%; } }
   @media (max-width: 860px) {
     .lift {
       flex: 0 0 25%;

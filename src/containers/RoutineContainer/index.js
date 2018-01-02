@@ -32,10 +32,12 @@ class RoutineContainer extends Component {
     }
 
     handleRemove = () => {
-        this.props.removeRoutine(this.props.routine.id)
-            .then(() => {
-                history.push('/')
-            })
+        if (window.confirm('Are you sure you want to delete this routine?')) {
+            this.props.removeRoutine(this.props.routine.id)
+                .then(() => {
+                    history.push('/')
+                })
+        }
     }
 
     render() {

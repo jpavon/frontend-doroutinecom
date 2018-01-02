@@ -27,8 +27,13 @@
     padding-left: 3px;
     margin-bottom: 10px;
 
-    flex: 0 0 percentage(1/5);
-    max-width: percentage(1/5);
+    flex: 0 0 percentage(1/6);
+    max-width: percentage(1/6);
+
+    @media (max-width: 1040px) {
+        flex: 0 0 percentage(1/5);
+        max-width: percentage(1/5);
+    }
 
     @media (max-width: 860px) {
         flex: 0 0 percentage(1/4);

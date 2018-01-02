@@ -7,6 +7,11 @@
     &:hover {
         background-color: darken($color, 5%);
     }
+
+    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active {
+        outline: 0;
+        box-shadow: 0 0 1px 3px $color, inset 0 0 2px 0 rgba(#000, .2);
+    }
 }
 
 .button {
@@ -33,11 +38,6 @@
     line-height: 1;
     white-space: nowrap;
     overflow: hidden;
-
-    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active {
-        outline: 0;
-        box-shadow: 0 0 0 0.2rem $color-button;
-    }
 
     input + & {
         margin-top: 1rem;
