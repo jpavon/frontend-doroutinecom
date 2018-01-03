@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { blocksWorkoutsSelector } from 'data/workouts/selectors'
+import { blocksSelector, completedBlocks } from 'data/workouts/selectors'
 
 import WorkoutsContainer from 'containers/WorkoutsContainer'
 
@@ -14,34 +14,56 @@ class WorkoutsBlocksContainer extends Component {
     static propTypes = {
         routineId: PropTypes.number.isRequired,
 
-        blocks: PropTypes.array.isRequired
+        blocks: PropTypes.array.isRequired,
+        completedBlocks: PropTypes.array.isRequired
     }
 
     state = {
-        blocks: this.props.blocks
+        activeTab: this.props.blocks.length - 1,
+        blocks: this.props.blocks,
+        completedBlocks: this.props.completedBlocks
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.blocks !== this.state.blocks &&
-            nextProps.blocks.length > this.state.blocks.length) {
-            this.setState({ blocks: nextProps.blocks })
+        this.setState({
+            completedBlocks: nextProps.completedBlocks
+        })
+
+        if (nextProps.blocks > this.state.blocks) {
+            this.setState({
+                blocks: nextProps.blocks
+            })
         }
     }
 
     handleCreate = () => {
         this.setState((prevState) => {
-            prevState.blocks.push(prevState.blocks[prevState.blocks.length - 1] + 1)
-
-            return { blocks: prevState.blocks.filter(Number) }
+            return {
+                activeTab: prevState.blocks.length,
+                blocks: [
+                    ...prevState.blocks,
+                    prevState.blocks.length + 1
+                ]
+            }
         })
+    }
+
+    handleTabOnSelect = (tabIndex) => {
+        this.setState({ activeTab: tabIndex })
     }
 
     render() {
         return (
-            <WorkoutsBlocks blocks={this.state.blocks} handleCreate={this.handleCreate}>
-                {this.state.blocks.map((blockId) => (
-                    <WorkoutsBlock key={blockId} blockId={blockId}>
-                        <WorkoutsContainer blockId={blockId} routineId={this.props.routineId} />
+            <WorkoutsBlocks
+                activeTab={this.state.activeTab}
+                blocks={this.state.blocks}
+                completedBlocks={this.state.completedBlocks}
+                onSelect={this.handleTabOnSelect}
+                create={this.handleCreate}
+            >
+                {this.state.blocks.map((id) => (
+                    <WorkoutsBlock key={id} blockId={id}>
+                        <WorkoutsContainer blockId={id} routineId={this.props.routineId} />
                     </WorkoutsBlock>
                 ))}
             </WorkoutsBlocks>
@@ -50,7 +72,8 @@ class WorkoutsBlocksContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    blocks: blocksWorkoutsSelector(props.routineId)(state)
+    blocks: blocksSelector(props.routineId)(state),
+    completedBlocks: completedBlocks(props.routineId)(state)
 })
 
 const mapDispatchToProps = {

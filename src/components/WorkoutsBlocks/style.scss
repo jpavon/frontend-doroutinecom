@@ -35,19 +35,29 @@
     padding: 0;
     list-style: none;
     display: flex;
-    border-bottom: 6px solid #444;
+    border-bottom: 4px solid #444;
     margin-bottom: 1rem;
+    transition: border .2s;
+
+    &.workouts-blocks-tab-list--completed {
+        border-color: $color-button;
+    }
 }
 
 .workouts-blocks-tab {
+    position: relative;
     padding: .6rem 1.4rem;
     background-color: #333;
     cursor: pointer;
-    transition: background-color .2s, color .2s;
-    border-bottom: none;
+    transition: background-color .2s, color .2s, border .2s;
+    border-bottom: 2px solid transparent;
+    margin-bottom: 1px;
 
     &.workouts-blocks-tab--selected, &:hover {
         background-color: #444;
-        border-bottom: none;
+    }
+
+    &.workouts-blocks-tab--completed {
+        border-bottom: 2px solid $color-button;
     }
 }

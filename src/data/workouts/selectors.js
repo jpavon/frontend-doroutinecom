@@ -22,19 +22,35 @@ export const workoutSelector = (id) => createSelector(
     (workouts) => formatWorkout(workouts.find((workout) => (workout.id === id)))
 )
 
-export const blocksWorkoutsSelector = (routineId) => createSelector(
+export const workoutsRoutineSelector = (routineId) => createSelector(
     [
         (state) => state.workouts.entities
     ],
+    (workouts) => workouts.filter((workout) => (workout.routineId === routineId))
+)
+
+export const blocksSelector = (routineId) => createSelector(
+    workoutsRoutineSelector(routineId),
     (workouts) => {
         const max = Math.max(
             ...new Set(
-                workouts
-                    .filter((workout) => (workout.routineId === routineId))
-                    .map((workout) => (workout.blockId))
+                workouts.map((workout) => (workout.blockId))
             )
         )
 
         return max > 0 ? [...Array(max)].map((n, i) => i + 1) : [1]
+    }
+)
+
+export const completedBlocks = (routineId) => createSelector(
+    [
+        workoutsRoutineSelector(routineId),
+        blocksSelector(routineId)
+    ],
+    (workouts, blocks) => {
+        return blocks.map((id) => {
+            const routineWorkoutsBlocks = workouts.filter((workout) => (workout.blockId === id))
+            return (routineWorkoutsBlocks.length > 0 && routineWorkoutsBlocks.filter((workout) => (!workout.isDone)).length < 1) ? 1 : 0
+        })
     }
 )
