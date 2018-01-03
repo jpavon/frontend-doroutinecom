@@ -7,6 +7,7 @@ import './style.css'
 
 const Textarea = ({name, className, ...rest}) => (
     <TextareaAutosize
+        minRows={2}
         name={name}
         className={classNames(
             'textarea',
