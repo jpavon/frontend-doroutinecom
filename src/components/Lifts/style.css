@@ -37,6 +37,16 @@
     .lift {
       flex: 0 0 50%;
       max-width: 50%; } }
+  .lift label {
+    text-align: center; }
+
+.lift-inner {
+  position: relative;
+  background-color: #303030;
+  padding: .3rem; }
+
+.lift-name input {
+  border-bottom: none; }
 
 .lift-button-delete {
   position: absolute;

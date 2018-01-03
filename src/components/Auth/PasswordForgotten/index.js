@@ -9,7 +9,7 @@ const PasswordForgotten = ({handleSubmit, errors, success, setRef}) => (
     <Section small className="password-forgotten" title="Password Forgotten">
         <form method="post" onSubmit={handleSubmit}>
             <Label htmlFor="email">
-                Email:
+                Email
             </Label>
             <Input
                 id="email"

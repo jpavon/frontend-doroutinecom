@@ -5,5 +5,5 @@
   font-weight: 400;
   letter-spacing: .1rem;
   margin-bottom: .4rem; }
-  input + .label {
+  label + * + .label {
     margin-top: 1rem; }

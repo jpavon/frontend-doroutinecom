@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import './style.css'
 
-const InputWrapper = ({children, className, item, ...rest}) => (
+const InputWithItem = ({children, className, item, ...rest}) => (
     <div
         className={classNames(
             'input-wrapper',
@@ -19,10 +19,10 @@ const InputWrapper = ({children, className, item, ...rest}) => (
     </div>
 )
 
-InputWrapper.propTypes = {
+InputWithItem.propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
     item: PropTypes.any
 }
 
-export default InputWrapper
+export default InputWithItem

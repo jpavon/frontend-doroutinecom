@@ -49,14 +49,21 @@
         flex: 0 0 percentage(1/2);
         max-width: percentage(1/2);
     }
+
+    label {
+        text-align: center;
+    }
 }
     .lift-inner {
-        // padding: .3rem;
-        // border: 1px solid #555;
-        // background-color: #444;
+        position: relative;
+        background-color: #303030;
+        padding: .3rem;
     }
 
     .lift-name {
+        input {
+            border-bottom: none;
+        }
     }
 
     .lift-rm {

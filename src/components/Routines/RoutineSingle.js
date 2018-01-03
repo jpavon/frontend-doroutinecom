@@ -28,7 +28,9 @@ const RoutineSingle = ({children, routine, update, remove}) => (
             />
         </Section>
         {children}
-        <Button danger onClick={remove}>Remove routine</Button>
+        <div className="routine-single-button-remove">
+            <Button danger onClick={remove}>Remove routine</Button>
+        </div>
     </div>
 )
 

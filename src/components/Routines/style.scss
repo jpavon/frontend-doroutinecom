@@ -18,12 +18,12 @@
         padding: .4rem 1rem;
         font-size: .8rem;
         text-decoration: none;
-        border-bottom: 2px solid #444;
-        border-left: 8px solid #444;
+        border-bottom: 2px solid #333;
+        border-left: 8px solid #333;
         transition: border-color .2s;
 
         &:hover {
-            border-color: #eee;
+            border-color: #555;
         }
     }
 
@@ -39,4 +39,10 @@
 
 .routine-single-title {
     position: relative;
+}
+
+.routine-single-button-remove {
+    padding: 1rem;
+    background-color: #111;
+    text-align: right;
 }

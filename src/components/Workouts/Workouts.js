@@ -13,9 +13,12 @@ const Workouts = ({children, create}) => (
             New workout
         </Button>
 
-        <div className="workouts-row">
-            {children}
-        </div>
+        {Array.isArray(children) ?
+            <div className="workouts-row">
+                {children}
+            </div> :
+            children
+        }
     </Section>
 )
 

@@ -1,17 +1,16 @@
-@keyframes spinner {
-  to {
-    transform: rotate(360deg); } }
-
-.saving:before {
-  content: '';
-  box-sizing: border-box;
+.saving {
   position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 14px;
-  height: 14px;
+  top: 50%;
+  right: 5px;
+  margin-top: -8px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  border-top: 3px solid #fff;
-  border-right: 3px solid transparent;
+  border-top: 2px solid #fff;
+  border-right: 2px solid transparent;
   animation: spinner .6s linear infinite;
   z-index: 10; }
+
+@keyframes spinner {
+  0% {
+    transform: rotate(360deg); } }

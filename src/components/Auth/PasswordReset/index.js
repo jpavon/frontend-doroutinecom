@@ -9,7 +9,7 @@ const PasswordReset = ({handleSubmit, errors, success, setRef}) => (
     <Section small className="password-reset" title="Password Reset">
         <form method="post" onSubmit={handleSubmit}>
             <Label htmlFor="email">
-                Email:
+                Email
             </Label>
             <Input
                 id="email"
@@ -19,7 +19,7 @@ const PasswordReset = ({handleSubmit, errors, success, setRef}) => (
 
             />
             <Label htmlFor="password">
-                New password:
+                New password
             </Label>
             <Input
                 id="password"
@@ -29,7 +29,7 @@ const PasswordReset = ({handleSubmit, errors, success, setRef}) => (
 
             />
             <Label htmlFor="passwordConfirmation">
-                Type new password again:
+                Type new password again
             </Label>
             <Input
                 id="passwordConfirmation"

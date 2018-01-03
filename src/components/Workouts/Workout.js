@@ -31,8 +31,7 @@ const Workout = ({index, children, workout, update, remove}) => (
                             <Input
                                 id={`workout-name${values.id}`}
                                 name="name"
-                                placeholder="Workout name"
-                                background="dark"
+                                placeholder="Name"
                             />
                         </div>
                     </div>

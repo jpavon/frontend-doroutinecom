@@ -11,7 +11,7 @@ const Login = ({handleSubmit, errors, setRef}) => (
     <Section small className="register" title="Register">
         <form method="post" onSubmit={handleSubmit}>
             <Label htmlFor="name">
-                Name:
+                Name
             </Label>
             <Input
                 id="name"
@@ -20,7 +20,7 @@ const Login = ({handleSubmit, errors, setRef}) => (
                 size="large"
             />
             <Label htmlFor="email">
-                Email:
+                Email
             </Label>
             <Input
                 id="email"
@@ -29,7 +29,7 @@ const Login = ({handleSubmit, errors, setRef}) => (
                 size="large"
             />
             <Label htmlFor="password">
-                Password:
+                Password
             </Label>
             <Input
                 id="password"
@@ -38,7 +38,7 @@ const Login = ({handleSubmit, errors, setRef}) => (
                 size="large"
             />
             <Label htmlFor="passwordConfirmation">
-                Password confirmation:
+                Password confirmation
             </Label>
             <Input
                 id="passwordConfirmation"

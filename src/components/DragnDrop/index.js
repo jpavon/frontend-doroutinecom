@@ -12,15 +12,15 @@ const reorder = (list, startIndex, endIndex) => {
 
 const getItemStyle = (draggableStyle, isDragging) => ({
     // some basic styles to make the children look a bit nicer
-    userSelect: 'none',
+    // userSelect: 'none',
     // change background colour if dragging
-    background: isDragging ? 'lightgreen' : 'grey',
-    boxShadow: isDragging ? '0 0 4px green' : 'none',
+    // background: isDragging ? 'lightgreen' : 'grey',
+    boxShadow: isDragging ? '0 0 1px 2px rgba(255, 255, 255, .4)' : 'none',
     // styles we need to apply on draggables
     ...draggableStyle,
 })
 const getListStyle = isDraggingOver => ({
-    background: isDraggingOver ? 'lightblue' : 'lightgrey',
+    background: isDraggingOver ? '#555' : '#555',
 })
 
 class DragnDrop extends Component {

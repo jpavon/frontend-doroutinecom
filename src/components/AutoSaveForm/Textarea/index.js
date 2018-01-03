@@ -16,13 +16,15 @@ const Textarea = (props, context) => {
 
     return (
         <Fragment>
-            {updating === name && <Saving />}
-            <UncontrolledTextarea
-                name={name}
-                value={values[name] || ''}
-                onChange={onChange}
-                {...rest}
-            />
+            <div style={{position: 'relative'}}>
+                {updating === name && <Saving />}
+                <UncontrolledTextarea
+                    name={name}
+                    value={values[name] || ''}
+                    onChange={onChange}
+                    {...rest}
+                />
+            </div>
             <Alert
                 size="small"
                 type="error"

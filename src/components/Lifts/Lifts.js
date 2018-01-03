@@ -7,9 +7,12 @@ import './style.css'
 
 const Lifts = ({children, create}) => (
     <Section title="Lifts" className="lifts-container">
-        <div className="lifts">
-            {children}
-        </div>
+        {Array.isArray(children) ?
+            <div className="lifts">
+                {children}
+            </div> :
+            children
+        }
         <div className="lifts-button-create">
             <Button
                 onClick={create}

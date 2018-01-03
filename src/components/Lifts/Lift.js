@@ -3,7 +3,8 @@ import React from 'react'
 import ButtonIcon from 'components/ButtonIcon'
 import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
-import InputWrapper from 'components/Form/InputWrapper'
+import InputWithItem from 'components/Form/InputWithItem'
+import Label from 'components/Form/Label'
 
 const Lift = ({lift, ui, remove, updateLift}) => (
     <div className="lift">
@@ -11,22 +12,23 @@ const Lift = ({lift, ui, remove, updateLift}) => (
             <AutoSaveForm
                 initialValues={lift}
                 update={updateLift}
-                render={() => (
+                render={({values}) => (
                     <div className="lift-form">
+                        <Label htmlFor={`lift${values.id}`}>Lift</Label>
                         <div className="lift-name">
                             <Input
+                                id={`lift${values.id}`}
                                 name="name"
-                                placeholder="Lift name"
-                                background="dark"
+                                placeholder="Name"
                             />
                         </div>
                         <div className="lift-rm">
-                            <InputWrapper item="kg RM">
+                            <InputWithItem item="kg RM">
                                 <Input
                                     name="rm"
-                                    item="kg RM"
+                                    placeholder="Weight"
                                 />
-                            </InputWrapper>
+                            </InputWithItem>
                         </div>
                     </div>
                 )}

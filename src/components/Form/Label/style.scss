@@ -6,7 +6,7 @@
     letter-spacing: .1rem;
     margin-bottom: .4rem;
 
-    input + & {
+    label + * + & {
         margin-top: 1rem;
     }
 }

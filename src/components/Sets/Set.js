@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
-import InputWrapper from 'components/Form/InputWrapper'
+import InputWithItem from 'components/Form/InputWithItem'
 import ButtonIcon from 'components/ButtonIcon'
 
 const Set = ({set, i, update, remove}) => (
@@ -18,20 +18,20 @@ const Set = ({set, i, update, remove}) => (
                     <div className="set-row">
                         <div className="set-col">
                             <div className="set-weight">
-                                <InputWrapper item="KG">
+                                <InputWithItem item="KG">
                                     <Input
                                         name="weight"
                                     />
-                                </InputWrapper>
+                                </InputWithItem>
                             </div>
                         </div>
                         <div className="set-col">
                             <div className="set-reps">
-                                <InputWrapper item={values.reps > 1 ? 'reps' : 'rep'}>
+                                <InputWithItem item={values.reps > 1 ? 'reps' : 'rep'}>
                                     <Input
                                         name="reps"
                                     />
-                                </InputWrapper>
+                                </InputWithItem>
                             </div>
                         </div>
                     </div>
