@@ -4,11 +4,13 @@ import { connect } from 'react-redux'
 import Chart from 'chart.js'
 import moment from 'moment'
 
-import { graphDataSelector } from 'data/selectors'
+import { graphDataSelector } from 'data/graphs/selectors'
 
 class GraphContainer extends Component {
 
     static propTypes = {
+        routineId: PropTypes.number.isRequired,
+
         graphData: PropTypes.object.isRequired
     }
 
@@ -27,7 +29,7 @@ class GraphContainer extends Component {
                 datasets: [{
                     label: 'Weight',
                     data: [
-                        100,
+                        109,
                         80,
                         90,
                         140,
@@ -76,7 +78,7 @@ class GraphContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    graphData: graphDataSelector(state),
+    graphData: graphDataSelector(props.routineId)(state),
 })
 
 const mapDispatchToProps = {

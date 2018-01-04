@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -9,6 +9,7 @@ import { STATUS_LOADED } from 'data/utils'
 
 import LiftsContainer from 'containers/LiftsContainer'
 import WorkoutsBlocksContainer from 'containers/WorkoutsBlocksContainer'
+// import GraphContainer from 'containers/GraphContainer'
 
 import RoutineSingle from 'components/Routines/RoutineSingle'
 
@@ -42,14 +43,17 @@ class RoutineContainer extends Component {
 
     render() {
         return this.props.routine ?
-            <RoutineSingle
-                routine={this.props.routine}
-                update={this.props.updateRoutine}
-                remove={this.handleRemove}
-            >
-                <LiftsContainer routineId={this.props.routine.id} />
-                <WorkoutsBlocksContainer routineId={this.props.routine.id} />
-            </RoutineSingle>
+            <Fragment>
+                <RoutineSingle
+                    routine={this.props.routine}
+                    update={this.props.updateRoutine}
+                    remove={this.handleRemove}
+                >
+                    <LiftsContainer routineId={this.props.routine.id} />
+                    <WorkoutsBlocksContainer routineId={this.props.routine.id} />
+                </RoutineSingle>
+                {/*<GraphContainer routineId={this.props.routine.id} />*/}
+            </Fragment>
         : null
     }
 }
