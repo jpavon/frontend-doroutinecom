@@ -1,28 +1,25 @@
 @import "variables.scss";
 
+.nav-container {
+    padding: .4rem 1rem .2rem;
+    margin-bottom: 2rem;
+    background-color:  $color-background-light;
+}
+
 .nav {
     position: relative;
     display: flex;
-    margin-bottom: 2rem;
-    padding: .4rem 10rem .2rem;
-
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    background-color:  $color-background-light;
 
-    @media(max-width: 1000px) {
-        padding-left: 5rem;
-        padding-right: 5rem;
-    }
-
-    @media(max-width: 800px) {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
 }
 
 .nav-logo {
+    margin-top: 5px;
     display: inline-block;
     margin-right: 1rem;
     line-height: inherit;
