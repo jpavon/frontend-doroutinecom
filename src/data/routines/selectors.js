@@ -14,7 +14,20 @@ export const routinesSelector = (blockId) => createSelector(
         .map((routine) => formatRoutine(routine))
 )
 
-export const routineSelector = (slug) => createSelector(
+export const routineByIdSelector = (id) => createSelector(
+    [
+        (state) => state.routines.entities
+    ],
+    (routines) => {
+        if (routines.length > 0) {
+            const routine = routines.find((routine) => (routine.id === id))
+            return routine ? formatRoutine(routine) : null
+        }
+        return null
+    }
+)
+
+export const routineBySlugSelector = (slug) => createSelector(
     [
         (state) => state.routines.entities
     ],

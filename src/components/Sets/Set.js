@@ -5,10 +5,10 @@ import Input from 'components/AutoSaveForm/Input'
 import InputWithItem from 'components/Form/InputWithItem'
 import ButtonIcon from 'components/ButtonIcon'
 
-const Set = ({set, i, update, remove}) => (
+const Set = ({i, set, weightMeasure, update, remove}) => (
     <div className="set">
         <div className="set-number">
-            Set {i + 1} - <span className="set-rmPercentage">RM% {set.rmPercentage}</span>
+            Set {i + 1}<div className="set-rmPercentage">RM%{set.rmPercentage} TM%{set.tmPercentage}</div>
         </div>
         <AutoSaveForm
             initialValues={set}
@@ -18,7 +18,7 @@ const Set = ({set, i, update, remove}) => (
                     <div className="set-row">
                         <div className="set-col">
                             <div className="set-weight">
-                                <InputWithItem item="KG">
+                                <InputWithItem item={weightMeasure}>
                                     <Input
                                         name="weight"
                                     />

@@ -11,7 +11,8 @@ const round = (x) => {
 
 const formatSet = (set, lift) => Set({
     ...set,
-    rmPercentage: lift ? round(set.weight * 100 / lift.rm) : 0
+    rmPercentage: lift ? round(set.weight * 100 / lift.rm) : 0,
+    tmPercentage: lift ? round(set.weight * 100 / (lift.rm*90/100)) : 0
 })
 
 export const setsSelector = (exerciseId) => createSelector(

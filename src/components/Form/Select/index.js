@@ -22,11 +22,12 @@ const Select = (props, context) => {
             name={name}
             className={classNames(
                 'select',
-                className
+                !value && 'select--default-option',
+                className,
             )}
             {...rest}
         >
-            {!value && <option>{defaultOptionMessage}</option>}
+            {!value && <option className="select-default-option">{defaultOptionMessage}</option>}
             {options.length > 0 &&
                 options.map((option, i) => (
                     <option key={i} value={option.id}>{option.name}</option>

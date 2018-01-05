@@ -43,7 +43,7 @@ class ExercisesContainer extends Component {
                                 updateExercise={this.props.updateExercise}
                                 removeExercise={this.props.removeExercise}
                             >
-                                <SetsContainer exerciseId={exercise.id} />
+                                <SetsContainer exerciseId={exercise.id} routineId={this.props.routineId} />
                             </Exercise>
                         ))}
                     </DragnDrop>

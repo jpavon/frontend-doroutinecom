@@ -5,16 +5,30 @@ import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
 import InputWithItem from 'components/Form/InputWithItem'
 import Label from 'components/Form/Label'
+import Tooltip from 'components/Tooltip'
+import RMTable from 'components/RMTable'
 
-const Lift = ({lift, ui, remove, updateLift}) => (
+const Lift = ({lift, ui, weightMeasure, remove, update}) => (
     <div className="lift">
         <div className="lift-inner">
             <AutoSaveForm
                 initialValues={lift}
-                update={updateLift}
+                update={update}
                 render={({values}) => (
                     <div className="lift-form">
-                        <Label htmlFor={`lift${values.id}`}>Lift</Label>
+                        <div className="lift-title">
+                            <Label htmlFor={`lift${values.id}`}>
+                                Lift
+                            </Label>
+                            <Tooltip
+                                text="RM Info"
+                                content={(
+                                    <RMTable
+                                        rm={values.rm}
+                                    />
+                                )}
+                            />
+                        </div>
                         <div className="lift-name">
                             <Input
                                 id={`lift${values.id}`}
@@ -23,7 +37,7 @@ const Lift = ({lift, ui, remove, updateLift}) => (
                             />
                         </div>
                         <div className="lift-rm">
-                            <InputWithItem item="kg RM">
+                            <InputWithItem item={`${weightMeasure} RM`}>
                                 <Input
                                     name="rm"
                                     placeholder="Weight"

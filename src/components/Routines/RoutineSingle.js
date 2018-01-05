@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
+import Select from 'components/AutoSaveForm/Select'
 import Label from 'components/Form/Label'
 import Section from 'components/Section'
 import Button from 'components/Button'
@@ -15,15 +16,27 @@ const RoutineSingle = ({children, routine, update, remove}) => (
                 initialValues={routine}
                 update={update}
                 render={({values}) => (
-                    <div className="routine-single-title">
-                        <Label htmlFor={`name${values.id}`}>Title</Label>
-                        <Input
-                            id={`name${values.id}`}
-                            name="name"
-                            placeholder="Title..."
-                            size="large"
-                        />
-                    </div>
+                    <Fragment>
+                        <div className="routine-weight-measure">
+                            Weight Measure:
+                            <Select
+                                name="weightMeasure"
+                                options={[
+                                    {id: 'kg', name: 'kg'},
+                                    {id: 'lbs', name: 'lbs'},
+                                ]}
+                            />
+                        </div>
+                        <div className="routine-single-title">
+                            <Label htmlFor={`name${values.id}`}>Title</Label>
+                            <Input
+                                id={`name${values.id}`}
+                                name="name"
+                                placeholder="Title..."
+                                size="large"
+                            />
+                        </div>
+                    </Fragment>
                 )}
             />
         </Section>

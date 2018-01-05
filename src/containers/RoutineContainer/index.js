@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import history from 'utils/history'
 import { createRoutine, updateRoutine, removeRoutine } from 'data/routines/actions'
-import { routineSelector } from 'data/routines/selectors'
+import { routineBySlugSelector } from 'data/routines/selectors'
 import { STATUS_LOADED } from 'data/utils'
 
 import LiftsContainer from 'containers/LiftsContainer'
@@ -59,7 +59,7 @@ class RoutineContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    routine: routineSelector(props.routineSlug)(state),
+    routine: routineBySlugSelector(props.routineSlug)(state),
     routineLoaded: state.routines.fetchStatus === STATUS_LOADED
 })
 

@@ -22,7 +22,6 @@ const Select = (props, context) => {
                 value={values[name] || ''}
                 options={options}
                 onChange={onChange}
-                className="select"
                 {...rest}
             />
             <Alert

@@ -49,15 +49,27 @@
         flex: 0 0 percentage(1/2);
         max-width: percentage(1/2);
     }
-
-    label {
-        text-align: center;
-    }
 }
     .lift-inner {
         position: relative;
         background-color: #303030;
         padding: .3rem;
+    }
+
+    .lift-title {
+        position: relative;
+        text-align: center;
+
+        label {
+            display: inline-block;
+            margin-right: .4rem;
+        }
+
+        // .tooltip {
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        // }
     }
 
     .lift-name {

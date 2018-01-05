@@ -19,4 +19,8 @@
     &:focus {
         background-color: lighten($color-background-light, 5%);
     }
+
+    &.select--default-option {
+        color: rgba(#fff, .3);
+    }
 }

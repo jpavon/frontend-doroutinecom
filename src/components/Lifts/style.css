@@ -37,13 +37,18 @@
     .lift {
       flex: 0 0 50%;
       max-width: 50%; } }
-  .lift label {
-    text-align: center; }
 
 .lift-inner {
   position: relative;
   background-color: #303030;
   padding: .3rem; }
+
+.lift-title {
+  position: relative;
+  text-align: center; }
+  .lift-title label {
+    display: inline-block;
+    margin-right: .4rem; }
 
 .lift-name input {
   border-bottom: none; }

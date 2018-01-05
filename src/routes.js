@@ -9,7 +9,7 @@ import PasswordReset from 'pages/Auth/PasswordReset'
 import Routines from 'pages/Routines'
 import Routine from 'pages/Routine'
 import Settings from 'pages/Settings'
-import NoMatch from 'pages/NoMatch'
+import NotFound from 'pages/NotFound'
 
 class Routes extends Component {
 
@@ -56,7 +56,7 @@ class Routes extends Component {
                 <PrivateRoute exact path="/r/:routineSlug" component={Routine} />
                 <PrivateRoute exact path="/settings" component={Settings} />
 
-                <PrivateRoute component={NoMatch}/>
+                <PrivateRoute component={NotFound}/>
             </Switch>
         )
     }

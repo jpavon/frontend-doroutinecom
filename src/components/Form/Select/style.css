@@ -13,3 +13,5 @@
   background-position: right 13px top 13px; }
   .select:focus {
     background-color: #404040; }
+  .select.select--default-option {
+    color: rgba(255, 255, 255, 0.3); }

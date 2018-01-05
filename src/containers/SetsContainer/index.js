@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import { createSet, updateSet, removeSet } from 'data/sets/actions'
 import { setsSelector } from 'data/sets/selectors'
+import { routineByIdSelector } from 'data/routines/selectors'
 
 import Sets from 'components/Sets/Sets'
 import Set from 'components/Sets/Set'
@@ -11,9 +12,11 @@ import Set from 'components/Sets/Set'
 class SetsContainer extends Component {
 
     static propTypes = {
+        routineId: PropTypes.number.isRequired,
         exerciseId: PropTypes.number.isRequired,
 
         sets: PropTypes.array.isRequired,
+        weightMeasure: PropTypes.string.isRequired,
 
         createSet: PropTypes.func.isRequired,
         updateSet: PropTypes.func.isRequired,
@@ -28,6 +31,7 @@ class SetsContainer extends Component {
                         key={set.id}
                         i={i}
                         set={set}
+                        weightMeasure={this.props.weightMeasure}
                         update={this.props.updateSet}
                         remove={this.props.removeSet}
                     />
@@ -38,7 +42,8 @@ class SetsContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    sets: setsSelector(props.exerciseId)(state)
+    sets: setsSelector(props.exerciseId)(state),
+    weightMeasure: routineByIdSelector(props.routineId)(state).weightMeasure
 })
 
 const mapDispatchToProps = {

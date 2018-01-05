@@ -37,6 +37,17 @@
     margin-bottom: 2rem;
 }
 
+.routine-weight-measure {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    select {
+        width: 80px;
+        margin-left: 1rem;
+    }
+}
+
 .routine-single-title {
     position: relative;
 }

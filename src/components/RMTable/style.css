@@ -1,0 +1,24 @@
+.rm-table {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -6px;
+  margin-left: -6px;
+  padding: 1rem;
+  width: 280px; }
+
+.rm-table-col {
+  position: relative;
+  padding-right: 6px;
+  padding-left: 6px;
+  flex: 0 0 50%;
+  max-width: 50%; }
+
+.rm-table-title {
+  border-bottom: 1px solid #444;
+  padding-bottom: .5rem;
+  margin-bottom: .5rem;
+  font-size: .9rem; }
+
+.rm-table-data-item {
+  padding: .4rem 0;
+  font-size: .8rem; }
