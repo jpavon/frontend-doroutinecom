@@ -6,7 +6,7 @@ import './style.css'
 class Tooltip extends Component {
 
     state = {
-        open: true
+        open: false
     }
 
     render() {

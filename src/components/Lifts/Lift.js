@@ -24,6 +24,7 @@ const Lift = ({lift, ui, weightMeasure, remove, update}) => (
                                 text="RM Info"
                                 content={(
                                     <RMTable
+                                        weightMeasure={weightMeasure}
                                         rm={values.rm}
                                     />
                                 )}

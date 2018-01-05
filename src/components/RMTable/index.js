@@ -4,7 +4,7 @@ import './style.css'
 
 const values = [95, 90, 85, 80, 75, 70, 65, 60, 55, 50, 45]
 
-const RMTable = ({rm}) => (
+const RMTable = ({rm, weightMeasure}) => (
     <div className="rm-table">
         <div className="rm-table-col">
             <div className="rm-table-title" title="Rep Max">
@@ -13,7 +13,7 @@ const RMTable = ({rm}) => (
             <div className="rm-table-data">
                 {values.map((value) => (
                     <div className="rm-table-data-item">
-                        {value}% - {(rm*value/100).toFixed(1)}KG
+                        {value}% - {(rm*value/100).toFixed(1)}{weightMeasure}
                     </div>
                 ))}
             </div>
@@ -25,7 +25,7 @@ const RMTable = ({rm}) => (
             <div className="rm-table-data">
                 {values.map((value) => (
                     <div className="rm-table-data-item">
-                        {value}% - {(rm*(value*90/100)/100).toFixed(1)}KG
+                        {value}% - {(rm*(value*90/100)/100).toFixed(1)}{weightMeasure}
                     </div>
                 ))}
             </div>
