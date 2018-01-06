@@ -2,7 +2,7 @@ export const goTo = async (page, url) => {
     await page.goto(APP_URL + url, { waitUntil: 'networkidle0' })
 }
 
-export const expectSelectorToHaveText = async (page, selector, text) => {
+export const expectSelectorTextToBe = async (page, selector, text) => {
     await page.waitForSelector(selector)
     const selectorText = await page.evaluate((selector) => {
         const el = document.querySelector(selector)
@@ -11,13 +11,22 @@ export const expectSelectorToHaveText = async (page, selector, text) => {
     expect(selectorText).toContain(text)
 }
 
-export const expectSelectToHaveText = async (page, selector, text) => {
+export const expectSelectOptionToBe = async (page, selector, text) => {
     await page.waitForSelector(selector)
     const selectorText = await page.evaluate((selector) => {
         const el = document.querySelector(selector)
         return el.options[el.selectedIndex].text
     }, selector)
     expect(selectorText).toContain(text)
+}
+
+export const expectCheckboxToBe = async (page, selector, value) => {
+    await page.waitForSelector(selector)
+    const selectorValue = await page.evaluate((selector) => {
+        const el = document.querySelector(selector)
+        return el.checked
+    }, selector)
+    expect(selectorValue).toBe(value)
 }
 
 export const selectOption = async (page, selector, text) => {

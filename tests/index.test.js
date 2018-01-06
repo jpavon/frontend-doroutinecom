@@ -1,8 +1,9 @@
 import faker from 'faker'
 
 import {
-    expectSelectorToHaveText,
-    expectSelectToHaveText,
+    expectSelectorTextToBe,
+    expectSelectOptionToBe,
+    expectCheckboxToBe,
     selectOption,
     goTo
 } from './utils'
@@ -26,14 +27,14 @@ describe('auth', async () => {
         await page.click('input[id=passwordConfirmation]')
         await page.type('input[id=passwordConfirmation]', global.USER.password)
         await page.click('button[type=submit]')
-        await expectSelectorToHaveText(page, '.routines', 'Routines')
+        await expectSelectorTextToBe(page, '.routines', 'Routines')
     }, global.TIMEOUT)
 
     test('user can logout', async () => {
         await goTo(page, '/settings')
         await page.waitForSelector('.logout')
         await page.click('.logout')
-        await expectSelectorToHaveText(page, '.login', 'Login')
+        await expectSelectorTextToBe(page, '.login', 'Login')
     }, global.TIMEOUT)
 
     test('user can login', async () => {
@@ -43,7 +44,7 @@ describe('auth', async () => {
         await page.click('input[id=password]')
         await page.type('input[id=password]', global.USER.password)
         await page.click('button[type=submit]')
-        await expectSelectorToHaveText(page, '.settings', 'Settings')
+        await expectSelectorTextToBe(page, '.settings', 'Settings')
     }, global.TIMEOUT)
 })
 
@@ -77,6 +78,8 @@ describe('routines creation', async () => {
         await page.click('.workout input[name=name]')
         await page.type('.workout input[name=name]', global.WORKOUT.name)
         await page.waitFor(1000)
+        await page.click('.workout input[name=isDone]')
+        await page.waitFor(1000)
         await page.click('.workout textarea[name=notes]')
         await page.type('.workout textarea[name=notes]', global.WORKOUT.notes)
         await page.waitFor(1000)
@@ -106,27 +109,28 @@ describe('routine is saved on reload', async () => {
         await page.reload()
 
         await page.waitForSelector('.routine-single')
-        await expectSelectorToHaveText(page, '.routine-single', global.ROUTINE.name)
-        await expectSelectToHaveText(page, '.routine-single select[name=weightMeasure]', global.ROUTINE.weightMeasure)
+        await expectSelectorTextToBe(page, '.routine-single', global.ROUTINE.name)
+        await expectSelectOptionToBe(page, '.routine-single select[name=weightMeasure]', global.ROUTINE.weightMeasure)
     }, global.TIMEOUT)
 
     test('lift is saved', async () => {
-        await expectSelectorToHaveText(page, '.lift-name', global.LIFT.name)
-        await expectSelectorToHaveText(page, '.lift-rm', global.LIFT.rm)
+        await expectSelectorTextToBe(page, '.lift-name', global.LIFT.name)
+        await expectSelectorTextToBe(page, '.lift-rm', global.LIFT.rm)
     }, global.TIMEOUT)
 
     test('workout is saved', async () => {
-        await expectSelectorToHaveText(page, '.workout', global.WORKOUT.name)
-        await expectSelectorToHaveText(page, '.workout', global.WORKOUT.notes)
+        await expectSelectorTextToBe(page, '.workout', global.WORKOUT.name)
+        await expectSelectorTextToBe(page, '.workout', global.WORKOUT.notes)
+        await expectCheckboxToBe(page, '.workout input[name=isDone]', true)
     }, global.TIMEOUT)
 
     test('exercise is saved', async () => {
-        await expectSelectToHaveText(page, '.exercise select', global.LIFT.name)
+        await expectSelectOptionToBe(page, '.exercise select', global.LIFT.name)
     }, global.TIMEOUT)
 
     test('set is saved', async () => {
-        await expectSelectorToHaveText(page, '.set-weight', global.SET.weight)
-        await expectSelectorToHaveText(page, '.set-reps', global.SET.reps)
+        await expectSelectorTextToBe(page, '.set-weight', global.SET.weight)
+        await expectSelectorTextToBe(page, '.set-reps', global.SET.reps)
     }, global.TIMEOUT)
 })
 
@@ -135,21 +139,21 @@ describe('routine shows validation errors', async () => {
         await page.click('.lift input[name=rm]')
         await page.type('.lift input[name=rm]', 'string')
         await page.waitFor(1000)
-        await expectSelectorToHaveText(page, '.lift', 'must be a number')
+        await expectSelectorTextToBe(page, '.lift', 'must be a number')
     }, global.TIMEOUT)
 
     test('set weight', async () => {
         await page.click('.set input[name=weight]')
         await page.type('.set input[name=weight]', 'string')
         await page.waitFor(1000)
-        await expectSelectorToHaveText(page, '.set', 'must be a number')
+        await expectSelectorTextToBe(page, '.set', 'must be a number')
     }, global.TIMEOUT)
 
     test('set reps', async () => {
         await page.click('.set input[name=reps]')
         await page.type('.set input[name=reps]', 'string')
         await page.waitFor(1000)
-        await expectSelectorToHaveText(page, '.set', 'must be a number')
+        await expectSelectorTextToBe(page, '.set', 'must be a number')
     }, global.TIMEOUT)
 })
 
@@ -168,7 +172,7 @@ describe('settings', async () => {
     test('user info is saved on reload', async () => {
         await page.reload()
 
-        await expectSelectorToHaveText(page, '.settings', global.USER.name + 'updated')
-        await expectSelectorToHaveText(page, '.settings', global.USER.email + 'updated')
+        await expectSelectorTextToBe(page, '.settings', global.USER.name + 'updated')
+        await expectSelectorTextToBe(page, '.settings', global.USER.email + 'updated')
     }, global.TIMEOUT)
 })
