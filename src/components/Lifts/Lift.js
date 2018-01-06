@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import ButtonIcon from 'components/ButtonIcon'
 import AutoSaveForm from 'components/AutoSaveForm'
@@ -38,7 +38,14 @@ const Lift = ({lift, ui, weightMeasure, remove, update}) => (
                             />
                         </div>
                         <div className="lift-rm">
-                            <InputWithItem item={`${weightMeasure} RM`}>
+                            <InputWithItem
+                                item={(
+                                    <Fragment>
+                                        {weightMeasure}
+                                        <span title="Rep Max"> RM</span>
+                                    </Fragment>
+                                )}
+                            >
                                 <Input
                                     name="rm"
                                     placeholder="Weight"

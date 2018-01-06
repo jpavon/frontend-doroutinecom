@@ -17,10 +17,12 @@
 }
 
 .rm-table-title {
-    border-bottom: 1px solid #444;
     padding-bottom: .5rem;
-    margin-bottom: .5rem;
+    margin-bottom: 0;
     font-size: .9rem;
+    border-bottom: 1px solid #444;
+    font-weight: 500;
+    letter-spacing: .1rem;
 }
 
 .rm-table-data {
@@ -28,6 +30,13 @@
 }
 
 .rm-table-data-item {
-    padding: .4rem 0;
+    padding: .6rem 0 .4rem;
     font-size: .8rem;
+    border-bottom: 1px solid #333;
+    color: #ccc;
+
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
 }

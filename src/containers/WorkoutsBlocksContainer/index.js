@@ -18,10 +18,16 @@ class WorkoutsBlocksContainer extends Component {
         completedBlocks: PropTypes.array.isRequired
     }
 
-    state = {
-        activeTab: this.props.blocks.length - 1,
-        blocks: this.props.blocks,
-        completedBlocks: this.props.completedBlocks
+    constructor(props) {
+        super(props)
+
+        const activeBlock = props.completedBlocks.indexOf(0)
+
+        this.state = {
+            activeTab: activeBlock === -1 ? 1 : activeBlock,
+            blocks: props.blocks,
+            completedBlocks: props.completedBlocks
+        }
     }
 
     componentWillReceiveProps(nextProps) {

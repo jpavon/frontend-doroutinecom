@@ -6,10 +6,10 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  border-top: 2px solid #fff;
+  border-top: 2px solid #a8c79b;
   border-right: 2px solid transparent;
   animation: spinner .6s linear infinite;
-  z-index: 10; }
+  z-index: 90; }
 
 @keyframes spinner {
   0% {
