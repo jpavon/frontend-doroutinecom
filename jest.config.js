@@ -21,7 +21,8 @@ module.exports = {
             rm: String(faker.random.number())
         },
         WORKOUT: {
-            name: faker.lorem.words()
+            name: faker.lorem.words(),
+            notes: faker.lorem.words()
         },
         SET: {
             weight: String(faker.random.number()),

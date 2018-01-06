@@ -77,12 +77,16 @@ describe('routines creation', async () => {
         await page.click('.workout input[name=name]')
         await page.type('.workout input[name=name]', global.WORKOUT.name)
         await page.waitFor(1000)
+        await page.click('.workout textarea[name=notes]')
+        await page.type('.workout textarea[name=notes]', global.WORKOUT.notes)
+        await page.waitFor(1000)
     }, global.TIMEOUT)
 
     test('create a exercise', async () => {
         await page.click('.exercises-button-create button')
         await page.waitForSelector('.exercise')
         await selectOption(page, '.exercise select', global.LIFT.name)
+        await page.waitFor(1000)
     }, global.TIMEOUT)
 
     test('create a set', async () => {
@@ -113,6 +117,7 @@ describe('routine is saved on reload', async () => {
 
     test('workout is saved', async () => {
         await expectSelectorToHaveText(page, '.workout', global.WORKOUT.name)
+        await expectSelectorToHaveText(page, '.workout', global.WORKOUT.notes)
     }, global.TIMEOUT)
 
     test('exercise is saved', async () => {
