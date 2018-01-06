@@ -88,11 +88,11 @@ describe('routines creation', async () => {
     test('create a set', async () => {
         await page.click('.sets-button-create button')
         await page.waitForSelector('.set')
-        await page.click('.set-weight input')
-        await page.type('.set-weight input', global.SET.weight)
+        await page.click('.set input[name=weight]')
+        await page.type('.set input[name=weight]', global.SET.weight)
         await page.waitFor(1000)
-        await page.click('.set-reps input')
-        await page.type('.set-reps input', global.SET.reps)
+        await page.click('.set input[name=reps]')
+        await page.type('.set input[name=reps]', global.SET.reps)
         await page.waitFor(1000)
     }, global.TIMEOUT)
 })
@@ -125,12 +125,31 @@ describe('routine is saved on reload', async () => {
     }, global.TIMEOUT)
 })
 
-describe('routine shows errors', async () => {
+describe('routine shows validation errors', async () => {
+    test('lift rm', async () => {
+        await page.click('.lift input[name=rm]')
+        await page.type('.lift input[name=rm]', 'string')
+        await page.waitFor(1000)
+        await expectSelectorToHaveText(page, '.lift', 'must be a number')
+    }, global.TIMEOUT)
 
+    test('set weight', async () => {
+        await page.click('.set input[name=weight]')
+        await page.type('.set input[name=weight]', 'string')
+        await page.waitFor(1000)
+        await expectSelectorToHaveText(page, '.set', 'must be a number')
+    }, global.TIMEOUT)
+
+    test('set reps', async () => {
+        await page.click('.set input[name=reps]')
+        await page.type('.set input[name=reps]', 'string')
+        await page.waitFor(1000)
+        await expectSelectorToHaveText(page, '.set', 'must be a number')
+    }, global.TIMEOUT)
 })
 
 describe('settings', async () => {
-    test('update user settings', async () => {
+    test('update user', async () => {
         await goTo(page, '/settings')
         await page.waitForSelector('.settings')
         await page.click('#name')
