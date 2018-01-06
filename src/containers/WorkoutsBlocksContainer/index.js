@@ -21,10 +21,11 @@ class WorkoutsBlocksContainer extends Component {
     constructor(props) {
         super(props)
 
-        const activeBlock = props.completedBlocks.indexOf(0)
+        const activeTab = props.completedBlocks.indexOf(0)
+        const lastTab = props.blocks.length - 1
 
         this.state = {
-            activeTab: activeBlock === -1 ? 1 : activeBlock,
+            activeTab: activeTab === -1 ? lastTab : activeTab,
             blocks: props.blocks,
             completedBlocks: props.completedBlocks
         }
