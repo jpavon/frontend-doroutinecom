@@ -15,7 +15,6 @@ beforeAll(async () => {
 }, global.TIMEOUT)
 
 describe('auth', async () => {
-
     test('user can register', async () => {
         await goTo(page, '/register')
         await page.click('input[id=name]')
@@ -48,15 +47,16 @@ describe('auth', async () => {
     }, global.TIMEOUT)
 })
 
-describe('routines', async () => {
-
+describe('routines creation', async () => {
     test('create a routine', async () => {
         await goTo(page, '/')
         await page.waitForSelector('button')
         await page.click('button')
         await page.waitForSelector('.routine-single')
         await page.click('.routine-single input')
-        await page.type('.routine-single input', ROUTINE.name)
+        await page.type('.routine-single input', global.ROUTINE.name)
+        await page.waitFor(1000)
+        await selectOption(page, '.routine-single select[name=weightMeasure]', global.ROUTINE.weightMeasure)
         await page.waitFor(1000)
     }, global.TIMEOUT)
 
@@ -95,35 +95,41 @@ describe('routines', async () => {
         await page.type('.set-reps input', global.SET.reps)
         await page.waitFor(1000)
     }, global.TIMEOUT)
+})
 
-    test('routine is saved on reload', async () => {
+describe('routine is saved on reload', async () => {
+    test('routine is saved', async () => {
         await page.reload()
 
         await page.waitForSelector('.routine-single')
-        await expectSelectorToHaveText(page, '.routine-single', ROUTINE.name)
+        await expectSelectorToHaveText(page, '.routine-single', global.ROUTINE.name)
+        await expectSelectToHaveText(page, '.routine-single select[name=weightMeasure]', global.ROUTINE.weightMeasure)
     }, global.TIMEOUT)
 
-    test('lift is saved on reload', async () => {
+    test('lift is saved', async () => {
         await expectSelectorToHaveText(page, '.lift-name', global.LIFT.name)
         await expectSelectorToHaveText(page, '.lift-rm', global.LIFT.rm)
     }, global.TIMEOUT)
 
-    test('workout is saved on reload', async () => {
+    test('workout is saved', async () => {
         await expectSelectorToHaveText(page, '.workout', global.WORKOUT.name)
     }, global.TIMEOUT)
 
-    test('exercise is saved on reload', async () => {
-        await expectSelectorToHaveText(page, '.exercise select', global.LIFT.name)
+    test('exercise is saved', async () => {
+        await expectSelectToHaveText(page, '.exercise select', global.LIFT.name)
     }, global.TIMEOUT)
 
-    test('set is saved on reload', async () => {
+    test('set is saved', async () => {
         await expectSelectorToHaveText(page, '.set-weight', global.SET.weight)
         await expectSelectorToHaveText(page, '.set-reps', global.SET.reps)
     }, global.TIMEOUT)
 })
 
-describe('settings', async () => {
+describe('routine shows errors', async () => {
 
+})
+
+describe('settings', async () => {
     test('update user settings', async () => {
         await goTo(page, '/settings')
         await page.waitForSelector('.settings')

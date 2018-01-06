@@ -13,7 +13,8 @@ module.exports = {
             password: '123123',
         },
         ROUTINE: {
-            name: faker.lorem.words()
+            name: faker.lorem.words(),
+            weightMeasure: 'lbs'
         },
         LIFT: {
             name: faker.lorem.words(),
