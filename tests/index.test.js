@@ -2,7 +2,7 @@ import faker from 'faker'
 
 import {
     goTo,
-    expectSelectorTextToContain,
+    expectSelectorToContainText,
     expectSelectOptionToBe,
     expectCheckboxToBe,
     selectOption,
@@ -27,14 +27,14 @@ describe('auth', async () => {
         await page.click('input[id=passwordConfirmation]')
         await page.type('input[id=passwordConfirmation]', global.USER.password)
         await page.click('button[type=submit]')
-        await expectSelectorTextToContain(page, '.routines', 'Routines')
+        await expectSelectorToContainText(page, '.routines', 'Routines')
     }, global.TIMEOUT)
 
     test('user can logout', async () => {
         await goTo(page, '/settings')
         await page.waitForSelector('.logout')
         await page.click('.logout')
-        await expectSelectorTextToContain(page, '.login', 'Login')
+        await expectSelectorToContainText(page, '.login', 'Login')
     }, global.TIMEOUT)
 
     test('user can request forgotten password email', async () => {
@@ -46,7 +46,7 @@ describe('auth', async () => {
         await page.type('input[id=email]', global.USER.email)
         await page.click('button[type=submit]')
         await page.waitFor(1000)
-        await expectSelectorTextToContain(page, 'body', 'A password reset email has been sent.')
+        await expectSelectorToContainText(page, 'body', 'A password reset email has been sent.')
     }, global.TIMEOUT)
 
     test('user can\'t register with same email', async () => {
@@ -56,7 +56,7 @@ describe('auth', async () => {
         await page.type('input[id=email]', global.USER.email)
         await page.click('button[type=submit]')
         await page.waitFor(1000)
-        await expectSelectorTextToContain(page, 'body', 'The email has already been taken. ')
+        await expectSelectorToContainText(page, 'body', 'The email has already been taken. ')
     }, global.TIMEOUT)
 
     test('user can login', async () => {
@@ -66,7 +66,7 @@ describe('auth', async () => {
         await page.click('input[id=password]')
         await page.type('input[id=password]', global.USER.password)
         await page.click('button[type=submit]')
-        await expectSelectorTextToContain(page, '.routines', 'Routines')
+        await expectSelectorToContainText(page, '.routines', 'Routines')
     }, global.TIMEOUT)
 })
 
@@ -131,18 +131,18 @@ describe('routine is saved on reload', async () => {
         await page.reload()
 
         await page.waitForSelector('.routine-single')
-        await expectSelectorTextToContain(page, '.routine-single', global.ROUTINE.name)
+        await expectSelectorToContainText(page, '.routine-single', global.ROUTINE.name)
         await expectSelectOptionToBe(page, '.routine-single select[name=weightMeasure]', global.ROUTINE.weightMeasure)
     }, global.TIMEOUT)
 
     test('lift is saved', async () => {
-        await expectSelectorTextToContain(page, '.lift-name', global.LIFT.name)
-        await expectSelectorTextToContain(page, '.lift-rm', global.LIFT.rm)
+        await expectSelectorToContainText(page, '.lift-name', global.LIFT.name)
+        await expectSelectorToContainText(page, '.lift-rm', global.LIFT.rm)
     }, global.TIMEOUT)
 
     test('workout is saved', async () => {
-        await expectSelectorTextToContain(page, '.workout', global.WORKOUT.name)
-        await expectSelectorTextToContain(page, '.workout', global.WORKOUT.notes)
+        await expectSelectorToContainText(page, '.workout', global.WORKOUT.name)
+        await expectSelectorToContainText(page, '.workout', global.WORKOUT.notes)
         await expectCheckboxToBe(page, '.workout input[name=isDone]', true)
     }, global.TIMEOUT)
 
@@ -151,8 +151,8 @@ describe('routine is saved on reload', async () => {
     }, global.TIMEOUT)
 
     test('set is saved', async () => {
-        await expectSelectorTextToContain(page, '.set-weight', global.SET.weight)
-        await expectSelectorTextToContain(page, '.set-reps', global.SET.reps)
+        await expectSelectorToContainText(page, '.set-weight', global.SET.weight)
+        await expectSelectorToContainText(page, '.set-reps', global.SET.reps)
     }, global.TIMEOUT)
 })
 
@@ -161,21 +161,21 @@ describe('routine shows validation errors', async () => {
         await page.click('.lift input[name=rm]')
         await page.type('.lift input[name=rm]', 'string')
         await page.waitFor(1000)
-        await expectSelectorTextToContain(page, '.lift', 'must be a number')
+        await expectSelectorToContainText(page, '.lift', 'must be a number')
     }, global.TIMEOUT)
 
     test('set weight', async () => {
         await page.click('.set input[name=weight]')
         await page.type('.set input[name=weight]', 'string')
         await page.waitFor(1000)
-        await expectSelectorTextToContain(page, '.set', 'must be a number')
+        await expectSelectorToContainText(page, '.set', 'must be a number')
     }, global.TIMEOUT)
 
     test('set reps', async () => {
         await page.click('.set input[name=reps]')
         await page.type('.set input[name=reps]', 'string')
         await page.waitFor(1000)
-        await expectSelectorTextToContain(page, '.set', 'must be a number')
+        await expectSelectorToContainText(page, '.set', 'must be a number')
     }, global.TIMEOUT)
 })
 
@@ -194,7 +194,7 @@ describe('settings', async () => {
     test('user info is saved on reload', async () => {
         await page.reload()
 
-        await expectSelectorTextToContain(page, '.settings', global.USER.name + 'updated')
-        await expectSelectorTextToContain(page, '.settings', global.USER.email + 'updated')
+        await expectSelectorToContainText(page, '.settings', global.USER.name + 'updated')
+        await expectSelectorToContainText(page, '.settings', global.USER.email + 'updated')
     }, global.TIMEOUT)
 })
