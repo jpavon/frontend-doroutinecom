@@ -4,13 +4,13 @@ import Button from 'components/Button'
 
 import './style.css'
 
-const Exercises = ({children, createExercise, workoutId}) => (
+const Exercises = ({children, create, workoutId}) => (
     <div className="exercises-container">
         {children}
         <div className="exercises-button-create">
             <Button
                 small
-                onClick={() => createExercise(workoutId)}
+                onClick={() => create(workoutId)}
             >
                 New exercise
             </Button>

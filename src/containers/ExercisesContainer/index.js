@@ -29,7 +29,7 @@ class ExercisesContainer extends Component {
 
     render() {
         return (
-            <Exercises createExercise={this.props.createExercise} workoutId={this.props.workoutId}>
+            <Exercises create={this.props.createExercise} workoutId={this.props.workoutId}>
                 {this.props.exercises.length > 0 &&
                     <DragnDrop
                         updateOrder={this.props.updateExerciseOrder}
@@ -40,8 +40,8 @@ class ExercisesContainer extends Component {
                                 key={exercise.id}
                                 exercise={exercise}
                                 lifts={this.props.lifts}
-                                updateExercise={this.props.updateExercise}
-                                removeExercise={this.props.removeExercise}
+                                update={this.props.updateExercise}
+                                remove={this.props.removeExercise}
                             >
                                 <SetsContainer exerciseId={exercise.id} routineId={this.props.routineId} />
                             </Exercise>

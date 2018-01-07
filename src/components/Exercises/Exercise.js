@@ -4,10 +4,10 @@ import AutoSaveForm from 'components/AutoSaveForm'
 import ButtonIcon from 'components/ButtonIcon'
 import Select from 'components/AutoSaveForm/Select'
 
-const Exercises = ({children, exercise, lifts, updateExercise, removeExercise}) => (
+const Exercises = ({children, exercise, lifts, update, remove}) => (
     <div className="exercise">
         <AutoSaveForm
-            update={updateExercise}
+            update={update}
             initialValues={exercise}
             render={() => (
                 <div className="exercise-form">
@@ -25,7 +25,7 @@ const Exercises = ({children, exercise, lifts, updateExercise, removeExercise}) 
             <ButtonIcon
                 remove
                 danger
-                onClick={() => removeExercise(exercise.id)}
+                onClick={() => remove(exercise.id)}
             >
                 &nbsp;Exercise
             </ButtonIcon>
