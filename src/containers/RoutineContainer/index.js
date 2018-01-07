@@ -19,7 +19,7 @@ class RoutineContainer extends Component {
         routineSlug: PropTypes.string.isRequired,
 
         routine: PropTypes.object,
-        routineLoaded: PropTypes.bool.isRequired,
+        isStatusLoaded: PropTypes.bool.isRequired,
 
         createRoutine: PropTypes.func.isRequired,
         updateRoutine: PropTypes.func.isRequired,
@@ -27,7 +27,7 @@ class RoutineContainer extends Component {
     }
 
     componentDidMount() {
-        if (this.props.routineLoaded && !this.props.routine) {
+        if (this.props.isStatusLoaded && !this.props.routine) {
             history.push('/')
         }
     }
@@ -60,7 +60,7 @@ class RoutineContainer extends Component {
 
 const mapStateToProps = (state, props) => ({
     routine: routineBySlugSelector(props.routineSlug)(state),
-    routineLoaded: state.routines.fetchStatus === STATUS_LOADED
+    isStatusLoaded: state.routines.fetchStatus === STATUS_LOADED,
 })
 
 const mapDispatchToProps = {

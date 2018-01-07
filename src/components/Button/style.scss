@@ -31,7 +31,7 @@
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: .1rem;
-    transition: background-color .2s;
+    transition: background-color .2s, opacity .2s;
     cursor: pointer;
 
     text-overflow: ellipsis;
@@ -41,6 +41,12 @@
 
     input + & {
         margin-top: 1rem;
+    }
+
+    &.disabled, &[disabled] {
+        cursor: default;
+        opacity: .7;
+        box-shadow: none;
     }
 }
 

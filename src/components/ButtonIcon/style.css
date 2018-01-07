@@ -15,7 +15,7 @@
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: .1rem;
-  transition: background-color .2s;
+  transition: background-color .2s, opacity .2s;
   cursor: pointer;
   text-overflow: ellipsis;
   line-height: 1;
@@ -28,6 +28,10 @@
     box-shadow: 0 0 1px 3px #4e98cc, inset 0 0 2px 0 rgba(0, 0, 0, 0.2); }
   input + .button, input + .button-icon {
     margin-top: 1rem; }
+  .button.disabled, .disabled.button-icon, .button[disabled], [disabled].button-icon {
+    cursor: default;
+    opacity: .7;
+    box-shadow: none; }
 
 .button--small {
   display: flex;

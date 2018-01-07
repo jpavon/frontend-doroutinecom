@@ -6,6 +6,7 @@ import history from 'utils/history'
 
 import { createRoutine, updateRoutine, removeRoutine } from 'data/routines/actions'
 import { routinesSelector } from 'data/routines/selectors'
+import { STATUS_LOADING } from 'data/utils'
 
 import Routines from 'components/Routines/Routines'
 import Routine from 'components/Routines/Routine'
@@ -15,6 +16,7 @@ class RoutinesContainer extends Component {
 
     static propTypes = {
         routines: PropTypes.array.isRequired,
+        isStatusLoading: PropTypes.bool.isRequired,
 
         createRoutine: PropTypes.func.isRequired,
         updateRoutine: PropTypes.func.isRequired,
@@ -30,7 +32,11 @@ class RoutinesContainer extends Component {
 
     render() {
         return (
-            <Routines create={this.handleCreate} remove={this.props.removeRoutine}>
+            <Routines
+                create={this.handleCreate}
+                remove={this.props.removeRoutine}
+                isStatusLoading={this.props.isStatusLoading}
+            >
                 {this.props.routines.length > 0 ?
                     this.props.routines.map((routine, i) => (
                         <Routine
@@ -51,6 +57,7 @@ class RoutinesContainer extends Component {
 
 const mapStateToProps = (state, props) => ({
     routines: routinesSelector(props.blockId)(state),
+    isStatusLoading: state.routines.fetchStatus === STATUS_LOADING,
 })
 
 const mapDispatchToProps = {
