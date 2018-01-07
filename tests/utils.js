@@ -46,14 +46,22 @@ export const selectOption = async (page, selector, text) => {
     }, selector, text)
 }
 
-export const typeUpdate = async (page, selector, updatedText) => {
-    await page.evaluate((selector, updatedText) => {
-        const input = document.querySelector(selector)
+export const expectElementToBeOfLength = async (page, selector, length) => {
+    const selectorLength = await page.evaluate((selector, text) => {
+        return document.querySelectorAll(selector).length
+    }, selector)
 
-        input.value = input.value + updatedText
-
-        const event = new Event('change', { bubbles: true })
-        event.simulated = true
-        input.dispatchEvent(event)
-    }, selector, updatedText)
+    expect(selectorLength).toBe(length)
 }
+
+// export const typeUpdate = async (page, selector, updatedText) => {
+//     await page.evaluate((selector, updatedText) => {
+//         const input = document.querySelector(selector)
+
+//         input.value = input.value + updatedText
+
+//         const event = new Event('change', { bubbles: true })
+//         event.simulated = true
+//         input.dispatchEvent(event)
+//     }, selector, updatedText)
+// }

@@ -6,6 +6,7 @@ import {
     expectSelectOptionToBe,
     expectCheckboxToBe,
     selectOption,
+    expectElementToBeOfLength
 } from './utils'
 
 let page
@@ -94,6 +95,12 @@ describe('routines creation', async () => {
         await page.waitFor(1000)
     }, global.TIMEOUT)
 
+    test('create multiple lifts', async () => {
+        await page.click('.lifts-button-create button')
+        await page.waitFor(1000)
+        await expectElementToBeOfLength(page, '.lift', 2)
+    }, global.TIMEOUT)
+
     test('create a workout', async () => {
         await page.click('.workouts-button-create')
         await page.waitForSelector('.workout')
@@ -107,11 +114,23 @@ describe('routines creation', async () => {
         await page.waitFor(1000)
     }, global.TIMEOUT)
 
+    test('create multiple workouts', async () => {
+        await page.click('.workouts-button-create')
+        await page.waitFor(1000)
+        await expectElementToBeOfLength(page, '.workouts-column', 2)
+    }, global.TIMEOUT)
+
     test('create a exercise', async () => {
         await page.click('.exercises-button-create button')
         await page.waitForSelector('.exercise')
         await selectOption(page, '.exercise select', global.LIFT.name)
         await page.waitFor(1000)
+    }, global.TIMEOUT)
+
+    test('create multiple exercises', async () => {
+        await page.click('.exercises-button-create button')
+        await page.waitFor(1000)
+        await expectElementToBeOfLength(page, '.exercise', 2)
     }, global.TIMEOUT)
 
     test('create a set', async () => {
@@ -122,6 +141,19 @@ describe('routines creation', async () => {
         await page.waitFor(1000)
         await page.click('.set input[name=reps]')
         await page.type('.set input[name=reps]', global.SET.reps)
+        await page.waitFor(1000)
+    }, global.TIMEOUT)
+
+    test('create multiple sets', async () => {
+        await page.click('.sets-button-create button')
+        await page.waitFor(1000)
+        await expectElementToBeOfLength(page, '.set', 2)
+    }, global.TIMEOUT)
+
+    test('create a block', async () => {
+        await page.click('.workouts-blocks-button-create button')
+        await page.waitForSelector('.no-data')
+        await page.click('.workouts-button-create')
         await page.waitFor(1000)
     }, global.TIMEOUT)
 })
@@ -153,6 +185,10 @@ describe('routine is saved on reload', async () => {
     test('set is saved', async () => {
         await expectSelectorToContainText(page, '.set-weight', global.SET.weight)
         await expectSelectorToContainText(page, '.set-reps', global.SET.reps)
+    }, global.TIMEOUT)
+
+    test('block is saved', async () => {
+        await expectSelectorToContainText(page, '.workouts-blocks-tab-list', '2')
     }, global.TIMEOUT)
 })
 
