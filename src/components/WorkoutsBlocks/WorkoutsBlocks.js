@@ -22,7 +22,7 @@ const WorkoutsBlocks = ({children, activeTab, blocks, completedBlocks, create, o
                 selectedTabClassName="workouts-blocks-tab--selected"
                 renderTabList={(
                     blocks.map((id) => (
-                        <div id={id} completed={completedBlocks[id - 1]}>{id}</div>
+                        <div completed={completedBlocks[id - 1]}>{id}</div>
                     ))
                 )}
                 renderTabPanel={(children)}
