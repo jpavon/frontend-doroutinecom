@@ -36,9 +36,9 @@
 
 .button--danger {
   color: #fff;
-  background-color: #a52b2b; }
+  background-color: #c73434; }
   .button--danger:hover {
-    background-color: #912626; }
+    background-color: #b32f2f; }
   .button--danger:not([disabled]):not(.disabled).active, .button--danger:not([disabled]):not(.disabled):active {
     outline: 0;
-    box-shadow: 0 0 1px 3px #a52b2b, inset 0 0 2px 0 rgba(0, 0, 0, 0.2); }
+    box-shadow: 0 0 1px 3px #c73434, inset 0 0 2px 0 rgba(0, 0, 0, 0.2); }
