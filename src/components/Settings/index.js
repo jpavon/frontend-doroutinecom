@@ -33,7 +33,6 @@ const Settings = ({user, updateUser, logoutUser}) => (
         <div className="settings-button-logout">
             <Button
                 className="logout"
-                href="/logout"
                 onClick={logoutUser}
                 danger
             >
