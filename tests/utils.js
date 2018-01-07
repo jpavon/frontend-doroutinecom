@@ -2,7 +2,7 @@ export const goTo = async (page, url) => {
     await page.goto(APP_URL + url, { waitUntil: 'networkidle0' })
 }
 
-export const expectSelectorTextToBe = async (page, selector, text) => {
+export const expectSelectorTextToContain = async (page, selector, text) => {
     await page.waitForSelector(selector)
     const selectorText = await page.evaluate((selector) => {
         const el = document.querySelector(selector)
@@ -17,7 +17,7 @@ export const expectSelectOptionToBe = async (page, selector, text) => {
         const el = document.querySelector(selector)
         return el.options[el.selectedIndex].text
     }, selector)
-    expect(selectorText).toContain(text)
+    expect(selectorText).toBe(text)
 }
 
 export const expectCheckboxToBe = async (page, selector, value) => {
