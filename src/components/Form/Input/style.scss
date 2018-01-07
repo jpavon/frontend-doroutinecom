@@ -37,4 +37,11 @@
     &:-ms-input-placeholder {
         color: rgba(#fff, .3);
     }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill {
+        border: 1px solid #444;
+    }
 }

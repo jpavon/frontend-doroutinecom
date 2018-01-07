@@ -16,7 +16,7 @@
   margin-bottom: 1rem;
   transition: border .2s; }
   .workouts-blocks-tab-list.workouts-blocks-tab-list--completed {
-    border-color: #6fa25a; }
+    border-color: #4e98cc; }
 
 .workouts-blocks-tab {
   position: relative;
@@ -29,4 +29,4 @@
   .workouts-blocks-tab.workouts-blocks-tab--selected, .workouts-blocks-tab:hover {
     background-color: #444; }
   .workouts-blocks-tab.workouts-blocks-tab--completed {
-    border-bottom: 2px solid #6fa25a; }
+    border-bottom: 2px solid #4e98cc; }

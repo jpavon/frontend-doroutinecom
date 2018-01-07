@@ -1,6 +1,6 @@
 .button, .button-icon {
   color: #fff;
-  background-color: #6fa25a;
+  background-color: #4e98cc;
   display: inline-block;
   font-weight: 400;
   text-align: center;
@@ -22,10 +22,10 @@
   white-space: nowrap;
   overflow: hidden; }
   .button:hover, .button-icon:hover {
-    background-color: #649251; }
+    background-color: #3a8cc6; }
   .button:not([disabled]):not(.disabled).active, .button-icon:not([disabled]):not(.disabled).active, .button:not([disabled]):not(.disabled):active, .button-icon:not([disabled]):not(.disabled):active {
     outline: 0;
-    box-shadow: 0 0 1px 3px #6fa25a, inset 0 0 2px 0 rgba(0, 0, 0, 0.2); }
+    box-shadow: 0 0 1px 3px #4e98cc, inset 0 0 2px 0 rgba(0, 0, 0, 0.2); }
   input + .button, input + .button-icon {
     margin-top: 1rem; }
 

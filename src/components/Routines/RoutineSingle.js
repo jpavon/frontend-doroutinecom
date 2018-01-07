@@ -32,7 +32,6 @@ const RoutineSingle = ({children, routine, update, remove}) => (
                             <Input
                                 id={`name${values.id}`}
                                 name="name"
-                                placeholder="Title..."
                                 size="large"
                             />
                         </div>
