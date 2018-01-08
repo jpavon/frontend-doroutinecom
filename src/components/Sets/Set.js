@@ -6,7 +6,7 @@ import InputWithItem from 'components/Form/InputWithItem'
 import ButtonIcon from 'components/ButtonIcon'
 
 const Set = ({i, set, weightMeasure, update, remove}) => (
-    <div className="set">
+    <Fragment>
         <div className="set-number">
             Set {i + 1}
             <div className="set-rmPercentage">
@@ -48,7 +48,7 @@ const Set = ({i, set, weightMeasure, update, remove}) => (
             className="set-button-remove"
             onClick={() => remove(set.id)}
         />
-    </div>
+    </Fragment>
 )
 
 export default Set

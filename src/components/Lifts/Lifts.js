@@ -2,17 +2,19 @@ import React from 'react'
 
 import Button from 'components/Button'
 import Section from 'components/Section'
+import Transition from 'components/Transition'
 
 import './style.css'
 
 const Lifts = ({children, create}) => (
     <Section title="Lifts" className="lifts-container">
-        {Array.isArray(children) ?
-            <div className="lifts">
+        <div className="lifts">
+            <Transition
+                className="lift"
+            >
                 {children}
-            </div> :
-            children
-        }
+            </Transition>
+        </div>
         <div className="lifts-button-create">
             <Button
                 onClick={create}

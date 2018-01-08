@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import ButtonIcon from 'components/ButtonIcon'
 import Select from 'components/AutoSaveForm/Select'
 
-const Exercises = ({children, exercise, lifts, update, remove}) => (
-    <div className="exercise">
+const Exercise = ({children, exercise, lifts, update, remove}) => (
+    <Fragment>
         <AutoSaveForm
             update={update}
             initialValues={exercise}
@@ -30,7 +30,7 @@ const Exercises = ({children, exercise, lifts, update, remove}) => (
                 &nbsp;Exercise
             </ButtonIcon>
         </div>
-    </div>
+    </Fragment>
 )
 
-export default Exercises
+export default Exercise

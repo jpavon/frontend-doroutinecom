@@ -1,12 +1,15 @@
 import React from 'react'
 
+import Transition from 'components/Transition'
 import Button from 'components/Button'
 
 import './style.css'
 
 const Exercises = ({children, create, workoutId}) => (
     <div className="exercises-container">
-        {children}
+        <Transition className="exercise">
+            {children}
+        </Transition>
         <div className="exercises-button-create">
             <Button
                 small

@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from 'components/Button'
 import Section from 'components/Section'
+import Transition from 'components/Transition'
 
 import './style.css'
 
@@ -13,12 +14,11 @@ const Workouts = ({children, create}) => (
             New workout
         </Button>
 
-        {Array.isArray(children) ?
-            <div className="workouts-row">
+        <div className="workouts-row">
+            <Transition className="workouts-column">
                 {children}
-            </div> :
-            children
-        }
+            </Transition>
+        </div>
     </Section>
 )
 

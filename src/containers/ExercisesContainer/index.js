@@ -10,7 +10,6 @@ import SetsContainer from 'containers/SetsContainer'
 
 import Exercises from 'components/Exercises/Exercises'
 import Exercise from 'components/Exercises/Exercise'
-import DragnDrop from 'components/DragnDrop'
 
 class ExercisesContainer extends Component {
 
@@ -29,24 +28,24 @@ class ExercisesContainer extends Component {
 
     render() {
         return (
-            <Exercises create={this.props.createExercise} workoutId={this.props.workoutId}>
+            <Exercises
+                create={this.props.createExercise}
+                workoutId={this.props.workoutId}
+                updateOrder={this.props.updateExerciseOrder}
+            >
                 {this.props.exercises.length > 0 &&
-                    <DragnDrop
-                        updateOrder={this.props.updateExerciseOrder}
-                    >
-                        {this.props.exercises.map((exercise, i) => (
-                            <Exercise
-                                id={exercise.id}
-                                key={exercise.id}
-                                exercise={exercise}
-                                lifts={this.props.lifts}
-                                update={this.props.updateExercise}
-                                remove={this.props.removeExercise}
-                            >
-                                <SetsContainer exerciseId={exercise.id} routineId={this.props.routineId} />
-                            </Exercise>
-                        ))}
-                    </DragnDrop>
+                    this.props.exercises.map((exercise, i) => (
+                        <Exercise
+                            id={exercise.id}
+                            key={exercise.id}
+                            exercise={exercise}
+                            lifts={this.props.lifts}
+                            update={this.props.updateExercise}
+                            remove={this.props.removeExercise}
+                        >
+                            <SetsContainer exerciseId={exercise.id} routineId={this.props.routineId} />
+                        </Exercise>
+                    ))
                 }
             </Exercises>
         )

@@ -9,59 +9,57 @@ import Label from 'components/Form/Label'
 import ButtonIcon from 'components/ButtonIcon'
 
 const Workout = ({index, children, workout, update, remove}) => (
-    <div className="workouts-column">
-        <div className="workout">
-            <AutoSaveForm
-                initialValues={workout}
-                update={update}
-                render={({values}) => (
-                    <div className={classNames(
-                        'workout-form',
-                        values.isDone && 'workout-form--is-done'
-                    )}>
-                        <Label htmlFor={`workout-done${values.id}`} className="workout-checkbox">
-                            <Checkbox
-                                id={`workout-done${values.id}`}
-                                name="isDone"
-                            />
-                            <div className="workout-checkbox-text">Completed</div>
-                        </Label>
-                        <Label htmlFor={`workout-name${values.id}`}>DAY {index + 1}</Label>
-                        <div className="workout-name">
-                            <Input
-                                id={`workout-name${values.id}`}
-                                name="name"
-                                placeholder="Name"
-                            />
-                        </div>
-                    </div>
-                )}
-            />
-
-            {children}
-
-            <div className="workout-button-remove">
-                <ButtonIcon
-                    remove
-                    danger
-                    onClick={() => remove(workout.id)}
-                />
-            </div>
-
-            <AutoSaveForm
-                initialValues={workout}
-                update={update}
-                render={({values}) => (
-                    <div className="workout-notes">
-                        <Label htmlFor={`notes${values.id}`}>Notes</Label>
-                        <Textarea
-                            id={`notes${values.id}`}
-                            name="notes"
+    <div className="workout">
+        <AutoSaveForm
+            initialValues={workout}
+            update={update}
+            render={({values}) => (
+                <div className={classNames(
+                    'workout-form',
+                    values.isDone && 'workout-form--is-done'
+                )}>
+                    <Label htmlFor={`workout-done${values.id}`} className="workout-checkbox">
+                        <Checkbox
+                            id={`workout-done${values.id}`}
+                            name="isDone"
+                        />
+                        <div className="workout-checkbox-text">Completed</div>
+                    </Label>
+                    <Label htmlFor={`workout-name${values.id}`}>DAY {index + 1}</Label>
+                    <div className="workout-name">
+                        <Input
+                            id={`workout-name${values.id}`}
+                            name="name"
+                            placeholder="Name"
                         />
                     </div>
-                )}
+                </div>
+            )}
+        />
+
+        {children}
+
+        <div className="workout-button-remove">
+            <ButtonIcon
+                remove
+                danger
+                onClick={() => remove(workout.id)}
             />
         </div>
+
+        <AutoSaveForm
+            initialValues={workout}
+            update={update}
+            render={({values}) => (
+                <div className="workout-notes">
+                    <Label htmlFor={`notes${values.id}`}>Notes</Label>
+                    <Textarea
+                        id={`notes${values.id}`}
+                        name="notes"
+                    />
+                </div>
+            )}
+        />
     </div>
 )
 
