@@ -74,7 +74,22 @@ describe('auth', async () => {
 describe('routines creation', async () => {
     test('create a routine', async () => {
         await goTo(page, '/')
-        await page.waitForSelector('.routines-button-create')
+        await page.waitForSelector('.routines')
+        await page.click('.routines-button-create button')
+        await page.waitForSelector('.routine-single')
+    }, global.TIMEOUT)
+
+    test('create multiple routines', async () => {
+        await goTo(page, '/')
+        await page.waitForSelector('.routines')
+        await page.click('.routines-button-create button')
+        await page.waitForSelector('.routine-single')
+        await goTo(page, '/')
+        await page.waitForSelector('.routines')
+        await expectElementToBeOfLength(page, '.routine', 2)
+    }, global.TIMEOUT)
+
+    test('update a routine', async () => {
         await page.click('.routines-button-create button')
         await page.waitForSelector('.routine-single')
         await page.click('.routine-single input')
