@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { createWorkout, updateWorkout, removeWorkout } from 'data/workouts/actions'
 import { workoutsSelector } from 'data/workouts/selectors'
-import { STATUS_LOADING, STATUS_DELETING } from 'data/utils'
+import { STATUS_DELETING } from 'data/utils'
 
 import ExercisesContainer from 'containers/ExercisesContainer'
 import Workouts from 'components/Workouts/Workouts'
@@ -18,7 +18,6 @@ class WorkoutsContainer extends Component {
         blockId: PropTypes.number.isRequired,
 
         workouts: PropTypes.array.isRequired,
-        isLoading: PropTypes.bool.isRequired,
         entitiesStatus: PropTypes.object.isRequired,
 
         createWorkout: PropTypes.func.isRequired,
@@ -37,7 +36,6 @@ class WorkoutsContainer extends Component {
         return (
             <Workouts
                 create={this.handleCreate}
-                isLoading={this.props.isLoading}
             >
                 {this.props.workouts.length > 0 ?
                     this.props.workouts.map((workout, i) => (
@@ -68,7 +66,6 @@ class WorkoutsContainer extends Component {
 
 const mapStateToProps = (state, props) => ({
     workouts: workoutsSelector(props.routineId, props.blockId)(state),
-    isLoading: state.workouts.fetchStatus === STATUS_LOADING,
     entitiesStatus: state.workouts.entitiesStatus
 })
 
