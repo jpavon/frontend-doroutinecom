@@ -1,3 +1,5 @@
+@import "variables.scss";
+
 .tooltip {
     position: relative;
     display: inline-block;
@@ -21,6 +23,6 @@
     left: 0;
     background-color: #222;
     border: 1px solid #333;
-    z-index: 100;
     cursor: default;
+    z-index: $z-index-tooltip;
 }
