@@ -54,7 +54,7 @@ const Lift = ({lift, ui, weightMeasure, remove, update, isDeleting}) => (
                 </div>
             )}
         />
-        <div className="lift-button-delete">
+        <div className="lift-button-remove">
             <ButtonIcon
                 remove
                 danger

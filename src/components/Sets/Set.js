@@ -42,13 +42,14 @@ const Set = ({i, set, weightMeasure, update, remove, isDeleting}) => (
                 </Fragment>
             )}
         />
-        <ButtonIcon
-            remove
-            danger
-            className="set-button-remove"
-            onClick={() => remove(set.id)}
-            disabled={isDeleting}
-        />
+        <div className="set-button-remove">
+            <ButtonIcon
+                remove
+                danger
+                onClick={() => remove(set.id)}
+                disabled={isDeleting}
+            />
+        </div>
     </Fragment>
 )
 

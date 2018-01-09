@@ -117,7 +117,7 @@ describe('routines creation', async () => {
     }, global.TIMEOUT)
 
     test('create a workout', async () => {
-        await page.click('.workouts-button-create')
+        await page.click('.workouts-button-create button')
         await page.waitForSelector('.workout')
         await page.click('.workout input[name=name]')
         await page.type('.workout input[name=name]', global.WORKOUT.name)
@@ -130,7 +130,7 @@ describe('routines creation', async () => {
     }, global.TIMEOUT)
 
     test('create multiple workouts', async () => {
-        await page.click('.workouts-button-create')
+        await page.click('.workouts-button-create button')
         await page.waitFor(1000)
         await expectElementToBeOfLength(page, '.workouts-column', 2)
     }, global.TIMEOUT)
@@ -168,7 +168,7 @@ describe('routines creation', async () => {
     test('create a block', async () => {
         await page.click('.workouts-blocks-button-create button')
         await page.waitForSelector('.no-data')
-        await page.click('.workouts-button-create')
+        await page.click('.workouts-button-create button')
         await page.waitFor(1000)
     }, global.TIMEOUT)
 })
@@ -203,7 +203,7 @@ describe('routine is saved on reload', async () => {
     }, global.TIMEOUT)
 
     test('block is saved', async () => {
-        await expectSelectorToContainText(page, '.workouts-blocks-tab-list', '2')
+        await expectElementToBeOfLength(page, '.workouts-blocks-tab', 2)
     }, global.TIMEOUT)
 })
 
@@ -227,6 +227,41 @@ describe('routine shows validation errors', async () => {
         await page.type('.set input[name=reps]', 'string')
         await page.waitFor(1000)
         await expectSelectorToContainText(page, '.set', 'must be a number')
+    }, global.TIMEOUT)
+})
+
+describe('routine deletion', async () => {
+    test('sets can be deleted', async () => {
+        await page.click('.set-button-remove button')
+        await page.waitFor(2000)
+        await expectElementToBeOfLength(page, '.set', 1)
+    }, global.TIMEOUT)
+
+    test('exercises can be deleted', async () => {
+        await page.click('.exercise-button-remove button')
+        await page.waitFor(2000)
+        await expectElementToBeOfLength(page, '.exercise', 1)
+    }, global.TIMEOUT)
+
+    test('workouts can be deleted', async () => {
+        await page.click('.workout-button-remove button')
+        await page.waitFor(2000)
+        await expectElementToBeOfLength(page, '.workouts-column', 1)
+    }, global.TIMEOUT)
+
+    test('lifts can be deleted', async () => {
+        await page.click('.lift-button-remove button')
+        await page.waitFor(2000)
+        await expectElementToBeOfLength(page, '.lift', 1)
+    }, global.TIMEOUT)
+
+    test('routines can be deleted', async () => {
+        page.on('dialog', async dialog => {
+            await dialog.accept()
+        })
+        await page.click('.routine-single-button-remove button')
+        await page.waitForSelector('.routines')
+        await expectElementToBeOfLength(page, '.routine', 2)
     }, global.TIMEOUT)
 })
 

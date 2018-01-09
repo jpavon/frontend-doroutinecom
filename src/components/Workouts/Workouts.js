@@ -7,13 +7,14 @@ import './style.css'
 
 const Workouts = ({children, create, isLoading}) => (
     <Section headerSmall title="Workouts" className="workouts-container">
-        <Button
-            className="workouts-button-create"
-            onClick={create}
-            disabled={isLoading}
-        >
-            New workout
-        </Button>
+        <div className="workouts-button-create">
+            <Button
+                onClick={create}
+                disabled={isLoading}
+            >
+                New workout
+            </Button>
+        </div>
 
         <div className="workouts-row">
             <Transition className="workouts-column">
