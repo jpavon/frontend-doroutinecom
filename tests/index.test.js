@@ -46,8 +46,8 @@ describe('auth', async () => {
         await page.click('input[id=email]')
         await page.type('input[id=email]', global.USER.email)
         await page.click('button[type=submit]')
-        await page.waitFor(1000)
-        await expectSelectorToContainText(page, 'body', 'A password reset email has been sent.')
+        await page.waitForSelector('.alert')
+        await expectSelectorToContainText(page, '.alert', 'A password reset email has been sent.')
     }, global.TIMEOUT)
 
     test('user can\'t register with same email', async () => {
@@ -56,8 +56,8 @@ describe('auth', async () => {
         await page.click('input[id=email]')
         await page.type('input[id=email]', global.USER.email)
         await page.click('button[type=submit]')
-        await page.waitFor(1000)
-        await expectSelectorToContainText(page, 'body', 'The email has already been taken. ')
+        await page.waitForSelector('.alert')
+        await expectSelectorToContainText(page, '.alert', 'The email has already been taken. ')
     }, global.TIMEOUT)
 
     test('user can login', async () => {

@@ -16,7 +16,7 @@ class RoutinesContainer extends Component {
 
     static propTypes = {
         routines: PropTypes.array.isRequired,
-        isStatusLoading: PropTypes.bool.isRequired,
+        isLoading: PropTypes.bool.isRequired,
 
         createRoutine: PropTypes.func.isRequired,
         updateRoutine: PropTypes.func.isRequired,
@@ -35,7 +35,7 @@ class RoutinesContainer extends Component {
             <Routines
                 create={this.handleCreate}
                 remove={this.props.removeRoutine}
-                isStatusLoading={this.props.isStatusLoading}
+                isLoading={this.props.isLoading}
             >
                 {this.props.routines.length > 0 ?
                     this.props.routines.map((routine, i) => (
@@ -57,7 +57,7 @@ class RoutinesContainer extends Component {
 
 const mapStateToProps = (state, props) => ({
     routines: routinesSelector(props.blockId)(state),
-    isStatusLoading: state.routines.fetchStatus === STATUS_LOADING,
+    isLoading: state.routines.fetchStatus === STATUS_LOADING,
 })
 
 const mapDispatchToProps = {

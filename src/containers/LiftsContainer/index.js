@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { liftsRoutineSelector } from 'data/lifts/selectors'
 import { createLift, updateLift, removeLift } from 'data/lifts/actions'
 import { routineByIdSelector } from 'data/routines/selectors'
+import { STATUS_LOADING, STATUS_DELETING } from 'data/utils'
 
 import Lifts from 'components/Lifts/Lifts'
 import Lift from 'components/Lifts/Lift'
@@ -17,6 +18,8 @@ class LiftsContainer extends Component {
 
         lifts: PropTypes.array.isRequired,
         weightMeasure: PropTypes.string.isRequired,
+        isLoading: PropTypes.bool.isRequired,
+        entitiesStatus: PropTypes.object.isRequired,
 
         createLift: PropTypes.func.isRequired,
         updateLift: PropTypes.func.isRequired,
@@ -33,7 +36,7 @@ class LiftsContainer extends Component {
 
     render() {
         return (
-            <Lifts create={this.handleCreate}>
+            <Lifts create={this.handleCreate} isLoading={this.props.isLoading}>
                 {this.props.lifts.length > 0 ?
                     this.props.lifts.map((lift, i) => (
                         <Lift
@@ -43,6 +46,7 @@ class LiftsContainer extends Component {
                             ui={this.props.ui}
                             remove={this.handleRemove}
                             update={this.props.updateLift}
+                            isDeleting={this.props.entitiesStatus[lift.id] === STATUS_DELETING}
                         />
                     )) :
                     <NoData
@@ -58,7 +62,9 @@ class LiftsContainer extends Component {
 
 const mapStateToProps = (state, props) => ({
     lifts: liftsRoutineSelector(props.routineId)(state),
-    weightMeasure: routineByIdSelector(props.routineId)(state).weightMeasure
+    weightMeasure: routineByIdSelector(props.routineId)(state).weightMeasure,
+    isLoading: state.lifts.fetchStatus === STATUS_LOADING,
+    entitiesStatus: state.lifts.entitiesStatus
 })
 
 const mapDispatchToProps = {

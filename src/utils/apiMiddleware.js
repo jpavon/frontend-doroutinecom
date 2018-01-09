@@ -70,7 +70,7 @@ export default store => next => action => {
 
     const [ requestType, successType, failureType ] = types
 
-    next(actionWith({ type: requestType }))
+    next(actionWith({ type: requestType, meta }))
 
     return callApi(endpoint, method, data, store)
         .then((payload) => next(actionWith({

@@ -8,7 +8,7 @@ import Label from 'components/Form/Label'
 import Tooltip from 'components/Tooltip'
 import RMTable from 'components/RMTable'
 
-const Lift = ({lift, ui, weightMeasure, remove, update}) => (
+const Lift = ({lift, ui, weightMeasure, remove, update, isDeleting}) => (
     <div className="lift-inner">
         <AutoSaveForm
             initialValues={lift}
@@ -59,6 +59,7 @@ const Lift = ({lift, ui, weightMeasure, remove, update}) => (
                 remove
                 danger
                 onClick={() => remove(lift.id)}
+                disabled={isDeleting}
             />
         </div>
     </div>

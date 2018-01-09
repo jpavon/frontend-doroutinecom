@@ -6,11 +6,14 @@ import {
     update,
     remove,
     request,
+    putRequest,
+    deleteRequest,
     failure
 } from 'data/utils'
 
 const initialState = {
     fetchStatus: helperTypes.STATUS_NONE,
+    entitiesStatus: {},
     entities: []
 }
 
@@ -37,7 +40,7 @@ const workouts = (state = initialState, action) => {
             return failure(state, error)
 
         case types.WORKOUTS_PUT_REQUEST:
-            return request(state)
+            return putRequest(state, meta.id)
 
         case types.WORKOUTS_PUT_SUCCESS:
             return update(state, payload)
@@ -46,7 +49,7 @@ const workouts = (state = initialState, action) => {
             return failure(state, error)
 
         case types.WORKOUTS_DELETE_REQUEST:
-            return request(state)
+            return deleteRequest(state, meta.id)
 
         case types.WORKOUTS_DELETE_SUCCESS:
             return remove(state, meta.id)

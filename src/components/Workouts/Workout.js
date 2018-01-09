@@ -8,7 +8,7 @@ import Textarea from 'components/AutoSaveForm/Textarea'
 import Label from 'components/Form/Label'
 import ButtonIcon from 'components/ButtonIcon'
 
-const Workout = ({index, children, workout, update, remove}) => (
+const Workout = ({index, children, workout, update, remove, isDeleting}) => (
     <div className="workout">
         <AutoSaveForm
             initialValues={workout}
@@ -44,6 +44,7 @@ const Workout = ({index, children, workout, update, remove}) => (
                 remove
                 danger
                 onClick={() => remove(workout.id)}
+                disabled={isDeleting}
             />
         </div>
 

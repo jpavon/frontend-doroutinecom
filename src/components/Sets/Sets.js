@@ -11,7 +11,10 @@ const Sets = ({children, create, exerciseId}) => (
             {children}
         </Transition>
         <div className="sets-button-create">
-            <ButtonIcon plus onClick={() => create(exerciseId)}>
+            <ButtonIcon
+                plus
+                onClick={() => create(exerciseId)}
+            >
                 &nbsp;Set
             </ButtonIcon>
         </div>

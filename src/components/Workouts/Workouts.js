@@ -5,11 +5,12 @@ import Transition from 'components/Transition'
 
 import './style.css'
 
-const Workouts = ({children, create}) => (
+const Workouts = ({children, create, isLoading}) => (
     <Section headerSmall title="Workouts" className="workouts-container">
         <Button
             className="workouts-button-create"
             onClick={create}
+            disabled={isLoading}
         >
             New workout
         </Button>

@@ -5,7 +5,7 @@ import Input from 'components/AutoSaveForm/Input'
 import InputWithItem from 'components/Form/InputWithItem'
 import ButtonIcon from 'components/ButtonIcon'
 
-const Set = ({i, set, weightMeasure, update, remove}) => (
+const Set = ({i, set, weightMeasure, update, remove, isDeleting}) => (
     <Fragment>
         <div className="set-number">
             Set {i + 1}
@@ -47,6 +47,7 @@ const Set = ({i, set, weightMeasure, update, remove}) => (
             danger
             className="set-button-remove"
             onClick={() => remove(set.id)}
+            disabled={isDeleting}
         />
     </Fragment>
 )

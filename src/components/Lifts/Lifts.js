@@ -6,7 +6,7 @@ import Transition from 'components/Transition'
 
 import './style.css'
 
-const Lifts = ({children, create}) => (
+const Lifts = ({children, create, isLoading}) => (
     <Section title="Lifts" className="lifts-container">
         <div className="lifts">
             <Transition
@@ -18,6 +18,7 @@ const Lifts = ({children, create}) => (
         <div className="lifts-button-create">
             <Button
                 onClick={create}
+                disabled={isLoading}
             >
                 New lift
             </Button>

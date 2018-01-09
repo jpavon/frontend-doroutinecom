@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { createSet, updateSet, removeSet } from 'data/sets/actions'
 import { setsSelector } from 'data/sets/selectors'
 import { routineByIdSelector } from 'data/routines/selectors'
+import { STATUS_DELETING } from 'data/utils'
 
 import Sets from 'components/Sets/Sets'
 import Set from 'components/Sets/Set'
@@ -17,6 +18,8 @@ class SetsContainer extends Component {
 
         sets: PropTypes.array.isRequired,
         weightMeasure: PropTypes.string.isRequired,
+        isLoading: PropTypes.bool.isRequired,
+        entitiesStatus: PropTypes.object.isRequired,
 
         createSet: PropTypes.func.isRequired,
         updateSet: PropTypes.func.isRequired,
@@ -25,7 +28,10 @@ class SetsContainer extends Component {
 
     render() {
         return (
-            <Sets create={this.props.createSet} exerciseId={this.props.exerciseId}>
+            <Sets
+                create={this.props.createSet}
+                exerciseId={this.props.exerciseId}
+            >
                 {this.props.sets.map((set, i) => (
                     <Set
                         key={set.id}
@@ -34,6 +40,7 @@ class SetsContainer extends Component {
                         weightMeasure={this.props.weightMeasure}
                         update={this.props.updateSet}
                         remove={this.props.removeSet}
+                        isDeleting={this.props.entitiesStatus[set.id] === STATUS_DELETING}
                     />
                 ))}
             </Sets>
@@ -43,7 +50,8 @@ class SetsContainer extends Component {
 
 const mapStateToProps = (state, props) => ({
     sets: setsSelector(props.exerciseId)(state),
-    weightMeasure: routineByIdSelector(props.routineId)(state).weightMeasure
+    weightMeasure: routineByIdSelector(props.routineId)(state).weightMeasure,
+    entitiesStatus: state.sets.entitiesStatus
 })
 
 const mapDispatchToProps = {
