@@ -35,7 +35,7 @@
     transition: border .2s;
 
     &.workouts-blocks-tab-list--completed {
-        border-color: $color-button;
+        border-color: $color-primary;
     }
 }
 
@@ -53,6 +53,6 @@
     }
 
     &.workouts-blocks-tab--completed {
-        border-bottom: 2px solid $color-button;
+        border-bottom: 2px solid $color-primary;
     }
 }

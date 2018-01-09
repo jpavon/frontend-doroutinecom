@@ -14,7 +14,7 @@
   border-left: 8px solid #333;
   transition: border-color .2s; }
   .routine-title:hover {
-    border-color: #555; }
+    border-color: #4e98cc; }
 
 .routine-single {
   margin-bottom: 2rem; }
@@ -31,6 +31,4 @@
   position: relative; }
 
 .routine-single-button-remove {
-  padding: 1rem;
-  background-color: #111;
   text-align: right; }

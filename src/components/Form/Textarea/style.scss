@@ -1,31 +1,10 @@
 @import "variables.scss";
+@import "Form/Input/style.scss";
 
 .textarea {
-    position: relative;
-    flex: 1;
-    margin-bottom: 0;
-    padding: .3rem;
-    width: 100%;
+    @extend .input;
+
     max-width: 100%;
     height: auto;
     overflow: hidden;
-
-    font-size: .9rem;
-    color: #fff;
-    background-color: #333;
-    border: 0;
-    border: 1px solid rgba(#fff, .15);
-
-    &::-webkit-input-placeholder {
-        color: rgba(#fff, .3);
-    }
-    &:-moz-placeholder {
-        color: rgba(#fff, .3);
-    }
-    &::-moz-placeholder {
-        color: rgba(#fff, .3);
-    }
-    &:-ms-input-placeholder {
-        color: rgba(#fff, .3);
-    }
 }

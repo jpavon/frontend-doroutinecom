@@ -1,3 +1,4 @@
+@import "variables.scss";
 
 .routines {
 }
@@ -23,7 +24,7 @@
         transition: border-color .2s;
 
         &:hover {
-            border-color: #555;
+            border-color: $color-primary;
         }
     }
 
@@ -53,7 +54,5 @@
 }
 
 .routine-single-button-remove {
-    padding: 1rem;
-    background-color: #111;
     text-align: right;
 }

@@ -15,7 +15,7 @@
 }
 
 .button {
-    @include button-color($color-button);
+    @include button-color($color-primary);
 
     display: inline-block;
     font-weight: 400;
@@ -57,5 +57,5 @@
 }
 
 .button--danger {
-    @include button-color($color-button-danger);
+    @include button-color($color-danger);
 }

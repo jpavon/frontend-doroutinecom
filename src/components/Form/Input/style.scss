@@ -2,15 +2,24 @@
 
 .input {
     position: relative;
-    flex: 1;
     margin-bottom: 0;
-    background-color: #333;
-    width: 100%;
-    color: #fff;
-    font-size: .9rem;
-    border: 0;
-    border: 1px solid $color-border;
     padding: .3rem;
+    width: 100%;
+
+    font-size: .9rem;
+
+    background-color: $color-input-background;
+    color: $color-font;
+    border: 1px solid $color-border;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 50px $color-input-background inset, 0 0 0 50px $color-background inset;
+        -webkit-text-fill-color: $color-font;
+        border-color: #333;
+    }
 
     &.input--right {
         text-align: right;
@@ -26,22 +35,15 @@
     }
 
     &::-webkit-input-placeholder {
-        color: rgba(#fff, .3);
+        color: rgba($color-font, .3);
     }
     &:-moz-placeholder {
-        color: rgba(#fff, .3);
+        color: rgba($color-font, .3);
     }
     &::-moz-placeholder {
-        color: rgba(#fff, .3);
+        color: rgba($color-font, .3);
     }
     &:-ms-input-placeholder {
-        color: rgba(#fff, .3);
-    }
-
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus,
-    &:-webkit-autofill {
-        border: 1px solid #444;
+        color: rgba($color-font, .3);
     }
 }

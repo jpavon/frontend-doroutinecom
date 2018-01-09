@@ -8,7 +8,7 @@
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    border-top: 2px solid lighten($color-button, 20%);
+    border-top: 2px solid lighten($color-primary, 20%);
     border-right: 2px solid transparent;
     animation: spinner .6s linear infinite;
     z-index: 90;

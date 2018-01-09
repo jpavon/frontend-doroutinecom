@@ -18,7 +18,6 @@ class SetsContainer extends Component {
 
         sets: PropTypes.array.isRequired,
         weightMeasure: PropTypes.string.isRequired,
-        isLoading: PropTypes.bool.isRequired,
         entitiesStatus: PropTypes.object.isRequired,
 
         createSet: PropTypes.func.isRequired,

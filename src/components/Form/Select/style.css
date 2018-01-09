@@ -6,12 +6,12 @@
   appearance: none;
   font-size: .9rem;
   color: #efefef;
-  background-color: #333;
+  background-color: rgba(0, 0, 0, 0.2);
   border: 0px solid #aaa;
   background-image: url("../../../media/arrow-down.svg");
   background-repeat: no-repeat;
   background-position: right 13px top 13px; }
   .select:focus {
-    background-color: #404040; }
+    background-color: #363636; }
   .select.select--default-option {
     color: rgba(255, 255, 255, 0.6); }

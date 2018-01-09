@@ -1,22 +1,33 @@
-.textarea {
+.input, .textarea {
   position: relative;
-  flex: 1;
   margin-bottom: 0;
   padding: .3rem;
   width: 100%;
+  font-size: .9rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #efefef;
+  border: 1px solid rgba(255, 255, 255, 0.1); }
+  .input:-webkit-autofill, .textarea:-webkit-autofill, .input:-webkit-autofill:hover, .textarea:-webkit-autofill:hover, .input:-webkit-autofill:focus, .textarea:-webkit-autofill:focus, .input:-webkit-autofill, .textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 50px rgba(0, 0, 0, 0.2) inset, 0 0 0 50px #222 inset;
+    -webkit-text-fill-color: #efefef;
+    border-color: #333; }
+  .input.input--right, .input--right.textarea {
+    text-align: right; }
+  .input.input--center, .input--center.textarea {
+    text-align: center; }
+  .input.input--large, .input--large.textarea {
+    padding: .5rem;
+    font-size: 1.4rem; }
+  .input::-webkit-input-placeholder, .textarea::-webkit-input-placeholder {
+    color: rgba(239, 239, 239, 0.3); }
+  .input:-moz-placeholder, .textarea:-moz-placeholder {
+    color: rgba(239, 239, 239, 0.3); }
+  .input::-moz-placeholder, .textarea::-moz-placeholder {
+    color: rgba(239, 239, 239, 0.3); }
+  .input:-ms-input-placeholder, .textarea:-ms-input-placeholder {
+    color: rgba(239, 239, 239, 0.3); }
+
+.textarea {
   max-width: 100%;
   height: auto;
-  overflow: hidden;
-  font-size: .9rem;
-  color: #fff;
-  background-color: #333;
-  border: 0;
-  border: 1px solid rgba(255, 255, 255, 0.15); }
-  .textarea::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 0.3); }
-  .textarea:-moz-placeholder {
-    color: rgba(255, 255, 255, 0.3); }
-  .textarea::-moz-placeholder {
-    color: rgba(255, 255, 255, 0.3); }
-  .textarea:-ms-input-placeholder {
-    color: rgba(255, 255, 255, 0.3); }
+  overflow: hidden; }

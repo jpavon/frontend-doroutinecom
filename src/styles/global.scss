@@ -32,17 +32,3 @@ a {
     color: $color-font;
     text-decoration: none;
 }
-
-input:-webkit-autofill {
-    -webkit-box-shadow:0 0 0 50px #333 inset; /* Change the color to your own background color */
-    -webkit-text-fill-color: #fff;
-}
-
-input:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0 50px #333 inset;
-    -webkit-text-fill-color: #fff;
-}
-
-.global-form-field {
-
-}
