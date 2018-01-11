@@ -8,6 +8,7 @@
   color: #efefef;
   background-color: rgba(0, 0, 0, 0.2);
   border: 0px solid #aaa;
+  font-weight: 500;
   background-image: url("../../../media/arrow-down.svg");
   background-repeat: no-repeat;
   background-position: right 13px top 13px; }
