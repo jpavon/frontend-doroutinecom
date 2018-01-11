@@ -206,11 +206,21 @@
 *, ::after, ::before {
   box-sizing: border-box; }
 
+* {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: auto; }
+
+html {
+  -webkit-text-size-adjust: 100%; }
+
 body {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   color: #efefef;
   overflow-y: scroll;
-  background-color: #222; }
+  background-color: #222;
+  font-weight: 500; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
