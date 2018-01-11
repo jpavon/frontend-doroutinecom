@@ -12,7 +12,7 @@ const callApi = (endpoint, method, data, store) => {
     return axios.request({
         url: endpoint,
         method: method,
-        baseURL: 'http://192.168.10.10/api/',
+        baseURL: process.env.REACT_APP_API_URL,
         headers: {
             'Authorization':
             `Bearer ${store.getState().user.entity.apiToken || localStorage.getItem('token')}`

@@ -1,12 +1,12 @@
-import { struct } from 'superstruct'
+// import { struct } from 'superstruct'
 
 const validateData = (schema) => (data) => {
-    const Struct = struct(schema).validate(data)
+    // const Struct = struct(schema).validate(data)
 
-    const [error] = Struct
-    if (error) {
-        console.error(error.message, error.data)
-    }
+    // const [error] = Struct
+    // if (error) {
+    //     console.error(error.message, error.data)
+    // }
 
     return data
 }
