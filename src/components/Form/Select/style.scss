@@ -9,7 +9,6 @@
     appearance: none;
     font-size: .9rem;
     color: $color-font;
-    background-color: $color-input-background;
     border: 0px solid $color-border-input;
     font-weight: 500;
 
@@ -17,8 +16,10 @@
     background-repeat: no-repeat;
     background-position: right 13px top 13px;
 
+    background-color: $color-input-background;
+
     &:focus {
-        background-color: lighten($color-background-light, 5%);
+        background-color: $color-input-background;
     }
 
     &.select--default-option {
