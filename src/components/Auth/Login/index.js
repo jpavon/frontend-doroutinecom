@@ -15,6 +15,7 @@ const Login = ({handleSubmit, errors, setRef}) => (
                 Email
             </Label>
             <Input
+                type="email"
                 id="email"
                 name="email"
                 size="large"

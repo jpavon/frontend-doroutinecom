@@ -15,7 +15,6 @@ const Login = ({handleSubmit, errors, setRef}) => (
             </Label>
             <Input
                 id="name"
-                type="text"
                 inputRef={(ref) => setRef(ref, 'name')}
                 size="large"
             />
@@ -23,8 +22,8 @@ const Login = ({handleSubmit, errors, setRef}) => (
                 Email
             </Label>
             <Input
+                type="email"
                 id="email"
-                type="text"
                 inputRef={(ref) => setRef(ref, 'email')}
                 size="large"
             />
@@ -32,8 +31,8 @@ const Login = ({handleSubmit, errors, setRef}) => (
                 Password
             </Label>
             <Input
-                id="password"
                 type="password"
+                id="password"
                 inputRef={(ref) => setRef(ref, 'password')}
                 size="large"
             />
@@ -41,8 +40,8 @@ const Login = ({handleSubmit, errors, setRef}) => (
                 Password confirmation
             </Label>
             <Input
-                id="passwordConfirmation"
                 type="password"
+                id="passwordConfirmation"
                 inputRef={(ref) => setRef(ref, 'passwordConfirmation')}
                 size="large"
             />

@@ -26,6 +26,12 @@
     color: rgba(239, 239, 239, 0.3); }
   .input:-ms-input-placeholder, .textarea:-ms-input-placeholder {
     color: rgba(239, 239, 239, 0.3); }
+  .input[type=number]::-webkit-outer-spin-button, [type=number].textarea::-webkit-outer-spin-button, .input[type=number]::-webkit-inner-spin-button, [type=number].textarea::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; }
+  .input[type=number], [type=number].textarea {
+    -moz-appearance: textfield;
+    appearance: none; }
 
 .textarea {
   max-width: 100%;

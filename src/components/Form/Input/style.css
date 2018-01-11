@@ -26,3 +26,9 @@
     color: rgba(239, 239, 239, 0.3); }
   .input:-ms-input-placeholder {
     color: rgba(239, 239, 239, 0.3); }
+  .input[type=number]::-webkit-outer-spin-button, .input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; }
+  .input[type=number] {
+    -moz-appearance: textfield;
+    appearance: none; }

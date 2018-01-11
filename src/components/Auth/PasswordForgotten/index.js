@@ -12,9 +12,9 @@ const PasswordForgotten = ({handleSubmit, errors, success, setRef}) => (
                 Email
             </Label>
             <Input
+                type="email"
                 id="email"
                 name="email"
-                type="text"
                 size="large"
                 inputRef={(ref) => setRef(ref, 'email')}
             />

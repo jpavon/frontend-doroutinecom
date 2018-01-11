@@ -24,6 +24,7 @@ const Set = ({i, set, weightMeasure, update, remove, isDeleting}) => (
                             <div className="set-weight">
                                 <InputWithItem item={weightMeasure}>
                                     <Input
+                                        type="number"
                                         name="weight"
                                     />
                                 </InputWithItem>
@@ -33,6 +34,7 @@ const Set = ({i, set, weightMeasure, update, remove, isDeleting}) => (
                             <div className="set-reps">
                                 <InputWithItem item={values.reps > 1 ? 'reps' : 'rep'}>
                                     <Input
+                                        type="number"
                                         name="reps"
                                     />
                                 </InputWithItem>

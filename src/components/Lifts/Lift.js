@@ -46,6 +46,7 @@ const Lift = ({lift, ui, weightMeasure, remove, update, isDeleting}) => (
                             )}
                         >
                             <Input
+                                type="number"
                                 name="rm"
                                 placeholder="Weight"
                             />

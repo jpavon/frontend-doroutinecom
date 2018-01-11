@@ -46,4 +46,15 @@
     &:-ms-input-placeholder {
         color: rgba($color-font, .3);
     }
+
+    &[type=number]::-webkit-outer-spin-button,
+    &[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &[type=number] {
+        -moz-appearance: textfield;
+        appearance: none;
+    }
 }
