@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import Helmet from 'react-helmet'
 
 import { fetchUser } from 'data/user/actions'
 import { fetchRoutines } from 'data/routines/actions'
@@ -16,6 +17,8 @@ import ErrorApp from 'components/ErrorApp'
 import Nav from 'components/Nav'
 import Loading from 'components/Loading'
 import Footer from 'components/Footer'
+
+import favicon from 'media/favicon.png'
 
 class App extends Component {
 
@@ -78,6 +81,9 @@ class App extends Component {
     render() {
         return (
             <Fragment>
+                <Helmet>
+                    <link rel="shortcut icon" href={favicon} />
+                </Helmet>
                 <Nav
                     isAuth={this.props.isAuth}
                 />
