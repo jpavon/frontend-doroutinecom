@@ -81,7 +81,10 @@ class App extends Component {
     render() {
         return (
             <Fragment>
-                <Helmet>
+                <Helmet
+                    defaultTitle="SaveRoutine"
+                    titleTemplate="%s - SaveRoutine"
+                >
                     <link rel="shortcut icon" href={favicon} />
                 </Helmet>
                 <Nav
