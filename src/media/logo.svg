@@ -9,7 +9,8 @@
         <g id="logo">
             <g id="Group" transform="translate(0.000000, 7.000000)" fill-rule="nonzero">
                 <g id="Group-2">
-                    <polygon id="Line" fill="#989898" points="25 7 0 7 0 9 25 9"></polygon>
+                    <polygon id="Line" fill="#989898" points="25 7 0 7 0 8 25 8"></polygon>
+                    <polygon id="Line-Copy" fill="#7F7F7F" points="25 8 0 8 0 9 25 9"></polygon>
                     <polygon id="Line-Copy-14" fill="#D05252" points="11 0 11 16 14 16 14 0"></polygon>
                     <polygon id="Line-Copy-15" fill="#D05252" points="3 0 3 16 6 16 6 0"></polygon>
                     <polygon id="Line-Copy-16" fill="#D05252" points="7 0 7 16 10 16 10 0"></polygon>

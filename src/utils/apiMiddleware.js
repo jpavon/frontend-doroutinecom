@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { camelizeKeys, decamelizeKeys } from 'humps'
 
+import env from 'env'
 import { logoutUser } from 'data/user/actions'
 import { setServerError } from 'data/ui/actions'
 
@@ -12,7 +13,7 @@ const callApi = (endpoint, method, data, store) => {
     return axios.request({
         url: endpoint,
         method: method,
-        baseURL: process.env.REACT_APP_API_URL,
+        baseURL: `${env.API_URL}/`,
         headers: {
             'Authorization':
             `Bearer ${store.getState().user.entity.apiToken || localStorage.getItem('token')}`
@@ -24,7 +25,7 @@ const callApi = (endpoint, method, data, store) => {
     }).catch((err) => {
         if (err.response.data.message === UNAUTH) {
             return Promise.reject(UNAUTH)
-        } else if (err.response.data.exception) {
+        } else if (err.response.data.exception || err.response.status === 404 || err.response.status > 500) {
             return Promise.reject(SERVER_ERROR)
         } else {
             return Promise.reject(err.response.data)
