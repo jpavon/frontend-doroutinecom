@@ -14,13 +14,9 @@
   max-width: 1000px; }
 
 .nav-logo {
-  margin-top: 5px;
   display: inline-block;
-  margin-right: 1rem;
   line-height: inherit;
   white-space: nowrap; }
-  .nav-logo img {
-    max-width: 160px; }
 
 .nav-list {
   display: flex;
