@@ -1,8 +1,8 @@
 const env = {
     production: {
-        API_URL: 'https://restimg.com/public/api',
-        APP_URL: 'http://restimg.com',
-        HOME_URL: 'http://restimg.com'
+        API_URL: 'https://app.restimg.com/public/api',
+        APP_URL: 'https://app.restimg.com',
+        HOME_URL: 'https://restimg.com'
     },
     development: {
         API_URL: 'http://192.168.10.10/api',
