@@ -210,23 +210,23 @@ describe('routine is saved on reload', async () => {
 describe('routine shows validation errors', async () => {
     test('lift rm', async () => {
         await page.click('.lift input[name=rm]')
-        await page.type('.lift input[name=rm]', 'string')
+        await page.type('.lift input[name=rm]', '.333')
         await page.waitFor(1000)
-        await expectSelectorToContainText(page, '.lift', 'must be a number')
+        await expectSelectorToContainText(page, '.lift', 'format is invalid')
     }, global.TIMEOUT)
 
     test('set weight', async () => {
         await page.click('.set input[name=weight]')
-        await page.type('.set input[name=weight]', 'string')
+        await page.type('.set input[name=weight]', '.333')
         await page.waitFor(1000)
-        await expectSelectorToContainText(page, '.set', 'must be a number')
+        await expectSelectorToContainText(page, '.set', 'format is invalid')
     }, global.TIMEOUT)
 
     test('set reps', async () => {
         await page.click('.set input[name=reps]')
-        await page.type('.set input[name=reps]', 'string')
+        await page.type('.set input[name=reps]', '.333')
         await page.waitFor(1000)
-        await expectSelectorToContainText(page, '.set', 'must be a number')
+        await expectSelectorToContainText(page, '.set', 'format is invalid')
     }, global.TIMEOUT)
 })
 
