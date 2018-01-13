@@ -29,17 +29,24 @@
 
 .nav-list {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 0;
     list-style: none;
 
-    @media(min-width: 500px) {
-        flex-direction: row;
+    @media(max-width: 500px) {
+        flex-direction: column;
+        margin: 5px 0;
     }
 }
 
 .nav-item {
     padding-left: 2rem;
+
+    @media(max-width: 500px) {
+        padding-left: 0;
+        padding: 2px 0;
+        text-align: right;
+    }
 }
 
 .nav-link {
