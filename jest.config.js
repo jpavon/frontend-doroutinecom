@@ -1,11 +1,24 @@
 const faker = require('faker')
 
+var envConfig = {
+    production: {
+        APP_URL: 'https://app.restimg.com',
+        HOME_URL: 'https://restimg.com'
+    },
+    development: {
+        APP_URL: 'http://localhost:3000',
+        HOME_URL: 'http://localhost:8001'
+    }
+}
+
+var env = envConfig[process.env.ENV]
+
 module.exports = {
     globalSetup: './tests/config/setup.js',
     globalTeardown: './tests/config/teardown.js',
     testEnvironment: './tests/config/puppeteer_environment.js',
     globals: {
-        APP_URL: 'http://localhost:3000',
+        APP_URL: env.APP_URL,
         TIMEOUT: 10000,
         USER: {
             name: '_T_' + faker.name.firstName(),
