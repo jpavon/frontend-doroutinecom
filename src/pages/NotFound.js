@@ -3,11 +3,7 @@ import Layout from 'pages/Layout'
 import NotFoundComponent from 'components/NotFound'
 
 const NotFound = () => (
-    <Layout
-        header={(
-            <title>404 - Not Found</title>
-        )}
-    >
+    <Layout>
         <NotFoundComponent />
     </Layout>
 )

@@ -2,8 +2,8 @@ const faker = require('faker')
 
 var envConfig = {
     production: {
-        APP_URL: 'https://app.restimg.com',
-        HOME_URL: 'https://restimg.com'
+        APP_URL: 'https://app.doroutine.com',
+        HOME_URL: 'https://doroutine.com'
     },
     development: {
         APP_URL: 'http://localhost:3000',

@@ -5,11 +5,11 @@ import favicon from 'media/favicon.png'
 
 const Head = () => (
     <Helmet
-        defaultTitle="saveroutine | Homepage"
-        titleTemplate="%s | saveroutine"
+        defaultTitle="doroutine"
+        titleTemplate="%s | doroutine"
     >
         <link rel="shortcut icon" href={favicon} />
-        <meta name="description" content="SaveRoutine" />
+        <meta name="description" content="#todo" />
     </Helmet>
 )
 
