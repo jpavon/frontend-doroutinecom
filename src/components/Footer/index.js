@@ -9,11 +9,11 @@ import './style.css'
 const Footer = () => (
     <div className="footer">
         <div className="container">
-            <a className="footer-item" href={env.HOME_URL}>Home</a>
-            <a className="footer-item" href="mailto:hello@doroutine.com">Support: hello@doroutine.com</a>
+            <a className="footer-link" href={env.HOME_URL}>Home</a>
+            <span className="footer-link">Support - <a href="mailto:hello@doroutine.com">hello@doroutine.com</a></span>
             <br /><br /><br /><br />
             <img src={logo} alt="doroutine logo" /><br />
-            <span className="footer-item">doroutine 2018</span>
+            <span className="footer-item">2018</span>
         </div>
     </div>
 )
