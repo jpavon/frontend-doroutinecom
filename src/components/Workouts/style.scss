@@ -81,7 +81,7 @@
 .workout-form {
     position: relative;
     background-color: #333;
-    padding: .3rem;
+    padding: $spacing-small;
     transition: background-color .2s;
 
     &.workout-form--is-done {
@@ -102,7 +102,7 @@
 .workout-notes {
     position: relative;
     margin-top: 1rem;
-    padding: .4rem;
+    padding: $spacing-small;
 
     label {
         margin: 0;

@@ -5,14 +5,13 @@ import Input from 'components/AutoSaveForm/Input'
 import InputWithItem from 'components/Form/InputWithItem'
 import ButtonIcon from 'components/ButtonIcon'
 
-const Set = ({i, set, weightMeasure, update, remove, isDeleting}) => (
+const Set = ({i, set, routine, update, remove, isDeleting}) => (
     <Fragment>
         <div className="set-number">
-            Set {i + 1}
-            <div className="set-rmPercentage">
-                <span title="Rep Max">RM</span> {set.rmPercentage}%
-                / <span title="Training Max">TM</span> {set.tmPercentage}%
-            </div>
+            <span>Set {i + 1} - </span>
+            <span title="Training Max" className="set-rmPercentage">
+                TM% {set.tmPercentage}
+            </span>
         </div>
         <AutoSaveForm
             initialValues={set}
@@ -21,21 +20,25 @@ const Set = ({i, set, weightMeasure, update, remove, isDeleting}) => (
                 <Fragment>
                     <div className="set-row">
                         <div className="set-col">
-                            <div className="set-weight">
-                                <InputWithItem item={weightMeasure}>
+                            <div className="set-reps">
+                                <InputWithItem
+                                    item={values.reps > 1 ? 'reps' : 'rep'}
+                                >
                                     <Input
                                         type="number"
-                                        name="weight"
+                                        name="reps"
                                     />
                                 </InputWithItem>
                             </div>
                         </div>
                         <div className="set-col">
-                            <div className="set-reps">
-                                <InputWithItem item={values.reps > 1 ? 'reps' : 'rep'}>
+                            <div className="set-weight">
+                                <InputWithItem
+                                    item={routine.weightMeasure}
+                                >
                                     <Input
                                         type="number"
-                                        name="reps"
+                                        name="weight"
                                     />
                                 </InputWithItem>
                             </div>

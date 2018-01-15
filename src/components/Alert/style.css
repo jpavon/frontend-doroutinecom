@@ -10,7 +10,7 @@
   opacity: 1; }
 
 .alert--small {
-  padding: .3rem;
+  padding: 5px;
   font-size: .8rem;
   line-height: 1.1;
   margin-bottom: 0; }

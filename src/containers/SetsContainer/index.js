@@ -17,7 +17,7 @@ class SetsContainer extends Component {
         exerciseId: PropTypes.number.isRequired,
 
         sets: PropTypes.array.isRequired,
-        weightMeasure: PropTypes.string.isRequired,
+        routine: PropTypes.object.isRequired,
         entitiesStatus: PropTypes.object.isRequired,
 
         createSet: PropTypes.func.isRequired,
@@ -36,7 +36,7 @@ class SetsContainer extends Component {
                         key={set.id}
                         i={i}
                         set={set}
-                        weightMeasure={this.props.weightMeasure}
+                        routine={this.props.routine}
                         update={this.props.updateSet}
                         remove={this.props.removeSet}
                         isDeleting={this.props.entitiesStatus[set.id] === STATUS_DELETING}
@@ -48,8 +48,8 @@ class SetsContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    sets: setsSelector(props.exerciseId)(state),
-    weightMeasure: routineByIdSelector(props.routineId)(state).weightMeasure,
+    sets: setsSelector(props.exerciseId, props.routineId)(state),
+    routine: routineByIdSelector(props.routineId)(state),
     entitiesStatus: state.sets.entitiesStatus
 })
 

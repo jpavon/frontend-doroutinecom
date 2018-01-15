@@ -38,16 +38,26 @@
     margin-bottom: 2rem;
 }
 
-.routine-weight-measure {
+.routine-settings {
     position: absolute;
+    display: flex;
     top: 0;
     right: 0;
-
-    select {
-        width: 80px;
-        margin-left: 1rem;
-    }
 }
+
+    .routine-settings-item {
+        flex: 1;
+        margin-left: .5rem;
+
+
+        select {
+            width: 85px;
+        }
+
+        label {
+            // text-align: right;
+        }
+    }
 
 .routine-single-title {
     position: relative;

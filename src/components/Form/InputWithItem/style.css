@@ -1,5 +1,7 @@
 .input-wrapper {
   position: relative; }
+  .input-wrapper.input-wrapper--stacked input {
+    padding-bottom: 18px; }
 
 .input-item {
   position: absolute;
@@ -7,4 +9,10 @@
   right: 8px;
   text-transform: uppercase;
   font-size: .7rem;
-  color: rgba(255, 255, 255, 0.7); }
+  color: rgba(255, 255, 255, 0.4);
+  user-select: none; }
+  .input-wrapper--stacked .input-item {
+    bottom: 6px;
+    left: 6px;
+    top: initial;
+    right: initial; }

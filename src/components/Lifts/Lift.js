@@ -8,7 +8,7 @@ import Label from 'components/Form/Label'
 import Tooltip from 'components/Tooltip'
 import RMTable from 'components/RMTable'
 
-const Lift = ({lift, ui, weightMeasure, remove, update, isDeleting}) => (
+const Lift = ({lift, ui, routine, remove, update, isDeleting}) => (
     <div className="lift-inner">
         <AutoSaveForm
             initialValues={lift}
@@ -20,10 +20,11 @@ const Lift = ({lift, ui, weightMeasure, remove, update, isDeleting}) => (
                             Lift
                         </Label>
                         <Tooltip
-                            text="RM Info"
+                            text="TM %"
                             content={(
                                 <RMTable
-                                    weightMeasure={weightMeasure}
+                                    weightMeasure={routine.weightMeasure}
+                                    trainingMax={routine.trainingMax}
                                     rm={values.rm}
                                 />
                             )}
@@ -40,7 +41,7 @@ const Lift = ({lift, ui, weightMeasure, remove, update, isDeleting}) => (
                         <InputWithItem
                             item={(
                                 <Fragment>
-                                    {weightMeasure}
+                                    {routine.weightMeasure}
                                     <span title="Rep Max"> RM</span>
                                 </Fragment>
                             )}

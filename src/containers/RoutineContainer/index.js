@@ -49,7 +49,7 @@ class RoutineContainer extends Component {
                     update={this.props.updateRoutine}
                     remove={this.handleRemove}
                 >
-                    <LiftsContainer routineId={this.props.routine.id} />
+                    <LiftsContainer routineId={this.props.routine.id} routine={this.props.routine} />
                     <WorkoutsBlocksContainer routineId={this.props.routine.id} />
                 </RoutineSingle>
                 {/*<GraphContainer routineId={this.props.routine.id} />*/}

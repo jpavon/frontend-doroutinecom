@@ -19,13 +19,17 @@
 .routine-single {
   margin-bottom: 2rem; }
 
-.routine-weight-measure {
+.routine-settings {
   position: absolute;
+  display: flex;
   top: 0;
   right: 0; }
-  .routine-weight-measure select {
-    width: 80px;
-    margin-left: 1rem; }
+
+.routine-settings-item {
+  flex: 1;
+  margin-left: .5rem; }
+  .routine-settings-item select {
+    width: 85px; }
 
 .routine-single-title {
   position: relative; }

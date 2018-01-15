@@ -4,10 +4,11 @@ import classNames from 'classnames'
 
 import './style.css'
 
-const InputWithItem = ({children, className, item, ...rest}) => (
+const InputWithItem = ({children, className, item, type, ...rest}) => (
     <div
         className={classNames(
             'input-wrapper',
+            type === 'stacked' && 'input-wrapper--stacked',
             className
         )}
         {...rest}

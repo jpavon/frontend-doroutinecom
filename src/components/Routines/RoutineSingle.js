@@ -17,15 +17,45 @@ const RoutineSingle = ({children, routine, update, remove}) => (
                 update={update}
                 render={({values}) => (
                     <Fragment>
-                        <div className="routine-weight-measure">
-                            Weight Measure:
-                            <Select
-                                name="weightMeasure"
-                                options={[
-                                    {id: 'kg', name: 'kg'},
-                                    {id: 'lbs', name: 'lbs'},
-                                ]}
-                            />
+                        <div className="routine-settings">
+                            <div className="routine-settings-item">
+                                <Label htmlFor={`trainingMax${values.id}`} title="Training Max">TM</Label>
+                                <Select
+                                    id={`trainingMax${values.id}`}
+                                    name="trainingMax"
+                                    options={[
+                                        {id: '100', name: '100%'},
+                                        {id: '95', name: '95%'},
+                                        {id: '90', name: '90%'},
+                                        {id: '85', name: '85%'},
+                                        {id: '80', name: '80%'},
+                                        {id: '75', name: '75%'}
+                                    ]}
+                                />
+                            </div>
+                            {/*<div className="routine-settings-item">
+                                <Label htmlFor={`precision${values.id}`}>Precision</Label>
+                                <Select
+                                    id={`precision${values.id}`}
+                                    name="precision"
+                                    options={[
+                                        {id: '5', name: '5'},
+                                        {id: '2.5', name: '2.5'},
+                                        {id: '0.5', name: '0.5'},
+                                    ]}
+                                />
+                            </div>*/}
+                            <div className="routine-settings-item">
+                                <Label htmlFor={`weightMeasure${values.id}`}>Weight</Label>
+                                <Select
+                                    id={`weightMeasure${values.id}`}
+                                    name="weightMeasure"
+                                    options={[
+                                        {id: 'kg', name: 'kg'},
+                                        {id: 'lbs', name: 'lbs'},
+                                    ]}
+                                />
+                            </div>
                         </div>
                         <div className="routine-single-title">
                             <Label htmlFor={`name${values.id}`}>Title</Label>

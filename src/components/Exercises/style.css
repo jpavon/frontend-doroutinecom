@@ -5,12 +5,14 @@
     margin: auto; }
 
 .exercise {
-  padding: .3rem;
   border: 1px solid #444;
-  background-color: #3e3e3e; }
+  background-color: #3e3e3e;
+  margin-bottom: 10px; }
 
-.exercise-button-remove button {
-  margin-left: auto; }
+.exercise-button-remove {
+  padding: 5px; }
+  .exercise-button-remove button {
+    margin-left: auto; }
 
 .exercise-form {
-  margin-bottom: .3rem; }
+  padding: 5px; }

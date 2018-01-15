@@ -1,12 +1,13 @@
 .sets-button-create {
+  padding-left: 5px;
   margin-top: 10px; }
 
 .set {
   position: relative;
-  border-bottom: 1px solid #555;
-  padding: 10px 0; }
+  border-bottom: 1px solid #494949;
+  padding: 10px 5px; }
   .set:first-child {
-    border-top: 1px solid #555; }
+    border-top: 1px solid #494949; }
 
 .set-number {
   font-size: .7rem;
@@ -19,8 +20,8 @@
 
 .set-button-remove {
   position: absolute;
-  top: 8px;
-  right: 0; }
+  top: 5px;
+  right: 5px; }
 
 .set-row {
   display: flex;

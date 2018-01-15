@@ -63,7 +63,7 @@
 .workout-form {
   position: relative;
   background-color: #333;
-  padding: .3rem;
+  padding: 5px;
   transition: background-color .2s; }
   .workout-form.workout-form--is-done {
     background-color: #4e98cc; }
@@ -76,7 +76,7 @@
 .workout-notes {
   position: relative;
   margin-top: 1rem;
-  padding: .4rem; }
+  padding: 5px; }
   .workout-notes label {
     margin: 0;
     margin-bottom: .2rem; }

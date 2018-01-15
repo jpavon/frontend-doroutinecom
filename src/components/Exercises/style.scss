@@ -1,7 +1,7 @@
+@import "variables.scss";
+
 .exercises-container {
-
 }
-
 
 .exercises-button-create {
     position: relative;
@@ -15,13 +15,14 @@
 // single
 
 .exercise {
-    // background-color: #555;
-    padding: .3rem;
     border: 1px solid #444;
     background-color: #3e3e3e;
+    margin-bottom: $spacing-small * 2;
 }
 
 .exercise-button-remove {
+    padding: $spacing-small;
+
     button {
         margin-left: auto;
     }
@@ -30,14 +31,5 @@
 // form
 
 .exercise-form {
-    // background-color: #fff;
-    margin-bottom: .3rem;
-
-    // select {
-    //     background-color: transparent;
-    //     height: 30px;
-    //     &:focus {
-    //         background-color: transparent;
-    //     }
-    // }
+    padding: $spacing-small;
 }

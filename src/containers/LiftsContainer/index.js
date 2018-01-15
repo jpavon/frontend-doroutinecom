@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 
 import { liftsRoutineSelector } from 'data/lifts/selectors'
 import { createLift, updateLift, removeLift } from 'data/lifts/actions'
-import { routineByIdSelector } from 'data/routines/selectors'
 import { STATUS_DELETING } from 'data/utils'
 
 import Lifts from 'components/Lifts/Lifts'
@@ -15,9 +14,9 @@ class LiftsContainer extends Component {
 
     static propTypes = {
         routineId: PropTypes.number.isRequired,
+        routine: PropTypes.object.isRequired,
 
         lifts: PropTypes.array.isRequired,
-        weightMeasure: PropTypes.string.isRequired,
         entitiesStatus: PropTypes.object.isRequired,
 
         createLift: PropTypes.func.isRequired,
@@ -44,7 +43,7 @@ class LiftsContainer extends Component {
                         <Lift
                             key={lift.id}
                             lift={lift}
-                            weightMeasure={this.props.weightMeasure}
+                            routine={this.props.routine}
                             ui={this.props.ui}
                             remove={this.handleRemove}
                             update={this.props.updateLift}
@@ -64,7 +63,6 @@ class LiftsContainer extends Component {
 
 const mapStateToProps = (state, props) => ({
     lifts: liftsRoutineSelector(props.routineId)(state),
-    weightMeasure: routineByIdSelector(props.routineId)(state).weightMeasure,
     entitiesStatus: state.lifts.entitiesStatus
 })
 
