@@ -6,11 +6,15 @@
   background-color: #191919; }
 
 .footer-item, .footer-link {
+  display: inline-block;
   text-decoration: none;
   margin-left: 2rem;
+  margin-bottom: 1rem;
   text-transform: uppercase;
   font-size: .8rem;
   font-weight: 700; }
+  .footer-item:nth-child(1), .footer-link:nth-child(1) {
+    margin-left: 0; }
 
 .footer-item {
   color: #aaa; }
