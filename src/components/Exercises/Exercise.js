@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
 import AutoSaveForm from 'components/AutoSaveForm'
-import ButtonIcon from 'components/ButtonIcon'
+import Button from 'components/Button'
 import Select from 'components/AutoSaveForm/Select'
 
 const Exercise = ({children, exercise, lifts, update, remove, isDeleting}) => (
@@ -22,14 +22,15 @@ const Exercise = ({children, exercise, lifts, update, remove, isDeleting}) => (
         />
         {children}
         <div className="exercise-button-remove">
-            <ButtonIcon
-                remove
+            <Button
+                minus
+                transparent
                 danger
                 onClick={() => remove(exercise.id)}
                 disabled={isDeleting}
             >
-                &nbsp;Exercise
-            </ButtonIcon>
+                Exercise
+            </Button>
         </div>
     </Fragment>
 )

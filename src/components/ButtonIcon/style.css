@@ -15,7 +15,7 @@
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: .1rem;
-  transition: background-color .2s, opacity .2s;
+  transition: background-color .2s, opacity .2s, color .2s;
   cursor: pointer;
   text-overflow: ellipsis;
   line-height: 1;
@@ -32,6 +32,8 @@
     cursor: default;
     opacity: .7;
     box-shadow: none; }
+  .button img, .button-icon img {
+    margin-right: 5px; }
 
 .button--small {
   display: flex;
@@ -46,6 +48,23 @@
   .button--danger:not([disabled]):not(.disabled).active, .button--danger:not([disabled]):not(.disabled):active {
     outline: 0;
     box-shadow: 0 0 1px 3px #c73434, inset 0 0 2px 0 rgba(0, 0, 0, 0.2); }
+
+.button--transparent {
+  padding: 0;
+  color: #4e98cc;
+  background-color: transparent;
+  letter-spacing: initial;
+  border: 0; }
+  .button--transparent.button--danger {
+    color: #c73434; }
+    .button--transparent.button--danger:hover {
+      color: #cf4646; }
+  .button--transparent:hover {
+    color: #62a4d2;
+    background-color: transparent; }
+  .button--transparent:not([disabled]):not(.disabled).active, .button--transparent:not([disabled]):not(.disabled):active {
+    outline: 0;
+    box-shadow: none; }
 
 .button-icon {
   display: flex;

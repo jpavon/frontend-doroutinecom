@@ -76,10 +76,9 @@
     }
 
 .lift-button-remove {
-    position: absolute;
     text-align: right;
-    right: 0px;
-    top: -3px;
+    padding: $spacing-small;
+    padding-bottom: 0;
 }
 
 // form

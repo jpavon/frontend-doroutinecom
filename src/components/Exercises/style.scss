@@ -6,10 +6,7 @@
 .exercises-button-create {
     position: relative;
     margin-top: .5rem;
-
-    button {
-        margin: auto;
-    }
+    text-align: center;
 }
 
 // single
@@ -22,10 +19,7 @@
 
 .exercise-button-remove {
     padding: $spacing-small;
-
-    button {
-        margin-left: auto;
-    }
+    text-align: right;
 }
 
 // form

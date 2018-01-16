@@ -13,7 +13,7 @@ const RMTable = ({rm, weightMeasure, trainingMax}) => (
             <div className="rm-table-data">
                 {values.map((value) => (
                     <div key={value} className="rm-table-data-item">
-                        {value}% - {(rm * (value * trainingMax /100)/100).toFixed(1)}{weightMeasure}
+                        {value}% - {(rm * (value * trainingMax /100)/100).toFixed(0)}{weightMeasure}
                     </div>
                 ))}
             </div>

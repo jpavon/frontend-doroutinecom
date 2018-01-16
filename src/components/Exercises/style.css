@@ -1,8 +1,7 @@
 .exercises-button-create {
   position: relative;
-  margin-top: .5rem; }
-  .exercises-button-create button {
-    margin: auto; }
+  margin-top: .5rem;
+  text-align: center; }
 
 .exercise {
   border: 1px solid #444;
@@ -10,9 +9,8 @@
   margin-bottom: 10px; }
 
 .exercise-button-remove {
-  padding: 5px; }
-  .exercise-button-remove button {
-    margin-left: auto; }
+  padding: 5px;
+  text-align: right; }
 
 .exercise-form {
   padding: 5px; }

@@ -12,10 +12,11 @@ const Exercises = ({children, create, workoutId}) => (
         </Transition>
         <div className="exercises-button-create">
             <Button
-                small
+                plus
+                transparent
                 onClick={() => create(workoutId)}
             >
-                New exercise
+                Exercise
             </Button>
         </div>
     </div>

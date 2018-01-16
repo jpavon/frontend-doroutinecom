@@ -1,6 +1,7 @@
 .sets-button-create {
+  padding: 5px 0;
   padding-left: 5px;
-  margin-top: 10px; }
+  border-bottom: 1px solid #494949; }
 
 .set {
   position: relative;
@@ -19,9 +20,8 @@
   color: #b1d2e9; }
 
 .set-button-remove {
-  position: absolute;
-  top: 5px;
-  right: 5px; }
+  margin-top: 5px;
+  text-align: right; }
 
 .set-row {
   display: flex;
@@ -39,9 +39,3 @@
   padding-left: 3px;
   flex: 0 0 50%;
   max-width: 50%; }
-
-.set-button {
-  text-align: right; }
-  .set-button button {
-    position: relative;
-    margin-left: .2rem; }

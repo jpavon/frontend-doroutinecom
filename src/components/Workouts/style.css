@@ -51,14 +51,14 @@
 .workout-checkbox-text {
   margin-left: .4rem;
   display: inline-block;
-  color: #555; }
+  color: #555;
+  letter-spacing: initial; }
   .workout-form--is-done .workout-checkbox-text {
     color: #efefef; }
 
 .workout-button-remove {
-  position: absolute;
-  top: -3px;
-  right: -3px; }
+  padding: 5px;
+  text-align: right; }
 
 .workout-form {
   position: relative;

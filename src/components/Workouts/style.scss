@@ -64,6 +64,7 @@
         margin-left: .4rem;
         display: inline-block;
         color: #555;
+        letter-spacing: initial;
 
         .workout-form--is-done & {
             color: $color-font;
@@ -71,9 +72,8 @@
     }
 
 .workout-button-remove {
-    position: absolute;
-    top: -3px;
-    right: -3px;
+    padding: $spacing-small;
+    text-align: right;
 }
 
 // form

@@ -31,7 +31,7 @@
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: .1rem;
-    transition: background-color .2s, opacity .2s;
+    transition: background-color .2s, opacity .2s, color .2s;
     cursor: pointer;
 
     text-overflow: ellipsis;
@@ -48,6 +48,10 @@
         opacity: .7;
         box-shadow: none;
     }
+
+    img {
+        margin-right: $spacing-small;
+    }
 }
 
 .button--small {
@@ -58,4 +62,30 @@
 
 .button--danger {
     @include button-color($color-danger);
+}
+
+.button--transparent {
+    padding: 0;
+    color: $color-primary;
+    background-color: transparent;
+    letter-spacing: initial;
+    border: 0;
+
+    &.button--danger {
+        color: $color-danger;
+
+        &:hover {
+            color: lighten($color-danger, 5%);
+        }
+    }
+
+    &:hover {
+        color: lighten($color-primary, 5%);
+        background-color: transparent;
+    }
+
+    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active {
+        outline: 0;
+        box-shadow: none;
+    }
 }

@@ -4,8 +4,9 @@
 }
 
 .sets-button-create {
+    padding: $spacing-small 0;
     padding-left: $spacing-small;
-    margin-top: 10px;
+    border-bottom: 1px solid #494949;
 }
 
 // single
@@ -32,9 +33,8 @@
 }
 
 .set-button-remove {
-    position: absolute;
-    top: $spacing-small;
-    right: $spacing-small;
+    margin-top: $spacing-small;
+    text-align: right;
 }
 
 // form
@@ -59,14 +59,4 @@
 }
 
 .set-weight {
-}
-
-
-.set-button {
-    text-align: right;
-
-    button {
-        position: relative;
-        margin-left: .2rem;
-    }
 }

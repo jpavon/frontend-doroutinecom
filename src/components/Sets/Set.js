@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
 import InputWithItem from 'components/Form/InputWithItem'
-import ButtonIcon from 'components/ButtonIcon'
+import Button from 'components/Button'
 
 const Set = ({i, set, routine, update, remove, isDeleting}) => (
     <Fragment>
@@ -48,13 +48,17 @@ const Set = ({i, set, routine, update, remove, isDeleting}) => (
             )}
         />
         <div className="set-button-remove">
-            <ButtonIcon
-                remove
+            <Button
+                minus
                 danger
+                transparent
                 onClick={() => remove(set.id)}
                 disabled={isDeleting}
-            />
+            >
+                Set
+            </Button>
         </div>
+
     </Fragment>
 )
 

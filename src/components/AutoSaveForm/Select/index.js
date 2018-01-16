@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import Alert from 'components/Alert'
 import UncontrolledSelect from 'components/Form/Select'
+import Saving from 'components/Saving'
 
 const Select = (props, context) => {
 
@@ -13,17 +14,20 @@ const Select = (props, context) => {
         ...rest
     } = props
 
-    const { values, errors, onChange } = context.formContext
+    const { values, errors, onChange, updating } = context.formContext
 
     return (
         <Fragment>
-            <UncontrolledSelect
-                name={name}
-                value={values[name] || ''}
-                options={options}
-                onChange={onChange}
-                {...rest}
-            />
+            <div style={{position: 'relative'}}>
+                {updating === name && <Saving />}
+                <UncontrolledSelect
+                    name={name}
+                    value={values[name] || ''}
+                    options={options}
+                    onChange={onChange}
+                    {...rest}
+                />
+            </div>
             <Alert
                 size="small"
                 type="error"

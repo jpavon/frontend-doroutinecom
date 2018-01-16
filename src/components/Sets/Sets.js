@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Transition from 'components/Transition'
-import ButtonIcon from 'components/ButtonIcon'
+import Button from 'components/Button'
 
 import './style.css'
 
@@ -11,12 +11,13 @@ const Sets = ({children, create, exerciseId}) => (
             {children}
         </Transition>
         <div className="sets-button-create">
-            <ButtonIcon
+            <Button
                 plus
+                transparent
                 onClick={() => create(exerciseId)}
             >
-                &nbsp;Set
-            </ButtonIcon>
+                Set
+            </Button>
         </div>
     </div>
 )

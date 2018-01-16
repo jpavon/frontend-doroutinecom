@@ -6,7 +6,7 @@ import Input from 'components/AutoSaveForm/Input'
 import Checkbox from 'components/AutoSaveForm/Checkbox'
 import Textarea from 'components/AutoSaveForm/Textarea'
 import Label from 'components/Form/Label'
-import ButtonIcon from 'components/ButtonIcon'
+import Button from 'components/Button'
 
 const Workout = ({index, children, workout, update, remove, isDeleting}) => (
     <div className="workout">
@@ -39,15 +39,6 @@ const Workout = ({index, children, workout, update, remove, isDeleting}) => (
 
         {children}
 
-        <div className="workout-button-remove">
-            <ButtonIcon
-                remove
-                danger
-                onClick={() => remove(workout.id)}
-                disabled={isDeleting}
-            />
-        </div>
-
         <AutoSaveForm
             initialValues={workout}
             update={update}
@@ -61,6 +52,18 @@ const Workout = ({index, children, workout, update, remove, isDeleting}) => (
                 </div>
             )}
         />
+
+        <div className="workout-button-remove">
+            <Button
+                minus
+                transparent
+                danger
+                onClick={() => remove(workout.id)}
+                disabled={isDeleting}
+            >
+                Workout
+            </Button>
+        </div>
     </div>
 )
 

@@ -54,7 +54,6 @@
   border-bottom: none; }
 
 .lift-button-remove {
-  position: absolute;
   text-align: right;
-  right: 0px;
-  top: -3px; }
+  padding: 5px;
+  padding-bottom: 0; }

@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 
 import './style.css'
 
+import minusIcon from 'media/minus.svg'
+import plusIcon from 'media/plus.svg'
+
 class Button extends Component {
 
     static propTypes = {
@@ -15,6 +18,9 @@ class Button extends Component {
 
         small: PropTypes.bool,
         danger: PropTypes.bool,
+        transparent: PropTypes.bool,
+        plus: PropTypes.bool,
+        remove: PropTypes.bool,
     }
 
     render() {
@@ -25,6 +31,9 @@ class Button extends Component {
             children,
             danger,
             small,
+            transparent,
+            plus,
+            minus,
             ...rest
         } = this.props
 
@@ -36,11 +45,16 @@ class Button extends Component {
                     'button',
                     danger && 'button--danger',
                     small && 'button--small',
+                    transparent && 'button--transparent',
                     className
                 )}
                 href={href}
                 to={to}
-                {...rest}>
+                {...rest}
+            >
+                {plus && <img src={plusIcon} alt="Add" />}
+                {minus && <img src={minusIcon} alt="Remove" />}
+
                 {children}
             </Element>
         )

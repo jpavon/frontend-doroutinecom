@@ -6,7 +6,7 @@ import { liftExerciseSelector } from 'data/lifts/selectors'
 import Set from 'data/sets/schema'
 
 const round = (x) => {
-    const number = Math.round(x * 10) / 10
+    const number = Math.round(x * 1) / 1
     return isFinite(number) ? number : 0
 }
 

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-import ButtonIcon from 'components/ButtonIcon'
+import Button from 'components/Button'
 import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
 import InputWithItem from 'components/Form/InputWithItem'
@@ -57,12 +57,15 @@ const Lift = ({lift, ui, routine, remove, update, isDeleting}) => (
             )}
         />
         <div className="lift-button-remove">
-            <ButtonIcon
-                remove
+            <Button
+                minus
+                transparent
                 danger
                 onClick={() => remove(lift.id)}
                 disabled={isDeleting}
-            />
+            >
+                Lift
+            </Button>
         </div>
     </div>
 )
