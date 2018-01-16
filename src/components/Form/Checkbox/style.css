@@ -1,0 +1,17 @@
+.checkbox {
+  display: none; }
+
+.checkbox-tick {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background-color: #333;
+  user-select: none;
+  cursor: pointer;
+  transition: border .2s;
+  border-radius: 50%; }
+  .checkbox-tick img {
+    display: block; }
+  .checkbox-tick.checkbox-tick--checked, .checkbox-tick:hover {
+    border-color: #4e98cc; }

@@ -14,14 +14,16 @@ const Workout = ({index, children, workout, update, remove, isDeleting}) => (
             initialValues={workout}
             update={update}
             render={({values}) => (
-                <div className={classNames(
-                    'workout-form',
-                    values.isDone && 'workout-form--is-done'
-                )}>
-                    <Label htmlFor={`workout-done${values.id}`} className="workout-checkbox">
+                <div
+                    className={classNames(
+                        'workout-form',
+                        values.isCompleted && 'workout-form--is-completed'
+                    )}
+                >
+                    <Label htmlFor={`workout-completed${values.id}`} className="workout-checkbox">
                         <Checkbox
-                            id={`workout-done${values.id}`}
-                            name="isDone"
+                            id={`workout-completed${values.id}`}
+                            name="isCompleted"
                         />
                         <div className="workout-checkbox-text">Completed</div>
                     </Label>

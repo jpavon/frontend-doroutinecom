@@ -1,3 +1,6 @@
+.workouts-container {
+  padding-top: 2rem; }
+
 .workouts-row {
   display: flex;
   flex-wrap: wrap;
@@ -39,22 +42,7 @@
   position: relative;
   background-color: #333;
   margin-bottom: 1rem;
-  margin-top: 1rem; }
-
-.workout-checkbox {
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  width: 100%;
-  text-align: center; }
-
-.workout-checkbox-text {
-  margin-left: .4rem;
-  display: inline-block;
-  color: #555;
-  letter-spacing: initial; }
-  .workout-form--is-done .workout-checkbox-text {
-    color: #efefef; }
+  margin-top: 2rem; }
 
 .workout-button-remove {
   padding: 5px;
@@ -65,13 +53,31 @@
   background-color: #333;
   padding: 5px;
   transition: background-color .2s; }
-  .workout-form.workout-form--is-done {
+  .workout-form.workout-form--is-completed {
     background-color: #4e98cc; }
   .workout-form label {
-    display: block;
     text-align: center;
     margin: 0;
     margin-bottom: .2rem; }
+
+.workout-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  text-align: center; }
+
+.workout-checkbox-text {
+  margin-left: .4rem;
+  display: inline-block;
+  color: #555;
+  align-self: center; }
+  .workout-form--is-completed .workout-checkbox-text {
+    color: #4e98cc; }
 
 .workout-notes {
   position: relative;

@@ -20,8 +20,8 @@
     }
 
     .alert--success {
-        background-color: #4ea24e;
-        border: 2px solid lighten(#4ea24e, 10%)
+        background-color: $color-success;
+        border: 2px solid lighten($color-success, 10%)
     }
 
     .alert--error {

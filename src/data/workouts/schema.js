@@ -6,7 +6,7 @@ const Workout = validateData({
     routineId: 'number',
     blockId: 'number',
     name: 'string|null',
-    isDone: 'boolean',
+    isCompleted: 'boolean',
     notes: 'string|null',
     createdAt: 'string',
     updatedAt: 'string'

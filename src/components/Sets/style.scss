@@ -26,6 +26,7 @@
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: .4rem;
+    transition: color .2s;
 }
 
 .set-rmPercentage {
@@ -59,4 +60,16 @@
 }
 
 .set-weight {
+}
+
+.set-checkbox {
+    position: absolute;
+    top: $spacing-small;
+    right: $spacing-small;
+}
+
+.set-form--is-completed {
+    .set-number {
+        color: $color-primary;
+    }
 }

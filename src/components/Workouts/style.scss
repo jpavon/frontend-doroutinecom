@@ -1,5 +1,9 @@
 @import "variables.scss";
 
+.workouts-container {
+    padding-top: 2rem;
+}
+
 .workouts-row {
     display: flex;
     flex-wrap: wrap;
@@ -50,26 +54,8 @@
     position: relative;
     background-color: #333;
     margin-bottom: 1rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
-    .workout-checkbox {
-        position: absolute;
-        bottom: 100%;
-        left: 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    .workout-checkbox-text {
-        margin-left: .4rem;
-        display: inline-block;
-        color: #555;
-        letter-spacing: initial;
-
-        .workout-form--is-done & {
-            color: $color-font;
-        }
-    }
 
 .workout-button-remove {
     padding: $spacing-small;
@@ -84,15 +70,37 @@
     padding: $spacing-small;
     transition: background-color .2s;
 
-    &.workout-form--is-done {
+    &.workout-form--is-completed {
         background-color: $color-primary;
     }
 
     label {
-        display: block;
         text-align: center;
         margin: 0;
         margin-bottom: .2rem;
+    }
+}
+
+.workout-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    text-align: center;
+}
+
+.workout-checkbox-text {
+    margin-left: .4rem;
+    display: inline-block;
+    color: #555;
+    align-self: center;
+
+    .workout-form--is-completed & {
+        color: $color-primary;
     }
 }
 

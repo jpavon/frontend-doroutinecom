@@ -1,0 +1,25 @@
+@import "variables.scss";
+
+.checkbox {
+    display: none;
+}
+
+.checkbox-tick {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid $color-border;
+    background-color: #333;
+    user-select: none;
+    cursor: pointer;
+    transition: border .2s;
+    border-radius: 50%;
+
+    img {
+        display: block;
+    }
+
+    &.checkbox-tick--checked, &:hover {
+        border-color: $color-primary;
+    }
+}

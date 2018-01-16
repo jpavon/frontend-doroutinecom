@@ -50,7 +50,7 @@ export const completedBlocks = (routineId) => createSelector(
     (workouts, blocks) => {
         return blocks.map((id) => {
             const routineWorkoutsBlocks = workouts.filter((workout) => (workout.blockId === id))
-            return (routineWorkoutsBlocks.length > 0 && routineWorkoutsBlocks.filter((workout) => (!workout.isDone)).length < 1) ? 1 : 0
+            return (routineWorkoutsBlocks.length > 0 && routineWorkoutsBlocks.filter((workout) => (!workout.isCompleted)).length < 1) ? 1 : 0
         })
     }
 )

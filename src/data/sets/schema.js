@@ -7,6 +7,7 @@ const Set = validateData({
     reps: 'number|null',
     tmPercentage: 'number',
     weight: 'number|null',
+    isCompleted: 'boolean',
     createdAt: 'string',
     updatedAt: 'string'
 })

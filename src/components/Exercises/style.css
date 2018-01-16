@@ -1,3 +1,6 @@
+.exercises-container {
+  margin-top: 10px; }
+
 .exercises-button-create {
   position: relative;
   margin-top: .5rem;

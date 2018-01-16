@@ -1,12 +1,11 @@
 import React from 'react'
 import Button from 'components/Button'
-import Section from 'components/Section'
 import Transition from 'components/Transition'
 
 import './style.css'
 
 const Workouts = ({children, create}) => (
-    <Section headerSmall title="Workouts" className="workouts-container">
+    <div className="workouts-container">
         <div className="workouts-button-create">
             <Button
                 onClick={create}
@@ -20,7 +19,7 @@ const Workouts = ({children, create}) => (
                 {children}
             </Transition>
         </div>
-    </Section>
+    </div>
 )
 
 export default Workouts

@@ -14,7 +14,8 @@
   font-size: .7rem;
   text-transform: uppercase;
   font-weight: 700;
-  margin-bottom: .4rem; }
+  margin-bottom: .4rem;
+  transition: color .2s; }
 
 .set-rmPercentage {
   color: #b1d2e9; }
@@ -39,3 +40,11 @@
   padding-left: 3px;
   flex: 0 0 50%;
   max-width: 50%; }
+
+.set-checkbox {
+  position: absolute;
+  top: 5px;
+  right: 5px; }
+
+.set-form--is-completed .set-number {
+  color: #4e98cc; }

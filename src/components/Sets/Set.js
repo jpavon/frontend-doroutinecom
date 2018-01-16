@@ -1,23 +1,37 @@
 import React, { Fragment } from 'react'
+import classNames from 'classnames'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
 import InputWithItem from 'components/Form/InputWithItem'
 import Button from 'components/Button'
+import Checkbox from 'components/AutoSaveForm/Checkbox'
+import Label from 'components/Form/Label'
 
 const Set = ({i, set, routine, update, remove, isDeleting}) => (
     <Fragment>
-        <div className="set-number">
-            <span>Set {i + 1} - </span>
-            <span title="Training Max" className="set-rmPercentage">
-                TM% {set.tmPercentage}
-            </span>
-        </div>
         <AutoSaveForm
             initialValues={set}
             update={update}
             render={({values}) => (
-                <Fragment>
+                <div
+                    className={classNames(
+                        'set-form',
+                        values.isCompleted && 'set-form--is-completed'
+                    )}
+                >
+                    <div className="set-number">
+                        <span>Set {i + 1} - </span>
+                        <span title="Training Max" className="set-rmPercentage">
+                            TM% {set.tmPercentage}
+                        </span>
+                    </div>
+                    <Label htmlFor={`set-completed${values.id}`} className="set-checkbox">
+                        <Checkbox
+                            id={`set-completed${values.id}`}
+                            name="isCompleted"
+                        />
+                    </Label>
                     <div className="set-row">
                         <div className="set-col">
                             <div className="set-reps">
@@ -44,7 +58,7 @@ const Set = ({i, set, routine, update, remove, isDeleting}) => (
                             </div>
                         </div>
                     </div>
-                </Fragment>
+                </div>
             )}
         />
         <div className="set-button-remove">
