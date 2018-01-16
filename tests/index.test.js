@@ -122,7 +122,7 @@ describe('routines creation', async () => {
         await page.click('.workout input[name=name]')
         await page.type('.workout input[name=name]', global.WORKOUT.name)
         await page.waitFor(1000)
-        await page.click('.workout input[name=isDone]')
+        await page.click('.workout-checkbox')
         await page.waitFor(1000)
         await page.click('.workout textarea[name=notes]')
         await page.type('.workout textarea[name=notes]', global.WORKOUT.notes)
@@ -157,6 +157,8 @@ describe('routines creation', async () => {
         await page.click('.set input[name=reps]')
         await page.type('.set input[name=reps]', global.SET.reps)
         await page.waitFor(1000)
+        await page.click('.set-checkbox')
+        await page.waitFor(1000)
     }, global.TIMEOUT)
 
     test('create multiple sets', async () => {
@@ -190,7 +192,7 @@ describe('routine is saved on reload', async () => {
     test('workout is saved', async () => {
         await expectSelectorToContainText(page, '.workout', global.WORKOUT.name)
         await expectSelectorToContainText(page, '.workout', global.WORKOUT.notes)
-        await expectCheckboxToBe(page, '.workout input[name=isDone]', true)
+        await expectCheckboxToBe(page, '.workout input[name=isCompleted]', true)
     }, global.TIMEOUT)
 
     test('exercise is saved', async () => {
@@ -200,6 +202,7 @@ describe('routine is saved on reload', async () => {
     test('set is saved', async () => {
         await expectSelectorToContainText(page, '.set-weight', global.SET.weight)
         await expectSelectorToContainText(page, '.set-reps', global.SET.reps)
+        await expectCheckboxToBe(page, '.set input[name=isCompleted]', true)
     }, global.TIMEOUT)
 
     test('block is saved', async () => {
