@@ -210,7 +210,7 @@ describe('routine is saved on reload', async () => {
 describe('routine shows validation errors', async () => {
     test('lift rm', async () => {
         await page.click('.lift input[name=rm]')
-        await page.type('.lift input[name=rm]', '.333')
+        await page.type('.lift input[name=rm]', '33')
         await page.waitFor(1000)
         await expectSelectorToContainText(page, '.lift', 'format is invalid')
     }, global.TIMEOUT)

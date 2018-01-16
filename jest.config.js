@@ -31,7 +31,7 @@ module.exports = {
         },
         LIFT: {
             name: faker.lorem.words(),
-            rm: String(faker.random.number())
+            rm: String(faker.random.number() + '.44')
         },
         WORKOUT: {
             name: faker.lorem.words(),
