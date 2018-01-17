@@ -19,7 +19,11 @@
         display: block;
     }
 
-    &.checkbox-tick--checked, &:hover {
+    &:hover {
+        border-color: rgba($color-primary, .5);
+    }
+
+    &.checkbox-tick--checked {
         border-color: $color-primary;
     }
 }

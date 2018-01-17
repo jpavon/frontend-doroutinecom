@@ -55,7 +55,7 @@ class WorkoutsContainer extends Component {
                     )) :
                     <NoData
                         buttonText="Create workout"
-                        text="No workout created."
+                        text="No workout created"
                         create={this.handleCreate}
                     />
                 }

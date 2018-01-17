@@ -18,7 +18,7 @@
   transition: color .2s; }
 
 .set-rmPercentage {
-  color: #b1d2e9; }
+  color: rgba(239, 239, 239, 0.6); }
 
 .set-button-remove {
   margin-top: 5px;
@@ -47,4 +47,4 @@
   right: 5px; }
 
 .set-form--is-completed .set-number {
-  color: #4e98cc; }
+  color: #5f9cc8; }

@@ -13,5 +13,7 @@
   border-radius: 50%; }
   .checkbox-tick img {
     display: block; }
-  .checkbox-tick.checkbox-tick--checked, .checkbox-tick:hover {
-    border-color: #4e98cc; }
+  .checkbox-tick:hover {
+    border-color: rgba(76, 144, 194, 0.5); }
+  .checkbox-tick.checkbox-tick--checked {
+    border-color: #4c90c2; }

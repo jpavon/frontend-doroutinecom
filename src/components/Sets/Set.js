@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import classNames from 'classnames'
+import isNumber from 'lodash/isNumber'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
@@ -21,9 +22,9 @@ const Set = ({i, set, routine, update, remove, isDeleting}) => (
                     )}
                 >
                     <div className="set-number">
-                        <span>Set {i + 1} - </span>
+                        <span>Set {i + 1} </span>
                         <span title="Training Max" className="set-rmPercentage">
-                            TM% {set.tmPercentage}
+                            - TM% {set.tmPercentage}
                         </span>
                     </div>
                     <Label htmlFor={`set-completed${values.id}`} className="set-checkbox">
@@ -36,10 +37,9 @@ const Set = ({i, set, routine, update, remove, isDeleting}) => (
                         <div className="set-col">
                             <div className="set-reps">
                                 <InputWithItem
-                                    item={values.reps > 1 ? 'reps' : 'rep'}
+                                    item={!isNaN(values.reps) && (values.reps > 1 ? 'reps' : 'rep')}
                                 >
                                     <Input
-                                        type="number"
                                         name="reps"
                                     />
                                 </InputWithItem>
@@ -72,7 +72,6 @@ const Set = ({i, set, routine, update, remove, isDeleting}) => (
                 Set
             </Button>
         </div>
-
     </Fragment>
 )
 

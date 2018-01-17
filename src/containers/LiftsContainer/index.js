@@ -52,7 +52,7 @@ class LiftsContainer extends Component {
                     )) :
                     <NoData
                         buttonText="Create lift"
-                        text="No lift created."
+                        text="No lift created"
                         create={this.handleCreate}
                     />
                 }

@@ -46,7 +46,7 @@ class RoutinesContainer extends Component {
                     )) :
                     <NoData
                         buttonText="Create routine"
-                        text="No routine created."
+                        text="No routine created"
                         create={this.handleCreate}
                     />
                 }

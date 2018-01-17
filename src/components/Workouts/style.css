@@ -1,5 +1,7 @@
 .workouts-container {
   padding-top: 2rem; }
+  .workouts-container .no-data {
+    margin-top: 1.5rem; }
 
 .workouts-row {
   display: flex;
@@ -54,7 +56,7 @@
   padding: 5px;
   transition: background-color .2s; }
   .workout-form.workout-form--is-completed {
-    background-color: #4e98cc; }
+    background-color: #4c90c2; }
   .workout-form label {
     text-align: center;
     margin: 0;
@@ -75,9 +77,10 @@
   margin-left: .4rem;
   display: inline-block;
   color: #555;
-  align-self: center; }
+  align-self: center;
+  user-select: none; }
   .workout-form--is-completed .workout-checkbox-text {
-    color: #4e98cc; }
+    color: #4c90c2; }
 
 .workout-notes {
   position: relative;

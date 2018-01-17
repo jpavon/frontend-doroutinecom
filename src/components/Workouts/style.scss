@@ -2,6 +2,10 @@
 
 .workouts-container {
     padding-top: 2rem;
+
+    .no-data {
+        margin-top: 1.5rem;
+    }
 }
 
 .workouts-row {
@@ -98,6 +102,7 @@
     display: inline-block;
     color: #555;
     align-self: center;
+    user-select: none;
 
     .workout-form--is-completed & {
         color: $color-primary;

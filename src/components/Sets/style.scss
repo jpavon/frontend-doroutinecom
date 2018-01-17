@@ -30,7 +30,7 @@
 }
 
 .set-rmPercentage {
-    color: lighten($color-primary, 25%);
+    color: rgba($color-font, .6);
 }
 
 .set-button-remove {
@@ -70,6 +70,6 @@
 
 .set-form--is-completed {
     .set-number {
-        color: $color-primary;
+        color: lighten($color-primary, 5%);
     }
 }
