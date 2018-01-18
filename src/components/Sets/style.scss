@@ -22,12 +22,13 @@
         position: relative;
         padding: 10px $spacing-small;
         background-color: transparent;
-        border-left: 0px solid rgba($color-primary, .6);
+        border-left: 0px solid rgba($color-primary, .4);
         transition: border-width .3s;
     }
 
     .set-inner--is-completed {
-        border-width: 4px;
+        border-width: 3px;
+        background-color: rgba($color-primary, .1);
     }
 }
 
