@@ -20,7 +20,7 @@ const Set = ({i, set, routine, update, remove, isDeleting}) => (
                         values.isCompleted && 'set-inner--is-completed'
                     )}
                 >
-                    <div className="set-number">
+                    <div className="set-title">
                         <span>Set {i + 1} </span>
                         <span title="Training Max" className="set-rmPercentage">
                             - TM% {set.tmPercentage}

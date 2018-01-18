@@ -8,14 +8,14 @@
     }
 }
 
-.workouts-row {
+.workouts {
     display: flex;
     flex-wrap: wrap;
     margin-right: -3px;
     margin-left: -3px;
 }
 
-.workouts-column {
+.workout {
     flex: 1;
     position: relative;
     width: 100%;
@@ -54,28 +54,30 @@
 
 // single
 
-.workout {
+.workout-inner {
     position: relative;
-    background-color: #333;
+    background-color: #303030;
     margin-bottom: 1rem;
     margin-top: 2rem;
+    border-bottom: 2px solid #272727;
 }
 
 .workout-button-remove {
     padding: $spacing-small;
+    padding-right: $spacing-small * 2;
     text-align: right;
 }
 
 // form
 
-.workout-form {
+.workout-top {
     position: relative;
     background-color: #333;
     padding: $spacing-small;
     transition: background-color .2s;
     border-bottom: 2px solid transparent;
 
-    &.workout-form--is-completed {
+    &.workout-top--is-completed {
         background-color: $color-primary;
         border-color: darken($color-primary, 10%);
     }
@@ -106,7 +108,7 @@
     align-self: center;
     user-select: none;
 
-    .workout-form--is-completed & {
+    .workout-top--is-completed & {
         color: $color-primary;
     }
 }
@@ -122,5 +124,6 @@
     label {
         margin: 0;
         margin-bottom: .2rem;
+        margin-left: $spacing-small;;
     }
 }

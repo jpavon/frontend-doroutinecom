@@ -54,11 +54,12 @@
         position: relative;
         background-color: #303030;
         padding: $spacing-small;
+        border-bottom: 2px solid #272727;
     }
 
     .lift-title {
         position: relative;
-        text-align: center;
+        padding-left: $spacing-small;
 
         label {
             display: inline-block;
@@ -76,9 +77,11 @@
     }
 
 .lift-button-remove {
-    text-align: right;
+    position: absolute;
+    top: 0;
+    right: 0;
     padding: $spacing-small;
-    padding-bottom: 0;
+    padding-right: $spacing-small * 2;
 }
 
 // form

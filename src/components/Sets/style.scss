@@ -5,42 +5,38 @@
 
 .sets-button-create {
     padding: $spacing-small 0;
-    padding-left: $spacing-small;
-    border-bottom: 1px solid #494949;
+    padding-left: $spacing-small * 2;
+    border-bottom: 1px solid #303030;
 }
 
 // single
 
 .set {
+    border-bottom: 1px solid #303030;
+
+    &:first-child {
+            border-top: 1px solid #303030;
+    }
+
     .set-inner {
         position: relative;
         padding: 10px $spacing-small;
         background-color: transparent;
-        transition: background-color .2s;
-        border-bottom: 1px solid #494949;
-    }
-
-    &:first-child {
-        .set-inner {
-            border-top: 1px solid #494949;
-        }
+        border-left: 0px solid rgba($color-primary, .6);
+        transition: border-width .3s;
     }
 
     .set-inner--is-completed {
-        background-color: rgba($color-primary, .2);
-        border-color: rgba($color-primary, .2);
-
-        .set-number {
-            color: lighten($color-primary, 5%);
-        }
+        border-width: 4px;
     }
 }
 
-.set-number {
+.set-title {
+    margin-left: $spacing-small;
+    margin-bottom: 8px;
     font-size: .7rem;
     text-transform: uppercase;
     font-weight: 700;
-    margin-bottom: .4rem;
     transition: color .2s;
 }
 
@@ -50,6 +46,7 @@
 
 .set-button-remove {
     margin-top: $spacing-small;
+    margin-right: $spacing-small;
     text-align: right;
 }
 
@@ -82,5 +79,6 @@
     top: 0;
     right: 0;
     padding: $spacing-small;
+    padding-top: 7px;
     cursor: pointer;
 }

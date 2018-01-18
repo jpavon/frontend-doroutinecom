@@ -31,7 +31,7 @@ class WorkoutsContainer extends Component {
             routineId: this.props.routineId,
             blockId: this.props.blockId
         }).then(() => {
-            scrollTo('workout')
+            scrollTo('workout-inner', { tolerance: 30})
         })
     }
 

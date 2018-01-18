@@ -1,12 +1,12 @@
 import moveTo from 'moveto'
 
-const scrollTo = (className) => {
+const scrollTo = (className, options = {}) => {
     setTimeout(() => {
         const elements = document.getElementsByClassName(className)
         const el = elements[elements.length - 1]
 
         if (!isElementInViewport(el)) {
-            const move = new moveTo()
+            const move = new moveTo(options)
             move.move(el)
         }
     }, 100) // wait for element to mount

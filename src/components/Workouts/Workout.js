@@ -9,15 +9,15 @@ import Label from 'components/Form/Label'
 import Button from 'components/Button'
 
 const Workout = ({index, children, workout, update, remove, isDeleting}) => (
-    <div className="workout">
+    <div className="workout-inner">
         <AutoSaveForm
             initialValues={workout}
             update={update}
             render={({values}) => (
                 <div
                     className={classNames(
-                        'workout-form',
-                        values.isCompleted && 'workout-form--is-completed'
+                        'workout-top',
+                        values.isCompleted && 'workout-top--is-completed'
                     )}
                 >
                     <Label htmlFor={`workout-completed${values.id}`} className="workout-checkbox">

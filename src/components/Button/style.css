@@ -1,5 +1,5 @@
 .button {
-  color: #fff;
+  color: #d5e5f1;
   background-color: #4c90c2;
   display: inline-block;
   font-weight: 700;
@@ -8,15 +8,16 @@
   vertical-align: middle;
   user-select: none;
   border: 1px solid transparent;
-  padding: .375rem .75rem;
+  padding: .35rem .7rem;
   font-size: .7rem;
   line-height: 1.5;
-  border-radius: .1rem;
+  border-radius: 2px;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: .1rem;
   transition: background-color .2s, opacity .2s, color .2s;
   cursor: pointer;
+  outline: 0;
   text-overflow: ellipsis;
   line-height: 1;
   white-space: nowrap;
@@ -24,8 +25,7 @@
   .button:hover {
     background-color: #3e83b6; }
   .button:not([disabled]):not(.disabled).active, .button:not([disabled]):not(.disabled):active {
-    outline: 0;
-    box-shadow: 0 0 1px 3px #4c90c2, inset 0 0 2px 0 rgba(0, 0, 0, 0.2); }
+    box-shadow: 0 0 1px 2px #316890, inset 0 0 1px 1px rgba(0, 0, 0, 0.2); }
   input + .button {
     margin-top: 1rem; }
   .button.disabled, .button[disabled] {
@@ -41,20 +41,20 @@
   font-size: .6rem; }
 
 .button--danger {
-  color: #fff;
+  color: #efc3c3;
   background-color: #c73434; }
   .button--danger:hover {
     background-color: #b32f2f; }
   .button--danger:not([disabled]):not(.disabled).active, .button--danger:not([disabled]):not(.disabled):active {
-    outline: 0;
-    box-shadow: 0 0 1px 3px #c73434, inset 0 0 2px 0 rgba(0, 0, 0, 0.2); }
+    box-shadow: 0 0 1px 2px #8a2424, inset 0 0 1px 1px rgba(0, 0, 0, 0.2); }
 
 .button--transparent {
   padding: 0;
   color: #5f9cc8;
   background-color: transparent;
   letter-spacing: initial;
-  border: 0; }
+  border: 0;
+  text-shadow: none; }
   .button--transparent.button--danger {
     color: #c73434; }
     .button--transparent.button--danger:hover {

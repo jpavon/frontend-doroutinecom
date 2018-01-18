@@ -14,8 +14,8 @@ const Workouts = ({children, create}) => (
             </Button>
         </div>
 
-        <div className="workouts-row">
-            <Transition className="workouts-column">
+        <div className="workouts">
+            <Transition className="workout">
                 {children}
             </Transition>
         </div>

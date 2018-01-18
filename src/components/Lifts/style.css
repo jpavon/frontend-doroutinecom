@@ -41,11 +41,12 @@
 .lift-inner {
   position: relative;
   background-color: #303030;
-  padding: 5px; }
+  padding: 5px;
+  border-bottom: 2px solid #272727; }
 
 .lift-title {
   position: relative;
-  text-align: center; }
+  padding-left: 5px; }
   .lift-title label {
     display: inline-block;
     margin-right: .4rem; }
@@ -54,6 +55,8 @@
   border-bottom: none; }
 
 .lift-button-remove {
-  text-align: right;
+  position: absolute;
+  top: 0;
+  right: 0;
   padding: 5px;
-  padding-bottom: 0; }
+  padding-right: 10px; }

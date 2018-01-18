@@ -3,13 +3,13 @@
   .workouts-container .no-data {
     margin-top: 1.5rem; }
 
-.workouts-row {
+.workouts {
   display: flex;
   flex-wrap: wrap;
   margin-right: -3px;
   margin-left: -3px; }
 
-.workouts-column {
+.workout {
   flex: 1;
   position: relative;
   width: 100%;
@@ -19,19 +19,19 @@
   flex: 0 0 16.66667%;
   max-width: 16.66667%; }
   @media (max-width: 1040px) {
-    .workouts-column {
+    .workout {
       flex: 0 0 20%;
       max-width: 20%; } }
   @media (max-width: 860px) {
-    .workouts-column {
+    .workout {
       flex: 0 0 25%;
       max-width: 25%; } }
   @media (max-width: 700px) {
-    .workouts-column {
+    .workout {
       flex: 0 0 33.33333%;
       max-width: 33.33333%; } }
   @media (max-width: 500px) {
-    .workouts-column {
+    .workout {
       flex: 0 0 50%;
       max-width: 50%; } }
 
@@ -40,26 +40,28 @@
   top: -2px;
   right: 0; }
 
-.workout {
+.workout-inner {
   position: relative;
-  background-color: #333;
+  background-color: #303030;
   margin-bottom: 1rem;
-  margin-top: 2rem; }
+  margin-top: 2rem;
+  border-bottom: 2px solid #272727; }
 
 .workout-button-remove {
   padding: 5px;
+  padding-right: 10px;
   text-align: right; }
 
-.workout-form {
+.workout-top {
   position: relative;
   background-color: #333;
   padding: 5px;
   transition: background-color .2s;
   border-bottom: 2px solid transparent; }
-  .workout-form.workout-form--is-completed {
+  .workout-top.workout-top--is-completed {
     background-color: #4c90c2;
     border-color: #3876a3; }
-  .workout-form label {
+  .workout-top label {
     text-align: center;
     margin: 0;
     margin-bottom: .2rem; }
@@ -81,7 +83,7 @@
   color: #555;
   align-self: center;
   user-select: none; }
-  .workout-form--is-completed .workout-checkbox-text {
+  .workout-top--is-completed .workout-checkbox-text {
     color: #4c90c2; }
 
 .workout-notes {
@@ -90,4 +92,5 @@
   padding: 5px; }
   .workout-notes label {
     margin: 0;
-    margin-bottom: .2rem; }
+    margin-bottom: .2rem;
+    margin-left: 5px; }

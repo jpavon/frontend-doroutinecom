@@ -1,29 +1,27 @@
 .sets-button-create {
   padding: 5px 0;
-  padding-left: 5px;
-  border-bottom: 1px solid #494949; }
+  padding-left: 10px;
+  border-bottom: 1px solid #303030; }
 
-.set .set-inner {
-  position: relative;
-  padding: 10px 5px;
-  background-color: transparent;
-  transition: background-color .2s;
-  border-bottom: 1px solid #494949; }
+.set {
+  border-bottom: 1px solid #303030; }
+  .set:first-child {
+    border-top: 1px solid #303030; }
+  .set .set-inner {
+    position: relative;
+    padding: 10px 5px;
+    background-color: transparent;
+    border-left: 0px solid rgba(76, 144, 194, 0.6);
+    transition: border-width .3s; }
+  .set .set-inner--is-completed {
+    border-width: 4px; }
 
-.set:first-child .set-inner {
-  border-top: 1px solid #494949; }
-
-.set .set-inner--is-completed {
-  background-color: rgba(76, 144, 194, 0.2);
-  border-color: rgba(76, 144, 194, 0.2); }
-  .set .set-inner--is-completed .set-number {
-    color: #5f9cc8; }
-
-.set-number {
+.set-title {
+  margin-left: 5px;
+  margin-bottom: 8px;
   font-size: .7rem;
   text-transform: uppercase;
   font-weight: 700;
-  margin-bottom: .4rem;
   transition: color .2s; }
 
 .set-rmPercentage {
@@ -31,6 +29,7 @@
 
 .set-button-remove {
   margin-top: 5px;
+  margin-right: 5px;
   text-align: right; }
 
 .set-row {
@@ -55,4 +54,5 @@
   top: 0;
   right: 0;
   padding: 5px;
+  padding-top: 7px;
   cursor: pointer; }
