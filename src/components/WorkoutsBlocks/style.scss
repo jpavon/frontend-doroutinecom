@@ -26,17 +26,25 @@
 // tab list
 
 .workouts-blocks-tab-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
+    overflow: hidden;
     border-bottom: 4px solid #444;
     margin-bottom: 1rem;
     transition: border .2s;
+    height: 43px;
 
     &.workouts-blocks-tab-list--completed {
         border-color: $color-primary;
     }
+}
+
+.workouts-blocks-tab-list-inner {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    width: 100%;
+    overflow-x: scroll;
 }
 
 .workouts-blocks-tab {
@@ -47,6 +55,7 @@
     transition: background-color .2s, color .2s, border .2s;
     border-bottom: 2px solid transparent;
     margin-bottom: 1px;
+    height: 38px;
 
     &.workouts-blocks-tab--selected, &:hover {
         background-color: #444;

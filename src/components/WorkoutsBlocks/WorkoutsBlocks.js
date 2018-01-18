@@ -17,6 +17,7 @@ const WorkoutsBlocks = ({children, activeTab, blocks, completedBlocks, create, o
                     'workouts-blocks-tab-list',
                     !!completedBlocks[activeTab] && 'workouts-blocks-tab-list--completed'
                 )}
+                tabListInnerClassName="workouts-blocks-tab-list-inner"
                 tabClassName="workouts-blocks-tab"
                 tabClassNameHighlighted="workouts-blocks-tab--completed"
                 selectedTabClassName="workouts-blocks-tab--selected"
