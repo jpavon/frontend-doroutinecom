@@ -224,13 +224,6 @@ describe('routine shows validation errors', async () => {
         await page.waitFor(1000)
         await expectSelectorToContainText(page, '.set', 'format is invalid')
     }, global.TIMEOUT)
-
-    test('set reps', async () => {
-        await page.click('.set input[name=reps]')
-        await page.type('.set input[name=reps]', '.333')
-        await page.waitFor(1000)
-        await expectSelectorToContainText(page, '.set', 'format is invalid')
-    }, global.TIMEOUT)
 })
 
 describe('routine deletion', async () => {
