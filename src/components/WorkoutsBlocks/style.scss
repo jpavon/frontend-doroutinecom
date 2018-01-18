@@ -26,6 +26,7 @@
 // tab list
 
 .workouts-blocks-tab-list {
+    position: relative;
     overflow: hidden;
     border-bottom: 4px solid #444;
     margin-bottom: 1rem;
@@ -34,6 +35,18 @@
 
     &.workouts-blocks-tab-list--completed {
         border-color: $color-primary;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 20px;
+        background-color: red;
+        z-index: 1;
+        background: linear-gradient(to right, transparent 0%, $color-background 100%);
     }
 }
 
