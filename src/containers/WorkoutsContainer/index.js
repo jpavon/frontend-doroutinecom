@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { createWorkout, updateWorkout, removeWorkout } from 'data/workouts/actions'
 import { workoutsSelector } from 'data/workouts/selectors'
 import { STATUS_DELETING } from 'data/utils'
+import scrollTo from 'utils/scrollTo'
 
 import ExercisesContainer from 'containers/ExercisesContainer'
 import Workouts from 'components/Workouts/Workouts'
@@ -29,6 +30,8 @@ class WorkoutsContainer extends Component {
         this.props.createWorkout({
             routineId: this.props.routineId,
             blockId: this.props.blockId
+        }).then(() => {
+            scrollTo('workout')
         })
     }
 

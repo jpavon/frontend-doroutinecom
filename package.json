@@ -27,6 +27,7 @@
     "lodash": "^4.17.4",
     "moment": "^2.20.1",
     "moment-range": "^3.0.3",
+    "moveto": "^1.7.1",
     "node-sass-chokidar": "0.0.3",
     "normalize.css": "^7.0.0",
     "normalizr": "^3.2.4",

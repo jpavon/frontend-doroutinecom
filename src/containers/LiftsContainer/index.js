@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { liftsRoutineSelector } from 'data/lifts/selectors'
 import { createLift, updateLift, removeLift } from 'data/lifts/actions'
 import { STATUS_DELETING } from 'data/utils'
+import scrollTo from 'utils/scrollTo'
 
 import Lifts from 'components/Lifts/Lifts'
 import Lift from 'components/Lifts/Lift'
@@ -26,6 +27,9 @@ class LiftsContainer extends Component {
 
     handleCreate = () => {
         this.props.createLift(this.props.routineId)
+            .then(() => {
+                scrollTo('lift')
+            })
     }
 
     handleRemove = (id) => {
