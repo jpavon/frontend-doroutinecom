@@ -54,9 +54,11 @@
   position: relative;
   background-color: #333;
   padding: 5px;
-  transition: background-color .2s; }
+  transition: background-color .2s;
+  border-bottom: 2px solid transparent; }
   .workout-form.workout-form--is-completed {
-    background-color: #4c90c2; }
+    background-color: #4c90c2;
+    border-color: #3876a3; }
   .workout-form label {
     text-align: center;
     margin: 0;

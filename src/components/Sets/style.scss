@@ -12,12 +12,27 @@
 // single
 
 .set {
-    position: relative;
-    border-bottom: 1px solid #494949;
-    padding: 10px $spacing-small;
+    .set-inner {
+        position: relative;
+        padding: 10px $spacing-small;
+        background-color: transparent;
+        transition: background-color .2s;
+        border-bottom: 1px solid #494949;
+    }
 
     &:first-child {
-        border-top: 1px solid #494949;
+        .set-inner {
+            border-top: 1px solid #494949;
+        }
+    }
+
+    .set-inner--is-completed {
+        background-color: rgba($color-primary, .2);
+        border-color: rgba($color-primary, .2);
+
+        .set-number {
+            color: lighten($color-primary, 5%);
+        }
     }
 }
 
@@ -64,12 +79,8 @@
 
 .set-checkbox {
     position: absolute;
-    top: $spacing-small;
-    right: $spacing-small;
-}
-
-.set-form--is-completed {
-    .set-number {
-        color: lighten($color-primary, 5%);
-    }
+    top: 0;
+    right: 0;
+    padding: $spacing-small;
+    cursor: pointer;
 }

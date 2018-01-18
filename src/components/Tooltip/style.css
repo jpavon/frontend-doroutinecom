@@ -16,8 +16,7 @@
 .tooltip-content {
   position: absolute;
   top: 100%;
-  left: 0;
-  background-color: #222;
-  border: 1px solid #333;
+  left: 50%;
   cursor: default;
-  z-index: 100; }
+  z-index: 100;
+  transform: translateX(-50%); }

@@ -13,12 +13,12 @@ const RMTable = ({rm, weightMeasure, trainingMax}) => (
             <div className="rm-table-data">
                 {values.map((value) => (
                     <div key={value} className="rm-table-data-item">
-                        {value}% - {(rm * (value * trainingMax /100)/100).toFixed(0)}{weightMeasure}
+                        <span className="rm-table-percent">{value}%</span> {(rm * (value * trainingMax /100)/100).toFixed(0)}{weightMeasure}
                     </div>
                 ))}
             </div>
         </div> :
-        (<div className="rm-table">Set a RM to display percentage information.</div>)
+        (<div className="rm-table-empty">Set a RM to display percentage information.</div>)
 )
 
 export default RMTable

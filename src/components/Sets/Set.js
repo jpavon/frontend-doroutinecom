@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import classNames from 'classnames'
-import isNumber from 'lodash/isNumber'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
@@ -17,8 +16,8 @@ const Set = ({i, set, routine, update, remove, isDeleting}) => (
             render={({values}) => (
                 <div
                     className={classNames(
-                        'set-form',
-                        values.isCompleted && 'set-form--is-completed'
+                        'set-inner',
+                        values.isCompleted && 'set-inner--is-completed'
                     )}
                 >
                     <div className="set-number">
@@ -58,20 +57,20 @@ const Set = ({i, set, routine, update, remove, isDeleting}) => (
                             </div>
                         </div>
                     </div>
+                    <div className="set-button-remove">
+                        <Button
+                            minus
+                            danger
+                            transparent
+                            onClick={() => remove(set.id)}
+                            disabled={isDeleting}
+                        >
+                            Set
+                        </Button>
+                    </div>
                 </div>
             )}
         />
-        <div className="set-button-remove">
-            <Button
-                minus
-                danger
-                transparent
-                onClick={() => remove(set.id)}
-                disabled={isDeleting}
-            >
-                Set
-            </Button>
-        </div>
     </Fragment>
 )
 

@@ -21,7 +21,6 @@ class Tooltip extends Component {
                 )}
                 onMouseEnter={() => this.setState({open: true})}
                 onMouseLeave={() => this.setState({open: false})}
-                onClick={() => this.setState((prev) => ({open: !prev.open}))}
             >
                 <span className="tooltip-text">{text}</span>
 

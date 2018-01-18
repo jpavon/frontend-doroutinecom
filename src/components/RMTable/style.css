@@ -1,16 +1,27 @@
 .rm-table {
-  width: 150px; }
+  width: 130px;
+  background-color: #222;
+  text-align: center;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.6); }
+
+.rm-table-empty {
+  padding: 1rem;
+  width: 200px; }
 
 .rm-table-title {
   padding: .7rem 1rem;
   font-size: 1rem;
-  border-bottom: 3px solid #333;
+  background-color: #1a1a1a;
   font-weight: 500;
-  letter-spacing: .1rem; }
+  letter-spacing: .05rem;
+  text-align: center; }
 
 .rm-table-data-item {
-  padding: .5rem 1rem;
-  font-size: .9rem;
-  border-bottom: 1px solid #333; }
+  padding: 0 .5rem;
+  padding-top: .8rem;
+  font-size: .9rem; }
   .rm-table-data-item:last-child {
-    border-bottom: none; }
+    padding-bottom: .8rem; }
+
+.rm-table-percent {
+  color: rgba(239, 239, 239, 0.6); }

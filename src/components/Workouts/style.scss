@@ -73,9 +73,11 @@
     background-color: #333;
     padding: $spacing-small;
     transition: background-color .2s;
+    border-bottom: 2px solid transparent;
 
     &.workout-form--is-completed {
         background-color: $color-primary;
+        border-color: darken($color-primary, 10%);
     }
 
     label {
