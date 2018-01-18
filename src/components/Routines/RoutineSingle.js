@@ -19,7 +19,18 @@ const RoutineSingle = ({children, routine, update, remove}) => (
                     <Fragment>
                         <div className="routine-settings">
                             <div className="routine-settings-item">
-                                <Label htmlFor={`trainingMax${values.id}`} title="Training Max">TM</Label>
+                                <Label htmlFor={`weightMeasure${values.id}`}>Weight</Label>
+                                <Select
+                                    id={`weightMeasure${values.id}`}
+                                    name="weightMeasure"
+                                    options={[
+                                        {id: 'kg', name: 'kg'},
+                                        {id: 'lbs', name: 'lbs'},
+                                    ]}
+                                />
+                            </div>
+                            <div className="routine-settings-item">
+                                <Label htmlFor={`trainingMax${values.id}`} title="Training Max">TM Info</Label>
                                 <Select
                                     id={`trainingMax${values.id}`}
                                     name="trainingMax"
@@ -45,17 +56,6 @@ const RoutineSingle = ({children, routine, update, remove}) => (
                                     ]}
                                 />
                             </div>*/}
-                            <div className="routine-settings-item">
-                                <Label htmlFor={`weightMeasure${values.id}`}>Weight</Label>
-                                <Select
-                                    id={`weightMeasure${values.id}`}
-                                    name="weightMeasure"
-                                    options={[
-                                        {id: 'kg', name: 'kg'},
-                                        {id: 'lbs', name: 'lbs'},
-                                    ]}
-                                />
-                            </div>
                         </div>
                         <div className="routine-single-title">
                             <Label htmlFor={`name${values.id}`}>Title</Label>

@@ -12,21 +12,22 @@
     opacity: 1;
 }
 
+    .alert--success {
+        background-color: $color-success;
+        border: 2px solid darken($color-success, 5%)
+    }
+
+    .alert--error {
+        background-color: #9c4545;
+        border: 2px solid darken(#9c4545, 5%)
+    }
+
     .alert--small {
         padding: $spacing-small;
         font-size: .8rem;
         line-height: 1.1;
         margin-bottom: 0;
-    }
-
-    .alert--success {
-        background-color: $color-success;
-        border: 2px solid lighten($color-success, 10%)
-    }
-
-    .alert--error {
-        background-color: #9c4545;
-        border: 2px solid lighten(#9c4545, 10%)
+        border-width: 1px;
     }
 
     .alert--fade-in {

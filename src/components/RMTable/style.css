@@ -1,4 +1,4 @@
-.rm-table {
+.rm-table, .rm-table-empty {
   width: 130px;
   background-color: #222;
   text-align: center;
@@ -9,7 +9,7 @@
   width: 200px; }
 
 .rm-table-title {
-  padding: .7rem 1rem;
+  padding: .5rem 1rem;
   font-size: 1rem;
   background-color: #1a1a1a;
   font-weight: 500;
