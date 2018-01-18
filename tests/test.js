@@ -132,7 +132,7 @@ describe('routines creation', async () => {
     test('create multiple workouts', async () => {
         await page.click('.workouts-button-create button')
         await page.waitFor(1000)
-        await expectElementToBeOfLength(page, '.workouts-column', 2)
+        await expectElementToBeOfLength(page, '.workout', 2)
     }, global.TIMEOUT)
 
     test('create a exercise', async () => {
@@ -242,7 +242,7 @@ describe('routine deletion', async () => {
     test('workouts can be deleted', async () => {
         await page.click('.workout-button-remove button')
         await page.waitFor(2000)
-        await expectElementToBeOfLength(page, '.workouts-column', 1)
+        await expectElementToBeOfLength(page, '.workout', 1)
     }, global.TIMEOUT)
 
     test('lifts can be deleted', async () => {
