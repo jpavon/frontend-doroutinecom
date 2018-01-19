@@ -1,6 +1,7 @@
 .button, .button-icon {
-  color: #d5e5f1;
+  color: #efefef;
   background-color: #4c90c2;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.4);
   display: inline-block;
   font-weight: 700;
   text-align: center;
@@ -41,8 +42,9 @@
   font-size: .6rem; }
 
 .button--danger {
-  color: #efc3c3;
-  background-color: #c73434; }
+  color: #efefef;
+  background-color: #c73434;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.4); }
   .button--danger:hover {
     background-color: #b32f2f; }
   .button--danger:not([disabled]):not(.disabled).active, .button--danger:not([disabled]):not(.disabled):active {

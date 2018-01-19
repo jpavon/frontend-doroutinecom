@@ -12,7 +12,8 @@
   overflow: hidden;
   border-bottom: 4px solid #444;
   transition: border .2s;
-  height: 43px; }
+  height: 43px;
+  margin-right: 160px; }
   .workouts-blocks-tab-list.workouts-blocks-tab-list--completed {
     border-color: #4c90c2; }
   .workouts-blocks-tab-list:before {

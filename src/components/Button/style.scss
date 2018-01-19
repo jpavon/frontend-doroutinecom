@@ -1,9 +1,9 @@
 @import "variables.scss";
 
 @mixin button-color($color) {
-    color: lighten($color, 36%);
+    color: $color-font;
     background-color: $color;
-    // text-shadow: 0px 1px 1px darken($color, 15%);
+    text-shadow: 0px 1px 1px rgba(#000, .4);
 
     &:hover {
         background-color: darken($color, 5%);
