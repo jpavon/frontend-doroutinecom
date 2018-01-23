@@ -25,7 +25,11 @@ const callApi = (endpoint, method, data, store) => {
     }).catch((err) => {
         if (err.response.data.message === UNAUTH) {
             return Promise.reject(UNAUTH)
-        } else if (err.response.data.exception || err.response.status === 404 || err.response.status > 500) {
+        } else if (err.response.data.exception ||
+            err.response.status === 404 ||
+            err.response.status === 405 ||
+            err.response.status > 500
+        ) {
             return Promise.reject(SERVER_ERROR)
         } else {
             return Promise.reject(err.response.data)

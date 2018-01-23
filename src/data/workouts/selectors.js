@@ -6,12 +6,12 @@ const formatWorkout = (workout) => Workout({
     ...workout,
 })
 
-export const workoutsSelector = (routineId, blockId) => createSelector(
+export const workoutsSelector = (routineId, weekId) => createSelector(
     [
         state => state.workouts.entities
     ],
     (workouts) => workouts
-        .filter((workout) => (workout.blockId === blockId && workout.routineId === routineId))
+        .filter((workout) => (workout.weekId === weekId && workout.routineId === routineId))
         .map((workout) => formatWorkout(workout))
 )
 
@@ -29,12 +29,12 @@ export const workoutsRoutineSelector = (routineId) => createSelector(
     (workouts) => workouts.filter((workout) => (workout.routineId === routineId))
 )
 
-export const blocksSelector = (routineId) => createSelector(
+export const weeksSelector = (routineId) => createSelector(
     workoutsRoutineSelector(routineId),
     (workouts) => {
         const max = Math.max(
             ...new Set(
-                workouts.map((workout) => (workout.blockId))
+                workouts.map((workout) => (workout.weekId))
             )
         )
 
@@ -42,15 +42,15 @@ export const blocksSelector = (routineId) => createSelector(
     }
 )
 
-export const completedBlocks = (routineId) => createSelector(
+export const completedWeeks = (routineId) => createSelector(
     [
         workoutsRoutineSelector(routineId),
-        blocksSelector(routineId)
+        weeksSelector(routineId)
     ],
-    (workouts, blocks) => {
-        return blocks.map((id) => {
-            const routineWorkoutsBlocks = workouts.filter((workout) => (workout.blockId === id))
-            return (routineWorkoutsBlocks.length > 0 && routineWorkoutsBlocks.filter((workout) => (!workout.isCompleted)).length < 1) ? 1 : 0
+    (workouts, weeks) => {
+        return weeks.map((id) => {
+            const routineWorkoutsWeeks = workouts.filter((workout) => (workout.weekId === id))
+            return (routineWorkoutsWeeks.length > 0 && routineWorkoutsWeeks.filter((workout) => (!workout.isCompleted)).length < 1) ? 1 : 0
         })
     }
 )

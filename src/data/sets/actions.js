@@ -14,8 +14,8 @@ const getSets = () => ({
     }
 })
 
-export const fetchSets = () => (dispatch, getState) => {
-    return shouldFetch(types.NAME, getState()) && dispatch(getSets())
+export const fetchSets = (force = false) => (dispatch, getState) => {
+    return (force || shouldFetch(types.NAME, getState())) && dispatch(getSets())
 }
 
 

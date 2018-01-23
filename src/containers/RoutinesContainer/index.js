@@ -7,6 +7,11 @@ import history from 'utils/history'
 import { createRoutine, updateRoutine, removeRoutine } from 'data/routines/actions'
 import { routinesSelector } from 'data/routines/selectors'
 import { STATUS_LOADING } from 'data/utils'
+import { showAlert } from 'data/ui/actions'
+import { fetchWorkouts } from 'data/workouts/actions'
+import { fetchExercises } from 'data/exercises/actions'
+import { fetchLifts } from 'data/lifts/actions'
+import { fetchSets } from 'data/sets/actions'
 
 import Routines from 'components/Routines/Routines'
 import Routine from 'components/Routines/Routine'
@@ -21,21 +26,67 @@ class RoutinesContainer extends Component {
         createRoutine: PropTypes.func.isRequired,
         updateRoutine: PropTypes.func.isRequired,
         removeRoutine: PropTypes.func.isRequired,
+        showAlert: PropTypes.func.isRequired,
+        fetchWorkouts: PropTypes.func.isRequired,
+        fetchExercises: PropTypes.func.isRequired,
+        fetchLifts: PropTypes.func.isRequired,
+        fetchSets: PropTypes.func.isRequired,
     }
 
     handleCreate = () => {
         this.props.createRoutine()
             .then((resp) => {
-                history.push(`/r/${resp.payload.slug}`)
+                this.redirectOnCreate(resp)
             })
+    }
+
+    handleCreateType = (event) => {
+        event.preventDefault()
+
+        this.props.createRoutine({
+            programId: this.programId.value,
+            weightMeasure: this.weightMeasure.value,
+            precision: this.precision.value,
+            benchReps: this.benchReps.value,
+            benchWeight: this.benchWeight.value,
+            squatReps: this.squatReps.value,
+            squatWeight: this.squatWeight.value,
+            deadliftReps: this.deadliftReps.value,
+            deadliftWeight: this.deadliftWeight.value,
+            ohpReps: this.ohpReps.value,
+            ohpWeight: this.ohpWeight.value
+        }).then((resp) => {
+            if (resp.error) {
+                this.props.showAlert('error', resp.error.errors)
+            } else {
+                Promise.all([
+                    this.props.fetchWorkouts(true),
+                    this.props.fetchExercises(true),
+                    this.props.fetchLifts(true),
+                    this.props.fetchSets(true)
+                ]).then(() => {
+                    this.redirectOnCreate(resp)
+                })
+            }
+        })
+    }
+
+    redirectOnCreate = (resp) => {
+        history.push(`/r/${resp.payload.slug}`)
+    }
+
+    setRef = (ref, name) => {
+        this[name] = ref
     }
 
     render() {
         return (
             <Routines
                 create={this.handleCreate}
+                createType={this.handleCreateType}
                 remove={this.props.removeRoutine}
                 isLoading={this.props.isLoading}
+                setRef={this.setRef}
             >
                 {this.props.routines.length > 0 ?
                     this.props.routines.map((routine, i) => (
@@ -56,14 +107,19 @@ class RoutinesContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    routines: routinesSelector(props.blockId)(state),
+    routines: routinesSelector(props.weekId)(state),
     isLoading: state.routines.fetchStatus === STATUS_LOADING,
 })
 
 const mapDispatchToProps = {
     createRoutine,
     updateRoutine,
-    removeRoutine
+    removeRoutine,
+    showAlert,
+    fetchWorkouts,
+    fetchExercises,
+    fetchLifts,
+    fetchSets,
 }
 
 

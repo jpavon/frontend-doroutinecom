@@ -16,7 +16,7 @@ class WorkoutsContainer extends Component {
 
     static propTypes = {
         routineId: PropTypes.number.isRequired,
-        blockId: PropTypes.number.isRequired,
+        weekId: PropTypes.number.isRequired,
 
         workouts: PropTypes.array.isRequired,
         entitiesStatus: PropTypes.object.isRequired,
@@ -29,7 +29,7 @@ class WorkoutsContainer extends Component {
     handleCreate = () => {
         this.props.createWorkout({
             routineId: this.props.routineId,
-            blockId: this.props.blockId
+            weekId: this.props.weekId
         }).then(() => {
             scrollTo('workout-inner', { tolerance: 30})
         })
@@ -68,7 +68,7 @@ class WorkoutsContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    workouts: workoutsSelector(props.routineId, props.blockId)(state),
+    workouts: workoutsSelector(props.routineId, props.weekId)(state),
     entitiesStatus: state.workouts.entitiesStatus
 })
 

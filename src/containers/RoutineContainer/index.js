@@ -8,7 +8,7 @@ import { routineBySlugSelector } from 'data/routines/selectors'
 import { STATUS_LOADED } from 'data/utils'
 
 import LiftsContainer from 'containers/LiftsContainer'
-import WorkoutsBlocksContainer from 'containers/WorkoutsBlocksContainer'
+import WeeksContainer from 'containers/WeeksContainer'
 // import GraphContainer from 'containers/GraphContainer'
 
 import RoutineSingle from 'components/Routines/RoutineSingle'
@@ -50,7 +50,7 @@ class RoutineContainer extends Component {
                     remove={this.handleRemove}
                 >
                     <LiftsContainer routineId={this.props.routine.id} routine={this.props.routine} />
-                    <WorkoutsBlocksContainer routineId={this.props.routine.id} />
+                    <WeeksContainer routineId={this.props.routine.id} />
                 </RoutineSingle>
                 {/*<GraphContainer routineId={this.props.routine.id} />*/}
             </Fragment>

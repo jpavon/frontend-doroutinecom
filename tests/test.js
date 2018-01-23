@@ -167,8 +167,8 @@ describe('routines creation', async () => {
         await expectElementToBeOfLength(page, '.set', 2)
     }, global.TIMEOUT)
 
-    test('create a block', async () => {
-        await page.click('.workouts-blocks-button-create button')
+    test('create a week', async () => {
+        await page.click('.weeks-button-create button')
         await page.waitForSelector('.no-data')
         await page.click('.workouts-button-create button')
         await page.waitFor(1000)
@@ -205,8 +205,8 @@ describe('routine is saved on reload', async () => {
         await expectCheckboxToBe(page, '.set input[name=isCompleted]', true)
     }, global.TIMEOUT)
 
-    test('block is saved', async () => {
-        await expectElementToBeOfLength(page, '.workouts-blocks-tab', 2)
+    test('week is saved', async () => {
+        await expectElementToBeOfLength(page, '.weeks-tab', 2)
     }, global.TIMEOUT)
 })
 

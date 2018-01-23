@@ -6,7 +6,7 @@ const formatRoutine = (routine) => Routine({
     ...routine
 })
 
-export const routinesSelector = (blockId) => createSelector(
+export const routinesSelector = (weekId) => createSelector(
     [
         state => state.routines.entities
     ],

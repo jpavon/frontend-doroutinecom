@@ -1,31 +1,22 @@
 @import "variables.scss";
 
-.workouts-blocks-container {
+.weeks-container {
     // padding: 1rem;
 }
 
-.workouts-blocks {
+.weeks {
 
 }
 
-.workouts-blocks-button-create {
+.weeks-button-create {
     position: absolute;
     top: 0;
     right: 0;
 }
 
-// single
-
-.workouts-block {
-    position: relative;
-    // padding: 1rem;
-    // background-color: #fff;
-    margin-bottom: 2rem;
-}
-
 // tab list
 
-.workouts-blocks-tab-list {
+.weeks-tab-list {
     position: relative;
     overflow: hidden;
     border-bottom: 4px solid #444;
@@ -34,7 +25,7 @@
     height: 43px;
     margin-right: 160px;
 
-    &.workouts-blocks-tab-list--completed {
+    &.weeks-tab-list--completed {
         border-color: $color-primary;
     }
 
@@ -51,7 +42,7 @@
     }
 }
 
-.workouts-blocks-tab-list-inner {
+.weeks-tab-list-inner {
     display: flex;
     margin: 0;
     padding: 0;
@@ -61,7 +52,7 @@
     overflow-x: scroll;
 }
 
-.workouts-blocks-tab {
+.weeks-tab {
     position: relative;
     padding: .6rem 1.4rem;
     background-color: #333;
@@ -71,11 +62,20 @@
     margin-bottom: 1px;
     height: 38px;
 
-    &.workouts-blocks-tab--selected, &:hover {
+    &.weeks-tab--selected, &:hover {
         background-color: #444;
     }
 
-    &.workouts-blocks-tab--completed {
+    &.weeks-tab--completed {
         border-bottom: 2px solid $color-primary;
     }
+}
+
+// single
+
+.week {
+    position: relative;
+    // padding: 1rem;
+    // background-color: #fff;
+    margin-bottom: 2rem;
 }

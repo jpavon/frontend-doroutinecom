@@ -10,7 +10,7 @@ export const removeLoading = () => ({
 })
 
 export const showAlert = (type, message) => (dispatch, getState) => {
-    scrollTo('alert')
+    scrollTo('alert', { tolerance: 15 })
 
     return dispatch({
         type: types.SHOW_ALERT,

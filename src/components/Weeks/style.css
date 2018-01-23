@@ -1,22 +1,18 @@
-.workouts-blocks-button-create {
+.weeks-button-create {
   position: absolute;
   top: 0;
   right: 0; }
 
-.workouts-block {
-  position: relative;
-  margin-bottom: 2rem; }
-
-.workouts-blocks-tab-list {
+.weeks-tab-list {
   position: relative;
   overflow: hidden;
   border-bottom: 4px solid #444;
   transition: border .2s;
   height: 43px;
   margin-right: 160px; }
-  .workouts-blocks-tab-list.workouts-blocks-tab-list--completed {
+  .weeks-tab-list.weeks-tab-list--completed {
     border-color: #4c90c2; }
-  .workouts-blocks-tab-list:before {
+  .weeks-tab-list:before {
     content: '';
     position: absolute;
     top: 0;
@@ -27,7 +23,7 @@
     z-index: 1;
     background: linear-gradient(to right, transparent 0%, #222 100%); }
 
-.workouts-blocks-tab-list-inner {
+.weeks-tab-list-inner {
   display: flex;
   margin: 0;
   padding: 0;
@@ -35,7 +31,7 @@
   width: 100%;
   overflow-x: scroll; }
 
-.workouts-blocks-tab {
+.weeks-tab {
   position: relative;
   padding: .6rem 1.4rem;
   background-color: #333;
@@ -44,7 +40,11 @@
   border-bottom: 2px solid transparent;
   margin-bottom: 1px;
   height: 38px; }
-  .workouts-blocks-tab.workouts-blocks-tab--selected, .workouts-blocks-tab:hover {
+  .weeks-tab.weeks-tab--selected, .weeks-tab:hover {
     background-color: #444; }
-  .workouts-blocks-tab.workouts-blocks-tab--completed {
+  .weeks-tab.weeks-tab--completed {
     border-bottom: 2px solid #4c90c2; }
+
+.week {
+  position: relative;
+  margin-bottom: 2rem; }

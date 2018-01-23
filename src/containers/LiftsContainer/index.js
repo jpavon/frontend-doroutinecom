@@ -28,7 +28,7 @@ class LiftsContainer extends Component {
     handleCreate = () => {
         this.props.createLift(this.props.routineId)
             .then(() => {
-                scrollTo('lift')
+                scrollTo('lift', { tolerance: 10 })
             })
     }
 

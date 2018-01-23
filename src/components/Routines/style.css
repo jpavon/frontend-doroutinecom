@@ -36,3 +36,34 @@
 
 .routine-single-button-remove {
   text-align: right; }
+
+.routines-program {
+  padding: 2rem 5rem;
+  max-width: 540px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #292929;
+  border-bottom: 2px solid #111; }
+  @media (max-width: 500px) {
+    .routines-program {
+      padding: 1rem; } }
+
+.routines-program-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -20px;
+  margin-left: -20px; }
+
+.routines-program-col {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 20px;
+  padding-left: 20px;
+  flex: 0 0 50%;
+  max-width: 50%; }
+
+.routines-program-button {
+  margin-top: 2rem;
+  text-align: center; }
