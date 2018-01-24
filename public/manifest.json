@@ -1,15 +1,21 @@
 {
   "short_name": "doroutine",
-  "name": "Gym routine creation web app.",
+  "name": "doroutine",
+  "description": "Gym routine creation web app.",
   "icons": [
     {
       "src": "favicon.png",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-192x192.png",
+      "sizes": "192x192",
       "type": "image/png"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "./",
   "display": "standalone",
-  "theme_color": "#222222",
-  "background_color": "#ffffff"
+  "theme_color": "#222",
+  "background_color": "#222"
 }
