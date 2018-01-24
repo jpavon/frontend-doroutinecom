@@ -3,7 +3,8 @@ import * as types from 'data/ui/types'
 const initialState = {
     isLoading: false,
     alert: null,
-    isServerError: false
+    isServerError: false,
+    isOffline: !window.navigator.onLine
 }
 
 const ui = (state = initialState, action) => {
@@ -41,6 +42,12 @@ const ui = (state = initialState, action) => {
             return {
                 ...state,
                 isServerError: true
+            }
+
+        case types.SET_OFFLINE:
+            return {
+                ...state,
+                isOffline: true
             }
 
         default:

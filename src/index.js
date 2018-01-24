@@ -5,7 +5,7 @@ import { Router } from 'react-router-dom'
 
 import history from 'utils/history'
 import configureStore from 'store/configureStore'
-// import registerServiceWorker from 'utils/registerServiceWorker'
+import registerServiceWorker from 'utils/registerServiceWorker'
 
 import App from 'App'
 
@@ -21,4 +21,4 @@ render(
     </Provider>,
     document.getElementById('root')
 )
-// registerServiceWorker()
+registerServiceWorker()

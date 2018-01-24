@@ -2,12 +2,10 @@ import axios from 'axios'
 import { camelizeKeys, decamelizeKeys } from 'humps'
 
 import env from 'env'
-import { logoutUser } from 'data/user/actions'
-import { setServerError } from 'data/ui/actions'
+import { unauthUser } from 'data/user/actions'
+import { setServerError, setOffline } from 'data/ui/actions'
 
 export const CALL_API = 'CALL_API'
-const UNAUTH = 'Unauthenticated.'
-const SERVER_ERROR = 'SERVER_ERROR'
 
 const callApi = (endpoint, method, data, store) => {
     return axios.request({
@@ -23,15 +21,15 @@ const callApi = (endpoint, method, data, store) => {
     }).then((response) => {
         return Promise.resolve(response.data)
     }).catch((err) => {
-        if (err.response.data.message === UNAUTH) {
-            return Promise.reject(UNAUTH)
-        } else if (err.response.data.exception ||
-            err.response.status === 404 ||
-            err.response.status === 405 ||
-            err.response.status > 500
-        ) {
-            return Promise.reject(SERVER_ERROR)
-        } else {
+        if (err.response.data.message === 'Unauthenticated.') {
+            store.dispatch(unauthUser('An error ocurred, try to log in again.'))
+        }
+
+        if (err.response.status > 500) {
+            store.dispatch(setServerError())
+        }
+
+        if (err.response.data.errors) {
             return Promise.reject(err.response.data)
         }
     })
@@ -84,16 +82,15 @@ export default store => next => action => {
             meta
         })))
         .catch((error) => {
-            if (error === UNAUTH) {
-                if (!store.getState().user.isAuth) return
-                store.dispatch(logoutUser('An error ocurred, try to log in again.'))
-            } else if (error === SERVER_ERROR) {
-                store.dispatch(setServerError())
-            } else {
+            if (error.errors) {
                 return next(actionWith({
                     type: failureType,
-                    error: error || 'Server error.'
+                    error
                 }))
+            }
+
+            if (!window.navigator.onLine) {
+                store.dispatch(setOffline())
             }
         })
 }

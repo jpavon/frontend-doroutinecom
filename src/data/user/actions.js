@@ -2,6 +2,7 @@ import { CALL_API } from 'utils/apiMiddleware'
 import * as types from 'data/user/types'
 import { shouldFetch } from 'data/utils'
 import { showAlert } from 'data/ui/actions'
+import { fetchAppData } from 'data/globals'
 
 const getUser = () => ({
     [CALL_API]: {
@@ -127,16 +128,17 @@ export const authUser = (token) => (dispatch, getState) => {
     localStorage.setItem('token', token)
 
     dispatch(authUserAction())
+    dispatch(fetchAppData())
 }
 
-const logoutUserAction = () => ({
-    type: types.USER_LOGOUT
+const unauthUserAction = () => ({
+    type: types.USER_UNAUTH
 })
 
-export const logoutUser = (error) => (dispatch, getState) => {
+export const unauthUser = (error) => (dispatch, getState) => {
     localStorage.removeItem('token')
 
-    dispatch(logoutUserAction())
+    dispatch(unauthUserAction())
 
     error && dispatch(showAlert('error', error))
 }

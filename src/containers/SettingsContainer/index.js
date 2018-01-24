@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { updateUser, logoutUser } from 'data/user/actions'
+import { updateUser, unauthUser } from 'data/user/actions'
 import { userSelector } from 'data/user/selectors'
 
 import Settings from 'components/Settings'
@@ -14,14 +14,14 @@ class SettingsContainer extends Component {
             PropTypes.bool,
             PropTypes.object
         ]).isRequired,
-        logoutUser: PropTypes.func.isRequired,
+        unauthUser: PropTypes.func.isRequired,
         updateUser: PropTypes.func.isRequired,
     }
 
     handleLogoutUser = (event) => {
         event.preventDefault()
 
-        this.props.logoutUser()
+        this.props.unauthUser()
     }
 
     render() {
@@ -31,7 +31,7 @@ class SettingsContainer extends Component {
                     <Settings
                         user={this.props.user}
                         updateUser={this.props.updateUser}
-                        logoutUser={this.handleLogoutUser}
+                        unauthUser={this.handleLogoutUser}
                     />
                 </div>
         )
@@ -44,7 +44,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = {
     updateUser,
-    logoutUser
+    unauthUser
 }
 
 

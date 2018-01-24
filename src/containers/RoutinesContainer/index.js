@@ -8,10 +8,7 @@ import { createRoutine, updateRoutine, removeRoutine } from 'data/routines/actio
 import { routinesSelector } from 'data/routines/selectors'
 import { STATUS_LOADING } from 'data/utils'
 import { showAlert } from 'data/ui/actions'
-import { fetchWorkouts } from 'data/workouts/actions'
-import { fetchExercises } from 'data/exercises/actions'
-import { fetchLifts } from 'data/lifts/actions'
-import { fetchSets } from 'data/sets/actions'
+import { fetchRoutinesData } from 'data/globals'
 
 import Routines from 'components/Routines/Routines'
 import Routine from 'components/Routines/Routine'
@@ -27,10 +24,7 @@ class RoutinesContainer extends Component {
         updateRoutine: PropTypes.func.isRequired,
         removeRoutine: PropTypes.func.isRequired,
         showAlert: PropTypes.func.isRequired,
-        fetchWorkouts: PropTypes.func.isRequired,
-        fetchExercises: PropTypes.func.isRequired,
-        fetchLifts: PropTypes.func.isRequired,
-        fetchSets: PropTypes.func.isRequired,
+        fetchRoutinesData: PropTypes.func.isRequired,
     }
 
     handleCreate = () => {
@@ -59,14 +53,10 @@ class RoutinesContainer extends Component {
             if (resp.error) {
                 this.props.showAlert('error', resp.error.errors)
             } else {
-                Promise.all([
-                    this.props.fetchWorkouts(true),
-                    this.props.fetchExercises(true),
-                    this.props.fetchLifts(true),
-                    this.props.fetchSets(true)
-                ]).then(() => {
-                    this.redirectOnCreate(resp)
-                })
+                this.props.fetchRoutinesData()
+                    .then(() => {
+                        this.redirectOnCreate(resp)
+                    })
             }
         })
     }
@@ -116,10 +106,7 @@ const mapDispatchToProps = {
     updateRoutine,
     removeRoutine,
     showAlert,
-    fetchWorkouts,
-    fetchExercises,
-    fetchLifts,
-    fetchSets,
+    fetchRoutinesData
 }
 
 

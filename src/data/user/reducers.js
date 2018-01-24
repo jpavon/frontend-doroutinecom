@@ -53,7 +53,7 @@ const user = (state = initialState, action) => {
                 isAuth: true
             }
 
-        case types.USER_LOGOUT:
+        case types.USER_UNAUTH:
             return {
                 ...state,
                 isAuth: false

@@ -28,3 +28,7 @@ export const removeAlert = () => ({
 export const setServerError = () => ({
     type: types.SET_SERVER_ERROR
 })
+
+export const setOffline = () => ({
+    type: types.SET_OFFLINE
+})

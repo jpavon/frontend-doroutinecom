@@ -8,7 +8,7 @@ import Label from 'components/Form/Label'
 
 import './style.css'
 
-const Settings = ({user, updateUser, logoutUser}) => (
+const Settings = ({user, updateUser, unauthUser}) => (
     <Section title="Settings" className="settings">
         <AutoSaveForm
             initialValues={user}
@@ -33,7 +33,7 @@ const Settings = ({user, updateUser, logoutUser}) => (
         <div className="settings-button-logout">
             <Button
                 className="logout"
-                onClick={logoutUser}
+                onClick={unauthUser}
                 danger
             >
                 Logout

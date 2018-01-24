@@ -3,13 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { fetchUser } from 'data/user/actions'
-import { fetchRoutines } from 'data/routines/actions'
-import { fetchWorkouts } from 'data/workouts/actions'
-import { fetchExercises } from 'data/exercises/actions'
-import { fetchLifts } from 'data/lifts/actions'
-import { fetchSets } from 'data/sets/actions'
-import { showLoading, removeLoading } from 'data/ui/actions'
+import { fetchAppData } from 'data/globals'
 
 import Routes from 'Routes'
 import ErrorApp from 'components/ErrorApp'
@@ -17,29 +11,24 @@ import Nav from 'components/Nav'
 import Loading from 'components/Loading'
 import Footer from 'components/Footer'
 import Head from 'components/Head'
+import Offline from 'components/Offline'
 
 class App extends Component {
 
     static propTypes = {
-        isFetchRequired: PropTypes.bool.isRequired,
         isAuth: PropTypes.bool.isRequired,
+        isLoading: PropTypes.bool.isRequired,
         isServerError: PropTypes.bool.isRequired,
+        isOffline: PropTypes.bool.isRequired,
 
-        fetchUser: PropTypes.func.isRequired,
-        fetchRoutines: PropTypes.func.isRequired,
-        fetchWorkouts: PropTypes.func.isRequired,
-        fetchExercises: PropTypes.func.isRequired,
-        fetchLifts: PropTypes.func.isRequired,
-        fetchSets: PropTypes.func.isRequired,
-        showLoading: PropTypes.func.isRequired,
-        removeLoading: PropTypes.func.isRequired
+        fetchAppData: PropTypes.func.isRequired
     }
 
     constructor(props) {
         super(props)
 
-        if (this.props.isFetchRequired && this.props.isAuth) {
-            this.fetchData()
+        if (props.isAuth) {
+            props.fetchAppData()
         }
     }
 
@@ -48,10 +37,6 @@ class App extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.isFetchRequired && nextProps.isAuth && !nextProps.isLoading && !this.state.isErrorApp) {
-            this.fetchData()
-        }
-
         if (nextProps.isServerError && nextProps.isServerError !== this.props.isServerError) {
             this.setState({ isErrorApp: true })
         }
@@ -61,22 +46,9 @@ class App extends Component {
         this.setState({ isErrorApp: true })
     }
 
-    fetchData = () => {
-        this.props.showLoading()
-
-        Promise.all([
-            this.props.fetchUser(),
-            this.props.fetchRoutines(),
-            this.props.fetchWorkouts(),
-            this.props.fetchExercises(),
-            this.props.fetchLifts(),
-            this.props.fetchSets()
-        ]).then(() => {
-            this.props.removeLoading()
-        })
-    }
-
     render() {
+        if (this.props.isOffline) return (<Offline />)
+
         return (
             <Fragment>
                 <Head />
@@ -98,21 +70,14 @@ class App extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    isFetchRequired: Object.keys(state.user.entity).length === 0,
     isAuth: state.user.isAuth,
     isLoading: state.ui.isLoading,
-    isServerError: state.ui.isServerError
+    isServerError: state.ui.isServerError,
+    isOffline: state.ui.isOffline
 })
 
 const mapDispatchToProps = {
-    fetchUser,
-    fetchRoutines,
-    fetchWorkouts,
-    fetchExercises,
-    fetchLifts,
-    fetchSets,
-    showLoading,
-    removeLoading
+    fetchAppData
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
