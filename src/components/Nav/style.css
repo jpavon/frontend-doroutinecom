@@ -1,7 +1,6 @@
 .nav-container {
   padding: 8px 30px 5px;
-  margin-bottom: 2rem;
-  background-color: #292929; }
+  background-color: #171717; }
   @media (max-width: 576px) {
     .nav-container {
       max-width: 540px;

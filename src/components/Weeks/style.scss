@@ -1,7 +1,8 @@
 @import "variables.scss";
+@import "mixins.scss";
 
 .weeks-container {
-    // padding: 1rem;
+    position: relative;
 }
 
 .weeks {
@@ -39,23 +40,19 @@
         background-color: red;
         z-index: 1;
         background: linear-gradient(to right, transparent 0%, $color-background 100%);
+        pointer-events: none;
     }
 }
 
 .weeks-tab-list-inner {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    width: 100%;
+    @include tablist();
     overflow-x: scroll;
 }
 
 .weeks-tab {
+    @include tab();
+
     position: relative;
-    padding: .6rem 1.4rem;
-    background-color: #333;
     cursor: pointer;
     transition: background-color .2s, color .2s, border .2s;
     border-bottom: 2px solid transparent;

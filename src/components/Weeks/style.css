@@ -1,3 +1,6 @@
+.weeks-container {
+  position: relative; }
+
 .weeks-button-create {
   position: absolute;
   top: 0;
@@ -21,25 +24,38 @@
     width: 20px;
     background-color: red;
     z-index: 1;
-    background: linear-gradient(to right, transparent 0%, #222 100%); }
+    background: linear-gradient(to right, transparent 0%, #222 100%);
+    pointer-events: none; }
 
 .weeks-tab-list-inner {
   display: flex;
-  margin: 0;
-  padding: 0;
   list-style: none;
-  width: 100%;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid #111;
   overflow-x: scroll; }
 
 .weeks-tab {
+  flex: 1;
+  padding: 15px 0;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: .8rem;
+  font-weight: 700;
+  border-bottom: 3px solid transparent;
   position: relative;
-  padding: .6rem 1.4rem;
-  background-color: #333;
   cursor: pointer;
   transition: background-color .2s, color .2s, border .2s;
   border-bottom: 2px solid transparent;
   margin-bottom: 1px;
   height: 38px; }
+  .weeks-tab:active {
+    background-color: #292929; }
+  .weeks-tab[class*="selected"] {
+    border-bottom-color: #4c90c2; }
   .weeks-tab.weeks-tab--selected, .weeks-tab:hover {
     background-color: #444; }
   .weeks-tab.weeks-tab--completed {

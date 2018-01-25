@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import { Tab, Tabs as ReactTabs, TabList, TabPanel } from 'react-tabs'
+import { Tabs as ReactTabs, Tab, TabList, TabPanel } from 'react-tabs'
 
 const Tabs = ({renderTabList, renderTabPanel, tabListClassName, tabListInnerClassName, tabClassName, tabClassNameHighlighted, selectedTabClassName, selectedIndex, onSelect}) => (
     <ReactTabs

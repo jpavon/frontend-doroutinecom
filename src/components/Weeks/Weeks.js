@@ -1,14 +1,13 @@
 import React from 'react'
 import classNames from 'classnames'
 
-import Section from 'components/Section'
 import Button from 'components/Button'
 import Tabs from 'components/Tabs'
 
 import './style.css'
 
 const Weeks = ({children, activeTab, weeks, completedWeeks, create, onSelect}) => (
-    <Section title="Workouts" className="weeks-container">
+    <div className="weeks-container">
         <div className="weeks">
             <Tabs
                 selectedIndex={activeTab}
@@ -33,7 +32,7 @@ const Weeks = ({children, activeTab, weeks, completedWeeks, create, onSelect}) =
         <div className="weeks-button-create">
             <Button onClick={create} className="button-small">Add New Week</Button>
         </div>
-    </Section>
+    </div>
 )
 
 export default Weeks

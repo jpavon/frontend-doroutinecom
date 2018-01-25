@@ -3,40 +3,6 @@
   top: 0;
   right: 0; }
 
-.routine-title {
-  margin-bottom: .2rem;
-  display: block;
-  margin-bottom: 2rem;
-  padding: .4rem 1rem;
-  font-size: .8rem;
-  text-decoration: none;
-  border-bottom: 2px solid #333;
-  border-left: 8px solid #333;
-  transition: border-color .2s; }
-  .routine-title:hover {
-    border-color: #4c90c2; }
-
-.routine-single {
-  margin-bottom: 2rem; }
-
-.routine-settings {
-  position: absolute;
-  display: flex;
-  top: 0;
-  right: 0; }
-
-.routine-settings-item {
-  flex: 1;
-  margin-left: .5rem; }
-  .routine-settings-item select {
-    width: 85px; }
-
-.routine-single-title {
-  position: relative; }
-
-.routine-single-button-remove {
-  text-align: right; }
-
 .routines-program {
   padding: 2rem 5rem;
   max-width: 540px;
@@ -67,3 +33,57 @@
 .routines-program-button {
   margin-top: 2rem;
   text-align: center; }
+
+.routine-title {
+  margin-bottom: .2rem;
+  display: block;
+  margin-bottom: 2rem;
+  padding: .4rem 1rem;
+  font-size: .8rem;
+  text-decoration: none;
+  border-bottom: 2px solid #333;
+  border-left: 8px solid #333;
+  transition: border-color .2s; }
+  .routine-title:hover {
+    border-color: #4c90c2; }
+
+.routine-single {
+  margin-bottom: 2rem; }
+
+.routine-settings {
+  display: flex; }
+
+.routine-settings-item {
+  flex: 1;
+  margin-left: .5rem; }
+  .routine-settings-item select {
+    width: 85px; }
+
+.routine-single-title {
+  position: relative; }
+
+.routine-single-button-remove {
+  text-align: right; }
+
+.routine-single-tablist {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid #111; }
+
+.routine-single-tab {
+  flex: 1;
+  padding: 15px 0;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: .8rem;
+  font-weight: 700;
+  border-bottom: 3px solid transparent; }
+  .routine-single-tab:active {
+    background-color: #292929; }
+  .routine-single-tab[class*="selected"] {
+    border-bottom-color: #4c90c2; }

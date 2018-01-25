@@ -1,15 +1,8 @@
 .container {
   width: 100%;
-  padding-right: 30px;
-  padding-left: 30px;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 1200px; }
-  @media (max-width: 576px) {
-    .container {
-      max-width: 540px;
-      padding-right: 15px;
-      padding-left: 15px; } }
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #222; }
 
 .row {
   display: flex;
