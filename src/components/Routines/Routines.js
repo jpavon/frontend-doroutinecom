@@ -13,7 +13,7 @@ const Routine = ({children, create, createType, isLoading, setRef}) => (
         <div className="routines-button-create">
             <Button onClick={create} disabled={isLoading}>New routine</Button>
         </div>
-        <div className="routines-program">
+        {/*<div className="routines-program">
             <form method="post" onSubmit={createType}>
                 <div className="routines-program-row">
                     <div className="routines-program-col">
@@ -148,7 +148,7 @@ const Routine = ({children, create, createType, isLoading, setRef}) => (
                     <Button type="submit">Create</Button>
                 </div>
             </form>
-        </div>
+        </div>*/}
         {children}
     </Section>
 )
