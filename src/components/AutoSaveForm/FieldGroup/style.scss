@@ -1,0 +1,19 @@
+@import "variables.scss";
+
+.field-group {
+    position: relative;
+    display: flex;
+    padding: $spacing / 2 $spacing;
+    align-items: center;
+    background-color: #fff;
+    border-top: 1px solid $color-border;
+
+    > div {
+        width: 100%;
+    }
+
+    &:last-child {
+        margin-bottom: $spacing;
+        border-bottom: 1px solid $color-border;
+    }
+}

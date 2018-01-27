@@ -10,61 +10,8 @@
 }
 
 .weeks-button-create {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-// tab list
-
-.weeks-tab-list {
-    position: relative;
-    overflow: hidden;
-    border-bottom: 4px solid #444;
-    // margin-bottom: 1rem;
-    transition: border .2s;
-    height: 43px;
-    margin-right: 160px;
-
-    &.weeks-tab-list--completed {
-        border-color: $color-primary;
-    }
-
-    &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 20px;
-        background-color: red;
-        z-index: 1;
-        background: linear-gradient(to right, transparent 0%, $color-background 100%);
-        pointer-events: none;
-    }
-}
-
-.weeks-tab-list-inner {
-    @include tablist();
-    overflow-x: scroll;
-}
-
-.weeks-tab {
-    @include tab();
-
-    position: relative;
-    cursor: pointer;
-    transition: background-color .2s, color .2s, border .2s;
-    border-bottom: 2px solid transparent;
-    margin-bottom: 1px;
-    height: 38px;
-
-    &.weeks-tab--selected, &:hover {
-        background-color: #444;
-    }
-
-    &.weeks-tab--completed {
-        border-bottom: 2px solid $color-primary;
+    button {
+        margin: auto;
     }
 }
 
@@ -72,7 +19,11 @@
 
 .week {
     position: relative;
-    // padding: 1rem;
-    // background-color: #fff;
-    margin-bottom: 2rem;
+
+    margin-bottom: 1rem;
+}
+
+.week-title {
+    margin-left: $spacing;
+    font-size: .8rem;
 }

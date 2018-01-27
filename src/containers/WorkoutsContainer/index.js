@@ -30,8 +30,6 @@ class WorkoutsContainer extends Component {
         this.props.createWorkout({
             routineId: this.props.routineId,
             weekId: this.props.weekId
-        }).then(() => {
-            scrollTo('workout-inner', { tolerance: 30})
         })
     }
 
@@ -49,6 +47,7 @@ class WorkoutsContainer extends Component {
                             update={this.props.updateWorkout}
                             remove={this.props.removeWorkout}
                             isDeleting={this.props.entitiesStatus[workout.id] === STATUS_DELETING}
+                            routineId={this.props.routineId}
                         >
                             <ExercisesContainer
                                 workoutId={workout.id}

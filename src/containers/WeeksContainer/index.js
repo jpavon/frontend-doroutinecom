@@ -69,7 +69,7 @@ class WeeksContainer extends Component {
                 create={this.handleCreate}
             >
                 {this.state.weeks.map((id) => (
-                    <Week key={id}>
+                    <Week key={id} index={id}>
                         <WorkoutsContainer weekId={id} routineId={this.props.routineId} />
                     </Week>
                 ))}

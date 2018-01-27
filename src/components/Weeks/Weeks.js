@@ -2,31 +2,13 @@ import React from 'react'
 import classNames from 'classnames'
 
 import Button from 'components/Button'
-import Tabs from 'components/Tabs'
 
 import './style.css'
 
 const Weeks = ({children, activeTab, weeks, completedWeeks, create, onSelect}) => (
     <div className="weeks-container">
         <div className="weeks">
-            <Tabs
-                selectedIndex={activeTab}
-                onSelect={onSelect}
-                tabListClassName={classNames(
-                    'weeks-tab-list',
-                    !!completedWeeks[activeTab] && 'weeks-tab-list--completed'
-                )}
-                tabListInnerClassName="weeks-tab-list-inner"
-                tabClassName="weeks-tab"
-                tabClassNameHighlighted="weeks-tab--completed"
-                selectedTabClassName="weeks-tab--selected"
-                renderTabList={(
-                    weeks.map((id) => (
-                        <div completed={completedWeeks[id - 1]}>{id}</div>
-                    ))
-                )}
-                renderTabPanel={(children)}
-            />
+            {children}
         </div>
 
         <div className="weeks-button-create">

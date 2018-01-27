@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from 'pages/Layout'
-import RoutineContainer from 'containers/RoutineContainer'
+import RoutineIndexContainer from 'containers/RoutineIndexContainer'
 
 const Routine = ({match}) => (
     <Layout
@@ -8,7 +8,7 @@ const Routine = ({match}) => (
             <title>Routine</title>
         )}
     >
-        <RoutineContainer
+        <RoutineIndexContainer
             routineSlug={match.params.routineSlug}
         />
     </Layout>

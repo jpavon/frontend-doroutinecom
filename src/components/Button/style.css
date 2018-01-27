@@ -1,34 +1,27 @@
 .button {
-  color: #efefef;
-  background-color: #4c90c2;
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.4);
-  display: inline-block;
-  font-weight: 700;
+  color: #4c90c2;
+  display: flex;
+  font-weight: 400;
   text-align: center;
-  white-space: nowrap;
   vertical-align: middle;
   user-select: none;
-  border: 1px solid transparent;
-  padding: .35rem .7rem;
-  font-size: .7rem;
-  line-height: 1.5;
-  border-radius: 2px;
+  border: 0;
+  padding: 22px 0;
+  font-size: .9rem;
+  border-radius: 0;
   text-decoration: none;
-  text-transform: uppercase;
   letter-spacing: .1rem;
   transition: background-color .2s, opacity .2s, color .2s;
   cursor: pointer;
-  outline: 0;
-  text-overflow: ellipsis;
-  line-height: 1;
-  white-space: nowrap;
-  overflow: hidden; }
-  .button:hover {
-    background-color: #3e83b6; }
-  .button:not([disabled]):not(.disabled).active, .button:not([disabled]):not(.disabled):active {
-    box-shadow: 0 0 1px 2px #316890, inset 0 0 1px 1px rgba(0, 0, 0, 0.2); }
+  outline: none;
+  text-shadow: none;
+  background-color: transparent;
+  line-height: 1.5;
+  -webkit-appearance: none; }
   input + .button {
     margin-top: 1rem; }
+  .button:focus {
+    outline: none; }
   .button.disabled, .button[disabled] {
     cursor: default;
     opacity: .7;
@@ -42,13 +35,7 @@
   font-size: .6rem; }
 
 .button--danger {
-  color: #efefef;
-  background-color: #c73434;
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.4); }
-  .button--danger:hover {
-    background-color: #b32f2f; }
-  .button--danger:not([disabled]):not(.disabled).active, .button--danger:not([disabled]):not(.disabled):active {
-    box-shadow: 0 0 1px 2px #8a2424, inset 0 0 1px 1px rgba(0, 0, 0, 0.2); }
+  color: #c73434; }
 
 .button--transparent {
   padding: 0;

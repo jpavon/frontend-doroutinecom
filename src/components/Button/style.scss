@@ -15,33 +15,33 @@
 }
 
 .button {
-    @include button-color($color-primary);
-
-    display: inline-block;
-    font-weight: 700;
+    color: $color-primary;
+    display: flex;
+    font-weight: 400;
     text-align: center;
-    white-space: nowrap;
     vertical-align: middle;
     user-select: none;
-    border: 1px solid transparent;
-    padding: .35rem .7rem;
-    font-size: .7rem;
-    line-height: 1.5;
-    border-radius: 2px;
+    border: 0;
+    padding: $spacing 0;
+    font-size: .9rem;
+    border-radius: 0;
     text-decoration: none;
-    text-transform: uppercase;
     letter-spacing: .1rem;
     transition: background-color .2s, opacity .2s, color .2s;
     cursor: pointer;
-    outline: 0;
+    outline: none;
+    text-shadow: none;
+    background-color: transparent;
 
-    text-overflow: ellipsis;
-    line-height: 1;
-    white-space: nowrap;
-    overflow: hidden;
+    line-height: 1.5;
+    -webkit-appearance: none;
 
     input + & {
         margin-top: 1rem;
+    }
+
+    &:focus {
+        outline: none;
     }
 
     &.disabled, &[disabled] {
@@ -62,7 +62,7 @@
 }
 
 .button--danger {
-    @include button-color($color-danger);
+    color: $color-danger;
 }
 
 .button--transparent {

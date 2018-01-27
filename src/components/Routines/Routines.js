@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Button from 'components/Button'
-import Section from 'components/Section'
 import Input from 'components/Form/Input'
 import InputWithItem from 'components/Form/InputWithItem'
 import Select from 'components/Form/Select'
@@ -9,11 +8,8 @@ import Select from 'components/Form/Select'
 import './style.css'
 
 const Routine = ({children, create, createType, isLoading, setRef}) => (
-    <Section title="Routines" className="routines">
-        <div className="routines-button-create">
-            <Button onClick={create} disabled={isLoading}>New routine</Button>
-        </div>
-        <div className="routines-program">
+    <div className="routines">
+        {/*<div className="routines-program">
             <form method="post" onSubmit={createType}>
                 <div className="routines-program-row">
                     <div className="routines-program-col">
@@ -148,9 +144,12 @@ const Routine = ({children, create, createType, isLoading, setRef}) => (
                     <Button type="submit">Create</Button>
                 </div>
             </form>
-        </div>
+        </div>*/}
         {children}
-    </Section>
+        <div className="routines-button-create">
+            <Button onClick={create} disabled={isLoading}>New routine</Button>
+        </div>
+    </div>
 )
 
 export default Routine

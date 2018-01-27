@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import Alert from 'components/Alert'
+import Alert from 'components/Form/Alert'
 import UncontrolledInput from 'components/Form/Input'
 import Saving from 'components/Saving'
 
@@ -26,8 +26,6 @@ const Input = (props, context) => {
                 />
             </div>
             <Alert
-                size="small"
-                type="error"
                 message={errors[name]}
             />
         </Fragment>

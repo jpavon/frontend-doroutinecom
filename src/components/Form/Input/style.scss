@@ -8,17 +8,21 @@
 
     font-size: .9rem;
     border-radius: 3px;
-    background-color: $color-input-background;
+    background-color: transparent;
     color: $color-font;
-    border: 1px solid $color-border;
+    border: 0;
 
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
     &:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0 50px $color-input-background inset, 0 0 0 50px $color-background inset;
+        -webkit-box-shadow: 0 0 0 50px transparent inset, 0 0 0 50px $color-background inset;
         -webkit-text-fill-color: $color-font;
         border-color: #333;
+    }
+
+    &:focus {
+        outline: 0;
     }
 
     &.input--right {
@@ -34,15 +38,9 @@
         font-size: 1.4rem;
     }
 
-    &::-webkit-input-placeholder {
-        color: rgba($color-font, .3);
-    }
-    &:-moz-placeholder {
-        color: rgba($color-font, .3);
-    }
-    &::-moz-placeholder {
-        color: rgba($color-font, .3);
-    }
+    &::-webkit-input-placeholder,
+    &:-moz-placeholder,
+    &::-moz-placeholder,
     &:-ms-input-placeholder {
         color: rgba($color-font, .3);
     }

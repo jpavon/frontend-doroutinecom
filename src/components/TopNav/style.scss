@@ -1,0 +1,28 @@
+@import "variables.scss";
+
+.top-nav {
+    position: relative;
+    margin: 0 $spacing;
+}
+
+.top-nav-title {
+    width: 100%;
+    padding: $spacing;
+    margin-bottom: 0;
+
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.top-nav-left, .top-nav-right {
+    position: absolute;
+    top: 0;
+}
+
+.top-nav-left {
+    left: 0;
+}
+
+.top-nav-right {
+    right: 0;
+}

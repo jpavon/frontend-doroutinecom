@@ -1,45 +1,61 @@
 import React, { Fragment } from 'react'
 
-import Section from 'components/Section'
-import Button from 'components/Button'
-import Input from 'components/AutoSaveForm/Input'
+import FieldGroup from 'components/AutoSaveForm/FieldGroup'
 import AutoSaveForm from 'components/AutoSaveForm'
-import Label from 'components/Form/Label'
+import TopNav from 'components/TopNav'
 
 import './style.css'
 
 const Settings = ({user, updateUser, unauthUser}) => (
-    <Section title="Settings" className="settings">
+    <div className="settings">
+        <TopNav
+            title="General"
+            rightLabel="Logout"
+            right={{
+                onClick: unauthUser,
+                danger: true
+            }}
+        />
         <AutoSaveForm
             initialValues={user}
             update={updateUser}
             render={() => (
                 <Fragment>
-                    <Label htmlFor="name">Name</Label>
-                    <Input
+                    <FieldGroup
+                        label="Weight Measurement"
                         id="name"
                         name="name"
-                        size="large"
                     />
-                    <Label htmlFor="email">Email</Label>
-                    <Input
+                    <FieldGroup
+                        label="Training Max"
                         id="email"
                         name="email"
-                        size="large"
                     />
                 </Fragment>
             )}
         />
-        <div className="settings-button-logout">
-            <Button
-                className="logout"
-                onClick={unauthUser}
-                danger
-            >
-                Logout
-            </Button>
-        </div>
-    </Section>
+        <TopNav
+            title="Profile"
+        />
+        <AutoSaveForm
+            initialValues={user}
+            update={updateUser}
+            render={() => (
+                <Fragment>
+                    <FieldGroup
+                        label="Name"
+                        id="name"
+                        name="name"
+                    />
+                    <FieldGroup
+                        label="Email"
+                        id="email"
+                        name="email"
+                    />
+                </Fragment>
+            )}
+        />
+    </div>
 )
 
 export default Settings

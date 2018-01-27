@@ -11,9 +11,10 @@ import LiftsContainer from 'containers/LiftsContainer'
 import WeeksContainer from 'containers/WeeksContainer'
 // import GraphContainer from 'containers/GraphContainer'
 
-import RoutineSingle from 'components/Routines/RoutineSingle'
+import RoutineIndex from 'components/RoutineIndex'
+import TopNav from 'components/TopNav'
 
-class RoutineContainer extends Component {
+class RoutineIndexContainer extends Component {
 
     static propTypes = {
         routineSlug: PropTypes.string.isRequired,
@@ -44,17 +45,24 @@ class RoutineContainer extends Component {
     render() {
         return this.props.routine ?
             <Fragment>
-                <RoutineSingle
+                <TopNav
+                    title="Routine"
+                    left={{
+                        to: "/"
+                    }}
+                />
+                <RoutineIndex
                     routine={this.props.routine}
                     update={this.props.updateRoutine}
-                    remove={this.handleRemove}
-                    lifts={(
-                        <LiftsContainer routineId={this.props.routine.id} routine={this.props.routine} />
-                    )}
-                    weeks={(
-                        <WeeksContainer routineId={this.props.routine.id} />
-                    )}
-                />
+                    // remove={this.handleRemove}
+                    // lifts={(
+                    //     <LiftsContainer routineId={this.props.routine.id} routine={this.props.routine} />
+                    // )}
+                    // weeks={(
+                    // )}
+                >
+                    <WeeksContainer routineId={this.props.routine.id} />
+                </RoutineIndex>
             </Fragment>
         : null
     }
@@ -71,4 +79,4 @@ const mapDispatchToProps = {
     removeRoutine
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RoutineContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(RoutineIndexContainer)

@@ -7,7 +7,7 @@ import Register from 'pages/Auth/Register'
 import PasswordForgotten from 'pages/Auth/PasswordForgotten'
 import PasswordReset from 'pages/Auth/PasswordReset'
 import Routines from 'pages/Routines'
-import Routine from 'pages/Routine'
+import RoutineIndex from 'pages/RoutineIndex'
 import Settings from 'pages/Settings'
 import NotFound from 'pages/NotFound'
 
@@ -53,7 +53,7 @@ class Routes extends Component {
                 <GuestRoute exact path="/password-reset/:token" component={PasswordReset} />
 
                 <PrivateRoute exact path="/" component={Routines} />
-                <PrivateRoute exact path="/r/:routineSlug" component={Routine} />
+                <PrivateRoute exact path="/r/:routineSlug" component={RoutineIndex} />
                 <PrivateRoute exact path="/settings" component={Settings} />
 
                 <PrivateRoute component={NotFound}/>

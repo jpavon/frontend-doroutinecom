@@ -5,9 +5,9 @@
 }
 
 .routines-button-create {
-    position: absolute;
-    top: 0;
-    right: 0;
+    button {
+        margin: auto;
+    }
 }
 
 
@@ -48,24 +48,25 @@
     }
 
 .routine {
-}
+    display: block;
+    padding: $spacing - 4 $spacing;
+    text-decoration: none;
+    border-bottom: 1px solid $color-border;
+    transition: border-color .2s;
+    background-color: transparent;
+    transition: color .2s;
+    background-image: url('../../media/arrow-right.svg');
+    background-repeat: no-repeat;
+    background-position: right $spacing top $spacing - 4;
 
-    .routine-title {
-        margin-bottom: .2rem;
-        display: block;
-        margin-bottom: 2rem;
-        padding: .4rem 1rem;
-        font-size: .8rem;
-        text-decoration: none;
-        border-bottom: 2px solid #333;
-        border-left: 8px solid #333;
-        transition: border-color .2s;
-
-        &:hover {
-            border-color: $color-primary;
-        }
+    h2 {
+        margin-bottom: 0;
     }
 
+    &:hover {
+        color: $color-danger;
+    }
+}
 
 // single page
 

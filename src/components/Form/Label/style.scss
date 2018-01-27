@@ -1,10 +1,12 @@
+@import "variables.scss";
+
 .label {
     display: block;
     font-size: .8rem;
-    text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: .05rem;
-    margin-bottom: .4rem;
+    margin-right: $spacing;
+    color: lighten($color-font, 20%);
 
     label + * + & {
         margin-top: 1rem;

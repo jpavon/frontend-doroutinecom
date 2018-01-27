@@ -1,5 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
+import { Link } from 'react-router-dom'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
@@ -8,9 +9,11 @@ import Textarea from 'components/AutoSaveForm/Textarea'
 import Label from 'components/Form/Label'
 import Button from 'components/Button'
 
-const Workout = ({index, children, workout, update, remove, isDeleting}) => (
-    <div className="workout-inner">
-        <AutoSaveForm
+const Workout = ({index, children, workout, update, remove, routineId, isDeleting}) => (
+    <Link to={`/r/${routineId}/workout/${workout.id}`} className="workout">
+        {workout.name || 'No workout name set.'}
+
+        {/*<AutoSaveForm
             initialValues={workout}
             update={update}
             render={({values}) => (
@@ -20,28 +23,28 @@ const Workout = ({index, children, workout, update, remove, isDeleting}) => (
                         values.isCompleted && 'workout-top--is-completed'
                     )}
                 >
-                    <Label htmlFor={`workout-completed${values.id}`} className="workout-checkbox">
-                        <Checkbox
-                            id={`workout-completed${values.id}`}
-                            name="isCompleted"
-                        />
-                        <div className="workout-checkbox-text">Completed</div>
-                    </Label>
-                    <Label htmlFor={`workout-name${values.id}`}>DAY {index + 1}</Label>
-                    <div className="workout-name">
+                    <div className="workout-top-name">
+                        <Label htmlFor={`workout-name${values.id}`}>DAY {index + 1}</Label>
+                    </div>
+                    <div className="workout-top-input">
                         <Input
                             id={`workout-name${values.id}`}
                             name="name"
                             placeholder="Name"
                         />
                     </div>
+                    <Label htmlFor={`workout-completed${values.id}`} className="workout-top-checkbox">
+                        <span className="workout-top-checkbox-text">Completed</span>
+                        <Checkbox
+                            id={`workout-completed${values.id}`}
+                            name="isCompleted"
+                        />
+                    </Label>
                 </div>
             )}
-        />
+        />*/}
 
-        {children}
-
-        <AutoSaveForm
+        {/*<AutoSaveForm
             initialValues={workout}
             update={update}
             render={({values}) => (
@@ -53,9 +56,9 @@ const Workout = ({index, children, workout, update, remove, isDeleting}) => (
                     />
                 </div>
             )}
-        />
+        />*/}
 
-        <div className="workout-button-remove">
+        {/*<div className="workout-button-remove">
             <Button
                 minus
                 transparent
@@ -65,8 +68,8 @@ const Workout = ({index, children, workout, update, remove, isDeleting}) => (
             >
                 Workout
             </Button>
-        </div>
-    </div>
+        </div>*/}
+    </Link>
 )
 
 export default Workout
