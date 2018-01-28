@@ -1,7 +1,6 @@
 .select {
   position: relative;
   padding: 5px 35px 5px 10px;
-  height: 34px;
   width: 100%;
   appearance: none;
   font-size: .9rem;
@@ -11,8 +10,6 @@
   background-image: url("../../../media/arrow-down.svg");
   background-repeat: no-repeat;
   background-position: right 13px top 13px;
-  background-color: rgba(0, 0, 0, 0.2); }
-  .select:focus {
-    background-color: rgba(0, 0, 0, 0.2); }
+  background-color: transparent; }
   .select.select--default-option {
-    color: rgba(255, 255, 255, 0.6); }
+    color: rgba(68, 68, 68, 0.6); }

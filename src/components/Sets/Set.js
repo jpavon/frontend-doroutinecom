@@ -20,52 +20,32 @@ const Set = ({i, set, routine, update, remove, isDeleting}) => (
                         values.isCompleted && 'set-inner--is-completed'
                     )}
                 >
-                    <div className="set-title">
-                        <span>Set {i + 1} </span>
-                        <span title="Training Max" className="set-rmPercentage">
-                            - TM% {set.tmPercentage}
-                        </span>
+                    <div className="set-inner-item">
+                        <Label># {i + 1}</Label>
                     </div>
-                    <Label htmlFor={`set-completed${values.id}`} className="set-checkbox">
-                        <Checkbox
-                            id={`set-completed${values.id}`}
-                            name="isCompleted"
+                    <div className="set-inner-item">
+                        <Input
+                            name="reps"
+                            placeholder="Set reps"
                         />
-                    </Label>
-                    <div className="set-row">
-                        <div className="set-col">
-                            <div className="set-reps">
-                                <InputWithItem
-                                    item={!isNaN(values.reps) && (values.reps > 1 ? 'reps' : 'rep')}
-                                >
-                                    <Input
-                                        name="reps"
-                                    />
-                                </InputWithItem>
-                            </div>
-                        </div>
-                        <div className="set-col">
-                            <div className="set-weight">
-                                <InputWithItem
-                                    item={routine.weightMeasure}
-                                >
-                                    <Input
-                                        type="number"
-                                        name="weight"
-                                    />
-                                </InputWithItem>
-                            </div>
-                        </div>
                     </div>
-                    <div className="set-button-remove">
+                    <div className="set-inner-item">
+                        <Input
+                            type="number"
+                            name="weight"
+                            placeholder="Set weight"
+                        />
+                    </div>
+                    <div className="set-inner-item set-button-remove">
+                        {/*<Checkbox
+                            name="isCompleted"
+                        />*/}
                         <Button
-                            minus
                             danger
-                            transparent
                             onClick={() => remove(set.id)}
                             disabled={isDeleting}
                         >
-                            Set
+                            Remove
                         </Button>
                     </div>
                 </div>

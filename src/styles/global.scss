@@ -22,7 +22,7 @@ body {
     font-family: $font-family;
     color: $color-font;
     overflow-y: scroll;
-    background-color: darken($color-background, 2%);
+    background-color: $color-background;
     font-weight: 400;
 }
 

@@ -8,12 +8,13 @@ import Checkbox from 'components/AutoSaveForm/Checkbox'
 import Textarea from 'components/AutoSaveForm/Textarea'
 import Label from 'components/Form/Label'
 import Button from 'components/Button'
+import ListItem from 'components/ListItem'
 
 const Workout = ({index, children, workout, update, remove, routineId, isDeleting}) => (
-    <Link to={`/r/${routineId}/workout/${workout.id}`} className="workout">
+    <ListItem to={`/routines/${routineId}/workouts/${workout.id}`} className="workout">
         {workout.name || 'No workout name set.'}
-
-        {/*<AutoSaveForm
+    </ListItem>
+        /*<AutoSaveForm
             initialValues={workout}
             update={update}
             render={({values}) => (
@@ -42,9 +43,9 @@ const Workout = ({index, children, workout, update, remove, routineId, isDeletin
                     </Label>
                 </div>
             )}
-        />*/}
+        />*/
 
-        {/*<AutoSaveForm
+        /*<AutoSaveForm
             initialValues={workout}
             update={update}
             render={({values}) => (
@@ -56,9 +57,9 @@ const Workout = ({index, children, workout, update, remove, routineId, isDeletin
                     />
                 </div>
             )}
-        />*/}
+        />*/
 
-        {/*<div className="workout-button-remove">
+        /*<div className="workout-button-remove">
             <Button
                 minus
                 transparent
@@ -68,8 +69,7 @@ const Workout = ({index, children, workout, update, remove, routineId, isDeletin
             >
                 Workout
             </Button>
-        </div>*/}
-    </Link>
+        </div>*/
 )
 
 export default Workout

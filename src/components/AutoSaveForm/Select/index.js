@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import Alert from 'components/Alert'
+import Alert from 'components/Form/Alert'
 import UncontrolledSelect from 'components/Form/Select'
 import Saving from 'components/Saving'
 
@@ -29,8 +29,6 @@ const Select = (props, context) => {
                 />
             </div>
             <Alert
-                size="small"
-                type="error"
                 message={options < 1 && noOptionsMessage}
             />
             <Alert

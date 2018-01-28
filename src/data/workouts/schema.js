@@ -4,9 +4,10 @@ const Workout = validateData({
     id: 'number',
     userId: 'number',
     routineId: 'number',
-    weekId: 'number',
     name: 'string|null',
-    isCompleted: 'boolean',
+    isCompleted: 'string|null',
+    isTemplate: 'boolean',
+    isPending: 'boolean',
     notes: 'string|null',
     createdAt: 'string',
     updatedAt: 'string'

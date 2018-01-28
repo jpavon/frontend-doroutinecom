@@ -3,18 +3,19 @@
   padding-top: 2rem;
   padding-bottom: 10rem;
   text-align: right;
-  background-color: #191919; }
+  background-color: #ececec; }
+
+.footer-inner {
+  padding: 22px; }
 
 .footer-item, .footer-link {
   display: inline-block;
   text-decoration: none;
   margin-left: 2rem;
   margin-bottom: 1rem;
-  text-transform: uppercase;
-  font-size: .8rem;
-  font-weight: 700; }
+  font-size: .8rem; }
   .footer-item:nth-child(1), .footer-link:nth-child(1) {
     margin-left: 0; }
 
 .footer-item {
-  color: #aaa; }
+  color: #888; }

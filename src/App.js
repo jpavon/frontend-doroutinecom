@@ -30,6 +30,8 @@ class App extends Component {
         if (props.isAuth) {
             props.fetchAppData()
         }
+
+        this.isTouchDevice = 'ontouchstart' in document.documentElement
     }
 
     state = {
@@ -54,6 +56,7 @@ class App extends Component {
                 <Head />
                 <Nav
                     isAuth={this.props.isAuth}
+                    isTouchDevice={this.isTouchDevice}
                 />
                 {this.props.isLoading ?
                     <Loading /> :

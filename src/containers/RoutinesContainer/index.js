@@ -62,7 +62,7 @@ class RoutinesContainer extends Component {
     }
 
     redirectOnCreate = (resp) => {
-        history.push(`/r/${resp.payload.slug}`)
+        history.push(`/routines/${resp.payload.id}`)
     }
 
     setRef = (ref, name) => {
@@ -73,10 +73,8 @@ class RoutinesContainer extends Component {
         return (
             <Routines
                 create={this.handleCreate}
-                createType={this.handleCreateType}
                 remove={this.props.removeRoutine}
                 isLoading={this.props.isLoading}
-                setRef={this.setRef}
             >
                 {this.props.routines.length > 0 ?
                     this.props.routines.map((routine, i) => (
@@ -86,9 +84,7 @@ class RoutinesContainer extends Component {
                         />
                     )) :
                     <NoData
-                        buttonText="Create routine"
-                        text="No routine created"
-                        create={this.handleCreate}
+                        text="No routine created."
                     />
                 }
             </Routines>
@@ -97,7 +93,7 @@ class RoutinesContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    routines: routinesSelector(props.weekId)(state),
+    routines: routinesSelector(state),
     isLoading: state.routines.fetchStatus === STATUS_LOADING,
 })
 

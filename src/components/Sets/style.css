@@ -1,59 +1,34 @@
+.sets {
+  background-color: #fff; }
+
 .sets-button-create {
-  padding: 5px 0;
-  padding-left: 10px;
-  border-bottom: 1px solid #303030; }
+  display: flex;
+  padding: 11px 22px;
+  background-color: #f9f9f9; }
+  .sets-button-create button {
+    margin-left: auto;
+    padding: 0; }
 
-.set {
-  border-bottom: 1px solid #303030; }
-  .set:first-child {
-    border-top: 1px solid #303030; }
-  .set .set-inner {
-    position: relative;
-    padding: 10px 5px;
-    background-color: transparent;
-    border-left: 0px solid rgba(76, 144, 194, 0.4);
-    transition: border-width .3s; }
-  .set .set-inner--is-completed {
-    border-width: 3px;
-    background-color: rgba(76, 144, 194, 0.1); }
+.sets-header {
+  display: flex;
+  padding: 11px 22px;
+  border-bottom: 1px solid #e4e9ea; }
 
-.set-title {
-  margin-left: 5px;
-  margin-bottom: 8px;
-  font-size: .7rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  transition: color .2s; }
+.set-header-item {
+  flex: 0 0 25%; }
 
-.set-rmPercentage {
-  color: rgba(68, 68, 68, 0.6); }
+.set-inner {
+  display: flex;
+  border-bottom: 1px solid #e4e9ea;
+  padding: 5.5px 22px;
+  align-items: center; }
+
+.set-inner-item {
+  position: relative;
+  flex: 0 0 25%; }
 
 .set-button-remove {
-  margin-top: 5px;
-  margin-right: 5px;
-  text-align: right; }
-
-.set-row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -3px;
-  margin-left: -3px;
-  justify-content: center; }
-
-.set-col {
-  flex: 1;
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 3px;
-  padding-left: 3px;
-  flex: 0 0 50%;
-  max-width: 50%; }
-
-.set-checkbox {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 5px;
-  padding-top: 7px;
-  cursor: pointer; }
+  display: flex; }
+  .set-button-remove button {
+    padding: 0;
+    margin-left: auto; }

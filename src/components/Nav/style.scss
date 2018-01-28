@@ -8,6 +8,13 @@
         // padding-right: 15px;
         // padding-left: 15px;
     }
+
+    &.nav-container--touch {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 1000;
+    }
 }
 
 .nav {
@@ -54,6 +61,7 @@
 
 .nav-link {
     display: flex;
+    align-items: center;
     max-width: 120px;
     width: 100%;
     margin: auto;
@@ -81,6 +89,12 @@
 
         img {
             opacity: 1;
+        }
+    }
+
+    @media (max-width: 414px) {
+        img {
+            max-width: 24px;
         }
     }
 }

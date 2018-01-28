@@ -8,32 +8,12 @@
 }
 
 .workouts {
-
-}
-
-.workouts-button-create {
-    button {
-        margin: auto;
-    }
+    margin-bottom: $spacing;
 }
 
 // single
 
 .workout {
-    display: block;
-    padding: $spacing / 2 $spacing;
-    border-bottom: 1px solid $color-border;
-    background-image: url('../../media/arrow-right.svg');
-    background-repeat: no-repeat;
-    background-position: right $spacing top $spacing / 2;
-
-    &:first-child {
-        border-top: 1px solid $color-border;
-    }
-
-    &:hover {
-        color: $color-danger;
-    }
 }
 
 .workout-button-remove {

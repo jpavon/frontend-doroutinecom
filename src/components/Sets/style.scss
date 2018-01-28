@@ -1,85 +1,70 @@
 @import "variables.scss";
 
 .sets {
+    background-color: #fff;
 }
 
 .sets-button-create {
-    padding: $spacing-small 0;
-    padding-left: $spacing-small * 2;
-    border-bottom: 1px solid #303030;
+    display: flex;
+    padding: $spacing / 2 $spacing;
+    background-color: $color-background;
+
+    button {
+        margin-left: auto;
+        padding: 0;
+    }
+}
+
+.sets-header {
+    display: flex;
+    padding: $spacing / 2 $spacing;
+    border-bottom: 1px solid $color-border;
+}
+
+.set-header-item {
+    flex: 0 0 25%;
 }
 
 // single
 
 .set {
-    border-bottom: 1px solid #303030;
+
+}
+
+.set-inner {
+    display: flex;
+    border-bottom: 1px solid $color-border;
+    padding: $spacing / 4 $spacing;
+    align-items: center;
 
     &:first-child {
-            border-top: 1px solid #303030;
-    }
 
-    .set-inner {
-        position: relative;
-        padding: 10px $spacing-small;
-        background-color: transparent;
-        border-left: 0px solid rgba($color-primary, .4);
-        transition: border-width .3s;
-    }
-
-    .set-inner--is-completed {
-        border-width: 3px;
-        background-color: rgba($color-primary, .1);
     }
 }
 
-.set-title {
-    margin-left: $spacing-small;
-    margin-bottom: 8px;
-    font-size: .7rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    transition: color .2s;
+.set-inner-item {
+    position: relative;
+    flex: 0 0 25%;
 }
 
-.set-rmPercentage {
-    color: rgba($color-font, .6);
+.set-inner--is-completed {
+
 }
 
 .set-button-remove {
-    margin-top: $spacing-small;
-    margin-right: $spacing-small;
-    text-align: right;
+    display: flex;
+
+    button {
+        padding: 0;
+        margin-left: auto;
+    }
 }
 
 // form
-
-.set-row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -3px;
-    margin-left: -3px;
-    justify-content: center;
-}
-
-.set-col {
-    flex: 1;
-    position: relative;
-    width: 100%;
-    min-height: 1px;
-    padding-right: 3px;
-    padding-left: 3px;
-    flex: 0 0 percentage(1/2);
-    max-width: percentage(1/2);
-}
 
 .set-weight {
 }
 
 .set-checkbox {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: $spacing-small;
-    padding-top: 7px;
-    cursor: pointer;
+
 }

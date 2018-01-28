@@ -3,7 +3,6 @@
 .select {
     position: relative;
     padding: 5px 35px 5px 10px;
-    height: 34px;
     width: 100%;
 
     appearance: none;
@@ -15,14 +14,13 @@
     background-image: url('../../../media/arrow-down.svg');
     background-repeat: no-repeat;
     background-position: right 13px top 13px;
-
-    background-color: $color-input-background;
+    background-color: transparent;
 
     &:focus {
-        background-color: $color-input-background;
+        // background-color: $color-input-background;
     }
 
     &.select--default-option {
-        color: rgba(#fff, .6);
+        color: rgba($color-font, .6);
     }
 }

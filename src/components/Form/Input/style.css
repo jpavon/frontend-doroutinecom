@@ -1,7 +1,7 @@
 .input {
   position: relative;
   margin-bottom: 0;
-  padding: 5px;
+  padding: 5px 0;
   width: 100%;
   font-size: .9rem;
   border-radius: 3px;
@@ -9,7 +9,7 @@
   color: #444;
   border: 0; }
   .input:-webkit-autofill, .input:-webkit-autofill:hover, .input:-webkit-autofill:focus, .input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 50px transparent inset, 0 0 0 50px #fefefe inset;
+    -webkit-box-shadow: 0 0 0 50px transparent inset, 0 0 0 50px #f9f9f9 inset;
     -webkit-text-fill-color: #444;
     border-color: #333; }
   .input:focus {

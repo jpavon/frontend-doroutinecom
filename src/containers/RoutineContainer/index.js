@@ -4,20 +4,19 @@ import { connect } from 'react-redux'
 
 import history from 'utils/history'
 import { createRoutine, updateRoutine, removeRoutine } from 'data/routines/actions'
-import { routineBySlugSelector } from 'data/routines/selectors'
+import { routineByIdSelector } from 'data/routines/selectors'
 import { STATUS_LOADED } from 'data/utils'
 
-import LiftsContainer from 'containers/LiftsContainer'
-import WeeksContainer from 'containers/WeeksContainer'
+// import LiftsContainer from 'containers/LiftsContainer'
+import WorkoutsContainer from 'containers/RoutineContainer/WorkoutsContainer'
 // import GraphContainer from 'containers/GraphContainer'
 
-import RoutineIndex from 'components/RoutineIndex'
-import TopNav from 'components/TopNav'
+import Routine from 'components/Routine'
 
-class RoutineIndexContainer extends Component {
+class RoutineContainer extends Component {
 
     static propTypes = {
-        routineSlug: PropTypes.string.isRequired,
+        routineId: PropTypes.number.isRequired,
 
         routine: PropTypes.object,
         isStatusLoaded: PropTypes.bool.isRequired,
@@ -44,32 +43,18 @@ class RoutineIndexContainer extends Component {
 
     render() {
         return this.props.routine ?
-            <Fragment>
-                <TopNav
-                    title="Routine"
-                    left={{
-                        to: "/"
-                    }}
-                />
-                <RoutineIndex
-                    routine={this.props.routine}
-                    update={this.props.updateRoutine}
-                    // remove={this.handleRemove}
-                    // lifts={(
-                    //     <LiftsContainer routineId={this.props.routine.id} routine={this.props.routine} />
-                    // )}
-                    // weeks={(
-                    // )}
-                >
-                    <WeeksContainer routineId={this.props.routine.id} />
-                </RoutineIndex>
-            </Fragment>
+            <Routine
+                routine={this.props.routine}
+                update={this.props.updateRoutine}
+            >
+                <WorkoutsContainer routineId={this.props.routine.id} />
+            </Routine>
         : null
     }
 }
 
 const mapStateToProps = (state, props) => ({
-    routine: routineBySlugSelector(props.routineSlug)(state),
+    routine: routineByIdSelector(props.routineId)(state),
     isStatusLoaded: state.routines.fetchStatus === STATUS_LOADED,
 })
 
@@ -79,4 +64,4 @@ const mapDispatchToProps = {
     removeRoutine
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RoutineIndexContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(RoutineContainer)

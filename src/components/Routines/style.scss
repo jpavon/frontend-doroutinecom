@@ -4,68 +4,8 @@
 .routines {
 }
 
-.routines-button-create {
-    button {
-        margin: auto;
-    }
-}
-
-
-.routines-program {
-    padding: 2rem 5rem;
-    max-width: 540px;
-    width: 100%;
-    margin: 0 auto;
-    background-color: #292929;
-    border-bottom: 2px solid #111;
-
-    @media (max-width: 500px) {
-        padding: 1rem;
-    }
-}
-
-    .routines-program-row {
-        display: flex;
-        flex-wrap: wrap;
-        margin-right: -20px;
-        margin-left: -20px;
-    }
-
-    .routines-program-col {
-        flex: 1;
-        position: relative;
-        width: 100%;
-        min-height: 1px;
-        padding-right: 20px;
-        padding-left: 20px;
-        flex: 0 0 percentage(1/2);
-        max-width: percentage(1/2);
-    }
-
-    .routines-program-button {
-        margin-top: 2rem;
-        text-align: center;
-    }
-
 .routine {
-    display: block;
-    padding: $spacing - 4 $spacing;
-    text-decoration: none;
-    border-bottom: 1px solid $color-border;
-    transition: border-color .2s;
-    background-color: transparent;
-    transition: color .2s;
-    background-image: url('../../media/arrow-right.svg');
-    background-repeat: no-repeat;
-    background-position: right $spacing top $spacing - 4;
 
-    h2 {
-        margin-bottom: 0;
-    }
-
-    &:hover {
-        color: $color-danger;
-    }
 }
 
 // single page
@@ -110,3 +50,40 @@
 .routine-single-tab {
     @include tab();
 }
+
+
+.routines-program {
+    padding: 2rem 5rem;
+    max-width: 540px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #292929;
+    border-bottom: 2px solid #111;
+
+    @media (max-width: 500px) {
+        padding: 1rem;
+    }
+}
+
+    .routines-program-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -20px;
+        margin-left: -20px;
+    }
+
+    .routines-program-col {
+        flex: 1;
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding-right: 20px;
+        padding-left: 20px;
+        flex: 0 0 percentage(1/2);
+        max-width: percentage(1/2);
+    }
+
+    .routines-program-button {
+        margin-top: 2rem;
+        text-align: center;
+    }

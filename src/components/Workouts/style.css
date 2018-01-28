@@ -1,17 +1,5 @@
-.workouts-button-create button {
-  margin: auto; }
-
-.workout {
-  display: block;
-  padding: 11px 22px;
-  border-bottom: 1px solid #e4e9ea;
-  background-image: url("../../media/arrow-right.svg");
-  background-repeat: no-repeat;
-  background-position: right 22px top 11px; }
-  .workout:first-child {
-    border-top: 1px solid #e4e9ea; }
-  .workout:hover {
-    color: #c73434; }
+.workouts {
+  margin-bottom: 22px; }
 
 .workout-top {
   display: flex;

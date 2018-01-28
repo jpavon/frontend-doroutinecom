@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import Button from 'components/Button'
-import Select from 'components/AutoSaveForm/Select'
+import FieldGroup from 'components/AutoSaveForm/FieldGroup'
 
 const Exercise = ({children, exercise, lifts, update, remove, isDeleting}) => (
     <Fragment>
@@ -11,7 +11,10 @@ const Exercise = ({children, exercise, lifts, update, remove, isDeleting}) => (
             initialValues={exercise}
             render={() => (
                 <div className="exercise-form">
-                    <Select
+                    <FieldGroup
+                        component="select"
+                        label="Lift"
+                        id="liftId"
                         name="liftId"
                         options={lifts || []}
                         defaultOptionMessage="Select a lift..."
@@ -23,13 +26,11 @@ const Exercise = ({children, exercise, lifts, update, remove, isDeleting}) => (
         {children}
         <div className="exercise-button-remove">
             <Button
-                minus
-                transparent
                 danger
                 onClick={() => remove(exercise.id)}
                 disabled={isDeleting}
             >
-                Exercise
+                Remove
             </Button>
         </div>
     </Fragment>

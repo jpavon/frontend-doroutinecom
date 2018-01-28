@@ -6,8 +6,8 @@
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="lifts">
-            <polygon id="Path-5-Copy" stroke="#979797" stroke-linejoin="round" points="30.5 15.5 33.5 15.5 33.5 1.5 30.5 1.51763724"></polygon>
-            <polygon id="Path-5-Copy" stroke="#979797" stroke-linejoin="round" points="0.5 15.5 3.5 15.5 3.5 1.5 0.5 1.51763724"></polygon>
+            <polygon id="Path-5-Copy" stroke="#585858" stroke-linejoin="round" points="30.5 15.5 33.5 15.5 33.5 1.5 30.5 1.51763724"></polygon>
+            <polygon id="Path-5-Copy" stroke="#585858" stroke-linejoin="round" points="0.5 15.5 3.5 15.5 3.5 1.5 0.5 1.51763724"></polygon>
             <path d="M7.5,32 L7.5,8 C7.5,8 7.50000004,6.4967041 9,6.4967041 C10.5,6.4967041 10.5,8 10.5,8 L10.5,19 C10.5,19 10.4360025,25.4643557 17.0000002,25.4643555 C23.5639979,25.4643553 23.4999992,19 23.4999992,19 L23.5,8 C23.5,8 23.5012215,6.4967041 25,6.4967041 C26.4987785,6.4967041 26.4987785,8 26.4987785,8 L26.4987793,32" id="Path-7" stroke="#979797" stroke-linecap="round"></path>
             <ellipse id="Oval" stroke="#979797" cx="16.8849196" cy="18.8849196" rx="4.38491962" ry="4.38491962"></ellipse>
             <rect id="-" fill="#979797" x="4" y="8" width="3" height="1"></rect>

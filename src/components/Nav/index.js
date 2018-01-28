@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react'
 import { NavLink } from 'react-router-dom'
+import classNames from 'classnames'
 
 import logo from 'media/logo.svg'
+import profileIcon from 'media/profile.svg'
 import routinesIcon from 'media/routines.svg'
 import newRoutineIcon from 'media/new-routine.svg'
 import liftsIcon from 'media/lifts.svg'
@@ -9,8 +11,12 @@ import settingsIcon from 'media/settings.svg'
 
 import './style.css'
 
-const Nav = ({isAuth = false, renderItems = null}) => (
-    <nav className="nav-container">
+const Nav = ({isAuth = false, renderItems = null, isTouchDevice}) => (
+    <nav className={classNames(
+            'nav-container',
+            isTouchDevice && 'nav-container--touch'
+        )}
+    >
         <div className="nav">
             <NavLink to="/" className="nav-logo" activeClassName="nav-link--active">
                 <img src={logo} alt="Logo"/>
@@ -23,6 +29,12 @@ const Nav = ({isAuth = false, renderItems = null}) => (
                             <Fragment>
                                 <li className="nav-item">
                                     <NavLink exact to="/" className="nav-link" activeClassName="nav-link--active">
+                                        <img src={profileIcon} alt="Profile" />
+                                        <span>Profile</span>
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink to="/routines" className="nav-link" activeClassName="nav-link--active">
                                         <img src={routinesIcon} alt="Routines" />
                                         <span>Routines</span>
                                     </NavLink>

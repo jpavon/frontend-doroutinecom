@@ -1,0 +1,22 @@
+@import "variables.scss";
+
+.list-item {
+    display: block;
+    padding: $spacing - 4 $spacing;
+    text-decoration: none;
+    border-bottom: 1px solid $color-border;
+    transition: border-color .2s;
+    background-color: transparent;
+    transition: color .2s;
+    background-image: url('../../media/arrow-right.svg');
+    background-repeat: no-repeat;
+    background-position: right $spacing top $spacing - 4;
+
+    &:hover {
+        color: $color-danger;
+    }
+
+    &:first-child {
+        border-top: 1px solid $color-border;
+    }
+}

@@ -5,14 +5,14 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="settings" stroke="#979797">
-            <path d="M10.5,7.5 L30.6120605,7.5" id="Path-5" stroke-linecap="round"></path>
-            <circle id="Oval" cx="7" cy="7.5" r="3.5"></circle>
-            <path d="M3.5,27.5 L23.5,27.5" id="Path-5" stroke-linecap="round"></path>
-            <circle id="Oval" cx="27" cy="27.5" r="3.5"></circle>
-            <path d="M3.5,17.5 L13.5,17.5" id="Path-5" stroke-linecap="round"></path>
-            <path d="M20.5,17.5 L30.5,17.5" id="Path-5" stroke-linecap="round"></path>
-            <circle id="Oval" cx="17" cy="17.5" r="3.5"></circle>
+        <g id="settings">
+            <path d="M10.5,7.5 L30.6120605,7.5" id="Path-5" stroke="#979797" stroke-linecap="round"></path>
+            <circle id="Oval" stroke="#585858" cx="7" cy="7.5" r="3.5"></circle>
+            <path d="M3.5,27.5 L23.5,27.5" id="Path-5" stroke="#979797" stroke-linecap="round"></path>
+            <circle id="Oval" stroke="#585858" cx="27" cy="27.5" r="3.5"></circle>
+            <path d="M3.5,17.5 L13.5,17.5" id="Path-5" stroke="#979797" stroke-linecap="round"></path>
+            <path d="M20.5,17.5 L30.5,17.5" id="Path-5" stroke="#979797" stroke-linecap="round"></path>
+            <circle id="Oval" stroke="#585858" cx="17" cy="17.5" r="3.5"></circle>
         </g>
     </g>
 </svg>
