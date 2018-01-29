@@ -61,7 +61,7 @@ class WorkoutsContainer extends Component {
                 </Workouts>
 
                 <TopNav
-                    title="Pending Workouts"
+                    title="In Progress Workouts"
                 />
                 <Workouts>
                     {this.props.pendingWorkouts.length > 0 ?
@@ -74,7 +74,7 @@ class WorkoutsContainer extends Component {
                             />
                         )) :
                         <NoData
-                            text="No workout created."
+                            text="No in progress workouts."
                         />
                     }
                 </Workouts>

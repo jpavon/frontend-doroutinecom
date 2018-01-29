@@ -1,11 +1,13 @@
 @import "variables.scss";
 
-.sets {
+.sets-edit {
+    background-color: #fff;
 }
 
-.sets-button-create {
+.sets-edit-button-create {
     display: flex;
     padding: $spacing / 2 $spacing;
+    background-color: $color-background;
 
     button {
         margin-left: auto;
@@ -13,7 +15,7 @@
     }
 }
 
-.sets-header {
+.sets-edit-header {
     display: flex;
     padding: $spacing / 2 $spacing;
     border-bottom: 1px solid $color-border;
@@ -25,11 +27,11 @@
 
 // single
 
-.set {
+.set-edit {
 
 }
 
-.set {
+.set-edit-inner {
     position: relative;
     display: flex;
     border-bottom: 1px solid $color-border;
@@ -41,23 +43,30 @@
     }
 }
 
-.set-item {
+.set-edit-inner-item {
     flex: 0 0 25%;
 }
 
-.set--is-completed {
-    background-color: rgba($color-primary, .05);
+.set-edit-inner--is-completed {
+
+}
+
+.set-edit-button-remove {
+    display: flex;
+
+    button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: $spacing / 3 $spacing;
+    }
 }
 
 // form
 
-.set-checkbox {
-    display: flex;
+.set-edit-weight {
+}
 
-    label {
-        cursor: pointer;
-        padding: $spacing/2 0;
-        margin: 0;
-        margin-left: auto;
-    }
+.set-edit-checkbox {
+
 }

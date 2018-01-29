@@ -1,23 +1,6 @@
-.exercises-button-create {
-  display: flex;
-  padding-right: 22px; }
-  .exercises-button-create button {
-    margin-left: auto; }
-
 .exercise {
-  position: relative;
-  margin-bottom: 33px; }
-  .exercise .field-group {
-    margin-bottom: 0; }
-  .exercise:last-of-type {
-    margin-bottom: 0; }
+  margin-bottom: 44px; }
 
-.exercise-button-remove {
-  position: absolute;
-  top: 3px;
-  right: 0; }
-  .exercise-button-remove button {
-    padding: 11px 22px; }
-
-.exercise-form select {
-  width: 70%; }
+.exercise-lift {
+  margin-bottom: 22px;
+  margin-left: 22px; }

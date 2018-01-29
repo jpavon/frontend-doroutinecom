@@ -1,0 +1,36 @@
+.sets-edit {
+  background-color: #fff; }
+
+.sets-edit-button-create {
+  display: flex;
+  padding: 11px 22px;
+  background-color: #f9f9f9; }
+  .sets-edit-button-create button {
+    margin-left: auto;
+    padding: 0; }
+
+.sets-edit-header {
+  display: flex;
+  padding: 11px 22px;
+  border-bottom: 1px solid #e4e9ea; }
+
+.set-header-item {
+  flex: 0 0 25%; }
+
+.set-edit-inner {
+  position: relative;
+  display: flex;
+  border-bottom: 1px solid #e4e9ea;
+  padding: 5.5px 22px;
+  align-items: center; }
+
+.set-edit-inner-item {
+  flex: 0 0 25%; }
+
+.set-edit-button-remove {
+  display: flex; }
+  .set-edit-button-remove button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 7.33333px 22px; }

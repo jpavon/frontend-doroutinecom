@@ -1,0 +1,11 @@
+@import "variables.scss";
+
+.workout-name {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: $spacing * 2;
+}
+
+.workout-notes {
+    margin-left: $spacing;
+}

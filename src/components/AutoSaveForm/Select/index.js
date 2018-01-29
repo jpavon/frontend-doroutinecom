@@ -27,15 +27,13 @@ const Select = (props, context) => {
                     onChange={onChange}
                     {...rest}
                 />
+                <Alert
+                    message={options < 1 && noOptionsMessage}
+                />
+                <Alert
+                    message={errors[name]}
+                />
             </div>
-            <Alert
-                message={options < 1 && noOptionsMessage}
-            />
-            <Alert
-                size="small"
-                type="error"
-                message={errors[name]}
-            />
         </Fragment>
     )
 }

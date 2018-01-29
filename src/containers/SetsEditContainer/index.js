@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { updateSet } from 'data/sets/actions'
+import { createSet, updateSet, removeSet } from 'data/sets/actions'
 import { setsSelector } from 'data/sets/selectors'
 import { routineByIdSelector } from 'data/routines/selectors'
+import { STATUS_DELETING } from 'data/utils'
 
-import Sets from 'components/Sets/Sets'
-import Set from 'components/Sets/Set'
+import SetsEdit from 'components/SetsEdit/SetsEdit'
+import SetEdit from 'components/SetsEdit/SetEdit'
 
 class SetsEditContainer extends Component {
 
@@ -17,26 +18,31 @@ class SetsEditContainer extends Component {
 
         sets: PropTypes.array.isRequired,
         routine: PropTypes.object.isRequired,
+        entitiesStatus: PropTypes.object.isRequired,
 
+        createSet: PropTypes.func.isRequired,
         updateSet: PropTypes.func.isRequired,
+        removeSet: PropTypes.func.isRequired,
     }
 
     render() {
         return (
-            <Sets
+            <SetsEdit
                 create={this.props.createSet}
                 exerciseId={this.props.exerciseId}
             >
                 {this.props.sets.map((set, i) => (
-                    <Set
+                    <SetEdit
                         key={set.id}
                         i={i}
                         set={set}
                         routine={this.props.routine}
                         update={this.props.updateSet}
+                        remove={this.props.removeSet}
+                        isDeleting={this.props.entitiesStatus[set.id] === STATUS_DELETING}
                     />
                 ))}
-            </Sets>
+            </SetsEdit>
         )
     }
 }
@@ -44,10 +50,13 @@ class SetsEditContainer extends Component {
 const mapStateToProps = (state, props) => ({
     sets: setsSelector(props.exerciseId, props.routineId)(state),
     routine: routineByIdSelector(props.routineId)(state),
+    entitiesStatus: state.sets.entitiesStatus
 })
 
 const mapDispatchToProps = {
+    createSet,
     updateSet,
+    removeSet
 }
 
 

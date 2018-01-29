@@ -5,21 +5,10 @@ import Button from 'components/Button'
 
 import './style.css'
 
-const Exercises = ({children, create, workoutId}) => (
-    <Fragment>
-        <div className="exercises">
-            <Transition className="exercise">
-                {children}
-            </Transition>
-        </div>
-        <div className="exercises-button-create">
-            <Button
-                onClick={() => create(workoutId)}
-            >
-                Add Exercise
-            </Button>
-        </div>
-    </Fragment>
+const Exercises = ({children}) => (
+    <div className="exercises">
+        {children}
+    </div>
 )
 
 export default Exercises

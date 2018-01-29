@@ -2,14 +2,13 @@
 
 .select {
     position: relative;
-    padding: 5px 35px 5px 10px;
+    padding: 5px 35px 5px 0px;
     width: 100%;
 
     appearance: none;
     font-size: .9rem;
     color: $color-font;
     border: 0px solid $color-border-input;
-    font-weight: 500;
 
     background-image: url('../../../media/arrow-down.svg');
     background-repeat: no-repeat;

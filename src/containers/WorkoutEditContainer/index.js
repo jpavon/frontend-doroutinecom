@@ -6,13 +6,13 @@ import history from 'utils/history'
 import { updateWorkout, removeWorkout } from 'data/workouts/actions'
 import { workoutSelector } from 'data/workouts/selectors'
 
-import ExercisesContainer from 'containers/ExercisesContainer'
+import ExercisesEditContainer from 'containers/ExercisesEditContainer'
 
 import TopNav from 'components/TopNav'
-import Workout from 'components/Workout'
+import WorkoutEdit from 'components/WorkoutEdit'
 import NoData from 'components/NoData'
 
-class WorkoutsContainer extends Component {
+class WorkoutEditContainer extends Component {
 
     static propTypes = {
         routineId: PropTypes.number.isRequired,
@@ -31,6 +31,14 @@ class WorkoutsContainer extends Component {
             })
     }
 
+    handleStart = () => {
+        this.props.updateWorkout(this.props.workout.id, {
+            isPending: true
+        }).then(() => {
+            history.push(`/routines/${this.props.routineId}/workouts/${this.props.workoutId}`)
+        })
+    }
+
     render() {
         const title = this.props.workout && this.props.workout.isTemplate ?
             'Workout' :
@@ -40,23 +48,23 @@ class WorkoutsContainer extends Component {
             <Fragment>
                 <TopNav
                     title={title}
-                    rightLabel="Start"
-                    right={{
-                        onClick: this.props.removeWorkout,
-                    }}
                     left={{
                         to: `/routines/${this.props.routineId}`
                     }}
+                    rightLabel={this.props.workout.isTemplate && 'Start'}
+                    right={this.props.workout.isTemplate && {
+                        onClick: this.handleStart
+                    }}
                 />
-                <Workout
+                <WorkoutEdit
                     workout={this.props.workout}
                     update={this.props.updateWorkout}
                 >
-                    <ExercisesContainer
+                    <ExercisesEditContainer
                         routineId={this.props.routineId}
                         workoutId={this.props.workoutId}
                     />
-                </Workout>
+                </WorkoutEdit>
                 <TopNav
                     rightLabel="Remove Workout"
                     right={{
@@ -79,4 +87,4 @@ const mapDispatchToProps = {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(WorkoutsContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(WorkoutEditContainer)

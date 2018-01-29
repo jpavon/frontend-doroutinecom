@@ -15,22 +15,20 @@ const Routine = ({children, routine, update}) => (
             }}
         />
         <div className="routine-single">
-            <AutoSaveForm
-                initialValues={routine}
-                update={update}
-                render={({values}) => (
-                    <Fragment>
-                        <div className="routine-single-title">
-                            <FieldGroup
-                                label="Name"
-                                id={`name${values.id}`}
-                                name="name"
-                                placeholder="Type your routine name"
-                            />
-                        </div>
-                    </Fragment>
-                )}
-            />
+            <div className="routine-single-form">
+                <AutoSaveForm
+                    initialValues={routine}
+                    update={update}
+                    render={({values}) => (
+                        <FieldGroup
+                            label="Name"
+                            id={`name${values.id}`}
+                            name="name"
+                            placeholder="Type your routine name"
+                        />
+                    )}
+                />
+            </div>
             {children}
         </div>
     </Fragment>

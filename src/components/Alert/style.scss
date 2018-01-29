@@ -7,19 +7,22 @@
     text-align: center;
     font-size: 1rem;
     background-color: #ab2323;
-    color: $color-font;
+    color: #fff;
+    font-weight: 500;
     line-height: 1.5;
     opacity: 1;
 }
 
     .alert--success {
         background-color: $color-success;
-        border: 2px solid darken($color-success, 5%)
     }
 
     .alert--error {
         background-color: #9c4545;
-        border: 2px solid darken(#9c4545, 5%)
+    }
+
+    .alert--info {
+        background-color: #e6a038;
     }
 
     .alert--small {

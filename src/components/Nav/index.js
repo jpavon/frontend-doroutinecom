@@ -8,6 +8,8 @@ import routinesIcon from 'media/routines.svg'
 import newRoutineIcon from 'media/new-routine.svg'
 import liftsIcon from 'media/lifts.svg'
 import settingsIcon from 'media/settings.svg'
+import loginIcon from 'media/login.svg'
+import registerIcon from 'media/register.svg'
 
 import './style.css'
 
@@ -30,7 +32,7 @@ const Nav = ({isAuth = false, renderItems = null, isTouchDevice}) => (
                                 <li className="nav-item">
                                     <NavLink exact to="/" className="nav-link" activeClassName="nav-link--active">
                                         <img src={profileIcon} alt="Profile" />
-                                        <span>Profile</span>
+                                        <span>Progress</span>
                                     </NavLink>
                                 </li>
                                 <li className="nav-item">
@@ -62,11 +64,13 @@ const Nav = ({isAuth = false, renderItems = null, isTouchDevice}) => (
                             <Fragment>
                                 <li className="nav-item">
                                     <NavLink to="/login" className="nav-link" activeClassName="nav-link--active">
+                                        <img src={loginIcon} alt="Login" />
                                         Login
                                     </NavLink>
                                 </li>
                                 <li className="nav-item">
                                     <NavLink to="/register" className="nav-link" activeClassName="nav-link--active">
+                                        <img src={registerIcon} alt="Register" />
                                         Register
                                     </NavLink>
                                 </li>

@@ -15,9 +15,11 @@ const TopNav = ({title, leftLabel, rightLabel, left, right}) => (
                 {leftLabel || 'Back'}
             </Button>
         }
-        <h1 className="top-nav-title">
-            {title}
-        </h1>
+        {title &&
+            <h1 className="top-nav-title">
+                {title}
+            </h1>
+        }
         {right &&
             <Button {...right} className="top-nav-right">
                 {rightLabel || 'Edit'}

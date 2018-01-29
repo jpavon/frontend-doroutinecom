@@ -3,6 +3,7 @@
 .nav-container {
     // padding: 8px 30px 5px;
     background-color: $color-background-light;
+    box-shadow: 1px 0 2px rgba(#000, .1);
 
     @media (max-width: 576px) {
         // padding-right: 15px;
@@ -43,27 +44,25 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 100%;
+    width: 80%;
     padding: 0;
-    padding-left: 2 * $spacing;
+    // padding-left: 2 * $spacing;
     margin: 0;
     list-style: none;
+    justify-content: flex-end;
 
     @media (max-width: 500px) {
-        padding-left: $spacing;
+        // padding-left: $spacing;
     }
 }
 
 .nav-item {
-    flex: 1;
-    text-align: center;
+    flex: 0 0 25%;
 }
 
 .nav-link {
     display: flex;
     align-items: center;
-    max-width: 120px;
-    width: 100%;
     margin: auto;
     flex-direction: column;
     padding: $spacing-small * 2 0;
@@ -74,7 +73,7 @@
     transition: color .2s, background-color .2s;
 
     img {
-        margin-bottom: $spacing-small;
+        margin-bottom: 2px;
         opacity: .5;
         transition: opacity .2s;
     }

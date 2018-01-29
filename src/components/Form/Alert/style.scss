@@ -1,10 +1,7 @@
 @import "variables.scss";
 
 .form-alert {
-    position: absolute;
     display: block;
-    bottom: 0;
-    left: $spacing;
     font-size: .8rem;
     color: $color-danger;
 }

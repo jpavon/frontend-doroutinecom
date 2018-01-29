@@ -6,12 +6,11 @@ const formatLift = (lift) => Lift({
     ...lift
 })
 
-export const liftsRoutineSelector = (routineId) => createSelector(
+export const liftsSelector = createSelector(
     [
         (state) => state.lifts.entities
     ],
     (lifts) => lifts
-        .filter((lift) => (lift.routineId === routineId))
         .map((lift) => formatLift(lift))
 )
 

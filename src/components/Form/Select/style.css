@@ -1,12 +1,11 @@
 .select {
   position: relative;
-  padding: 5px 35px 5px 10px;
+  padding: 5px 35px 5px 0px;
   width: 100%;
   appearance: none;
   font-size: .9rem;
   color: #444;
   border: 0px solid #aaa;
-  font-weight: 500;
   background-image: url("../../../media/arrow-down.svg");
   background-repeat: no-repeat;
   background-position: right 13px top 13px;

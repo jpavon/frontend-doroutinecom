@@ -24,12 +24,12 @@ const Textarea = (props, context) => {
                     onChange={onChange}
                     {...rest}
                 />
+                <Alert
+                    size="small"
+                    type="error"
+                    message={errors[name]}
+                />
             </div>
-            <Alert
-                size="small"
-                type="error"
-                message={errors[name]}
-            />
         </Fragment>
     )
 }

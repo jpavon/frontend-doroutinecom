@@ -5,17 +5,19 @@
   text-align: center;
   font-size: 1rem;
   background-color: #ab2323;
-  color: #444;
+  color: #fff;
+  font-weight: 500;
   line-height: 1.5;
   opacity: 1; }
 
 .alert--success {
-  background-color: #4ea24e;
-  border: 2px solid #469146; }
+  background-color: #4ea24e; }
 
 .alert--error {
-  background-color: #9c4545;
-  border: 2px solid #8a3d3d; }
+  background-color: #9c4545; }
+
+.alert--info {
+  background-color: #e6a038; }
 
 .alert--small {
   padding: 5px;

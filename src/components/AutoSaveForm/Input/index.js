@@ -24,10 +24,10 @@ const Input = (props, context) => {
                     onChange={onChange}
                     {...rest}
                 />
+                <Alert
+                    message={errors[name]}
+                />
             </div>
-            <Alert
-                message={errors[name]}
-            />
         </Fragment>
     )
 }
