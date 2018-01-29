@@ -19,6 +19,9 @@ const Set = ({i, set, routine, update}) => (
                 <div className="set-item">
                     <Label>#{i + 1}</Label>
                 </div>
+                <div className="set-item set-previous">
+                    <Label>200kgx12</Label>
+                </div>
                 <div className="set-item">
                     {set.reps}
                 </div>

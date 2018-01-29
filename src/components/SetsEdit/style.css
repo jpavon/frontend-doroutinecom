@@ -11,17 +11,17 @@
 
 .sets-edit-header {
   display: flex;
-  padding: 11px 22px;
+  padding: 7.33333px 22px;
   border-bottom: 1px solid #e4e9ea; }
 
-.set-header-item {
+.sets-edit-header-item {
   flex: 0 0 25%; }
 
 .set-edit-inner {
   position: relative;
   display: flex;
   border-bottom: 1px solid #e4e9ea;
-  padding: 5.5px 22px;
+  padding: 11px 22px;
   align-items: center; }
 
 .set-edit-inner-item {
@@ -33,4 +33,4 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: 7.33333px 22px; }
+    padding: 14.66667px 22px; }

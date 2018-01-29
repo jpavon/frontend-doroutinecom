@@ -1,6 +1,21 @@
 @import "variables.scss";
 
+@mixin layout() {
+    flex: 0 0 25%;
+
+    &:first-child {
+        flex: 0 0 15%;
+    }
+
+    &:last-child {
+        flex: 0 0 10%;
+    }
+}
+
 .sets {
+    label {
+        margin-right: 0;
+    }
 }
 
 .sets-button-create {
@@ -19,8 +34,8 @@
     border-bottom: 1px solid $color-border;
 }
 
-.set-header-item {
-    flex: 0 0 25%;
+.sets-header-item {
+    @include layout();
 }
 
 // single
@@ -42,7 +57,7 @@
 }
 
 .set-item {
-    flex: 0 0 25%;
+    @include layout();
 }
 
 .set--is-completed {

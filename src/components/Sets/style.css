@@ -1,3 +1,6 @@
+.sets label {
+  margin-right: 0; }
+
 .sets-button-create {
   display: flex;
   padding: 11px 22px; }
@@ -10,8 +13,12 @@
   padding: 11px 22px;
   border-bottom: 1px solid #e4e9ea; }
 
-.set-header-item {
+.sets-header-item {
   flex: 0 0 25%; }
+  .sets-header-item:first-child {
+    flex: 0 0 15%; }
+  .sets-header-item:last-child {
+    flex: 0 0 10%; }
 
 .set {
   position: relative;
@@ -22,6 +29,10 @@
 
 .set-item {
   flex: 0 0 25%; }
+  .set-item:first-child {
+    flex: 0 0 15%; }
+  .set-item:last-child {
+    flex: 0 0 10%; }
 
 .set--is-completed {
   background-color: rgba(76, 144, 194, 0.05); }

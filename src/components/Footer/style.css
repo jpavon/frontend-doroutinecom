@@ -1,8 +1,8 @@
 .footer {
   margin-top: 4rem;
   padding-top: 2rem;
-  padding-bottom: 10rem;
-  text-align: right;
+  padding-bottom: 5rem;
+  text-align: center;
   background-color: #ececec; }
 
 .footer-inner {
@@ -11,7 +11,6 @@
 .footer-item, .footer-link {
   display: inline-block;
   text-decoration: none;
-  margin-left: 2rem;
   margin-bottom: 1rem;
   font-size: .8rem; }
   .footer-item:nth-child(1), .footer-link:nth-child(1) {

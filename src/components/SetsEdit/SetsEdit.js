@@ -9,9 +9,9 @@ import './style.css'
 const Sets = ({children, create, exerciseId}) => (
     <div className="sets-edit">
         <div className="sets-edit-header">
-            <div className="set-header-item"><Label>Set</Label></div>
-            <div className="set-header-item"><Label>Reps</Label></div>
-            <div className="set-header-item"><Label>Kg</Label></div>
+            <div className="sets-edit-header-item"><Label>Set</Label></div>
+            <div className="sets-edit-header-item"><Label>Reps</Label></div>
+            <div className="sets-edit-header-item"><Label>Kg</Label></div>
         </div>
         <Transition className="set-edit">
             {children}

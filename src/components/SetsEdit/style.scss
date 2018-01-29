@@ -17,11 +17,11 @@
 
 .sets-edit-header {
     display: flex;
-    padding: $spacing / 2 $spacing;
+    padding: $spacing / 3 $spacing;
     border-bottom: 1px solid $color-border;
 }
 
-.set-header-item {
+.sets-edit-header-item {
     flex: 0 0 25%;
 }
 
@@ -35,7 +35,7 @@
     position: relative;
     display: flex;
     border-bottom: 1px solid $color-border;
-    padding: $spacing / 4 $spacing;
+    padding: $spacing / 2 $spacing;
     align-items: center;
 
     &:first-child {
@@ -58,7 +58,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        padding: $spacing / 3 $spacing;
+        padding: $spacing / 1.5 $spacing;
     }
 }
 

@@ -1,6 +1,7 @@
 .top-nav {
   position: relative;
-  margin: 0 22px; }
+  margin: 0 22px;
+  height: 64px; }
 
 .top-nav-title {
   width: 100%;
