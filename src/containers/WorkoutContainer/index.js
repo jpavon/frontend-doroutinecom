@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import history from 'utils/history'
-import { updateWorkout } from 'data/workouts/actions'
+import { updateWorkout, createWorkout, removeWorkout } from 'data/workouts/actions'
 import { workoutSelector } from 'data/workouts/selectors'
 import { STATUS_LOADED } from 'data/utils'
+import { fetchWorkoutsData } from 'data/globals'
 
 import ExercisesContainer from 'containers/ExercisesContainer'
 
@@ -21,6 +22,9 @@ class WorkoutContainer extends Component {
         workout: PropTypes.object,
 
         updateWorkout: PropTypes.func.isRequired,
+        createWorkout: PropTypes.func.isRequired,
+        removeWorkout: PropTypes.func.isRequired,
+        fetchWorkoutsData: PropTypes.func.isRequired,
     }
 
     componentDidMount() {
@@ -40,6 +44,18 @@ class WorkoutContainer extends Component {
         this.props.updateWorkout(this.props.workout.id, {
             isCompleted: null,
             isPending: true
+        })
+    }
+
+    handleCreate = () => {
+        this.props.createWorkout({
+            routineId: this.props.workout.routineId,
+            workoutId: this.props.workout.id
+        }).then((resp) => {
+            this.props.fetchWorkoutsData()
+                .then(() => {
+                    history.push(`/workouts/${resp.payload.id}`)
+                })
         })
     }
 
@@ -70,6 +86,14 @@ class WorkoutContainer extends Component {
                         }
                     }
                 />
+                {!this.props.workout.isPending &&
+                    <TopNav
+                        rightLabel="Perform Workout Again"
+                        right={{
+                            onClick: this.handleCreate,
+                        }}
+                    />
+                }
                 <Workout
                     workout={this.props.workout}
                     update={this.props.updateWorkout}
@@ -90,7 +114,10 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = {
-    updateWorkout
+    createWorkout,
+    updateWorkout,
+    removeWorkout,
+    fetchWorkoutsData
 }
 
 

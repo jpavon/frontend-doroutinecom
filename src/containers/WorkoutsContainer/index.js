@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { createWorkout, updateWorkout, removeWorkout } from 'data/workouts/actions'
 import { completedWorkoutsSelector, pendingWorkoutsSelector } from 'data/workouts/selectors'
 
 import Workouts from 'components/Workouts/Workouts'
@@ -15,18 +14,7 @@ class WorkoutsContainer extends Component {
     static propTypes = {
         completedWorkouts: PropTypes.array.isRequired,
         pendingWorkouts: PropTypes.array.isRequired,
-
-        createWorkout: PropTypes.func.isRequired,
-        updateWorkout: PropTypes.func.isRequired,
-        removeWorkout: PropTypes.func.isRequired,
     }
-
-    // handleCreate = () => {
-    //     this.props.createWorkout()
-    //         .then((resp) => {
-    //             history.push(`/workouts/${resp.payload.id}`)
-    //         })
-    // }
 
     render() {
         return (
@@ -74,9 +62,6 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = {
-    createWorkout,
-    updateWorkout,
-    removeWorkout,
 }
 
 
