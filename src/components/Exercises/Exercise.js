@@ -26,12 +26,11 @@ const Exercise = ({children, exercise, lifts, update, remove, isDeleting}) => (
         {children}
         <div className="exercise-button-remove">
             <Button
+                remove
                 danger
                 onClick={() => remove(exercise.id)}
                 disabled={isDeleting}
-            >
-                X
-            </Button>
+            />
         </div>
     </Fragment>
 )

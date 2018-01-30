@@ -35,24 +35,21 @@ const Set = ({i, set, routine, update, remove, isDeleting, isWorkout}) => (
                             placeholder="Set weight"
                         />
                     </div>
-                    {isWorkout &&
-                        <div className="set-inner-item set-checkbox">
+                    <div className="set-inner-item set-action">
+                        {isWorkout &&
                             <Label htmlFor={`set-checkbox${values.id}`}>
                                 <Checkbox
                                     id={`set-checkbox${values.id}`}
                                     name="isCompleted"
                                 />
                             </Label>
-                        </div>
-                    }
-                    <div className="set-inner-item set-button-remove">
+                        }
                         <Button
+                            remove
                             danger
                             onClick={() => remove(set.id)}
                             disabled={isDeleting}
-                        >
-                            X
-                        </Button>
+                        />
                     </div>
                 </div>
             )}

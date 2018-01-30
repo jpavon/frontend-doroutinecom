@@ -1,4 +1,5 @@
 @import "variables.scss";
+@import "mixins.scss";
 
 .input {
     position: relative;
@@ -38,13 +39,6 @@
         font-size: 1.4rem;
     }
 
-    &::-webkit-input-placeholder,
-    &:-moz-placeholder,
-    &::-moz-placeholder,
-    &:-ms-input-placeholder {
-        color: rgba($color-font, .3);
-    }
-
     &[type=number]::-webkit-outer-spin-button,
     &[type=number]::-webkit-inner-spin-button {
         -webkit-appearance: none;
@@ -53,6 +47,9 @@
 
     &[type=number] {
         -moz-appearance: textfield;
-        appearance: none;
+        -webkit-appearance: textfield;
+        appearance: textfield;
     }
+
+    @include placeholder(rgba($color-font, .5));
 }

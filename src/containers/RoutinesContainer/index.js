@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import history from 'utils/history'
-
 import { createRoutine } from 'data/routines/actions'
 import { routinesSelector } from 'data/routines/selectors'
 import { STATUS_LOADING } from 'data/utils'
@@ -27,43 +26,8 @@ class RoutinesContainer extends Component {
     handleCreate = () => {
         this.props.createRoutine()
             .then((resp) => {
-                this.redirectOnCreate(resp)
+                history.push(`/routines/${resp.payload.id}`)
             })
-    }
-
-    // handleCreateType = (event) => {
-    //     event.preventDefault()
-
-    //     this.props.createRoutine({
-    //         programId: this.programId.value,
-    //         weightMeasure: this.weightMeasure.value,
-    //         precision: this.precision.value,
-    //         benchReps: this.benchReps.value,
-    //         benchWeight: this.benchWeight.value,
-    //         squatReps: this.squatReps.value,
-    //         squatWeight: this.squatWeight.value,
-    //         deadliftReps: this.deadliftReps.value,
-    //         deadliftWeight: this.deadliftWeight.value,
-    //         ohpReps: this.ohpReps.value,
-    //         ohpWeight: this.ohpWeight.value
-    //     }).then((resp) => {
-    //         if (resp.error) {
-    //             this.props.showAlert('error', resp.error.errors)
-    //         } else {
-    //             this.props.fetchRoutinesData()
-    //                 .then(() => {
-    //                     this.redirectOnCreate(resp)
-    //                 })
-    //         }
-    //     })
-    // }
-
-    redirectOnCreate = (resp) => {
-        history.push(`/routines/${resp.payload.id}`)
-    }
-
-    setRef = (ref, name) => {
-        this[name] = ref
     }
 
     render() {

@@ -6,9 +6,10 @@
 .exercises-button-create {
     display: flex;
     padding-right: $spacing;
+    margin-bottom: $spacing;
 
     button {
-        margin-left: auto;
+        margin: auto;
     }
 }
 
@@ -18,18 +19,18 @@
     position: relative;
     margin-bottom: $spacing * 1.5;
 
-    .field-group {
+    .field-group:last-child {
         margin-bottom: 0;
     }
 
-    &:last-of-type {
+    &:last-child {
         margin-bottom: 0;
     }
 }
 
 .exercise-button-remove {
     position: absolute;
-    top: 3px;
+    top: $spacing / 4;
     right: 0;
 
     button {

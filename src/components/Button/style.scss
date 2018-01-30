@@ -55,39 +55,6 @@
     }
 }
 
-.button--small {
-    display: flex;
-    padding: 4px;
-    font-size: .6rem;
-}
-
 .button--danger {
     color: $color-danger;
-}
-
-.button--transparent {
-    padding: 0;
-    color: lighten($color-primary, 5%);
-    background-color: transparent;
-    letter-spacing: initial;
-    border: 0;
-    text-shadow: none;
-
-    &.button--danger {
-        color: $color-danger;
-
-        &:hover {
-            color: lighten($color-danger, 5%);
-        }
-    }
-
-    &:hover {
-        color: lighten($color-primary, 10%);
-        background-color: transparent;
-    }
-
-    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active {
-        outline: 0;
-        box-shadow: none;
-    }
 }

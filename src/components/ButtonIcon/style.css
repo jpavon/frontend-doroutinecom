@@ -29,31 +29,8 @@
   .button img, .button-icon img {
     margin-right: 5px; }
 
-.button--small {
-  display: flex;
-  padding: 4px;
-  font-size: .6rem; }
-
 .button--danger {
   color: #c73434; }
-
-.button--transparent {
-  padding: 0;
-  color: #5f9cc8;
-  background-color: transparent;
-  letter-spacing: initial;
-  border: 0;
-  text-shadow: none; }
-  .button--transparent.button--danger {
-    color: #c73434; }
-    .button--transparent.button--danger:hover {
-      color: #cf4646; }
-  .button--transparent:hover {
-    color: #72a8cf;
-    background-color: transparent; }
-  .button--transparent:not([disabled]):not(.disabled).active, .button--transparent:not([disabled]):not(.disabled):active {
-    outline: 0;
-    box-shadow: none; }
 
 .button-icon {
   display: flex;

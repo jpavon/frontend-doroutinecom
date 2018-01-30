@@ -10,6 +10,8 @@ import Routines from 'pages/Routines'
 import Routine from 'pages/Routine'
 import Workout from 'pages/Workout'
 import Workouts from 'pages/Workouts'
+import Lift from 'pages/Lift'
+import Lifts from 'pages/Lifts'
 import Settings from 'pages/Settings'
 import NotFound from 'pages/NotFound'
 
@@ -58,6 +60,8 @@ class Routes extends Component {
                 <PrivateRoute exact path="/routines/:routineId" component={Routine} />
                 <PrivateRoute exact path="/workouts" component={Workouts} />
                 <PrivateRoute exact path="/workouts/:workoutId" component={Workout} />
+                <PrivateRoute exact path="/lifts" component={Lifts} />
+                <PrivateRoute exact path="/lifts/:liftId" component={Lift} />
                 <PrivateRoute exact path="/settings" component={Settings} />
 
                 <PrivateRoute component={NotFound}/>

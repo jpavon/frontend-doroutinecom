@@ -12,6 +12,11 @@
         width: 100%;
     }
 
+    > label {
+        min-width: 12%;
+        margin-right: $spacing * 1.5;
+    }
+
     &:last-child {
         margin-bottom: $spacing;
         border-bottom: 1px solid $color-border;

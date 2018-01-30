@@ -1,6 +1,6 @@
 import React from 'react'
 
-import logo from 'media/logo.svg'
+import logoFull from 'media/logo-full.svg'
 
 import './style.css'
 
@@ -10,8 +10,7 @@ const Footer = () => (
             <div className="footer-inner">
                 <span className="footer-link">Support - <a href="mailto:hello@doroutine.com">hello@doroutine.com</a></span>
                 <br /><br />
-                <img src={logo} alt="doroutine logo" /><br />
-                <span className="footer-item">doroutine 2018</span>
+                <img src={logoFull} alt="doroutine logo" /><br />
             </div>
         </div>
     </footer>

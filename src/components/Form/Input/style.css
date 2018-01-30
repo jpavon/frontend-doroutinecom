@@ -21,11 +21,22 @@
   .input.input--large {
     padding: .5rem;
     font-size: 1.4rem; }
-  .input::-webkit-input-placeholder, .input:-moz-placeholder, .input::-moz-placeholder, .input:-ms-input-placeholder {
-    color: rgba(68, 68, 68, 0.3); }
   .input[type=number]::-webkit-outer-spin-button, .input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0; }
   .input[type=number] {
     -moz-appearance: textfield;
-    appearance: none; }
+    -webkit-appearance: textfield;
+    appearance: textfield; }
+  .input::-webkit-input-placeholder {
+    color: rgba(68, 68, 68, 0.5); }
+  .input:-moz-placeholder {
+    color: rgba(68, 68, 68, 0.5); }
+  .input::-moz-placeholder {
+    color: rgba(68, 68, 68, 0.5); }
+  .input:-ms-input-placeholder {
+    color: rgba(68, 68, 68, 0.5); }
+  .input::-ms-input-placeholder {
+    color: rgba(68, 68, 68, 0.5); }
+  .input::placeholder {
+    color: rgba(68, 68, 68, 0.5); }
