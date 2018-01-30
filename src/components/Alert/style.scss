@@ -6,7 +6,6 @@
     margin-bottom: 1.5rem;
     text-align: center;
     font-size: 1rem;
-    background-color: #ab2323;
     color: #fff;
     font-weight: 500;
     line-height: 1.5;
@@ -18,11 +17,11 @@
     }
 
     .alert--error {
-        background-color: #9c4545;
+        background-color: $color-danger;
     }
 
     .alert--info {
-        background-color: #e6a038;
+        background-color: $color-info;
     }
 
     .alert--small {

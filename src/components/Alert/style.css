@@ -4,7 +4,6 @@
   margin-bottom: 1.5rem;
   text-align: center;
   font-size: 1rem;
-  background-color: #ab2323;
   color: #fff;
   font-weight: 500;
   line-height: 1.5;
@@ -14,10 +13,10 @@
   background-color: #4ea24e; }
 
 .alert--error {
-  background-color: #9c4545; }
+  background-color: #c73434; }
 
 .alert--info {
-  background-color: #e6a038; }
+  background-color: #deba36; }
 
 .alert--small {
   padding: 5px;
