@@ -12,6 +12,7 @@ import Workout from 'pages/Workout'
 import Workouts from 'pages/Workouts'
 import Lift from 'pages/Lift'
 import Lifts from 'pages/Lifts'
+import Profile from 'pages/Profile'
 import Settings from 'pages/Settings'
 import NotFound from 'pages/NotFound'
 
@@ -56,13 +57,14 @@ class Routes extends Component {
                 <GuestRoute exact path="/password-forgotten" component={PasswordForgotten} />
                 <GuestRoute exact path="/password-reset/:token" component={PasswordReset} />
 
-                <PrivateRoute exact path="/routines" component={Routines} />
-                <PrivateRoute exact path="/routines/:routineId" component={Routine} />
+                <PrivateRoute exact path="/" component={Profile} />
+                <PrivateRoute exact path="/settings" component={Settings} />
                 <PrivateRoute exact path="/workouts" component={Workouts} />
                 <PrivateRoute exact path="/workouts/:workoutId" component={Workout} />
+                <PrivateRoute exact path="/routines" component={Routines} />
+                <PrivateRoute exact path="/routines/:routineId" component={Routine} />
                 <PrivateRoute exact path="/lifts" component={Lifts} />
                 <PrivateRoute exact path="/lifts/:liftId" component={Lift} />
-                <PrivateRoute exact path="/settings" component={Settings} />
 
                 <PrivateRoute component={NotFound}/>
             </Switch>

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import Button from 'components/Button'
-import FieldGroup from 'components/AutoSaveForm/FieldGroup'
+import Select from 'components/AutoSaveForm/Select'
 
 const Exercise = ({children, exercise, lifts, update, remove, isDeleting}) => (
     <Fragment>
@@ -10,9 +10,8 @@ const Exercise = ({children, exercise, lifts, update, remove, isDeleting}) => (
             update={update}
             initialValues={exercise}
             render={() => (
-                <div className="exercise-form">
-                    <FieldGroup
-                        component="select"
+                <div className="exercise-lift">
+                    <Select
                         label="Lift"
                         id="liftId"
                         name="liftId"

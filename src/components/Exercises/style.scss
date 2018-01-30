@@ -30,7 +30,7 @@
 
 .exercise-button-remove {
     position: absolute;
-    top: $spacing / 4;
+    top: $spacing;
     right: 0;
 
     button {
@@ -40,9 +40,16 @@
 
 // form
 
-.exercise-form {
+.exercise-lift {
+    padding: $spacing $spacing;
+
+    > div {
+        margin-right: 40px;
+    }
 
     select {
-        width: 70%;
+        width: auto;
+        font-size: 1.1rem;
+        background-position: left 0 top 14px;
     }
 }

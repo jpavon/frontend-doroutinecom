@@ -20,7 +20,7 @@ class WorkoutsContainer extends Component {
         return (
             <Fragment>
                 <TopNav
-                    title="In Progress Workouts"
+                    title="In Progress"
                 />
                 <Workouts>
                     {this.props.pendingWorkouts.length > 0 ?
@@ -36,7 +36,7 @@ class WorkoutsContainer extends Component {
                     }
                 </Workouts>
                 <TopNav
-                    title="Completed Workouts"
+                    title="Completed"
                 />
                 <Workouts>
                     {this.props.completedWorkouts.length > 0 ?

@@ -6,11 +6,17 @@ import logo from 'media/logo.svg'
 import profileIcon from 'media/profile.svg'
 import routinesIcon from 'media/routines.svg'
 import liftsIcon from 'media/lifts.svg'
-import settingsIcon from 'media/settings.svg'
+import workoutsIcon from 'media/workouts.svg'
 import loginIcon from 'media/login.svg'
 import registerIcon from 'media/register.svg'
 
 import './style.css'
+
+const isProfileActive = (match, location) => {
+    if (match) return true
+    if (location.pathname === '/settings') return true
+    return false
+}
 
 const Nav = ({isAuth = false, renderItems = null, isTouchDevice}) => (
     <nav className={classNames(
@@ -29,8 +35,14 @@ const Nav = ({isAuth = false, renderItems = null, isTouchDevice}) => (
                         isAuth ?
                             <Fragment>
                                 <li className="nav-item">
+                                    <NavLink exact to="/" className="nav-link" activeClassName="nav-link--active" isActive={isProfileActive}>
+                                        <img src={profileIcon} alt="Profile" />
+                                        Profile
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item">
                                     <NavLink to="/workouts" className="nav-link" activeClassName="nav-link--active">
-                                        <img src={profileIcon} alt="Workouts" />
+                                        <img src={workoutsIcon} alt="Workouts" />
                                         <span>Workouts</span>
                                     </NavLink>
                                 </li>
@@ -44,12 +56,6 @@ const Nav = ({isAuth = false, renderItems = null, isTouchDevice}) => (
                                     <NavLink to="/lifts" className="nav-link" activeClassName="nav-link--active">
                                         <img src={liftsIcon} alt="Lifts" />
                                         Lifts
-                                    </NavLink>
-                                </li>
-                                <li className="nav-item">
-                                    <NavLink to="/settings" className="nav-link" activeClassName="nav-link--active">
-                                        <img src={settingsIcon} alt="Settings" />
-                                        Settings
                                     </NavLink>
                                 </li>
                             </Fragment>

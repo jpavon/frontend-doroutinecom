@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect'
 
-import { workoutsRoutineSelector } from 'data/workouts/selectors'
+import { completedWorkoutsSelector } from 'data/workouts/selectors'
 
-export const graphDataSelector = (routineId) => createSelector(
+export const graphDataSelector = () => createSelector(
     [
-        workoutsRoutineSelector(routineId)
+        completedWorkoutsSelector
     ],
     (workouts) => ({
         data: workouts

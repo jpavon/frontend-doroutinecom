@@ -31,15 +31,20 @@ class SettingsContainer extends Component {
                 <Fragment>
                     <TopNav
                         title="General"
-                        rightLabel="Logout"
-                        right={{
-                            onClick: this.handleUnauthUser,
-                            danger: true
+                        left={{
+                            to: '/'
                         }}
                     />
                     <Settings
                         user={this.props.user}
                         updateUser={this.props.updateUser}
+                    />
+                    <TopNav
+                        rightLabel="Logout"
+                        right={{
+                            onClick: this.handleUnauthUser,
+                            danger: true
+                        }}
                     />
                 </Fragment>
         )

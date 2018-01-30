@@ -1,14 +1,16 @@
 .select {
   position: relative;
-  padding: 5px 35px 5px 0px;
+  padding: 5px 35px 5px 20px;
   width: 100%;
+  max-width: 100%;
   appearance: none;
   font-size: .9rem;
   color: #444;
   border: 0px solid #aaa;
+  text-overflow: ellipsis;
   background-image: url("../../../media/arrow-down.svg");
   background-repeat: no-repeat;
-  background-position: right 13px top 13px;
+  background-position: left 0 top 12px;
   background-color: transparent; }
   .select.select--default-option {
     color: rgba(68, 68, 68, 0.6); }

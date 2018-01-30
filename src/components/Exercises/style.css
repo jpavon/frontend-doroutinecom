@@ -15,10 +15,16 @@
 
 .exercise-button-remove {
   position: absolute;
-  top: 4.5px;
+  top: 18px;
   right: 0; }
   .exercise-button-remove button {
     padding: 9px 18px; }
 
-.exercise-form select {
-  width: 70%; }
+.exercise-lift {
+  padding: 18px 18px; }
+  .exercise-lift > div {
+    margin-right: 40px; }
+  .exercise-lift select {
+    width: auto;
+    font-size: 1.1rem;
+    background-position: left 0 top 14px; }
