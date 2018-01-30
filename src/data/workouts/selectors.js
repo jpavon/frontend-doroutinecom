@@ -24,30 +24,23 @@ export const workoutSelector = (id) => createSelector(
         null
 )
 
-export const workoutsRoutineSelector = (routineId) => createSelector(
+export const workoutsRoutineSelector = createSelector(
     [
         (state) => state.workouts.entities
     ],
-    (workouts) => workouts.filter((workout) => (workout.routineId === routineId))
+    (workouts) => workouts
 )
 
-export const templateWorkoutsSelector = (routineId) => createSelector(
+export const completedWorkoutsSelector =  createSelector(
     [
-        workoutsRoutineSelector(routineId)
-    ],
-    (workouts) => workouts.filter((workout) => workout.isTemplate)
-)
-
-export const completedWorkoutsSelector = (routineId) => createSelector(
-    [
-        workoutsRoutineSelector(routineId)
+        workoutsRoutineSelector
     ],
     (workouts) => workouts.filter((workout) => (workout.isCompleted))
 )
 
-export const pendingWorkoutsSelector = (routineId) => createSelector(
+export const pendingWorkoutsSelector = createSelector(
     [
-        workoutsRoutineSelector(routineId)
+        workoutsRoutineSelector
     ],
     (workouts) => workouts.filter((workout) => (workout.isPending))
 )

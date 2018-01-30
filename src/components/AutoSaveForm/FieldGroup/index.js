@@ -1,5 +1,4 @@
-import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 
 import Label from 'components/Form/Label'
 import Input from 'components/AutoSaveForm/Input'

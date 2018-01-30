@@ -1,37 +1,43 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import FieldGroup from 'components/AutoSaveForm/FieldGroup'
-import TopNav from 'components/TopNav'
 
 import './style.css'
 
 const Routine = ({children, routine, update}) => (
-    <Fragment>
-        <TopNav
-            title="Routine"
-            left={{
-                to: "/routines"
-            }}
-        />
-        <div className="routine-single">
-            <div className="routine-single-form">
-                <AutoSaveForm
-                    initialValues={routine}
-                    update={update}
-                    render={({values}) => (
-                        <FieldGroup
-                            label="Name"
-                            id={`name${values.id}`}
-                            name="name"
-                            placeholder="Type your routine name"
-                        />
-                    )}
-                />
-            </div>
-            {children}
+    <div className="routine">
+        <div className="routine-form">
+            <AutoSaveForm
+                initialValues={routine}
+                update={update}
+                render={({values}) => (
+                    <FieldGroup
+                        label="Name"
+                        id={`name${values.id}`}
+                        name="name"
+                        placeholder="Type your routine name"
+                    />
+                )}
+            />
         </div>
-    </Fragment>
+        {children}
+        <div className="routine-form">
+            <AutoSaveForm
+                initialValues={routine}
+                update={update}
+                render={({values}) => (
+                    <FieldGroup
+                        component="textarea"
+                        label="Additional Notes"
+                        id={`notes${values.id}`}
+                        name="notes"
+                        placeholder="Type any extra exercises or annotations"
+                    />
+                )}
+            />
+        </div>
+    </div>
 )
 
 export default Routine

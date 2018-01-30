@@ -19,7 +19,7 @@ class SettingsContainer extends Component {
         updateUser: PropTypes.func.isRequired,
     }
 
-    handleLogoutUser = (event) => {
+    handleUnauthUser = (event) => {
         event.preventDefault()
 
         this.props.unauthUser()
@@ -29,10 +29,17 @@ class SettingsContainer extends Component {
         return (
             this.props.user &&
                 <Fragment>
+                    <TopNav
+                        title="General"
+                        rightLabel="Logout"
+                        right={{
+                            onClick: this.handleUnauthUser,
+                            danger: true
+                        }}
+                    />
                     <Settings
                         user={this.props.user}
                         updateUser={this.props.updateUser}
-                        unauthUser={this.handleLogoutUser}
                     />
                 </Fragment>
         )

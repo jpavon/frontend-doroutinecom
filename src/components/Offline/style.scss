@@ -8,9 +8,18 @@
 }
 
 .offline-logo {
+    margin-bottom: 1rem;
 }
 
 .offline-text {
     line-height: 1.4;
     margin-bottom: 2rem;
+}
+
+.offline-button {
+    display: flex;
+
+    button {
+        margin: auto;
+    }
 }

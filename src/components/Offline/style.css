@@ -6,6 +6,14 @@
   padding: 0 20px;
   text-align: center; }
 
+.offline-logo {
+  margin-bottom: 1rem; }
+
 .offline-text {
   line-height: 1.4;
   margin-bottom: 2rem; }
+
+.offline-button {
+  display: flex; }
+  .offline-button button {
+    margin: auto; }

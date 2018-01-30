@@ -14,7 +14,9 @@ const Offline = () => (
         <p className="offline-text">
             You need internet connection to continue using doroutine, refresh the page when you are connected to the internet.
         </p>
-        <Button onClick={() => window.location.reload(true)}>Refresh</Button>
+        <div className="offline-button">
+            <Button onClick={() => window.location.reload(true)}>Refresh</Button>
+        </div>
     </div>
 )
 

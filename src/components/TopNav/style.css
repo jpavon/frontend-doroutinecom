@@ -1,11 +1,11 @@
 .top-nav {
   position: relative;
-  margin: 0 22px;
-  height: 64px; }
+  margin: 0 18px;
+  height: 56px; }
 
 .top-nav-title {
   width: 100%;
-  padding: 22px;
+  padding: 18px;
   margin-bottom: 0;
   font-size: 1.1rem;
   text-align: center; }

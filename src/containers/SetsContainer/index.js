@@ -2,23 +2,25 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { updateSet } from 'data/sets/actions'
+import { createSet, updateSet, removeSet } from 'data/sets/actions'
 import { setsSelector } from 'data/sets/selectors'
-import { routineByIdSelector } from 'data/routines/selectors'
+import { STATUS_DELETING } from 'data/utils'
 
 import Sets from 'components/Sets/Sets'
 import Set from 'components/Sets/Set'
 
-class SetsEditContainer extends Component {
+class SetsContainer extends Component {
 
     static propTypes = {
-        routineId: PropTypes.number.isRequired,
         exerciseId: PropTypes.number.isRequired,
+        isWorkout: PropTypes.bool,
 
         sets: PropTypes.array.isRequired,
-        routine: PropTypes.object.isRequired,
+        entitiesStatus: PropTypes.object.isRequired,
 
+        createSet: PropTypes.func.isRequired,
         updateSet: PropTypes.func.isRequired,
+        removeSet: PropTypes.func.isRequired,
     }
 
     render() {
@@ -32,8 +34,10 @@ class SetsEditContainer extends Component {
                         key={set.id}
                         i={i}
                         set={set}
-                        routine={this.props.routine}
                         update={this.props.updateSet}
+                        remove={this.props.removeSet}
+                        isWorkout={this.props.isWorkout}
+                        isDeleting={this.props.entitiesStatus[set.id] === STATUS_DELETING}
                     />
                 ))}
             </Sets>
@@ -42,13 +46,14 @@ class SetsEditContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    sets: setsSelector(props.exerciseId, props.routineId)(state),
-    routine: routineByIdSelector(props.routineId)(state),
+    sets: setsSelector(props.exerciseId)(state),
+    entitiesStatus: state.sets.entitiesStatus
 })
 
 const mapDispatchToProps = {
+    createSet,
     updateSet,
+    removeSet
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(SetsEditContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(SetsContainer)

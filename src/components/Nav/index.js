@@ -5,7 +5,6 @@ import classNames from 'classnames'
 import logo from 'media/logo.svg'
 import profileIcon from 'media/profile.svg'
 import routinesIcon from 'media/routines.svg'
-import newRoutineIcon from 'media/new-routine.svg'
 import liftsIcon from 'media/lifts.svg'
 import settingsIcon from 'media/settings.svg'
 import loginIcon from 'media/login.svg'
@@ -30,9 +29,9 @@ const Nav = ({isAuth = false, renderItems = null, isTouchDevice}) => (
                         isAuth ?
                             <Fragment>
                                 <li className="nav-item">
-                                    <NavLink exact to="/" className="nav-link" activeClassName="nav-link--active">
-                                        <img src={profileIcon} alt="Profile" />
-                                        <span>Progress</span>
+                                    <NavLink to="/workouts" className="nav-link" activeClassName="nav-link--active">
+                                        <img src={profileIcon} alt="Workouts" />
+                                        <span>Workouts</span>
                                     </NavLink>
                                 </li>
                                 <li className="nav-item">
@@ -41,12 +40,6 @@ const Nav = ({isAuth = false, renderItems = null, isTouchDevice}) => (
                                         <span>Routines</span>
                                     </NavLink>
                                 </li>
-                                {/*<li className="nav-item">
-                                    <NavLink exact to="/routine/new" className="nav-link" activeClassName="nav-link--active">
-                                        <img src={newRoutineIcon} alt="New Routine" />
-                                        <span>New Routine</span>
-                                    </NavLink>
-                                </li>*/}
                                 <li className="nav-item">
                                     <NavLink to="/lifts" className="nav-link" activeClassName="nav-link--active">
                                         <img src={liftsIcon} alt="Lifts" />

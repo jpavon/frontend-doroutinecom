@@ -3,15 +3,18 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import history from 'utils/history'
-import { createRoutine, updateRoutine, removeRoutine } from 'data/routines/actions'
+import { updateRoutine, removeRoutine } from 'data/routines/actions'
+import { createWorkout } from 'data/workouts/actions'
 import { routineByIdSelector } from 'data/routines/selectors'
 import { STATUS_LOADED } from 'data/utils'
+import { fetchWorkoutsData } from 'data/globals'
 
 // import LiftsContainer from 'containers/LiftsContainer'
-import WorkoutsContainer from 'containers/RoutineContainer/WorkoutsContainer'
+import ExercisesContainer from 'containers/ExercisesContainer'
 // import GraphContainer from 'containers/GraphContainer'
 
 import Routine from 'components/Routine'
+import TopNav from 'components/TopNav'
 
 class RoutineContainer extends Component {
 
@@ -21,14 +24,15 @@ class RoutineContainer extends Component {
         routine: PropTypes.object,
         isStatusLoaded: PropTypes.bool.isRequired,
 
-        createRoutine: PropTypes.func.isRequired,
         updateRoutine: PropTypes.func.isRequired,
         removeRoutine: PropTypes.func.isRequired,
+        createWorkout: PropTypes.func.isRequired,
+        fetchWorkoutsData: PropTypes.func.isRequired,
     }
 
     componentDidMount() {
         if (this.props.isStatusLoaded && !this.props.routine) {
-            history.push('/')
+            history.push('/routines')
         }
     }
 
@@ -41,14 +45,39 @@ class RoutineContainer extends Component {
         }
     }
 
+    handleCreateWorkout = () => {
+        this.props.createWorkout({
+            routineId: this.props.routine.id
+        }).then((resp) => {
+            this.props.fetchWorkoutsData()
+                .then(() => {
+                    history.push(`/workouts/${resp.payload.id}`)
+                })
+        })
+    }
+
     render() {
         return this.props.routine ?
-            <Routine
-                routine={this.props.routine}
-                update={this.props.updateRoutine}
-            >
-                <WorkoutsContainer routineId={this.props.routine.id} />
-            </Routine>
+            (
+                <Fragment>
+                    <TopNav
+                        title="Routine"
+                        left={{
+                            to: "/routines"
+                        }}
+                        rightLabel="Start Workout"
+                        right={{
+                            onClick: this.handleCreateWorkout
+                        }}
+                    />
+                    <Routine
+                        routine={this.props.routine}
+                        update={this.props.updateRoutine}
+                    >
+                        <ExercisesContainer routineId={this.props.routine.id} />
+                    </Routine>
+                </Fragment>
+            )
         : null
     }
 }
@@ -59,9 +88,10 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = {
-    createRoutine,
     updateRoutine,
-    removeRoutine
+    removeRoutine,
+    createWorkout,
+    fetchWorkoutsData
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoutineContainer)

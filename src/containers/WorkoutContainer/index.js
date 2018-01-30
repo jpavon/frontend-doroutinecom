@@ -5,18 +5,17 @@ import { connect } from 'react-redux'
 import history from 'utils/history'
 import { updateWorkout } from 'data/workouts/actions'
 import { workoutSelector } from 'data/workouts/selectors'
+import { STATUS_LOADED } from 'data/utils'
 
 import ExercisesContainer from 'containers/ExercisesContainer'
 
 import Alert from 'components/Alert'
 import TopNav from 'components/TopNav'
 import Workout from 'components/Workout'
-import NoData from 'components/NoData'
 
 class WorkoutContainer extends Component {
 
     static propTypes = {
-        routineId: PropTypes.number.isRequired,
         workoutId: PropTypes.number.isRequired,
 
         workout: PropTypes.object,
@@ -24,10 +23,23 @@ class WorkoutContainer extends Component {
         updateWorkout: PropTypes.func.isRequired,
     }
 
-    handleComplete = () => {
+    componentDidMount() {
+        if (this.props.isStatusLoaded && !this.props.workout) {
+            history.push('/workouts')
+        }
+    }
+
+    handleCompleted = () => {
         this.props.updateWorkout(this.props.workout.id, {
             isCompleted: '2018-01-29',
             isPending: false
+        })
+    }
+
+    handleRestart = () => {
+        this.props.updateWorkout(this.props.workout.id, {
+            isCompleted: null,
+            isPending: true
         })
     }
 
@@ -43,18 +55,18 @@ class WorkoutContainer extends Component {
                 <TopNav
                     title="Workout"
                     left={{
-                        to: `/routines/${this.props.routineId}`
+                        to: `/workouts`
                     }}
                     rightLabel={this.props.workout.isPending ?
                         "Completed" :
-                        "Edit"
+                        "Restart"
                     }
                     right={this.props.workout.isPending ?
                         {
-                            onClick: this.handleComplete,
+                            onClick: this.handleCompleted,
                         } :
                         {
-                            to: `/routines/${this.props.routineId}/workouts/${this.props.workoutId}/edit`
+                            onClick: this.handleRestart,
                         }
                     }
                 />
@@ -73,7 +85,8 @@ class WorkoutContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    workout: workoutSelector(props.workoutId)(state)
+    workout: workoutSelector(props.workoutId)(state),
+    isStatusLoaded: state.workouts.fetchStatus === STATUS_LOADED,
 })
 
 const mapDispatchToProps = {

@@ -5,9 +5,7 @@ const Routine = validateData({
     userId: 'number',
     program: 'object|null',
     name: 'string|null',
-    weightMeasure: 'string',
-    precision: 'number',
-    trainingMax: 'number',
+    notes: 'string|null',
     createdAt: 'string',
     updatedAt: 'string'
 })

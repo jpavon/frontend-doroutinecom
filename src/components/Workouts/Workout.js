@@ -2,8 +2,8 @@ import React from 'react'
 
 import ListItem from 'components/ListItem'
 
-const Workout = ({children, workout, routineId}) => (
-    <ListItem to={`/routines/${routineId}/workouts/${workout.id}/edit`} className="workout">
+const Workout = ({children, workout}) => (
+    <ListItem to={`/workouts/${workout.id}`} className="workout">
         {workout.name || 'No workout name set.'}
     </ListItem>
 )

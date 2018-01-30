@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
-import history from 'utils/history'
 import Button from 'components/Button'
 
 import arrowLeftIcon  from 'media/arrow-left.svg'

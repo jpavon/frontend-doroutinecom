@@ -1,7 +1,5 @@
 import React from 'react'
 
-import env from 'env'
-
 import logo from 'media/logo.svg'
 
 import './style.css'

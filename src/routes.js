@@ -9,7 +9,7 @@ import PasswordReset from 'pages/Auth/PasswordReset'
 import Routines from 'pages/Routines'
 import Routine from 'pages/Routine'
 import Workout from 'pages/Workout'
-import WorkoutEdit from 'pages/WorkoutEdit'
+import Workouts from 'pages/Workouts'
 import Settings from 'pages/Settings'
 import NotFound from 'pages/NotFound'
 
@@ -56,8 +56,8 @@ class Routes extends Component {
 
                 <PrivateRoute exact path="/routines" component={Routines} />
                 <PrivateRoute exact path="/routines/:routineId" component={Routine} />
-                <PrivateRoute exact path="/routines/:routineId/workouts/:workoutId" component={Workout} />
-                <PrivateRoute exact path="/routines/:routineId/workouts/:workoutId/edit" component={WorkoutEdit} />
+                <PrivateRoute exact path="/workouts" component={Workouts} />
+                <PrivateRoute exact path="/workouts/:workoutId" component={Workout} />
                 <PrivateRoute exact path="/settings" component={Settings} />
 
                 <PrivateRoute component={NotFound}/>

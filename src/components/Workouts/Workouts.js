@@ -1,16 +1,11 @@
-import React, { Fragment } from 'react'
-
-import Button from 'components/Button'
-import Transition from 'components/Transition'
+import React from 'react'
 
 import './style.css'
 
-const Workouts = ({children, create}) => (
-    <Fragment>
-        <div className="workouts">
-            {children}
-        </div>
-    </Fragment>
+const Workouts = ({children}) => (
+    <div className="workouts">
+        {children}
+    </div>
 )
 
 export default Workouts

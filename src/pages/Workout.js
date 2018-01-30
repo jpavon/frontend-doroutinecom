@@ -9,7 +9,6 @@ const Workout = ({match}) => (
         )}
     >
         <WorkoutContainer
-            routineId={Number(match.params.routineId)}
             workoutId={Number(match.params.workoutId)}
         />
     </Layout>

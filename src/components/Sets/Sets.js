@@ -10,11 +10,19 @@ const Sets = ({children, create, exerciseId}) => (
     <div className="sets">
         <div className="sets-header">
             <div className="sets-header-item"><Label>Set</Label></div>
-            <div className="sets-header-item"><Label>Previous</Label></div>
             <div className="sets-header-item"><Label>Reps</Label></div>
             <div className="sets-header-item"><Label>Kg</Label></div>
         </div>
-        {children}
+        <Transition className="set">
+            {children}
+        </Transition>
+        <div className="sets-button-create">
+            <Button
+                onClick={() => create(exerciseId)}
+            >
+                Add Set
+            </Button>
+        </div>
     </div>
 )
 

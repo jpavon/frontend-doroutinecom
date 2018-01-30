@@ -40,28 +40,21 @@
 
 // single
 
-.set {
 
-}
-
-.set {
+.set-inner {
     position: relative;
     display: flex;
     border-bottom: 1px solid $color-border;
     padding: $spacing / 4 $spacing;
     align-items: center;
 
-    &:first-child {
-
+    &.set-inner--is-completed {
+        background-color: rgba($color-primary, .05);
     }
 }
 
-.set-item {
+.set-inner-item {
     @include layout();
-}
-
-.set--is-completed {
-    background-color: rgba($color-primary, .05);
 }
 
 // form
@@ -71,6 +64,16 @@
 
     label {
         cursor: pointer;
+        padding: $spacing/2 0;
+        margin: 0;
+        margin-left: auto;
+    }
+}
+
+.set-button-remove {
+    display: flex;
+
+    button {
         padding: $spacing/2 0;
         margin: 0;
         margin-left: auto;

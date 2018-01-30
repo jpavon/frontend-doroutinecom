@@ -6,16 +6,8 @@ import TopNav from 'components/TopNav'
 
 import './style.css'
 
-const Settings = ({user, updateUser, unauthUser}) => (
+const Settings = ({user, updateUser}) => (
     <div className="settings">
-        <TopNav
-            title="General"
-            rightLabel="Logout"
-            right={{
-                onClick: unauthUser,
-                danger: true
-            }}
-        />
         <AutoSaveForm
             initialValues={user}
             update={updateUser}
