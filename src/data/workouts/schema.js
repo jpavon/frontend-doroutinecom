@@ -3,7 +3,7 @@ import validateData from 'utils/validateData'
 const Workout = validateData({
     id: 'number',
     userId: 'number',
-    routineId: 'number',
+    routineId: 'number|null',
     name: 'string|null',
     isCompleted: 'string|null',
     isPending: 'boolean',

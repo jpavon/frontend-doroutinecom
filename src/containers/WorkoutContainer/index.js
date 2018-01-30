@@ -59,6 +59,13 @@ class WorkoutContainer extends Component {
         })
     }
 
+    handleRemove = () => {
+        this.props.removeWorkout(this.props.workout.id)
+            .then(() => {
+                history.push('/workouts')
+            })
+    }
+
     render() {
         return this.props.workout ?
             <Fragment>
@@ -103,6 +110,13 @@ class WorkoutContainer extends Component {
                         workoutId={this.props.workoutId}
                     />
                 </Workout>
+                <TopNav
+                    rightLabel="Delete Workout"
+                    right={{
+                        onClick: this.handleRemove,
+                        danger: true
+                    }}
+                />
             </Fragment>
         : null
     }

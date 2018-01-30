@@ -56,6 +56,13 @@ class RoutineContainer extends Component {
         })
     }
 
+    handleRemove = () => {
+        this.props.removeRoutine(this.props.routine.id)
+            .then(() => {
+                history.push('/routines')
+            })
+    }
+
     render() {
         return this.props.routine ?
             (
@@ -76,6 +83,13 @@ class RoutineContainer extends Component {
                     >
                         <ExercisesContainer routineId={this.props.routine.id} />
                     </Routine>
+                    <TopNav
+                        rightLabel="Delete Routine"
+                        right={{
+                            onClick: this.handleRemove,
+                            danger: true
+                        }}
+                    />
                 </Fragment>
             )
         : null
