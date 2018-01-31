@@ -13,9 +13,13 @@ export const workoutSelector = (id) => createSelector(
     [
         (state) => state.workouts.entities
     ],
-    (workouts) => Object.keys(workouts).length > 0 ?
-        formatWorkout(workouts.find((workout) => (workout.id === id))) :
-        null
+    (workouts) => {
+        if (workouts.length > 0) {
+            const workout = workouts.find((workout) => (workout.id === id))
+            return workout ? formatWorkout(workout) : null
+        }
+        return null
+    }
 )
 
 export const workoutsSelector = createSelector(
@@ -40,4 +44,3 @@ export const pendingWorkoutsSelector = createSelector(
     ],
     (workouts) => workouts.filter((workout) => (!workout.completedAt))
 )
-

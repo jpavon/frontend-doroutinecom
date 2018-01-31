@@ -6,14 +6,6 @@ const formatLift = (lift) => Lift({
     ...lift
 })
 
-export const liftsSelector = createSelector(
-    [
-        (state) => state.lifts.entities
-    ],
-    (lifts) => lifts
-        .map((lift) => formatLift(lift))
-)
-
 export const liftSelector = (id) => createSelector(
     [
         (state) => state.lifts.entities
@@ -25,6 +17,14 @@ export const liftSelector = (id) => createSelector(
         }
         return null
     }
+)
+
+export const liftsSelector = createSelector(
+    [
+        (state) => state.lifts.entities
+    ],
+    (lifts) => lifts
+        .map((lift) => formatLift(lift))
 )
 
 export const liftExerciseSelector = (exerciseId) => createSelector(

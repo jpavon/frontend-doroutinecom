@@ -6,15 +6,7 @@ const formatRoutine = (routine) => Routine({
     ...routine
 })
 
-export const routinesSelector = createSelector(
-    [
-        state => state.routines.entities
-    ],
-    (routines) => routines
-        .map((routine) => formatRoutine(routine))
-)
-
-export const routineByIdSelector = (id) => createSelector(
+export const routineSelector = (id) => createSelector(
     [
         (state) => state.routines.entities
     ],
@@ -25,4 +17,12 @@ export const routineByIdSelector = (id) => createSelector(
         }
         return null
     }
+)
+
+export const routinesSelector = createSelector(
+    [
+        state => state.routines.entities
+    ],
+    (routines) => routines
+        .map((routine) => formatRoutine(routine))
 )

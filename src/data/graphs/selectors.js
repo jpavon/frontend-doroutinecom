@@ -44,7 +44,7 @@ const getSeries = (workouts) => {
     return series
 }
 
-export const graphDataSelector = () => createSelector(
+export const graphDataSelector = createSelector(
     [
         completedWorkoutsSelector
     ],

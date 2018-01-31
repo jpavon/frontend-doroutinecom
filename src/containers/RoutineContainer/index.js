@@ -7,7 +7,7 @@ import history from 'utils/history'
 import { now } from 'utils/date'
 import { updateRoutine, removeRoutine } from 'data/routines/actions'
 import { createWorkout } from 'data/workouts/actions'
-import { routineByIdSelector } from 'data/routines/selectors'
+import { routineSelector } from 'data/routines/selectors'
 import { STATUS_LOADED, STATUS_DELETING } from 'data/utils'
 import { fetchWorkoutsData } from 'data/globals'
 
@@ -103,7 +103,7 @@ class RoutineContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    routine: routineByIdSelector(props.routineId)(state),
+    routine: routineSelector(props.routineId)(state),
     isStatusLoaded: state.routines.fetchStatus === STATUS_LOADED,
     isDeleting: state.routines.entitiesStatus[props.routineId] === STATUS_DELETING
 })
