@@ -227,3 +227,16 @@ td.rdtYear:hover {
     font-weight: 700;
     font-size: 20px;
 }
+
+.rdtPicker thead tr:first-child th {
+    padding: 10px 0;
+}
+
+.rdtPicker td.rdtActive, .rdtPicker td.rdtActive:hover {
+    text-shadow: none;
+}
+
+.rdtPicker td.rdtToday:before {
+    bottom: 2px;
+    right: 2px;
+}

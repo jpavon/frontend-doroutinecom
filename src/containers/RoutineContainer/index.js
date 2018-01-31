@@ -7,7 +7,7 @@ import { now } from 'utils/date'
 import { updateRoutine, removeRoutine } from 'data/routines/actions'
 import { createWorkout } from 'data/workouts/actions'
 import { routineByIdSelector } from 'data/routines/selectors'
-import { STATUS_LOADED } from 'data/utils'
+import { STATUS_LOADED, STATUS_DELETING } from 'data/utils'
 import { fetchWorkoutsData } from 'data/globals'
 
 // import LiftsContainer from 'containers/LiftsContainer'
@@ -24,6 +24,7 @@ class RoutineContainer extends Component {
 
         routine: PropTypes.object,
         isStatusLoaded: PropTypes.bool.isRequired,
+        isDeleting: PropTypes.bool.isRequired,
 
         updateRoutine: PropTypes.func.isRequired,
         removeRoutine: PropTypes.func.isRequired,
@@ -89,7 +90,8 @@ class RoutineContainer extends Component {
                         rightLabel="Delete Routine"
                         right={{
                             onClick: this.handleRemove,
-                            danger: true
+                            danger: true,
+                            disabled: this.props.isDeleting
                         }}
                     />
                 </Fragment>
@@ -101,6 +103,7 @@ class RoutineContainer extends Component {
 const mapStateToProps = (state, props) => ({
     routine: routineByIdSelector(props.routineId)(state),
     isStatusLoaded: state.routines.fetchStatus === STATUS_LOADED,
+    isDeleting: state.routines.entitiesStatus[props.routineId] === STATUS_DELETING
 })
 
 const mapDispatchToProps = {

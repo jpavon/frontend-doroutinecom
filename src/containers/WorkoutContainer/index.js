@@ -6,7 +6,7 @@ import history from 'utils/history'
 import { now } from 'utils/date'
 import { updateWorkout, createWorkout, removeWorkout } from 'data/workouts/actions'
 import { workoutSelector } from 'data/workouts/selectors'
-import { STATUS_LOADED } from 'data/utils'
+import { STATUS_LOADED, STATUS_DELETING } from 'data/utils'
 import { fetchWorkoutsData } from 'data/globals'
 
 import ExercisesContainer from 'containers/ExercisesContainer'
@@ -22,6 +22,8 @@ class WorkoutContainer extends Component {
         workoutId: PropTypes.number.isRequired,
 
         workout: PropTypes.object,
+        isStatusLoaded: PropTypes.bool.isRequired,
+        isDeleting: PropTypes.bool.isRequired,
 
         updateWorkout: PropTypes.func.isRequired,
         createWorkout: PropTypes.func.isRequired,
@@ -124,7 +126,8 @@ class WorkoutContainer extends Component {
                     rightLabel="Delete Workout"
                     right={{
                         onClick: this.handleRemove,
-                        danger: true
+                        danger: true,
+                        disabled: this.props.isDeleting
                     }}
                 />
             </Fragment>
@@ -135,6 +138,7 @@ class WorkoutContainer extends Component {
 const mapStateToProps = (state, props) => ({
     workout: workoutSelector(props.workoutId)(state),
     isStatusLoaded: state.workouts.fetchStatus === STATUS_LOADED,
+    isDeleting: state.workouts.entitiesStatus[props.workoutId] === STATUS_DELETING
 })
 
 const mapDispatchToProps = {
