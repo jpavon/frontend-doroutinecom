@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import history from 'utils/history'
+import { now } from 'utils/date'
 import { updateWorkout, createWorkout, removeWorkout } from 'data/workouts/actions'
 import { workoutSelector } from 'data/workouts/selectors'
 import { STATUS_LOADED } from 'data/utils'
@@ -35,22 +36,22 @@ class WorkoutContainer extends Component {
 
     handleCompleted = () => {
         this.props.updateWorkout(this.props.workout.id, {
-            isCompleted: '2018-01-29',
-            isPending: false
+            completedAt: now()
         })
     }
 
     handleRestart = () => {
         this.props.updateWorkout(this.props.workout.id, {
-            isCompleted: null,
-            isPending: true
+            startedAt: now(),
+            completedAt: null
         })
     }
 
     handleCreate = () => {
         this.props.createWorkout({
             routineId: this.props.workout.routineId,
-            workoutId: this.props.workout.id
+            workoutId: this.props.workout.id,
+            startedAt: now()
         }).then((resp) => {
             this.props.fetchWorkoutsData()
                 .then(() => {
@@ -70,8 +71,8 @@ class WorkoutContainer extends Component {
         return this.props.workout ?
             <Fragment>
                 <Alert
-                    type={this.props.workout.isPending ? "info" : "success"}
-                    message={this.props.workout.isPending ? "In Progress" : "Completed"}
+                    type={this.props.workout.completedAt ? "success" : "info"}
+                    message={this.props.workout.completedAt ? "Completed" : "In Progress"}
                     size="small"
                     animate={false}
                 />
@@ -80,22 +81,22 @@ class WorkoutContainer extends Component {
                     left={{
                         to: `/workouts`
                     }}
-                    rightLabel={this.props.workout.isPending ?
-                        "Completed" :
-                        "Restart"
+                    rightLabel={this.props.workout.completedAt ?
+                        "Restart" :
+                        "Completed"
                     }
-                    right={this.props.workout.isPending ?
-                        {
-                            onClick: this.handleCompleted,
-                        } :
+                    right={this.props.workout.completedAt ?
                         {
                             onClick: this.handleRestart,
+                        } :
+                        {
+                            onClick: this.handleCompleted,
                         }
                     }
                 />
-                {!this.props.workout.isPending &&
+                {this.props.workout.completedAt &&
                     <TopNav
-                        rightLabel="Perform Workout Again"
+                        rightLabel="Perform again as new workout"
                         right={{
                             onClick: this.handleCreate,
                         }}

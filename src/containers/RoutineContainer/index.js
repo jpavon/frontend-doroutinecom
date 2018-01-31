@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import history from 'utils/history'
+import { now } from 'utils/date'
 import { updateRoutine, removeRoutine } from 'data/routines/actions'
 import { createWorkout } from 'data/workouts/actions'
 import { routineByIdSelector } from 'data/routines/selectors'
@@ -47,7 +48,8 @@ class RoutineContainer extends Component {
 
     handleCreateWorkout = () => {
         this.props.createWorkout({
-            routineId: this.props.routine.id
+            routineId: this.props.routine.id,
+            startedAt: now()
         }).then((resp) => {
             this.props.fetchWorkoutsData()
                 .then(() => {

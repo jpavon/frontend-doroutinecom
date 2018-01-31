@@ -35,13 +35,13 @@ export const completedWorkoutsSelector =  createSelector(
     [
         workoutsRoutineSelector
     ],
-    (workouts) => workouts.filter((workout) => (workout.isCompleted))
+    (workouts) => workouts.filter((workout) => (workout.completedAt))
 )
 
 export const pendingWorkoutsSelector = createSelector(
     [
         workoutsRoutineSelector
     ],
-    (workouts) => workouts.filter((workout) => (workout.isPending))
+    (workouts) => workouts.filter((workout) => (!workout.completedAt))
 )
 

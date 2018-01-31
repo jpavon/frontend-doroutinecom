@@ -5,8 +5,8 @@ const Workout = validateData({
     userId: 'number',
     routineId: 'number|null',
     name: 'string|null',
-    isCompleted: 'string|null',
-    isPending: 'boolean',
+    startedAt: 'string',
+    completedAt: 'string|null',
     notes: 'string|null',
     createdAt: 'string',
     updatedAt: 'string'

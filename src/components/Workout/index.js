@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import FieldGroup from 'components/AutoSaveForm/FieldGroup'
@@ -10,12 +10,28 @@ const WorkoutEdit = ({children, workout, update}) => (
                 initialValues={workout}
                 update={update}
                 render={({values}) => (
-                    <FieldGroup
-                        label="Name"
-                        id={`name${values.id}`}
-                        name="name"
-                        placeholder="Type your workout name"
-                    />
+                    <div className="workout-form">
+                        <FieldGroup
+                            label="Name"
+                            id={`name${values.id}`}
+                            name="name"
+                            placeholder="Type your workout name"
+                        />
+                        {values.completedAt &&
+                            <Fragment>
+                                <FieldGroup
+                                    label="Started"
+                                    id={`startedAt${values.id}`}
+                                    name="startedAt"
+                                />
+                                <FieldGroup
+                                    label="Completed"
+                                    id={`completedAt${values.id}`}
+                                    name="completedAt"
+                                />
+                            </Fragment>
+                        }
+                    </div>
                 )}
             />
         </div>
