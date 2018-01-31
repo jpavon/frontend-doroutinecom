@@ -22,7 +22,9 @@ export const workoutsSelector = createSelector(
     [
         (state) => state.workouts.entities
     ],
-    (workouts) => workouts.map((workout) => formatWorkout(workout))
+    (workouts) => workouts
+        .map((workout) => formatWorkout(workout))
+        .sort((a, b) => (new Date(b.completedAt) - new Date(a.completedAt)))
 )
 
 export const completedWorkoutsSelector =  createSelector(
