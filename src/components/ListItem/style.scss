@@ -10,7 +10,7 @@
     transition: color .2s;
     background-image: url('../../media/arrow-right.svg');
     background-repeat: no-repeat;
-    background-position: right $spacing top $spacing - 4;
+    background-position: right $spacing center;
 
     &:hover {
         color: $color-danger;

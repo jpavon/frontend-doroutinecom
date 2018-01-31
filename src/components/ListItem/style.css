@@ -8,7 +8,7 @@
   transition: color .2s;
   background-image: url("../../media/arrow-right.svg");
   background-repeat: no-repeat;
-  background-position: right 18px top 14px; }
+  background-position: right 18px center; }
   .list-item:hover {
     color: #c73434; }
   .list-item:first-child {
