@@ -9,7 +9,10 @@ const Workout = validateData({
     completedAt: 'string|null',
     notes: 'string|null',
     createdAt: 'string',
-    updatedAt: 'string'
+    updatedAt: 'string',
+
+    duration: 'string|null',
+    day: 'string|null'
 })
 
 export default Workout

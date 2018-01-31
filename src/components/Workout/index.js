@@ -20,11 +20,13 @@ const WorkoutEdit = ({children, workout, update}) => (
                         {values.completedAt &&
                             <Fragment>
                                 <FieldGroup
+                                    component="datetime"
                                     label="Started"
                                     id={`startedAt${values.id}`}
                                     name="startedAt"
                                 />
                                 <FieldGroup
+                                    component="datetime"
                                     label="Completed"
                                     id={`completedAt${values.id}`}
                                     name="completedAt"

@@ -2,6 +2,7 @@ import { Component } from 'react'
 import PropTypes from 'prop-types'
 import isEqual from 'lodash/isEqual'
 import debounce from 'lodash/debounce'
+import { format } from 'utils/date'
 
 class AutoSaveForm extends Component {
 
@@ -48,10 +49,18 @@ class AutoSaveForm extends Component {
         })
     }
 
-    handleChange = (event) => {
-        const target = event.target
-        const name = event.target.name
-        const value = target.type === 'checkbox' ? target.checked : target.value
+    handleChange = (event, date) => {
+        let name
+        let value
+
+        if (event) {
+            const target = event.target
+            name = event.target.name
+            value = target.type === 'checkbox' ? target.checked : target.value
+        } else {
+            name = date.name
+            value = date.moment.format(format)
+        }
 
         this.setState((prevState) => ({
             reinitializeValues: false,
@@ -61,7 +70,7 @@ class AutoSaveForm extends Component {
             }
         }))
 
-        if (target.type === 'select' || target.type === 'checkbox') {
+        if (event && (event.target.type === 'select' || event.target.type === 'checkbox')) {
             this.update(this.state.values.id, name, value)
         } else {
             this.debounceUpdate(this.state.values.id, name, value)

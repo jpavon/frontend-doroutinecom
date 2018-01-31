@@ -72,7 +72,13 @@ class WorkoutContainer extends Component {
             <Fragment>
                 <Alert
                     type={this.props.workout.completedAt ? "success" : "info"}
-                    message={this.props.workout.completedAt ? "Completed" : "In Progress"}
+                    message={
+                        this.props.workout.completedAt ?
+                            (<Fragment>
+                                Completed {this.props.workout.duration && 'in ' + this.props.workout.duration}
+                            </Fragment>) :
+                            "In Progress"
+                    }
                     size="small"
                     animate={false}
                 />

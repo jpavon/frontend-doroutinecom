@@ -5,6 +5,7 @@ import Input from 'components/AutoSaveForm/Input'
 import Select from 'components/AutoSaveForm/Select'
 import Checkbox from 'components/AutoSaveForm/Checkbox'
 import Textarea from 'components/AutoSaveForm/Textarea'
+import Datetime from 'components/AutoSaveForm/Datetime'
 
 import './style.css'
 
@@ -22,6 +23,10 @@ const FieldGroup = ({id, label, component, ...rest}) => {
 
     if (component === 'textarea') {
         Component = Textarea
+    }
+
+    if (component === 'datetime') {
+        Component = Datetime
     }
 
     return (

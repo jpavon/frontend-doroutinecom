@@ -41,7 +41,7 @@ class Alert extends Component {
         )
 
         const Message = () => {
-            if (isString(message) || isArray(message)) {
+            if (isString(message) || isArray(message) || React.isValidElement(message)) {
                 return message
             } else if (isObject(message)) {
                 return (

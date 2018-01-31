@@ -1,19 +1,13 @@
 import { createSelector } from 'reselect'
 
+import { formatDuration, formatDate } from 'utils/date'
 import Workout from 'data/workouts/schema'
 
 const formatWorkout = (workout) => Workout({
     ...workout,
+    duration: workout.completedAt && formatDuration(workout.startedAt, workout.completedAt),
+    day: workout.completedAt && formatDate(workout.completedAt)
 })
-
-export const workoutsSelector = (routineId) => createSelector(
-    [
-        state => state.workouts.entities
-    ],
-    (workouts) => workouts
-        .filter((workout) => (workout.routineId === routineId))
-        .map((workout) => formatWorkout(workout))
-)
 
 export const workoutSelector = (id) => createSelector(
     [
@@ -24,23 +18,23 @@ export const workoutSelector = (id) => createSelector(
         null
 )
 
-export const workoutsRoutineSelector = createSelector(
+export const workoutsSelector = createSelector(
     [
         (state) => state.workouts.entities
     ],
-    (workouts) => workouts
+    (workouts) => workouts.map((workout) => formatWorkout(workout))
 )
 
 export const completedWorkoutsSelector =  createSelector(
     [
-        workoutsRoutineSelector
+        workoutsSelector
     ],
     (workouts) => workouts.filter((workout) => (workout.completedAt))
 )
 
 export const pendingWorkoutsSelector = createSelector(
     [
-        workoutsRoutineSelector
+        workoutsSelector
     ],
     (workouts) => workouts.filter((workout) => (!workout.completedAt))
 )
