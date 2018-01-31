@@ -14,6 +14,7 @@ import ExercisesContainer from 'containers/ExercisesContainer'
 import Alert from 'components/Alert'
 import TopNav from 'components/TopNav'
 import Workout from 'components/Workout'
+import Timer from 'components/Timer'
 
 class WorkoutContainer extends Component {
 
@@ -77,7 +78,9 @@ class WorkoutContainer extends Component {
                             (<Fragment>
                                 Completed {this.props.workout.duration && 'in ' + this.props.workout.duration}
                             </Fragment>) :
-                            "In Progress"
+                            (<Fragment>
+                                In Progress <Timer start={this.props.workout.startedAt} />
+                            </Fragment>)
                     }
                     size="small"
                     animate={false}

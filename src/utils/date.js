@@ -15,11 +15,13 @@ export const formatDuration = (started, completed) => {
     const hours = parseInt(duration.asHours(), 10)
     const minutes = parseInt(duration.asMinutes(), 10) - hours * 60
 
-    const minutesString = minutes === 1 ? 'minute' : 'minutes'
+    let string = minutes + ' ' + (minutes === 1 ? 'minute' : 'minutes')
 
-    return (hours > 0 || minutes > 0) ?
-        (hours + ' hours and ' + minutes + ' ' + minutesString) :
-        null
+    if (hours > 0) {
+        string = hours + ' hours and ' + string
+    }
+
+    return (!(hours < 0) && !(minutes < 0)) ? string : null
 }
 
 export const formatDate = (date) => {
