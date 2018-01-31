@@ -54,7 +54,7 @@ a {
 
 .ct-series-a .ct-bar {
   /* Colour of your bars */
-  stroke: $color-primary;
+  stroke: rgba($color-success, .2);
   /* The width of your bars */
   stroke-width: 40px;
   /* Yes! Dashed bars! */

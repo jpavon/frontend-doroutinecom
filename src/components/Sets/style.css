@@ -14,11 +14,11 @@
   border-bottom: 1px solid #e4e9ea; }
 
 .sets-header-item {
-  flex: 0 0 32%; }
+  flex: 0 0 35%; }
   .sets-header-item:first-child {
     flex: 0 0 20%; }
   .sets-header-item:last-child {
-    flex: 0 0 16%; }
+    flex: 0 0 10%; }
 
 .set-inner {
   position: relative;
@@ -44,11 +44,11 @@
       color: rgba(68, 68, 68, 0.3); }
 
 .set-inner-item {
-  flex: 0 0 32%; }
+  flex: 0 0 35%; }
   .set-inner-item:first-child {
     flex: 0 0 20%; }
   .set-inner-item:last-child {
-    flex: 0 0 16%; }
+    flex: 0 0 10%; }
 
 .set-action {
   display: flex; }

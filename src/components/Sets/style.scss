@@ -2,14 +2,14 @@
 @import "mixins.scss";
 
 @mixin layout() {
-    flex: 0 0 32%;
+    flex: 0 0 35%;
 
     &:first-child {
         flex: 0 0 20%;
     }
 
     &:last-child {
-        flex: 0 0 16%;
+        flex: 0 0 10%;
     }
 }
 

@@ -80,7 +80,7 @@ class GraphContainer extends Component {
                 high: 8,
                 low: 0,
                 // divisor: 1,
-                seriesBarDistance: 10,
+                // seriesBarDistance: 10,
                 // reverseData: true,
                 // horizontalBars: true,
                 axisY: {

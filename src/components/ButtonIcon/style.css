@@ -26,8 +26,6 @@
     cursor: default;
     opacity: .7;
     box-shadow: none; }
-  .button img, .button-icon img {
-    margin-right: 5px; }
 
 .button--danger {
   color: #c73434; }

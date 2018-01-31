@@ -13,7 +13,8 @@ class SetsContainer extends Component {
 
     static propTypes = {
         exerciseId: PropTypes.number.isRequired,
-        isWorkout: PropTypes.bool,
+        isWorkout: PropTypes.bool.isRequired,
+        showDelete: PropTypes.bool.isRequired,
 
         sets: PropTypes.array.isRequired,
         entitiesStatus: PropTypes.object.isRequired,
@@ -38,6 +39,7 @@ class SetsContainer extends Component {
                         remove={this.props.removeSet}
                         isWorkout={this.props.isWorkout}
                         isDeleting={this.props.entitiesStatus[set.id] === STATUS_DELETING}
+                        showDelete={this.props.showDelete}
                     />
                 ))}
             </Sets>

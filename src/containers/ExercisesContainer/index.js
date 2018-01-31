@@ -39,14 +39,31 @@ class ExercisesContainer extends Component {
         removeExercise: PropTypes.func.isRequired,
     }
 
+    constructor(props) {
+        super(props)
+
+        this.isRoutine = !!this.props.routineId
+        this.isWorkout = !!this.props.workoutId
+
+        this.state = {
+            showDelete: this.isRoutine ? true : false
+        }
+    }
+
+    handleToggleShowDelete = () => {
+        this.setState((prevState) => ({
+            showDelete: !prevState.showDelete
+        }))
+    }
+
     handleCreate = () => {
         const data = {}
 
-        if (this.props.routineId) {
+        if (this.isRoutine) {
             data.routineId = this.props.routineId
         }
 
-        if (this.props.workoutId) {
+        if (this.isWorkout) {
             data.workoutId = this.props.workoutId
         }
 
@@ -58,6 +75,10 @@ class ExercisesContainer extends Component {
             <Fragment>
                 <TopNav
                     title="Exercises"
+                    rightLabel={this.isWorkout && this.state.showDelete ? 'Hide X' : 'Show X'}
+                    right={this.isWorkout && {
+                        onClick: this.handleToggleShowDelete,
+                    }}
                 />
                 <Exercises
                     create={this.handleCreate}
@@ -72,10 +93,12 @@ class ExercisesContainer extends Component {
                                 update={this.props.updateExercise}
                                 remove={this.props.removeExercise}
                                 isDeleting={this.props.entitiesStatus[exercise.id] === STATUS_DELETING}
+                                showDelete={this.state.showDelete}
                             >
                                 <SetsContainer
                                     exerciseId={exercise.id}
-                                    isWorkout={!!this.props.workoutId}
+                                    isWorkout={this.isWorkout}
+                                    showDelete={this.state.showDelete}
                                 />
                             </Exercise>
                         )) :
