@@ -32,7 +32,7 @@ class Timer extends Component {
     }
 
     format = (n) => {
-        return n > 9 ? "" + n: "0" + n
+        return n > 9 ? n : '0' + n
     }
 
     tick = () => {

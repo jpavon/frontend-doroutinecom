@@ -16,12 +16,6 @@ const Lift = ({lift, remove, update, isDeleting}) => (
                         name="name"
                         placeholder="Type the lift name"
                     />
-                    <FieldGroup
-                        label="Rep Max"
-                        id="rm"
-                        name="rm"
-                        placeholder="Type the rep max for the lift"
-                    />
                 </div>
             )}
         />
