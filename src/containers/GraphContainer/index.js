@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Chartist from 'chartist'
-import moment from 'moment'
+// import moment from 'moment'
 
 import { graphDataSelector } from 'data/graphs/selectors'
 
@@ -73,13 +73,14 @@ class GraphContainer extends Component {
         new Chartist.Bar(this.graph, {
                 labels: ['1/10 - 7/10', '1/10 - 7/10', '13/10 - 73/10', '13/10 - 17/10'],
                 series: [
-                    [5, 4, 3, 7]
+                    [5, 4, 3, 6]
                 ]
             },
             {
-                high: 10,
+                high: 8,
+                low: 0,
                 // divisor: 1,
-                // seriesBarDistance: 50,
+                seriesBarDistance: 10,
                 // reverseData: true,
                 // horizontalBars: true,
                 axisY: {
@@ -87,6 +88,7 @@ class GraphContainer extends Component {
                     onlyInteger: true,
                     // scaleMinSpace: 20,
                     // offset: 60,
+
                 },
                 axisX: {
                     // offset: 70,

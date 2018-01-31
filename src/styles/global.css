@@ -1092,3 +1092,8 @@ a {
   stroke-width: 40px;
   /* Yes! Dashed bars! */
   /* Maybe you like round corners on your bars? */ }
+
+.ct-grid {
+  stroke: #e4e9ea;
+  stroke-width: 1px;
+  stroke-dasharray: 0; }

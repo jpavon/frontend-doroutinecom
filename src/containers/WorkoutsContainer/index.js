@@ -8,6 +8,7 @@ import Workouts from 'components/Workouts/Workouts'
 import Workout from 'components/Workouts/Workout'
 import NoData from 'components/NoData'
 import TopNav from 'components/TopNav'
+import Badge from 'components/Badge'
 
 class WorkoutsContainer extends Component {
 
@@ -20,7 +21,11 @@ class WorkoutsContainer extends Component {
         return (
             <Fragment>
                 <TopNav
-                    title="In Progress"
+                    title={(
+                        <Fragment>
+                            In Progress <Badge number={this.props.pendingWorkouts.length} />
+                        </Fragment>
+                    )}
                 />
                 <Workouts>
                     {this.props.pendingWorkouts.length > 0 ?

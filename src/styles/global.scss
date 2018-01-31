@@ -62,3 +62,9 @@ a {
   /* Maybe you like round corners on your bars? */
   // stroke-linecap: round;
 }
+
+.ct-grid {
+    stroke: $color-border;
+    stroke-width: 1px;
+    stroke-dasharray: 0;
+}
