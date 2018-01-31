@@ -18,7 +18,7 @@ export const formatDuration = (started, completed) => {
     let string = minutes + ' ' + (minutes === 1 ? 'minute' : 'minutes')
 
     if (hours > 0) {
-        string = hours + ' hours and ' + string
+        string = hours + ' ' + (hours === 1 ? 'hour' : 'hours') + ' and ' + string
     }
 
     return (!(hours < 0) && !(minutes < 0)) ? string : null

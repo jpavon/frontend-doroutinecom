@@ -16,6 +16,8 @@
 
 .top-nav-left {
   left: 0; }
+  .top-nav-left img {
+    margin-right: 9px; }
 
 .top-nav-right {
   right: 0; }

@@ -1087,7 +1087,7 @@ a {
 
 .ct-series-a .ct-bar {
   /* Colour of your bars */
-  stroke: rgba(78, 162, 78, 0.2);
+  stroke: rgba(78, 162, 78, 0.3);
   /* The width of your bars */
   stroke-width: 40px;
   /* Yes! Dashed bars! */
