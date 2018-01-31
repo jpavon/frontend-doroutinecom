@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import Helmet from 'react-helmet'
 
 import history from 'utils/history'
 import { now } from 'utils/date'
@@ -10,9 +11,7 @@ import { routineByIdSelector } from 'data/routines/selectors'
 import { STATUS_LOADED, STATUS_DELETING } from 'data/utils'
 import { fetchWorkoutsData } from 'data/globals'
 
-// import LiftsContainer from 'containers/LiftsContainer'
 import ExercisesContainer from 'containers/ExercisesContainer'
-// import GraphContainer from 'containers/GraphContainer'
 
 import Routine from 'components/Routine'
 import TopNav from 'components/TopNav'
@@ -70,6 +69,9 @@ class RoutineContainer extends Component {
         return this.props.routine ?
             (
                 <Fragment>
+                    {this.props.routine.name &&
+                        <Helmet><title>{this.props.routine.name}</title></Helmet>
+                    }
                     <TopNav
                         title="Routine"
                         left={{

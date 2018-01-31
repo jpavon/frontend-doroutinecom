@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import Helmet from 'react-helmet'
 
 import history from 'utils/history'
 import { now } from 'utils/date'
@@ -73,6 +74,9 @@ class WorkoutContainer extends Component {
     render() {
         return this.props.workout ?
             <Fragment>
+                {this.props.workout.name &&
+                    <Helmet><title>{this.props.workout.name}</title></Helmet>
+                }
                 <Alert
                     type={this.props.workout.completedAt ? "success" : "info"}
                     message={

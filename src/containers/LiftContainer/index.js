@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import Helmet from 'react-helmet'
 
 import history from 'utils/history'
 import { liftSelector } from 'data/lifts/selectors'
@@ -39,6 +40,9 @@ class LiftContainer extends Component {
     render() {
         return this.props.lift ?
             <Fragment>
+                {this.props.lift.name &&
+                    <Helmet><title>{this.props.lift.name}</title></Helmet>
+                }
                 <TopNav
                     title="Lift"
                     left={{
@@ -48,6 +52,9 @@ class LiftContainer extends Component {
                 <Lift
                     lift={this.props.lift}
                     update={this.props.updateLift}
+                />
+                <TopNav
+                    title="Progress"
                 />
                 <TopNav
                     rightLabel="Delete Lift"
