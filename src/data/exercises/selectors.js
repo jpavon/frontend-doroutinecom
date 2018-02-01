@@ -1,6 +1,8 @@
 import { createSelector } from 'reselect'
 
 import Exercise from 'data/exercises/schema'
+import { completedWorkoutsSelector } from 'data/workouts/selectors'
+import { liftSelector } from 'data/lifts/selectors'
 
 const formatExercise = (exercise) => Exercise({
     ...exercise
@@ -32,4 +34,18 @@ export const exercisesWorkoutSelector = (workoutId) => createSelector(
     (exercises) => exercises
         .filter((exercise) => (exercise.workoutId === workoutId))
         .map((exercise) => formatExercise(exercise))
+)
+
+export const completedExercisesLiftSelector = (liftId) => createSelector(
+    [
+        (state) => state.exercises.entities,
+        completedWorkoutsSelector,
+        liftSelector(liftId)
+    ],
+    (exercises, workouts, lift) => {
+        const completedWorkoutsIds = workouts.map((workout) => workout.id)
+        const completedExercises = exercises.filter((exercise) => completedWorkoutsIds.includes(exercise.workoutId))
+
+        return completedExercises.filter((exercise) => exercise.liftId === lift.id)
+    }
 )

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { createSet, updateSet, removeSet } from 'data/sets/actions'
-import { setsSelector } from 'data/sets/selectors'
+import { setsExerciseSelector } from 'data/sets/selectors'
 import { STATUS_DELETING } from 'data/utils'
 
 import Sets from 'components/Sets/Sets'
@@ -48,7 +48,7 @@ class SetsContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    sets: setsSelector(props.exerciseId)(state),
+    sets: setsExerciseSelector(props.exerciseId)(state),
     entitiesStatus: state.sets.entitiesStatus
 })
 

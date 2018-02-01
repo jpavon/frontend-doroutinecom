@@ -1,5 +1,4 @@
 @import "~normalize.css";
-@import "../../node_modules/chartist/dist/scss/chartist.scss";
 @import "reboot.scss";
 @import "variables.scss";
 @import "layout.scss";
@@ -49,22 +48,4 @@ p {
 a {
     color: $color-font;
     text-decoration: none;
-}
-
-
-.ct-series-a .ct-bar {
-  /* Colour of your bars */
-  stroke: rgba($color-success, .3);
-  /* The width of your bars */
-  stroke-width: 40px;
-  /* Yes! Dashed bars! */
-  // stroke-dasharray: 2px;
-  /* Maybe you like round corners on your bars? */
-  // stroke-linecap: round;
-}
-
-.ct-grid {
-    stroke: $color-border;
-    stroke-width: 1px;
-    stroke-dasharray: 0;
 }

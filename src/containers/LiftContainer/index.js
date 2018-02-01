@@ -4,12 +4,14 @@ import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
 import history from 'utils/history'
+import { liftGraphDataSelector } from 'data/graphs/selectors'
 import { liftSelector } from 'data/lifts/selectors'
 import { updateLift, removeLift } from 'data/lifts/actions'
 import { STATUS_LOADED, STATUS_DELETING } from 'data/utils'
 
 import Lift from 'components/Lift'
 import TopNav from 'components/TopNav'
+import Graph from 'components/Graph'
 
 class LiftContainer extends Component {
 
@@ -19,6 +21,7 @@ class LiftContainer extends Component {
         lift: PropTypes.object,
         isStatusLoaded: PropTypes.bool.isRequired,
         isDeleting: PropTypes.bool.isRequired,
+        liftGraphData: PropTypes.object.isRequired,
 
         updateLift: PropTypes.func.isRequired,
         removeLift: PropTypes.func.isRequired,
@@ -56,6 +59,13 @@ class LiftContainer extends Component {
                 <TopNav
                     title="Progress"
                 />
+                <Graph
+                    type="line"
+                    data={this.props.liftGraphData}
+                />
+                <TopNav
+                    title="Top Sets"
+                />
                 <TopNav
                     rightLabel="Delete Lift"
                     right={{
@@ -71,7 +81,8 @@ class LiftContainer extends Component {
 const mapStateToProps = (state, props) => ({
     lift: liftSelector(props.liftId)(state),
     isStatusLoaded: state.lifts.fetchStatus === STATUS_LOADED,
-    isDeleting: state.lifts.entitiesStatus[props.liftId] === STATUS_DELETING
+    isDeleting: state.lifts.entitiesStatus[props.liftId] === STATUS_DELETING,
+    liftGraphData: liftGraphDataSelector(props.liftId)(state)
 })
 
 const mapDispatchToProps = {

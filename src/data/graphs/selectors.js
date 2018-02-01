@@ -3,6 +3,8 @@ import Moment from 'moment'
 import { extendMoment } from 'moment-range'
 
 import { completedWorkoutsSelector } from 'data/workouts/selectors'
+import { completedExercisesLiftSelector } from 'data/exercises/selectors'
+import { setsSelector } from 'data/sets/selectors'
 
 const moment = extendMoment(Moment)
 
@@ -23,7 +25,7 @@ const range1 = moment().range(startWeek1, endWeek1)
 const range2 = moment().range(startWeek2, endWeek2)
 const range3 = moment().range(startWeek3, endWeek3)
 
-const getSeries = (workouts) => {
+const getWorkoutsDataset = (workouts) => {
     const series = [0, 0, 0, 0]
 
     workouts.forEach((workout) => {
@@ -44,12 +46,12 @@ const getSeries = (workouts) => {
     return series
 }
 
-export const graphDataSelector = createSelector(
+export const workoutsGraphDataSelector = createSelector(
     [
         completedWorkoutsSelector
     ],
     (workouts) => {
-        const series = getSeries(workouts).reverse()
+        const dataset = getWorkoutsDataset(workouts).reverse()
 
         return {
             labels: [
@@ -58,8 +60,56 @@ export const graphDataSelector = createSelector(
                 `${startWeek1.format('MM/DD')} - ${endWeek1.format('MM/DD')}`,
                 `${startWeek.format('MM/DD')} - ${endWeek.format('MM/DD')}`,
             ],
-            series,
-            maxSerie: Math.max.apply(Math, series)
+            dataset,
+            datasetMax: Math.max.apply(Math, dataset)
+        }
+    }
+)
+
+export const liftGraphDataSelector = (liftId) => createSelector(
+    [
+        completedExercisesLiftSelector(liftId),
+        setsSelector,
+        completedWorkoutsSelector
+    ],
+    (exercises, sets, workouts) => {
+        const completedExercisesIds = exercises.map((exercise) => exercise.id)
+        const completedSets = sets.filter((set) =>  completedExercisesIds.includes(set.exerciseId))
+
+        const topSets = completedSets.reduce((prev, curr) => {
+            const topSet = prev[curr.exerciseId] && prev[curr.exerciseId].weight > curr.weight ?
+                prev[curr.exerciseId] :
+                {
+                    weight: curr.weight,
+                    reps: curr.reps
+                }
+
+            return {
+                ...prev,
+                [curr.exerciseId]: topSet
+            }
+        }, {})
+
+        Object.keys(topSets).forEach((key) => {
+            const exercise = exercises.find((exercise) => exercise.id === Number(key))
+            const workout = workouts.find((workout) => exercise.workoutId === workout.id)
+            topSets[key].completedAt = workout.completedAt
+        })
+
+        const orderedTopSets = Object.keys(topSets)
+            .map((key) => topSets[key])
+            .sort((a, b) => (new Date(b.completedAt) - new Date(a.completedAt)))
+
+        console.log(orderedTopSets)
+
+        const dataset = orderedTopSets.map((set) => set.weight).reverse()
+        return {
+            labels: orderedTopSets.map((set) => moment(set.completedAt).format('YYYY/MM/DD')).reverse(),
+            dataset,
+            datasetMax: Math.max.apply(Math, dataset),
+            meta: {
+                reps: orderedTopSets.map((set) => set.reps).reverse()
+            }
         }
     }
 )
