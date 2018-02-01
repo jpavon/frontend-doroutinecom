@@ -1,15 +1,11 @@
-.field-group {
+.field {
   position: relative;
-  display: flex;
-  padding: 9px 18px;
+  padding: 12px 18px 9px;
   align-items: center;
   background-color: #fff;
   border-top: 1px solid #e4e9ea; }
-  .field-group > div {
+  .field > div {
     width: 100%; }
-  .field-group > label {
-    min-width: 17%;
-    margin-right: 27px; }
-  .field-group:last-child {
+  .field:last-child {
     margin-bottom: 18px;
     border-bottom: 1px solid #e4e9ea; }

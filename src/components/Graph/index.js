@@ -24,10 +24,14 @@ class Graph extends Component {
 
         const ctx = this.graph.getContext('2d')
 
-        const stepSize = Math.round((this.props.data.datasetMax/5) / 10) * 10
-        const max = stepSize < 7 ? 7 : Math.round(this.props.data.datasetMax / stepSize) * stepSize + stepSize
+        const datasetMax = this.props.data.datasetMax
 
-        console.log(stepSize, max)
+        const stepSize = datasetMax < 9 ? 1 :
+            datasetMax < 21 ? 2 :
+            Math.round((datasetMax/4) / 10) * 10
+
+        const max = datasetMax < 21 ? Math.round(datasetMax/2) * 2 + stepSize :
+            Math.round(datasetMax/10) * 10 + stepSize
 
         const options = {
             scales: {
@@ -35,22 +39,19 @@ class Graph extends Component {
                     ticks: {
                         beginAtZero: true,
                         min: 0,
-                        max: max,
+                        max: max < 5 ? 5 : max,
                         stepSize: stepSize,
                     },
                 }],
                 xAxes: [{
-                    display: true,
                     stacked: false,
                     ticks: {
-                        autoSkip: false
+                        autoSkip: false,
+                        // maxTicksLimit: 1
                     },
                     gridLines: {
                         display: false
-                    },
-                    // time: {
-                    //   unit: 'week'
-                    // }
+                    }
                 }]
             },
             legend: { display: false },
@@ -61,6 +62,7 @@ class Graph extends Component {
                     backgroundColor: 'transparent',
                     borderColor: 'rgba(76, 144, 194, .6)',
                     borderWidth: 2,
+                    tension: 0.1
                 },
                 point: {
                     radius: 5,
@@ -75,7 +77,7 @@ class Graph extends Component {
                 },
             },
             tooltips: {
-                enabled: this.props.type === 'bar' ? false : true,
+                // enabled: this.props.type === 'bar' ? false : true,
                 displayColors: false,
                 backgroundColor: 'rgba(76, 144, 194, .8)',
                 cornerRadius: 2,
@@ -83,10 +85,13 @@ class Graph extends Component {
                 bodySpacing: 20,
                 xPadding: 20,
                 yPadding: 10,
+                titleSpacing: 20,
                 callbacks: {
                     label: (tooltipItem, data) => {
                         const reps = data.meta && data.meta.reps
-                        return `${reps[tooltipItem.index]}x${tooltipItem.yLabel}kg`
+                        return reps ?
+                            `${reps[tooltipItem.index]}x${tooltipItem.yLabel}kg` :
+                            `${tooltipItem.yLabel}`
                     }
                 }
             }

@@ -100,8 +100,6 @@ export const liftGraphDataSelector = (liftId) => createSelector(
             .map((key) => topSets[key])
             .sort((a, b) => (new Date(b.completedAt) - new Date(a.completedAt)))
 
-        console.log(orderedTopSets)
-
         const dataset = orderedTopSets.map((set) => set.weight).reverse()
         return {
             labels: orderedTopSets.map((set) => moment(set.completedAt).format('YYYY/MM/DD')).reverse(),

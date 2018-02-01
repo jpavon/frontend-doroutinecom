@@ -1,26 +1,20 @@
 import React from 'react'
 
-import Section from 'components/Section'
-import Input from 'components/Form/Input'
-import Button from 'components/Button'
-import Label from 'components/Form/Label'
+import Auth from 'components/Auth'
+import Field from 'components/Field'
 
 const PasswordForgotten = ({handleSubmit, errors, success, setRef}) => (
-    <Section small className="password-forgotten" title="Password Forgotten">
-        <form method="post" onSubmit={handleSubmit}>
-            <Label htmlFor="email">
-                Email
-            </Label>
-            <Input
-                type="email"
-                id="email"
-                name="email"
-                size="large"
-                inputRef={(ref) => setRef(ref, 'email')}
-            />
-            <Button type="submit">Submit</Button>
-        </form>
-    </Section>
+    <Auth className="password-forgotten" handleSubmit={handleSubmit}>
+        <Field
+            uncontrolled
+            label="Email"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Type your email"
+            inputRef={(ref) => setRef(ref, 'email')}
+        />
+    </Auth>
 )
 
 export default PasswordForgotten

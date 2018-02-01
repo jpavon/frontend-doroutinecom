@@ -6,10 +6,11 @@ import Select from 'components/AutoSaveForm/Select'
 import Checkbox from 'components/AutoSaveForm/Checkbox'
 import Textarea from 'components/AutoSaveForm/Textarea'
 import Datetime from 'components/AutoSaveForm/Datetime'
+import UncontrolledInput from 'components/Form/Input'
 
 import './style.css'
 
-const FieldGroup = ({id, label, component, ...rest}) => {
+const Field = ({id, label, component, uncontrolled, ...rest}) => {
 
     let Component = Input
 
@@ -29,8 +30,12 @@ const FieldGroup = ({id, label, component, ...rest}) => {
         Component = Datetime
     }
 
+    if (uncontrolled) {
+        Component = UncontrolledInput
+    }
+
     return (
-        <div className="field-group">
+        <div className="field">
             <Label htmlFor={id}>{label}</Label>
             <Component
                 id={id}
@@ -40,4 +45,4 @@ const FieldGroup = ({id, label, component, ...rest}) => {
     )
 }
 
-export default FieldGroup
+export default Field

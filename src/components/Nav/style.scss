@@ -78,6 +78,10 @@
         transition: opacity .2s;
     }
 
+    .nav-item--unauth & {
+        padding: 24px 0;
+    }
+
     &:visited {
         color: lighten($color-font, 30%);
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import AutoSaveForm from 'components/AutoSaveForm'
-import FieldGroup from 'components/AutoSaveForm/FieldGroup'
+import Field from 'components/Field'
 
 import './style.css'
 
@@ -12,7 +12,7 @@ const Routine = ({children, routine, update}) => (
                 initialValues={routine}
                 update={update}
                 render={({values}) => (
-                    <FieldGroup
+                    <Field
                         label="Name"
                         id={`name${values.id}`}
                         name="name"
@@ -27,7 +27,7 @@ const Routine = ({children, routine, update}) => (
                 initialValues={routine}
                 update={update}
                 render={({values}) => (
-                    <FieldGroup
+                    <Field
                         component="textarea"
                         label="Additional Notes"
                         id={`notes${values.id}`}

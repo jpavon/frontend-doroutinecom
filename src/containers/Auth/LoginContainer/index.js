@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -6,6 +6,7 @@ import { loginUser, authUser } from 'data/user/actions'
 import { showAlert } from 'data/ui/actions'
 
 import Login from 'components/Auth/Login'
+import TopNav from 'components/TopNav'
 
 class LoginContainer extends Component {
 
@@ -37,10 +38,15 @@ class LoginContainer extends Component {
 
     render() {
         return (
-            <Login
-                handleSubmit={this.handleSubmit}
-                setRef={this.setRef}
-            />
+            <Fragment>
+                <TopNav
+                    title="Login"
+                />
+                <Login
+                    handleSubmit={this.handleSubmit}
+                    setRef={this.setRef}
+                />
+            </Fragment>
         )
     }
 }

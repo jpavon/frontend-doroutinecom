@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -6,6 +6,7 @@ import { passwordForgotten } from 'data/user/actions'
 import { showAlert } from 'data/ui/actions'
 
 import PasswordForgotten from 'components/Auth/PasswordForgotten'
+import TopNav from 'components/TopNav'
 
 class PasswordForgottenContainer extends Component {
 
@@ -34,10 +35,15 @@ class PasswordForgottenContainer extends Component {
 
     render() {
         return (
-            <PasswordForgotten
-                handleSubmit={this.handleSubmit}
-                setRef={this.setRef}
-            />
+            <Fragment>
+                <TopNav
+                    title="Password"
+                />
+                <PasswordForgotten
+                    handleSubmit={this.handleSubmit}
+                    setRef={this.setRef}
+                />
+            </Fragment>
         )
     }
 }

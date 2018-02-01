@@ -1,10 +1,9 @@
 import { createSelector } from 'reselect'
 
-import { liftExerciseSelector } from 'data/lifts/selectors'
 import Set from 'data/sets/schema'
 
 const formatSet = (set) => Set({
-    ...set,
+    ...set
 })
 
 export const setsSelector = createSelector(

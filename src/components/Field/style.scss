@@ -1,9 +1,9 @@
 @import "variables.scss";
 
-.field-group {
+.field {
     position: relative;
-    display: flex;
-    padding: $spacing / 2 $spacing;
+    // display: flex;
+    padding: $spacing / 1.5 $spacing $spacing / 2;
     align-items: center;
     background-color: #fff;
     border-top: 1px solid $color-border;
@@ -13,8 +13,6 @@
     }
 
     > label {
-        min-width: 17%;
-        margin-right: $spacing * 1.5;
     }
 
     &:last-child {

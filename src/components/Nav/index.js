@@ -7,8 +7,8 @@ import profileIcon from 'media/profile.svg'
 import routinesIcon from 'media/routines.svg'
 import liftsIcon from 'media/lifts.svg'
 import workoutsIcon from 'media/workouts.svg'
-import loginIcon from 'media/login.svg'
-import registerIcon from 'media/register.svg'
+// import loginIcon from 'media/login.svg'
+// import registerIcon from 'media/register.svg'
 
 import './style.css'
 
@@ -61,15 +61,13 @@ const Nav = ({isAuth = false, renderItems = null, isTouchDevice}) => (
                             </Fragment>
                         :
                             <Fragment>
-                                <li className="nav-item">
+                                <li className="nav-item nav-item--unauth">
                                     <NavLink to="/login" className="nav-link" activeClassName="nav-link--active">
-                                        <img src={loginIcon} alt="Login" />
                                         Login
                                     </NavLink>
                                 </li>
-                                <li className="nav-item">
+                                <li className="nav-item nav-item--unauth">
                                     <NavLink to="/register" className="nav-link" activeClassName="nav-link--active">
-                                        <img src={registerIcon} alt="Register" />
                                         Register
                                     </NavLink>
                                 </li>

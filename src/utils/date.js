@@ -26,5 +26,5 @@ export const formatDuration = (started, completed) => {
 
 export const formatDate = (date) => {
     const instance = moment(date)
-    return instance.format('MMMM Do')
+    return instance.format('dddd, MMMM Do')
 }

@@ -1,0 +1,10 @@
+.auth {
+  max-width: 400px;
+  margin: 0 auto; }
+  .auth .field {
+    background-color: transparent; }
+
+.auth-button {
+  display: flex; }
+  .auth-button button {
+    margin: auto; }

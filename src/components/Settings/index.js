@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
-import FieldGroup from 'components/AutoSaveForm/FieldGroup'
+import Field from 'components/Field'
 import AutoSaveForm from 'components/AutoSaveForm'
 import TopNav from 'components/TopNav'
 
@@ -12,8 +12,8 @@ const Settings = ({user, updateUser}) => (
             initialValues={user}
             update={updateUser}
             render={() => (
-                <Fragment>
-                    <FieldGroup
+                <div className="settings-form">
+                    {/*<Field
                         component="select"
                         label="Weight Measure"
                         id="weightMeasure"
@@ -22,8 +22,8 @@ const Settings = ({user, updateUser}) => (
                             {id: 'kg', name: 'kg'},
                             {id: 'lbs', name: 'lbs'},
                         ]}
-                    />
-                    <FieldGroup
+                    />*/}
+                    <Field
                         component="select"
                         label="Training Max"
                         id="trainingMax"
@@ -49,7 +49,7 @@ const Settings = ({user, updateUser}) => (
                             ]}
                         />
                     </div>*/}
-                </Fragment>
+                </div>
             )}
         />
         <TopNav
@@ -59,18 +59,18 @@ const Settings = ({user, updateUser}) => (
             initialValues={user}
             update={updateUser}
             render={() => (
-                <Fragment>
-                    <FieldGroup
+                <div className="settings-form">
+                    <Field
                         label="Name"
                         id="name"
                         name="name"
                     />
-                    <FieldGroup
+                    <Field
                         label="Email"
                         id="email"
                         name="email"
                     />
-                </Fragment>
+                </div>
             )}
         />
     </div>

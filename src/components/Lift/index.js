@@ -1,7 +1,7 @@
 import React from 'react'
 
 import AutoSaveForm from 'components/AutoSaveForm'
-import FieldGroup from 'components/AutoSaveForm/FieldGroup'
+import Field from 'components/Field'
 
 const Lift = ({lift, remove, update, isDeleting}) => (
     <div className="lift">
@@ -10,7 +10,7 @@ const Lift = ({lift, remove, update, isDeleting}) => (
             update={update}
             render={({values}) => (
                 <div className="lift-form">
-                    <FieldGroup
+                    <Field
                         label="Name"
                         id="name"
                         name="name"

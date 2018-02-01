@@ -8,7 +8,7 @@
 .exercise {
   position: relative;
   margin-bottom: 27px; }
-  .exercise .field-group:last-child {
+  .exercise .field:last-child {
     margin-bottom: 0; }
   .exercise:last-child {
     margin-bottom: 0; }
