@@ -13,7 +13,7 @@ const Settings = ({user, updateUser}) => (
             update={updateUser}
             render={() => (
                 <div className="settings-form">
-                    {/*<Field
+                    <Field
                         component="select"
                         label="Weight Measure"
                         id="weightMeasure"
@@ -22,8 +22,8 @@ const Settings = ({user, updateUser}) => (
                             {id: 'kg', name: 'kg'},
                             {id: 'lbs', name: 'lbs'},
                         ]}
-                    />*/}
-                    <Field
+                    />
+                    {/*<Field
                         component="select"
                         label="Training Max"
                         id="trainingMax"
@@ -37,7 +37,7 @@ const Settings = ({user, updateUser}) => (
                             {id: '75', name: '75%'}
                         ]}
                     />
-                    {/*<div className="routine-settings-item">
+                    <div className="routine-settings-item">
                         <Label htmlFor={`precision${values.id}`}>Precision</Label>
                         <Select
                             id={`precision${values.id}`}

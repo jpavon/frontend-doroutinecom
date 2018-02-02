@@ -2,7 +2,7 @@
 
 .select {
     position: relative;
-    padding: 5px 35px 5px 20px;
+    padding: $spacing/2 35px $spacing/2 20px;
     width: 100%;
     max-width: 100%;
 
@@ -14,7 +14,7 @@
 
     background-image: url('../../../media/arrow-down.svg');
     background-repeat: no-repeat;
-    background-position: left 0 top 12px;
+    background-position: left 0 center;
     background-color: transparent;
 
     &:focus {

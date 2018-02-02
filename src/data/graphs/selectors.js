@@ -1,12 +1,10 @@
 import { createSelector } from 'reselect'
-import Moment from 'moment'
-import { extendMoment } from 'moment-range'
 
+import moment, { localeDayMonthFormat, localeDateFormat } from 'utils/date'
 import { completedWorkoutsSelector } from 'data/workouts/selectors'
 import { completedExercisesLiftSelector } from 'data/exercises/selectors'
 import { setsSelector } from 'data/sets/selectors'
 
-const moment = extendMoment(Moment)
 
 const startWeek = moment().startOf('isoWeek')
 const endWeek = moment().endOf('isoWeek')
@@ -55,10 +53,10 @@ export const workoutsGraphDataSelector = createSelector(
 
         return {
             labels: [
-                `${startWeek3.format('MM/DD')} - ${endWeek3.format('MM/DD')}`,
-                `${startWeek2.format('MM/DD')} - ${endWeek2.format('MM/DD')}`,
-                `${startWeek1.format('MM/DD')} - ${endWeek1.format('MM/DD')}`,
-                `${startWeek.format('MM/DD')} - ${endWeek.format('MM/DD')}`,
+                `  ${startWeek3.format(localeDayMonthFormat)} - ${endWeek3.format(localeDayMonthFormat)}  `,
+                `  ${startWeek2.format(localeDayMonthFormat)} - ${endWeek2.format(localeDayMonthFormat)}  `,
+                `  ${startWeek1.format(localeDayMonthFormat)} - ${endWeek1.format(localeDayMonthFormat)}  `,
+                `  ${startWeek.format(localeDayMonthFormat)} - ${endWeek.format(localeDayMonthFormat)}  `,
             ],
             dataset,
             datasetMax: Math.max.apply(Math, dataset)
@@ -102,7 +100,7 @@ export const liftGraphDataSelector = (liftId) => createSelector(
 
         const dataset = orderedTopSets.map((set) => set.weight).reverse()
         return {
-            labels: orderedTopSets.map((set) => moment(set.completedAt).format('YYYY/MM/DD')).reverse(),
+            labels: orderedTopSets.map((set) => moment(set.completedAt).format(localeDateFormat)).reverse(),
             dataset,
             datasetMax: Math.max.apply(Math, dataset),
             meta: {

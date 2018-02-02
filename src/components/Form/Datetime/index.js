@@ -1,16 +1,16 @@
 import React from 'react'
 import ReactDatetime from 'react-datetime'
-import moment from 'moment'
 
-import { dateFormat, timeFormat } from 'utils/date'
+import moment from 'utils/date'
+import { localeDateFormat, timeFormat } from 'utils/date'
 
 import './style.css'
 
 const Datetime = ({value, ...rest}) => (
     <ReactDatetime
-        dateFormat={dateFormat}
+        dateFormat={localeDateFormat}
         timeFormat={timeFormat}
-        value={moment(value)}
+        value={moment(value).format(`${localeDateFormat} ${timeFormat}`)}
         {...rest}
     />
 )

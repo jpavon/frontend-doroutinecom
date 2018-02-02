@@ -47,7 +47,6 @@ class Graph extends Component {
                     stacked: false,
                     ticks: {
                         autoSkip: false,
-                        // maxTicksLimit: 1
                     },
                     gridLines: {
                         display: false
