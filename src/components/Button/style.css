@@ -18,6 +18,8 @@
   transition: color .2s;
   line-height: 1.5;
   -webkit-appearance: none; }
+  .button:hover {
+    color: #85b3d5; }
   input + .button {
     margin-top: 1rem; }
   .button:focus {
@@ -26,8 +28,8 @@
     cursor: default;
     opacity: .7;
     box-shadow: none; }
-  .button:hover {
-    color: #85b3d5; }
 
 .button--danger {
-  color: #c73434; }
+  color: #d05151; }
+  .button--danger:hover {
+    color: #e08d8d; }

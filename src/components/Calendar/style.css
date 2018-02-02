@@ -18,6 +18,8 @@
   transition: color .2s;
   line-height: 1.5;
   -webkit-appearance: none; }
+  .button:hover, .calendar-workout:hover {
+    color: #85b3d5; }
   input + .button, input + .calendar-workout {
     margin-top: 1rem; }
   .button:focus, .calendar-workout:focus {
@@ -26,11 +28,11 @@
     cursor: default;
     opacity: .7;
     box-shadow: none; }
-  .button:hover, .calendar-workout:hover {
-    color: #85b3d5; }
 
 .button--danger {
-  color: #c73434; }
+  color: #d05151; }
+  .button--danger:hover {
+    color: #e08d8d; }
 
 .calendar-selector {
   text-align: center;

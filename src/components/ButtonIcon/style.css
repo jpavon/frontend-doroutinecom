@@ -18,6 +18,8 @@
   transition: color .2s;
   line-height: 1.5;
   -webkit-appearance: none; }
+  .button:hover, .button-icon:hover {
+    color: #85b3d5; }
   input + .button, input + .button-icon {
     margin-top: 1rem; }
   .button:focus, .button-icon:focus {
@@ -26,11 +28,11 @@
     cursor: default;
     opacity: .7;
     box-shadow: none; }
-  .button:hover, .button-icon:hover {
-    color: #85b3d5; }
 
 .button--danger {
-  color: #c73434; }
+  color: #d05151; }
+  .button--danger:hover {
+    color: #e08d8d; }
 
 .button-icon {
   display: flex;

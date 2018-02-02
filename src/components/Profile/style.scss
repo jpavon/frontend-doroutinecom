@@ -1,0 +1,31 @@
+@import "variables.scss";
+
+.profile {
+}
+
+.profile-data {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile-data-col {
+    flex: 1;
+}
+
+.profile-data-item {
+    padding: $spacing;
+}
+
+.profile-data-value {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: .4rem;
+    font-weight: 500;
+}
+
+.profile-data-title {
+    font-size: .7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+}

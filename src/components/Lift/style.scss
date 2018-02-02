@@ -1,0 +1,27 @@
+@import "variables.scss";
+
+.lift-sets-table {
+
+}
+
+.lift-sets-table-top {
+    padding: $spacing;
+    padding-bottom: $spacing / 2;
+
+    display: flex;
+    border-bottom: 1px solid $color-border;
+
+    > div {
+        flex: 1;
+    }
+}
+
+.lift-sets-table-item {
+    display: flex;
+    padding: $spacing / 2 $spacing;
+    border-bottom: 1px solid $color-border;
+
+    > div {
+        flex: 1;
+    }
+}

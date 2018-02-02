@@ -10,13 +10,16 @@
   opacity: 1; }
 
 .alert--success {
-  background-color: #4ea24e; }
+  background-color: #6ec36e;
+  text-shadow: 0 1px 2px #43a243; }
 
 .alert--error {
-  background-color: #c73434; }
+  background-color: #d05151;
+  text-shadow: 0 1px 2px #a72d2d; }
 
 .alert--info {
-  background-color: #deba36; }
+  background-color: #ecca51;
+  text-shadow: 0 1px 2px #d9ae18; }
 
 .alert--small {
   padding: 5px;

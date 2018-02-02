@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import { workoutsGraphDataSelector } from 'data/graphs/selectors'
 
+import Profile from 'components/Profile'
 import Graph from 'components/Graph'
 import TopNav from 'components/TopNav'
 
@@ -23,12 +24,17 @@ class ProfileContainer extends Component {
                         to: '/settings'
                     }}
                 />
-                <TopNav
-                    title="Weekly Completed Workouts"
-                />
-                <Graph
-                    data={this.props.graphData}
-                />
+                {/*<TopNav
+                    title="This Week"
+                />*/}
+                <Profile>
+                    <TopNav
+                        title="Recently Completed Workouts"
+                    />
+                    <Graph
+                        data={this.props.graphData}
+                    />
+                </Profile>
             </Fragment>
         )
     }

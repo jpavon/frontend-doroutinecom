@@ -26,11 +26,12 @@ class Graph extends Component {
 
         const datasetMax = this.props.data.datasetMax
 
-        const stepSize = datasetMax < 9 ? 1 :
+        const stepSize = datasetMax < 7 ? 1 :
             datasetMax < 21 ? 2 :
             Math.round((datasetMax/4) / 10) * 10
 
-        const max = datasetMax < 21 ? Math.round(datasetMax/2) * 2 + stepSize :
+        const max = datasetMax < 7 ? datasetMax + 1 :
+            datasetMax < 21 ? Math.round(datasetMax/2) * 2 + stepSize :
             Math.round(datasetMax/10) * 10 + stepSize
 
         const options = {
@@ -41,6 +42,7 @@ class Graph extends Component {
                         min: 0,
                         max: max < 5 ? 5 : max,
                         stepSize: stepSize,
+                        autoSkip: false,
                     },
                 }],
                 xAxes: [{
@@ -65,7 +67,7 @@ class Graph extends Component {
                 },
                 point: {
                     radius: 5,
-                    hoverRadius: 7,
+                    hoverRadius: 4,
                     backgroundColor: 'rgba(76, 144, 194, 1)',
                     borderWidth: 0,
                     hitRadius: 20
@@ -90,7 +92,7 @@ class Graph extends Component {
                         const reps = data.meta && data.meta.reps
                         return reps ?
                             `${reps[tooltipItem.index]}x${tooltipItem.yLabel}${data.meta.weightMeasure}` :
-                            `${tooltipItem.yLabel}`
+                            `${tooltipItem.yLabel} Workout${(Number(tooltipItem.yLabel) > 1) ? 's' : ''}`
                     }
                 }
             }
@@ -111,7 +113,7 @@ class Graph extends Component {
 
     render() {
         return (
-            <canvas ref={(ref) => this.graph = ref} />
+            <canvas width="800" height="320" ref={(ref) => this.graph = ref} />
         )
     }
 }

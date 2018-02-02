@@ -1,6 +1,6 @@
 import Moment from 'moment'
 import { extendMoment } from 'moment-range'
-import 'moment/min/locales.min'
+import 'moment/locale/en-gb'
 
 const moment = extendMoment(Moment)
 

@@ -12,4 +12,5 @@
     color: $color-background;
     font-size: .8rem;
     font-weight: 500;
+    text-shadow: 0 1px 2px darken($color-info, 15%);
 }

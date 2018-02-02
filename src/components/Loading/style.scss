@@ -1,3 +1,5 @@
+@import "variables.scss";
+
 .spinner {
     position: absolute;
     top: 50%;
@@ -6,7 +8,7 @@
     margin-top: -20px;
     width: 40px;
     height: 40px;
-    background-color: #aaa;
+    background-color: #999;
 
     border-radius: 100%;
     animation: sk-scaleout 1.0s infinite ease-in-out;

@@ -5,11 +5,12 @@ import Helmet from 'react-helmet'
 
 import history from 'utils/history'
 import { liftGraphDataSelector } from 'data/graphs/selectors'
-import { liftSelector } from 'data/lifts/selectors'
+import { liftSelector, topLiftSetsSelector } from 'data/lifts/selectors'
 import { updateLift, removeLift } from 'data/lifts/actions'
 import { STATUS_LOADED, STATUS_DELETING } from 'data/utils'
 
 import Lift from 'components/Lift'
+import LiftSetsTable from 'components/Lift/LiftSetsTable'
 import TopNav from 'components/TopNav'
 import Graph from 'components/Graph'
 
@@ -22,6 +23,7 @@ class LiftContainer extends Component {
         isStatusLoaded: PropTypes.bool.isRequired,
         isDeleting: PropTypes.bool.isRequired,
         liftGraphData: PropTypes.object.isRequired,
+        topLiftSets: PropTypes.array,
 
         updateLift: PropTypes.func.isRequired,
         removeLift: PropTypes.func.isRequired,
@@ -57,7 +59,7 @@ class LiftContainer extends Component {
                     update={this.props.updateLift}
                 />
                 <TopNav
-                    title="Top Sets"
+                    title="Recent Progression"
                 />
                 <Graph
                     type="line"
@@ -65,6 +67,9 @@ class LiftContainer extends Component {
                 />
                 <TopNav
                     title="Top Sets"
+                />
+                <LiftSetsTable
+                    sets={this.props.topLiftSets}
                 />
                 <TopNav
                     rightLabel="Delete Lift"
@@ -82,7 +87,8 @@ const mapStateToProps = (state, props) => ({
     lift: liftSelector(props.liftId)(state),
     isStatusLoaded: state.lifts.fetchStatus === STATUS_LOADED,
     isDeleting: state.lifts.entitiesStatus[props.liftId] === STATUS_DELETING,
-    liftGraphData: liftGraphDataSelector(props.liftId)(state)
+    liftGraphData: liftGraphDataSelector(props.liftId)(state),
+    topLiftSets: topLiftSetsSelector(props.liftId)(state)
 })
 
 const mapDispatchToProps = {

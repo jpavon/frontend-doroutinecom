@@ -21,13 +21,13 @@ const WorkoutEdit = ({children, workout, update}) => (
                             <Fragment>
                                 <Field
                                     component="datetime"
-                                    label="Started"
+                                    label="Started at"
                                     id={`startedAt${values.id}`}
                                     name="startedAt"
                                 />
                                 <Field
                                     component="datetime"
-                                    label="Completed"
+                                    label="Completed at"
                                     id={`completedAt${values.id}`}
                                     name="completedAt"
                                 />

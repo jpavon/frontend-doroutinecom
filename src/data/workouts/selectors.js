@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect'
 
+import moment from 'utils/moment'
 import { formatDuration, formatDate } from 'utils/date'
 import Workout from 'data/workouts/schema'
 
@@ -43,4 +44,25 @@ export const pendingWorkoutsSelector = createSelector(
         workoutsSelector
     ],
     (workouts) => workouts.filter((workout) => (!workout.completedAt))
+)
+
+const startWeek = moment().startOf('week')
+const endWeek = moment().endOf('week')
+const range = moment().range(startWeek, endWeek)
+
+export const workoutsCompletedCurrentWeekSelector = createSelector(
+    [
+        completedWorkoutsSelector
+    ],
+    (workouts) => {
+        let amount = 0
+
+        workouts.forEach((workout) => {
+            if (range.contains(new Date(workout.completedAt))) {
+                amount = amount + 1
+            }
+        })
+
+        return amount
+    }
 )
