@@ -6,12 +6,12 @@ import Label from 'components/Form/Label'
 
 import './style.css'
 
-const Sets = ({children, create, exerciseId}) => (
+const Sets = ({children, create, exerciseId, user}) => (
     <div className="sets">
         <div className="sets-header">
             <div className="sets-header-item"><Label>Set</Label></div>
             <div className="sets-header-item"><Label>Reps</Label></div>
-            <div className="sets-header-item"><Label>Kg</Label></div>
+            <div className="sets-header-item"><Label>{user.weightMeasure}</Label></div>
         </div>
         <Transition className="set">
             {children}

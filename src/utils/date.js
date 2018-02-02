@@ -1,28 +1,16 @@
-import Moment from 'moment'
-import { extendMoment } from 'moment-range'
-import 'moment/min/locales.min'
-// import 'moment/locale/es'
-
-const moment = extendMoment(Moment)
+import moment from 'utils/moment'
 
 export const dateFormat = 'YYYY-MM-DD'
 export const timeFormat = 'HH:mm:ss'
 export const format = `${dateFormat} ${timeFormat}`
 
 const localeData = moment.localeData(window.navigator.userLanguage || window.navigator.language)
+
 export const localeDateFormat = localeData.longDateFormat('l')
 // https://stackoverflow.com/questions/27360102/locale-and-specific-date-format-with-moment-js
 export const localeDayMonthFormat = localeData.longDateFormat('l').replace(/Y/g,'').replace(/^\W|\W$|\W\W/,'')
 
-// moment.updateLocale('en', {
-//     week: {
-//         dow: 1
-//     }
-// })
-
-export const now = () => {
-    return moment().format(format)
-}
+export const now = moment().format(format)
 
 export const formatDuration = (started, completed) => {
     const startTime = moment(started)
@@ -44,5 +32,3 @@ export const formatDate = (date) => {
     const instance = moment(date)
     return instance.format('dddd, MMMM Do')
 }
-
-export default moment

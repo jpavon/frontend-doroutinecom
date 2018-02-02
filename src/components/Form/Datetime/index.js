@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDatetime from 'react-datetime'
 
-import moment from 'utils/date'
+import moment from 'utils/moment'
 import { localeDateFormat, timeFormat } from 'utils/date'
 
 import './style.css'

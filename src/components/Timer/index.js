@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import moment from 'utils/date'
+import moment from 'utils/moment'
 
 import './style.css'
 

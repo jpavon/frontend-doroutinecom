@@ -6,8 +6,7 @@ const User = validateData({
     email: 'string',
     apiToken: 'string',
     weightMeasure: 'string',
-    precision: 'number',
-    trainingMax: 'number',
+    startOfWeek: 'string',
     createdAt: 'string',
     updatedAt: 'string'
 })

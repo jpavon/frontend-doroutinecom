@@ -15,12 +15,22 @@ const Settings = ({user, updateUser}) => (
                 <div className="settings-form">
                     <Field
                         component="select"
-                        label="Weight Measure"
+                        label="Weight measure"
                         id="weightMeasure"
                         name="weightMeasure"
                         options={[
                             {id: 'kg', name: 'kg'},
                             {id: 'lbs', name: 'lbs'},
+                        ]}
+                    />
+                    <Field
+                        component="select"
+                        label="Start of week"
+                        id="startOfWeek"
+                        name="startOfWeek"
+                        options={[
+                            {id: 'monday', name: 'Monday'},
+                            {id: 'sunday', name: 'Sunday'},
                         ]}
                     />
                     {/*<Field

@@ -89,7 +89,7 @@ class Graph extends Component {
                     label: (tooltipItem, data) => {
                         const reps = data.meta && data.meta.reps
                         return reps ?
-                            `${reps[tooltipItem.index]}x${tooltipItem.yLabel}kg` :
+                            `${reps[tooltipItem.index]}x${tooltipItem.yLabel}${data.meta.weightMeasure}` :
                             `${tooltipItem.yLabel}`
                     }
                 }

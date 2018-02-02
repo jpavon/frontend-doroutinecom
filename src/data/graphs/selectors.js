@@ -1,22 +1,23 @@
 import { createSelector } from 'reselect'
 
-import moment, { localeDayMonthFormat, localeDateFormat } from 'utils/date'
+import moment from 'utils/moment'
+import { localeDayMonthFormat, localeDateFormat } from 'utils/date'
 import { completedWorkoutsSelector } from 'data/workouts/selectors'
 import { completedExercisesLiftSelector } from 'data/exercises/selectors'
 import { setsSelector } from 'data/sets/selectors'
 
 
-const startWeek = moment().startOf('isoWeek')
-const endWeek = moment().endOf('isoWeek')
+const startWeek = moment().startOf('week')
+const endWeek = moment().endOf('week')
 
-const startWeek1 = moment().subtract(1, 'weeks').startOf('isoWeek')
-const endWeek1 = moment().subtract(1, 'weeks').endOf('isoWeek')
+const startWeek1 = moment().subtract(1, 'weeks').startOf('week')
+const endWeek1 = moment().subtract(1, 'weeks').endOf('week')
 
-const startWeek2 = moment().subtract(2, 'weeks').startOf('isoWeek')
-const endWeek2 = moment().subtract(2, 'weeks').endOf('isoWeek')
+const startWeek2 = moment().subtract(2, 'weeks').startOf('week')
+const endWeek2 = moment().subtract(2, 'weeks').endOf('week')
 
-const startWeek3 = moment().subtract(3, 'weeks').startOf('isoWeek')
-const endWeek3 = moment().subtract(3, 'weeks').endOf('isoWeek')
+const startWeek3 = moment().subtract(3, 'weeks').startOf('week')
+const endWeek3 = moment().subtract(3, 'weeks').endOf('week')
 
 const range = moment().range(startWeek, endWeek)
 const range1 = moment().range(startWeek1, endWeek1)
@@ -68,9 +69,10 @@ export const liftGraphDataSelector = (liftId) => createSelector(
     [
         completedExercisesLiftSelector(liftId),
         setsSelector,
-        completedWorkoutsSelector
+        completedWorkoutsSelector,
+        (state) => state.user.entity
     ],
-    (exercises, sets, workouts) => {
+    (exercises, sets, workouts, user) => {
         const completedExercisesIds = exercises.map((exercise) => exercise.id)
         const completedSets = sets.filter((set) =>  completedExercisesIds.includes(set.exerciseId))
 
@@ -104,7 +106,8 @@ export const liftGraphDataSelector = (liftId) => createSelector(
             dataset,
             datasetMax: Math.max.apply(Math, dataset),
             meta: {
-                reps: orderedTopSets.map((set) => set.reps).reverse()
+                reps: orderedTopSets.map((set) => set.reps).reverse(),
+                weightMeasure: user.weightMeasure
             }
         }
     }

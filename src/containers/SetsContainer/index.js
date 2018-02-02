@@ -18,6 +18,7 @@ class SetsContainer extends Component {
 
         sets: PropTypes.array.isRequired,
         entitiesStatus: PropTypes.object.isRequired,
+        user: PropTypes.object.isRequired,
 
         createSet: PropTypes.func.isRequired,
         updateSet: PropTypes.func.isRequired,
@@ -29,6 +30,7 @@ class SetsContainer extends Component {
             <Sets
                 create={this.props.createSet}
                 exerciseId={this.props.exerciseId}
+                user={this.props.user}
             >
                 {this.props.sets.map((set, i) => (
                     <Set
@@ -49,7 +51,8 @@ class SetsContainer extends Component {
 
 const mapStateToProps = (state, props) => ({
     sets: setsExerciseSelector(props.exerciseId)(state),
-    entitiesStatus: state.sets.entitiesStatus
+    entitiesStatus: state.sets.entitiesStatus,
+    user: state.user.entity,
 })
 
 const mapDispatchToProps = {

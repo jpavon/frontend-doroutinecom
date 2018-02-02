@@ -25,6 +25,13 @@ class SettingsContainer extends Component {
         this.props.unauthUser()
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.user.startOfWeek && nextProps.user.startOfWeek !== this.props.user.startOfWeek) {
+            localStorage.setItem('dayOfMonth', nextProps.user.startOfWeek)
+            window.location.reload(true)
+        }
+    }
+
     render() {
         return (
             this.props.user &&
