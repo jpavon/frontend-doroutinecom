@@ -27,11 +27,11 @@
     border-radius: 0;
     text-decoration: none;
     letter-spacing: .05rem;
-    transition: background-color .2s, opacity .2s, color .2s;
     cursor: pointer;
     outline: none;
     text-shadow: none;
     background-color: transparent;
+    transition: color .2s;
 
     line-height: 1.5;
     -webkit-appearance: none;
@@ -48,6 +48,10 @@
         cursor: default;
         opacity: .7;
         box-shadow: none;
+    }
+
+    &:hover {
+        color: lighten($color-primary, 15%);
     }
 }
 

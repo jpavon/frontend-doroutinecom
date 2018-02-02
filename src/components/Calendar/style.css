@@ -11,11 +11,11 @@
   border-radius: 0;
   text-decoration: none;
   letter-spacing: .05rem;
-  transition: background-color .2s, opacity .2s, color .2s;
   cursor: pointer;
   outline: none;
   text-shadow: none;
   background-color: transparent;
+  transition: color .2s;
   line-height: 1.5;
   -webkit-appearance: none; }
   input + .button, input + .calendar-workout {
@@ -26,6 +26,8 @@
     cursor: default;
     opacity: .7;
     box-shadow: none; }
+  .button:hover, .calendar-workout:hover {
+    color: #85b3d5; }
 
 .button--danger {
   color: #c73434; }
