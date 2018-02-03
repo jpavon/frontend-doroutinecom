@@ -5,7 +5,7 @@ import { localeDayMonthFormat, localeDateFormat } from 'utils/date'
 import { completedWorkoutsSelector } from 'data/workouts/selectors'
 import { completedExercisesLiftSelector } from 'data/exercises/selectors'
 import { setsSelector } from 'data/sets/selectors'
-import { formatLiftTopSets } from 'data/lifts/selectors'
+import { formatTopSets } from 'data/sets/selectors'
 
 const weeks = [0, 1, 2, 3, 4].map((id) => ({
     startWeek: moment().subtract(id, 'weeks').startOf('week'),
@@ -55,15 +55,19 @@ export const liftGraphDataSelector = (liftId) => createSelector(
         (state) => state.user.entity
     ],
     (exercises, sets, workouts, user) => {
-        const topSets = formatLiftTopSets(exercises, sets, workouts)
-        const dataset = topSets.map((set) => set.weight).reverse()
+        const topSets = formatTopSets(exercises, sets, workouts)
+            .sort((a, b) => (a.moment - b.moment))
+
+        const dataset = topSets.map((set) => set.weight)
+        const labels = topSets.map((set) => set.moment.format(localeDateFormat))
+        const reps = topSets.map((set) => set.reps)
 
         return {
-            labels: topSets.map((set) => moment(set.completedAt).format(localeDateFormat)).reverse(),
+            labels,
             dataset,
             datasetMax: Math.max.apply(Math, dataset),
             meta: {
-                reps: topSets.map((set) => set.reps).reverse(),
+                reps,
                 weightMeasure: user.weightMeasure
             }
         }

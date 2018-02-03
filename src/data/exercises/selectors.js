@@ -49,3 +49,15 @@ export const completedExercisesLiftSelector = (liftId) => createSelector(
         return completedExercises.filter((exercise) => exercise.liftId === lift.id)
     }
 )
+
+export const completedExercisesSelector = createSelector(
+    [
+        (state) => state.exercises.entities,
+        completedWorkoutsSelector
+    ],
+    (exercises, workouts) => {
+        const completedWorkoutsIds = workouts.map((workout) => workout.id)
+
+        return exercises.filter((exercise) => completedWorkoutsIds.includes(exercise.workoutId))
+    }
+)

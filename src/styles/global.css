@@ -470,3 +470,9 @@ p {
 a {
   color: #444;
   text-decoration: none; }
+
+small {
+  font-size: .8rem;
+  font-weight: 400;
+  letter-spacing: .05rem;
+  color: #777777; }

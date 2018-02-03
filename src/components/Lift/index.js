@@ -1,6 +1,5 @@
 import React from 'react'
 
-import TopNav from 'components/TopNav'
 import AutoSaveForm from 'components/AutoSaveForm'
 import Field from 'components/Field'
 

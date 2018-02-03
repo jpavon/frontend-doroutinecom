@@ -4,12 +4,21 @@ export const dateFormat = 'YYYY-MM-DD'
 export const timeFormat = 'HH:mm:ss'
 export const format = `${dateFormat} ${timeFormat}`
 
-const browserLocale = window.navigator.userLanguage || window.navigator.language
+let browserLocale
+if (process.env.NODE_ENV === 'production') {
+    browserLocale = window.navigator.userLanguage || window.navigator.language
+} else {
+    browserLocale = 'en-GB'
+}
+
 const localeData = moment.localeData(browserLocale === 'en-US' ? 'en-US' : 'en-GB')
 
 export const localeDateFormat = localeData.longDateFormat('l')
+
 // https://stackoverflow.com/questions/27360102/locale-and-specific-date-format-with-moment-js
 export const localeDayMonthFormat = localeData.longDateFormat('l').replace(/Y/g,'').replace(/^\W|\W$|\W\W/,'')
+
+export const localeLongDateFormat = `dddd - ${localeData.longDateFormat('ll')}`
 
 export const now = () => {
     return moment().format(format)
@@ -33,5 +42,5 @@ export const formatDuration = (started, completed) => {
 
 export const formatDate = (date) => {
     const instance = moment(date)
-    return instance.format('dddd, MMMM Do')
+    return instance.format(localeLongDateFormat)
 }

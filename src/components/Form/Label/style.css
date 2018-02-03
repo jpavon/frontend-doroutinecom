@@ -7,5 +7,3 @@
   color: #777777; }
   label + * + .label {
     margin-top: 1rem; }
-  .label:first-letter {
-    text-transform: capitalize; }

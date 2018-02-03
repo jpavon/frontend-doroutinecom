@@ -1,0 +1,25 @@
+.sets-table-top {
+  padding: 18px;
+  padding-bottom: 9px;
+  display: flex;
+  border-bottom: 1px solid #e4e9ea; }
+  .sets-table-top > div {
+    padding-right: 9px;
+    flex: 1; }
+    .sets-table-top > div.sets-table-number {
+      flex: 0 0 16%; }
+    .sets-table-top > div:first-letter {
+      text-transform: capitalize; }
+
+.sets-table-item {
+  display: flex;
+  padding: 9px 18px;
+  border-bottom: 1px solid #e4e9ea;
+  transition: .2s color; }
+  .sets-table-item > div {
+    padding-right: 9px;
+    flex: 1; }
+    .sets-table-item > div.sets-table-number {
+      flex: 0 0 16%; }
+  .sets-table-item:hover {
+    color: #d05151; }

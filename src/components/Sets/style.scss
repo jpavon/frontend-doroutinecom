@@ -14,9 +14,7 @@
 }
 
 .sets {
-    label {
-        margin-right: 0;
-    }
+
 }
 
 .sets-button-create {
@@ -37,6 +35,10 @@
 
 .sets-header-item {
     @include layout();
+
+    &:first-letter {
+        text-transform: capitalize;
+    }
 }
 
 // single

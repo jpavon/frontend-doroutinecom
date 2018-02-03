@@ -1,0 +1,45 @@
+@import "variables.scss";
+
+@mixin layout() {
+    padding-right: $spacing/2;
+    flex: 1;
+
+    &.sets-table-number {
+        flex: 0 0 16%;
+    }
+}
+
+.sets-table {
+
+}
+
+.sets-table-top {
+    padding: $spacing;
+    padding-bottom: $spacing / 2;
+
+    display: flex;
+    border-bottom: 1px solid $color-border;
+
+    > div {
+        @include layout();
+
+        &:first-letter {
+            text-transform: capitalize;
+        }
+    }
+}
+
+.sets-table-item {
+    display: flex;
+    padding: $spacing / 2 $spacing;
+    border-bottom: 1px solid $color-border;
+    transition: .2s color;
+
+    > div {
+        @include layout();
+    }
+
+    &:hover {
+        color: $color-danger;
+    }
+}

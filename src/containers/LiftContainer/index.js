@@ -5,12 +5,13 @@ import Helmet from 'react-helmet'
 
 import history from 'utils/history'
 import { liftGraphDataSelector } from 'data/graphs/selectors'
-import { liftSelector, topLiftSetsSelector } from 'data/lifts/selectors'
+import { liftSelector } from 'data/lifts/selectors'
+import { topLiftSetsSelector } from 'data/sets/selectors'
 import { updateLift, removeLift } from 'data/lifts/actions'
 import { STATUS_LOADED, STATUS_DELETING } from 'data/utils'
 
 import Lift from 'components/Lift'
-import LiftSetsTable from 'components/Lift/LiftSetsTable'
+import SetsTable from 'components/SetsTable'
 import TopNav from 'components/TopNav'
 import Graph from 'components/Graph'
 
@@ -24,6 +25,7 @@ class LiftContainer extends Component {
         isDeleting: PropTypes.bool.isRequired,
         liftGraphData: PropTypes.object.isRequired,
         topLiftSets: PropTypes.array,
+        weightMeasure: PropTypes.string,
 
         updateLift: PropTypes.func.isRequired,
         removeLift: PropTypes.func.isRequired,
@@ -68,8 +70,9 @@ class LiftContainer extends Component {
                 <TopNav
                     title="Top Sets"
                 />
-                <LiftSetsTable
+                <SetsTable
                     sets={this.props.topLiftSets}
+                    weightMeasure={this.props.weightMeasure}
                 />
                 <TopNav
                     rightLabel="Delete Lift"
@@ -88,7 +91,8 @@ const mapStateToProps = (state, props) => ({
     isStatusLoaded: state.lifts.fetchStatus === STATUS_LOADED,
     isDeleting: state.lifts.entitiesStatus[props.liftId] === STATUS_DELETING,
     liftGraphData: liftGraphDataSelector(props.liftId)(state),
-    topLiftSets: topLiftSetsSelector(props.liftId)(state)
+    topLiftSets: topLiftSetsSelector(props.liftId)(state),
+    weightMeasure: state.user.entity.weightMeasure
 })
 
 const mapDispatchToProps = {
