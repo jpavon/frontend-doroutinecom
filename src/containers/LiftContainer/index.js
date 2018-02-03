@@ -61,7 +61,7 @@ class LiftContainer extends Component {
                     update={this.props.updateLift}
                 />
                 <TopNav
-                    title="Recent Progression"
+                    title="Recent Progress"
                 />
                 <Graph
                     type="line"
