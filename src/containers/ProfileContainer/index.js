@@ -9,6 +9,7 @@ import Profile from 'components/Profile'
 import Graph from 'components/Graph'
 import TopNav from 'components/TopNav'
 import SetsTable from 'components/SetsTable'
+import NoData from 'components/NoData'
 
 class ProfileContainer extends Component {
 
@@ -38,11 +39,17 @@ class ProfileContainer extends Component {
                     <TopNav
                         title="Recent Top Sets"
                     />
-                    <SetsTable
-                        sets={this.props.topSets}
-                        weightMeasure={this.props.weightMeasure}
-                        showLift
-                    />
+                    {this.props.topSets.length > 0 ?
+                        <SetsTable
+                            sets={this.props.topSets}
+                            weightMeasure={this.props.weightMeasure}
+                            showLift
+                        /> :
+                        <NoData
+                            text="List of top sets will be displayed here when you complete a workout."
+                        />
+                    }
+
                 </Profile>
             </Fragment>
         )

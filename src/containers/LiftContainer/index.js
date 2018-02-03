@@ -14,6 +14,7 @@ import Lift from 'components/Lift'
 import SetsTable from 'components/SetsTable'
 import TopNav from 'components/TopNav'
 import Graph from 'components/Graph'
+import NoData from 'components/NoData'
 
 class LiftContainer extends Component {
 
@@ -70,10 +71,15 @@ class LiftContainer extends Component {
                 <TopNav
                     title="Top Sets"
                 />
-                <SetsTable
-                    sets={this.props.topLiftSets}
-                    weightMeasure={this.props.weightMeasure}
-                />
+                {this.props.topLiftSets.length > 0 ?
+                    <SetsTable
+                        sets={this.props.topLiftSets}
+                        weightMeasure={this.props.weightMeasure}
+                    /> :
+                    <NoData
+                        text="List of top sets will be displayed here when you complete a workout."
+                    />
+                }
                 <TopNav
                     rightLabel="Delete Lift"
                     right={{

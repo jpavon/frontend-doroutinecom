@@ -1,0 +1,14 @@
+.graph {
+  position: relative; }
+
+.graph-no-data {
+  position: absolute;
+  top: 22%;
+  left: 0;
+  right: 0;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 18px;
+  background-color: rgba(76, 144, 194, 0.6);
+  color: #fff;
+  text-align: center; }

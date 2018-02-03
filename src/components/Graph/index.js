@@ -58,6 +58,7 @@ class Graph extends Component {
             legend: { display: false },
             responsive: true,
             animation: false,
+            barThickness: 1,
             elements: {
                 line: {
                     backgroundColor: 'transparent',
@@ -74,7 +75,7 @@ class Graph extends Component {
                 },
                 rectangle: {
                     backgroundColor: 'rgba(76, 144, 194, .6)',
-                    borderWidth: 1
+                    borderWidth: 1,
                 },
             },
             tooltips: {
@@ -113,7 +114,14 @@ class Graph extends Component {
 
     render() {
         return (
-            <canvas width="800" height="320" ref={(ref) => this.graph = ref} />
+            <div className="graph">
+                {this.props.data && this.props.data.dataset.length === 0 &&
+                    <div className="graph-no-data">
+                        Complete a workout to start tracking your progress.
+                    </div>
+                }
+                <canvas width="800" height="320" ref={(ref) => this.graph = ref} />
+            </div>
         )
     }
 }

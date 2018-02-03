@@ -1,0 +1,19 @@
+@import "variables.scss";
+
+.graph {
+    position: relative;
+}
+
+.graph-no-data {
+    position: absolute;
+    top: 22%;
+    left: 0;
+    right: 0;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: $spacing;
+
+    background-color: rgba($color-primary, .6);
+    color: #fff;
+    text-align: center;
+}

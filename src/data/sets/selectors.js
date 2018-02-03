@@ -93,13 +93,14 @@ export const formatTopSets = (exercises, sets, workouts, lifts) => {
         topSets[key].completedAt = moment(workout.completedAt).format(localeDateFormat)
         topSets[key].moment = moment(workout.completedAt)
         topSets[key].workoutId = workout.id
+        topSets[key].liftId = exercise.liftId
         const lift = lifts && lifts.find((lift) => lift.id === exercise.liftId)
         topSets[key].lift = lift && lift.name
-        topSets[key].liftId = lift && lift.id
     })
 
     return Object.keys(topSets)
         .map((key) => topSets[key])
+        .filter((set) => set.liftId)
 }
 
 const round = (x) => {
