@@ -6,6 +6,7 @@ import { Router } from 'react-router-dom'
 import history from 'utils/history'
 import configureStore from 'store/configureStore'
 import registerServiceWorker from 'utils/registerServiceWorker'
+import ScrollToTop from 'components/ScrollToTop'
 
 import App from 'App'
 
@@ -16,9 +17,12 @@ const store = configureStore()
 render(
     <Provider store={store}>
         <Router history={history}>
-            <App />
+            <ScrollToTop>
+                <App />
+            </ScrollToTop>
         </Router>
     </Provider>,
     document.getElementById('root')
 )
+
 registerServiceWorker()
