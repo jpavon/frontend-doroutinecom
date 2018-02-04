@@ -16,6 +16,7 @@
 .sets-table-top {
     padding: $spacing;
     padding-bottom: $spacing / 2;
+    padding-top: 0;
 
     display: flex;
     border-bottom: 1px solid $color-border;
