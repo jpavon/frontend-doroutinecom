@@ -3,13 +3,16 @@ import validateData from 'utils/validateData'
 const Workout = validateData({
     id: 'number',
     userId: 'number',
-    routineId: 'number',
-    weekId: 'number',
+    routineId: 'number|null',
     name: 'string|null',
-    isCompleted: 'boolean',
+    startedAt: 'string',
+    completedAt: 'string|null',
     notes: 'string|null',
     createdAt: 'string',
-    updatedAt: 'string'
+    updatedAt: 'string',
+
+    duration: 'string|null',
+    day: 'string|null'
 })
 
 export default Workout

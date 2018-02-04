@@ -1,48 +1,24 @@
 @import "variables.scss";
+@import "mixins.scss";
 
 .routines {
 }
 
-.routines-button-create {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
 .routine {
+
 }
-
-    .routine-title {
-        margin-bottom: .2rem;
-        display: block;
-        margin-bottom: 2rem;
-        padding: .4rem 1rem;
-        font-size: .8rem;
-        text-decoration: none;
-        border-bottom: 2px solid #333;
-        border-left: 8px solid #333;
-        transition: border-color .2s;
-
-        &:hover {
-            border-color: $color-primary;
-        }
-    }
-
 
 // single page
-
-.routine-single-container {
-}
 
 .routine-single {
     margin-bottom: 2rem;
 }
 
 .routine-settings {
-    position: absolute;
+    // position: absolute;
     display: flex;
-    top: 0;
-    right: 0;
+    // top: 0;
+    // right: 0;
 }
 
     .routine-settings-item {
@@ -66,6 +42,15 @@
 .routine-single-button-remove {
     text-align: right;
 }
+
+.routine-single-tablist {
+    @include tablist();
+}
+
+.routine-single-tab {
+    @include tab();
+}
+
 
 .routines-program {
     padding: 2rem 5rem;

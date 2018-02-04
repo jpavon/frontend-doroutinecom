@@ -19,7 +19,12 @@ class Alert extends Component {
             PropTypes.object,
             PropTypes.bool
         ]),
-        size: PropTypes.string
+        size: PropTypes.string,
+        animate: PropTypes.bool
+    }
+
+    static defaultProps = {
+        animate: true
     }
 
     render() {
@@ -31,11 +36,12 @@ class Alert extends Component {
             'alert',
             type === 'success' && 'alert--success',
             type === 'error' && 'alert--error',
+            type === 'info' && 'alert--info',
             size === 'small' && 'alert--small'
         )
 
         const Message = () => {
-            if (isString(message) || isArray(message)) {
+            if (isString(message) || isArray(message) || React.isValidElement(message)) {
                 return message
             } else if (isObject(message)) {
                 return (
@@ -49,15 +55,17 @@ class Alert extends Component {
             }
         }
 
-        return (
+        return this.props.animate ?
             <AnimateOnChange
                 baseClassName={className}
                 animationClassName="alert--fade-in"
                 animate
             >
                 <Message />
-            </AnimateOnChange>
-        )
+            </AnimateOnChange> :
+            <div className={className}>
+                <Message />
+            </div>
     }
 }
 

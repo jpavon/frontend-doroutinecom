@@ -1,47 +1,47 @@
 @import "variables.scss";
 
 @mixin button-color($color) {
-    color: $color-font;
-    background-color: $color;
-    text-shadow: 0px 1px 1px rgba(#000, .4);
+    color: $color;
+    // background-color: $color;
+    // text-shadow: 0px 1px 1px rgba(#000, .4);
 
     &:hover {
-        background-color: darken($color, 5%);
+        color: lighten($color, 15%);
     }
 
-    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active {
-        box-shadow: 0 0 1px 2px darken($color, 15%), inset 0 0 1px 1px rgba(#000, .2);
-    }
+    // &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active {
+    //     box-shadow: 0 0 1px 2px darken($color, 15%), inset 0 0 1px 1px rgba(#000, .2);
+    // }
 }
 
 .button {
-    @include button-color($color-primary);
-
-    display: inline-block;
-    font-weight: 700;
+    @include button-color($color-primary)
+    display: flex;
+    font-weight: 400;
     text-align: center;
-    white-space: nowrap;
     vertical-align: middle;
     user-select: none;
-    border: 1px solid transparent;
-    padding: .35rem .7rem;
-    font-size: .7rem;
-    line-height: 1.5;
-    border-radius: 2px;
+    border: 0;
+    padding: $spacing 0;
+    font-size: .9rem;
+    border-radius: 0;
     text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: .1rem;
-    transition: background-color .2s, opacity .2s, color .2s;
+    letter-spacing: .05rem;
     cursor: pointer;
-    outline: 0;
+    outline: none;
+    text-shadow: none;
+    background-color: transparent;
+    transition: color .2s;
 
-    text-overflow: ellipsis;
-    line-height: 1;
-    white-space: nowrap;
-    overflow: hidden;
+    line-height: 1.5;
+    -webkit-appearance: none;
 
     input + & {
         margin-top: 1rem;
+    }
+
+    &:focus {
+        outline: none;
     }
 
     &.disabled, &[disabled] {
@@ -49,45 +49,8 @@
         opacity: .7;
         box-shadow: none;
     }
-
-    img {
-        margin-right: $spacing-small;
-    }
-}
-
-.button--small {
-    display: flex;
-    padding: 4px;
-    font-size: .6rem;
 }
 
 .button--danger {
-    @include button-color($color-danger);
-}
-
-.button--transparent {
-    padding: 0;
-    color: lighten($color-primary, 5%);
-    background-color: transparent;
-    letter-spacing: initial;
-    border: 0;
-    text-shadow: none;
-
-    &.button--danger {
-        color: $color-danger;
-
-        &:hover {
-            color: lighten($color-danger, 5%);
-        }
-    }
-
-    &:hover {
-        color: lighten($color-primary, 10%);
-        background-color: transparent;
-    }
-
-    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active {
-        outline: 0;
-        box-shadow: none;
-    }
+    @include button-color($color-danger)
 }

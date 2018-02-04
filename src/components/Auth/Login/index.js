@@ -1,42 +1,36 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import Input from 'components/Form/Input'
-import Button from 'components/Button'
-import Label from 'components/Form/Label'
-import Section from 'components/Section'
+import Field from 'components/Field'
+import Auth from 'components/Auth'
 
 import './style.css'
 
 const Login = ({handleSubmit, errors, setRef}) => (
-    <Section small title="Login" className="login">
-        <form method="post" onSubmit={handleSubmit}>
-            <Label htmlFor="email">
-                Email
-            </Label>
-            <Input
-                type="email"
-                id="email"
-                name="email"
-                size="large"
-                inputRef={(ref) => setRef(ref, 'email')}
-            />
-            <Label htmlFor="password">
-                Password
-            </Label>
-            <Input
-                id="password"
-                name="password"
-                type="password"
-                size="large"
-                inputRef={(ref) => setRef(ref, 'password')}
-            />
-            <Button type="submit">Login</Button>
-        </form>
+    <Auth className="login" handleSubmit={handleSubmit} footer={(
         <div className="login-password-forgotten">
             <Link to="/password-forgotten">Password forgotten?</Link>
         </div>
-    </Section>
+    )}>
+        <Field
+            uncontrolled
+            label="Email"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="type@your.email"
+            inputRef={(ref) => setRef(ref, 'email')}
+        />
+        <Field
+            uncontrolled
+            label="Password"
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Type your password"
+            inputRef={(ref) => setRef(ref, 'password')}
+        />
+    </Auth>
 )
 
 export default Login

@@ -19,7 +19,7 @@ export const fetchWorkouts = (force = false) => (dispatch, getState) => {
 }
 
 
-const postWorkout = ({routineId, weekId}) => ({
+const postWorkout = (data) => ({
     [CALL_API]: {
         types: [
             types.WORKOUTS_POST_REQUEST,
@@ -28,15 +28,12 @@ const postWorkout = ({routineId, weekId}) => ({
         ],
         endpoint: 'workouts',
         method: 'post',
-        data: {
-            routineId,
-            weekId
-        }
+        data
     }
 })
 
-export const createWorkout = ({routineId, weekId}) => (dispatch, getState) => {
-    return dispatch(postWorkout({routineId, weekId}))
+export const createWorkout = (data) => (dispatch, getState) => {
+    return dispatch(postWorkout(data))
 }
 
 const putWorkout = (id, data) => ({

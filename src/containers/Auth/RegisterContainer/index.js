@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -6,6 +6,7 @@ import { registerUser, authUser } from 'data/user/actions'
 import { showAlert } from 'data/ui/actions'
 
 import Register from 'components/Auth/Register'
+import TopNav from 'components/TopNav'
 
 class RegisterContainer extends Component {
 
@@ -40,10 +41,15 @@ class RegisterContainer extends Component {
 
     render() {
         return (
-            <Register
-                handleSubmit={this.handleSubmit}
-                setRef={this.setRef}
-            />
+            <Fragment>
+                <TopNav
+                    title="Register"
+                />
+                <Register
+                    handleSubmit={this.handleSubmit}
+                    setRef={this.setRef}
+                />
+            </Fragment>
         )
     }
 }

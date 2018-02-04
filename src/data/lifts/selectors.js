@@ -6,20 +6,25 @@ const formatLift = (lift) => Lift({
     ...lift
 })
 
-export const liftsRoutineSelector = (routineId) => createSelector(
-    [
-        (state) => state.lifts.entities
-    ],
-    (lifts) => lifts
-        .filter((lift) => (lift.routineId === routineId))
-        .map((lift) => formatLift(lift))
-)
-
 export const liftSelector = (id) => createSelector(
     [
         (state) => state.lifts.entities
     ],
-    (lifts) => formatLift(lifts.find((lift) => (lift.id === id)))
+    (lifts) => {
+        if (lifts.length > 0) {
+            const lift = lifts.find((lift) => (lift.id === id))
+            return lift ? formatLift(lift) : null
+        }
+        return null
+    }
+)
+
+export const liftsSelector = createSelector(
+    [
+        (state) => state.lifts.entities
+    ],
+    (lifts) => lifts
+        .map((lift) => formatLift(lift))
 )
 
 export const liftExerciseSelector = (exerciseId) => createSelector(

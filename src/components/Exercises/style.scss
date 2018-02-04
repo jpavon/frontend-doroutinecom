@@ -1,31 +1,54 @@
 @import "variables.scss";
 
-.exercises-container {
-    margin-top: $spacing-small * 2;
+.exercises {
 }
 
 .exercises-button-create {
-    position: relative;
-    margin-top: .5rem;
-    text-align: center;
+    display: flex;
+    padding-right: $spacing;
+    margin-bottom: $spacing;
+
+    button {
+        margin: auto;
+    }
 }
 
 // single
 
 .exercise {
-    background-color: #3b3b3b;
-    border-bottom: 3px solid #303030;
-    margin-bottom: $spacing-small * 2;
+    position: relative;
+    margin-bottom: $spacing * 1.5;
+
+    .field:last-child {
+        margin-bottom: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
 
 .exercise-button-remove {
-    padding: $spacing-small;
-    padding-right: $spacing-small * 2;
-    text-align: right;
+    position: absolute;
+    top: $spacing / 2;
+    right: 0;
+
+    button {
+        padding: $spacing / 2 $spacing;
+    }
 }
 
 // form
 
-.exercise-form {
-    padding: $spacing-small;
+.exercise-lift {
+    padding: $spacing $spacing;
+
+    > div {
+        margin-right: 40px;
+    }
+
+    select {
+        width: auto;
+        font-size: 1.1rem;
+    }
 }

@@ -1,12 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+
+import ListItem from 'components/ListItem'
 
 const Routine = ({routine}) => (
-    <div className="routine">
-        <Link to={`/r/${routine.slug}`} className="routine-title">
-            <h2>{routine.name || '[No title set]'}</h2>
-        </Link>
-    </div>
+    <ListItem to={`/routines/${routine.id}`} className="routine">
+        {routine.name || 'No routine name set.'}
+    </ListItem>
 )
 
 export default Routine

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>register</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="register">
+            <ellipse id="Oval" stroke="#979797" cx="16.6568813" cy="14.6812828" rx="11.6568813" ry="11.6812828"></ellipse>
+            <path d="M26.5116368,25.6159213 C25.7252537,25.0469574 24.9091589,24.5070633 24.0905069,24.0018029 C23.9621798,23.9226012 20.109317,26.4792052 16.5000002,26.4918686 C12.8625418,26.5046308 9.46864705,23.9738715 9.39887129,24.0018029 C6.23297795,25.2691167 3.82721333,27.3896381 2,29.9198826" id="Path-9" stroke="#979797" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M27.5,29.5 L31.5,29.5" id="Line" stroke="#585858" stroke-linecap="square"></path>
+            <path d="M29.5,31.5 L29.5,27.3768944" id="Line" stroke="#585858" stroke-linecap="square"></path>
+        </g>
+    </g>
+</svg>

@@ -4,18 +4,23 @@
   "description": "Gym routine creation web app.",
   "icons": [
     {
-      "src": "favicon.png",
+      "src": "/favicon.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "icon-192x192.png",
+      "src": "/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     }
   ],
   "start_url": "./",
   "display": "standalone",
-  "theme_color": "#222",
-  "background_color": "#222"
+  "theme_color": "#f9f9f9",
+  "background_color": "#f9f9f9"
 }

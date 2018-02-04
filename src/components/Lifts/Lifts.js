@@ -1,29 +1,11 @@
 import React from 'react'
 
-import Button from 'components/Button'
-import Section from 'components/Section'
-import Transition from 'components/Transition'
-
 import './style.css'
 
 const Lifts = ({children, create, isLoading}) => (
-    <Section title="Lifts" className="lifts-container">
-        <div className="lifts">
-            <Transition
-                className="lift"
-            >
-                {children}
-            </Transition>
-        </div>
-        <div className="lifts-button-create">
-            <Button
-                onClick={create}
-                disabled={isLoading}
-            >
-                New lift
-            </Button>
-        </div>
-    </Section>
+    <div className="lifts">
+        {children}
+    </div>
 )
 
 export default Lifts

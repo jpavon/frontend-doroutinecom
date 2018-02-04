@@ -19,7 +19,7 @@ export const fetchExercises = (force = false) => (dispatch, getState) => {
 }
 
 
-const postExercise = (workoutId) => ({
+const postExercise = (data) => ({
     [CALL_API]: {
         types: [
             types.EXERCISES_POST_REQUEST,
@@ -28,14 +28,12 @@ const postExercise = (workoutId) => ({
         ],
         endpoint: 'exercises',
         method: 'post',
-        data: {
-            workoutId
-        }
+        data
     }
 })
 
-export const createExercise = (workoutId) => (dispatch, getState) => {
-    return dispatch(postExercise(workoutId))
+export const createExercise = (data) => (dispatch, getState) => {
+    return dispatch(postExercise(data))
 }
 
 const putExercise = (id, data) => ({

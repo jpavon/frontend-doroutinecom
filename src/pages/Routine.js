@@ -9,7 +9,7 @@ const Routine = ({match}) => (
         )}
     >
         <RoutineContainer
-            routineSlug={match.params.routineSlug}
+            routineId={Number(match.params.routineId)}
         />
     </Layout>
 )

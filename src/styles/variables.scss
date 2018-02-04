@@ -1,20 +1,22 @@
 $font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 
-$color-background: #222;
-$color-background-light: #292929;
+$color-background: #f9f9f9;
+$color-background-light: #f2f2f2;
 
-$color-font: #efefef;
+$color-font: #444;
 
 $color-primary: #4c90c2;
-$color-danger: #c73434;
-$color-success: #4ea24e;
+$color-danger: #d05151;
+$color-success: #6ec36e;
+$color-info: #ecca51;
 
-$color-border: rgba(#fff, .1);
+$color-border: #e4e9ea;
 
 $color-input-background: rgba(#000, .2);
 $color-border-input: #aaa;
 $color-border-input-active: lighten(#ddd, 10%);
 
+$spacing: 18px;
 $spacing-small: 5px;
 
 

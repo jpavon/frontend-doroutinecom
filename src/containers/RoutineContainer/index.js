@@ -1,34 +1,39 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import Helmet from 'react-helmet'
 
 import history from 'utils/history'
-import { createRoutine, updateRoutine, removeRoutine } from 'data/routines/actions'
-import { routineBySlugSelector } from 'data/routines/selectors'
-import { STATUS_LOADED } from 'data/utils'
+import { now } from 'utils/date'
+import { updateRoutine, removeRoutine } from 'data/routines/actions'
+import { createWorkout } from 'data/workouts/actions'
+import { routineSelector } from 'data/routines/selectors'
+import { STATUS_LOADED, STATUS_DELETING } from 'data/utils'
+import { fetchWorkoutsData } from 'data/globals'
 
-import LiftsContainer from 'containers/LiftsContainer'
-import WeeksContainer from 'containers/WeeksContainer'
-// import GraphContainer from 'containers/GraphContainer'
+import ExercisesContainer from 'containers/ExercisesContainer'
 
-import RoutineSingle from 'components/Routines/RoutineSingle'
+import Routine from 'components/Routine'
+import TopNav from 'components/TopNav'
 
 class RoutineContainer extends Component {
 
     static propTypes = {
-        routineSlug: PropTypes.string.isRequired,
+        routineId: PropTypes.number.isRequired,
 
         routine: PropTypes.object,
         isStatusLoaded: PropTypes.bool.isRequired,
+        isDeleting: PropTypes.bool.isRequired,
 
-        createRoutine: PropTypes.func.isRequired,
         updateRoutine: PropTypes.func.isRequired,
         removeRoutine: PropTypes.func.isRequired,
+        createWorkout: PropTypes.func.isRequired,
+        fetchWorkoutsData: PropTypes.func.isRequired,
     }
 
     componentDidMount() {
         if (this.props.isStatusLoaded && !this.props.routine) {
-            history.push('/')
+            history.push('/routines')
         }
     }
 
@@ -41,32 +46,73 @@ class RoutineContainer extends Component {
         }
     }
 
+    handleCreateWorkout = () => {
+        this.props.createWorkout({
+            routineId: this.props.routine.id,
+            startedAt: now()
+        }).then((resp) => {
+            this.props.fetchWorkoutsData()
+                .then(() => {
+                    history.push(`/workouts/${resp.payload.id}`)
+                })
+        })
+    }
+
+    handleRemove = () => {
+        this.props.removeRoutine(this.props.routine.id)
+            .then(() => {
+                history.push('/routines')
+            })
+    }
+
     render() {
         return this.props.routine ?
-            <Fragment>
-                <RoutineSingle
-                    routine={this.props.routine}
-                    update={this.props.updateRoutine}
-                    remove={this.handleRemove}
-                >
-                    <LiftsContainer routineId={this.props.routine.id} routine={this.props.routine} />
-                    <WeeksContainer routineId={this.props.routine.id} />
-                </RoutineSingle>
-                {/*<GraphContainer routineId={this.props.routine.id} />*/}
-            </Fragment>
+            (
+                <Fragment>
+                    {this.props.routine.name &&
+                        <Helmet><title>{this.props.routine.name}</title></Helmet>
+                    }
+                    <TopNav
+                        title="Routine"
+                        left={{
+                            to: "/routines"
+                        }}
+                        rightLabel="Start Workout"
+                        right={{
+                            onClick: this.handleCreateWorkout
+                        }}
+                    />
+                    <Routine
+                        routine={this.props.routine}
+                        update={this.props.updateRoutine}
+                    >
+                        <ExercisesContainer routineId={this.props.routine.id} />
+                    </Routine>
+                    <TopNav
+                        rightLabel="Delete Routine"
+                        right={{
+                            onClick: this.handleRemove,
+                            danger: true,
+                            disabled: this.props.isDeleting
+                        }}
+                    />
+                </Fragment>
+            )
         : null
     }
 }
 
 const mapStateToProps = (state, props) => ({
-    routine: routineBySlugSelector(props.routineSlug)(state),
+    routine: routineSelector(props.routineId)(state),
     isStatusLoaded: state.routines.fetchStatus === STATUS_LOADED,
+    isDeleting: state.routines.entitiesStatus[props.routineId] === STATUS_DELETING
 })
 
 const mapDispatchToProps = {
-    createRoutine,
     updateRoutine,
-    removeRoutine
+    removeRoutine,
+    createWorkout,
+    fetchWorkoutsData
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoutineContainer)

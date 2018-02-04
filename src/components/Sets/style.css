@@ -1,59 +1,58 @@
 .sets-button-create {
-  padding: 5px 0;
-  padding-left: 10px;
-  border-bottom: 1px solid #303030; }
-
-.set {
-  border-bottom: 1px solid #303030; }
-  .set:first-child {
-    border-top: 1px solid #303030; }
-  .set .set-inner {
-    position: relative;
-    padding: 10px 5px;
-    background-color: transparent;
-    border-left: 0px solid rgba(76, 144, 194, 0.4);
-    transition: border-width .3s; }
-  .set .set-inner--is-completed {
-    border-width: 3px;
-    background-color: rgba(76, 144, 194, 0.1); }
-
-.set-title {
-  margin-left: 5px;
-  margin-bottom: 8px;
-  font-size: .7rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  transition: color .2s; }
-
-.set-rmPercentage {
-  color: rgba(239, 239, 239, 0.6); }
-
-.set-button-remove {
-  margin-top: 5px;
-  margin-right: 5px;
-  text-align: right; }
-
-.set-row {
   display: flex;
-  flex-wrap: wrap;
-  margin-right: -3px;
-  margin-left: -3px;
-  justify-content: center; }
+  padding: 9px 18px; }
+  .sets-button-create button {
+    margin-left: auto;
+    padding: 0; }
 
-.set-col {
-  flex: 1;
+.sets-header {
+  display: flex;
+  padding: 9px 18px;
+  border-bottom: 1px solid #e4e9ea; }
+
+.sets-header-item {
+  flex: 0 0 35%; }
+  .sets-header-item:first-child {
+    flex: 0 0 20%; }
+  .sets-header-item:last-child {
+    flex: 0 0 10%; }
+  .sets-header-item:first-letter {
+    text-transform: capitalize; }
+
+.set-inner {
   position: relative;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 3px;
-  padding-left: 3px;
-  flex: 0 0 50%;
-  max-width: 50%; }
+  display: flex;
+  border-bottom: 1px solid #e4e9ea;
+  padding: 4.5px 18px;
+  align-items: center; }
+  .set-inner.set-inner--is-completed {
+    background-color: rgba(76, 144, 194, 0.05); }
+  .set-inner input[name="weight"], .set-inner input[name="reps"] {
+    font-size: 1.3rem; }
+    .set-inner input[name="weight"]::-webkit-input-placeholder, .set-inner input[name="reps"]::-webkit-input-placeholder {
+      color: rgba(68, 68, 68, 0.3); }
+    .set-inner input[name="weight"]:-moz-placeholder, .set-inner input[name="reps"]:-moz-placeholder {
+      color: rgba(68, 68, 68, 0.3); }
+    .set-inner input[name="weight"]::-moz-placeholder, .set-inner input[name="reps"]::-moz-placeholder {
+      color: rgba(68, 68, 68, 0.3); }
+    .set-inner input[name="weight"]:-ms-input-placeholder, .set-inner input[name="reps"]:-ms-input-placeholder {
+      color: rgba(68, 68, 68, 0.3); }
+    .set-inner input[name="weight"]::-ms-input-placeholder, .set-inner input[name="reps"]::-ms-input-placeholder {
+      color: rgba(68, 68, 68, 0.3); }
+    .set-inner input[name="weight"]::placeholder, .set-inner input[name="reps"]::placeholder {
+      color: rgba(68, 68, 68, 0.3); }
 
-.set-checkbox {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 5px;
-  padding-top: 7px;
-  cursor: pointer; }
+.set-inner-item {
+  flex: 0 0 35%; }
+  .set-inner-item:first-child {
+    flex: 0 0 20%; }
+  .set-inner-item:last-child {
+    flex: 0 0 10%; }
+
+.set-action {
+  display: flex; }
+  .set-action > label, .set-action > button {
+    cursor: pointer;
+    padding: 9px 0;
+    margin: 0;
+    margin-left: auto; }

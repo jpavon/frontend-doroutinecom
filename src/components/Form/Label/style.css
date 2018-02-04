@@ -1,9 +1,9 @@
 .label {
   display: block;
   font-size: .8rem;
-  text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: .05rem;
-  margin-bottom: .4rem; }
+  margin-right: 18px;
+  color: #777777; }
   label + * + .label {
     margin-top: 1rem; }

@@ -2,27 +2,26 @@
 
 .select {
     position: relative;
-    padding: 5px 35px 5px 10px;
-    height: 34px;
+    padding: $spacing/2 35px $spacing/2 20px;
     width: 100%;
+    max-width: 100%;
 
     appearance: none;
     font-size: .9rem;
     color: $color-font;
     border: 0px solid $color-border-input;
-    font-weight: 500;
+    text-overflow: ellipsis;
 
     background-image: url('../../../media/arrow-down.svg');
     background-repeat: no-repeat;
-    background-position: right 13px top 13px;
-
-    background-color: $color-input-background;
+    background-position: left 0 center;
+    background-color: transparent;
 
     &:focus {
-        background-color: $color-input-background;
+        // background-color: $color-input-background;
     }
 
     &.select--default-option {
-        color: rgba(#fff, .6);
+        color: rgba($color-font, .6);
     }
 }

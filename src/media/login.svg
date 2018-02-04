@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>login</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="login">
+            <ellipse id="Oval" stroke="#979797" cx="16.948688" cy="11.5128015" rx="9.51280146" ry="9.51280146"></ellipse>
+            <path d="M28.6659562,23.6979008 C27.2974902,21.9444752 25.1731816,20.3318835 23.0273438,19.0102692 C22.9226202,18.9457703 19.7784243,21.0277734 16.8329782,21.038086 C13.8645668,21.048479 11.0949198,18.9875229 11.0379781,19.0102692 C8.45439554,20.0423224 6.49112933,21.769196 5,23.8297328" id="Path-9" stroke="#979797" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M6.49791926,28.2805063 L9.48543479,31.0407777" id="Line" stroke="#585858" stroke-linecap="round"></path>
+            <path d="M9.48543479,28.2805063 L6.49791926,31.0407777" id="Line" stroke="#585858" stroke-linecap="round"></path>
+            <path d="M12.4729503,28.2805063 L15.4604659,31.0407777" id="Line" stroke="#585858" stroke-linecap="round"></path>
+            <path d="M15.4604659,28.2805063 L12.4729503,31.0407777" id="Line" stroke="#585858" stroke-linecap="round"></path>
+            <path d="M18.4479814,28.2805063 L21.4354969,31.0407777" id="Line" stroke="#585858" stroke-linecap="round"></path>
+            <path d="M21.4354969,28.2805063 L18.4479814,31.0407777" id="Line" stroke="#585858" stroke-linecap="round"></path>
+            <path d="M24.4230125,28.2805063 L27.410528,31.0407777" id="Line" stroke="#585858" stroke-linecap="round"></path>
+            <path d="M27.410528,28.2805063 L24.4230125,31.0407777" id="Line" stroke="#585858" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

@@ -1,76 +1,39 @@
 @import "variables.scss";
+@import "mixins.scss";
 
 .workouts-container {
-    padding-top: .5rem;
 
     .no-data {
-        margin-top: 1rem;
     }
 }
 
 .workouts {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -3px;
-    margin-left: -3px;
-}
-
-.workout {
-    flex: 1;
-    position: relative;
-    width: 100%;
-    min-height: 1px;
-    padding-right: 3px;
-    padding-left: 3px;
-    flex: 0 0 percentage(1/6);
-    max-width: percentage(1/6);
-
-    @media (max-width: 1040px) {
-        flex: 0 0 percentage(1/5);
-        max-width: percentage(1/5);
-    }
-
-    @media (max-width: 860px) {
-        flex: 0 0 percentage(1/4);
-        max-width: percentage(1/4);
-    }
-
-    @media (max-width: 700px) {
-        flex: 0 0 percentage(1/3);
-        max-width: percentage(1/3);
-    }
-
-    @media (max-width: 500px) {
-        flex: 0 0 percentage(1/2);
-        max-width: percentage(1/2);
-    }
-}
-
-.workouts-button-create {
-    position: absolute;
-    bottom: 100%;
-    right: 0;
+    margin-bottom: $spacing;
 }
 
 // single
 
-.workout-inner {
-    position: relative;
-    background-color: #303030;
-    margin-bottom: 1rem;
-    margin-top: 2rem;
-    border-bottom: 2px solid #272727;
+.workout {
+}
+
+.workout-day {
+    font-size: .8rem;
+    margin-bottom: .4rem;
+    // text-transform: uppercase;
+}
+
+.workout-exercises {
+    font-size: .8rem;
+    margin-top: .8rem;
 }
 
 .workout-button-remove {
-    padding: $spacing-small;
-    padding-right: $spacing-small * 2;
-    text-align: right;
 }
 
 // form
 
 .workout-top {
+    display: flex;
     position: relative;
     background-color: #333;
     padding: $spacing-small;
@@ -81,39 +44,46 @@
         background-color: $color-primary;
         border-color: darken($color-primary, 10%);
     }
+}
+
+.workout-top-name {
+    display: flex;
 
     label {
+        align-self: center;
         text-align: center;
         margin: 0;
-        margin-bottom: .2rem;
+        margin-left: $spacing-small;
+        margin-right: $spacing-small * 2;
+        white-space: nowrap;
     }
 }
 
-.workout-checkbox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    right: 0;
-    cursor: pointer;
-    text-align: center;
+.workout-top-input {
+    width: 100%;
 }
 
-.workout-checkbox-text {
-    margin-left: .4rem;
+.workout-top-checkbox {
+    display: flex;
+    cursor: pointer;
+    margin-bottom: 0;
+    margin-left: $spacing-small * 2;
+
+    > span {
+        align-self: center;
+    }
+}
+
+.workout-top-checkbox-text {
+    margin-right: .4rem;
     display: inline-block;
     color: #555;
     align-self: center;
     user-select: none;
 
     .workout-top--is-completed & {
-        color: $color-primary;
+        color: $color-font;
     }
-}
-
-.workout-name {
 }
 
 .workout-notes {

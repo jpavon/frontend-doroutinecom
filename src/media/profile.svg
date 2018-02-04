@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>profile</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="profile">
+            <circle id="Oval" stroke="#979797" cx="16" cy="9" r="7"></circle>
+            <path d="M24.4825756,17.9340153 C23.4755892,16.6437561 22.2142698,15.4571297 20.6352539,14.4846191 C20.4216309,14.3530494 19.4960935,15.9831998 16.0270688,15.9787598 C12.5580442,15.9743198 11.8137774,14.3636773 11.5110185,14.4846191 C2.98461914,17.8906251 3.63964844,31.5808105 3.63964844,31.5808105 L21.9599335,31.5808105" id="Path-9" stroke="#979797" stroke-linecap="round" stroke-linejoin="round"></path>
+            <polyline id="Path-10" stroke="#585858" points="19 26.910514 22.6165655 26.910514 25.0772989 22 28.2612832 29 29.5596492 26.5624009 32 26.5624009"></polyline>
+        </g>
+    </g>
+</svg>

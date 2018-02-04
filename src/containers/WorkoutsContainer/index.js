@@ -1,81 +1,72 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { createWorkout, updateWorkout, removeWorkout } from 'data/workouts/actions'
-import { workoutsSelector } from 'data/workouts/selectors'
-import { STATUS_DELETING } from 'data/utils'
-import scrollTo from 'utils/scrollTo'
+import { completedWorkoutsSelector, pendingWorkoutsSelector } from 'data/workouts/selectors'
 
-import ExercisesContainer from 'containers/ExercisesContainer'
 import Workouts from 'components/Workouts/Workouts'
 import Workout from 'components/Workouts/Workout'
 import NoData from 'components/NoData'
+import TopNav from 'components/TopNav'
+import Badge from 'components/Badge'
 
 class WorkoutsContainer extends Component {
 
     static propTypes = {
-        routineId: PropTypes.number.isRequired,
-        weekId: PropTypes.number.isRequired,
-
-        workouts: PropTypes.array.isRequired,
-        entitiesStatus: PropTypes.object.isRequired,
-
-        createWorkout: PropTypes.func.isRequired,
-        updateWorkout: PropTypes.func.isRequired,
-        removeWorkout: PropTypes.func.isRequired,
-    }
-
-    handleCreate = () => {
-        this.props.createWorkout({
-            routineId: this.props.routineId,
-            weekId: this.props.weekId
-        }).then(() => {
-            scrollTo('workout-inner', { tolerance: 30})
-        })
+        completedWorkouts: PropTypes.array.isRequired,
+        pendingWorkouts: PropTypes.array.isRequired,
     }
 
     render() {
         return (
-            <Workouts
-                create={this.handleCreate}
-            >
-                {this.props.workouts.length > 0 ?
-                    this.props.workouts.map((workout, i) => (
-                        <Workout
-                            key={workout.id}
-                            index={i}
-                            workout={workout}
-                            update={this.props.updateWorkout}
-                            remove={this.props.removeWorkout}
-                            isDeleting={this.props.entitiesStatus[workout.id] === STATUS_DELETING}
-                        >
-                            <ExercisesContainer
-                                workoutId={workout.id}
-                                routineId={this.props.routineId}
+            <Fragment>
+                <TopNav
+                    title={(
+                        <Fragment>
+                            In Progress <Badge number={this.props.pendingWorkouts.length} />
+                        </Fragment>
+                    )}
+                />
+                <Workouts>
+                    {this.props.pendingWorkouts.length > 0 ?
+                        this.props.pendingWorkouts.map((workout, i) => (
+                            <Workout
+                                key={workout.id}
+                                workout={workout}
                             />
-                        </Workout>
-                    )) :
-                    <NoData
-                        buttonText="Create workout"
-                        text="No workout created"
-                        create={this.handleCreate}
-                    />
-                }
-            </Workouts>
+                        )) :
+                        <NoData
+                            text="You can start a workout from a routine or an already completed workout."
+                        />
+                    }
+                </Workouts>
+                <TopNav
+                    title="Completed"
+                />
+                <Workouts>
+                    {this.props.completedWorkouts.length > 0 ?
+                        this.props.completedWorkouts.map((workout, i) => (
+                            <Workout
+                                key={workout.id}
+                                workout={workout}
+                            />
+                        )) :
+                        <NoData
+                            text="No completed workouts."
+                        />
+                    }
+                </Workouts>
+            </Fragment>
         )
     }
 }
 
 const mapStateToProps = (state, props) => ({
-    workouts: workoutsSelector(props.routineId, props.weekId)(state),
-    entitiesStatus: state.workouts.entitiesStatus
+    completedWorkouts: completedWorkoutsSelector(state),
+    pendingWorkouts: pendingWorkoutsSelector(state),
 })
 
 const mapDispatchToProps = {
-    createWorkout,
-    updateWorkout,
-    removeWorkout
 }
 
 

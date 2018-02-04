@@ -1,56 +1,68 @@
 import { createSelector } from 'reselect'
 
+import moment from 'utils/moment'
+import { formatDuration, formatDate } from 'utils/date'
 import Workout from 'data/workouts/schema'
 
 const formatWorkout = (workout) => Workout({
     ...workout,
+    duration: workout.completedAt && formatDuration(workout.startedAt, workout.completedAt),
+    day: workout.completedAt && formatDate(workout.completedAt)
 })
-
-export const workoutsSelector = (routineId, weekId) => createSelector(
-    [
-        state => state.workouts.entities
-    ],
-    (workouts) => workouts
-        .filter((workout) => (workout.weekId === weekId && workout.routineId === routineId))
-        .map((workout) => formatWorkout(workout))
-)
 
 export const workoutSelector = (id) => createSelector(
     [
         (state) => state.workouts.entities
     ],
-    (workouts) => formatWorkout(workouts.find((workout) => (workout.id === id)))
-)
-
-export const workoutsRoutineSelector = (routineId) => createSelector(
-    [
-        (state) => state.workouts.entities
-    ],
-    (workouts) => workouts.filter((workout) => (workout.routineId === routineId))
-)
-
-export const weeksSelector = (routineId) => createSelector(
-    workoutsRoutineSelector(routineId),
     (workouts) => {
-        const max = Math.max(
-            ...new Set(
-                workouts.map((workout) => (workout.weekId))
-            )
-        )
-
-        return max > 0 ? [...Array(max)].map((n, i) => i + 1) : [1]
+        if (workouts.length > 0) {
+            const workout = workouts.find((workout) => (workout.id === id))
+            return workout ? formatWorkout(workout) : null
+        }
+        return null
     }
 )
 
-export const completedWeeks = (routineId) => createSelector(
+export const workoutsSelector = createSelector(
     [
-        workoutsRoutineSelector(routineId),
-        weeksSelector(routineId)
+        (state) => state.workouts.entities
     ],
-    (workouts, weeks) => {
-        return weeks.map((id) => {
-            const routineWorkoutsWeeks = workouts.filter((workout) => (workout.weekId === id))
-            return (routineWorkoutsWeeks.length > 0 && routineWorkoutsWeeks.filter((workout) => (!workout.isCompleted)).length < 1) ? 1 : 0
+    (workouts) => workouts
+        .map((workout) => formatWorkout(workout))
+        .sort((a, b) => (new Date(b.completedAt) - new Date(a.completedAt)))
+)
+
+export const completedWorkoutsSelector =  createSelector(
+    [
+        workoutsSelector
+    ],
+    (workouts) => workouts.filter((workout) => (workout.completedAt))
+)
+
+export const pendingWorkoutsSelector = createSelector(
+    [
+        workoutsSelector
+    ],
+    (workouts) => workouts.filter((workout) => (!workout.completedAt))
+)
+
+const startWeek = moment().startOf('week')
+const endWeek = moment().endOf('week')
+const range = moment().range(startWeek, endWeek)
+
+export const workoutsCompletedCurrentWeekSelector = createSelector(
+    [
+        completedWorkoutsSelector
+    ],
+    (workouts) => {
+        let amount = 0
+
+        workouts.forEach((workout) => {
+            if (range.contains(new Date(workout.completedAt))) {
+                amount = amount + 1
+            }
         })
+
+        return amount
     }
 )

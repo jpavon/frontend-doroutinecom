@@ -3,12 +3,11 @@ import classNames from 'classnames'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
-import InputWithItem from 'components/Form/InputWithItem'
 import Button from 'components/Button'
 import Checkbox from 'components/AutoSaveForm/Checkbox'
 import Label from 'components/Form/Label'
 
-const Set = ({i, set, routine, update, remove, isDeleting}) => (
+const Set = ({i, set, routine, update, remove, isDeleting, isWorkout, showDelete}) => (
     <Fragment>
         <AutoSaveForm
             initialValues={set}
@@ -20,53 +19,39 @@ const Set = ({i, set, routine, update, remove, isDeleting}) => (
                         values.isCompleted && 'set-inner--is-completed'
                     )}
                 >
-                    <div className="set-title">
-                        <span>Set {i + 1} </span>
-                        <span title="Training Max" className="set-rmPercentage">
-                            - TM% {set.tmPercentage}
-                        </span>
+                    <div className="set-inner-item">
+                        <Label>#{i + 1}</Label>
                     </div>
-                    <Label htmlFor={`set-completed${values.id}`} className="set-checkbox">
-                        <Checkbox
-                            id={`set-completed${values.id}`}
-                            name="isCompleted"
+                    <div className="set-inner-item">
+                        <Input
+                            name="reps"
+                            placeholder="Set reps"
                         />
-                    </Label>
-                    <div className="set-row">
-                        <div className="set-col">
-                            <div className="set-reps">
-                                <InputWithItem
-                                    item={!isNaN(values.reps) && (values.reps > 1 ? 'reps' : 'rep')}
-                                >
-                                    <Input
-                                        name="reps"
-                                    />
-                                </InputWithItem>
-                            </div>
-                        </div>
-                        <div className="set-col">
-                            <div className="set-weight">
-                                <InputWithItem
-                                    item={routine.weightMeasure}
-                                >
-                                    <Input
-                                        type="number"
-                                        name="weight"
-                                    />
-                                </InputWithItem>
-                            </div>
-                        </div>
                     </div>
-                    <div className="set-button-remove">
-                        <Button
-                            minus
-                            danger
-                            transparent
-                            onClick={() => remove(set.id)}
-                            disabled={isDeleting}
-                        >
-                            Set
-                        </Button>
+                    <div className="set-inner-item">
+                        <Input
+                            type="number"
+                            name="weight"
+                            placeholder="Set weight"
+                        />
+                    </div>
+                    <div className="set-inner-item set-action">
+                        {isWorkout && !showDelete &&
+                            <Label htmlFor={`set-checkbox${values.id}`}>
+                                <Checkbox
+                                    id={`set-checkbox${values.id}`}
+                                    name="isCompleted"
+                                />
+                            </Label>
+                        }
+                        {showDelete &&
+                            <Button
+                                remove
+                                danger
+                                onClick={() => remove(set.id)}
+                                disabled={isDeleting}
+                            />
+                        }
                     </div>
                 </div>
             )}

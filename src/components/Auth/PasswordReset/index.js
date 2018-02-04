@@ -1,46 +1,36 @@
 import React from 'react'
 
-import Section from 'components/Section'
-import Input from 'components/Form/Input'
-import Button from 'components/Button'
-import Label from 'components/Form/Label'
+import Auth from 'components/Auth'
+import Field from 'components/Field'
 
 const PasswordReset = ({handleSubmit, errors, success, setRef}) => (
-    <Section small className="password-reset" title="Password Reset">
-        <form method="post" onSubmit={handleSubmit}>
-            <Label htmlFor="email">
-                Email
-            </Label>
-            <Input
-                type="email"
-                id="email"
-                inputRef={(ref) => setRef(ref, 'email')}
-                size="large"
-
-            />
-            <Label htmlFor="password">
-                New password
-            </Label>
-            <Input
-                type="password"
-                id="password"
-                inputRef={(ref) => setRef(ref, 'password')}
-                size="large"
-
-            />
-            <Label htmlFor="passwordConfirmation">
-                Type new password again
-            </Label>
-            <Input
-                type="password"
-                id="passwordConfirmation"
-                inputRef={(ref) => setRef(ref, 'passwordConfirmation')}
-                size="large"
-
-            />
-            <Button type="submit">Submit</Button>
-        </form>
-    </Section>
+    <Auth className="password-reset" handleSubmit={handleSubmit}>
+        <Field
+            uncontrolled
+            label="Email"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Type your email"
+            inputRef={(ref) => setRef(ref, 'email')}
+        />
+        <Field
+            uncontrolled
+            label="New Password"
+            type="password"
+            id="password"
+            placeholder="Type your new password"
+            inputRef={(ref) => setRef(ref, 'password')}
+        />
+        <Field
+            uncontrolled
+            label="Type new password again"
+            type="password"
+            id="passwordConfirmation"
+            placeholder="Type your new password again"
+            inputRef={(ref) => setRef(ref, 'passwordConfirmation')}
+        />
+    </Auth>
 )
 
 export default PasswordReset

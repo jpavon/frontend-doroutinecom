@@ -1,34 +1,30 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { liftsRoutineSelector } from 'data/lifts/selectors'
+import history from 'utils/history'
+import { liftsSelector } from 'data/lifts/selectors'
 import { createLift, updateLift, removeLift } from 'data/lifts/actions'
-import { STATUS_DELETING } from 'data/utils'
-import scrollTo from 'utils/scrollTo'
+import { STATUS_LOADING } from 'data/utils'
 
 import Lifts from 'components/Lifts/Lifts'
 import Lift from 'components/Lifts/Lift'
 import NoData from 'components/NoData'
+import TopNav from 'components/TopNav'
 
 class LiftsContainer extends Component {
 
     static propTypes = {
-        routineId: PropTypes.number.isRequired,
-        routine: PropTypes.object.isRequired,
-
         lifts: PropTypes.array.isRequired,
-        entitiesStatus: PropTypes.object.isRequired,
+        isLoading: PropTypes.bool.isRequired,
 
         createLift: PropTypes.func.isRequired,
-        updateLift: PropTypes.func.isRequired,
-        removeLift: PropTypes.func.isRequired,
     }
 
     handleCreate = () => {
-        this.props.createLift(this.props.routineId)
-            .then(() => {
-                scrollTo('lift', { tolerance: 10 })
+        this.props.createLift()
+            .then((resp) => {
+                history.push(`/lifts/${resp.payload.id}`)
             })
     }
 
@@ -38,36 +34,38 @@ class LiftsContainer extends Component {
 
     render() {
         return (
-            <Lifts
-                create={this.handleCreate}
-                isLoading={this.props.isLoading}
-            >
-                {this.props.lifts.length > 0 ?
-                    this.props.lifts.map((lift, i) => (
-                        <Lift
-                            key={lift.id}
-                            lift={lift}
-                            routine={this.props.routine}
-                            ui={this.props.ui}
-                            remove={this.handleRemove}
-                            update={this.props.updateLift}
-                            isDeleting={this.props.entitiesStatus[lift.id] === STATUS_DELETING}
+            <Fragment>
+                <TopNav
+                    title="Lifts"
+                    rightLabel="Create"
+                    right={{
+                        onClick: this.handleCreate,
+                        disabled: this.props.isLoading
+                    }}
+                />
+                <Lifts
+                    create={this.handleCreate}
+                >
+                    {this.props.lifts.length > 0 ?
+                        this.props.lifts.map((lift, i) => (
+                            <Lift
+                                key={lift.id}
+                                lift={lift}
+                            />
+                        )) :
+                        <NoData
+                            text="No lift created"
                         />
-                    )) :
-                    <NoData
-                        buttonText="Create lift"
-                        text="No lift created"
-                        create={this.handleCreate}
-                    />
-                }
-            </Lifts>
+                    }
+                </Lifts>
+            </Fragment>
         )
     }
 }
 
 const mapStateToProps = (state, props) => ({
-    lifts: liftsRoutineSelector(props.routineId)(state),
-    entitiesStatus: state.lifts.entitiesStatus
+    lifts: liftsSelector(state),
+    isLoading: state.lifts.fetchStatus === STATUS_LOADING,
 })
 
 const mapDispatchToProps = {

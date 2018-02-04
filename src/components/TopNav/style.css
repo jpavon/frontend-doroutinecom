@@ -1,0 +1,24 @@
+.top-nav {
+  position: relative;
+  margin: 0 18px; }
+  .top-nav.top-nav--no-title {
+    height: 56px; }
+
+.top-nav-title {
+  width: 100%;
+  padding: 18px 72px;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+  text-align: center; }
+
+.top-nav-left, .top-nav-right {
+  position: absolute;
+  top: 0; }
+
+.top-nav-left {
+  left: 0; }
+  .top-nav-left img {
+    margin-right: 9px; }
+
+.top-nav-right {
+  right: 0; }

@@ -23,11 +23,9 @@ export const fetchAppData = () => (dispatch, getState) => {
     })
 }
 
-export const fetchRoutinesData = () => (dispatch, getState) => {
+export const fetchWorkoutsData = () => (dispatch, getState) => {
     return Promise.all([
-        dispatch(fetchWorkouts(true)),
         dispatch(fetchExercises(true)),
-        dispatch(fetchLifts(true)),
         dispatch(fetchSets(true))
     ]).then(() => {
         return Promise.resolve()

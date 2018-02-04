@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -6,6 +6,7 @@ import { passwordReset } from 'data/user/actions'
 import { showAlert } from 'data/ui/actions'
 
 import PasswordReset from 'components/Auth/PasswordReset'
+import TopNav from 'components/TopNav'
 
 class PasswordResetContainer extends Component {
 
@@ -41,10 +42,15 @@ class PasswordResetContainer extends Component {
 
     render() {
         return (
-            <PasswordReset
-                handleSubmit={this.handleSubmit}
-                setRef={this.setRef}
-            />
+            <Fragment>
+                <TopNav
+                    title="Password Reset"
+                />
+                <PasswordReset
+                    handleSubmit={this.handleSubmit}
+                    setRef={this.setRef}
+                />
+            </Fragment>
         )
     }
 }

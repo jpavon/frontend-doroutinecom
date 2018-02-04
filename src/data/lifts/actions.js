@@ -20,7 +20,7 @@ export const fetchLifts = (force = false) => (dispatch, getState) => {
 }
 
 
-const postLift = (routineId) => ({
+const postLift = (data) => ({
     [CALL_API]: {
         types: [
             types.LIFTS_POST_REQUEST,
@@ -29,14 +29,12 @@ const postLift = (routineId) => ({
         ],
         endpoint: 'lifts',
         method: 'post',
-        data: {
-            routineId
-        }
+        data
     }
 })
 
-export const createLift = (routineId) => (dispatch, getState) => {
-    return dispatch(postLift(routineId))
+export const createLift = (data) => (dispatch, getState) => {
+    return dispatch(postLift(data))
 }
 
 const putLift = (id, data) => ({

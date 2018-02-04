@@ -3,10 +3,10 @@ import Helmet from 'react-helmet'
 
 const Head = ({children}) => (
     <Helmet
-        defaultTitle="doroutine"
+        defaultTitle="doroutine | Create routines for your workout"
         titleTemplate="%s | doroutine"
     >
-        <meta name="description" content="#todo" />
+        <meta name="description" content="Gym routine creation. Keep track of your workouts, sets and exercises. Progress on your lifts." />
         {children}
     </Helmet>
 )

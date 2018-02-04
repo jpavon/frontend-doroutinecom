@@ -4,18 +4,22 @@
   margin-bottom: 1.5rem;
   text-align: center;
   font-size: 1rem;
-  background-color: #ab2323;
-  color: #efefef;
+  color: #fff;
+  font-weight: 500;
   line-height: 1.5;
   opacity: 1; }
 
 .alert--success {
-  background-color: #4ea24e;
-  border: 2px solid #469146; }
+  background-color: #6ec36e;
+  text-shadow: 0 1px 2px #43a243; }
 
 .alert--error {
-  background-color: #9c4545;
-  border: 2px solid #8a3d3d; }
+  background-color: #d05151;
+  text-shadow: 0 1px 2px #a72d2d; }
+
+.alert--info {
+  background-color: #ecca51;
+  text-shadow: 0 1px 2px #d9ae18; }
 
 .alert--small {
   padding: 5px;

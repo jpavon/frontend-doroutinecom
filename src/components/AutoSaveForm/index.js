@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import PropTypes from 'prop-types'
-import isEqual from 'lodash/isEqual'
 import debounce from 'lodash/debounce'
+import { format } from 'utils/date'
 
 class AutoSaveForm extends Component {
 
@@ -29,17 +29,11 @@ class AutoSaveForm extends Component {
             values: props.initialValues,
             errors: {},
             updating: null,
-            reinitializeValues: true
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (
-            this.state.reinitializeValues &&
-            !isEqual(this.props.initialValues, nextProps.initialValues)
-        ) {
-            this.initialize(nextProps.initialValues)
-        }
+    componentDidMount() {
+        this.initialize(this.props.initialValues)
     }
 
     initialize = (values) => {
@@ -48,20 +42,27 @@ class AutoSaveForm extends Component {
         })
     }
 
-    handleChange = (event) => {
-        const target = event.target
-        const name = event.target.name
-        const value = target.type === 'checkbox' ? target.checked : target.value
+    handleChange = (event, date) => {
+        let name
+        let value
+
+        if (event) {
+            const target = event.target
+            name = event.target.name
+            value = target.type === 'checkbox' ? target.checked : target.value
+        } else {
+            name = date.name
+            value = date.moment.format(format)
+        }
 
         this.setState((prevState) => ({
-            reinitializeValues: false,
             values: {
                 ...prevState.values,
                 [name]: value
             }
         }))
 
-        if (target.type === 'select' || target.type === 'checkbox') {
+        if (event && (event.target.type === 'select' || event.target.type === 'checkbox')) {
             this.update(this.state.values.id, name, value)
         } else {
             this.debounceUpdate(this.state.values.id, name, value)
@@ -70,7 +71,7 @@ class AutoSaveForm extends Component {
 
     debounceUpdate = debounce((...args) => {
         this.update(...args)
-    }, 250)
+    }, 500)
 
     update = (id, name, value) => {
         this.props.update(id, { [name]: value })
@@ -78,7 +79,6 @@ class AutoSaveForm extends Component {
                 this.setState({
                     errors: resp.error ? resp.error.errors : {},
                     updating: resp.error ? null : name,
-                    reinitializeValues: true
                 })
 
                 debounce(() => {

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import Alert from 'components/Alert'
+import Alert from 'components/Form/Alert'
 import UncontrolledCheckbox from 'components/Form/Checkbox'
 
 const Checkbox = (props, context) => {
@@ -22,8 +22,6 @@ const Checkbox = (props, context) => {
                 {...rest}
             />
             <Alert
-                size="small"
-                type="error"
                 message={errors[name]}
             />
         </Fragment>

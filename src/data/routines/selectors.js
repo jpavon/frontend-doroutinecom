@@ -6,15 +6,7 @@ const formatRoutine = (routine) => Routine({
     ...routine
 })
 
-export const routinesSelector = (weekId) => createSelector(
-    [
-        state => state.routines.entities
-    ],
-    (routines) => routines
-        .map((routine) => formatRoutine(routine))
-)
-
-export const routineByIdSelector = (id) => createSelector(
+export const routineSelector = (id) => createSelector(
     [
         (state) => state.routines.entities
     ],
@@ -27,15 +19,10 @@ export const routineByIdSelector = (id) => createSelector(
     }
 )
 
-export const routineBySlugSelector = (slug) => createSelector(
+export const routinesSelector = createSelector(
     [
-        (state) => state.routines.entities
+        state => state.routines.entities
     ],
-    (routines) => {
-        if (routines.length > 0) {
-            const routine = routines.find((routine) => (routine.slug === slug))
-            return routine ? formatRoutine(routine) : null
-        }
-        return null
-    }
+    (routines) => routines
+        .map((routine) => formatRoutine(routine))
 )

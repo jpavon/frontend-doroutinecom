@@ -6,20 +6,25 @@
     margin-bottom: 1.5rem;
     text-align: center;
     font-size: 1rem;
-    background-color: #ab2323;
-    color: $color-font;
+    color: #fff;
+    font-weight: 500;
     line-height: 1.5;
     opacity: 1;
 }
 
     .alert--success {
         background-color: $color-success;
-        border: 2px solid darken($color-success, 5%)
+        text-shadow: 0 1px 2px darken($color-success, 15%);
     }
 
     .alert--error {
-        background-color: #9c4545;
-        border: 2px solid darken(#9c4545, 5%)
+        background-color: $color-danger;
+        text-shadow: 0 1px 2px darken($color-danger, 15%);
+    }
+
+    .alert--info {
+        background-color: $color-info;
+        text-shadow: 0 1px 2px darken($color-info, 15%);
     }
 
     .alert--small {

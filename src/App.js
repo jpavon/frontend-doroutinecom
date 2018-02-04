@@ -9,7 +9,6 @@ import Routes from 'Routes'
 import ErrorApp from 'components/ErrorApp'
 import Nav from 'components/Nav'
 import Loading from 'components/Loading'
-import Footer from 'components/Footer'
 import Head from 'components/Head'
 import Offline from 'components/Offline'
 
@@ -30,6 +29,8 @@ class App extends Component {
         if (props.isAuth) {
             props.fetchAppData()
         }
+
+        this.isTouchDevice = 'ontouchstart' in document.documentElement
     }
 
     state = {
@@ -54,6 +55,7 @@ class App extends Component {
                 <Head />
                 <Nav
                     isAuth={this.props.isAuth}
+                    isTouchDevice={this.isTouchDevice}
                 />
                 {this.props.isLoading ?
                     <Loading /> :
@@ -61,7 +63,6 @@ class App extends Component {
                         <ErrorApp /> :
                         <Fragment>
                             <Routes isAuth={this.props.isAuth} />
-                            <Footer />
                         </Fragment>
                 }
             </Fragment>

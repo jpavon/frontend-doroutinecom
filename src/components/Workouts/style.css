@@ -1,58 +1,16 @@
-.workouts-container {
-  padding-top: .5rem; }
-  .workouts-container .no-data {
-    margin-top: 1rem; }
-
 .workouts {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -3px;
-  margin-left: -3px; }
+  margin-bottom: 18px; }
 
-.workout {
-  flex: 1;
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 3px;
-  padding-left: 3px;
-  flex: 0 0 16.66667%;
-  max-width: 16.66667%; }
-  @media (max-width: 1040px) {
-    .workout {
-      flex: 0 0 20%;
-      max-width: 20%; } }
-  @media (max-width: 860px) {
-    .workout {
-      flex: 0 0 25%;
-      max-width: 25%; } }
-  @media (max-width: 700px) {
-    .workout {
-      flex: 0 0 33.33333%;
-      max-width: 33.33333%; } }
-  @media (max-width: 500px) {
-    .workout {
-      flex: 0 0 50%;
-      max-width: 50%; } }
+.workout-day {
+  font-size: .8rem;
+  margin-bottom: .4rem; }
 
-.workouts-button-create {
-  position: absolute;
-  bottom: 100%;
-  right: 0; }
-
-.workout-inner {
-  position: relative;
-  background-color: #303030;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
-  border-bottom: 2px solid #272727; }
-
-.workout-button-remove {
-  padding: 5px;
-  padding-right: 10px;
-  text-align: right; }
+.workout-exercises {
+  font-size: .8rem;
+  margin-top: .8rem; }
 
 .workout-top {
+  display: flex;
   position: relative;
   background-color: #333;
   padding: 5px;
@@ -61,30 +19,36 @@
   .workout-top.workout-top--is-completed {
     background-color: #4c90c2;
     border-color: #3876a3; }
-  .workout-top label {
+
+.workout-top-name {
+  display: flex; }
+  .workout-top-name label {
+    align-self: center;
     text-align: center;
     margin: 0;
-    margin-bottom: .2rem; }
+    margin-left: 5px;
+    margin-right: 10px;
+    white-space: nowrap; }
 
-.workout-checkbox {
+.workout-top-input {
+  width: 100%; }
+
+.workout-top-checkbox {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  right: 0;
   cursor: pointer;
-  text-align: center; }
+  margin-bottom: 0;
+  margin-left: 10px; }
+  .workout-top-checkbox > span {
+    align-self: center; }
 
-.workout-checkbox-text {
-  margin-left: .4rem;
+.workout-top-checkbox-text {
+  margin-right: .4rem;
   display: inline-block;
   color: #555;
   align-self: center;
   user-select: none; }
-  .workout-top--is-completed .workout-checkbox-text {
-    color: #4c90c2; }
+  .workout-top--is-completed .workout-top-checkbox-text {
+    color: #444; }
 
 .workout-notes {
   position: relative;

@@ -1,11 +1,6 @@
 .no-data {
   width: 100%;
-  padding: 2rem;
+  padding: 18px;
+  border-top: 1px solid #e4e9ea;
   text-align: center;
-  border: 1px solid #303030;
-  border-radius: 3px; }
-  .no-data p {
-    margin: 0;
-    text-transform: uppercase;
-    font-size: .9rem;
-    margin-bottom: 1.5rem; }
+  color: #919191; }

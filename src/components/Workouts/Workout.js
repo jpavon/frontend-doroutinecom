@@ -1,72 +1,21 @@
 import React from 'react'
-import classNames from 'classnames'
 
-import AutoSaveForm from 'components/AutoSaveForm'
-import Input from 'components/AutoSaveForm/Input'
-import Checkbox from 'components/AutoSaveForm/Checkbox'
-import Textarea from 'components/AutoSaveForm/Textarea'
-import Label from 'components/Form/Label'
-import Button from 'components/Button'
+import ListItem from 'components/ListItem'
 
-const Workout = ({index, children, workout, update, remove, isDeleting}) => (
-    <div className="workout-inner">
-        <AutoSaveForm
-            initialValues={workout}
-            update={update}
-            render={({values}) => (
-                <div
-                    className={classNames(
-                        'workout-top',
-                        values.isCompleted && 'workout-top--is-completed'
-                    )}
-                >
-                    <Label htmlFor={`workout-completed${values.id}`} className="workout-checkbox">
-                        <Checkbox
-                            id={`workout-completed${values.id}`}
-                            name="isCompleted"
-                        />
-                        <div className="workout-checkbox-text">Completed</div>
-                    </Label>
-                    <Label htmlFor={`workout-name${values.id}`}>DAY {index + 1}</Label>
-                    <div className="workout-name">
-                        <Input
-                            id={`workout-name${values.id}`}
-                            name="name"
-                            placeholder="Name"
-                        />
-                    </div>
-                </div>
-            )}
-        />
-
-        {children}
-
-        <AutoSaveForm
-            initialValues={workout}
-            update={update}
-            render={({values}) => (
-                <div className="workout-notes">
-                    <Label htmlFor={`notes${values.id}`}>Notes</Label>
-                    <Textarea
-                        id={`notes${values.id}`}
-                        name="notes"
-                    />
-                </div>
-            )}
-        />
-
-        <div className="workout-button-remove">
-            <Button
-                minus
-                transparent
-                danger
-                onClick={() => remove(workout.id)}
-                disabled={isDeleting}
-            >
-                Workout
-            </Button>
+const Workout = ({children, workout}) => (
+    <ListItem to={`/workouts/${workout.id}`} className="workout">
+        {workout.day &&
+            <div className="workout-day">
+                {workout.day}
+            </div>
+        }
+        <div className="workout-name">
+            {workout.name || 'No workout name set.'}
         </div>
-    </div>
+        {/*<div className="workout-exercises">
+            Bench Press / Flies
+        </div>*/}
+    </ListItem>
 )
 
 export default Workout

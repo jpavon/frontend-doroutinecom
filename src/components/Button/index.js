@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom'
 
 import './style.css'
 
-import minusIcon from 'media/minus.svg'
-import plusIcon from 'media/plus.svg'
+import removeIcon from 'media/x.svg'
 
 class Button extends Component {
 
@@ -16,10 +15,7 @@ class Button extends Component {
         className: PropTypes.string,
         children: PropTypes.node,
 
-        small: PropTypes.bool,
         danger: PropTypes.bool,
-        transparent: PropTypes.bool,
-        plus: PropTypes.bool,
         remove: PropTypes.bool,
     }
 
@@ -30,10 +26,7 @@ class Button extends Component {
             className,
             children,
             danger,
-            small,
-            transparent,
-            plus,
-            minus,
+            remove,
             ...rest
         } = this.props
 
@@ -44,16 +37,13 @@ class Button extends Component {
                 className={classNames(
                     'button',
                     danger && 'button--danger',
-                    small && 'button--small',
-                    transparent && 'button--transparent',
                     className
                 )}
                 href={href}
                 to={to}
                 {...rest}
             >
-                {plus && <img src={plusIcon} alt="Add" />}
-                {minus && <img src={minusIcon} alt="Remove" />}
+                {remove && <img src={removeIcon} alt="Remove" />}
 
                 {children}
             </Element>

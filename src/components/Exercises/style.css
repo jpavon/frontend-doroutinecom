@@ -1,20 +1,29 @@
-.exercises-container {
-  margin-top: 10px; }
-
 .exercises-button-create {
-  position: relative;
-  margin-top: .5rem;
-  text-align: center; }
+  display: flex;
+  padding-right: 18px;
+  margin-bottom: 18px; }
+  .exercises-button-create button {
+    margin: auto; }
 
 .exercise {
-  background-color: #3b3b3b;
-  border-bottom: 3px solid #303030;
-  margin-bottom: 10px; }
+  position: relative;
+  margin-bottom: 27px; }
+  .exercise .field:last-child {
+    margin-bottom: 0; }
+  .exercise:last-child {
+    margin-bottom: 0; }
 
 .exercise-button-remove {
-  padding: 5px;
-  padding-right: 10px;
-  text-align: right; }
+  position: absolute;
+  top: 9px;
+  right: 0; }
+  .exercise-button-remove button {
+    padding: 9px 18px; }
 
-.exercise-form {
-  padding: 5px; }
+.exercise-lift {
+  padding: 18px 18px; }
+  .exercise-lift > div {
+    margin-right: 40px; }
+  .exercise-lift select {
+    width: auto;
+    font-size: 1.1rem; }
