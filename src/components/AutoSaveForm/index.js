@@ -30,17 +30,11 @@ class AutoSaveForm extends Component {
             values: props.initialValues,
             errors: {},
             updating: null,
-            reinitializeValues: true
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (
-            this.state.reinitializeValues &&
-            !isEqual(this.props.initialValues, nextProps.initialValues)
-        ) {
-            this.initialize(nextProps.initialValues)
-        }
+    componentDidMount() {
+        this.initialize(this.props.initialValues)
     }
 
     initialize = (values) => {
@@ -63,7 +57,6 @@ class AutoSaveForm extends Component {
         }
 
         this.setState((prevState) => ({
-            reinitializeValues: false,
             values: {
                 ...prevState.values,
                 [name]: value
@@ -79,7 +72,7 @@ class AutoSaveForm extends Component {
 
     debounceUpdate = debounce((...args) => {
         this.update(...args)
-    }, 250)
+    }, 500)
 
     update = (id, name, value) => {
         this.props.update(id, { [name]: value })
@@ -87,7 +80,6 @@ class AutoSaveForm extends Component {
                 this.setState({
                     errors: resp.error ? resp.error.errors : {},
                     updating: resp.error ? null : name,
-                    reinitializeValues: true
                 })
 
                 debounce(() => {
