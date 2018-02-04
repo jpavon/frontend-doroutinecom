@@ -13,13 +13,13 @@
     color: $color-font;
     border: 0;
 
+    @include input-background-color(transparent);
+
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
     &:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0 50px transparent inset, 0 0 0 50px $color-background inset;
         -webkit-text-fill-color: $color-font;
-        border-color: #333;
     }
 
     &:focus {

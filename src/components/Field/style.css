@@ -9,3 +9,16 @@
   .field:last-child {
     margin-bottom: 18px;
     border-bottom: 1px solid #e4e9ea; }
+  .auth .field {
+    border: none; }
+    .auth .field:last-child {
+      border: none; }
+    .auth .field label {
+      margin-bottom: 6px; }
+    .auth .field input {
+      background-color: #fff;
+      border: 1px solid #eee;
+      padding: 18px 12px;
+      border-radius: 4px; }
+      .auth .field input:-webkit-autofill, .auth .field input:-webkit-autofill:hover, .auth .field input:-webkit-autofill:focus, .auth .field input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 50px transparent inset, 0 0 0 50px #fff inset; }

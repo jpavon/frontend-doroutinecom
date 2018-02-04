@@ -4,6 +4,10 @@
 
     .field {
         background-color: transparent;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 }
 

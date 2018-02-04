@@ -29,14 +29,14 @@ export const workoutsSelector = createSelector(
     ],
     (workouts) => workouts
         .map((workout) => formatWorkout(workout))
-        .sort((a, b) => (moment(b.completedAt) - moment(a.completedAt)))
 )
 
-export const completedWorkoutsSelector =  createSelector(
+export const completedWorkoutsSelector = createSelector(
     [
         workoutsSelector
     ],
     (workouts) => workouts.filter((workout) => (workout.completedAt))
+        .sort((a, b) => (moment(b.completedAt) - moment(a.completedAt)))
 )
 
 export const pendingWorkoutsSelector = createSelector(
@@ -44,25 +44,26 @@ export const pendingWorkoutsSelector = createSelector(
         workoutsSelector
     ],
     (workouts) => workouts.filter((workout) => (!workout.completedAt))
+        .sort((a, b) => (moment(b.startedAt) - moment(a.startedAt)))
 )
 
-const startWeek = moment().startOf('week')
-const endWeek = moment().endOf('week')
-const range = moment().range(startWeek, endWeek)
+// const startWeek = moment().startOf('week')
+// const endWeek = moment().endOf('week')
+// const range = moment().range(startWeek, endWeek)
 
-export const workoutsCompletedCurrentWeekSelector = createSelector(
-    [
-        completedWorkoutsSelector
-    ],
-    (workouts) => {
-        let amount = 0
+// export const workoutsCompletedCurrentWeekSelector = createSelector(
+//     [
+//         completedWorkoutsSelector
+//     ],
+//     (workouts) => {
+//         let amount = 0
 
-        workouts.forEach((workout) => {
-            if (range.contains(moment(workout.completedAt))) {
-                amount = amount + 1
-            }
-        })
+//         workouts.forEach((workout) => {
+//             if (range.contains(moment(workout.completedAt))) {
+//                 amount = amount + 1
+//             }
+//         })
 
-        return amount
-    }
-)
+//         return amount
+//     }
+// )

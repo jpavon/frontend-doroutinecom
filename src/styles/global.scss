@@ -46,8 +46,15 @@ p {
 }
 
 a {
+    font-size: .9rem;
     color: $color-font;
     text-decoration: none;
+
+    transition: .2s all;
+
+    &:hover {
+        color: $color-danger;
+    }
 }
 
 small {

@@ -1,0 +1,17 @@
+.nav-no-auth-logo {
+  margin: 36px 0;
+  text-align: center; }
+
+.nav-no-auth-links {
+  display: flex;
+  width: 100%;
+  max-width: 160px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 18px; }
+
+.nav-no-auth-link {
+  flex: 1;
+  font-weight: 500; }
+  .nav-no-auth-link.nav-no-auth-link--active {
+    color: #d05151; }

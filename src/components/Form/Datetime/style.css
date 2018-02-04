@@ -7,11 +7,12 @@
   border-radius: 3px;
   background-color: transparent;
   color: #444;
-  border: 0; }
+  border: 0;
+  background-color: transparent; }
   .input:-webkit-autofill, .rdt input:-webkit-autofill, .input:-webkit-autofill:hover, .rdt input:-webkit-autofill:hover, .input:-webkit-autofill:focus, .rdt input:-webkit-autofill:focus, .input:-webkit-autofill, .rdt input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 50px transparent inset, 0 0 0 50px #f9f9f9 inset;
-    -webkit-text-fill-color: #444;
-    border-color: #333; }
+    -webkit-box-shadow: 0 0 0 50px transparent inset, 0 0 0 50px transparent inset; }
+  .input:-webkit-autofill, .rdt input:-webkit-autofill, .input:-webkit-autofill:hover, .rdt input:-webkit-autofill:hover, .input:-webkit-autofill:focus, .rdt input:-webkit-autofill:focus, .input:-webkit-autofill, .rdt input:-webkit-autofill {
+    -webkit-text-fill-color: #444; }
   .input:focus, .rdt input:focus {
     outline: 0; }
   .input.input--right, .rdt input.input--right {

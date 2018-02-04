@@ -37,7 +37,7 @@ class PasswordForgottenContainer extends Component {
         return (
             <Fragment>
                 <TopNav
-                    title="Password"
+                    title="Password Forgotten"
                 />
                 <PasswordForgotten
                     handleSubmit={this.handleSubmit}

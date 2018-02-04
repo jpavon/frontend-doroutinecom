@@ -6,7 +6,6 @@ import { loginUser, authUser } from 'data/user/actions'
 import { showAlert } from 'data/ui/actions'
 
 import Login from 'components/Auth/Login'
-import TopNav from 'components/TopNav'
 
 class LoginContainer extends Component {
 
@@ -39,9 +38,6 @@ class LoginContainer extends Component {
     render() {
         return (
             <Fragment>
-                <TopNav
-                    title="Login"
-                />
                 <Login
                     handleSubmit={this.handleSubmit}
                     setRef={this.setRef}

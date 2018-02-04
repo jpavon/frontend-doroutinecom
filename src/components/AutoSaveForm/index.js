@@ -2,6 +2,7 @@ import { Component } from 'react'
 import PropTypes from 'prop-types'
 import debounce from 'lodash/debounce'
 import { format } from 'utils/date'
+import isEqual from 'lodash/isEqual'
 
 class AutoSaveForm extends Component {
 
@@ -29,11 +30,17 @@ class AutoSaveForm extends Component {
             values: props.initialValues,
             errors: {},
             updating: null,
+            reinitializeValues: true
         }
     }
 
-    componentDidMount() {
-        this.initialize(this.props.initialValues)
+    componentWillReceiveProps(nextProps) {
+        if (
+            this.state.reinitializeValues &&
+            !isEqual(this.props.initialValues, nextProps.initialValues)
+        ) {
+            this.initialize(nextProps.initialValues)
+        }
     }
 
     initialize = (values) => {
@@ -79,6 +86,7 @@ class AutoSaveForm extends Component {
                 this.setState({
                     errors: resp.error ? resp.error.errors : {},
                     updating: resp.error ? null : name,
+                    reinitializeValues: true
                 })
 
                 debounce(() => {

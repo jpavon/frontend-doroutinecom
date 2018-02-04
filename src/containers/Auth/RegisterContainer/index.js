@@ -6,7 +6,6 @@ import { registerUser, authUser } from 'data/user/actions'
 import { showAlert } from 'data/ui/actions'
 
 import Register from 'components/Auth/Register'
-import TopNav from 'components/TopNav'
 
 class RegisterContainer extends Component {
 
@@ -42,9 +41,6 @@ class RegisterContainer extends Component {
     render() {
         return (
             <Fragment>
-                <TopNav
-                    title="Register"
-                />
                 <Register
                     handleSubmit={this.handleSubmit}
                     setRef={this.setRef}

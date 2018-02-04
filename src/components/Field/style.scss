@@ -1,8 +1,8 @@
 @import "variables.scss";
+@import "mixins.scss";
 
 .field {
     position: relative;
-    // display: flex;
     padding: $spacing / 1.5 $spacing $spacing / 2;
     align-items: center;
     background-color: #fff;
@@ -18,5 +18,21 @@
     &:last-child {
         margin-bottom: $spacing;
         border-bottom: 1px solid $color-border;
+    }
+
+    .auth & {
+        border: none;
+        &:last-child {
+            border: none;
+        }
+        label {
+            margin-bottom: $spacing / 3;
+        }
+        input {
+            @include input-background-color(#fff);
+            border: 1px solid #eee;
+            padding: $spacing $spacing / 1.5;
+            border-radius: 4px;
+        }
     }
 }

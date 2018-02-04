@@ -282,8 +282,12 @@ p {
   font-size: 1rem; }
 
 a {
+  font-size: .9rem;
   color: #444;
-  text-decoration: none; }
+  text-decoration: none;
+  transition: .2s all; }
+  a:hover {
+    color: #d05151; }
 
 small {
   font-size: .8rem;

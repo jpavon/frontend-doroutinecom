@@ -47,3 +47,15 @@
         color: $color;
     }
 }
+
+
+@mixin input-background-color($color) {
+    background-color: $color;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 50px transparent inset, 0 0 0 50px $color inset;
+    }
+}

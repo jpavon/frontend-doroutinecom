@@ -8,6 +8,7 @@ import { fetchAppData } from 'data/globals'
 import Routes from 'Routes'
 import ErrorApp from 'components/ErrorApp'
 import Nav from 'components/Nav'
+import NavNoAuth from 'components/NavNoAuth'
 import Loading from 'components/Loading'
 import Head from 'components/Head'
 import Offline from 'components/Offline'
@@ -53,10 +54,12 @@ class App extends Component {
         return (
             <Fragment>
                 <Head />
-                <Nav
-                    isAuth={this.props.isAuth}
-                    isTouchDevice={this.isTouchDevice}
-                />
+                {this.props.isAuth ?
+                    <Nav
+                        isTouchDevice={this.isTouchDevice}
+                    /> :
+                    <NavNoAuth />
+                }
                 {this.props.isLoading ?
                     <Loading /> :
                     this.state.isErrorApp ?
