@@ -9,7 +9,6 @@ import Routes from 'Routes'
 import ErrorApp from 'components/ErrorApp'
 import Nav from 'components/Nav'
 import Loading from 'components/Loading'
-import Footer from 'components/Footer'
 import Head from 'components/Head'
 import Offline from 'components/Offline'
 
@@ -64,7 +63,6 @@ class App extends Component {
                         <ErrorApp /> :
                         <Fragment>
                             <Routes isAuth={this.props.isAuth} />
-                            <Footer />
                         </Fragment>
                 }
             </Fragment>

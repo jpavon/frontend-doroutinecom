@@ -3,8 +3,10 @@
   padding-top: 2rem;
   padding-bottom: 6rem;
   text-align: center;
-  background-color: #ececec;
-  margin-top: -58px; }
+  background-color: #ececec; }
+  .app .footer {
+    background-color: transparent;
+    padding-top: 0; }
 
 .footer-inner {
   padding: 18px; }
