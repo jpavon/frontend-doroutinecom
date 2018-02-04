@@ -3,16 +3,16 @@
   text-align: center; }
 
 .nav-no-auth-links {
-  display: flex;
   width: 100%;
-  max-width: 160px;
   margin: 0 auto;
   text-align: center;
-  margin-bottom: 18px;
-  letter-spacing: .05rem; }
+  margin-bottom: 18px; }
 
 .nav-no-auth-link {
-  flex: 1;
-  font-weight: 500; }
-  .nav-no-auth-link.nav-no-auth-link--active {
-    color: #d05151; }
+  font-size: .9rem;
+  margin: 0 12px;
+  display: inline-block;
+  letter-spacing: .05rem;
+  color: #444; }
+  .nav-no-auth-link:hover, .nav-no-auth-link.nav-no-auth-link--active {
+    color: #4c90c2; }

@@ -12,10 +12,10 @@ const NavNoAuth = () => (
         </div>
         <div className="nav-no-auth-links">
             <NavLink to="/login" className="nav-no-auth-link" activeClassName="nav-no-auth-link--active">
-                Login
+                Log In
             </NavLink>
             <NavLink to="/register" className="nav-no-auth-link" activeClassName="nav-no-auth-link--active">
-                Register
+                Sign In
             </NavLink>
         </div>
     </nav>
