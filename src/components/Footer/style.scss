@@ -1,11 +1,14 @@
 @import "variables.scss";
 
 .footer {
-    margin-top: 4rem;
+    position: relative;
     padding-top: 2rem;
-    padding-bottom: 7rem;
+    padding-bottom: 6rem;
     text-align: center;
     background-color: darken($color-background, 5%);
+
+    // header height
+    margin-top: -58px;
 }
 
 .footer-inner {

@@ -1,9 +1,10 @@
 .footer {
-  margin-top: 4rem;
+  position: relative;
   padding-top: 2rem;
-  padding-bottom: 7rem;
+  padding-bottom: 6rem;
   text-align: center;
-  background-color: #ececec; }
+  background-color: #ececec;
+  margin-top: -58px; }
 
 .footer-inner {
   padding: 18px; }

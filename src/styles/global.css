@@ -237,10 +237,14 @@ template {
 [hidden] {
   display: none !important; }
 
+#root {
+  min-height: 100%; }
+
 .container {
   width: 100%;
   max-width: 800px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  min-height: 100%; }
 
 .row {
   display: flex;
@@ -451,6 +455,9 @@ body {
   overflow-y: scroll;
   background-color: #f9f9f9;
   font-weight: 400; }
+
+html, body, #root {
+  height: 100%; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
