@@ -21,7 +21,7 @@ const getWorkoutsDataset = (workouts) => {
 
     workouts.forEach((workout) => {
         ranges.forEach((item, i) => {
-            if (item.range.contains(new Date(workout.completedAt))) {
+            if (item.range.contains(moment(workout.completedAt))) {
                 datasets[i] = datasets[i] + 1
             }
         })
@@ -37,10 +37,12 @@ export const workoutsGraphDataSelector = createSelector(
     (workouts) => {
         const dataset = getWorkoutsDataset(workouts).reverse()
 
+        const labels = weeks.map((week) => {
+            return `${week.startWeek.format(localeDayMonthFormat)} ${week.endWeek.format(localeDayMonthFormat)}`
+        }).reverse()
+
         return {
-            labels: weeks.map((week) => {
-                return `${week.startWeek.format(localeDayMonthFormat)} ${week.endWeek.format(localeDayMonthFormat)}`
-            }).reverse(),
+            labels,
             dataset,
             datasetMax: Math.max.apply(Math, dataset)
         }

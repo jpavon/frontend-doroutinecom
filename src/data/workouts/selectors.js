@@ -29,7 +29,7 @@ export const workoutsSelector = createSelector(
     ],
     (workouts) => workouts
         .map((workout) => formatWorkout(workout))
-        .sort((a, b) => (new Date(b.completedAt) - new Date(a.completedAt)))
+        .sort((a, b) => (moment(b.completedAt) - moment(a.completedAt)))
 )
 
 export const completedWorkoutsSelector =  createSelector(
@@ -58,7 +58,7 @@ export const workoutsCompletedCurrentWeekSelector = createSelector(
         let amount = 0
 
         workouts.forEach((workout) => {
-            if (range.contains(new Date(workout.completedAt))) {
+            if (range.contains(moment(workout.completedAt))) {
                 amount = amount + 1
             }
         })
