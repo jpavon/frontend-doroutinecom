@@ -1,6 +1,5 @@
 import { Component } from 'react'
 import PropTypes from 'prop-types'
-import isEqual from 'lodash/isEqual'
 import debounce from 'lodash/debounce'
 import { format } from 'utils/date'
 
