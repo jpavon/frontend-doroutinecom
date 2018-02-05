@@ -98,6 +98,7 @@ class ExercisesContainer extends Component {
                             >
                                 <SetsContainer
                                     exerciseId={exercise.id}
+                                    liftId={exercise.liftId}
                                     isWorkout={this.isWorkout}
                                     showDelete={this.state.showDelete}
                                 />

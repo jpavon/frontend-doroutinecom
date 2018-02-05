@@ -115,7 +115,7 @@ class WorkoutContainer extends Component {
                 />
                 {this.props.workout.completedAt &&
                     <TopNav
-                        rightLabel="Perform again as new workout"
+                        rightLabel="Perform again as New Workout"
                         right={{
                             onClick: this.handleCreate,
                         }}

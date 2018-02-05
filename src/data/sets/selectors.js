@@ -114,3 +114,26 @@ export const formatSetsRm = (sets) => {
         rm: round(Number(set.weight) * (36 / (37 - Number(set.reps)))),
     }))
 }
+
+export const previouslyCompletedSetsSelector = (exerciseId, liftId) => createSelector(
+    [
+        completedExercisesLiftSelector(liftId),
+        setsSelector,
+        completedWorkoutsSelector
+    ],
+    (exercises, sets, workouts) => {
+        const exercisesDates = exercises.map((exercise) => {
+            const workout = workouts.find((workout) => workout.id === exercise.workoutId)
+            return {
+                exerciseId: exercise.id,
+                completedAt: workout.completedAt
+            }
+        }).sort((a, b) => (moment(b.completedAt) - moment(a.completedAt)))
+
+        if (exercisesDates.length === 0) return []
+
+        const lastExerciseId = exercisesDates[0].exerciseId
+
+        return sets.filter((set) => set.exerciseId === lastExerciseId)
+    }
+)

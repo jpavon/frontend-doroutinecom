@@ -7,7 +7,7 @@ import Button from 'components/Button'
 import Checkbox from 'components/AutoSaveForm/Checkbox'
 import Label from 'components/Form/Label'
 
-const Set = ({i, set, routine, update, remove, isDeleting, isWorkout, showDelete}) => (
+const Set = ({index, set, routine, update, remove, isDeleting, isWorkout, showDelete, previousSet}) => (
     <Fragment>
         <AutoSaveForm
             initialValues={set}
@@ -20,20 +20,20 @@ const Set = ({i, set, routine, update, remove, isDeleting, isWorkout, showDelete
                     )}
                 >
                     <div className="set-inner-item">
-                        <Label>#{i + 1}</Label>
+                        <Label>#{index + 1}</Label>
                     </div>
                     <div className="set-inner-item">
                         <Input
                             type="number"
                             name="reps"
-                            placeholder="Reps"
+                            placeholder={(previousSet && previousSet.reps) ? previousSet.reps : 'Reps'}
                         />
                     </div>
                     <div className="set-inner-item">
                         <Input
                             type="number"
                             name="weight"
-                            placeholder="Weight"
+                            placeholder={(previousSet && previousSet.weight) ? previousSet.weight : 'Weight'}
                         />
                     </div>
                     <div className="set-inner-item set-action">
