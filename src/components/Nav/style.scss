@@ -89,7 +89,7 @@
 
     &:hover, &.nav-link--active {
         color: $color-primary;
-        background-color: rgba($color-primary, .05);
+        background-color: rgba(darken($color-primary, 10%), .05);
 
         img {
             opacity: 1;

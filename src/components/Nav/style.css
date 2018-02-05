@@ -59,7 +59,7 @@
     color: #919191; }
   .nav-link:hover, .nav-link.nav-link--active {
     color: #4c90c2;
-    background-color: rgba(76, 144, 194, 0.05); }
+    background-color: rgba(56, 118, 163, 0.05); }
     .nav-link:hover img, .nav-link.nav-link--active img {
       opacity: 1; }
   @media (max-width: 414px) {
