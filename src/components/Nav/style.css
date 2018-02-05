@@ -35,6 +35,7 @@
   justify-content: flex-end; }
 
 .nav-item {
+  position: relative;
   flex: 0 0 25%; }
 
 .nav-link {
@@ -64,3 +65,16 @@
   @media (max-width: 414px) {
     .nav-link img {
       max-width: 24px; } }
+
+.nav-link-highlight {
+  position: absolute;
+  background-color: #e9c33a;
+  width: 8px;
+  height: 8px;
+  top: 9px;
+  right: 9px;
+  border-radius: 50%; }
+  @media (max-width: 514px) {
+    .nav-link-highlight {
+      width: 6px;
+      height: 6px; } }

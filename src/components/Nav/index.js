@@ -16,7 +16,7 @@ const isProfileActive = (match, location) => {
     return false
 }
 
-const Nav = ({isAuth = false, isTouchDevice}) => (
+const Nav = ({isAuth = false, isTouchDevice, isPendingWorkouts}) => (
     <nav className={classNames(
             'nav-container',
             isTouchDevice && 'nav-container--touch'
@@ -36,6 +36,7 @@ const Nav = ({isAuth = false, isTouchDevice}) => (
                 </li>
                 <li className="nav-item">
                     <NavLink to="/workouts" className="nav-link" activeClassName="nav-link--active">
+                        {isPendingWorkouts && <div className="nav-link-highlight"></div>}
                         <img src={workoutsIcon} alt="Workouts" />
                         <span>Workouts</span>
                     </NavLink>

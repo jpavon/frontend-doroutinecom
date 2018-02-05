@@ -5,10 +5,10 @@ import { withRouter } from 'react-router-dom'
 
 import { fetchAppData } from 'data/globals'
 
+import NavContainer from 'containers/NavContainer'
+
 import Routes from 'Routes'
 import ErrorApp from 'components/ErrorApp'
-import Nav from 'components/Nav'
-import NavNoAuth from 'components/NavNoAuth'
 import Loading from 'components/Loading'
 import Head from 'components/Head'
 import Offline from 'components/Offline'
@@ -30,8 +30,6 @@ class App extends Component {
         if (props.isAuth) {
             props.fetchAppData()
         }
-
-        this.isTouchDevice = 'ontouchstart' in document.documentElement
     }
 
     state = {
@@ -54,12 +52,7 @@ class App extends Component {
         return (
             <Fragment>
                 <Head />
-                {this.props.isAuth ?
-                    <Nav
-                        isTouchDevice={this.isTouchDevice}
-                    /> :
-                    <NavNoAuth />
-                }
+                <NavContainer isAuth={this.props.isAuth} />
                 {this.props.isLoading ?
                     <Loading /> :
                     this.state.isErrorApp ?

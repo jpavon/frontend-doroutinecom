@@ -57,6 +57,7 @@
 }
 
 .nav-item {
+    position: relative;
     flex: 0 0 25%;
 }
 
@@ -99,5 +100,20 @@
         img {
             max-width: 24px;
         }
+    }
+}
+
+.nav-link-highlight {
+    position: absolute;
+    background-color: darken($color-info, 5%);
+    width: 8px;
+    height: 8px;
+    top: $spacing / 2;
+    right: $spacing / 2;
+    border-radius: 50%;
+
+    @media (max-width: 514px) {
+        width: 6px;
+        height: 6px;
     }
 }
