@@ -286,7 +286,7 @@ a {
   color: #444;
   text-decoration: none;
   transition: .2s all; }
-  a:hover {
+  a:hover, a:focus {
     color: #4c90c2; }
 
 small {

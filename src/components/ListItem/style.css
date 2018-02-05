@@ -5,11 +5,12 @@
   border-bottom: 1px solid #e4e9ea;
   transition: border-color .2s;
   background-color: transparent;
-  transition: color .2s;
   background-image: url("../../media/arrow-right.svg");
   background-repeat: no-repeat;
-  background-position: right 18px center; }
+  background-position: right 18px center;
+  transition: color .2s, background-position .2s; }
   .list-item:hover {
-    color: #4c90c2; }
+    color: #4c90c2;
+    background-position: right 27px center; }
   .list-item:first-child {
     border-top: 1px solid #e4e9ea; }

@@ -31,7 +31,7 @@ class ProfileContainer extends Component {
                 />
                 <Profile>
                     <TopNav
-                        title="Weekly Completed Workouts"
+                        title="Weekly Workouts"
                     />
                     <Graph
                         data={this.props.graphData}

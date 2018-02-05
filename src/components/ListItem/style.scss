@@ -7,13 +7,14 @@
     border-bottom: 1px solid $color-border;
     transition: border-color .2s;
     background-color: transparent;
-    transition: color .2s;
     background-image: url('../../media/arrow-right.svg');
     background-repeat: no-repeat;
     background-position: right $spacing center;
+    transition: color .2s, background-position .2s;
 
     &:hover {
         color: $color-primary;
+        background-position: right $spacing * 1.5 center;
     }
 
     &:first-child {
