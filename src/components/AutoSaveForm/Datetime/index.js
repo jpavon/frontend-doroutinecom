@@ -16,7 +16,7 @@ const Input = (props, context) => {
 
     return (
         <Fragment>
-            <div style={{position: 'relative'}}>
+            <div className={`datetime-${name}`} style={{position: 'relative'}}>
                 {updating === name && <Saving />}
                 <UncontrolledDatetime
                     name={name}

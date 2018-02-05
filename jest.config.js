@@ -24,18 +24,15 @@ module.exports = {
             name: '_T_' + faker.name.firstName(),
             email: '_T_' + faker.internet.email(),
             password: '123123',
+            weightMeasure: 'lbs',
+            startOfWeek: 'Sunday'
         },
         ROUTINE: {
             name: faker.lorem.words(),
-            weightMeasure: 'lbs'
+            notes: faker.lorem.words()
         },
         LIFT: {
             name: faker.lorem.words(),
-            rm: String(faker.random.number() + '.44')
-        },
-        WORKOUT: {
-            name: faker.lorem.words(),
-            notes: faker.lorem.words()
         },
         SET: {
             weight: String(faker.random.number()),

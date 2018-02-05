@@ -105,9 +105,11 @@ class WorkoutContainer extends Component {
                     right={this.props.workout.completedAt ?
                         {
                             onClick: this.handleRestart,
+                            className: 'workout-button-restart'
                         } :
                         {
                             onClick: this.handleCompleted,
+                            className: 'workout-button-completed'
                         }
                     }
                 />

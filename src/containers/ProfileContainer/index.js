@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -21,7 +21,7 @@ class ProfileContainer extends Component {
 
     render() {
         return (
-            <Fragment>
+            <Profile>
                 <TopNav
                     title="Profile"
                     rightLabel="Settings"
@@ -29,29 +29,26 @@ class ProfileContainer extends Component {
                         to: '/settings'
                     }}
                 />
-                <Profile>
-                    <TopNav
-                        title="Weekly Workouts"
+                <TopNav
+                    title="Weekly Workouts"
+                />
+                <Graph
+                    data={this.props.graphData}
+                />
+                <TopNav
+                    title="Recent Top Sets"
+                />
+                {this.props.topSets.length > 0 ?
+                    <SetsTable
+                        sets={this.props.topSets}
+                        weightMeasure={this.props.weightMeasure}
+                        showLift
+                    /> :
+                    <NoData
+                        text="List of top sets will be displayed here when you complete a workout."
                     />
-                    <Graph
-                        data={this.props.graphData}
-                    />
-                    <TopNav
-                        title="Recent Top Sets"
-                    />
-                    {this.props.topSets.length > 0 ?
-                        <SetsTable
-                            sets={this.props.topSets}
-                            weightMeasure={this.props.weightMeasure}
-                            showLift
-                        /> :
-                        <NoData
-                            text="List of top sets will be displayed here when you complete a workout."
-                        />
-                    }
-
-                </Profile>
-            </Fragment>
+                }
+            </Profile>
         )
     }
 }

@@ -78,6 +78,7 @@ class ExercisesContainer extends Component {
                     rightLabel={this.isWorkout && this.state.showDelete ? 'Hide X' : 'Show X'}
                     right={this.isWorkout && {
                         onClick: this.handleToggleShowDelete,
+                        className: 'exercises-button-toggle-remove'
                     }}
                 />
                 <Exercises

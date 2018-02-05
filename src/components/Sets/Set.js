@@ -51,6 +51,7 @@ const Set = ({i, set, routine, update, remove, isDeleting, isWorkout, showDelete
                                 danger
                                 onClick={() => remove(set.id)}
                                 disabled={isDeleting}
+                                className="set-button-remove"
                             />
                         }
                     </div>

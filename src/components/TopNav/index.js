@@ -14,7 +14,7 @@ const TopNav = ({title, leftLabel, rightLabel, left, right}) => (
         )}
     >
         {left &&
-            <Button {...left} className="top-nav-left">
+            <Button {...left} className={`top-nav-left ${left.className}`}>
                 <img src={arrowLeftIcon} alt="Back" />
                 {leftLabel || 'Back'}
             </Button>
@@ -25,7 +25,7 @@ const TopNav = ({title, leftLabel, rightLabel, left, right}) => (
             </h1>
         }
         {right &&
-            <Button {...right} className="top-nav-right">
+            <Button {...right} className={`top-nav-right ${right.className}`}>
                 {rightLabel || 'Edit'}
             </Button>
         }

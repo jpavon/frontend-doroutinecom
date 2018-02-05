@@ -6,13 +6,14 @@ import { localeDateFormat, timeFormat } from 'utils/date'
 
 import './style.css'
 
-const Datetime = ({value, ...rest}) => (
+const Datetime = ({value, name, ...rest}) => (
     <ReactDatetime
         dateFormat={localeDateFormat}
         timeFormat={timeFormat}
         value={moment(value).format(`${localeDateFormat} ${timeFormat}`)}
         inputProps={{
-            readOnly: true
+            readOnly: true,
+            name
         }}
         {...rest}
     />

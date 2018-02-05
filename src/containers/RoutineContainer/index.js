@@ -72,7 +72,8 @@ class RoutineContainer extends Component {
                         }}
                         rightLabel="Start Workout"
                         right={{
-                            onClick: this.handleCreateWorkout
+                            onClick: this.handleCreateWorkout,
+                            className: 'routine-button-create-workout'
                         }}
                     />
                     <Routine
@@ -86,7 +87,8 @@ class RoutineContainer extends Component {
                         right={{
                             onClick: this.handleRemove,
                             danger: true,
-                            disabled: this.props.isDeleting
+                            disabled: this.props.isDeleting,
+                            className: 'routine-button-remove'
                         }}
                     />
                 </Fragment>

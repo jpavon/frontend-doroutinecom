@@ -50,7 +50,8 @@ class SettingsContainer extends Component {
                         rightLabel="Logout"
                         right={{
                             onClick: this.handleUnauthUser,
-                            danger: true
+                            danger: true,
+                            className: 'logout'
                         }}
                     />
                 </Fragment>

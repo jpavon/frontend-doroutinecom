@@ -18,7 +18,7 @@ const Select = (props, context) => {
 
     return (
         <Fragment>
-            <div style={{position: 'relative'}}>
+            <span style={{position: 'relative'}}>
                 {updating === name && <Saving />}
                 <UncontrolledSelect
                     name={name}
@@ -33,7 +33,7 @@ const Select = (props, context) => {
                 <Alert
                     message={errors[name]}
                 />
-            </div>
+            </span>
         </Fragment>
     )
 }

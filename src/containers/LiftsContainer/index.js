@@ -40,7 +40,8 @@ class LiftsContainer extends Component {
                     rightLabel="Create"
                     right={{
                         onClick: this.handleCreate,
-                        disabled: this.props.isLoading
+                        disabled: this.props.isLoading,
+                        className: 'lift-button-create'
                     }}
                 />
                 <Lifts
