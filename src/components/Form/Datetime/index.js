@@ -11,6 +11,9 @@ const Datetime = ({value, ...rest}) => (
         dateFormat={localeDateFormat}
         timeFormat={timeFormat}
         value={moment(value).format(`${localeDateFormat} ${timeFormat}`)}
+        inputProps={{
+            readOnly: true
+        }}
         {...rest}
     />
 )
