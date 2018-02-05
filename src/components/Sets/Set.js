@@ -24,15 +24,16 @@ const Set = ({i, set, routine, update, remove, isDeleting, isWorkout, showDelete
                     </div>
                     <div className="set-inner-item">
                         <Input
+                            type="number"
                             name="reps"
-                            placeholder="Set reps"
+                            placeholder="Reps"
                         />
                     </div>
                     <div className="set-inner-item">
                         <Input
                             type="number"
                             name="weight"
-                            placeholder="Set weight"
+                            placeholder="Weight"
                         />
                     </div>
                     <div className="set-inner-item set-action">
