@@ -30,7 +30,7 @@
 
 .exercise-button-remove {
     position: absolute;
-    top: $spacing / 2;
+    top: $spacing / 1.5;
     right: 0;
 
     button {
@@ -41,7 +41,8 @@
 // form
 
 .exercise-lift {
-    padding: $spacing $spacing;
+    padding: $spacing;
+    padding-bottom: $spacing / 2;
 
     > div {
         margin-right: 40px;
