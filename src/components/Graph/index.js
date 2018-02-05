@@ -61,8 +61,8 @@ class Graph extends Component {
             barThickness: 1,
             elements: {
                 line: {
-                    backgroundColor: 'transparent',
-                    borderColor: 'rgba(76, 144, 194, .6)',
+                    backgroundColor: 'rgba(76, 144, 194, .1)',
+                    borderColor: 'rgba(76, 144, 194, .4)',
                     borderWidth: 2,
                     tension: 0.1
                 },
@@ -74,14 +74,14 @@ class Graph extends Component {
                     hitRadius: 20
                 },
                 rectangle: {
-                    backgroundColor: 'rgba(76, 144, 194, .6)',
+                    backgroundColor: 'rgba(76, 144, 194, .4)',
                     borderWidth: 1,
                 },
             },
             tooltips: {
                 // enabled: this.props.type === 'bar' ? false : true,
                 displayColors: false,
-                backgroundColor: 'rgba(76, 144, 194, .8)',
+                backgroundColor: 'rgba(76, 144, 194, .95)',
                 cornerRadius: 2,
                 bodyFontSize: 20,
                 bodySpacing: 20,
