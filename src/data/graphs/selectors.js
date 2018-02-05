@@ -67,7 +67,7 @@ export const liftGraphDataSelector = (liftId) => createSelector(
         return {
             labels,
             dataset,
-            datasetMax: Math.max.apply(Math, dataset),
+            datasetMax: dataset.length > 0 ? Math.max.apply(Math, dataset) : 0,
             meta: {
                 reps,
                 weightMeasure: user.weightMeasure

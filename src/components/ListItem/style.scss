@@ -14,7 +14,7 @@
 
     &:hover {
         color: $color-primary;
-        background-position: right $spacing * 1.5 center;
+        background-position: right $spacing/1.5 center;
     }
 
     &:first-child {

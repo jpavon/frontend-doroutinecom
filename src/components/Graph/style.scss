@@ -9,11 +9,11 @@
     top: 22%;
     left: 0;
     right: 0;
-    margin-left: 10%;
-    margin-right: 10%;
-    padding: $spacing;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding: $spacing * 2 $spacing;
 
-    background-color: rgba($color-primary, .6);
+    background-color: rgba($color-primary, .5);
     color: #fff;
     text-align: center;
 }

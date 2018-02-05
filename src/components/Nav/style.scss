@@ -46,14 +46,9 @@
     align-items: center;
     width: 80%;
     padding: 0;
-    // padding-left: 2 * $spacing;
     margin: 0;
     list-style: none;
     justify-content: flex-end;
-
-    @media (max-width: 500px) {
-        // padding-left: $spacing;
-    }
 }
 
 .nav-item {

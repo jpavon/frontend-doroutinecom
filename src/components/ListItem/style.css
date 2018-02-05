@@ -11,6 +11,6 @@
   transition: color .2s, background-position .2s; }
   .list-item:hover {
     color: #4c90c2;
-    background-position: right 27px center; }
+    background-position: right 12px center; }
   .list-item:first-child {
     border-top: 1px solid #e4e9ea; }
