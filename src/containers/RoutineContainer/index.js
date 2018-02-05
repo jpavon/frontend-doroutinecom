@@ -41,7 +41,7 @@ class RoutineContainer extends Component {
         if (window.confirm('Are you sure you want to delete this routine?')) {
             this.props.removeRoutine(this.props.routine.id)
                 .then(() => {
-                    history.push('/')
+                    history.push('/routines')
                 })
         }
     }
@@ -56,13 +56,6 @@ class RoutineContainer extends Component {
                     history.push(`/workouts/${resp.payload.id}`)
                 })
         })
-    }
-
-    handleRemove = () => {
-        this.props.removeRoutine(this.props.routine.id)
-            .then(() => {
-                history.push('/routines')
-            })
     }
 
     render() {

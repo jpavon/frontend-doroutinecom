@@ -65,10 +65,12 @@ class WorkoutContainer extends Component {
     }
 
     handleRemove = () => {
-        this.props.removeWorkout(this.props.workout.id)
-            .then(() => {
-                history.push('/workouts')
-            })
+        if (window.confirm('Are you sure you want to delete this workout?')) {
+            this.props.removeWorkout(this.props.workout.id)
+                .then(() => {
+                    history.push('/workouts')
+                })
+        }
     }
 
     render() {

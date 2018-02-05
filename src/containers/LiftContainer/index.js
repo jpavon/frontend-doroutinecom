@@ -39,10 +39,12 @@ class LiftContainer extends Component {
     }
 
     handleRemove = () => {
-        this.props.removeLift(this.props.lift.id)
-            .then(() => {
-                history.push('/lifts')
-            })
+        if (window.confirm('Are you sure you want to delete this lift?')) {
+            this.props.removeLift(this.props.lift.id)
+                .then(() => {
+                    history.push('/lifts')
+                })
+        }
     }
 
     render() {
