@@ -63,22 +63,25 @@ class AutoSaveForm extends Component {
         }
 
         this.setState((prevState) => ({
+            reinitializeValues: false,
             values: {
                 ...prevState.values,
                 [name]: value
             }
         }))
 
+        const args = [this.state.values.id, name, value]
+
         if (event && (event.target.type === 'select' || event.target.type === 'checkbox')) {
-            this.update(this.state.values.id, name, value)
+            this.update(...args)
         } else {
-            this.debounceUpdate(this.state.values.id, name, value)
+            this.debounceUpdate(...args)
         }
     }
 
     debounceUpdate = debounce((...args) => {
         this.update(...args)
-    }, 500)
+    }, 300)
 
     update = (id, name, value) => {
         this.props.update(id, { [name]: value })
@@ -90,7 +93,9 @@ class AutoSaveForm extends Component {
                 })
 
                 debounce(() => {
-                    this.setState({updating: null})
+                    this.setState({
+                        updating: null,
+                    })
                 }, 500)()
             })
     }
