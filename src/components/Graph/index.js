@@ -79,7 +79,6 @@ class Graph extends Component {
                 },
             },
             tooltips: {
-                // enabled: this.props.type === 'bar' ? false : true,
                 displayColors: false,
                 backgroundColor: 'rgba(76, 144, 194, .95)',
                 cornerRadius: 2,

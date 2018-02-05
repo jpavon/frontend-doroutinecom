@@ -105,15 +105,16 @@
 
 .nav-link-highlight {
     position: absolute;
-    background-color: darken($color-info, 5%);
+    background-color: rgba($color-primary, .5);
     width: 8px;
     height: 8px;
     top: $spacing / 2;
     right: $spacing / 2;
     border-radius: 50%;
+    border: 1px solid darken(rgba($color-primary, .5), 10%);
 
     @media (max-width: 514px) {
-        width: 6px;
-        height: 6px;
+        width: 7px;
+        height: 7px;
     }
 }

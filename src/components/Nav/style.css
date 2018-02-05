@@ -68,13 +68,14 @@
 
 .nav-link-highlight {
   position: absolute;
-  background-color: #e9c33a;
+  background-color: rgba(76, 144, 194, 0.5);
   width: 8px;
   height: 8px;
   top: 9px;
   right: 9px;
-  border-radius: 50%; }
+  border-radius: 50%;
+  border: 1px solid rgba(56, 118, 163, 0.5); }
   @media (max-width: 514px) {
     .nav-link-highlight {
-      width: 6px;
-      height: 6px; } }
+      width: 7px;
+      height: 7px; } }
