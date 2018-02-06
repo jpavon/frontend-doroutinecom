@@ -39,12 +39,8 @@ class Timer extends Component {
     tick = () => {
         let delta = Math.abs(new Date() - this.start) / 1000
 
-        // calculate (and subtract) whole days
-        const days = Math.floor(delta / 86400)
-        delta -= days * 86400
-
         // calculate (and subtract) whole hours
-        const hours = Math.floor(delta / 3600) % 24
+        const hours = Math.floor(delta / 3600)
         delta -= hours * 3600
 
         // calculate (and subtract) whole minutes
