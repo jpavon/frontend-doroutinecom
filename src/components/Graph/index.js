@@ -114,7 +114,7 @@ class Graph extends Component {
     render() {
         return (
             <div className="graph">
-                {this.props.data.datasetMax === 0 &&
+                {this.props.data.dataset.length === 0 &&
                     <div className="graph-no-data">
                         Complete a workout to start tracking your progress.
                     </div>

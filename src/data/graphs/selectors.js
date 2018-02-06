@@ -17,17 +17,19 @@ const ranges = weeks.map((week) => ({
 }))
 
 const getWorkoutsDataset = (workouts) => {
-    const datasets = [0, 0, 0, 0, 0]
+    const dataset = [0, 0, 0, 0, 0]
 
     workouts.forEach((workout) => {
         ranges.forEach((item, i) => {
             if (item.range.contains(moment(workout.completedAt))) {
-                datasets[i] = datasets[i] + 1
+                dataset[i] = dataset[i] + 1
             }
         })
     })
 
-    return datasets
+    if (Math.max(...dataset) === 0) return []
+
+    return dataset
 }
 
 export const workoutsGraphDataSelector = createSelector(
@@ -44,7 +46,7 @@ export const workoutsGraphDataSelector = createSelector(
         return {
             labels,
             dataset,
-            datasetMax: Math.max.apply(Math, dataset)
+            datasetMax: Math.max(...dataset)
         }
     }
 )
@@ -67,7 +69,7 @@ export const liftGraphDataSelector = (liftId) => createSelector(
         return {
             labels,
             dataset,
-            datasetMax: dataset.length > 0 ? Math.max.apply(Math, dataset) : 0,
+            datasetMax: dataset.length > 0 ? Math.max(...dataset) : 0,
             meta: {
                 reps,
                 weightMeasure: user.weightMeasure
