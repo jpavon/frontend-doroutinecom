@@ -87,19 +87,19 @@ export const formatTopSets = (exercises, sets, workouts, lifts) => {
         }
     }, {})
 
-    Object.keys(topSets).forEach((key) => {
-        const exercise = exercises.find((exercise) => exercise.id === Number(key))
+    Object.keys(topSets).forEach((exerciseId) => {
+        const exercise = exercises.find((exercise) => exercise.id === Number(exerciseId))
         const workout = workouts.find((workout) => exercise.workoutId === workout.id)
-        topSets[key].completedAt = moment(workout.completedAt).format(localeDateFormat)
-        topSets[key].moment = moment(workout.completedAt)
-        topSets[key].workoutId = workout.id
-        topSets[key].liftId = exercise.liftId
+        topSets[exerciseId].completedAt = moment(workout.completedAt).format(localeDateFormat)
+        topSets[exerciseId].moment = moment(workout.completedAt)
+        topSets[exerciseId].workoutId = workout.id
+        topSets[exerciseId].liftId = exercise.liftId
         const lift = lifts && lifts.find((lift) => lift.id === exercise.liftId)
-        topSets[key].lift = lift && lift.name
+        topSets[exerciseId].lift = lift && lift.name
     })
 
     return Object.keys(topSets)
-        .map((key) => topSets[key])
+        .map((exerciseId) => topSets[exerciseId])
         .filter((set) => set.liftId)
 }
 
