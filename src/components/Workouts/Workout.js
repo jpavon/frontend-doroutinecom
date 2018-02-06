@@ -12,9 +12,6 @@ const Workout = ({children, workout}) => (
         <div className="workout-name">
             {workout.name || 'No workout name set.'}
         </div>
-        {/*<div className="workout-exercises">
-            Bench Press / Flies
-        </div>*/}
     </ListItem>
 )
 

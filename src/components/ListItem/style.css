@@ -1,5 +1,6 @@
 .list-item {
   display: block;
+  font-size: 1em;
   padding: 14px 18px;
   text-decoration: none;
   border-bottom: 1px solid #e4e9ea;
@@ -12,5 +13,9 @@
   .list-item:hover {
     color: #4c90c2;
     background-position: right 12px center; }
+    .list-item:hover .workout-day {
+      color: #444; }
+  .list-item .workout-day {
+    color: #444; }
   .list-item:first-child {
     border-top: 1px solid #e4e9ea; }

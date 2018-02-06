@@ -1,18 +1,14 @@
 @import "variables.scss";
 
 .nav-container {
-    // padding: 8px 30px 5px;
     background-color: $color-background-light;
-    box-shadow: 1px 0 2px rgba(#000, .1);
-
-    @media (max-width: 576px) {
-        // padding-right: 15px;
-        // padding-left: 15px;
-    }
+    border-bottom: 1px solid rgba($color-font, .05);
 
     &.nav-container--touch {
         position: fixed;
         bottom: 0;
+        left: 0;
+        right: 0;
         width: 100%;
         z-index: 1000;
     }
@@ -66,7 +62,9 @@
     font-size: .7rem;
     letter-spacing: .05rem;
     color: lighten($color-font, 30%);
-    transition: color .2s, background-color .2s;
+    border-right: 1px solid transparent;
+    border-left: 1px solid transparent;
+    transition: color .2s, background-color .2s, border-color .2s;
 
     img {
         margin-bottom: 2px;
@@ -84,7 +82,8 @@
 
     &:hover, &.nav-link--active {
         color: $color-primary;
-        background-color: rgba(darken($color-primary, 10%), .05);
+        background-color: rgba($color-primary, .05);
+        border-color: rgba($color-primary, .07);
 
         img {
             opacity: 1;

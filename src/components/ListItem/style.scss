@@ -2,6 +2,7 @@
 
 .list-item {
     display: block;
+    font-size: 1em;
     padding: $spacing - 4 $spacing;
     text-decoration: none;
     border-bottom: 1px solid $color-border;
@@ -15,6 +16,14 @@
     &:hover {
         color: $color-primary;
         background-position: right $spacing/1.5 center;
+
+        & .workout-day {
+            color: $color-font;
+        }
+    }
+
+    & .workout-day {
+        color: $color-font;
     }
 
     &:first-child {
