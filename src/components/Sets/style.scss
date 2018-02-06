@@ -2,14 +2,14 @@
 @import "mixins.scss";
 
 @mixin layout() {
-    flex: 0 0 35%;
+    flex: 1;
 
     &:first-child {
         flex: 0 0 20%;
     }
 
     &:last-child {
-        flex: 0 0 10%;
+        flex: 0 0 30px;
     }
 }
 
@@ -38,6 +38,14 @@
 
     &:first-letter {
         text-transform: capitalize;
+    }
+}
+
+.sets-header-item--toggle {
+    button {
+        justify-content: center;
+        width: 100%;
+        padding: 0;
     }
 }
 

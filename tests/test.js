@@ -281,8 +281,11 @@ describe('create workout from routine', async () => {
         await page.waitFor(1000)
     }, global.TIMEOUT)
 
+    test('toggle show remove buttons', async () => {
+        await page.click('.sets-header-item--toggle button')
+    }, global.TIMEOUT)
+
     test('remove a set', async () => {
-        await page.click('.exercises-button-toggle-remove')
         await page.waitForSelector('.set-action button')
         await page.click('.set-action button')
         await page.waitFor(1000)

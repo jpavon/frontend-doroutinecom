@@ -15,7 +15,8 @@ class SetsContainer extends Component {
         exerciseId: PropTypes.number.isRequired,
         liftId: PropTypes.number,
         isWorkout: PropTypes.bool.isRequired,
-        showDelete: PropTypes.bool.isRequired,
+        toggleRemoveButtons: PropTypes.func.isRequired,
+        isRemoveButtonsVisible: PropTypes.bool.isRequired,
 
         sets: PropTypes.array.isRequired,
         entitiesStatus: PropTypes.object.isRequired,
@@ -33,6 +34,9 @@ class SetsContainer extends Component {
                 create={this.props.createSet}
                 exerciseId={this.props.exerciseId}
                 user={this.props.user}
+                toggleRemoveButtons={this.props.toggleRemoveButtons}
+                isRemoveButtonsVisible={this.props.isRemoveButtonsVisible}
+                isWorkout={this.props.isWorkout}
             >
                 {this.props.sets.map((set, i) => (
                     <Set
@@ -41,9 +45,8 @@ class SetsContainer extends Component {
                         set={set}
                         update={this.props.updateSet}
                         remove={this.props.removeSet}
-                        isWorkout={this.props.isWorkout}
                         isDeleting={this.props.entitiesStatus[set.id] === STATUS_DELETING}
-                        showDelete={this.props.showDelete}
+                        isRemoveButtonsVisible={!this.props.isWorkout || this.props.isRemoveButtonsVisible}
                         previousSet={this.props.previouslyCompletedSets && this.props.previouslyCompletedSets[i]}
                     />
                 ))}
@@ -56,7 +59,7 @@ const mapStateToProps = (state, props) => ({
     sets: setsExerciseSelector(props.exerciseId)(state),
     entitiesStatus: state.sets.entitiesStatus,
     user: state.user.entity,
-    previouslyCompletedSets: props.liftId && previouslyCompletedSetsSelector(props.exerciseId, props.liftId)(state)
+    previouslyCompletedSets: props.liftId && previouslyCompletedSetsSelector(props.exerciseId, props.liftId)(state),
 })
 
 const mapDispatchToProps = {

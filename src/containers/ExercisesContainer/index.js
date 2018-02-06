@@ -46,13 +46,13 @@ class ExercisesContainer extends Component {
         this.isWorkout = !!this.props.workoutId
 
         this.state = {
-            showDelete: this.isRoutine ? true : false
+            isRemoveButtonsVisible: this.isRoutine ? true : false
         }
     }
 
-    handleToggleShowDelete = () => {
+    handleToggleRemoveButtons = () => {
         this.setState((prevState) => ({
-            showDelete: !prevState.showDelete
+            isRemoveButtonsVisible: !prevState.isRemoveButtonsVisible
         }))
     }
 
@@ -75,11 +75,6 @@ class ExercisesContainer extends Component {
             <Fragment>
                 <TopNav
                     title="Exercises"
-                    rightLabel={this.isWorkout && this.state.showDelete ? 'Hide X' : 'Show X'}
-                    right={this.isWorkout && {
-                        onClick: this.handleToggleShowDelete,
-                        className: 'exercises-button-toggle-remove'
-                    }}
                 />
                 <Exercises
                     create={this.handleCreate}
@@ -94,13 +89,14 @@ class ExercisesContainer extends Component {
                                 update={this.props.updateExercise}
                                 remove={this.props.removeExercise}
                                 isDeleting={this.props.entitiesStatus[exercise.id] === STATUS_DELETING}
-                                showDelete={this.state.showDelete}
+                                isRemoveButtonsVisible={this.state.isRemoveButtonsVisible}
                             >
                                 <SetsContainer
                                     exerciseId={exercise.id}
                                     liftId={exercise.liftId}
                                     isWorkout={this.isWorkout}
-                                    showDelete={this.state.showDelete}
+                                    isRemoveButtonsVisible={this.state.isRemoveButtonsVisible}
+                                    toggleRemoveButtons={this.handleToggleRemoveButtons}
                                 />
                             </Exercise>
                         )) :
@@ -119,13 +115,13 @@ const mapStateToProps = (state, props) => ({
         exercisesRoutineSelector(props.routineId)(state) :
         exercisesWorkoutSelector(props.workoutId)(state),
     lifts: liftsSelector(state),
-    entitiesStatus: state.exercises.entitiesStatus
+    entitiesStatus: state.exercises.entitiesStatus,
 })
 
 const mapDispatchToProps = {
     createExercise,
     updateExercise,
-    removeExercise
+    removeExercise,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExercisesContainer)

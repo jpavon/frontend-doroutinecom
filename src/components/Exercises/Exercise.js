@@ -4,7 +4,7 @@ import AutoSaveForm from 'components/AutoSaveForm'
 import Button from 'components/Button'
 import Select from 'components/AutoSaveForm/Select'
 
-const Exercise = ({children, exercise, lifts, update, remove, isDeleting, showDelete}) => (
+const Exercise = ({children, exercise, lifts, update, remove, isDeleting, isRemoveButtonsVisible}) => (
     <Fragment>
         <AutoSaveForm
             update={update}
@@ -23,7 +23,7 @@ const Exercise = ({children, exercise, lifts, update, remove, isDeleting, showDe
             )}
         />
         {children}
-        {showDelete &&
+        {isRemoveButtonsVisible &&
             <div className="exercise-button-remove">
                 <Button
                     remove

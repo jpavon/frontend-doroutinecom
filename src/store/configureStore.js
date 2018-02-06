@@ -22,14 +22,14 @@ const configureStore = (preloadedState) => {
         )
     )
 
-    if (process.env.NODE_ENV !== 'production') {
-        if (module.hot) {
-            module.hot.accept('utils/rootReducer', () => {
-                const nextRootReducer = require('utils/rootReducer').default
-                store.replaceReducer(nextRootReducer)
-            })
-        }
-    }
+    // if (process.env.NODE_ENV !== 'production') {
+    //     if (module.hot) {
+    //         module.hot.accept('utils/rootReducer', () => {
+    //             const nextRootReducer = require('utils/rootReducer').default
+    //             store.replaceReducer(nextRootReducer)
+    //         })
+    //     }
+    // }
 
     return store
 }

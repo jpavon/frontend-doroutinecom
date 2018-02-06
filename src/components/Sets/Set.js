@@ -7,7 +7,7 @@ import Button from 'components/Button'
 import Checkbox from 'components/AutoSaveForm/Checkbox'
 import Label from 'components/Form/Label'
 
-const Set = ({index, set, routine, update, remove, isDeleting, isWorkout, showDelete, previousSet}) => (
+const Set = ({index, set, routine, update, remove, isDeleting, isWorkout, isRemoveButtonsVisible, previousSet}) => (
     <Fragment>
         <AutoSaveForm
             initialValues={set}
@@ -37,7 +37,7 @@ const Set = ({index, set, routine, update, remove, isDeleting, isWorkout, showDe
                         />
                     </div>
                     <div className="set-inner-item set-action">
-                        {isWorkout && !showDelete &&
+                        {!isRemoveButtonsVisible &&
                             <Label htmlFor={`set-checkbox${values.id}`}>
                                 <Checkbox
                                     id={`set-checkbox${values.id}`}
@@ -45,7 +45,7 @@ const Set = ({index, set, routine, update, remove, isDeleting, isWorkout, showDe
                                 />
                             </Label>
                         }
-                        {showDelete &&
+                        {isRemoveButtonsVisible &&
                             <Button
                                 remove
                                 danger
