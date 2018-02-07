@@ -19,7 +19,6 @@ export const fetchAppData = () => (dispatch, getState) => {
         dispatch(fetchLifts()),
         dispatch(fetchSets())
     ]).then(([user]) => {
-
         if (user.payload.startOfWeek !== store.get('startOfWeek') ||
             user.payload.dateFormat !== store.get('dateFormat')) {
 

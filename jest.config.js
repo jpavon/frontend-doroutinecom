@@ -1,24 +1,7 @@
 const faker = require('faker')
 
-var envConfig = {
-    production: {
-        APP_URL: 'https://app.doroutine.com',
-        HOME_URL: 'https://doroutine.com'
-    },
-    development: {
-        APP_URL: 'http://localhost:3000',
-        HOME_URL: 'http://localhost:8001'
-    }
-}
-
-var env = envConfig[process.env.ENV]
-
 module.exports = {
-    globalSetup: './tests/config/setup.js',
-    globalTeardown: './tests/config/teardown.js',
-    testEnvironment: './tests/config/puppeteer_environment.js',
     globals: {
-        APP_URL: env.APP_URL,
         TIMEOUT: 10000,
         USER: {
             name: '_T_' + faker.name.firstName(),

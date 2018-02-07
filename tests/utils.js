@@ -1,5 +1,8 @@
+import env from '../src/env'
+
 export const goTo = async (page, url) => {
-    await page.goto(APP_URL + url, { waitUntil: 'networkidle0' })
+    await page.goto(env.APP_URL + url, { waitUntil: 'networkidle0' })
+    await page.waitFor(1000)
 }
 
 export const expectSelectorToContainText = async (page, selector, text) => {
@@ -30,6 +33,7 @@ export const expectCheckboxToBe = async (page, selector, value) => {
 }
 
 export const selectOption = async (page, selector, text) => {
+    await page.waitForSelector(selector)
     await page.evaluate((selector, text) => {
         const select = document.querySelector(selector)
 
@@ -47,7 +51,8 @@ export const selectOption = async (page, selector, text) => {
 }
 
 export const expectElementToBeOfLength = async (page, selector, length) => {
-    const selectorLength = await page.evaluate((selector, text) => {
+    await page.waitForSelector(selector)
+    const selectorLength = await page.evaluate((selector) => {
         return document.querySelectorAll(selector).length
     }, selector)
 

@@ -1,4 +1,5 @@
 import faker from 'faker'
+import puppeteer from 'puppeteer'
 
 import {
     goTo,
@@ -10,11 +11,20 @@ import {
 } from './utils'
 
 let page
+let browser
 
 beforeAll(async () => {
-    page = await global.__BROWSER__.newPage()
-    await page.setViewport({ width: 1200, height: 800})
-}, global.TIMEOUT)
+    browser = await puppeteer.launch({
+        headless: true,
+        slowMo: 0,
+    })
+    page = await browser.newPage()
+    await page.setViewport({ width: 1200, height: 800 })
+})
+
+afterAll(() => {
+    browser.close()
+})
 
 describe('auth', async () => {
     test('user can register', async () => {
@@ -71,22 +81,26 @@ describe('auth', async () => {
     }, global.TIMEOUT)
 })
 
+let liftsLength = 0
+
 describe('lifts creation', async () => {
     test('create a lift', async () => {
         await goTo(page, '/lifts')
-        await page.waitForSelector('.lifts')
+        await page.waitForSelector('.lift-button-create')
         await page.click('.lift-button-create')
+        liftsLength++
         await page.waitForSelector('.lift')
     }, global.TIMEOUT)
 
     test('create multiple lifts', async () => {
         await goTo(page, '/lifts')
-        await page.waitForSelector('.lifts')
+        await page.waitForSelector('.lift-button-create')
         await page.click('.lift-button-create')
+        liftsLength++
         await page.waitForSelector('.lift')
         await goTo(page, '/lifts')
-        await page.waitForSelector('.lifts')
-        await expectElementToBeOfLength(page, '.lifts-lift', 2)
+        await page.waitForSelector('.lifts-lift')
+        await expectElementToBeOfLength(page, '.lifts-lift', liftsLength)
     }, global.TIMEOUT)
 
     test('update a lift', async () => {
@@ -106,15 +120,16 @@ describe('lift is saved on reload', async () => {
     }, global.TIMEOUT)
 })
 
-
-
-
+let routinesLength = 0
+let exercisesLength = 0
+let setsLength = 0
 
 describe('routines creation', async () => {
     test('create a routine', async () => {
         await goTo(page, '/routines')
         await page.waitForSelector('.routines')
         await page.click('.routine-button-create')
+        routinesLength++
         await page.waitForSelector('.routine')
     }, global.TIMEOUT)
 
@@ -122,10 +137,14 @@ describe('routines creation', async () => {
         await goTo(page, '/routines')
         await page.waitForSelector('.routines')
         await page.click('.routine-button-create')
+        routinesLength++
         await page.waitForSelector('.routine')
         await goTo(page, '/routines')
-        await page.waitForSelector('.routines')
-        await expectElementToBeOfLength(page, '.routines-routine', 2)
+    }, global.TIMEOUT)
+
+    test('routine creation saved on reload', async () => {
+        await page.reload()
+        await expectElementToBeOfLength(page, '.routines-routine', routinesLength)
     }, global.TIMEOUT)
 
     test('update a routine', async () => {
@@ -177,6 +196,7 @@ describe('routines creation', async () => {
 
     test('create a exercise', async () => {
         await page.click('.exercises-button-create button')
+        exercisesLength++
         await page.waitForSelector('.exercise')
         await selectOption(page, '.exercise select', global.LIFT.name)
         await page.waitFor(1000)
@@ -184,12 +204,14 @@ describe('routines creation', async () => {
 
     test('create multiple exercises', async () => {
         await page.click('.exercises-button-create button')
+        exercisesLength++
         await page.waitFor(1000)
-        await expectElementToBeOfLength(page, '.exercise', 2)
+        await expectElementToBeOfLength(page, '.exercise', exercisesLength)
     }, global.TIMEOUT)
 
     test('create a set', async () => {
         await page.click('.sets-button-create button')
+        setsLength++
         await page.waitForSelector('.set')
         await page.click('.set input[name=weight]')
         await page.type('.set input[name=weight]', global.SET.weight)
@@ -203,8 +225,9 @@ describe('routines creation', async () => {
 
     test('create multiple sets', async () => {
         await page.click('.sets-button-create button')
+        setsLength++
         await page.waitFor(1000)
-        await expectElementToBeOfLength(page, '.set', 2)
+        await expectElementToBeOfLength(page, '.set', setsLength)
     }, global.TIMEOUT)
 })
 
@@ -288,6 +311,7 @@ describe('create workout from routine', async () => {
     test('remove a set', async () => {
         await page.waitForSelector('.set-action button')
         await page.click('.set-action button')
+        setsLength--
         await page.waitFor(1000)
     }, global.TIMEOUT)
 
@@ -324,6 +348,7 @@ describe('workout is saved on reload', async () => {
         await expectSelectorToContainText(page, '.workout', global.ROUTINE.name)
         await expectSelectorToContainText(page, '.workout', '15/')
         await expectSelectorToContainText(page, '.workout', '14/')
+        await expectElementToBeOfLength(page, '.set', setsLength)
     }, global.TIMEOUT)
 })
 
@@ -354,11 +379,11 @@ describe('workout is saved on reload', async () => {
 describe('settings', async () => {
     test('update user', async () => {
         await goTo(page, '/settings')
+        await page.waitForSelector('.settings')
 
         await selectOption(page, '[name=weightMeasure]', global.USER.weightMeasure)
         await page.waitFor(1000)
 
-        await page.waitForSelector('.settings')
         await page.click('#name')
         await page.type('#name', 'updated')
         await page.waitFor(1000)
