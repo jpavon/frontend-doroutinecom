@@ -13,7 +13,7 @@
     background-position: right $spacing center;
     transition: color .2s, background-position .2s;
 
-    &:hover {
+    &:hover, &:focus {
         color: $color-primary;
         background-position: right $spacing/1.5 center;
 

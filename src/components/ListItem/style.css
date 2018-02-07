@@ -10,10 +10,10 @@
   background-repeat: no-repeat;
   background-position: right 18px center;
   transition: color .2s, background-position .2s; }
-  .list-item:hover {
+  .list-item:hover, .list-item:focus {
     color: #4c90c2;
     background-position: right 12px center; }
-    .list-item:hover .workout-day {
+    .list-item:hover .workout-day, .list-item:focus .workout-day {
       color: #444; }
   .list-item .workout-day {
     color: #444; }
