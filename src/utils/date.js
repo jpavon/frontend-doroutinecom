@@ -1,27 +1,30 @@
+import store from 'store'
+
 import moment from 'utils/moment'
 
-export const dateFormat = 'YYYY-MM-DD'
-export const timeFormat = 'HH:mm:ss'
-export const format = `${dateFormat} ${timeFormat}`
+export const serverDateFormat = 'YYYY-MM-DD HH:mm:ss'
 
-let browserLocale
-if (process.env.NODE_ENV === 'production') {
-    browserLocale = window.navigator.userLanguage || window.navigator.language
+export const timeFormat = 'HH:mm:ss'
+
+let dateFormat
+
+if (store.get('dateFormat') === 'DD/MM/YYYY') {
+    dateFormat = 'D/M/YYYY'
+} else if (store.get('dateFormat') === 'MM/DD/YYYY') {
+    dateFormat = 'MM/DD/YYYY'
 } else {
-    browserLocale = 'en-GB'
+    dateFormat = 'YYYY/M/D'
 }
 
-const localeData = moment.localeData(browserLocale === 'en-US' ? 'en-US' : 'en-GB')
+export { dateFormat }
 
-export const localeDateFormat = localeData.longDateFormat('l')
+export const dayMonthFormat = dateFormat.replace(/Y/g,'').replace(/^\W|\W$|\W\W/,'') // https://stackoverflow.com/questions/27360102/locale-and-specific-date-format-with-moment-js
 
-// https://stackoverflow.com/questions/27360102/locale-and-specific-date-format-with-moment-js
-export const localeDayMonthFormat = localeData.longDateFormat('l').replace(/Y/g,'').replace(/^\W|\W$|\W\W/,'')
-
-export const localeLongDateFormat = `dddd - ${localeData.longDateFormat('ll')}`
+const localeData = moment.localeData() // update when app with multiple languages
+export const longDateFormat = `dddd - ${localeData.longDateFormat('ll')}`
 
 export const now = () => {
-    return moment().format(format)
+    return moment().format(serverDateFormat)
 }
 
 export const formatDuration = (started, completed) => {
@@ -38,9 +41,4 @@ export const formatDuration = (started, completed) => {
     }
 
     return (!(hours < 0) && !(minutes < 0)) ? string : null
-}
-
-export const formatDate = (date) => {
-    const instance = moment(date)
-    return instance.format(localeLongDateFormat)
 }

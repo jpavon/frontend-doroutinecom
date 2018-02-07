@@ -1,3 +1,5 @@
+import store from 'store'
+
 import { fetchUser } from 'data/user/actions'
 import { fetchRoutines } from 'data/routines/actions'
 import { fetchWorkouts } from 'data/workouts/actions'
@@ -16,10 +18,20 @@ export const fetchAppData = () => (dispatch, getState) => {
         dispatch(fetchExercises()),
         dispatch(fetchLifts()),
         dispatch(fetchSets())
-    ]).then(() => {
-        dispatch(removeLoading())
+    ]).then(([user]) => {
 
-        return Promise.resolve()
+        if (user.payload.startOfWeek !== store.get('startOfWeek') ||
+            user.payload.dateFormat !== store.get('dateFormat')) {
+
+            store.set('startOfWeek', user.payload.startOfWeek)
+            store.set('dateFormat', user.payload.dateFormat)
+
+            window.location.reload(true)
+        } else {
+            dispatch(removeLoading())
+
+            return Promise.resolve()
+        }
     })
 }
 

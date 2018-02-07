@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 
 import moment from 'utils/moment'
-import { localeDateFormat } from 'utils/date'
+import { dateFormat } from 'utils/date'
 import Set from 'data/sets/schema'
 import { completedExercisesSelector, completedExercisesLiftSelector } from 'data/exercises/selectors'
 import { completedWorkoutsSelector } from 'data/workouts/selectors'
@@ -90,7 +90,7 @@ export const formatTopSets = (exercises, sets, workouts, lifts) => {
     Object.keys(topSets).forEach((exerciseId) => {
         const exercise = exercises.find((exercise) => exercise.id === Number(exerciseId))
         const workout = workouts.find((workout) => exercise.workoutId === workout.id)
-        topSets[exerciseId].completedAt = moment(workout.completedAt).format(localeDateFormat)
+        topSets[exerciseId].completedAt = moment(workout.completedAt).format(dateFormat)
         topSets[exerciseId].moment = moment(workout.completedAt)
         topSets[exerciseId].workoutId = workout.id
         topSets[exerciseId].liftId = exercise.liftId

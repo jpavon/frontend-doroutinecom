@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import PropTypes from 'prop-types'
 import debounce from 'lodash/debounce'
-import { format } from 'utils/date'
+import { serverDateFormat } from 'utils/date'
 import isEqual from 'lodash/isEqual'
 
 class AutoSaveForm extends Component {
@@ -59,7 +59,7 @@ class AutoSaveForm extends Component {
             value = target.type === 'checkbox' ? target.checked : target.value
         } else {
             name = date.name
-            value = date.moment.format(format)
+            value = date.moment.format(serverDateFormat)
         }
 
         this.setState((prevState) => ({

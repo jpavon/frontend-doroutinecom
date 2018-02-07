@@ -1,3 +1,5 @@
+import store from 'store'
+
 import * as types from 'data/user/types'
 import * as helperTypes from 'data/utils'
 import {
@@ -8,7 +10,7 @@ import {
 const initialState = {
     fetchStatus: helperTypes.STATUS_NONE,
     entity: {},
-    isAuth: !!localStorage.getItem('token')
+    isAuth: !!store.get('token')
 }
 
 const user = (state = initialState, action) => {

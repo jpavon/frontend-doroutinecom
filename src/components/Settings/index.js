@@ -33,6 +33,17 @@ const Settings = ({user, updateUser}) => (
                             {id: 'sunday', name: 'Sunday'},
                         ]}
                     />
+                    <Field
+                        component="select"
+                        label="Date format"
+                        id="startOfWeek"
+                        name="dateFormat"
+                        options={[
+                            {id: 'DD/MM/YYYY', name: 'DD/MM/YYYY'},
+                            {id: 'YYYY/MM/DD', name: 'YYYY/MM/DD'},
+                            {id: 'MM/DD/YYYY', name: 'MM/DD/YYYY'}
+                        ]}
+                    />
                     {/*<Field
                         component="select"
                         label="Training Max"

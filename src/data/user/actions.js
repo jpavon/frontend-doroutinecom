@@ -1,3 +1,5 @@
+import store from 'store'
+
 import { CALL_API } from 'utils/apiMiddleware'
 import * as types from 'data/user/types'
 import { shouldFetch } from 'data/utils'
@@ -125,7 +127,7 @@ const authUserAction = () => ({
 })
 
 export const authUser = (token) => (dispatch, getState) => {
-    localStorage.setItem('token', token)
+    store.set('token', token)
 
     dispatch(authUserAction())
     dispatch(fetchAppData())
@@ -136,7 +138,7 @@ const unauthUserAction = () => ({
 })
 
 export const unauthUser = (error) => (dispatch, getState) => {
-    localStorage.removeItem('token')
+    store.remove('token')
 
     dispatch(unauthUserAction())
 

@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 
 import moment from 'utils/moment'
-import { localeDayMonthFormat, localeDateFormat } from 'utils/date'
+import { dayMonthFormat, dateFormat } from 'utils/date'
 import { completedWorkoutsSelector } from 'data/workouts/selectors'
 import { completedExercisesLiftSelector } from 'data/exercises/selectors'
 import { setsSelector } from 'data/sets/selectors'
@@ -40,7 +40,7 @@ export const workoutsGraphDataSelector = createSelector(
         const dataset = getWorkoutsDataset(workouts).reverse()
 
         const labels = weeks.map((week) => {
-            return `${week.startWeek.format(localeDayMonthFormat)} ${week.endWeek.format(localeDayMonthFormat)}`
+            return `${week.startWeek.format(dayMonthFormat)} ${week.endWeek.format(dayMonthFormat)}`
         }).reverse()
 
         return {
@@ -63,7 +63,7 @@ export const liftGraphDataSelector = (liftId) => createSelector(
             .sort((a, b) => (a.moment - b.moment))
 
         const dataset = topSets.map((set) => set.weight)
-        const labels = topSets.map((set) => set.moment.format(localeDateFormat))
+        const labels = topSets.map((set) => set.moment.format(dateFormat))
         const reps = topSets.map((set) => set.reps)
 
         return {

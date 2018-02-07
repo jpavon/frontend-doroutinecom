@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import store from 'store'
 
 import { updateUser, unauthUser } from 'data/user/actions'
 import { userSelector } from 'data/user/selectors'
@@ -27,7 +28,12 @@ class SettingsContainer extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.user.startOfWeek && nextProps.user.startOfWeek !== this.props.user.startOfWeek) {
-            localStorage.setItem('dayOfMonth', nextProps.user.startOfWeek)
+            store.set('startOfWeek', nextProps.user.startOfWeek)
+            window.location.reload(true)
+        }
+
+        if (nextProps.user.dateFormat && nextProps.user.dateFormat !== this.props.user.dateFormat) {
+            store.set('dateFormat', nextProps.user.dateFormat)
             window.location.reload(true)
         }
     }
