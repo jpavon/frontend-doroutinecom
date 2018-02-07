@@ -15,7 +15,7 @@ let browser
 
 beforeAll(async () => {
     browser = await puppeteer.launch({
-        headless: true,
+        headless: false,
         slowMo: 0,
     })
     page = await browser.newPage()
@@ -322,16 +322,15 @@ describe('create workout from routine', async () => {
         await expectSelectorToContainText(page, '.alert', 'Completed')
     }, global.TIMEOUT)
 
-    test('change started and completed dates', async () => {
+    test('change completed date', async () => {
         await page.waitForSelector('[name=startedAt]')
         await page.click('[name=startedAt]')
         await page.waitFor(1000)
         await page.click('.datetime-startedAt [data-value="15"]')
         await page.waitFor(1000)
+    }, global.TIMEOUT)
 
-        await page.click('[name=name]')
-        await page.waitFor(1000)
-
+    test('change started date', async () => {
         await page.waitForSelector('[name=completedAt]')
         await page.click('[name=completedAt]')
         await page.waitFor(1000)
@@ -344,7 +343,6 @@ describe('workout is saved on reload', async () => {
     test('workout is saved', async () => {
         await page.reload()
 
-        await page.waitForSelector('.workout')
         await expectSelectorToContainText(page, '.workout', global.ROUTINE.name)
         await expectSelectorToContainText(page, '.workout', '15/')
         await expectSelectorToContainText(page, '.workout', '14/')

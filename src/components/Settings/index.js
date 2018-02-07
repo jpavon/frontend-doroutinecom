@@ -36,7 +36,7 @@ const Settings = ({user, updateUser}) => (
                     <Field
                         component="select"
                         label="Date format"
-                        id="startOfWeek"
+                        id="dateFormat"
                         name="dateFormat"
                         options={[
                             {id: 'DD/MM/YYYY', name: 'DD/MM/YYYY'},

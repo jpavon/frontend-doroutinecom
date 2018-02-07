@@ -1,8 +1,7 @@
 import env from '../src/env'
 
 export const goTo = async (page, url) => {
-    await page.goto(env.APP_URL + url, { waitUntil: 'networkidle0' })
-    await page.waitFor(1000)
+    await page.goto(env.APP_URL + url, { waitUntil: 'load' })
 }
 
 export const expectSelectorToContainText = async (page, selector, text) => {
