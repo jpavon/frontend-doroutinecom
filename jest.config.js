@@ -2,13 +2,14 @@ const faker = require('faker')
 
 module.exports = {
     globals: {
-        TIMEOUT: 5000,
+        TIMEOUT: 8000,
         USER: {
             name: '_T_' + faker.name.firstName(),
             email: '_T_' + faker.internet.email(),
             password: '123123',
             weightMeasure: 'lbs',
-            startOfWeek: 'Sunday'
+            startOfWeek: 'Sunday',
+            dateFormat: 'MM/DD/YYYY'
         },
         ROUTINE: {
             name: faker.lorem.words(),

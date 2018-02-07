@@ -158,42 +158,6 @@ describe('routines creation', async () => {
         await page.type('.routine textarea[name=notes]', global.ROUTINE.notes)
     }, global.TIMEOUT)
 
-    // test('create a lift', async () => {
-    //     await page.click('.lifts-button-create button')
-    //     await page.waitForSelector('.lift')
-    //     await page.click('.lift input[name=name]')
-    //     await page.type('.lift input[name=name]', global.LIFT.name)
-    //     await page.waitFor(1000)
-    //     await page.click('.lift input[name=rm]')
-    //     await page.type('.lift input[name=rm]', global.LIFT.rm)
-    //     await page.waitFor(1000)
-    // }, global.TIMEOUT)
-
-    // test('create multiple lifts', async () => {
-    //     await page.click('.lifts-button-create button')
-    //     await page.waitFor(1000)
-    //     await expectElementToBeOfLength(page, '.lift', 2)
-    // }, global.TIMEOUT)
-
-    // test('create a workout', async () => {
-    //     await page.click('.workouts-button-create button')
-    //     await page.waitForSelector('.workout')
-    //     await page.click('.workout input[name=name]')
-    //     await page.type('.workout input[name=name]', global.WORKOUT.name)
-    //     await page.waitFor(1000)
-    //     await page.click('.workout-checkbox')
-    //     await page.waitFor(1000)
-    //     await page.click('.workout textarea[name=notes]')
-    //     await page.type('.workout textarea[name=notes]', global.WORKOUT.notes)
-    //     await page.waitFor(1000)
-    // }, global.TIMEOUT)
-
-    // test('create multiple workouts', async () => {
-    //     await page.click('.workouts-button-create button')
-    //     await page.waitFor(1000)
-    //     await expectElementToBeOfLength(page, '.workout', 2)
-    // }, global.TIMEOUT)
-
     test('create a exercise', async () => {
         await page.click('.exercises-button-create button')
         exercisesLength++
@@ -238,19 +202,7 @@ describe('routine is saved on reload', async () => {
         await page.waitForSelector('.routine')
         await expectSelectorToContainText(page, '.routine', global.ROUTINE.name)
         await expectSelectorToContainText(page, '.routine', global.ROUTINE.notes)
-        // await expectSelectOptionToBe(page, '.routine-single select[name=weightMeasure]', global.ROUTINE.weightMeasure)
     }, global.TIMEOUT)
-
-    // test('lift is saved', async () => {
-    //     await expectSelectorToContainText(page, '.lift-name', global.LIFT.name)
-    //     await expectSelectorToContainText(page, '.lift-rm', global.LIFT.rm)
-    // }, global.TIMEOUT)
-
-    // test('workout is saved', async () => {
-    //     await expectSelectorToContainText(page, '.workout', global.WORKOUT.name)
-    //     await expectSelectorToContainText(page, '.workout', global.WORKOUT.notes)
-    //     await expectCheckboxToBe(page, '.workout input[name=isCompleted]', true)
-    // }, global.TIMEOUT)
 
     test('exercise is saved', async () => {
         await expectSelectOptionToBe(page, '.exercise select', global.LIFT.name)
@@ -259,18 +211,10 @@ describe('routine is saved on reload', async () => {
     test('set is saved', async () => {
         await expectSelectorToContainText(page, '.set', global.SET.weight)
         await expectSelectorToContainText(page, '.set', global.SET.reps)
-        // await expectCheckboxToBe(page, '.set input[name=isCompleted]', true)
     }, global.TIMEOUT)
 })
 
 describe('routine shows validation errors', async () => {
-    // test('lift rm', async () => {
-    //     await page.click('.lift input[name=rm]')
-    //     await page.type('.lift input[name=rm]', '33')
-    //     await page.waitFor(1000)
-    //     await expectSelectorToContainText(page, '.lift', 'format is invalid')
-    // }, global.TIMEOUT)
-
     test('set weight', async () => {
         await page.click('.set input[name=weight]')
         await page.type('.set input[name=weight]', '.333')
@@ -322,7 +266,7 @@ describe('create workout from routine', async () => {
         await expectSelectorToContainText(page, '.alert', 'Completed')
     }, global.TIMEOUT)
 
-    test('change completed date', async () => {
+    test('change started date', async () => {
         await page.waitForSelector('[name=startedAt]')
         await page.click('[name=startedAt]')
         await page.waitFor(1000)
@@ -330,7 +274,7 @@ describe('create workout from routine', async () => {
         await page.waitFor(1000)
     }, global.TIMEOUT)
 
-    test('change started date', async () => {
+    test('change completed date', async () => {
         await page.waitForSelector('[name=completedAt]')
         await page.click('[name=completedAt]')
         await page.waitFor(1000)
@@ -350,56 +294,62 @@ describe('workout is saved on reload', async () => {
     }, global.TIMEOUT)
 })
 
-
-// describe('routine deletion', async () => {
-//     test('sets can be deleted', async () => {
-//         await page.click('.set-button-remove')
-//         await page.waitFor(2000)
-//         await expectElementToBeOfLength(page, '.set', 1)
-//     }, global.TIMEOUT)
-
-//     test('exercises can be deleted', async () => {
-//         await page.click('.exercise-button-remove button')
-//         await page.waitFor(2000)
-//         await expectElementToBeOfLength(page, '.exercise', 1)
-//     }, global.TIMEOUT)
-
-//     test('routines can be deleted', async () => {
-//         page.on('dialog', async dialog => {
-//             await dialog.accept()
-//         })
-//         await page.click('.routine-button-remove')
-//         await page.waitForSelector('.routines')
-//         await expectElementToBeOfLength(page, '.routines-routine', 2)
-//     }, global.TIMEOUT)
-// })
-
 describe('settings', async () => {
-    test('update user', async () => {
+    test('check defaults', async () => {
         await goTo(page, '/settings')
         await page.waitForSelector('.settings')
 
-        await selectOption(page, '[name=weightMeasure]', global.USER.weightMeasure)
+        await expectSelectOptionToBe(page, '[name=weightMeasure]', 'kg')
+        await expectSelectOptionToBe(page, '[name=startOfWeek]', 'Monday')
+        await expectSelectOptionToBe(page, '[name=dateFormat]', 'DD/MM/YYYY')
+    })
+
+    test('update user', async () => {
+        await page.click('[name=name]')
+        await page.type('[name=name]', 'updated')
         await page.waitFor(1000)
 
-        await page.click('#name')
-        await page.type('#name', 'updated')
-        await page.waitFor(1000)
-
-        await page.click('#email')
-        await page.type('#email', 'updated')
-        await page.waitFor(1000)
-
-        await selectOption(page, '[name=startOfWeek]', global.USER.startOfWeek)
+        await page.click('[name=email]')
+        await page.type('[name=email]', 'updated')
         await page.waitFor(1000)
     }, global.TIMEOUT)
 
-    test('user info is saved on reload', async () => {
-        await page.reload()
+    test('update user option weight', async () => {
+        await selectOption(page, '[name=weightMeasure]', global.USER.weightMeasure)
+        await page.waitFor(1000)
+    }, global.TIMEOUT)
 
+    test('update user option startOfWeek', async () => {
+        await selectOption(page, '[name=startOfWeek]', global.USER.startOfWeek)
+        await page.waitForNavigation()
+        await page.waitForSelector('.settings')
+    }, global.TIMEOUT)
+
+    test('update user option dateFormat', async () => {
+        await selectOption(page, '[name=dateFormat]', global.USER.dateFormat)
+        await page.waitForNavigation()
+        await page.waitForSelector('.settings')
+    }, global.TIMEOUT)
+
+    test('user info is saved on reload', async () => {
         await expectSelectorToContainText(page, '.settings', global.USER.name + 'updated')
         await expectSelectorToContainText(page, '.settings', global.USER.email + 'updated')
         await expectSelectOptionToBe(page, '[name=weightMeasure]', global.USER.weightMeasure)
         await expectSelectOptionToBe(page, '[name=startOfWeek]', global.USER.startOfWeek)
+        await expectSelectOptionToBe(page, '[name=dateFormat]', global.USER.dateFormat)
     }, global.TIMEOUT)
+})
+
+describe('top sets', async () => {
+    test('profile', async () => {
+        await goTo(page, '/')
+        await page.waitForSelector('.profile')
+        await expectElementToBeOfLength(page, '.sets-table-item', 1)
+    })
+
+    test('lift', async () => {
+        await page.click('.sets-table-item')
+        await page.waitForSelector('.lift')
+        await expectElementToBeOfLength(page, '.sets-table-item', 1)
+    })
 })
