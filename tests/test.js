@@ -1,4 +1,3 @@
-import faker from 'faker'
 import puppeteer from 'puppeteer'
 
 import {
@@ -183,8 +182,6 @@ describe('routines creation', async () => {
         await page.click('.set input[name=reps]')
         await page.type('.set input[name=reps]', global.SET.reps)
         await page.waitFor(1000)
-        // await page.click('.set-checkbox')
-        // await page.waitFor(1000)
     }, global.TIMEOUT)
 
     test('create multiple sets', async () => {
