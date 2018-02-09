@@ -17,12 +17,12 @@
         color: $color-primary;
         background-position: right $spacing/1.5 center;
 
-        & .workout-day {
+        & [class*='day'] {
             color: $color-font;
         }
     }
 
-    & .workout-day {
+    & [class*='day'] {
         color: $color-font;
     }
 

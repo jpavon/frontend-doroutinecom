@@ -4,8 +4,14 @@
     padding-right: $spacing/2;
     flex: 1;
 
-    &.sets-table-number {
-        flex: 0 0 16%;
+    &.sets-table-right {
+        text-align: right;
+    }
+
+    @media (max-width: 600px) {
+        &.sets-table-number {
+            flex: 0 0 20%;
+        }
     }
 }
 
@@ -23,6 +29,7 @@
 
     > div {
         @include layout();
+        align-self: flex-end;
 
         &:first-letter {
             text-transform: capitalize;
@@ -38,6 +45,7 @@
 
     > div {
         @include layout();
+        align-self: center;
     }
 
     &:hover {

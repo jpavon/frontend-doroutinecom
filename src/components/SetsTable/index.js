@@ -10,10 +10,10 @@ const LiftSetsTable = ({sets, weightMeasure, showLift}) => (
             {showLift &&
                 <div><small>Lift</small></div>
             }
-            <div className="sets-table-number"><small>Reps</small></div>
-            <div className="sets-table-number"><small>{weightMeasure}</small></div>
+            <div className="sets-table-number sets-table-right"><small>Reps</small></div>
+            <div className="sets-table-number sets-table-right"><small>{weightMeasure}</small></div>
             {!showLift &&
-                <div><small>Estimated 1RM</small></div>
+                <div className="sets-table-right"><small>Estimated 1RM</small></div>
             }
         </div>
             {sets.map((set, i) => (
@@ -22,10 +22,10 @@ const LiftSetsTable = ({sets, weightMeasure, showLift}) => (
                     {showLift &&
                         <div>{set.lift}</div>
                     }
-                    <div className="sets-table-number">{set.reps}</div>
-                    <div className="sets-table-number">{set.weight}</div>
+                    <div className="sets-table-number sets-table-right">{set.reps}</div>
+                    <div className="sets-table-number sets-table-right">{set.weight}</div>
                     {!showLift &&
-                        <div>{set.rm}</div>
+                        <div className="sets-table-right">{set.rm}</div>
                     }
                 </Link>
             ))}
