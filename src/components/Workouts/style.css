@@ -1,60 +1,6 @@
 .workouts {
   margin-bottom: 18px; }
 
-.workout-day {
+.workouts-workout-day {
   font-size: .8rem;
   margin-bottom: .4rem; }
-
-.workout-exercises {
-  font-size: .8rem;
-  margin-top: .8rem; }
-
-.workout-top {
-  display: flex;
-  position: relative;
-  background-color: #333;
-  padding: 5px;
-  transition: background-color .2s;
-  border-bottom: 2px solid transparent; }
-  .workout-top.workout-top--is-completed {
-    background-color: #4c90c2;
-    border-color: #3876a3; }
-
-.workout-top-name {
-  display: flex; }
-  .workout-top-name label {
-    align-self: center;
-    text-align: center;
-    margin: 0;
-    margin-left: 5px;
-    margin-right: 10px;
-    white-space: nowrap; }
-
-.workout-top-input {
-  width: 100%; }
-
-.workout-top-checkbox {
-  display: flex;
-  cursor: pointer;
-  margin-bottom: 0;
-  margin-left: 10px; }
-  .workout-top-checkbox > span {
-    align-self: center; }
-
-.workout-top-checkbox-text {
-  margin-right: .4rem;
-  display: inline-block;
-  color: #555;
-  align-self: center;
-  user-select: none; }
-  .workout-top--is-completed .workout-top-checkbox-text {
-    color: #444; }
-
-.workout-notes {
-  position: relative;
-  margin-top: 1rem;
-  padding: 5px; }
-  .workout-notes label {
-    margin: 0;
-    margin-bottom: .2rem;
-    margin-left: 5px; }

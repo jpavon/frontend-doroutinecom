@@ -14,7 +14,7 @@ let browser
 
 beforeAll(async () => {
     browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         slowMo: 0,
     })
     page = await browser.newPage()
@@ -104,6 +104,7 @@ describe('lifts creation', async () => {
 
     test('update a lift', async () => {
         await page.click('.lift-button-create')
+        liftsLength++
         await page.waitForSelector('.lift')
         await page.click('.lift input')
         await page.type('.lift-form input', global.LIFT.name)
@@ -116,6 +117,23 @@ describe('lift is saved on reload', async () => {
         await page.reload()
         await page.waitForSelector('.lift')
         await expectSelectorToContainText(page, '.lift', global.LIFT.name)
+    }, global.TIMEOUT)
+})
+
+describe('lift deletion', async () => {
+    test('lifts can be deleted', async () => {
+        await goTo(page, '/lifts')
+        await page.waitForSelector('.lift-button-create')
+        await page.click('.lift-button-create')
+        liftsLength++
+        await page.waitForSelector('.lift')
+        page.on('dialog', async (dialog) => {
+            await dialog.accept()
+        })
+        await page.click('.lift-button-remove')
+        liftsLength--
+        await page.waitForSelector('.lifts')
+        await expectElementToBeOfLength(page, '.lifts-lift', liftsLength)
     }, global.TIMEOUT)
 })
 
@@ -148,6 +166,7 @@ describe('routines creation', async () => {
 
     test('update a routine', async () => {
         await page.click('.routine-button-create')
+        routinesLength++
         await page.waitForSelector('.routine')
         await page.click('.routine input')
         await page.type('.routine-form input', global.ROUTINE.name)
@@ -227,11 +246,13 @@ describe('routine shows validation errors', async () => {
     }, global.TIMEOUT)
 })
 
+let workoutsLength = 0
 
 describe('create workout from routine', async () => {
 
     test('create workout with routine content', async () => {
         await page.click('.routine-button-create-workout')
+        workoutsLength++
         await page.waitForSelector('.workout')
 
         await expectSelectorToContainText(page, '.alert', '00:0')
@@ -291,6 +312,47 @@ describe('workout is saved on reload', async () => {
     }, global.TIMEOUT)
 })
 
+describe('top sets table have items', async () => {
+    test('profile', async () => {
+        await goTo(page, '/')
+        await page.waitForSelector('.profile')
+        await expectElementToBeOfLength(page, '.sets-table-item', 1)
+    })
+
+    test('lift', async () => {
+        await page.click('.sets-table-item')
+        await page.waitForSelector('.lift')
+        await expectElementToBeOfLength(page, '.sets-table-item', 1)
+    })
+})
+
+describe('workout deletion', async () => {
+    test('workouts can be deleted', async () => {
+        await goTo(page, '/workouts')
+        await page.waitForSelector('.workouts-workout')
+        await page.click('.workouts-workout')
+        await page.waitForSelector('.workout')
+        await page.click('.workout-button-remove')
+        workoutsLength--
+        await page.waitForSelector('.workouts')
+        await expectElementToBeOfLength(page, '.workouts-workout', workoutsLength)
+    }, global.TIMEOUT)
+})
+
+describe('routine deletion', async () => {
+    test('routines can be deleted', async () => {
+        await goTo(page, '/routines')
+        await page.waitForSelector('.routine-button-create')
+        await page.click('.routine-button-create')
+        routinesLength++
+        await page.waitForSelector('.routine')
+        await page.click('.routine-button-remove')
+        routinesLength--
+        await page.waitForSelector('.routines')
+        await expectElementToBeOfLength(page, '.routines-routine', routinesLength)
+    }, global.TIMEOUT)
+})
+
 describe('settings', async () => {
     test('check defaults', async () => {
         await goTo(page, '/settings')
@@ -335,18 +397,4 @@ describe('settings', async () => {
         await expectSelectOptionToBe(page, '[name=startOfWeek]', global.USER.startOfWeek)
         await expectSelectOptionToBe(page, '[name=dateFormat]', global.USER.dateFormat)
     }, global.TIMEOUT)
-})
-
-describe('top sets', async () => {
-    test('profile', async () => {
-        await goTo(page, '/')
-        await page.waitForSelector('.profile')
-        await expectElementToBeOfLength(page, '.sets-table-item', 1)
-    })
-
-    test('lift', async () => {
-        await page.click('.sets-table-item')
-        await page.waitForSelector('.lift')
-        await expectElementToBeOfLength(page, '.sets-table-item', 1)
-    })
 })

@@ -135,7 +135,8 @@ class WorkoutContainer extends Component {
                     right={{
                         onClick: this.handleRemove,
                         danger: true,
-                        disabled: this.props.isDeleting
+                        disabled: this.props.isDeleting,
+                        className: 'workout-button-remove'
                     }}
                 />
             </Fragment>

@@ -87,7 +87,8 @@ class LiftContainer extends Component {
                     right={{
                         onClick: this.handleRemove,
                         danger: true,
-                        disabled: this.props.isDeleting
+                        disabled: this.props.isDeleting,
+                        className: 'lift-button-remove'
                     }}
                 />
             </Fragment> : null

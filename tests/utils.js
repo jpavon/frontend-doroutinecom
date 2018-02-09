@@ -50,7 +50,9 @@ export const selectOption = async (page, selector, text) => {
 }
 
 export const expectElementToBeOfLength = async (page, selector, length) => {
-    await page.waitForSelector(selector)
+    if (length !== 0) {
+        await page.waitForSelector(selector)
+    }
     const selectorLength = await page.evaluate((selector) => {
         return document.querySelectorAll(selector).length
     }, selector)
