@@ -6,7 +6,8 @@ const Head = ({children}) => (
         defaultTitle="doroutine | Create routines for your workout"
         titleTemplate="%s | doroutine"
     >
-        <meta name="description" content="Gym routine creation. Keep track of your workouts, sets and exercises. Progress on your lifts." />
+        {/* Keep in sync with public/index.html */}
+        <meta name="description" content="Create gym routines and workouts. Keep track of sets, weight and reps for all your exercises. See your progress on your lifts over time." />
         {children}
     </Helmet>
 )
