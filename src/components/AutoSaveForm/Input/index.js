@@ -14,13 +14,15 @@ const Input = (props, context) => {
 
     const { values, errors, onChange, updating } = context.formContext
 
+    const value = values[name] !== null ? String(values[name]) : ''
+
     return (
         <Fragment>
             <div style={{position: 'relative'}}>
                 {updating === name && <Saving />}
                 <UncontrolledInput
                     name={name}
-                    value={values[name] || ''}
+                    value={value}
                     onChange={onChange}
                     {...rest}
                 />
