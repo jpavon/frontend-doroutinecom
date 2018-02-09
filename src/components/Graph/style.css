@@ -3,16 +3,15 @@
 
 .graph-no-data {
   position: absolute;
-  top: 5%;
+  top: 15%;
   left: 0;
   right: 0;
   margin-left: 15%;
   margin-right: 15%;
-  padding: 36px 18px;
+  padding: 18px 36px;
   background-color: rgba(76, 144, 194, 0.5);
   color: #fff;
   text-align: center; }
   @media (max-width: 500px) {
     .graph-no-data {
-      margin-left: 8%;
-      margin-right: 8%; } }
+      padding: 9px 18px; } }
