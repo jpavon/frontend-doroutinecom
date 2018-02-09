@@ -38,14 +38,16 @@ class Graph extends Component {
         const max = datasetMax < 5 ? 5 :
             Math.round(datasetMax/stepSize) * stepSize + stepSize
 
-        const min = datasetMin && Math.max(0, Math.round(datasetMin/stepSize) * stepSize - stepSize * 2)
+        const min = datasetMin ?
+            Math.max(0, Math.round(datasetMin/stepSize) * stepSize - stepSize * 2) :
+            0
 
         const options = {
             scales: {
                 yAxes: [{
                     ticks: {
                         beginAtZero: true,
-                        min: min || 0,
+                        min,
                         max,
                         stepSize: stepSize,
                         autoSkip: false,
