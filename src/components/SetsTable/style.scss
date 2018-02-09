@@ -20,12 +20,11 @@
 }
 
 .sets-table-top {
-    padding: $spacing;
-    padding-bottom: $spacing / 2;
-    padding-top: 0;
-
     display: flex;
+    padding: $spacing / 2 $spacing;
+
     border-bottom: 1px solid $color-border;
+    background-color: rgba($color-primary, .05);
 
     > div {
         @include layout();

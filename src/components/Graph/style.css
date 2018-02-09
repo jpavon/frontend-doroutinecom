@@ -1,5 +1,6 @@
 .graph {
-  position: relative; }
+  position: relative;
+  margin-bottom: 36px; }
 
 .graph-no-data {
   position: absolute;

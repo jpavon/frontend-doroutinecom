@@ -1,9 +1,8 @@
 .sets-table-top {
-  padding: 18px;
-  padding-bottom: 9px;
-  padding-top: 0;
   display: flex;
-  border-bottom: 1px solid #e4e9ea; }
+  padding: 9px 18px;
+  border-bottom: 1px solid #e4e9ea;
+  background-color: rgba(76, 144, 194, 0.05); }
   .sets-table-top > div {
     padding-right: 9px;
     flex: 1;
