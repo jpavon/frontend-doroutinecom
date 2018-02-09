@@ -28,15 +28,17 @@ class Graph extends Component {
         const datasetMax = this.props.data.datasetMax
         const datasetMin = this.props.data.datasetMin
 
-        const stepSize = datasetMax < 7 ? 1 :
-            datasetMax < 21 ? 2 :
-            Math.round((datasetMax/4) / 10) * 10
+        const yAxeStepRange = datasetMax < 8 ? 1 :
+            datasetMax < 20 ? 2 :
+            datasetMax < 50 ? 5 :
+            10
 
-        const max = datasetMax < 7 ? stepSize + 1 :
-            datasetMax < 21 ? Math.round(datasetMax/stepSize) * stepSize + stepSize :
+        const stepSize = Math.max(1, Math.round((datasetMax/5) / yAxeStepRange) * yAxeStepRange)
+
+        const max = datasetMax < 5 ? 5 :
             Math.round(datasetMax/stepSize) * stepSize + stepSize
 
-        const min = datasetMin && Math.max(0, Math.round(datasetMin/stepSize) * stepSize - stepSize)
+        const min = datasetMin && Math.max(0, Math.round(datasetMin/stepSize) * stepSize - stepSize * 2)
 
         const options = {
             scales: {
@@ -44,7 +46,7 @@ class Graph extends Component {
                     ticks: {
                         beginAtZero: true,
                         min: min || 0,
-                        max: max < 5 ? 5 : max,
+                        max,
                         stepSize: stepSize,
                         autoSkip: false,
                     },

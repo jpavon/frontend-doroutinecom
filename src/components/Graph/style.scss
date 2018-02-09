@@ -6,7 +6,7 @@
 
 .graph-no-data {
     position: absolute;
-    top: 22%;
+    top: 5%;
     left: 0;
     right: 0;
     margin-left: 15%;
@@ -16,4 +16,9 @@
     background-color: rgba($color-primary, .5);
     color: #fff;
     text-align: center;
+
+    @media (max-width: 500px) {
+        margin-left: 8%;
+        margin-right: 8%;
+    }
 }
