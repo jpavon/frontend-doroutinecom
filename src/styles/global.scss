@@ -1,21 +1,24 @@
 @import "~normalize.css";
-@import "reboot.scss";
 @import "variables.scss";
-@import "layout.scss";
 
-*, ::after, ::before {
+html {
     box-sizing: border-box;
-}
-
-* {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-kerning: auto;
+    -webkit-text-size-adjust: 100%;
 }
 
-html {
-    -webkit-text-size-adjust: 100%;
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    text-rendering: inherit;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    font-kerning: inherit;
+    -webkit-text-size-adjust: inherit;
 }
 
 body {
@@ -24,6 +27,18 @@ body {
     overflow-y: scroll;
     background-color: $color-background;
     font-weight: 400;
+}
+
+#root {
+    min-height: 100%;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 100%;
+    padding-bottom: $spacing * 6;
 }
 
 h1, h2, h3, h4, h5, h6 {
