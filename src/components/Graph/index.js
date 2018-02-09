@@ -12,6 +12,7 @@ class Graph extends Component {
             labels: PropTypes.array.isRequired,
             dataset: PropTypes.array.isRequired,
             datasetMax: PropTypes.number.isRequired,
+            datasetMin: PropTypes.number,
             meta: PropTypes.object
         }).isRequired
     }
@@ -25,6 +26,7 @@ class Graph extends Component {
         const ctx = this.graph.getContext('2d')
 
         const datasetMax = this.props.data.datasetMax
+        const datasetMin = this.props.data.datasetMin
 
         const stepSize = datasetMax < 7 ? 1 :
             datasetMax < 21 ? 2 :
@@ -34,16 +36,22 @@ class Graph extends Component {
             datasetMax < 21 ? Math.round(datasetMax/stepSize) * stepSize + stepSize :
             Math.round(datasetMax/stepSize) * stepSize + stepSize
 
+        const min = datasetMin && Math.round(datasetMin/stepSize) * stepSize - stepSize
+
         const options = {
             scales: {
                 yAxes: [{
                     ticks: {
                         beginAtZero: true,
-                        min: 0,
+                        min: min || 0,
                         max: max < 5 ? 5 : max,
                         stepSize: stepSize,
                         autoSkip: false,
                     },
+                    // scaleLabel: {
+                    //     display: this.props.type === 'line',
+                    //     labelString: 'Estimated 1RM'
+                    // }
                 }],
                 xAxes: [{
                     stacked: false,
@@ -90,8 +98,9 @@ class Graph extends Component {
                 callbacks: {
                     label: (tooltipItem, data) => {
                         const reps = data.meta && data.meta.reps
-                        return reps ?
-                            `${reps[tooltipItem.index]}x${tooltipItem.yLabel}${data.meta.weightMeasure}` :
+                        const weight = data.meta && data.meta.weight
+                        return (reps && weight) ?
+                            `${reps[tooltipItem.index]}x${weight[tooltipItem.index]}${data.meta.weightMeasure}` :
                             `${tooltipItem.yLabel} Workout${(Number(tooltipItem.yLabel) > 1) ? 's' : ''}`
                     }
                 }

@@ -62,16 +62,19 @@ export const liftGraphDataSelector = (liftId) => createSelector(
         const topSets = formatTopSets(exercises, sets, workouts)
             .sort((a, b) => (a.moment - b.moment))
 
-        const dataset = topSets.map((set) => set.weight)
+        const dataset = topSets.map((set) => set.rm)
         const labels = topSets.map((set) => set.moment.format(dateFormat))
         const reps = topSets.map((set) => set.reps)
+        const weight = topSets.map((set) => set.weight)
 
         return {
             labels,
             dataset,
             datasetMax: dataset.length > 0 ? Math.max(...dataset) : 0,
+            datasetMin: dataset.length > 0 ? Math.min(...dataset) : 0,
             meta: {
                 reps,
+                weight,
                 weightMeasure: user.weightMeasure
             }
         }

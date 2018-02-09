@@ -62,9 +62,7 @@ export const topLiftSetsSelector = (liftId) => createSelector(
         completedWorkoutsSelector,
     ],
     (exercises, sets, workouts) => {
-        const topSets = formatTopSets(exercises, sets, workouts)
-
-        return formatSetsRm(topSets)
+        return formatTopSets(exercises, sets, workouts)
             .sort((a, b) => b.rm - a.rm)
     }
 )
@@ -100,19 +98,16 @@ export const formatTopSets = (exercises, sets, workouts, lifts) => {
 
     return Object.keys(topSets)
         .map((exerciseId) => topSets[exerciseId])
+        .map((set) => ({
+            ...set,
+            rm: round(Number(set.weight) * (36 / (37 - Number(set.reps)))),
+        }))
         .filter((set) => set.liftId)
 }
 
 const round = (x) => {
     const number = Math.ceil(x/2.5) * 2.5
     return number > 0 ? number : 0
-}
-
-export const formatSetsRm = (sets) => {
-    return sets.map((set) => ({
-        ...set,
-        rm: round(Number(set.weight) * (36 / (37 - Number(set.reps)))),
-    }))
 }
 
 export const previouslyCompletedSetsSelector = (exerciseId, liftId) => createSelector(
