@@ -36,7 +36,7 @@ class Graph extends Component {
             datasetMax < 21 ? Math.round(datasetMax/stepSize) * stepSize + stepSize :
             Math.round(datasetMax/stepSize) * stepSize + stepSize
 
-        const min = datasetMin && Math.round(datasetMin/stepSize) * stepSize - stepSize
+        const min = datasetMin && Math.max(0, Math.round(datasetMin/stepSize) * stepSize - stepSize)
 
         const options = {
             scales: {
