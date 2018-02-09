@@ -70,13 +70,18 @@ export const topLiftSetsSelector = (liftId) => createSelector(
 export const formatTopSets = (exercises, sets, workouts, lifts) => {
     const completedExercisesIds = exercises.map((exercise) => exercise.id)
     const completedSets = sets.filter((set) =>  completedExercisesIds.includes(set.exerciseId))
+        .map((set) => ({
+            ...set,
+            rm: round(Number(set.weight) * (36 / (37 - Number(set.reps)))),
+        }))
 
     const topSets = completedSets.reduce((prev, curr) => {
-        const topSet = prev[curr.exerciseId] && prev[curr.exerciseId].weight > curr.weight ?
+        const topSet = prev[curr.exerciseId] && prev[curr.exerciseId].rm > curr.rm ?
             prev[curr.exerciseId] :
             {
                 weight: curr.weight,
                 reps: curr.reps,
+                rm: curr.rm
             }
 
         return {
@@ -98,10 +103,6 @@ export const formatTopSets = (exercises, sets, workouts, lifts) => {
 
     return Object.keys(topSets)
         .map((exerciseId) => topSets[exerciseId])
-        .map((set) => ({
-            ...set,
-            rm: round(Number(set.weight) * (36 / (37 - Number(set.reps)))),
-        }))
         .filter((set) => set.liftId)
 }
 
