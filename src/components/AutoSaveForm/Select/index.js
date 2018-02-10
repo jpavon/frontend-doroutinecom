@@ -23,7 +23,7 @@ const Select = (props, context) => {
                 <UncontrolledSelect
                     name={name}
                     value={values[name] || ''}
-                    options={options}
+                    options={options || []}
                     onChange={onChange}
                     {...rest}
                 />

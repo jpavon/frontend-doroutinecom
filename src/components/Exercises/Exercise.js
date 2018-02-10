@@ -15,7 +15,7 @@ const Exercise = ({children, exercise, lifts, update, remove, isDeleting, isRemo
                         label="Lift"
                         id="liftId"
                         name="liftId"
-                        options={lifts || []}
+                        options={lifts}
                         defaultOptionMessage="Select a lift"
                         noOptionsMessage="No lift created."
                     />
