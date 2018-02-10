@@ -37,7 +37,7 @@ export const topSetsSelector = createSelector(
     (exercises, sets, workouts, lifts) => {
         return formatTopSets(exercises, sets, workouts, lifts)
             .sort((a, b) => {
-                // compare by moment, otherwise by weight
+                // order by moment, otherwise by weight
                 if (a.moment < b.moment) {
                     return 1;
                 } else if (a.moment > b.moment) {
@@ -67,6 +67,11 @@ export const topLiftSetsSelector = (liftId) => createSelector(
     }
 )
 
+const round = (x) => {
+    const number = Math.ceil(x/2.5) * 2.5
+    return number > 0 ? number : 0
+}
+
 export const formatTopSets = (exercises, sets, workouts, lifts) => {
     const completedExercisesIds = exercises.map((exercise) => exercise.id)
     const completedSets = sets.filter((set) =>  completedExercisesIds.includes(set.exerciseId))
@@ -76,17 +81,23 @@ export const formatTopSets = (exercises, sets, workouts, lifts) => {
         }))
 
     const topSets = completedSets.reduce((prev, curr) => {
-        const topSet = prev[curr.exerciseId] && prev[curr.exerciseId].rm > curr.rm ?
-            prev[curr.exerciseId] :
-            {
-                weight: curr.weight,
-                reps: curr.reps,
-                rm: curr.rm
+        if (prev[curr.exerciseId] && prev[curr.exerciseId].rm === 0 && prev[curr.exerciseId].reps > curr.reps) {
+            return {
+                ...prev
             }
+        }
 
-        return {
-            ...prev,
-            [curr.exerciseId]: topSet
+        if (prev[curr.exerciseId] && prev[curr.exerciseId].rm > curr.rm) {
+            return { ...prev }
+        } else {
+            return {
+                ...prev,
+                [curr.exerciseId]: {
+                    weight: curr.weight || 0,
+                    reps: curr.reps || 0,
+                    rm: curr.rm
+                }
+            }
         }
     }, {})
 
@@ -104,11 +115,6 @@ export const formatTopSets = (exercises, sets, workouts, lifts) => {
     return Object.keys(topSets)
         .map((exerciseId) => topSets[exerciseId])
         .filter((set) => set.liftId)
-}
-
-const round = (x) => {
-    const number = Math.ceil(x/2.5) * 2.5
-    return number > 0 ? number : 0
 }
 
 export const previouslyCompletedSetsSelector = (exerciseId, liftId) => createSelector(
