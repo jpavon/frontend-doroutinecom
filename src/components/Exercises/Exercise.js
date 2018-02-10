@@ -9,7 +9,7 @@ const Exercise = ({children, exercise, lifts, update, remove, isDeleting, isRemo
         <AutoSaveForm
             update={update}
             initialValues={exercise}
-            render={() => (
+            render={({values}) => (
                 <div className="exercise-lift">
                     <Select
                         label="Lift"
@@ -19,6 +19,9 @@ const Exercise = ({children, exercise, lifts, update, remove, isDeleting, isRemo
                         defaultOptionMessage="Select a lift"
                         noOptionsMessage="No lift created."
                     />
+                    {values.liftId &&
+                        <Button to={`/lifts/${values.liftId}`}>Lift info</Button>
+                    }
                 </div>
             )}
         />
