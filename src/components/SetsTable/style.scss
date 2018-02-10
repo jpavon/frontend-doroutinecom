@@ -21,9 +21,9 @@
 
 .sets-table-top {
     display: flex;
-    padding: $spacing / 2 $spacing;
+    padding: $spacing / 1.5 $spacing;
 
-    border-bottom: 1px solid $color-border;
+    border-bottom: 2px solid $color-border;
     background-color: rgba($color-primary, .05);
 
     > div {
