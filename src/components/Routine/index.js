@@ -2,6 +2,7 @@ import React from 'react'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import Field from 'components/Field'
+import Info from 'components/Info'
 
 import './style.css'
 
@@ -21,6 +22,12 @@ const Routine = ({children, routine, update}) => (
                 )}
             />
         </div>
+        {routine.program &&
+            <Info
+                name={routine.program.name}
+                content={routine.program.content}
+            />
+        }
         {children}
         <div className="routine-form">
             <AutoSaveForm

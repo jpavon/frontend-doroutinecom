@@ -1,0 +1,30 @@
+@import "variables.scss";
+
+.info-container {
+    .button {
+        margin: auto;
+        color: darken($color-info, 15%);
+    }
+}
+
+.info {
+    padding: $spacing $spacing * 2;
+    background-color: rgba($color-info, .1);
+    border: 1px solid rgba($color-info, .2);
+}
+
+.info-title {
+    text-align: center;
+    font-weight: 500;
+}
+
+.info-content {
+    h2 {
+        font-weight: 500;
+    }
+
+    p {
+        margin-bottom: $spacing * 1.5;
+        line-height: 1.5;
+    }
+}
