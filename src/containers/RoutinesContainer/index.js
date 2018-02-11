@@ -12,6 +12,7 @@ import Routines from 'components/Routines/Routines'
 import Routine from 'components/Routines/Routine'
 import NoData from 'components/NoData'
 import TopNav from 'components/TopNav'
+import Info from 'components/Info'
 
 class RoutinesContainer extends Component {
 
@@ -56,22 +57,22 @@ class RoutinesContainer extends Component {
                         />
                     }
                 </Routines>
-                <TopNav
-                    title="Default Routines"
-                />
-                <Routines>
-                    {this.props.defaultRoutines.length > 0 ?
-                        this.props.defaultRoutines.map((routine, i) => (
-                            <Routine
-                                key={routine.id}
-                                routine={routine}
-                            />
-                        )) :
-                        <NoData
-                            text="No routine created."
+                {this.props.defaultRoutines.length > 0 &&
+                    <Fragment>
+                        <TopNav
+                            title="PPL"
                         />
-                    }
-                </Routines>
+                        <Info name="ppl" />
+                        <Routines>
+                            {this.props.defaultRoutines.map((routine, i) => (
+                                <Routine
+                                    key={routine.id}
+                                    routine={routine}
+                                />
+                            ))}
+                        </Routines>
+                    </Fragment>
+                }
             </Fragment>
         )
     }

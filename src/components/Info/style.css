@@ -1,19 +1,20 @@
-.info-container .button {
-  margin: auto;
-  color: #d9ae18; }
-
 .info {
-  padding: 18px 36px;
+  margin-bottom: 18px; }
+  .info .button {
+    padding: 0;
+    margin: auto;
+    color: #d9ae18; }
+
+.info-content {
+  margin-top: 18px;
+  padding: 36px;
   background-color: rgba(236, 202, 81, 0.1);
   border: 1px solid rgba(236, 202, 81, 0.2); }
-
-.info-title {
-  text-align: center;
-  font-weight: 500; }
-
-.info-content h2 {
-  font-weight: 500; }
-
-.info-content p {
-  margin-bottom: 27px;
-  line-height: 1.5; }
+  .info-content h2 {
+    font-weight: 500; }
+  .info-content p {
+    font-size: .95rem;
+    margin-bottom: 27px;
+    line-height: 1.5; }
+    .info-content p:last-child {
+      margin-bottom: 0; }
