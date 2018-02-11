@@ -33,7 +33,10 @@ class Graph extends Component {
             datasetMax < 50 ? 5 :
             10
 
-        const stepSize = Math.max(1, Math.round((datasetMax/5) / yAxeStepRange) * yAxeStepRange)
+        const step = datasetMin ?
+            Math.max(yAxeStepRange, datasetMax - datasetMin) :
+            datasetMax/8
+        const stepSize = Math.max(1, Math.round(step / yAxeStepRange) * yAxeStepRange)
 
         const max = datasetMax < 5 ? 5 :
             Math.round(datasetMax/stepSize) * stepSize + stepSize
