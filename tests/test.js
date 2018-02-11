@@ -80,7 +80,7 @@ describe('auth', async () => {
     }, global.TIMEOUT)
 })
 
-let liftsLength = 10
+let liftsLength = 16
 let routinesLength = 3
 
 describe('default routines and lifts are created', async () => {
