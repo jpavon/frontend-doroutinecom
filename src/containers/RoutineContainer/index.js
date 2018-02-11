@@ -82,15 +82,17 @@ class RoutineContainer extends Component {
                     >
                         <ExercisesContainer routineId={this.props.routine.id} />
                     </Routine>
-                    <TopNav
-                        rightLabel="Delete Routine"
-                        right={{
-                            onClick: this.handleRemove,
-                            danger: true,
-                            disabled: this.props.isDeleting,
-                            className: 'routine-button-remove'
-                        }}
-                    />
+                    {!this.props.routine.program &&
+                        <TopNav
+                            rightLabel="Delete Routine"
+                            right={{
+                                onClick: this.handleRemove,
+                                danger: true,
+                                disabled: this.props.isDeleting,
+                                className: 'routine-button-remove'
+                            }}
+                        />
+                    }
                 </Fragment>
             )
         : null
