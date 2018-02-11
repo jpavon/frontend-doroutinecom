@@ -19,8 +19,9 @@ const Exercise = ({children, exercise, lifts, update, remove, isDeleting, isRemo
                         defaultOptionMessage="Select a lift"
                         noOptionsMessage="No lift created."
                     />
-                    {values.liftId &&
-                        <Button to={`/lifts/${values.liftId}`}>Lift info</Button>
+                    {values.liftId ?
+                        <Button to={`/lifts/${values.liftId}`}>Info</Button> :
+                        <Button to="/lifts">Create</Button>
                     }
                 </div>
             )}

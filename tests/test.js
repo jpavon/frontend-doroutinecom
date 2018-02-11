@@ -80,7 +80,22 @@ describe('auth', async () => {
     }, global.TIMEOUT)
 })
 
-let liftsLength = 0
+let liftsLength = 10
+let routinesLength = 3
+
+describe('default routines and lifts are created', async () => {
+    test('check lifts', async () => {
+        await goTo(page, '/lifts')
+        await page.waitForSelector('.lifts')
+        await expectElementToBeOfLength(page, '.lifts-lift', liftsLength)
+    }, global.TIMEOUT)
+
+    test('check routines', async () => {
+        await goTo(page, '/routines')
+        await page.waitForSelector('.routines')
+        await expectElementToBeOfLength(page, '.routines-routine', routinesLength)
+    }, global.TIMEOUT)
+})
 
 describe('lifts creation', async () => {
     test('create a lift', async () => {
@@ -137,7 +152,6 @@ describe('lift deletion', async () => {
     }, global.TIMEOUT)
 })
 
-let routinesLength = 0
 let exercisesLength = 0
 let setsLength = 0
 

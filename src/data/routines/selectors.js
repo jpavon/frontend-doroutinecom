@@ -25,4 +25,14 @@ export const routinesSelector = createSelector(
     ],
     (routines) => routines
         .map((routine) => formatRoutine(routine))
+        .filter((routine) => !routine.program)
+)
+
+export const defaultRoutinesSelector = createSelector(
+    [
+        state => state.routines.entities
+    ],
+    (routines) => routines
+        .map((routine) => formatRoutine(routine))
+        .filter((routine) => routine.program)
 )

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import history from 'utils/history'
 import { createRoutine } from 'data/routines/actions'
-import { routinesSelector } from 'data/routines/selectors'
+import { routinesSelector, defaultRoutinesSelector } from 'data/routines/selectors'
 import { STATUS_LOADING } from 'data/utils'
 import { showAlert } from 'data/ui/actions'
 
@@ -17,6 +17,7 @@ class RoutinesContainer extends Component {
 
     static propTypes = {
         routines: PropTypes.array.isRequired,
+        defaultRoutines: PropTypes.array.isRequired,
         isLoading: PropTypes.bool.isRequired,
 
         createRoutine: PropTypes.func.isRequired,
@@ -34,7 +35,7 @@ class RoutinesContainer extends Component {
         return (
             <Fragment>
                 <TopNav
-                    title="Routines"
+                    title="Your Routines"
                     rightLabel="Create"
                     right={{
                         onClick: this.handleCreate,
@@ -55,6 +56,22 @@ class RoutinesContainer extends Component {
                         />
                     }
                 </Routines>
+                <TopNav
+                    title="Default Routines"
+                />
+                <Routines>
+                    {this.props.defaultRoutines.length > 0 ?
+                        this.props.defaultRoutines.map((routine, i) => (
+                            <Routine
+                                key={routine.id}
+                                routine={routine}
+                            />
+                        )) :
+                        <NoData
+                            text="No routine created."
+                        />
+                    }
+                </Routines>
             </Fragment>
         )
     }
@@ -62,6 +79,7 @@ class RoutinesContainer extends Component {
 
 const mapStateToProps = (state, props) => ({
     routines: routinesSelector(state),
+    defaultRoutines: defaultRoutinesSelector(state),
     isLoading: state.routines.fetchStatus === STATUS_LOADING,
 })
 
