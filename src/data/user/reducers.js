@@ -1,6 +1,6 @@
 import store from 'store'
 
-import * as types from 'data/user/types'
+import * as constants from 'data/user/constants'
 import * as helperTypes from 'data/utils'
 import {
     request,
@@ -17,10 +17,10 @@ const user = (state = initialState, action) => {
     const { type, payload, error } = action
 
     switch (type) {
-        case types.USER_FETCH_REQUEST:
+        case constants.USER_FETCH_REQUEST:
             return request(state)
 
-        case types.USER_FETCH_SUCCESS:
+        case constants.USER_FETCH_SUCCESS:
             return {
                 ...state,
                 fetchStatus: helperTypes.STATUS_LOADED,
@@ -30,13 +30,13 @@ const user = (state = initialState, action) => {
                 }
             }
 
-        case types.USER_FETCH_FAILURE:
+        case constants.USER_FETCH_FAILURE:
             return failure(state, error)
 
-        case types.USER_PUT_REQUEST:
+        case constants.USER_PUT_REQUEST:
             return request(state)
 
-        case types.USER_PUT_SUCCESS:
+        case constants.USER_PUT_SUCCESS:
             return {
                 ...state,
                 fetchStatus: helperTypes.STATUS_LOADED,
@@ -46,16 +46,16 @@ const user = (state = initialState, action) => {
                 }
             }
 
-        case types.USER_PUT_FAILURE:
+        case constants.USER_PUT_FAILURE:
             return failure(state, error)
 
-        case types.USER_AUTH:
+        case constants.USER_AUTH:
             return {
                 ...state,
                 isAuth: true
             }
 
-        case types.USER_UNAUTH:
+        case constants.USER_UNAUTH:
             return {
                 ...state,
                 isAuth: false

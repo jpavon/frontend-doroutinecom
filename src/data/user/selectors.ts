@@ -1,14 +1,15 @@
 import { createSelector } from 'reselect'
 
-import User from 'data/user/schema'
+import { User } from 'data/user/types'
 
-const formatUser = (user) => User({
-    ...user
+const formatUser = (user: {}): User => ({
+    ...user,
+    id: 1,
 })
 
 export const userSelector = createSelector(
     [
-        state => state.user.entity
+        state => (state as { user: { entity: {}} }).user.entity
     ],
     (user) => Object.keys(user).length > 0 && formatUser(user)
 )
