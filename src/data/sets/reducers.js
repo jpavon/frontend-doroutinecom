@@ -1,4 +1,4 @@
-import * as types from 'data/sets/types'
+import * as constants from 'data/sets/constants'
 import * as helperTypes from 'data/utils'
 import {
     fetch,
@@ -21,40 +21,40 @@ const exercises = (state = initialState, action) => {
     const { type, payload, error, meta } = action
 
     switch (type) {
-        case types.SETS_FETCH_REQUEST:
+        case constants.SETS_FETCH_REQUEST:
             return request(state)
 
-        case types.SETS_FETCH_SUCCESS:
+        case constants.SETS_FETCH_SUCCESS:
             return fetch(state, payload)
 
-        case types.SETS_FETCH_FAILURE:
+        case constants.SETS_FETCH_FAILURE:
             return failure(state, error)
 
-        case types.SETS_POST_REQUEST:
+        case constants.SETS_POST_REQUEST:
             return request(state)
 
-        case types.SETS_POST_SUCCESS:
+        case constants.SETS_POST_SUCCESS:
             return create(state, payload)
 
-        case types.SETS_POST_FAILURE:
+        case constants.SETS_POST_FAILURE:
             return failure(state, error)
 
-        case types.SETS_PUT_REQUEST:
+        case constants.SETS_PUT_REQUEST:
             return putRequest(state, meta.id)
 
-        case types.SETS_PUT_SUCCESS:
+        case constants.SETS_PUT_SUCCESS:
             return update(state, payload)
 
-        case types.SETS_PUT_FAILURE:
+        case constants.SETS_PUT_FAILURE:
             return failure(state, error)
 
-        case types.SETS_DELETE_REQUEST:
+        case constants.SETS_DELETE_REQUEST:
             return deleteRequest(state, meta.id)
 
-        case types.SETS_DELETE_SUCCESS:
+        case constants.SETS_DELETE_SUCCESS:
             return remove(state, meta.id)
 
-        case types.SETS_DELETE_FAILURE:
+        case constants.SETS_DELETE_FAILURE:
             return failure(state, error)
 
         default:

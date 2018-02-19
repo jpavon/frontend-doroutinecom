@@ -9,6 +9,7 @@ import { updateWorkout, createWorkout, removeWorkout } from 'data/workouts/actio
 import { workoutSelector } from 'data/workouts/selectors'
 import { STATUS_LOADED, STATUS_DELETING } from 'data/utils'
 import { fetchWorkoutsData } from 'data/globals'
+import { WorkoutType } from 'data/workouts/types'
 
 import ExercisesContainer from 'containers/ExercisesContainer'
 
@@ -22,7 +23,7 @@ class WorkoutContainer extends Component {
     static propTypes = {
         workoutId: PropTypes.number.isRequired,
 
-        workout: PropTypes.object,
+        workout: WorkoutType,
         isStatusLoaded: PropTypes.bool.isRequired,
         isDeleting: PropTypes.bool.isRequired,
 

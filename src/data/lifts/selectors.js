@@ -1,8 +1,6 @@
 import { createSelector } from 'reselect'
 
-import Lift from 'data/lifts/schema'
-
-const formatLift = (lift) => Lift({
+const formatLift = (lift) => ({
     ...lift
 })
 

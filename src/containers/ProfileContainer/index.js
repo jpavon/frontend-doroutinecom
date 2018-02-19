@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 
 import { workoutsGraphDataSelector } from 'data/graphs/selectors'
 import { topSetsSelector } from 'data/sets/selectors'
+import { WorkoutsGraphType } from 'data/graphs/types'
+import { TopLiftSetsType } from 'data/sets/types'
 
 import Profile from 'components/Profile'
 import Graph from 'components/Graph'
@@ -14,8 +16,8 @@ import NoData from 'components/NoData'
 class ProfileContainer extends Component {
 
     static propTypes = {
-        graphData: PropTypes.object.isRequired,
-        topSets: PropTypes.array.isRequired,
+        workoutsGraphData: WorkoutsGraphType,
+        topSets: TopLiftSetsType,
         weightMeasure: PropTypes.string
     }
 
@@ -33,7 +35,7 @@ class ProfileContainer extends Component {
                     title="Weekly Workouts"
                 />
                 <Graph
-                    data={this.props.graphData}
+                    data={this.props.workoutsGraphData}
                 />
                 <TopNav
                     title="Recent Top Sets"
@@ -54,7 +56,7 @@ class ProfileContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    graphData: workoutsGraphDataSelector(state),
+    workoutsGraphData: workoutsGraphDataSelector(state),
     topSets: topSetsSelector(state),
     weightMeasure: state.user.entity.weightMeasure
 })

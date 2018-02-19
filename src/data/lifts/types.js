@@ -1,17 +1,11 @@
-export const NAME = 'lifts'
+import PropTypes from 'prop-types'
 
-export const LIFTS_FETCH_REQUEST = `${NAME}/FETCH_REQUEST`
-export const LIFTS_FETCH_SUCCESS = `${NAME}/FETCH_SUCCESS`
-export const LIFTS_FETCH_FAILURE = `${NAME}/FETCH_FAILURE`
+export const LiftType = PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    userId: PropTypes.number.isRequired,
+    name: PropTypes.string,
+    createdAt: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string.isRequired
+})
 
-export const LIFTS_POST_REQUEST = `${NAME}/POST_REQUEST`
-export const LIFTS_POST_SUCCESS = `${NAME}/POST_SUCCESS`
-export const LIFTS_POST_FAILURE = `${NAME}/POST_FAILURE`
-
-export const LIFTS_PUT_REQUEST = `${NAME}/PUT_REQUEST`
-export const LIFTS_PUT_SUCCESS = `${NAME}/PUT_SUCCESS`
-export const LIFTS_PUT_FAILURE = `${NAME}/PUT_FAILURE`
-
-export const LIFTS_DELETE_REQUEST = `${NAME}/DELETE_REQUEST`
-export const LIFTS_DELETE_SUCCESS = `${NAME}/DELETE_SUCCESS`
-export const LIFTS_DELETE_FAILURE = `${NAME}/DELETE_FAILURE`
+export const LiftsType = PropTypes.arrayOf(LiftType)

@@ -1,4 +1,4 @@
-import * as types from 'data/routines/types'
+import * as constants from 'data/routines/constants'
 import * as helperTypes from 'data/utils'
 import {
     fetch,
@@ -21,40 +21,40 @@ const routines = (state = initialState, action) => {
     const { type, payload, error, meta } = action
 
     switch (type) {
-        case types.ROUTINES_FETCH_REQUEST:
+        case constants.ROUTINES_FETCH_REQUEST:
             return request(state)
 
-        case types.ROUTINES_FETCH_SUCCESS:
+        case constants.ROUTINES_FETCH_SUCCESS:
             return fetch(state, payload)
 
-        case types.ROUTINES_FETCH_FAILURE:
+        case constants.ROUTINES_FETCH_FAILURE:
             return failure(state, error)
 
-        case types.ROUTINES_POST_REQUEST:
+        case constants.ROUTINES_POST_REQUEST:
             return request(state)
 
-        case types.ROUTINES_POST_SUCCESS:
+        case constants.ROUTINES_POST_SUCCESS:
             return create(state, payload)
 
-        case types.ROUTINES_POST_FAILURE:
+        case constants.ROUTINES_POST_FAILURE:
             return failure(state, error)
 
-        case types.ROUTINES_PUT_REQUEST:
+        case constants.ROUTINES_PUT_REQUEST:
             return putRequest(state, meta.id)
 
-        case types.ROUTINES_PUT_SUCCESS:
+        case constants.ROUTINES_PUT_SUCCESS:
             return update(state, payload)
 
-        case types.ROUTINES_PUT_FAILURE:
+        case constants.ROUTINES_PUT_FAILURE:
             return failure(state, error)
 
-        case types.ROUTINES_DELETE_REQUEST:
+        case constants.ROUTINES_DELETE_REQUEST:
             return deleteRequest(state, meta.id)
 
-        case types.ROUTINES_DELETE_SUCCESS:
+        case constants.ROUTINES_DELETE_SUCCESS:
             return remove(state, meta.id)
 
-        case types.ROUTINES_DELETE_FAILURE:
+        case constants.ROUTINES_DELETE_FAILURE:
             return failure(state, error)
 
         default:

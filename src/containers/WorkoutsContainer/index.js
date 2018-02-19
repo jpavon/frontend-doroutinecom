@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { completedWorkoutsSelector, pendingWorkoutsSelector } from 'data/workouts/selectors'
+import { WorkoutsType } from 'data/workouts/types'
 
 import Workouts from 'components/Workouts/Workouts'
 import Workout from 'components/Workouts/Workout'
@@ -13,8 +13,8 @@ import Badge from 'components/Badge'
 class WorkoutsContainer extends Component {
 
     static propTypes = {
-        completedWorkouts: PropTypes.array.isRequired,
-        pendingWorkouts: PropTypes.array.isRequired,
+        completedWorkouts: WorkoutsType,
+        pendingWorkouts: WorkoutsType,
     }
 
     render() {

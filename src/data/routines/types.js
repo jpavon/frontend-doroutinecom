@@ -1,17 +1,17 @@
-export const NAME = 'routines'
+import PropTypes from 'prop-types'
 
-export const ROUTINES_FETCH_REQUEST = `${NAME}/FETCH_REQUEST`
-export const ROUTINES_FETCH_SUCCESS = `${NAME}/FETCH_SUCCESS`
-export const ROUTINES_FETCH_FAILURE = `${NAME}/FETCH_FAILURE`
+export const RoutineType = PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    userId: PropTypes.number.isRequired,
+    program: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string,
+        content: PropTypes.string
+    }),
+    name: PropTypes.string,
+    notes: PropTypes.string,
+    createdAt: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string.isRequired
+})
 
-export const ROUTINES_POST_REQUEST = `${NAME}/POST_REQUEST`
-export const ROUTINES_POST_SUCCESS = `${NAME}/POST_SUCCESS`
-export const ROUTINES_POST_FAILURE = `${NAME}/POST_FAILURE`
-
-export const ROUTINES_PUT_REQUEST = `${NAME}/PUT_REQUEST`
-export const ROUTINES_PUT_SUCCESS = `${NAME}/PUT_SUCCESS`
-export const ROUTINES_PUT_FAILURE = `${NAME}/PUT_FAILURE`
-
-export const ROUTINES_DELETE_REQUEST = `${NAME}/DELETE_REQUEST`
-export const ROUTINES_DELETE_SUCCESS = `${NAME}/DELETE_SUCCESS`
-export const ROUTINES_DELETE_FAILURE = `${NAME}/DELETE_FAILURE`
+export const RoutinesType = PropTypes.arrayOf(RoutineType)

@@ -9,6 +9,9 @@ import { liftSelector } from 'data/lifts/selectors'
 import { topLiftSetsSelector } from 'data/sets/selectors'
 import { updateLift, removeLift } from 'data/lifts/actions'
 import { STATUS_LOADED, STATUS_DELETING } from 'data/utils'
+import { LiftType } from 'data/lifts/types'
+import { TopLiftSetsType } from 'data/sets/types'
+import { LiftsGraphType } from 'data/graphs/types'
 
 import Lift from 'components/Lift'
 import SetsTable from 'components/SetsTable'
@@ -21,11 +24,11 @@ class LiftContainer extends Component {
     static propTypes = {
         liftId: PropTypes.number.isRequired,
 
-        lift: PropTypes.object,
+        lift: LiftType,
         isStatusLoaded: PropTypes.bool.isRequired,
         isDeleting: PropTypes.bool.isRequired,
-        liftGraphData: PropTypes.object.isRequired,
-        topLiftSets: PropTypes.array,
+        liftGraphData: LiftsGraphType,
+        topLiftSets: TopLiftSetsType,
         weightMeasure: PropTypes.string,
 
         updateLift: PropTypes.func.isRequired,
@@ -48,6 +51,7 @@ class LiftContainer extends Component {
     }
 
     render() {
+        console.log(this.props.liftGraphData)
         return this.props.lift ?
             <Fragment>
                 {this.props.lift.name &&

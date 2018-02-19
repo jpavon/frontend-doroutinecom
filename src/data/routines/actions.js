@@ -1,13 +1,13 @@
 import { CALL_API } from 'utils/apiMiddleware'
-import * as types from 'data/routines/types'
+import * as constants from 'data/routines/constants'
 import { shouldFetch } from 'data/utils'
 
 const getRoutines = () => ({
     [CALL_API]: {
         types: [
-            types.ROUTINES_FETCH_REQUEST,
-            types.ROUTINES_FETCH_SUCCESS,
-            types.ROUTINES_FETCH_FAILURE
+            constants.ROUTINES_FETCH_REQUEST,
+            constants.ROUTINES_FETCH_SUCCESS,
+            constants.ROUTINES_FETCH_FAILURE
         ],
         endpoint: 'routines',
         method: 'get'
@@ -15,16 +15,16 @@ const getRoutines = () => ({
 })
 
 export const fetchRoutines = (force = false) => (dispatch, getState) => {
-    return (force || shouldFetch(types.NAME, getState())) && dispatch(getRoutines())
+    return (force || shouldFetch(constants.NAME, getState())) && dispatch(getRoutines())
 }
 
 
 const postRoutine = (data) => ({
     [CALL_API]: {
         types: [
-            types.ROUTINES_POST_REQUEST,
-            types.ROUTINES_POST_SUCCESS,
-            types.ROUTINES_POST_FAILURE
+            constants.ROUTINES_POST_REQUEST,
+            constants.ROUTINES_POST_SUCCESS,
+            constants.ROUTINES_POST_FAILURE
         ],
         endpoint: 'routines',
         method: 'post',
@@ -39,9 +39,9 @@ export const createRoutine = (data) => (dispatch, getState) => {
 const putRoutine = (id, data) => ({
     [CALL_API]: {
         types: [
-            types.ROUTINES_PUT_REQUEST,
-            types.ROUTINES_PUT_SUCCESS,
-            types.ROUTINES_PUT_FAILURE
+            constants.ROUTINES_PUT_REQUEST,
+            constants.ROUTINES_PUT_SUCCESS,
+            constants.ROUTINES_PUT_FAILURE
         ],
         endpoint: `routines/${id}`,
         method: 'put',
@@ -59,9 +59,9 @@ export const updateRoutine = (id, data) => (dispatch, getState) => {
 const deleteRoutine = (id) => ({
     [CALL_API]: {
         types: [
-            types.ROUTINES_DELETE_REQUEST,
-            types.ROUTINES_DELETE_SUCCESS,
-            types.ROUTINES_DELETE_FAILURE
+            constants.ROUTINES_DELETE_REQUEST,
+            constants.ROUTINES_DELETE_SUCCESS,
+            constants.ROUTINES_DELETE_FAILURE
         ],
         endpoint: `routines/${id}`,
         method: 'delete',

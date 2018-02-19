@@ -2,9 +2,8 @@ import { createSelector } from 'reselect'
 
 import moment from 'utils/moment'
 import { formatDuration, longDateFormat } from 'utils/date'
-import Workout from 'data/workouts/schema'
 
-const formatWorkout = (workout) => Workout({
+const formatWorkout = (workout) => ({
     ...workout,
     duration: workout.completedAt && formatDuration(workout.startedAt, workout.completedAt),
     day: workout.completedAt && moment(workout.completedAt).format(longDateFormat)

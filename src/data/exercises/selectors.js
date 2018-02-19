@@ -1,22 +1,11 @@
 import { createSelector } from 'reselect'
 
-import Exercise from 'data/exercises/schema'
 import { completedWorkoutsSelector } from 'data/workouts/selectors'
 import { liftSelector } from 'data/lifts/selectors'
 
-const formatExercise = (exercise) => Exercise({
+const formatExercise = (exercise) => ({
     ...exercise
 })
-
-// export const exercisesSelector = (workoutId) => createSelector(
-//     [
-//         (state) => state.exercises.entities
-//     ],
-//     (exercises) => exercises
-//         .filter((exercise) => (exercise.workoutId === workoutId))
-//         .sort((a, b) => (a.order - b.order))
-//         .map((exercise) => formatExercise(exercise))
-// )
 
 export const exercisesRoutineSelector = (routineId) => createSelector(
     [

@@ -5,6 +5,7 @@ import store from 'store'
 
 import { updateUser, unauthUser } from 'data/user/actions'
 import { userSelector } from 'data/user/selectors'
+import { UserType } from 'data/user/types'
 
 import Settings from 'components/Settings'
 import TopNav from 'components/TopNav'
@@ -12,10 +13,7 @@ import TopNav from 'components/TopNav'
 class SettingsContainer extends Component {
 
     static propTypes = {
-        user: PropTypes.oneOfType([
-            PropTypes.bool,
-            PropTypes.object
-        ]).isRequired,
+        user: UserType,
         unauthUser: PropTypes.func.isRequired,
         updateUser: PropTypes.func.isRequired,
     }
