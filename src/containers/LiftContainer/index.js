@@ -51,7 +51,6 @@ class LiftContainer extends Component {
     }
 
     render() {
-        console.log(this.props.liftGraphData)
         return this.props.lift ?
             <Fragment>
                 {this.props.lift.name &&
