@@ -66,8 +66,8 @@ export const topLiftSetsSelector = (liftId) => createSelector(
     }
 )
 
-const round = (x) => {
-    const number = Math.ceil(x/2.5) * 2.5
+const round = (x, nearest = 0.5) => {
+    const number = Math.ceil(x/nearest) * nearest
     return number > 0 ? number : 0
 }
 
