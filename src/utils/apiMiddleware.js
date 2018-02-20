@@ -23,7 +23,7 @@ const callApi = (endpoint, method, data, store) => {
         return Promise.resolve(response.data)
     }).catch((err) => {
         if (err.response.data.message === 'Unauthenticated.') {
-            store.dispatch(unauthUser('An error ocurred, try to log in again.'))
+            store.dispatch(unauthUser('You need to log in for access to this page.'))
         }
 
         if (err.response.status > 500) {
