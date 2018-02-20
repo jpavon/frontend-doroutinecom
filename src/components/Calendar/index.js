@@ -104,7 +104,7 @@ class Calendar extends Component {
                             <div className="calendar-day">
                                 <div className="calendar-number">{day.displayDay}</div>
                                 {day.workouts && day.workouts.map((workout, i) => (
-                                    <Link key={i} to={`/workouts/${workout.id}`} className="calendar-workout">{workout.name}</Link>
+                                    <Link key={i} to={`/workouts/${workout.id}`} className="calendar-workout">{workout.displayName}</Link>
                                 ))}
                             </div>
                         </div>

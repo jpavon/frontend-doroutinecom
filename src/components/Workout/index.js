@@ -11,7 +11,7 @@ const WorkoutEdit = ({children, workout, update}) => (
         <div className="workout-routine-name">
             <div>Routine</div>
             <Button to={workout.routine && `/routines/${workout.routineId}`}>
-                {workout.routine ? workout.routine.name : workout.name}
+                {workout.displayName}
             </Button>
             {!workout.routine &&
                 <div className="workout-routine-name-deleted">Deleted</div>

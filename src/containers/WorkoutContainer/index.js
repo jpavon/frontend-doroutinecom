@@ -77,8 +77,8 @@ class WorkoutContainer extends Component {
     render() {
         return this.props.workout ?
             <Fragment>
-                {this.props.workout.name &&
-                    <Helmet><title>{this.props.workout.name}</title></Helmet>
+                {this.props.workout.displayName &&
+                    <Helmet><title>{this.props.workout.displayName}</title></Helmet>
                 }
                 <Alert
                     type={this.props.workout.completedAt ? "success" : "info"}

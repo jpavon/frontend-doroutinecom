@@ -4,12 +4,16 @@ import moment from 'utils/moment'
 import { formatDuration, longDateFormat } from 'utils/date'
 import { routinesSelector } from 'data/routines/selectors'
 
-const formatWorkout = (workout, routines) => ({
-    ...workout,
-    duration: workout.completedAt && formatDuration(workout.startedAt, workout.completedAt),
-    day: workout.completedAt && moment(workout.completedAt).format(longDateFormat),
-    routine: routines && routines.find((routine) => (routine.id === workout.routineId))
-})
+const formatWorkout = (workout, routines) => {
+    const routine = routines && routines.find((routine) => (routine.id === workout.routineId))
+    return {
+        ...workout,
+        displayName: routine ? routine.name : workout.name,
+        duration: workout.completedAt && formatDuration(workout.startedAt, workout.completedAt),
+        day: workout.completedAt && moment(workout.completedAt).format(longDateFormat),
+        routine
+    }
+}
 
 export const workoutSelector = (id) => createSelector(
     [
@@ -27,10 +31,11 @@ export const workoutSelector = (id) => createSelector(
 
 export const workoutsSelector = createSelector(
     [
-        (state) => state.workouts.entities
+        (state) => state.workouts.entities,
+        routinesSelector
     ],
-    (workouts) => workouts
-        .map((workout) => formatWorkout(workout))
+    (workouts, routines) => workouts
+        .map((workout) => formatWorkout(workout, routines))
 )
 
 export const completedWorkoutsSelector = createSelector(

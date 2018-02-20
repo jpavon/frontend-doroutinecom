@@ -14,6 +14,7 @@ export const WorkoutType = PropTypes.shape(PropTypesAir.forbidExtraProps({
     createdAt: PropTypes.string.isRequired,
     updatedAt: PropTypes.string.isRequired,
 
+    displayName: PropTypes.string,
     day: PropTypes.string,
     duration: PropTypes.string,
     routine: RoutineType
