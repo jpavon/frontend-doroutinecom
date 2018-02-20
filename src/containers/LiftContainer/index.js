@@ -37,7 +37,7 @@ class LiftContainer extends Component {
 
     componentDidMount() {
         if (this.props.isStatusLoaded && !this.props.lift) {
-            history.push('/lifts')
+            history.replace('/lifts')
         }
     }
 

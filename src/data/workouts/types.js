@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types'
+import PropTypesAir from 'airbnb-prop-types'
 
-export const WorkoutType = PropTypes.shape({
+import { RoutineType } from 'data/routines/types'
+
+export const WorkoutType = PropTypes.shape(PropTypesAir.forbidExtraProps({
     id: PropTypes.number.isRequired,
     userId: PropTypes.number.isRequired,
     routineId: PropTypes.number,
@@ -10,6 +13,10 @@ export const WorkoutType = PropTypes.shape({
     notes: PropTypes.string,
     createdAt: PropTypes.string.isRequired,
     updatedAt: PropTypes.string.isRequired,
-})
+
+    day: PropTypes.string,
+    duration: PropTypes.string,
+    routine: RoutineType
+}))
 
 export const WorkoutsType = PropTypes.arrayOf(WorkoutType)

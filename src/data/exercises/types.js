@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
+import PropTypesAir from 'airbnb-prop-types'
 
-export const ExerciseType = PropTypes.shape({
+export const ExerciseType = PropTypes.shape(PropTypesAir.forbidExtraProps({
     id: PropTypes.number.isRequired,
     userId: PropTypes.number.isRequired,
     liftId: PropTypes.number,
@@ -9,7 +10,7 @@ export const ExerciseType = PropTypes.shape({
     order: PropTypes.number,
     createdAt: PropTypes.string.isRequired,
     updatedAt: PropTypes.string.isRequired,
-})
+}))
 
 export const ExercisesType = PropTypes.arrayOf(ExerciseType)
 

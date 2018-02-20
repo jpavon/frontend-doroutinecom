@@ -1,79 +1,32 @@
 @import "variables.scss";
 
-.workout-name {
-    font-size: 1.6rem;
-    text-align: center;
-    margin-bottom: $spacing * 2;
+.workout-routine-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing;
+    background-color: rgba(76, 144, 194, 0.05);
+    font-size: 1.1rem;
+
+    .button {
+        display: inline-block;
+        padding: 0;
+        margin-left: $spacing;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+}
+
+.workout-routine-name-deleted {
+    margin-left: $spacing;
+    margin-top: 3px;
+    color: $color-danger;
+    font-size: .8rem;
+}
+
+.workout-dates {
+    margin-top: $spacing;
 }
 
 .workout-notes {
-    margin-left: $spacing;
 }
-
-// form
-
-// .workout-top {
-//     display: flex;
-//     position: relative;
-//     background-color: #333;
-//     padding: $spacing-small;
-//     transition: background-color .2s;
-//     border-bottom: 2px solid transparent;
-
-//     &.workout-top--is-completed {
-//         background-color: $color-primary;
-//         border-color: darken($color-primary, 10%);
-//     }
-// }
-
-// .workout-top-name {
-//     display: flex;
-
-//     label {
-//         align-self: center;
-//         text-align: center;
-//         margin: 0;
-//         margin-left: $spacing-small;
-//         margin-right: $spacing-small * 2;
-//         white-space: nowrap;
-//     }
-// }
-
-// .workout-top-input {
-//     width: 100%;
-// }
-
-// .workout-top-checkbox {
-//     display: flex;
-//     cursor: pointer;
-//     margin-bottom: 0;
-//     margin-left: $spacing-small * 2;
-
-//     > span {
-//         align-self: center;
-//     }
-// }
-
-// .workout-top-checkbox-text {
-//     margin-right: .4rem;
-//     display: inline-block;
-//     color: #555;
-//     align-self: center;
-//     user-select: none;
-
-//     .workout-top--is-completed & {
-//         color: $color-font;
-//     }
-// }
-
-// .workout-notes {
-//     position: relative;
-//     margin-top: 1rem;
-//     padding: $spacing-small;
-
-//     label {
-//         margin: 0;
-//         margin-bottom: .2rem;
-//         margin-left: $spacing-small;;
-//     }
-// }

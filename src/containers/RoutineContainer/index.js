@@ -34,7 +34,7 @@ class RoutineContainer extends Component {
 
     componentDidMount() {
         if (this.props.isStatusLoaded && !this.props.routine) {
-            history.push('/routines')
+            history.replace('/routines')
         }
     }
 

@@ -35,7 +35,7 @@ class WorkoutContainer extends Component {
 
     componentDidMount() {
         if (this.props.isStatusLoaded && !this.props.workout) {
-            history.push('/workouts')
+            history.replace('/workouts')
         }
     }
 

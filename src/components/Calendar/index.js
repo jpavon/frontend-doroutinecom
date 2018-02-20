@@ -60,8 +60,6 @@ class Calendar extends Component {
             ))
         }))
 
-        // console.log(this.state, this.props.monthlyWorkouts, formatedDays, currentMonthWorkouts)
-
         return (
             <div className="calendar-wrapper">
                 <div className="row row--calendar">

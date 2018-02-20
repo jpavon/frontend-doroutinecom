@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
+import PropTypesAir from 'airbnb-prop-types'
 
-export const UserType = PropTypes.shape({
+export const UserType = PropTypes.shape(PropTypesAir.forbidExtraProps({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
@@ -10,4 +11,4 @@ export const UserType = PropTypes.shape({
     dateFormat: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
     updatedAt: PropTypes.string.isRequired
-})
+}))

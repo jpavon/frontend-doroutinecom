@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
+import PropTypesAir from 'airbnb-prop-types'
 import Moment from 'moment'
 
-export const SetType = PropTypes.shape({
+export const SetType = PropTypes.shape(PropTypesAir.forbidExtraProps({
     id: PropTypes.number.isRequired,
     userId: PropTypes.number.isRequired,
     exerciseId: PropTypes.number.isRequired,
@@ -10,11 +11,11 @@ export const SetType = PropTypes.shape({
     isCompleted: PropTypes.bool.isRequired,
     createdAt: PropTypes.string.isRequired,
     updatedAt: PropTypes.string.isRequired,
-})
+}))
 
 export const SetsType = PropTypes.arrayOf(SetType)
 
-export const TopLiftSetsType = PropTypes.arrayOf(PropTypes.shape({
+export const TopLiftSetsType = PropTypes.arrayOf(PropTypes.shape(PropTypesAir.forbidExtraProps({
     workoutId: PropTypes.number.isRequired,
     liftId: PropTypes.number.isRequired,
     lift: PropTypes.string,
@@ -23,4 +24,4 @@ export const TopLiftSetsType = PropTypes.arrayOf(PropTypes.shape({
     rm: PropTypes.number.isRequired,
     weight: PropTypes.number.isRequired,
     completedAt: PropTypes.string.isRequired,
-}))
+})))

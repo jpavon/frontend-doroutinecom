@@ -1,5 +1,4 @@
 const dataTypes = (types, data) => {
-    // console.log(types, data)
     if (process.env.NODE_ENV !== 'production') {
         const struct = require('superstruct').struct
         const Struct = struct(types).validate(data)
