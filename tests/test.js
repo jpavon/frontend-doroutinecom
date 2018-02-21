@@ -269,6 +269,7 @@ describe('create workout from routine', async () => {
         workoutsLength++
         await page.waitForSelector('.workout')
 
+        await expectSelectorToContainText(page, '.workout-routine-name', global.ROUTINE.name)
         await expectSelectorToContainText(page, '.alert', '00:0')
         await expectSelectorToContainText(page, '.workout', global.SET.weight)
         await expectSelectorToContainText(page, '.workout', global.SET.reps)

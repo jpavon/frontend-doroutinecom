@@ -1,22 +1,25 @@
-export const NAME = 'exercises'
+import PropTypes from 'prop-types'
+import PropTypesAir from 'airbnb-prop-types'
 
-export const EXERCISES_FETCH_REQUEST = `${NAME}/FETCH_REQUEST`
-export const EXERCISES_FETCH_SUCCESS = `${NAME}/FETCH_SUCCESS`
-export const EXERCISES_FETCH_FAILURE = `${NAME}/FETCH_FAILURE`
+export const ExerciseType = PropTypes.shape(PropTypesAir.forbidExtraProps({
+    id: PropTypes.number.isRequired,
+    userId: PropTypes.number.isRequired,
+    liftId: PropTypes.number,
+    workoutId: PropTypes.number,
+    routineId: PropTypes.number,
+    order: PropTypes.number,
+    createdAt: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string.isRequired,
+}))
 
-export const EXERCISES_POST_REQUEST = `${NAME}/POST_REQUEST`
-export const EXERCISES_POST_SUCCESS = `${NAME}/POST_SUCCESS`
-export const EXERCISES_POST_FAILURE = `${NAME}/POST_FAILURE`
+export const ExercisesType = PropTypes.arrayOf(ExerciseType)
 
-export const EXERCISES_PUT_REQUEST = `${NAME}/PUT_REQUEST`
-export const EXERCISES_PUT_SUCCESS = `${NAME}/PUT_SUCCESS`
-export const EXERCISES_PUT_FAILURE = `${NAME}/PUT_FAILURE`
+export const ExerciseRoutineAndWorkoutIdType = (props, propName, componentName) => {
+    if (!props.routineId && !props.workoutId) {
+        return new Error(`One of props 'routineId' or 'workoutId' was not specified in '${componentName}'.`);
+    }
 
-export const EXERCISES_ORDER_PUT_REQUEST = `${NAME}/ORDER_PUT_REQUEST`
-export const EXERCISES_ORDER_PUT_SUCCESS = `${NAME}/ORDER_PUT_SUCCESS`
-export const EXERCISES_ORDER_PUT_FAILURE = `${NAME}/ORDER_PUT_FAILURE`
-export const EXERCISES_ORDER = `${NAME}/ORDER`
-
-export const EXERCISES_DELETE_REQUEST = `${NAME}/DELETE_REQUEST`
-export const EXERCISES_DELETE_SUCCESS = `${NAME}/DELETE_SUCCESS`
-export const EXERCISES_DELETE_FAILURE = `${NAME}/DELETE_FAILURE`
+    if (props.routineId && props.workoutId) {
+        return new Error(`Only one 'routineId' or 'workoutId' needs to be specified in '${componentName}'.`);
+    }
+}

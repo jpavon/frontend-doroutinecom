@@ -10,6 +10,7 @@ import { createWorkout } from 'data/workouts/actions'
 import { routineSelector } from 'data/routines/selectors'
 import { STATUS_LOADED, STATUS_DELETING } from 'data/utils'
 import { fetchWorkoutsData } from 'data/globals'
+import { RoutineType } from 'data/routines/types'
 
 import ExercisesContainer from 'containers/ExercisesContainer'
 
@@ -21,7 +22,7 @@ class RoutineContainer extends Component {
     static propTypes = {
         routineId: PropTypes.number.isRequired,
 
-        routine: PropTypes.object,
+        routine: RoutineType,
         isStatusLoaded: PropTypes.bool.isRequired,
         isDeleting: PropTypes.bool.isRequired,
 
@@ -33,7 +34,7 @@ class RoutineContainer extends Component {
 
     componentDidMount() {
         if (this.props.isStatusLoaded && !this.props.routine) {
-            history.push('/routines')
+            history.replace('/routines')
         }
     }
 

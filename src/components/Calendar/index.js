@@ -60,8 +60,6 @@ class Calendar extends Component {
             ))
         }))
 
-        // console.log(this.state, this.props.monthlyWorkouts, formatedDays, currentMonthWorkouts)
-
         return (
             <div className="calendar-wrapper">
                 <div className="row row--calendar">
@@ -106,7 +104,7 @@ class Calendar extends Component {
                             <div className="calendar-day">
                                 <div className="calendar-number">{day.displayDay}</div>
                                 {day.workouts && day.workouts.map((workout, i) => (
-                                    <Link key={i} to={`/workouts/${workout.id}`} className="calendar-workout">{workout.name}</Link>
+                                    <Link key={i} to={`/workouts/${workout.id}`} className="calendar-workout">{workout.displayName}</Link>
                                 ))}
                             </div>
                         </div>

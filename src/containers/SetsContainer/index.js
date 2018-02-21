@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 import { createSet, updateSet, removeSet } from 'data/sets/actions'
 import { setsExerciseSelector, previouslyCompletedSetsSelector } from 'data/sets/selectors'
 import { STATUS_DELETING } from 'data/utils'
+import { SetsType } from 'data/sets/types'
+import { UserType } from 'data/user/types'
+import { StatusType } from 'data/types'
 
 import Sets from 'components/Sets/Sets'
 import Set from 'components/Sets/Set'
@@ -18,10 +21,10 @@ class SetsContainer extends Component {
         toggleRemoveButtons: PropTypes.func.isRequired,
         isRemoveButtonsVisible: PropTypes.bool.isRequired,
 
-        sets: PropTypes.array.isRequired,
-        entitiesStatus: PropTypes.object.isRequired,
-        user: PropTypes.object.isRequired,
-        previouslyCompletedSets: PropTypes.array,
+        sets: SetsType,
+        entitiesStatus: PropTypes.objectOf(StatusType),
+        user: UserType,
+        previouslyCompletedSets: SetsType,
 
         createSet: PropTypes.func.isRequired,
         updateSet: PropTypes.func.isRequired,

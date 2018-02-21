@@ -1,17 +1,27 @@
-export const NAME = 'sets'
+import PropTypes from 'prop-types'
+import PropTypesAir from 'airbnb-prop-types'
+import Moment from 'moment'
 
-export const SETS_FETCH_REQUEST = `${NAME}/FETCH_REQUEST`
-export const SETS_FETCH_SUCCESS = `${NAME}/FETCH_SUCCESS`
-export const SETS_FETCH_FAILURE = `${NAME}/FETCH_FAILURE`
+export const SetType = PropTypes.shape(PropTypesAir.forbidExtraProps({
+    id: PropTypes.number.isRequired,
+    userId: PropTypes.number.isRequired,
+    exerciseId: PropTypes.number.isRequired,
+    reps: PropTypes.number,
+    weight: PropTypes.number,
+    isCompleted: PropTypes.bool.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string.isRequired,
+}))
 
-export const SETS_POST_REQUEST = `${NAME}/POST_REQUEST`
-export const SETS_POST_SUCCESS = `${NAME}/POST_SUCCESS`
-export const SETS_POST_FAILURE = `${NAME}/POST_FAILURE`
+export const SetsType = PropTypes.arrayOf(SetType)
 
-export const SETS_PUT_REQUEST = `${NAME}/PUT_REQUEST`
-export const SETS_PUT_SUCCESS = `${NAME}/PUT_SUCCESS`
-export const SETS_PUT_FAILURE = `${NAME}/PUT_FAILURE`
-
-export const SETS_DELETE_REQUEST = `${NAME}/DELETE_REQUEST`
-export const SETS_DELETE_SUCCESS = `${NAME}/DELETE_SUCCESS`
-export const SETS_DELETE_FAILURE = `${NAME}/DELETE_FAILURE`
+export const TopLiftSetsType = PropTypes.arrayOf(PropTypes.shape(PropTypesAir.forbidExtraProps({
+    workoutId: PropTypes.number.isRequired,
+    liftId: PropTypes.number.isRequired,
+    lift: PropTypes.string,
+    moment: PropTypes.instanceOf(Moment),
+    reps: PropTypes.number.isRequired,
+    rm: PropTypes.number.isRequired,
+    weight: PropTypes.number.isRequired,
+    completedAt: PropTypes.string.isRequired,
+})))

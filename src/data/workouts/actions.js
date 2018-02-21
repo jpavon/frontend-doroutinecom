@@ -1,13 +1,13 @@
 import { CALL_API } from 'utils/apiMiddleware'
-import * as types from 'data/workouts/types'
+import * as constants from 'data/workouts/constants'
 import { shouldFetch } from 'data/utils'
 
 const getWorkouts = () => ({
     [CALL_API]: {
         types: [
-            types.WORKOUTS_FETCH_REQUEST,
-            types.WORKOUTS_FETCH_SUCCESS,
-            types.WORKOUTS_FETCH_FAILURE
+            constants.WORKOUTS_FETCH_REQUEST,
+            constants.WORKOUTS_FETCH_SUCCESS,
+            constants.WORKOUTS_FETCH_FAILURE
         ],
         endpoint: 'workouts',
         method: 'get'
@@ -15,16 +15,16 @@ const getWorkouts = () => ({
 })
 
 export const fetchWorkouts = (force = false) => (dispatch, getState) => {
-    return (force || shouldFetch(types.NAME, getState())) && dispatch(getWorkouts())
+    return (force || shouldFetch(constants.NAME, getState())) && dispatch(getWorkouts())
 }
 
 
 const postWorkout = (data) => ({
     [CALL_API]: {
         types: [
-            types.WORKOUTS_POST_REQUEST,
-            types.WORKOUTS_POST_SUCCESS,
-            types.WORKOUTS_POST_FAILURE
+            constants.WORKOUTS_POST_REQUEST,
+            constants.WORKOUTS_POST_SUCCESS,
+            constants.WORKOUTS_POST_FAILURE
         ],
         endpoint: 'workouts',
         method: 'post',
@@ -39,9 +39,9 @@ export const createWorkout = (data) => (dispatch, getState) => {
 const putWorkout = (id, data) => ({
     [CALL_API]: {
         types: [
-            types.WORKOUTS_PUT_REQUEST,
-            types.WORKOUTS_PUT_SUCCESS,
-            types.WORKOUTS_PUT_FAILURE
+            constants.WORKOUTS_PUT_REQUEST,
+            constants.WORKOUTS_PUT_SUCCESS,
+            constants.WORKOUTS_PUT_FAILURE
         ],
         endpoint: `workouts/${id}`,
         method: 'put',
@@ -59,9 +59,9 @@ export const updateWorkout = (id, data) => (dispatch, getState) => {
 const deleteWorkout = (id) => ({
     [CALL_API]: {
         types: [
-            types.WORKOUTS_DELETE_REQUEST,
-            types.WORKOUTS_DELETE_SUCCESS,
-            types.WORKOUTS_DELETE_FAILURE
+            constants.WORKOUTS_DELETE_REQUEST,
+            constants.WORKOUTS_DELETE_SUCCESS,
+            constants.WORKOUTS_DELETE_FAILURE
         ],
         endpoint: `workouts/${id}`,
         method: 'delete',

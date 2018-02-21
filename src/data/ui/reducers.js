@@ -1,4 +1,4 @@
-import * as types from 'data/ui/types'
+import * as constants from 'data/ui/constants'
 
 const initialState = {
     isLoading: false,
@@ -11,19 +11,19 @@ const ui = (state = initialState, action) => {
     const { type, alert } = action
 
     switch (type) {
-        case types.SHOW_LOADING:
+        case constants.SHOW_LOADING:
             return {
                 ...state,
                 isLoading: true
             }
 
-        case types.REMOVE_LOADING:
+        case constants.REMOVE_LOADING:
             return {
                 ...state,
                 isLoading: false
             }
 
-        case types.SHOW_ALERT:
+        case constants.SHOW_ALERT:
             return {
                 ...state,
                 alert: {
@@ -32,19 +32,19 @@ const ui = (state = initialState, action) => {
                 }
             }
 
-        case types.REMOVE_ALERT:
+        case constants.REMOVE_ALERT:
             return {
                 ...state,
                 alert: null
             }
 
-        case types.SET_SERVER_ERROR:
+        case constants.SET_SERVER_ERROR:
             return {
                 ...state,
                 isServerError: true
             }
 
-        case types.SET_OFFLINE:
+        case constants.SET_OFFLINE:
             return {
                 ...state,
                 isOffline: true

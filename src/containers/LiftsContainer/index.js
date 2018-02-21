@@ -6,6 +6,7 @@ import history from 'utils/history'
 import { liftsSelector } from 'data/lifts/selectors'
 import { createLift, updateLift, removeLift } from 'data/lifts/actions'
 import { STATUS_LOADING } from 'data/utils'
+import { LiftsType } from 'data/lifts/types'
 
 import Lifts from 'components/Lifts/Lifts'
 import Lift from 'components/Lifts/Lift'
@@ -15,7 +16,7 @@ import TopNav from 'components/TopNav'
 class LiftsContainer extends Component {
 
     static propTypes = {
-        lifts: PropTypes.array.isRequired,
+        lifts: LiftsType,
         isLoading: PropTypes.bool.isRequired,
 
         createLift: PropTypes.func.isRequired,

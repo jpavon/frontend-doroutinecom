@@ -1,19 +1,19 @@
-import * as types from 'data/ui/types'
+import * as constants from 'data/ui/constants'
 import scrollTo from 'utils/scrollTo'
 
 export const showLoading = () => ({
-    type: types.SHOW_LOADING
+    type: constants.SHOW_LOADING
 })
 
 export const removeLoading = () => ({
-    type: types.REMOVE_LOADING
+    type: constants.REMOVE_LOADING
 })
 
 export const showAlert = (type, message) => (dispatch, getState) => {
     scrollTo('alert', { tolerance: 15 })
 
     return dispatch({
-        type: types.SHOW_ALERT,
+        type: constants.SHOW_ALERT,
         alert: {
             type,
             message
@@ -22,13 +22,13 @@ export const showAlert = (type, message) => (dispatch, getState) => {
 }
 
 export const removeAlert = () => ({
-    type: types.REMOVE_ALERT
+    type: constants.REMOVE_ALERT
 })
 
 export const setServerError = () => ({
-    type: types.SET_SERVER_ERROR
+    type: constants.SET_SERVER_ERROR
 })
 
 export const setOffline = () => ({
-    type: types.SET_OFFLINE
+    type: constants.SET_OFFLINE
 })

@@ -1,4 +1,4 @@
-import * as types from 'data/exercises/types'
+import * as constants from 'data/exercises/constants'
 import * as helperTypes from 'data/utils'
 import {
     fetch,
@@ -21,43 +21,43 @@ const exercises = (state = initialState, action) => {
     const { type, payload, error, meta } = action
 
     switch (type) {
-        case types.EXERCISES_FETCH_REQUEST:
+        case constants.EXERCISES_FETCH_REQUEST:
             return request(state)
 
-        case types.EXERCISES_FETCH_SUCCESS:
+        case constants.EXERCISES_FETCH_SUCCESS:
             return fetch(state, payload)
 
-        case types.EXERCISES_FETCH_FAILURE:
+        case constants.EXERCISES_FETCH_FAILURE:
             return failure(state, error)
 
-        case types.EXERCISES_POST_REQUEST:
+        case constants.EXERCISES_POST_REQUEST:
             return request(state)
 
-        case types.EXERCISES_POST_SUCCESS:
+        case constants.EXERCISES_POST_SUCCESS:
             return create(state, payload)
 
-        case types.EXERCISES_POST_FAILURE:
+        case constants.EXERCISES_POST_FAILURE:
             return failure(state, error)
 
-        case types.EXERCISES_PUT_REQUEST:
+        case constants.EXERCISES_PUT_REQUEST:
             return putRequest(state, meta.id)
 
-        case types.EXERCISES_PUT_SUCCESS:
+        case constants.EXERCISES_PUT_SUCCESS:
             return update(state, payload)
 
-        case types.EXERCISES_PUT_FAILURE:
+        case constants.EXERCISES_PUT_FAILURE:
             return failure(state, error)
 
-        case types.EXERCISES_DELETE_REQUEST:
+        case constants.EXERCISES_DELETE_REQUEST:
             return deleteRequest(state, meta.id)
 
-        case types.EXERCISES_DELETE_SUCCESS:
+        case constants.EXERCISES_DELETE_SUCCESS:
             return remove(state, meta.id)
 
-        case types.EXERCISES_DELETE_FAILURE:
+        case constants.EXERCISES_DELETE_FAILURE:
             return failure(state, error)
 
-        case types.EXERCISES_ORDER:
+        case constants.EXERCISES_ORDER:
             const ids = action.ids
             return {
                 ...state,
@@ -78,3 +78,4 @@ const exercises = (state = initialState, action) => {
 }
 
 export default exercises
+

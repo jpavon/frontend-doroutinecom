@@ -2,12 +2,11 @@ import { createSelector } from 'reselect'
 
 import moment from 'utils/moment'
 import { dateFormat } from 'utils/date'
-import Set from 'data/sets/schema'
 import { completedExercisesSelector, completedExercisesLiftSelector } from 'data/exercises/selectors'
 import { completedWorkoutsSelector } from 'data/workouts/selectors'
 import { liftsSelector } from 'data/lifts/selectors'
 
-const formatSet = (set) => Set({
+const formatSet = (set) => ({
     ...set
 })
 
@@ -67,8 +66,8 @@ export const topLiftSetsSelector = (liftId) => createSelector(
     }
 )
 
-const round = (x) => {
-    const number = Math.ceil(x/2.5) * 2.5
+const round = (x, nearest = 0.5) => {
+    const number = Math.ceil(x/nearest) * nearest
     return number > 0 ? number : 0
 }
 

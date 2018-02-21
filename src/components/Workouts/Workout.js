@@ -10,7 +10,7 @@ const Workout = ({children, workout}) => (
             </div>
         }
         <div className="workouts-workout-name">
-            {workout.name || 'No workout name set.'}
+            {workout.displayName || 'No workout name set.'}
         </div>
     </ListItem>
 )

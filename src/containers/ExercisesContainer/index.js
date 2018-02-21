@@ -6,6 +6,9 @@ import { createExercise, updateExercise, removeExercise } from 'data/exercises/a
 import { exercisesRoutineSelector, exercisesWorkoutSelector } from 'data/exercises/selectors'
 import { liftsSelector } from 'data/lifts/selectors'
 import { STATUS_DELETING } from 'data/utils'
+import { ExercisesType, ExerciseRoutineAndWorkoutIdType } from 'data/exercises/types'
+import { LiftsType } from 'data/lifts/types'
+import { StatusType } from 'data/types'
 
 import SetsContainer from 'containers/SetsContainer'
 
@@ -14,25 +17,15 @@ import TopNav from 'components/TopNav'
 import Exercises from 'components/Exercises/Exercises'
 import Exercise from 'components/Exercises/Exercise'
 
-const routineWorkoutValidation = (props, propName, componentName) => {
-    if (!props.routineId && !props.workoutId) {
-        return new Error(`One of props 'routineId' or 'workoutId' was not specified in '${componentName}'.`);
-    }
-
-    if (props.routineId && props.workoutId) {
-        return new Error(`Only one 'routineId' or 'workoutId' needs to be specified in '${componentName}'.`);
-    }
-}
-
 class ExercisesContainer extends Component {
 
     static propTypes = {
-        routineId: routineWorkoutValidation,
-        workoutId: routineWorkoutValidation,
+        routineId: ExerciseRoutineAndWorkoutIdType,
+        workoutId: ExerciseRoutineAndWorkoutIdType,
 
-        exercises: PropTypes.array.isRequired,
-        lifts: PropTypes.array.isRequired,
-        entitiesStatus: PropTypes.object.isRequired,
+        exercises: ExercisesType,
+        lifts: LiftsType,
+        entitiesStatus: PropTypes.objectOf(StatusType),
 
         createExercise: PropTypes.func.isRequired,
         updateExercise: PropTypes.func.isRequired,

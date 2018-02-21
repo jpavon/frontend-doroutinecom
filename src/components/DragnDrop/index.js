@@ -41,8 +41,6 @@ class DragnDrop extends Component {
             result.destination.index
         )
 
-        // console.log(result)
-
         this.props.updateOrder({ ids: children.map(item => item.props.id) })
     }
 

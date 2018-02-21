@@ -1,8 +1,6 @@
 import { createSelector } from 'reselect'
 
-import Routine from 'data/routines/schema'
-
-const formatRoutine = (routine) => Routine({
+const formatRoutine = (routine) => ({
     ...routine
 })
 

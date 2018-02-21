@@ -7,6 +7,7 @@ import { createRoutine } from 'data/routines/actions'
 import { routinesSelector, defaultRoutinesSelector } from 'data/routines/selectors'
 import { STATUS_LOADING } from 'data/utils'
 import { showAlert } from 'data/ui/actions'
+import { RoutinesType } from 'data/routines/types'
 
 import Routines from 'components/Routines/Routines'
 import Routine from 'components/Routines/Routine'
@@ -17,8 +18,8 @@ import Info from 'components/Info'
 class RoutinesContainer extends Component {
 
     static propTypes = {
-        routines: PropTypes.array.isRequired,
-        defaultRoutines: PropTypes.array.isRequired,
+        routines: RoutinesType,
+        defaultRoutines: RoutinesType,
         isLoading: PropTypes.bool.isRequired,
 
         createRoutine: PropTypes.func.isRequired,

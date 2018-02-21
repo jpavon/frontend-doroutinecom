@@ -1,13 +1,13 @@
 import { CALL_API } from 'utils/apiMiddleware'
-import * as types from 'data/sets/types'
+import * as constants from 'data/sets/constants'
 import { shouldFetch } from 'data/utils'
 
 const getSets = () => ({
     [CALL_API]: {
         types: [
-            types.SETS_FETCH_REQUEST,
-            types.SETS_FETCH_SUCCESS,
-            types.SETS_FETCH_FAILURE
+            constants.SETS_FETCH_REQUEST,
+            constants.SETS_FETCH_SUCCESS,
+            constants.SETS_FETCH_FAILURE
         ],
         endpoint: 'sets',
         method: 'get'
@@ -15,16 +15,16 @@ const getSets = () => ({
 })
 
 export const fetchSets = (force = false) => (dispatch, getState) => {
-    return (force || shouldFetch(types.NAME, getState())) && dispatch(getSets())
+    return (force || shouldFetch(constants.NAME, getState())) && dispatch(getSets())
 }
 
 
 const postSet = (exerciseId) => ({
     [CALL_API]: {
         types: [
-            types.SETS_POST_REQUEST,
-            types.SETS_POST_SUCCESS,
-            types.SETS_POST_FAILURE
+            constants.SETS_POST_REQUEST,
+            constants.SETS_POST_SUCCESS,
+            constants.SETS_POST_FAILURE
         ],
         endpoint: 'sets',
         method: 'post',
@@ -41,9 +41,9 @@ export const createSet = (exerciseId) => (dispatch, getState) => {
 const putSet = (id, data) => ({
     [CALL_API]: {
         types: [
-            types.SETS_PUT_REQUEST,
-            types.SETS_PUT_SUCCESS,
-            types.SETS_PUT_FAILURE
+            constants.SETS_PUT_REQUEST,
+            constants.SETS_PUT_SUCCESS,
+            constants.SETS_PUT_FAILURE
         ],
         endpoint: `sets/${id}`,
         method: 'put',
@@ -61,9 +61,9 @@ export const updateSet = (id, data) => (dispatch, getState) => {
 const deleteSet = (id) => ({
     [CALL_API]: {
         types: [
-            types.SETS_DELETE_REQUEST,
-            types.SETS_DELETE_SUCCESS,
-            types.SETS_DELETE_FAILURE
+            constants.SETS_DELETE_REQUEST,
+            constants.SETS_DELETE_SUCCESS,
+            constants.SETS_DELETE_FAILURE
         ],
         endpoint: `sets/${id}`,
         method: 'delete',
