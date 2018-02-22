@@ -1,5 +1,4 @@
 import * as React from 'react'
-// import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { loginUser, authUser } from 'data/user/actions'
@@ -20,11 +19,6 @@ interface Props {
 
 class LoginContainer extends React.Component<Props> {
 
-    // static propTypes = {
-    //     loginUser: PropTypes.func.isRequired,
-    //     authUser: PropTypes.func.isRequired,
-    //     showAlert: PropTypes.func.isRequired
-    // }
     email: HTMLInputElement
     password: HTMLInputElement
 

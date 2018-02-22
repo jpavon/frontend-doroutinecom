@@ -1,14 +1,30 @@
-import React from 'react'
-import classNames from 'classnames'
+import * as React from 'react'
+import * as classNames from 'classnames'
 
 import Button from 'components/Button'
 
-import arrowLeftIcon  from 'media/arrow-left.svg'
+import arrowLeftIcon from 'media/arrow-left.svg'
 
 import './style.css'
 
-const TopNav = ({title, leftLabel, rightLabel, left, right}) => (
-    <div className={classNames(
+interface ButtonTypes {
+    to?: string
+    className?: string
+    onClick?: (e: React.FormEvent<HTMLInputElement>) => void
+    danger?: boolean
+}
+
+interface Props {
+    title?: string
+    leftLabel?: string
+    rightLabel?: string
+    left?: ButtonTypes
+    right?: ButtonTypes
+}
+
+const TopNav = ({title, leftLabel = 'Back', rightLabel = 'Edit', left, right}: Props) => (
+    <div
+        className={classNames(
             'top-nav',
             !title && 'top-nav--no-title'
         )}
@@ -16,7 +32,7 @@ const TopNav = ({title, leftLabel, rightLabel, left, right}) => (
         {left &&
             <Button {...left} className={`top-nav-left ${left.className}`}>
                 <img src={arrowLeftIcon} alt="Back" />
-                {leftLabel || 'Back'}
+                {leftLabel}
             </Button>
         }
         {title &&
@@ -26,7 +42,7 @@ const TopNav = ({title, leftLabel, rightLabel, left, right}) => (
         }
         {right &&
             <Button {...right} className={`top-nav-right ${right.className}`}>
-                {rightLabel || 'Edit'}
+                {rightLabel}
             </Button>
         }
     </div>

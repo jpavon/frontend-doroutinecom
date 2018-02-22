@@ -1,30 +1,33 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import { connect } from 'react-redux'
 import store from 'store'
 
 import { updateUser, unauthUser } from 'data/user/actions'
 import { userSelector } from 'data/user/selectors'
-import { UserType } from 'data/user/types'
+import { FormatedUser, UserState } from 'data/user/types'
 
 import Settings from 'components/Settings'
 import TopNav from 'components/TopNav'
 
-class SettingsContainer extends Component {
+interface Props {
+    user: FormatedUser | null,
+    unauthUser: () => void
+    updateUser: (user: {}) => void
+}
 
-    static propTypes = {
-        user: UserType,
-        unauthUser: PropTypes.func.isRequired,
-        updateUser: PropTypes.func.isRequired,
-    }
+class SettingsContainer extends React.Component<Props> {
 
-    handleUnauthUser = (event) => {
+    handleUnauthUser = (event: React.FormEvent<HTMLInputElement>) => {
         event.preventDefault()
 
         this.props.unauthUser()
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps: Props) {
+        if (!nextProps.user || !this.props.user) {
+            return
+        }
+
         if (nextProps.user.startOfWeek && nextProps.user.startOfWeek !== this.props.user.startOfWeek) {
             store.set('startOfWeek', nextProps.user.startOfWeek)
             window.location.reload(true)
@@ -37,9 +40,9 @@ class SettingsContainer extends Component {
     }
 
     render() {
-        return (
-            this.props.user &&
-                <Fragment>
+        return this.props.user &&
+            (
+                <>
                     <TopNav
                         title="General"
                         left={{
@@ -58,19 +61,27 @@ class SettingsContainer extends Component {
                             className: 'logout'
                         }}
                     />
-                </Fragment>
-        )
+                </>
+            )
     }
 }
 
-const mapStateToProps = (state, props) => ({
+interface StateToProps {
+    user: Props['user']
+}
+
+const mapStateToProps = (state: UserState, props: Props): StateToProps => ({
     user: userSelector(state)
 })
 
-const mapDispatchToProps = {
+interface DispatchFromProps {
+    updateUser: Props['updateUser']
+    unauthUser: Props['unauthUser']
+}
+
+const mapDispatchToProps: DispatchFromProps = {
     updateUser,
     unauthUser
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsContainer)
