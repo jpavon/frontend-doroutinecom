@@ -83,7 +83,7 @@ export default store => next => action => {
             meta
         })))
         .catch((error) => {
-            if (error.errors) {
+            if (error && error.errors) {
                 return next(actionWith({
                     type: failureType,
                     error

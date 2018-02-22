@@ -19,9 +19,10 @@ export const fetchAppData = () => (dispatch, getState) => {
         dispatch(fetchLifts()),
         dispatch(fetchSets())
     ]).then(([user]) => {
-        if (user.payload.startOfWeek !== store.get('startOfWeek') ||
-            user.payload.dateFormat !== store.get('dateFormat')) {
-
+        if (user && user.payload &&
+            (user.payload.startOfWeek !== store.get('startOfWeek') ||
+            user.payload.dateFormat !== store.get('dateFormat'))
+        ) {
             store.set('startOfWeek', user.payload.startOfWeek)
             store.set('dateFormat', user.payload.dateFormat)
 
