@@ -3,11 +3,11 @@ import * as classNames from 'classnames'
 
 import Button from 'components/Button'
 
-import arrowLeftIcon from 'media/arrow-left.svg'
-
 import './style.css'
 
-interface ButtonTypes {
+const arrowLeftIcon = require('media/arrow-left.svg')
+
+interface ButtonType {
     to?: string
     className?: string
     onClick?: (e: React.FormEvent<HTMLInputElement>) => void
@@ -18,8 +18,8 @@ interface Props {
     title?: string
     leftLabel?: string
     rightLabel?: string
-    left?: ButtonTypes
-    right?: ButtonTypes
+    left?: ButtonType
+    right?: ButtonType
 }
 
 const TopNav = ({title, leftLabel = 'Back', rightLabel = 'Edit', left, right}: Props) => (
