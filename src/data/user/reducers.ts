@@ -1,4 +1,4 @@
-import store from 'store'
+import * as store from 'store'
 
 import * as constants from 'data/user/constants'
 import * as helperTypes from 'data/utils'
@@ -6,14 +6,16 @@ import {
     request,
     failure
 } from 'data/utils'
+import { UserState } from 'data/user/types'
+import { Action } from 'data/types'
 
-const initialState = {
+const initialState: UserState = {
     fetchStatus: helperTypes.STATUS_NONE,
-    entity: {},
-    isAuth: !!store.get('token')
+    isAuth: !!store.get('token'),
+    entity: {}
 }
 
-const user = (state = initialState, action) => {
+const user = (state = initialState, action: Action): UserState => {
     const { type, payload, error } = action
 
     switch (type) {

@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect'
-import { UserState, User, FormatedUser } from 'data/user/types'
+import { User, FormatedUser } from 'data/user/types'
+import { RootState } from 'data/types'
 
 const formatUser = (user: User): FormatedUser => ({
     ...user
@@ -7,7 +8,7 @@ const formatUser = (user: User): FormatedUser => ({
 
 export const userSelector = createSelector(
     [
-        (state: UserState) => state.user.entity
+        (state: RootState) => state.user.entity
     ],
     (user: User) => Object.keys(user).length > 0 ? formatUser(user) : null
 )

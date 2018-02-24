@@ -51,6 +51,7 @@
     "react-textarea-autosize": "^5.2.1",
     "react-transition-group": "^2.2.1",
     "redux": "^3.7.2",
+    "redux-saga": "^0.16.0",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "seamless-immutable": "^7.1.2",

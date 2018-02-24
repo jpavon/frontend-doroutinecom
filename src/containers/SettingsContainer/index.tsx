@@ -4,15 +4,16 @@ import store from 'store'
 
 import { updateUser, unauthUser } from 'data/user/actions'
 import { userSelector } from 'data/user/selectors'
-import { FormatedUser, UserState } from 'data/user/types'
+import { FormatedUser } from 'data/user/types'
+import { RootState } from 'data/types'
 
 import Settings from 'components/Settings'
 import TopNav from 'components/TopNav'
 
 interface Props {
     user: FormatedUser | null,
-    unauthUser: () => void
-    updateUser: (user: {}) => void
+    unauthUser: (error?: string) => void
+    updateUser: (id: number, user: {}) => void
 }
 
 class SettingsContainer extends React.Component<Props> {
@@ -70,7 +71,7 @@ interface StateToProps {
     user: Props['user']
 }
 
-const mapStateToProps = (state: UserState, props: Props): StateToProps => ({
+const mapStateToProps = (state: RootState, props: Props): StateToProps => ({
     user: userSelector(state)
 })
 
