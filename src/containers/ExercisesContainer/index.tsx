@@ -5,9 +5,7 @@ import { createExercise, updateExercise, removeExercise } from 'data/exercises/a
 import { exercisesRoutineSelector, exercisesWorkoutSelector } from 'data/exercises/selectors'
 import { liftsSelector } from 'data/lifts/selectors'
 import { STATUS_DELETING } from 'data/utils'
-// import { ExercisesType, ExerciseRoutineAndWorkoutIdType } from 'data/exercises/types'
-// import { LiftsType } from 'data/lifts/types'
-// import { StatusType } from 'data/types'
+
 import { FormatedExercise } from 'data/exercises/types'
 import { FormatedLift } from 'data/lifts/types'
 import { RootState, IEntitiesStatus } from 'data/types'

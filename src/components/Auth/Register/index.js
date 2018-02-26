@@ -5,7 +5,7 @@ import Field from 'components/Field'
 
 import './style.css'
 
-const Login = ({handleSubmit, errors, setRef}) => (
+const Login = ({handleSubmit, setRef}) => (
     <Auth className="register" handleSubmit={handleSubmit}>
         <Field
             uncontrolled

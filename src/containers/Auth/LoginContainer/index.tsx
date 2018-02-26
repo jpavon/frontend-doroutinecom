@@ -18,7 +18,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
-    login: (data: {email: string, password: string}) => {}
+    login: (data: {email: string, password: string}) => void
     authUser: (token: string) => void
     showAlert: (type: string, message: string[]) => void
 }

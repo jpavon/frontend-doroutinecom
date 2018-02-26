@@ -3,7 +3,7 @@ import React from 'react'
 import Auth from 'components/Auth'
 import Field from 'components/Field'
 
-const PasswordForgotten = ({handleSubmit, errors, success, setRef}) => (
+const PasswordForgotten = ({handleSubmit, setRef}) => (
     <Auth className="password-forgotten" handleSubmit={handleSubmit}>
         <Field
             uncontrolled

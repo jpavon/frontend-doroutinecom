@@ -3,7 +3,7 @@ import React from 'react'
 import Auth from 'components/Auth'
 import Field from 'components/Field'
 
-const PasswordReset = ({handleSubmit, errors, success, setRef}) => (
+const PasswordReset = ({handleSubmit, setRef}) => (
     <Auth className="password-reset" handleSubmit={handleSubmit}>
         <Field
             uncontrolled
