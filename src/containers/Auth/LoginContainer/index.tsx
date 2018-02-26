@@ -11,11 +11,19 @@ import Login from 'components/Auth/Login'
 //     payload: { token: string }
 // }
 
-interface Props {
+interface OwnProps {
+}
+
+interface StateProps {
+}
+
+interface DispatchProps {
     login: (data: {email: string, password: string}) => {}
     authUser: (token: string) => void
     showAlert: (type: string, message: string[]) => void
 }
+
+interface Props extends OwnProps, StateProps, DispatchProps {}
 
 class LoginContainer extends React.Component<Props> {
 
@@ -25,7 +33,7 @@ class LoginContainer extends React.Component<Props> {
     handleSubmit = (event: React.FormEvent<HTMLInputElement>): void => {
         event.preventDefault()
 
-        const log = this.props.login({
+        this.props.login({
             email: this.email.value,
             password: this.password.value
         })
@@ -38,8 +46,6 @@ class LoginContainer extends React.Component<Props> {
         //                this.props.authUser(resp.payload.token)
         //            }
         //        })
-
-        console.log(log)
     }
 
     setRef = (ref: HTMLInputElement, name: 'email' | 'password'): void => {
@@ -61,8 +67,8 @@ class LoginContainer extends React.Component<Props> {
 // const mapStateToProps = () => ({
 // })
 
-const mapDispatchToProps: Props = {
-    login,
+const mapDispatchToProps: DispatchProps = {
+    login: login.request,
     authUser,
     showAlert
 }

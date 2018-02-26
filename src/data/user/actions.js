@@ -39,17 +39,27 @@ export const updateUser = (id, data) => (dispatch, getState) => {
     return dispatch(putUser(id, data))
 }
 
-export const login = ({email, password}) => ({
-    type: constants.USER_LOGIN_REQUEST,
-    options: {
-        endpoint: 'login',
-        method: 'post',
-        data: {
-            email,
-            password
+export const login = {
+    request: ({email, password}) => ({
+        type: constants.USER_LOGIN_REQUEST,
+        options: {
+            endpoint: 'login',
+            method: 'post',
+            data: {
+                email,
+                password
+            }
         }
-    }
-})
+    }),
+    success: (payload) => ({
+        type: constants.USER_LOGIN_SUCCESS,
+        payload
+    }),
+    failure: (payload) => ({
+        type: constants.USER_LOGIN_FAILURE,
+        error: payload
+    })
+}
 
 const loginUserAction = ({email, password}) => ({
     [CALL_API]: {

@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
+// import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
@@ -9,7 +9,9 @@ import { updateWorkout, createWorkout, removeWorkout } from 'data/workouts/actio
 import { workoutSelector } from 'data/workouts/selectors'
 import { STATUS_LOADED, STATUS_DELETING } from 'data/utils'
 import { fetchWorkoutsData } from 'data/globals'
-import { WorkoutType } from 'data/workouts/types'
+// import { WorkoutType } from 'data/workouts/types'
+import { FormatedWorkout } from 'data/workouts/types'
+import { RootState } from 'data/types'
 
 import ExercisesContainer from 'containers/ExercisesContainer'
 
@@ -18,20 +20,34 @@ import TopNav from 'components/TopNav'
 import Workout from 'components/Workout'
 import Timer from 'components/Timer'
 
-class WorkoutContainer extends Component {
+// interface Response {
+//     error: { errors: string[] }
+//     payload: {
+//         id: number
+//         token: string
+//     }
+// }
 
-    static propTypes = {
-        workoutId: PropTypes.number.isRequired,
+interface OwnProps {
+    workoutId: number
+}
 
-        workout: WorkoutType,
-        isStatusLoaded: PropTypes.bool.isRequired,
-        isDeleting: PropTypes.bool.isRequired,
+interface StateProps {
+    workout?: FormatedWorkout | null
+    isStatusLoaded: boolean
+    isDeleting: boolean
+}
 
-        updateWorkout: PropTypes.func.isRequired,
-        createWorkout: PropTypes.func.isRequired,
-        removeWorkout: PropTypes.func.isRequired,
-        fetchWorkoutsData: PropTypes.func.isRequired,
-    }
+interface DispatchProps {
+    updateWorkout: (id: number, data: {}) => void
+    createWorkout: (data: {}) => void
+    removeWorkout: (id: number) => void
+    fetchWorkoutsData: () => void
+}
+
+interface Props extends OwnProps, StateProps, DispatchProps {}
+
+class WorkoutContainer extends React.Component<Props> {
 
     componentDidMount() {
         if (this.props.isStatusLoaded && !this.props.workout) {
@@ -40,56 +56,67 @@ class WorkoutContainer extends Component {
     }
 
     handleCompleted = () => {
-        this.props.updateWorkout(this.props.workout.id, {
-            completedAt: now()
-        })
+        if (this.props.workout) {
+            this.props.updateWorkout(this.props.workout.id, {
+                completedAt: now()
+            })
+        }
     }
 
     handleRestart = () => {
-        this.props.updateWorkout(this.props.workout.id, {
-            startedAt: now(),
-            completedAt: null
-        })
+        if (this.props.workout) {
+            this.props.updateWorkout(this.props.workout.id, {
+                startedAt: now(),
+                completedAt: null
+            })
+        }
     }
 
     handleCreate = () => {
-        this.props.createWorkout({
-            routineId: this.props.workout.routineId,
-            workoutId: this.props.workout.id,
-            startedAt: now()
-        }).then((resp) => {
-            this.props.fetchWorkoutsData()
-                .then(() => {
-                    history.push(`/workouts/${resp.payload.id}`)
-                })
-        })
+        if (this.props.workout) {
+            this.props.createWorkout({
+                routineId: this.props.workout.routineId,
+                workoutId: this.props.workout.id,
+                startedAt: now()
+            })
+        }
+        // .then((resp) => {
+        //     this.props.fetchWorkoutsData()
+        //         .then(() => {
+        //             history.push(`/workouts/${resp.payload.id}`)
+        //         })
+        // })
     }
 
     handleRemove = () => {
         if (window.confirm('Are you sure you want to delete this workout?')) {
-            this.props.removeWorkout(this.props.workout.id)
-                .then(() => {
-                    history.push('/workouts')
-                })
+            if (this.props.workout) {
+                this.props.removeWorkout(this.props.workout.id)
+            }
+                // .then(() => {
+                //     history.push('/workouts')
+                // })
         }
     }
 
     render() {
-        return this.props.workout ?
-            <Fragment>
+        return this.props.workout ? (
+            <>
                 {this.props.workout.displayName &&
-                    <Helmet><title>{this.props.workout.displayName}</title></Helmet>
+                    <Helmet>
+                        <title>{this.props.workout.displayName}</title>
+                    </Helmet>
                 }
                 <Alert
-                    type={this.props.workout.completedAt ? "success" : "info"}
+                    type={this.props.workout.completedAt ? 'success' : 'info'}
                     message={
                         this.props.workout.completedAt ?
-                            (<Fragment>
+                            (<>
                                 Completed {this.props.workout.duration && 'in ' + this.props.workout.duration}
-                            </Fragment>) :
-                            (<Fragment>
+                            </>) :
+                            (<>
                                 In Progress <Timer start={this.props.workout.startedAt} />
-                            </Fragment>)
+                            </>)
                     }
                     size="small"
                     animate={false}
@@ -100,8 +127,8 @@ class WorkoutContainer extends Component {
                         to: `/workouts`
                     }}
                     rightLabel={this.props.workout.completedAt ?
-                        "Restart" :
-                        "Completed"
+                        'Restart' :
+                        'Completed'
                     }
                     right={this.props.workout.completedAt ?
                         {
@@ -127,7 +154,6 @@ class WorkoutContainer extends Component {
                     update={this.props.updateWorkout}
                 >
                     <ExercisesContainer
-                        routineId={this.props.routineId}
                         workoutId={this.props.workoutId}
                     />
                 </Workout>
@@ -140,23 +166,22 @@ class WorkoutContainer extends Component {
                         className: 'workout-button-remove'
                     }}
                 />
-            </Fragment>
-        : null
+            </>
+        ) : null
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state: RootState, props: Props): StateProps => ({
     workout: workoutSelector(props.workoutId)(state),
     isStatusLoaded: state.workouts.fetchStatus === STATUS_LOADED,
     isDeleting: state.workouts.entitiesStatus[props.workoutId] === STATUS_DELETING
 })
 
-const mapDispatchToProps = {
+const mapDispatchToProps: DispatchProps = {
     createWorkout,
     updateWorkout,
     removeWorkout,
     fetchWorkoutsData
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(WorkoutContainer)

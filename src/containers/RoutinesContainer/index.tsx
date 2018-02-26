@@ -1,13 +1,14 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import { connect } from 'react-redux'
 
-import history from 'utils/history'
+// import history from 'utils/history'
 import { createRoutine } from 'data/routines/actions'
 import { routinesSelector, defaultRoutinesSelector } from 'data/routines/selectors'
 import { STATUS_LOADING } from 'data/utils'
 import { showAlert } from 'data/ui/actions'
-import { RoutinesType } from 'data/routines/types'
+
+import { RootState } from 'data/types'
+import { FormatedRoutine } from 'data/routines/types'
 
 import Routines from 'components/Routines/Routines'
 import Routine from 'components/Routines/Routine'
@@ -15,27 +16,34 @@ import NoData from 'components/NoData'
 import TopNav from 'components/TopNav'
 import Info from 'components/Info'
 
-class RoutinesContainer extends Component {
+interface OwnProps {
+}
 
-    static propTypes = {
-        routines: RoutinesType,
-        defaultRoutines: RoutinesType,
-        isLoading: PropTypes.bool.isRequired,
+interface StateProps {
+    routines: FormatedRoutine[]
+    defaultRoutines: FormatedRoutine[]
+    isLoading: boolean
+}
 
-        createRoutine: PropTypes.func.isRequired,
-        showAlert: PropTypes.func.isRequired,
-    }
+interface DispatchProps {
+    createRoutine: () => void
+    showAlert: () => void
+}
+
+interface Props extends OwnProps, StateProps, DispatchProps {}
+
+class RoutinesContainer extends React.Component<Props> {
 
     handleCreate = () => {
         this.props.createRoutine()
-            .then((resp) => {
-                history.push(`/routines/${resp.payload.id}`)
-            })
+            // .then((resp) => {
+            //     history.push(`/routines/${resp.payload.id}`)
+            // })
     }
 
     render() {
         return (
-            <Fragment>
+            <>
                 <TopNav
                     title="Your Routines"
                     rightLabel="Create"
@@ -59,7 +67,7 @@ class RoutinesContainer extends Component {
                     }
                 </Routines>
                 {this.props.defaultRoutines.length > 0 &&
-                    <Fragment>
+                    <>
                         <TopNav
                             title="PPL"
                         />
@@ -72,23 +80,22 @@ class RoutinesContainer extends Component {
                                 />
                             ))}
                         </Routines>
-                    </Fragment>
+                    </>
                 }
-            </Fragment>
+            </>
         )
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
     routines: routinesSelector(state),
     defaultRoutines: defaultRoutinesSelector(state),
     isLoading: state.routines.fetchStatus === STATUS_LOADING,
 })
 
-const mapDispatchToProps = {
+const mapDispatchToProps: DispatchProps = {
     createRoutine,
     showAlert
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoutinesContainer)

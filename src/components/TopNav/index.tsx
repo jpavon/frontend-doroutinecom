@@ -12,10 +12,11 @@ interface ButtonType {
     className?: string
     onClick?: (e: React.FormEvent<HTMLInputElement>) => void
     danger?: boolean
+    disabled?: boolean
 }
 
 interface Props {
-    title?: string
+    title?: string | React.ReactNode
     leftLabel?: string
     rightLabel?: string
     left?: ButtonType

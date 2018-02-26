@@ -1,14 +1,16 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { createExercise, updateExercise, removeExercise } from 'data/exercises/actions'
 import { exercisesRoutineSelector, exercisesWorkoutSelector } from 'data/exercises/selectors'
 import { liftsSelector } from 'data/lifts/selectors'
 import { STATUS_DELETING } from 'data/utils'
-import { ExercisesType, ExerciseRoutineAndWorkoutIdType } from 'data/exercises/types'
-import { LiftsType } from 'data/lifts/types'
-import { StatusType } from 'data/types'
+// import { ExercisesType, ExerciseRoutineAndWorkoutIdType } from 'data/exercises/types'
+// import { LiftsType } from 'data/lifts/types'
+// import { StatusType } from 'data/types'
+import { FormatedExercise } from 'data/exercises/types'
+import { FormatedLift } from 'data/lifts/types'
+import { RootState, IEntitiesStatus } from 'data/types'
 
 import SetsContainer from 'containers/SetsContainer'
 
@@ -17,29 +19,42 @@ import TopNav from 'components/TopNav'
 import Exercises from 'components/Exercises/Exercises'
 import Exercise from 'components/Exercises/Exercise'
 
-class ExercisesContainer extends Component {
+interface OwnProps {
+    routineId?: number
+    workoutId?: number
+}
 
-    static propTypes = {
-        routineId: ExerciseRoutineAndWorkoutIdType,
-        workoutId: ExerciseRoutineAndWorkoutIdType,
+interface StateProps {
+    exercises: FormatedExercise[]
+    lifts: FormatedLift[]
+    entitiesStatus: IEntitiesStatus
+}
 
-        exercises: ExercisesType,
-        lifts: LiftsType,
-        entitiesStatus: PropTypes.objectOf(StatusType),
+interface DispatchProps {
+    createExercise: (data: {routineId?: number, workoutId?: number }) => void
+    updateExercise: (id: number, data: {}) => void
+    removeExercise: () => void
+}
 
-        createExercise: PropTypes.func.isRequired,
-        updateExercise: PropTypes.func.isRequired,
-        removeExercise: PropTypes.func.isRequired,
-    }
+interface Props extends OwnProps, StateProps, DispatchProps {}
 
-    constructor(props) {
+interface State {
+    isRemoveButtonsVisible: boolean
+}
+
+class ExercisesContainer extends React.Component<Props, State> {
+
+    isRoutine: boolean
+    isWorkout: boolean
+
+    constructor(props: Props) {
         super(props)
 
-        this.isRoutine = !!this.props.routineId
-        this.isWorkout = !!this.props.workoutId
+        this.isRoutine = !!props.routineId
+        this.isWorkout = !!props.workoutId
 
         this.state = {
-            isRemoveButtonsVisible: this.isRoutine ? true : false
+            isRemoveButtonsVisible: !!props.routineId ? true : false,
         }
     }
 
@@ -53,11 +68,13 @@ class ExercisesContainer extends Component {
         const data = {}
 
         if (this.isRoutine) {
-            data.routineId = this.props.routineId
+            /* tslint:disable:no-string-literal */
+            data['routineId'] = this.props.routineId
         }
 
         if (this.isWorkout) {
-            data.workoutId = this.props.workoutId
+            /* tslint:disable:no-string-literal */
+            data['workoutId'] = this.props.workoutId
         }
 
         this.props.createExercise(data)
@@ -65,7 +82,7 @@ class ExercisesContainer extends Component {
 
     render() {
         return (
-            <Fragment>
+            <>
                 <TopNav
                     title="Exercises"
                 />
@@ -75,7 +92,6 @@ class ExercisesContainer extends Component {
                     {this.props.exercises.length > 0 ?
                         this.props.exercises.map((exercise, i) => (
                             <Exercise
-                                id={exercise.id}
                                 key={exercise.id}
                                 exercise={exercise}
                                 lifts={this.props.lifts}
@@ -98,12 +114,12 @@ class ExercisesContainer extends Component {
                         />
                     }
                 </Exercises>
-            </Fragment>
+            </>
         )
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
     exercises: props.routineId ?
         exercisesRoutineSelector(props.routineId)(state) :
         exercisesWorkoutSelector(props.workoutId)(state),
@@ -111,10 +127,10 @@ const mapStateToProps = (state, props) => ({
     entitiesStatus: state.exercises.entitiesStatus,
 })
 
-const mapDispatchToProps = {
+const mapDispatchToProps: DispatchProps = {
     createExercise,
     updateExercise,
-    removeExercise,
+    removeExercise
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExercisesContainer)

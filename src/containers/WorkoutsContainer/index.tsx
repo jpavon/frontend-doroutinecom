@@ -1,8 +1,10 @@
-import React, { Component, Fragment } from 'react'
+import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { completedWorkoutsSelector, pendingWorkoutsSelector } from 'data/workouts/selectors'
-import { WorkoutsType } from 'data/workouts/types'
+
+import { FormatedWorkout } from 'data/workouts/types'
+import { RootState } from 'data/types'
 
 import Workouts from 'components/Workouts/Workouts'
 import Workout from 'components/Workouts/Workout'
@@ -10,21 +12,29 @@ import NoData from 'components/NoData'
 import TopNav from 'components/TopNav'
 import Badge from 'components/Badge'
 
-class WorkoutsContainer extends Component {
+interface OwnProps {
+}
 
-    static propTypes = {
-        completedWorkouts: WorkoutsType,
-        pendingWorkouts: WorkoutsType,
-    }
+interface StateProps {
+    completedWorkouts: FormatedWorkout[]
+    pendingWorkouts: FormatedWorkout[]
+}
+
+interface DispatchProps {
+}
+
+interface Props extends OwnProps, StateProps, DispatchProps {}
+
+class WorkoutsContainer extends React.Component<Props> {
 
     render() {
         return (
-            <Fragment>
+            <>
                 <TopNav
                     title={(
-                        <Fragment>
+                        <>
                             In Progress <Badge number={this.props.pendingWorkouts.length} />
-                        </Fragment>
+                        </>
                     )}
                 />
                 <Workouts>
@@ -56,18 +66,17 @@ class WorkoutsContainer extends Component {
                         />
                     }
                 </Workouts>
-            </Fragment>
+            </>
         )
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
     completedWorkouts: completedWorkoutsSelector(state),
     pendingWorkouts: pendingWorkoutsSelector(state),
 })
 
 const mapDispatchToProps = {
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(WorkoutsContainer)

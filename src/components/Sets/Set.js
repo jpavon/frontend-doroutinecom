@@ -7,7 +7,7 @@ import Button from 'components/Button'
 import Checkbox from 'components/AutoSaveForm/Checkbox'
 import Label from 'components/Form/Label'
 
-const Set = ({index, set, routine, update, remove, isDeleting, isWorkout, isRemoveButtonsVisible, previousSet}) => (
+const Set = ({index, set, update, remove, isDeleting, isRemoveButtonsVisible, previousSet}) => (
     <Fragment>
         <AutoSaveForm
             initialValues={set}

@@ -2,7 +2,7 @@ import React from 'react'
 
 import ListItem from 'components/ListItem'
 
-const Workout = ({children, workout}) => (
+const Workout = ({workout}) => (
     <ListItem to={`/workouts/${workout.id}`} className="workouts-workout">
         {workout.day &&
             <div className="workouts-workout-day">

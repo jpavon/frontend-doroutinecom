@@ -1,4 +1,4 @@
-import { Status } from 'data/types'
+import { FetchStatus } from 'data/types'
 
 export interface User {
     id: number
@@ -17,7 +17,7 @@ export interface FormatedUser extends User {
 }
 
 export interface UserState {
-    fetchStatus: Status
+    fetchStatus: FetchStatus
     isAuth: boolean
-    entity: User | {}
+    entity: User | null
 }

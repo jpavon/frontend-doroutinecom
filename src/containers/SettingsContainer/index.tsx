@@ -10,11 +10,19 @@ import { RootState } from 'data/types'
 import Settings from 'components/Settings'
 import TopNav from 'components/TopNav'
 
-interface Props {
+interface OwnProps {
+}
+
+interface StateProps {
     user: FormatedUser | null,
+}
+
+interface DispatchProps {
     unauthUser: (error?: string) => void
     updateUser: (id: number, user: {}) => void
 }
+
+interface Props extends OwnProps, StateProps, DispatchProps {}
 
 class SettingsContainer extends React.Component<Props> {
 
@@ -67,20 +75,11 @@ class SettingsContainer extends React.Component<Props> {
     }
 }
 
-interface StateToProps {
-    user: Props['user']
-}
-
-const mapStateToProps = (state: RootState, props: Props): StateToProps => ({
+const mapStateToProps = (state: RootState, props: Props): StateProps => ({
     user: userSelector(state)
 })
 
-interface DispatchFromProps {
-    updateUser: Props['updateUser']
-    unauthUser: Props['unauthUser']
-}
-
-const mapDispatchToProps: DispatchFromProps = {
+const mapDispatchToProps: DispatchProps = {
     updateUser,
     unauthUser
 }

@@ -1,35 +1,41 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { createSet, updateSet, removeSet } from 'data/sets/actions'
 import { setsExerciseSelector, previouslyCompletedSetsSelector } from 'data/sets/selectors'
 import { STATUS_DELETING } from 'data/utils'
-import { SetsType } from 'data/sets/types'
-import { UserType } from 'data/user/types'
-import { StatusType } from 'data/types'
+
+import { FormatedSet } from 'data/sets/types'
+import { FormatedUser } from 'data/user/types'
+import { RootState, IEntitiesStatus } from 'data/types'
 
 import Sets from 'components/Sets/Sets'
 import Set from 'components/Sets/Set'
 
-class SetsContainer extends Component {
+interface OwnProps {
+    exerciseId: number,
+    liftId?: number,
+    isWorkout: boolean,
+    toggleRemoveButtons: () => void,
+    isRemoveButtonsVisible: boolean,
+}
 
-    static propTypes = {
-        exerciseId: PropTypes.number.isRequired,
-        liftId: PropTypes.number,
-        isWorkout: PropTypes.bool.isRequired,
-        toggleRemoveButtons: PropTypes.func.isRequired,
-        isRemoveButtonsVisible: PropTypes.bool.isRequired,
+interface StateProps {
+    sets: FormatedSet[],
+    entitiesStatus: IEntitiesStatus,
+    user: FormatedUser | null,
+    previouslyCompletedSets?: FormatedSet[],
+}
 
-        sets: SetsType,
-        entitiesStatus: PropTypes.objectOf(StatusType),
-        user: UserType,
-        previouslyCompletedSets: SetsType,
+interface DispatchProps {
+    createSet: (data: {}) => void
+    updateSet: (id: number, data: {}) => void
+    removeSet: () => void
+}
 
-        createSet: PropTypes.func.isRequired,
-        updateSet: PropTypes.func.isRequired,
-        removeSet: PropTypes.func.isRequired,
-    }
+interface Props extends OwnProps, StateProps, DispatchProps {}
+
+class SetsContainer extends React.Component<Props> {
 
     render() {
         return (
@@ -58,14 +64,14 @@ class SetsContainer extends Component {
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
     sets: setsExerciseSelector(props.exerciseId)(state),
     entitiesStatus: state.sets.entitiesStatus,
     user: state.user.entity,
     previouslyCompletedSets: props.liftId && previouslyCompletedSetsSelector(props.exerciseId, props.liftId)(state),
 })
 
-const mapDispatchToProps = {
+const mapDispatchToProps: DispatchProps = {
     createSet,
     updateSet,
     removeSet

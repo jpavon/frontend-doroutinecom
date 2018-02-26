@@ -6,16 +6,20 @@ import {
     request,
     failure
 } from 'data/utils'
-import { UserState } from 'data/user/types'
+import { UserState, User } from 'data/user/types'
 import { Action } from 'data/types'
 
 const initialState: UserState = {
     fetchStatus: helperTypes.STATUS_NONE,
     isAuth: !!store.get('token'),
-    entity: {}
+    entity: null
 }
 
-const user = (state = initialState, action: Action): UserState => {
+interface UserAction extends Action {
+    payload: User
+}
+
+const user = (state = initialState, action: UserAction): UserState => {
     const { type, payload, error } = action
 
     switch (type) {
