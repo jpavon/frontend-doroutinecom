@@ -1,6 +1,8 @@
 // import { delay } from 'redux-saga';
 import { all, call, put, takeLatest, takeEvery } from 'redux-saga/effects'
-import store from 'store'
+import * as store from 'store'
+
+import { ApiAction } from 'data/types'
 
 import api from 'utils/api'
 import * as constants from 'data/user/constants'
@@ -15,16 +17,7 @@ import { fetchAppData } from 'data/globals'
 // import { fetchSets } from 'data/sets/actions'
 // import { showLoading, removeLoading } from 'data/ui/actions'
 
-interface Options {
-    type: string
-    options: {
-        endpoint: string
-        method: string
-        data?: object
-    }
-}
-
-export function* login(action: Options) {
+export function* login(action: ApiAction) {
     try {
         const payload = yield call(api, action.options)
 
@@ -64,7 +57,7 @@ export function* login(action: Options) {
 // }
 
 export function* authUser(action: {type: string, token: string}) {
-    yield call(store.set, 'token', action.token)
+    store.set('token', action.token)
 
     yield call(fetchAppData)
 }

@@ -1,22 +1,15 @@
 import * as store from 'store'
 
+import { UserState, UserAction } from 'data/user/types'
+
 import * as constants from 'data/user/constants'
 import * as helperTypes from 'data/utils'
-import {
-    request,
-    failure
-} from 'data/utils'
-import { UserState, User } from 'data/user/types'
-import { Action } from 'data/types'
+import { request, failure } from 'data/utils'
 
 const initialState: UserState = {
     fetchStatus: helperTypes.STATUS_NONE,
     isAuth: !!store.get('token'),
     entity: null
-}
-
-interface UserAction extends Action {
-    payload: User
 }
 
 const user = (state = initialState, action: UserAction): UserState => {

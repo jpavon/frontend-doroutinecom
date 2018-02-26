@@ -1,4 +1,4 @@
-import { FetchStatus } from 'data/types'
+import { FetchStatus, IApiError, Action } from 'data/types'
 
 export interface User {
     id: number
@@ -20,4 +20,9 @@ export interface UserState {
     fetchStatus: FetchStatus
     isAuth: boolean
     entity: User | null
+}
+
+export interface UserAction extends Action {
+    payload: User
+    error: IApiError
 }

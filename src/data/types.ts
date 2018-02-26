@@ -5,6 +5,7 @@ import { LiftsState } from 'data/lifts/types'
 import { RoutinesState } from 'data/routines/types'
 import { SetsState } from 'data/sets/types'
 import { WorkoutsState } from 'data/workouts/types'
+import { IApiOptions } from 'utils/api'
 
 // import {
 //     STATUS_NONE,
@@ -36,8 +37,17 @@ export type FetchStatus =
 
 export interface Action {
     type: string
-    payload: {}
-    error: {}
+}
+
+export interface ApiAction extends Action {
+    options: IApiOptions
+}
+
+export interface IApiError {
+    errors: {
+        [index: string]: string[]
+    }
+    message: string
 }
 
 export interface IEntitiesStatus {
