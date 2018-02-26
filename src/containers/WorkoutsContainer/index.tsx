@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { completedWorkoutsSelector, pendingWorkoutsSelector } from 'data/workouts/selectors'
+import { IFormatedWorkout } from 'data/workouts/types'
+import { IRootState } from 'data/types'
 
-import { FormatedWorkout } from 'data/workouts/types'
-import { RootState } from 'data/types'
+import { completedWorkoutsSelector, pendingWorkoutsSelector } from 'data/workouts/selectors'
 
 import Workouts from 'components/Workouts/Workouts'
 import Workout from 'components/Workouts/Workout'
@@ -12,20 +12,20 @@ import NoData from 'components/NoData'
 import TopNav from 'components/TopNav'
 import Badge from 'components/Badge'
 
-interface OwnProps {
+interface IOwnProps {
 }
 
-interface StateProps {
-    completedWorkouts: FormatedWorkout[]
-    pendingWorkouts: FormatedWorkout[]
+interface IStateProps {
+    completedWorkouts: IFormatedWorkout[]
+    pendingWorkouts: IFormatedWorkout[]
 }
 
-interface DispatchProps {
+interface IDispatchProps {
 }
 
-interface Props extends OwnProps, StateProps, DispatchProps {}
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
-class WorkoutsContainer extends React.Component<Props> {
+class WorkoutsContainer extends React.Component<IProps> {
 
     render() {
         return (
@@ -71,7 +71,7 @@ class WorkoutsContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
+const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     completedWorkouts: completedWorkoutsSelector(state),
     pendingWorkouts: pendingWorkoutsSelector(state),
 })

@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
+import { IRootState } from 'data/types'
+import { IFormatedRoutine } from 'data/routines/types'
+
 // import history from 'utils/history'
 import { createRoutine } from 'data/routines/actions'
 import { routinesSelector, defaultRoutinesSelector } from 'data/routines/selectors'
 import { STATUS_LOADING } from 'data/utils'
 import { showAlert } from 'data/ui/actions'
-
-import { RootState } from 'data/types'
-import { FormatedRoutine } from 'data/routines/types'
 
 import Routines from 'components/Routines/Routines'
 import Routine from 'components/Routines/Routine'
@@ -16,23 +16,23 @@ import NoData from 'components/NoData'
 import TopNav from 'components/TopNav'
 import Info from 'components/Info'
 
-interface OwnProps {
+interface IOwnProps {
 }
 
-interface StateProps {
-    routines: FormatedRoutine[]
-    defaultRoutines: FormatedRoutine[]
+interface IStateProps {
+    routines: IFormatedRoutine[]
+    defaultRoutines: IFormatedRoutine[]
     isLoading: boolean
 }
 
-interface DispatchProps {
+interface IDispatchProps {
     createRoutine: () => void
     showAlert: () => void
 }
 
-interface Props extends OwnProps, StateProps, DispatchProps {}
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
-class RoutinesContainer extends React.Component<Props> {
+class RoutinesContainer extends React.Component<IProps> {
 
     handleCreate = () => {
         this.props.createRoutine()
@@ -87,13 +87,13 @@ class RoutinesContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
+const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     routines: routinesSelector(state),
     defaultRoutines: defaultRoutinesSelector(state),
     isLoading: state.routines.fetchStatus === STATUS_LOADING,
 })
 
-const mapDispatchToProps: DispatchProps = {
+const mapDispatchToProps: IDispatchProps = {
     createRoutine,
     showAlert
 }

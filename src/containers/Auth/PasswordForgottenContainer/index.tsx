@@ -7,20 +7,20 @@ import { showAlert } from 'data/ui/actions'
 import PasswordForgotten from 'components/Auth/PasswordForgotten'
 import TopNav from 'components/TopNav'
 
-interface OwnProps {
+interface IOwnProps {
 }
 
-interface StateProps {
+interface IStateProps {
 }
 
-interface DispatchProps {
+interface IDispatchProps {
     passwordForgotten: (data: {email: string}) => void
     showAlert: () => void
 }
 
-interface Props extends OwnProps, StateProps, DispatchProps {}
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
-class PasswordForgottenContainer extends React.Component<Props> {
+class PasswordForgottenContainer extends React.Component<IProps> {
 
     email: HTMLInputElement
 
@@ -61,7 +61,7 @@ class PasswordForgottenContainer extends React.Component<Props> {
 // const mapStateToProps = (state, props) => ({
 // })
 
-const mapDispatchToProps: DispatchProps = {
+const mapDispatchToProps: IDispatchProps = {
     passwordForgotten,
     showAlert
 }

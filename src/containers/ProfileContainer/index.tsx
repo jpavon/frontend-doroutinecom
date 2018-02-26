@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { workoutsGraphDataSelector } from 'data/graphs/selectors'
 import { topSetsSelector } from 'data/sets/selectors'
 
-import { RootState } from 'data/types'
+import { IRootState } from 'data/types'
 import { ITopSet } from 'data/sets/types'
 import { IWorkoutGraphData } from 'data/graphs/types'
 
@@ -14,21 +14,21 @@ import TopNav from 'components/TopNav'
 import SetsTable from 'components/SetsTable'
 import NoData from 'components/NoData'
 
-interface OwnProps {
+interface IOwnProps {
 }
 
-interface StateProps {
+interface IStateProps {
     workoutsGraphData: IWorkoutGraphData
     topSets: ITopSet[]
-    user: RootState['user']['entity']
+    user: IRootState['user']['entity']
 }
 
-interface DispatchProps {
+interface IDispatchProps {
 }
 
-interface Props extends OwnProps, StateProps, DispatchProps {}
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
-class ProfileContainer extends React.Component<Props> {
+class ProfileContainer extends React.Component<IProps> {
 
     render() {
         return (
@@ -64,7 +64,7 @@ class ProfileContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
+const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     workoutsGraphData: workoutsGraphDataSelector(state),
     topSets: topSetsSelector(state),
     user: state.user.entity

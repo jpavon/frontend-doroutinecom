@@ -11,21 +11,21 @@ import Login from 'components/Auth/Login'
 //     payload: { token: string }
 // }
 
-interface OwnProps {
+interface IOwnProps {
 }
 
-interface StateProps {
+interface IStateProps {
 }
 
-interface DispatchProps {
+interface IDispatchProps {
     login: (data: {email: string, password: string}) => void
     authUser: (token: string) => void
     showAlert: (type: string, message: string[]) => void
 }
 
-interface Props extends OwnProps, StateProps, DispatchProps {}
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
-class LoginContainer extends React.Component<Props> {
+class LoginContainer extends React.Component<IProps> {
 
     email: HTMLInputElement
     password: HTMLInputElement
@@ -67,7 +67,7 @@ class LoginContainer extends React.Component<Props> {
 // const mapStateToProps = () => ({
 // })
 
-const mapDispatchToProps: DispatchProps = {
+const mapDispatchToProps: IDispatchProps = {
     login: login.request,
     authUser,
     showAlert

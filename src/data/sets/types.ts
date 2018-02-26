@@ -1,8 +1,8 @@
 import { Moment } from 'moment'
 
-import { FetchStatus, IEntitiesStatus } from 'data/types'
+import { IFetchStatus, IEntitiesStatus } from 'data/types'
 
-export interface Set {
+export interface ISet {
     id: number
     userId: number
     exerciseId: number
@@ -13,13 +13,13 @@ export interface Set {
     updatedAt: string
 }
 
-export interface FormatedSet extends Set {
+export interface IFormatedSet extends ISet {
 }
 
-export interface SetsState {
-    fetchStatus: FetchStatus
+export interface ISetsState {
+    fetchStatus: IFetchStatus
     entitiesStatus: IEntitiesStatus
-    entities: Set[]
+    entities: ISet[]
 }
 
 export interface ITopSet {

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { RootState } from 'data/types'
-import { FormatedLift } from 'data/lifts/types'
+import { IRootState } from 'data/types'
+import { IFormatedLift } from 'data/lifts/types'
 
 // import history from 'utils/history'
 import { liftsSelector } from 'data/lifts/selectors'
@@ -14,26 +14,22 @@ import Lift from 'components/Lifts/Lift'
 import NoData from 'components/NoData'
 import TopNav from 'components/TopNav'
 
-interface OwnProps {
+interface IOwnProps {
     isAuth: boolean
 }
 
-interface StateProps {
-    lifts: FormatedLift[]
+interface IStateProps {
+    lifts: IFormatedLift[]
     isLoading: boolean
 }
 
-interface DispatchProps {
+interface IDispatchProps {
     createLift: () => void
 }
 
-interface Props extends OwnProps, StateProps, DispatchProps {}
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
-class LiftsContainer extends React.Component<Props> {
-
-    static propTypes = {
-
-    }
+class LiftsContainer extends React.Component<IProps> {
 
     handleCreate = () => {
         this.props.createLift()
@@ -72,12 +68,12 @@ class LiftsContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
+const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     lifts: liftsSelector(state),
     isLoading: state.lifts.fetchStatus === STATUS_LOADING,
 })
 
-const mapDispatchToProps: DispatchProps = {
+const mapDispatchToProps: IDispatchProps = {
     createLift,
 }
 

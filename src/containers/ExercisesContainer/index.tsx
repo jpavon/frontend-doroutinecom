@@ -6,9 +6,9 @@ import { exercisesRoutineSelector, exercisesWorkoutSelector } from 'data/exercis
 import { liftsSelector } from 'data/lifts/selectors'
 import { STATUS_DELETING } from 'data/utils'
 
-import { FormatedExercise } from 'data/exercises/types'
-import { FormatedLift } from 'data/lifts/types'
-import { RootState, IEntitiesStatus } from 'data/types'
+import { IFormatedExercise } from 'data/exercises/types'
+import { IFormatedLift } from 'data/lifts/types'
+import { IRootState, IEntitiesStatus } from 'data/types'
 
 import SetsContainer from 'containers/SetsContainer'
 
@@ -17,35 +17,35 @@ import TopNav from 'components/TopNav'
 import Exercises from 'components/Exercises/Exercises'
 import Exercise from 'components/Exercises/Exercise'
 
-interface OwnProps {
+interface IOwnProps {
     routineId?: number
     workoutId?: number
 }
 
-interface StateProps {
-    exercises: FormatedExercise[]
-    lifts: FormatedLift[]
+interface IStateProps {
+    exercises: IFormatedExercise[]
+    lifts: IFormatedLift[]
     entitiesStatus: IEntitiesStatus
 }
 
-interface DispatchProps {
+interface IDispatchProps {
     createExercise: (data: {routineId?: number, workoutId?: number }) => void
     updateExercise: (id: number, data: {}) => void
     removeExercise: () => void
 }
 
-interface Props extends OwnProps, StateProps, DispatchProps {}
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
-interface State {
+interface IState {
     isRemoveButtonsVisible: boolean
 }
 
-class ExercisesContainer extends React.Component<Props, State> {
+class ExercisesContainer extends React.Component<IProps, IState> {
 
     isRoutine: boolean
     isWorkout: boolean
 
-    constructor(props: Props) {
+    constructor(props: IProps) {
         super(props)
 
         this.isRoutine = !!props.routineId
@@ -117,7 +117,7 @@ class ExercisesContainer extends React.Component<Props, State> {
     }
 }
 
-const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
+const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     exercises: props.routineId ?
         exercisesRoutineSelector(props.routineId)(state) :
         exercisesWorkoutSelector(props.workoutId)(state),
@@ -125,7 +125,7 @@ const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
     entitiesStatus: state.exercises.entitiesStatus,
 })
 
-const mapDispatchToProps: DispatchProps = {
+const mapDispatchToProps: IDispatchProps = {
     createExercise,
     updateExercise,
     removeExercise

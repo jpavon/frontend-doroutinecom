@@ -1,14 +1,14 @@
 import { createSelector } from 'reselect'
-import { User, FormatedUser } from 'data/user/types'
-import { RootState } from 'data/types'
+import { IUser, IFormatedUser } from 'data/user/types'
+import { IRootState } from 'data/types'
 
-const formatUser = (user: User): FormatedUser => ({
+const formatUser = (user: IUser): IFormatedUser => ({
     ...user
 })
 
 export const userSelector = createSelector(
     [
-        (state: RootState) => state.user.entity
+        (state: IRootState) => state.user.entity
     ],
-    (user: User): FormatedUser => user && formatUser(user)
+    (user: IUser): IFormatedUser => user && formatUser(user)
 )

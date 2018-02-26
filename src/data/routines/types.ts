@@ -1,6 +1,6 @@
-import { FetchStatus, IEntitiesStatus } from 'data/types'
+import { IFetchStatus, IEntitiesStatus } from 'data/types'
 
-export interface Routine {
+export interface IRoutine {
     id: number
     userId: number
     program: {
@@ -14,11 +14,11 @@ export interface Routine {
     updatedAt: string
 }
 
-export interface FormatedRoutine extends Routine {
+export interface IFormatedRoutine extends IRoutine {
 }
 
-export interface RoutinesState {
-    fetchStatus: FetchStatus
+export interface IRoutinesState {
+    fetchStatus: IFetchStatus
     entitiesStatus: IEntitiesStatus
-    entities: Routine[]
+    entities: IRoutine[]
 }

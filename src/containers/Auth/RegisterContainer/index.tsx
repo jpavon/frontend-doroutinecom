@@ -6,13 +6,13 @@ import { showAlert } from 'data/ui/actions'
 
 import Register from 'components/Auth/Register'
 
-interface OwnProps {
+interface IOwnProps {
 }
 
-interface StateProps {
+interface IStateProps {
 }
 
-interface DispatchProps {
+interface IDispatchProps {
     registerUser: (data: {
         name: string,
         email: string,
@@ -23,9 +23,9 @@ interface DispatchProps {
     showAlert: () => void
 }
 
-interface Props extends OwnProps, StateProps, DispatchProps {}
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
-class RegisterContainer extends React.Component<Props> {
+class RegisterContainer extends React.Component<IProps> {
 
     name: HTMLInputElement
     email: HTMLInputElement
@@ -69,7 +69,7 @@ class RegisterContainer extends React.Component<Props> {
 // const mapStateToProps = (state, props) => ({
 // })
 
-const mapDispatchToProps: DispatchProps = {
+const mapDispatchToProps: IDispatchProps = {
     registerUser,
     authUser,
     showAlert

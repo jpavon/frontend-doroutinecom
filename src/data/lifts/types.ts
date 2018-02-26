@@ -1,6 +1,6 @@
-import { FetchStatus, IEntitiesStatus } from 'data/types'
+import { IFetchStatus, IEntitiesStatus } from 'data/types'
 
-export interface Lift {
+export interface ILift {
     id: number
     userId: number
     name?: string
@@ -8,11 +8,11 @@ export interface Lift {
     updatedAt: string
 }
 
-export interface FormatedLift extends Lift {
+export interface IFormatedLift extends ILift {
 }
 
-export interface LiftsState {
-    fetchStatus: FetchStatus
+export interface ILiftsState {
+    fetchStatus: IFetchStatus
     entitiesStatus: IEntitiesStatus
-    entities: Lift[]
+    entities: ILift[]
 }

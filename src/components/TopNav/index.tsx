@@ -7,7 +7,7 @@ import './style.css'
 
 const arrowLeftIcon = require('media/arrow-left.svg')
 
-interface ButtonType {
+interface IButtonType {
     to?: string
     className?: string
     onClick?: (e: React.FormEvent<HTMLInputElement>) => void
@@ -15,15 +15,15 @@ interface ButtonType {
     disabled?: boolean
 }
 
-interface Props {
+interface IProps {
     title?: string | React.ReactNode
     leftLabel?: string
     rightLabel?: string
-    left?: ButtonType
-    right?: ButtonType
+    left?: IButtonType
+    right?: IButtonType
 }
 
-const TopNav = ({title, leftLabel = 'Back', rightLabel = 'Edit', left, right}: Props) => (
+const TopNav = ({title, leftLabel = 'Back', rightLabel = 'Edit', left, right}: IProps) => (
     <div
         className={classNames(
             'top-nav',

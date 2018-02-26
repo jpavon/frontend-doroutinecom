@@ -1,6 +1,6 @@
-import { FetchStatus, IApiError, Action } from 'data/types'
+import { IFetchStatus, IApiError, IAction } from 'data/types'
 
-export interface User {
+export interface IUser {
     id: number
     name: string
     email: string
@@ -12,17 +12,17 @@ export interface User {
     updatedAt: string
 }
 
-export interface FormatedUser extends User {
+export interface IFormatedUser extends IUser {
 
 }
 
-export interface UserState {
-    fetchStatus: FetchStatus
+export interface IUserState {
+    fetchStatus: IFetchStatus
     isAuth: boolean
-    entity: User | null
+    entity: IUser | null
 }
 
-export interface UserAction extends Action {
-    payload: User
+export interface IUserAction extends IAction {
+    payload: IUser
     error: IApiError
 }

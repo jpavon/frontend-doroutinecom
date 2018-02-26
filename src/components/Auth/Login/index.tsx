@@ -6,12 +6,12 @@ import Auth from 'components/Auth'
 
 import './style.css'
 
-interface Props {
+interface IProps {
     handleSubmit: (event: React.FormEvent<HTMLInputElement>) => void
     setRef: (ref: HTMLInputElement, name: 'email' | 'password') => void
 }
 
-const Login = (props: Props) => (
+const Login = (props: IProps) => (
     <Auth
         className="login"
         handleSubmit={props.handleSubmit}

@@ -1,7 +1,7 @@
-import { FetchStatus, IEntitiesStatus } from 'data/types'
-import { FormatedRoutine } from 'data/routines/types'
+import { IFetchStatus, IEntitiesStatus } from 'data/types'
+import { IFormatedRoutine } from 'data/routines/types'
 
-export interface Workout {
+export interface IWorkout {
     id: number
     userId: number
     routineId?: number
@@ -13,15 +13,15 @@ export interface Workout {
     updatedAt: string
 }
 
-export interface FormatedWorkout extends Workout {
+export interface IFormatedWorkout extends IWorkout {
     displayName?: string,
     day?: string,
     duration?: string,
-    routine?: FormatedRoutine
+    routine?: IFormatedRoutine
 }
 
-export interface WorkoutsState {
-    fetchStatus: FetchStatus
+export interface IWorkoutsState {
+    fetchStatus: IFetchStatus
     entitiesStatus: IEntitiesStatus
-    entities: Workout[]
+    entities: IWorkout[]
 }

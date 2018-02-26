@@ -2,29 +2,30 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import store from 'store'
 
+import { IFormatedUser } from 'data/user/types'
+import { IRootState } from 'data/types'
+
 import { updateUser, unauthUser } from 'data/user/actions'
 import { userSelector } from 'data/user/selectors'
-import { FormatedUser } from 'data/user/types'
-import { RootState } from 'data/types'
 
 import Settings from 'components/Settings'
 import TopNav from 'components/TopNav'
 
-interface OwnProps {
+interface IOwnProps {
 }
 
-interface StateProps {
-    user: FormatedUser | null,
+interface IStateProps {
+    user: IFormatedUser | null,
 }
 
-interface DispatchProps {
+interface IDispatchProps {
     unauthUser: (error?: string) => void
     updateUser: (id: number, user: {}) => void
 }
 
-interface Props extends OwnProps, StateProps, DispatchProps {}
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
-class SettingsContainer extends React.Component<Props> {
+class SettingsContainer extends React.Component<IProps> {
 
     handleUnauthUser = (event: React.FormEvent<HTMLInputElement>) => {
         event.preventDefault()
@@ -32,7 +33,7 @@ class SettingsContainer extends React.Component<Props> {
         this.props.unauthUser()
     }
 
-    componentWillReceiveProps(nextProps: Props) {
+    componentWillReceiveProps(nextProps: IProps) {
         if (!nextProps.user || !this.props.user) {
             return
         }
@@ -75,11 +76,11 @@ class SettingsContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: RootState, props: Props): StateProps => ({
+const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     user: userSelector(state)
 })
 
-const mapDispatchToProps: DispatchProps = {
+const mapDispatchToProps: IDispatchProps = {
     updateUser,
     unauthUser
 }

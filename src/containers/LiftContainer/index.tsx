@@ -2,8 +2,8 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
-import { RootState } from 'data/types'
-import { FormatedLift } from 'data/lifts/types'
+import { IRootState } from 'data/types'
+import { IFormatedLift } from 'data/lifts/types'
 import { ITopSet } from 'data/sets/types'
 import { ILiftsGraph } from 'data/graphs/types'
 
@@ -20,12 +20,12 @@ import TopNav from 'components/TopNav'
 import Graph from 'components/Graph'
 import NoData from 'components/NoData'
 
-interface OwnProps {
+interface IOwnProps {
     liftId: number
 }
 
-interface StateProps {
-    lift: FormatedLift
+interface IStateProps {
+    lift: IFormatedLift
     isStatusLoaded: boolean
     isDeleting: boolean
     liftGraphData: ILiftsGraph
@@ -33,14 +33,14 @@ interface StateProps {
     weightMeasure: string | null
 }
 
-interface DispatchProps {
+interface IDispatchProps {
     updateLift: () => void
     removeLift: (id: number) => void
 }
 
-interface Props extends OwnProps, StateProps, DispatchProps {}
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
-class LiftContainer extends React.Component<Props> {
+class LiftContainer extends React.Component<IProps> {
 
     componentDidMount() {
         if (this.props.isStatusLoaded && !this.props.lift) {
@@ -108,7 +108,7 @@ class LiftContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
+const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     lift: liftSelector(props.liftId)(state),
     isStatusLoaded: state.lifts.fetchStatus === STATUS_LOADED,
     isDeleting: state.lifts.entitiesStatus[props.liftId] === STATUS_DELETING,
@@ -117,7 +117,7 @@ const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
     weightMeasure: state.user.entity && state.user.entity.weightMeasure
 })
 
-const mapDispatchToProps: DispatchProps = {
+const mapDispatchToProps: IDispatchProps = {
     updateLift,
     removeLift
 }

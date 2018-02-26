@@ -3,15 +3,15 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
+import { IFormatedWorkout } from 'data/workouts/types'
+import { IRootState } from 'data/types'
+
 import history from 'utils/history'
 import { now } from 'utils/date'
 import { updateWorkout, createWorkout, removeWorkout } from 'data/workouts/actions'
 import { workoutSelector } from 'data/workouts/selectors'
 import { STATUS_LOADED, STATUS_DELETING } from 'data/utils'
 import { fetchWorkoutsData } from 'data/globals'
-// import { WorkoutType } from 'data/workouts/types'
-import { FormatedWorkout } from 'data/workouts/types'
-import { RootState } from 'data/types'
 
 import ExercisesContainer from 'containers/ExercisesContainer'
 
@@ -20,34 +20,26 @@ import TopNav from 'components/TopNav'
 import Workout from 'components/Workout'
 import Timer from 'components/Timer'
 
-// interface Response {
-//     error: { errors: string[] }
-//     payload: {
-//         id: number
-//         token: string
-//     }
-// }
-
-interface OwnProps {
+interface IOwnProps {
     workoutId: number
 }
 
-interface StateProps {
-    workout?: FormatedWorkout | null
+interface IStateProps {
+    workout?: IFormatedWorkout | null
     isStatusLoaded: boolean
     isDeleting: boolean
 }
 
-interface DispatchProps {
+interface IDispatchProps {
     updateWorkout: (id: number, data: {}) => void
     createWorkout: (data: {}) => void
     removeWorkout: (id: number) => void
     fetchWorkoutsData: () => void
 }
 
-interface Props extends OwnProps, StateProps, DispatchProps {}
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
-class WorkoutContainer extends React.Component<Props> {
+class WorkoutContainer extends React.Component<IProps> {
 
     componentDidMount() {
         if (this.props.isStatusLoaded && !this.props.workout) {
@@ -171,13 +163,13 @@ class WorkoutContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: RootState, props: Props): StateProps => ({
+const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     workout: workoutSelector(props.workoutId)(state),
     isStatusLoaded: state.workouts.fetchStatus === STATUS_LOADED,
     isDeleting: state.workouts.entitiesStatus[props.workoutId] === STATUS_DELETING
 })
 
-const mapDispatchToProps: DispatchProps = {
+const mapDispatchToProps: IDispatchProps = {
     createWorkout,
     updateWorkout,
     removeWorkout,

@@ -1,18 +1,18 @@
 import * as store from 'store'
 
-import { UserState, UserAction } from 'data/user/types'
+import { IUserState, IUserAction } from 'data/user/types'
 
 import * as constants from 'data/user/constants'
 import * as helperTypes from 'data/utils'
 import { request, failure } from 'data/utils'
 
-const initialState: UserState = {
+const initialState: IUserState = {
     fetchStatus: helperTypes.STATUS_NONE,
     isAuth: !!store.get('token'),
     entity: null
 }
 
-const user = (state = initialState, action: UserAction): UserState => {
+const user = (state = initialState, action: IUserAction): IUserState => {
     const { type, payload, error } = action
 
     switch (type) {

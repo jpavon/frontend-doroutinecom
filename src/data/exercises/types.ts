@@ -1,6 +1,6 @@
-import { FetchStatus, IEntitiesStatus } from 'data/types'
+import { IFetchStatus, IEntitiesStatus } from 'data/types'
 
-export interface Exercise {
+export interface IExercise {
     id: number
     userId: number
     liftId?: number
@@ -11,11 +11,11 @@ export interface Exercise {
     updatedAt: string
 }
 
-export interface FormatedExercise extends Exercise {
+export interface IFormatedExercise extends IExercise {
 }
 
-export interface ExercisesState {
-    fetchStatus: FetchStatus
+export interface IExercisesState {
+    fetchStatus: IFetchStatus
     entitiesStatus: IEntitiesStatus
-    entities: Exercise[]
+    entities: IExercise[]
 }

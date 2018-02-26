@@ -1,18 +1,18 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
+import { IFormatedSet } from 'data/sets/types'
+import { IFormatedUser } from 'data/user/types'
+import { IRootState, IEntitiesStatus } from 'data/types'
+
 import { createSet, updateSet, removeSet } from 'data/sets/actions'
 import { setsExerciseSelector, previouslyCompletedSetsSelector } from 'data/sets/selectors'
 import { STATUS_DELETING } from 'data/utils'
 
-import { FormatedSet } from 'data/sets/types'
-import { FormatedUser } from 'data/user/types'
-import { RootState, IEntitiesStatus } from 'data/types'
-
 import Sets from 'components/Sets/Sets'
 import Set from 'components/Sets/Set'
 
-interface OwnProps {
+interface IOwnProps {
     exerciseId: number,
     liftId?: number,
     isWorkout: boolean,
@@ -20,22 +20,22 @@ interface OwnProps {
     isRemoveButtonsVisible: boolean,
 }
 
-interface StateProps {
-    sets: FormatedSet[],
+interface IStateProps {
+    sets: IFormatedSet[],
     entitiesStatus: IEntitiesStatus,
-    user: FormatedUser | null,
-    previouslyCompletedSets?: FormatedSet[],
+    user: IFormatedUser | null,
+    previouslyCompletedSets?: IFormatedSet[],
 }
 
-interface DispatchProps {
+interface IDispatchProps {
     createSet: (data: {}) => void
     updateSet: (id: number, data: {}) => void
     removeSet: () => void
 }
 
-interface Props extends OwnProps, StateProps, DispatchProps {}
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
-class SetsContainer extends React.Component<Props> {
+class SetsContainer extends React.Component<IProps> {
 
     render() {
         return (
@@ -64,14 +64,14 @@ class SetsContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
+const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     sets: setsExerciseSelector(props.exerciseId)(state),
     entitiesStatus: state.sets.entitiesStatus,
     user: state.user.entity,
     previouslyCompletedSets: props.liftId && previouslyCompletedSetsSelector(props.exerciseId, props.liftId)(state),
 })
 
-const mapDispatchToProps: DispatchProps = {
+const mapDispatchToProps: IDispatchProps = {
     createSet,
     updateSet,
     removeSet

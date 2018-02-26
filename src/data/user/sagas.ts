@@ -2,7 +2,7 @@
 import { all, call, put, takeLatest, takeEvery } from 'redux-saga/effects'
 import * as store from 'store'
 
-import { ApiAction } from 'data/types'
+import { IApiAction } from 'data/types'
 
 import api from 'utils/api'
 import * as constants from 'data/user/constants'
@@ -17,7 +17,7 @@ import { fetchAppData } from 'data/globals'
 // import { fetchSets } from 'data/sets/actions'
 // import { showLoading, removeLoading } from 'data/ui/actions'
 
-export function* login(action: ApiAction) {
+export function* login(action: IApiAction) {
     try {
         const payload = yield call(api, action.options)
 

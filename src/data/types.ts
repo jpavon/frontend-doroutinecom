@@ -1,10 +1,10 @@
 // import PropTypes from 'prop-types'
-import { UserState } from 'data/user/types'
-import { ExercisesState } from 'data/exercises/types'
-import { LiftsState } from 'data/lifts/types'
-import { RoutinesState } from 'data/routines/types'
-import { SetsState } from 'data/sets/types'
-import { WorkoutsState } from 'data/workouts/types'
+import { IUserState } from 'data/user/types'
+import { IExercisesState } from 'data/exercises/types'
+import { ILiftsState } from 'data/lifts/types'
+import { IRoutinesState } from 'data/routines/types'
+import { ISetsState } from 'data/sets/types'
+import { IWorkoutsState } from 'data/workouts/types'
 import { IApiOptions } from 'utils/api'
 
 // import {
@@ -18,16 +18,16 @@ import { IApiOptions } from 'utils/api'
 
 export const StatusType = {}
 
-export interface RootState {
-    user: UserState
-    exercises: ExercisesState
-    lifts: LiftsState
-    routines: RoutinesState
-    sets: SetsState
-    workouts: WorkoutsState
+export interface IRootState {
+    user: IUserState
+    exercises: IExercisesState
+    lifts: ILiftsState
+    routines: IRoutinesState
+    sets: ISetsState
+    workouts: IWorkoutsState
 }
 
-export type FetchStatus =
+export type IFetchStatus =
     'NONE' |
     'LOADING' |
     'LOADED' |
@@ -35,11 +35,11 @@ export type FetchStatus =
     'UPDATING' |
     'DELETING'
 
-export interface Action {
+export interface IAction {
     type: string
 }
 
-export interface ApiAction extends Action {
+export interface IApiAction extends IAction {
     options: IApiOptions
 }
 

@@ -3,31 +3,31 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { RootState } from 'data/types'
+import { IRootState } from 'data/types'
 
 import { pendingWorkoutsSelector } from 'data/workouts/selectors'
 
 import Nav from 'components/Nav'
 import NavNoAuth from 'components/NavNoAuth'
 
-interface OwnProps {
+interface IOwnProps {
     isAuth: boolean
 }
 
-interface StateProps {
+interface IStateProps {
     isPendingWorkouts: boolean
 }
 
-interface DispatchProps {
+interface IDispatchProps {
 }
 
-interface Props extends OwnProps, StateProps, DispatchProps {}
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
-class NavContainer extends React.Component<Props> {
+class NavContainer extends React.Component<IProps> {
 
     isTouchDevice: boolean
 
-    constructor(props: Props) {
+    constructor(props: IProps) {
         super(props)
 
         this.isTouchDevice = 'ontouchstart' in document.documentElement
@@ -47,11 +47,11 @@ class NavContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
+const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     isPendingWorkouts: pendingWorkoutsSelector(state).length > 0
 })
 
-const mapDispatchToProps: DispatchProps = {
+const mapDispatchToProps: IDispatchProps = {
 }
 
 export default compose(

@@ -2,6 +2,9 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
+import { IRootState } from 'data/types'
+import { IFormatedRoutine } from 'data/routines/types'
+
 import history from 'utils/history'
 import { now } from 'utils/date'
 import { updateRoutine, removeRoutine } from 'data/routines/actions'
@@ -10,34 +13,31 @@ import { routineSelector } from 'data/routines/selectors'
 import { STATUS_LOADED, STATUS_DELETING } from 'data/utils'
 import { fetchWorkoutsData } from 'data/globals'
 
-import { RootState } from 'data/types'
-import { FormatedRoutine } from 'data/routines/types'
-
 import ExercisesContainer from 'containers/ExercisesContainer'
 
 import Routine from 'components/Routine'
 import TopNav from 'components/TopNav'
 
-interface OwnProps {
+interface IOwnProps {
     routineId: number
 }
 
-interface StateProps {
-    routine: FormatedRoutine
+interface IStateProps {
+    routine: IFormatedRoutine
     isStatusLoaded: boolean
     isDeleting: boolean
 }
 
-interface DispatchProps {
+interface IDispatchProps {
     updateRoutine: () => void
     removeRoutine: (id: number) => void
     createWorkout: (data: {routineId: number, startedAt: string}) => void
     fetchWorkoutsData: () => void
 }
 
-interface Props extends OwnProps, StateProps, DispatchProps {}
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
-class RoutineContainer extends React.Component<Props> {
+class RoutineContainer extends React.Component<IProps> {
 
     componentDidMount() {
         if (this.props.isStatusLoaded && !this.props.routine) {
@@ -108,13 +108,13 @@ class RoutineContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
+const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     routine: routineSelector(props.routineId)(state),
     isStatusLoaded: state.routines.fetchStatus === STATUS_LOADED,
     isDeleting: state.routines.entitiesStatus[props.routineId] === STATUS_DELETING
 })
 
-const mapDispatchToProps: DispatchProps = {
+const mapDispatchToProps: IDispatchProps = {
     updateRoutine,
     removeRoutine,
     createWorkout,

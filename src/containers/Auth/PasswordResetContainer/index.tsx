@@ -7,14 +7,14 @@ import { showAlert } from 'data/ui/actions'
 import PasswordReset from 'components/Auth/PasswordReset'
 import TopNav from 'components/TopNav'
 
-interface OwnProps {
+interface IOwnProps {
     token: string
 }
 
-interface StateProps {
+interface IStateProps {
 }
 
-interface DispatchProps {
+interface IDispatchProps {
     passwordReset: (data: {
         token: string,
         email: string,
@@ -24,9 +24,9 @@ interface DispatchProps {
     showAlert: () => void
 }
 
-interface Props extends OwnProps, StateProps, DispatchProps {}
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
-class PasswordResetContainer extends React.Component<Props> {
+class PasswordResetContainer extends React.Component<IProps> {
 
     email: HTMLInputElement
     password: HTMLInputElement
@@ -74,7 +74,7 @@ class PasswordResetContainer extends React.Component<Props> {
 // const mapStateToProps = (state, props) => ({
 // })
 
-const mapDispatchToProps: DispatchProps = {
+const mapDispatchToProps: IDispatchProps = {
     passwordReset,
     showAlert,
 }
