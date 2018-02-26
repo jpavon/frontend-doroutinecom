@@ -2,7 +2,7 @@ import React from 'react'
 
 import './style.css'
 
-const Lifts = ({children, create, isLoading}) => (
+const Lifts = ({children}) => (
     <div className="lifts">
         {children}
     </div>

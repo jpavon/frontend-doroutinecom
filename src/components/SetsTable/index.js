@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import './style.css'
 
-const LiftSetsTable = ({sets, weightMeasure, showLift}) => (
+const LiftSetsTable = ({sets, weightMeasure, showLift = false}) => (
     <div className="sets-table">
         <div className="sets-table-top">
             <div><small>Date</small></div>

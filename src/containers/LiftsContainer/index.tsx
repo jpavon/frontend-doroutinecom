@@ -1,41 +1,50 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import { connect } from 'react-redux'
 
-import history from 'utils/history'
+import { RootState } from 'data/types'
+import { FormatedLift } from 'data/lifts/types'
+
+// import history from 'utils/history'
 import { liftsSelector } from 'data/lifts/selectors'
-import { createLift, updateLift, removeLift } from 'data/lifts/actions'
+import { createLift } from 'data/lifts/actions'
 import { STATUS_LOADING } from 'data/utils'
-import { LiftsType } from 'data/lifts/types'
 
 import Lifts from 'components/Lifts/Lifts'
 import Lift from 'components/Lifts/Lift'
 import NoData from 'components/NoData'
 import TopNav from 'components/TopNav'
 
-class LiftsContainer extends Component {
+interface OwnProps {
+    isAuth: boolean
+}
+
+interface StateProps {
+    lifts: FormatedLift[]
+    isLoading: boolean
+}
+
+interface DispatchProps {
+    createLift: () => void
+}
+
+interface Props extends OwnProps, StateProps, DispatchProps {}
+
+class LiftsContainer extends React.Component<Props> {
 
     static propTypes = {
-        lifts: LiftsType,
-        isLoading: PropTypes.bool.isRequired,
 
-        createLift: PropTypes.func.isRequired,
     }
 
     handleCreate = () => {
         this.props.createLift()
-            .then((resp) => {
-                history.push(`/lifts/${resp.payload.id}`)
-            })
-    }
-
-    handleRemove = (id) => {
-        this.props.removeLift(id)
+            // .then((resp) => {
+            //     history.push(`/lifts/${resp.payload.id}`)
+            // })
     }
 
     render() {
         return (
-            <Fragment>
+            <>
                 <TopNav
                     title="Lifts"
                     rightLabel="Create"
@@ -45,9 +54,7 @@ class LiftsContainer extends Component {
                         className: 'lift-button-create'
                     }}
                 />
-                <Lifts
-                    create={this.handleCreate}
-                >
+                <Lifts>
                     {this.props.lifts.length > 0 ?
                         this.props.lifts.map((lift, i) => (
                             <Lift
@@ -60,20 +67,18 @@ class LiftsContainer extends Component {
                         />
                     }
                 </Lifts>
-            </Fragment>
+            </>
         )
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
     lifts: liftsSelector(state),
     isLoading: state.lifts.fetchStatus === STATUS_LOADING,
 })
 
-const mapDispatchToProps = {
-    updateLift,
+const mapDispatchToProps: DispatchProps = {
     createLift,
-    removeLift
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LiftsContainer)

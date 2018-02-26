@@ -5,7 +5,7 @@ import Field from 'components/Field'
 
 import './style.css'
 
-const Lift = ({lift, remove, update, isDeleting}) => (
+const Lift = ({lift, update}) => (
     <div className="lift">
         <AutoSaveForm
             initialValues={lift}
