@@ -1,62 +1,38 @@
-// import { delay } from 'redux-saga';
 import { all, call, put, takeLatest, takeEvery } from 'redux-saga/effects'
 import * as store from 'store'
 
-import { IApiAction } from 'data/types'
+import { IAction, IApiAction } from 'data/types'
 
 import api from 'utils/api'
 import * as constants from 'data/user/constants'
 import * as actions from 'data/user/actions'
-import { fetchAppData } from 'data/globals'
+import { fetchAppData } from 'data/sagas'
 
-// import { fetchUser } from 'data/user/actions'
-// import { fetchRoutines } from 'data/routines/actions'
-// import { fetchWorkouts } from 'data/workouts/actions'
-// import { fetchExercises } from 'data/exercises/actions'
-// import { fetchLifts } from 'data/lifts/actions'
-// import { fetchSets } from 'data/sets/actions'
-// import { showLoading, removeLoading } from 'data/ui/actions'
-
-export function* login(action: IApiAction) {
+export function* fetchUserSaga(action: IApiAction) {
     try {
-        const payload = yield call(api, action.options)
-
-        yield put(actions.login.success(payload))
-
-        yield put({ type: constants.USER_AUTH, token: payload.token })
+        const payload = yield call(api, action.request)
+        yield put(actions.fetchUserAction.success(payload))
     } catch (error) {
-        yield put(actions.login.failure(error))
+        yield put(actions.fetchUserAction.failure(error))
     }
 }
 
-// export const *fetchAppData = () => {
-//     dispatch(showLoading())
+export function* loginSaga(action: IApiAction) {
+    try {
+        const payload = yield call(api, action.request)
+        yield put(actions.authUserAction(payload.token))
+    } catch (error) {
+        // yield put(actions.loginAction.failure(error))
+        // SHOW ALERT
+        console.log('show error')
+    }
+}
 
-//     return Promise.all([
-//         dispatch(fetchUser()),
-//         dispatch(fetchRoutines()),
-//         dispatch(fetchWorkouts()),
-//         dispatch(fetchExercises()),
-//         dispatch(fetchLifts()),
-//         dispatch(fetchSets())
-//     ]).then(([user]) => {
-//         if (user && user.payload &&
-//             (user.payload.startOfWeek !== store.get('startOfWeek') ||
-//             user.payload.dateFormat !== store.get('dateFormat'))
-//         ) {
-//             store.set('startOfWeek', user.payload.startOfWeek)
-//             store.set('dateFormat', user.payload.dateFormat)
+interface IAuthAction extends IAction {
+    token: string
+}
 
-//             window.location.reload(true)
-//         } else {
-//             dispatch(removeLoading())
-
-//             return Promise.resolve()
-//         }
-//     })
-// }
-
-export function* authUser(action: {type: string, token: string}) {
+export function* authSaga(action: IAuthAction) {
     store.set('token', action.token)
 
     yield call(fetchAppData)
@@ -64,7 +40,8 @@ export function* authUser(action: {type: string, token: string}) {
 
 export default function* root() {
     yield all([
-        takeLatest(constants.USER_LOGIN_REQUEST, login),
-        takeEvery(constants.USER_AUTH, authUser),
+        takeLatest(constants.USER_FETCH_REQUEST, fetchUserSaga),
+        takeLatest(constants.USER_LOGIN, loginSaga),
+        takeEvery(constants.USER_AUTH, authSaga),
     ])
 }

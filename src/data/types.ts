@@ -40,7 +40,7 @@ export interface IAction {
 }
 
 export interface IApiAction extends IAction {
-    options: IApiOptions
+    request: IApiOptions
 }
 
 export interface IApiError {

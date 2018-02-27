@@ -12,16 +12,16 @@ export interface IApiOptions {
     data?: object
 }
 
-export default (options: IApiOptions): AxiosPromise => {
+export default (request: IApiOptions): AxiosPromise => {
     return axios.request({
-        url: options.endpoint,
-        method: options.method,
+        url: request.endpoint,
+        method: request.method,
         baseURL: `${env.API_URL}/`,
         headers: {
             'Authorization':
             `Bearer ${browserStore.get('token')}`
         },
-        data: options.data && decamelizeKeys(options.data),
+        data: request.data && decamelizeKeys(request.data),
         /* tslint:disable:no-any */
         transformResponse: ([] as any[]).concat(
             axios.defaults.transformResponse,

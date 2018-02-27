@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { camelizeKeys, decamelizeKeys } from 'humps'
-import browserStore from 'store'
+import * as browserStore from 'store'
 
 import env from 'env'
 import { unauthUser } from 'data/user/actions'

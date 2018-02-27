@@ -2,6 +2,24 @@ import { CALL_API } from 'utils/apiMiddleware'
 import * as constants from 'data/exercises/constants'
 import { shouldFetch } from 'data/utils'
 
+// export const fetchExercisesAction = {
+//     request: () => ({
+//         type: constants.EXERCISES_FETCH_REQUEST,
+//         request: {
+//             endpoint: 'exercises',
+//             method: 'get'
+//         }
+//     }),
+//     success: (payload) => ({
+//         type: constants.EXERCISES_FETCH_SUCCESS,
+//         payload
+//     }),
+//     failure: (payload) => ({
+//         type: constants.EXERCISES_FETCH_FAILURE,
+//         error: payload
+//     })
+// }
+
 const getExercises = () => ({
     [CALL_API]: {
         types: [

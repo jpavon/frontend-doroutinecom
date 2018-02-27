@@ -6,6 +6,24 @@ import { shouldFetch } from 'data/utils'
 import { showAlert } from 'data/ui/actions'
 import { fetchAppData } from 'data/globals'
 
+export const fetchUserAction = {
+    request: () => ({
+        type: constants.USER_FETCH_REQUEST,
+        request: {
+            endpoint: 'user',
+            method: 'get'
+        }
+    }),
+    success: (payload) => ({
+        type: constants.USER_FETCH_SUCCESS,
+        payload
+    }),
+    failure: (payload) => ({
+        type: constants.USER_FETCH_FAILURE,
+        error: payload
+    })
+}
+
 const getUser = () => ({
     [CALL_API]: {
         types: [
@@ -39,35 +57,9 @@ export const updateUser = (id, data) => (dispatch, getState) => {
     return dispatch(putUser(id, data))
 }
 
-export const login = {
-    request: ({email, password}) => ({
-        type: constants.USER_LOGIN_REQUEST,
-        options: {
-            endpoint: 'login',
-            method: 'post',
-            data: {
-                email,
-                password
-            }
-        }
-    }),
-    success: (payload) => ({
-        type: constants.USER_LOGIN_SUCCESS,
-        payload
-    }),
-    failure: (payload) => ({
-        type: constants.USER_LOGIN_FAILURE,
-        error: payload
-    })
-}
-
-const loginUserAction = ({email, password}) => ({
-    [CALL_API]: {
-        types: [
-            constants.USER_LOGIN_REQUEST,
-            constants.USER_LOGIN_SUCCESS,
-            constants.USER_LOGIN_FAILURE
-        ],
+export const loginUserAction = ({email, password}) => ({
+    type: constants.USER_LOGIN,
+    request: {
         endpoint: 'login',
         method: 'post',
         data: {
@@ -77,9 +69,47 @@ const loginUserAction = ({email, password}) => ({
     }
 })
 
-export const loginUser = (data) => (dispatch, getState) => {
-    return dispatch(loginUserAction(data))
-}
+// export const loginAction = {
+//     request: ({email, password}) => ({
+//         type: constants.USER_LOGIN_REQUEST,
+//         request: {
+//             endpoint: 'login',
+//             method: 'post',
+//             data: {
+//                 email,
+//                 password
+//             }
+//         }
+//     }),
+//     success: (payload) => ({
+//         type: constants.USER_LOGIN_SUCCESS,
+//         payload
+//     }),
+//     failure: (payload) => ({
+//         type: constants.USER_LOGIN_FAILURE,
+//         error: payload
+//     })
+// }
+
+// const loginUserAction = ({email, password}) => ({
+//     [CALL_API]: {
+//         types: [
+//             constants.USER_LOGIN_REQUEST,
+//             constants.USER_LOGIN_SUCCESS,
+//             constants.USER_LOGIN_FAILURE
+//         ],
+//         endpoint: 'login',
+//         method: 'post',
+//         data: {
+//             email,
+//             password
+//         }
+//     }
+// })
+
+// export const loginUser = (data) => (dispatch, getState) => {
+//     return dispatch(loginUserAction(data))
+// }
 
 const registerUserAction = ({name, email, password, passwordConfirmation}) => ({
     [CALL_API]: {
@@ -144,16 +174,17 @@ export const passwordReset = (data) => (dispatch, getState) => {
     return dispatch(passwordResetAction(data))
 }
 
-const authUserAction = () => ({
-    type: constants.USER_AUTH
+export const authUserAction = (token) => ({
+    type: constants.USER_AUTH,
+    token
 })
 
-export const authUser = (token) => (dispatch, getState) => {
-    store.set('token', token)
+// export const authUser = (token) => (dispatch, getState) => {
+//     store.set('token', token)
 
-    dispatch(authUserAction())
-    dispatch(fetchAppData())
-}
+//     dispatch(authUserAction())
+//     dispatch(fetchAppData())
+// }
 
 const unauthUserAction = () => ({
     type: constants.USER_UNAUTH

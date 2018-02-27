@@ -1,6 +1,11 @@
 import * as constants from 'data/ui/constants'
 import scrollTo from 'utils/scrollTo'
 
+export const showLoadingAction = () => ({
+    type: constants.SHOW_LOADING
+})
+
+// REMOVE
 export const showLoading = () => ({
     type: constants.SHOW_LOADING
 })
