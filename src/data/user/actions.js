@@ -6,23 +6,19 @@ import { shouldFetch } from 'data/utils'
 import { showAlert } from 'data/ui/actions'
 import { fetchAppData } from 'data/globals'
 
-export const fetchUserAction = {
-    request: () => ({
-        type: constants.USER_FETCH_REQUEST,
-        request: {
-            endpoint: 'user',
-            method: 'get'
-        }
-    }),
-    success: (payload) => ({
-        type: constants.USER_FETCH_SUCCESS,
-        payload
-    }),
-    failure: (payload) => ({
-        type: constants.USER_FETCH_FAILURE,
-        error: payload
-    })
-}
+export const fetchUserRequest = () => ({
+    type: constants.USER_FETCH_REQUEST,
+})
+
+export const fetchUserSuccess = (payload) => ({
+    type: constants.USER_FETCH_SUCCESS,
+    payload
+})
+
+export const fetchUserFailure = (payload) => ({
+    type: constants.USER_FETCH_FAILURE,
+    error: payload
+})
 
 const getUser = () => ({
     [CALL_API]: {

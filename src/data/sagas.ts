@@ -1,31 +1,32 @@
 // import { all, call, put, takeLatest, takeEvery } from 'redux-saga/effects'
-import { all, put } from 'redux-saga/effects'
+import { all, put, take, call } from 'redux-saga/effects'
 
 import * as uiActions from 'data/ui/actions'
 import * as userActions from 'data/user/actions'
+import * as userConstants from 'data/user/constants'
 // import { fetchRoutines } from 'data/routines/sagas'
 // import { fetchWorkouts } from 'data/workouts/sagas'
 // import { fetchExercises } from 'data/exercises/sagas'
 // import { fetchLifts } from 'data/lifts/sagas'
 // import { fetchSets } from 'data/sets/sagas'
 
-// export function *apiSaga(fn: any, args: any, successAction: any, errorAction: any) {
-//     try {
-//         const { response } = yield call(fn, args)
-//         yield put(successAction(response))
-//     } catch(error) {
-//         yield put(errorAction(error))
-//     }
-// }
+/* tslint:disable:no-any */
+export function* apiSaga(fn: any, successAction: any, errorAction: any, data: object | null = null) {
+    try {
+        const payload = yield call(fn, data)
+        yield put(successAction(payload))
+    } catch (error) {
+        yield put(errorAction(error))
+    }
+}
 
-export function *fetchAppData() {
-    // while (true) {
+export function* fetchAppData() {
         yield put(uiActions.showLoading())
 
         // try {
         // yield all([
-        yield put(userActions.fetchUserAction.request()),
-            // call(fetchRoutines),
+        yield put(userActions.fetchUserRequest()),
+            // call(fetchRotutines),
             // call(fetchWorkouts),
             // call(fetchExercises),
             // call(fetchLifts),
@@ -34,6 +35,7 @@ export function *fetchAppData() {
 
         // console.log(request)
 
+        yield take(userConstants.USER_FETCH_SUCCESS)
         yield put(uiActions.removeLoading())
         // } catch (error) {
             // unauth ?

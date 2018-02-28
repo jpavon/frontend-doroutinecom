@@ -1,6 +1,6 @@
 import axios, { AxiosPromise, AxiosResponse, AxiosError } from 'axios'
 import { camelizeKeys, decamelizeKeys } from 'humps'
-import * as browserStore from 'store'
+import * as store from 'store'
 
 import env from 'env'
 // import { unauthUser } from 'data/user/actions'
@@ -12,20 +12,20 @@ export interface IApiOptions {
     data?: object
 }
 
-export default (request: IApiOptions): AxiosPromise => {
+const api = (method: string, endpoint: string, data: object): AxiosPromise => {
     return axios.request({
-        url: request.endpoint,
-        method: request.method,
+        url: endpoint,
+        method: method,
         baseURL: `${env.API_URL}/`,
         headers: {
             'Authorization':
-            `Bearer ${browserStore.get('token')}`
+            `Bearer ${store.get('token')}`
         },
-        data: request.data && decamelizeKeys(request.data),
+        data: data && decamelizeKeys(data),
         /* tslint:disable:no-any */
         transformResponse: ([] as any[]).concat(
             axios.defaults.transformResponse,
-            (data: any) => camelizeKeys(data)
+            (transformData: any) => camelizeKeys(transformData)
         )
     }).then((response: AxiosResponse) => {
         return Promise.resolve(response.data)
@@ -48,4 +48,11 @@ export default (request: IApiOptions): AxiosPromise => {
 
         return Promise.reject('Server Error')
     })
+}
+
+export default {
+    get: (endpoint: string) => api('get', endpoint, {}),
+    post: (endpoint: string, data: object) => api('post', endpoint, data),
+    put: (endpoint: string, data: object) => api('put', endpoint, data),
+    delete: (endpoint: string, data: object) => api('delete', endpoint, data)
 }

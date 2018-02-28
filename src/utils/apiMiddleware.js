@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { camelizeKeys, decamelizeKeys } from 'humps'
-import * as browserStore from 'store'
+import * as browserStore from 'store2'
 
 import env from 'env'
 import { unauthUser } from 'data/user/actions'
@@ -15,7 +15,7 @@ const callApi = (endpoint, method, data, store) => {
         baseURL: `${env.API_URL}/`,
         headers: {
             'Authorization':
-            `Bearer ${store.getState().user.entity.apiToken || browserStore.get('token')}`
+            `Bearer ${browserStore.get('token')}`
         },
         data: decamelizeKeys(data),
         transformResponse: axios.defaults.transformResponse.concat((data) => camelizeKeys(data)),
