@@ -30,10 +30,6 @@ export interface ILoginData {
     password: string
 }
 
-export interface ILoginAction extends IAction {
-    data: ILoginData
-}
-
 export interface IRegisterData {
     name: string
     email: string
@@ -41,16 +37,8 @@ export interface IRegisterData {
     passwordConfirmation: string
 }
 
-export interface IRegisterAction extends IAction {
-    data: IRegisterData
-}
-
 export interface IPasswordForgottenData {
     email: string
-}
-
-export interface IPasswordForgottenAction extends IAction {
-    data: IPasswordForgottenData
 }
 
 export interface IPasswordResetData {
@@ -58,8 +46,4 @@ export interface IPasswordResetData {
     email: string
     password: string
     passwordConfirmation: string
-}
-
-export interface IPasswordResetAction extends IAction {
-    data: IPasswordResetData
 }

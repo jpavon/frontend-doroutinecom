@@ -40,7 +40,8 @@ export interface IAction {
 }
 
 export interface IApiAction extends IAction {
-    data: object
+    data: object,
+    reject?: () => void
 }
 
 export type IApiSuccess =

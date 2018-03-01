@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
+import { ILoginData } from 'data/user/types'
+
 import { loginUser } from 'data/user/actions'
 import { showAlert } from 'data/ui/actions'
 
@@ -18,7 +20,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    loginUser: (data: {email: string, password: string}) => void
+    loginUser: (data: ILoginData, reject: () => void) => void
     showAlert: (type: string, message: string[]) => void
 }
 
@@ -32,9 +34,14 @@ class LoginContainer extends React.Component<IProps> {
     handleSubmit = (event: React.FormEvent<HTMLInputElement>): void => {
         event.preventDefault()
 
-        this.props.loginUser({
-            email: this.email.value,
-            password: this.password.value
+        new Promise((resolve, reject) => {
+            const data = {
+                email: this.email.value,
+                password: this.password.value
+            }
+            this.props.loginUser(data, reject)
+        }).catch(() => {
+            this.password.value = ''
         })
 
         // }).then((resp) => {
@@ -53,12 +60,10 @@ class LoginContainer extends React.Component<IProps> {
 
     render() {
         return (
-            <>
-                <Login
-                    handleSubmit={this.handleSubmit}
-                    setRef={this.setRef}
-                />
-            </>
+            <Login
+                handleSubmit={this.handleSubmit}
+                setRef={this.setRef}
+            />
         )
     }
 }

@@ -32,7 +32,8 @@ function* loginUserSaga(action: IApiAction) {
         api.post,
         { endpoint: 'login', data: action.data },
         actions.loginUserSuccess,
-        actions.loginUserFailure
+        actions.loginUserFailure,
+        action.reject
     )
 }
 
@@ -67,7 +68,9 @@ function* authErrorSaga() {
     while (true) {
         const { error } = yield take([
             constants.USER_LOGIN_FAILURE,
-            constants.USER_REGISTER_FAILURE
+            constants.USER_REGISTER_FAILURE,
+            constants.USER_PASSWORD_FORGOTTEN_FAILURE,
+            constants.USER_PASSWORD_RESET_FAILURE
         ])
 
         console.log('show error', error)

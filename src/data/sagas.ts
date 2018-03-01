@@ -18,13 +18,17 @@ export function* apiSaga(
     fn: (options: IApiOptions) => AxiosPromise,
     options: IApiOptions,
     successAction: (payload?: object) => ISuccessAction | IAction,
-    errorAction: (error?: object) => IFailureAction | IAction
+    errorAction: (error?: object) => IFailureAction | IAction,
+    reject?: () => void
 ) {
     try {
         const payload = yield call(fn, options)
         yield put(successAction(payload))
     } catch (error) {
         yield put(errorAction(error))
+        if (reject) {
+            reject()
+        }
     }
 }
 

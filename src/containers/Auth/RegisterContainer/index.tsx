@@ -1,10 +1,9 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IAction } from 'data/types'
-import { IRegisterData, IRegisterAction } from 'data/user/types'
+import { IRegisterData } from 'data/user/types'
 
-import { registerUser, authUser } from 'data/user/actions'
+import { registerUser } from 'data/user/actions'
 import { showAlert } from 'data/ui/actions'
 
 import Register from 'components/Auth/Register'
@@ -16,8 +15,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    registerUser: (data: IRegisterData) => IRegisterAction
-    authUser: () => IAction
+    registerUser: (data: IRegisterData) => void
     showAlert: () => void
 }
 
@@ -39,15 +37,9 @@ class RegisterContainer extends React.Component<IProps> {
             password: this.password.value,
             passwordConfirmation: this.passwordConfirmation.value
         })
-        // .then((resp) => {
-        //     if (resp.error) {
-        //         this.password.value = ''
-        //         this.passwordConfirmation.value = ''
-        //         this.props.showAlert('error', resp.error.errors)
-        //     } else {
-        //         this.props.authUser(resp.payload.token)
-        //     }
-        // })
+
+        this.password.value = ''
+        this.passwordConfirmation.value = ''
     }
 
     setRef = (ref: HTMLInputElement, name: 'name' | 'email' | 'password' | 'passwordConfirmation') => {
@@ -69,7 +61,6 @@ class RegisterContainer extends React.Component<IProps> {
 
 const mapDispatchToProps: IDispatchProps = {
     registerUser,
-    authUser,
     showAlert
 }
 

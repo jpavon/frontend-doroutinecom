@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
+import { IPasswordResetData } from 'data/user/types'
+
 import { passwordResetUser } from 'data/user/actions'
 import { showAlert } from 'data/ui/actions'
 
@@ -15,12 +17,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    passwordResetUser: (data: {
-        token: string,
-        email: string,
-        password: string,
-        passwordConfirmation: string
-    }) => void
+    passwordResetUser: (data: IPasswordResetData) => void
     showAlert: () => void
 }
 
@@ -41,6 +38,10 @@ class PasswordResetContainer extends React.Component<IProps> {
             password: this.password.value,
             passwordConfirmation: this.passwordConfirmation.value
         })
+
+        this.password.value = ''
+        this.passwordConfirmation.value = ''
+
         // .then((resp) => {
         //     if (resp.error) {
         //         this.password.value = ''
