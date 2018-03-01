@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import * as store from 'store'
 
 import { IFormatedUser } from 'data/user/types'
-import { IRootState } from 'data/types'
+import { IRootState, IData, IApiAction } from 'data/types'
 
-import { updateUser, unauthUser } from 'data/user/actions'
+import { putUser, unauthUser } from 'data/user/actions'
 import { userSelector } from 'data/user/selectors'
 
 import Settings from 'components/Settings'
@@ -20,7 +20,7 @@ interface IStateProps {
 
 interface IDispatchProps {
     unauthUser: (error?: string) => void
-    updateUser: (id: number, user: {}) => void
+    putUser: (id: number, data: IData) => IApiAction
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
@@ -61,7 +61,7 @@ class SettingsContainer extends React.Component<IProps> {
                     />
                     <Settings
                         user={this.props.user}
-                        updateUser={this.props.updateUser}
+                        putUser={this.props.putUser}
                     />
                     <TopNav
                         rightLabel="Logout"
@@ -81,7 +81,7 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
 })
 
 const mapDispatchToProps: IDispatchProps = {
-    updateUser,
+    putUser,
     unauthUser
 }
 

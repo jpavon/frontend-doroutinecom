@@ -1,6 +1,10 @@
 // import { all, call, put, takeLatest, takeEvery } from 'redux-saga/effects'
 import { all, put, take, call } from 'redux-saga/effects'
 
+import { AxiosPromise } from 'axios'
+import { IApiOptions } from 'utils/api'
+import { IAction, ISuccessAction, IFailureAction } from 'data/types'
+
 import * as uiActions from 'data/ui/actions'
 import * as userActions from 'data/user/actions'
 import * as userConstants from 'data/user/constants'
@@ -10,10 +14,14 @@ import * as userConstants from 'data/user/constants'
 // import { fetchLifts } from 'data/lifts/sagas'
 // import { fetchSets } from 'data/sets/sagas'
 
-/* tslint:disable:no-any */
-export function* apiSaga(fn: any, successAction: any, errorAction: any, data: object | null = null) {
+export function* apiSaga(
+    fn: (options: IApiOptions) => AxiosPromise,
+    options: IApiOptions,
+    successAction: (payload?: object) => ISuccessAction | IAction,
+    errorAction: (error?: object) => IFailureAction | IAction
+) {
     try {
-        const payload = yield call(fn, data)
+        const payload = yield call(fn, options)
         yield put(successAction(payload))
     } catch (error) {
         yield put(errorAction(error))
@@ -25,7 +33,7 @@ export function* fetchAppData() {
 
         // try {
         // yield all([
-        yield put(userActions.fetchUserRequest()),
+        yield put(userActions.getUser())
             // call(fetchRotutines),
             // call(fetchWorkouts),
             // call(fetchExercises),
@@ -35,7 +43,12 @@ export function* fetchAppData() {
 
         // console.log(request)
 
-        yield take(userConstants.USER_FETCH_SUCCESS)
+        const [user] = yield all([
+            take(userConstants.USER_GET_SUCCESS)
+        ])
+
+        console.log(user)
+
         yield put(uiActions.removeLoading())
         // } catch (error) {
             // unauth ?
@@ -68,7 +81,4 @@ export function* fetchAppData() {
     // })
 }
 
-export default function* root() {
-    yield all([
-    ])
-}
+export default []

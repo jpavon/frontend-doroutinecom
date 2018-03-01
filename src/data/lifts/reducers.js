@@ -21,13 +21,13 @@ const lifts = (state = initialState, action) => {
     const { type, payload, error, meta } = action
 
     switch (type) {
-        case constants.LIFTS_FETCH_REQUEST:
+        case constants.LIFTS_GET_REQUEST:
             return request(state)
 
-        case constants.LIFTS_FETCH_SUCCESS:
+        case constants.LIFTS_GET_SUCCESS:
             return fetch(state, payload)
 
-        case constants.LIFTS_FETCH_FAILURE:
+        case constants.LIFTS_GET_FAILURE:
             return failure(state, error)
 
         case constants.LIFTS_POST_REQUEST:

@@ -8,11 +8,10 @@ import env from 'env'
 
 export interface IApiOptions {
     endpoint: string
-    method: string
     data?: object
 }
 
-const api = (method: string, endpoint: string, data: object): AxiosPromise => {
+const api = (method: string, endpoint: string, data: object = {}): AxiosPromise => {
     return axios.request({
         url: endpoint,
         method: method,
@@ -51,8 +50,8 @@ const api = (method: string, endpoint: string, data: object): AxiosPromise => {
 }
 
 export default {
-    get: (endpoint: string) => api('get', endpoint, {}),
-    post: (endpoint: string, data: object) => api('post', endpoint, data),
-    put: (endpoint: string, data: object) => api('put', endpoint, data),
-    delete: (endpoint: string, data: object) => api('delete', endpoint, data)
+    get: (options: IApiOptions) => api('get', options.endpoint, options.data),
+    post: (options: IApiOptions) => api('post', options.endpoint, options.data),
+    put: (options: IApiOptions) => api('put', options.endpoint, options.data),
+    delete: (options: IApiOptions) => api('delete', options.endpoint, options.data)
 }

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { passwordReset } from 'data/user/actions'
+import { passwordResetUser } from 'data/user/actions'
 import { showAlert } from 'data/ui/actions'
 
 import PasswordReset from 'components/Auth/PasswordReset'
@@ -15,7 +15,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    passwordReset: (data: {
+    passwordResetUser: (data: {
         token: string,
         email: string,
         password: string,
@@ -35,7 +35,7 @@ class PasswordResetContainer extends React.Component<IProps> {
     handleSubmit = (event: React.FormEvent<HTMLInputElement>) => {
         event.preventDefault()
 
-        this.props.passwordReset({
+        this.props.passwordResetUser({
             token: this.props.token,
             email: this.email.value,
             password: this.password.value,
@@ -75,7 +75,7 @@ class PasswordResetContainer extends React.Component<IProps> {
 // })
 
 const mapDispatchToProps: IDispatchProps = {
-    passwordReset,
+    passwordResetUser,
     showAlert,
 }
 

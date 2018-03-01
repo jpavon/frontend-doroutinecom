@@ -4,18 +4,18 @@ import { shouldFetch } from 'data/utils'
 
 // export const fetchExercisesAction = {
 //     request: () => ({
-//         type: constants.EXERCISES_FETCH_REQUEST,
+//         type: constants.EXERCISES_GET_REQUEST,
 //         request: {
 //             endpoint: 'exercises',
 //             method: 'get'
 //         }
 //     }),
 //     success: (payload) => ({
-//         type: constants.EXERCISES_FETCH_SUCCESS,
+//         type: constants.EXERCISES_GET_SUCCESS,
 //         payload
 //     }),
 //     failure: (payload) => ({
-//         type: constants.EXERCISES_FETCH_FAILURE,
+//         type: constants.EXERCISES_GET_FAILURE,
 //         error: payload
 //     })
 // }
@@ -23,9 +23,9 @@ import { shouldFetch } from 'data/utils'
 const getExercises = () => ({
     [CALL_API]: {
         types: [
-            constants.EXERCISES_FETCH_REQUEST,
-            constants.EXERCISES_FETCH_SUCCESS,
-            constants.EXERCISES_FETCH_FAILURE
+            constants.EXERCISES_GET_REQUEST,
+            constants.EXERCISES_GET_SUCCESS,
+            constants.EXERCISES_GET_FAILURE
         ],
         endpoint: 'exercises',
         method: 'get'

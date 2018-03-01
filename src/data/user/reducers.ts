@@ -16,10 +16,10 @@ const user = (state = initialState, action: IUserAction): IUserState => {
     const { type, payload, error } = action
 
     switch (type) {
-        case constants.USER_FETCH_REQUEST:
+        case constants.USER_GET_REQUEST:
             return request(state)
 
-        case constants.USER_FETCH_SUCCESS:
+        case constants.USER_GET_SUCCESS:
             return {
                 ...state,
                 fetchStatus: helperTypes.STATUS_LOADED,
@@ -29,7 +29,7 @@ const user = (state = initialState, action: IUserAction): IUserState => {
                 }
             }
 
-        case constants.USER_FETCH_FAILURE:
+        case constants.USER_GET_FAILURE:
             return failure(state, error)
 
         case constants.USER_PUT_REQUEST:

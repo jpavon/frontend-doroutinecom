@@ -21,13 +21,13 @@ const routines = (state = initialState, action) => {
     const { type, payload, error, meta } = action
 
     switch (type) {
-        case constants.ROUTINES_FETCH_REQUEST:
+        case constants.ROUTINES_GET_REQUEST:
             return request(state)
 
-        case constants.ROUTINES_FETCH_SUCCESS:
+        case constants.ROUTINES_GET_SUCCESS:
             return fetch(state, payload)
 
-        case constants.ROUTINES_FETCH_FAILURE:
+        case constants.ROUTINES_GET_FAILURE:
             return failure(state, error)
 
         case constants.ROUTINES_POST_REQUEST:

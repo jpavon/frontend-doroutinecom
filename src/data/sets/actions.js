@@ -5,9 +5,9 @@ import { shouldFetch } from 'data/utils'
 const getSets = () => ({
     [CALL_API]: {
         types: [
-            constants.SETS_FETCH_REQUEST,
-            constants.SETS_FETCH_SUCCESS,
-            constants.SETS_FETCH_FAILURE
+            constants.SETS_GET_REQUEST,
+            constants.SETS_GET_SUCCESS,
+            constants.SETS_GET_FAILURE
         ],
         endpoint: 'sets',
         method: 'get'

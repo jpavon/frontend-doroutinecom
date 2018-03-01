@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { loginUserAction } from 'data/user/actions'
+import { loginUser } from 'data/user/actions'
 import { showAlert } from 'data/ui/actions'
 
 import Login from 'components/Auth/Login'
@@ -18,7 +18,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    loginUserAction: (data: {email: string, password: string}) => void
+    loginUser: (data: {email: string, password: string}) => void
     showAlert: (type: string, message: string[]) => void
 }
 
@@ -32,7 +32,7 @@ class LoginContainer extends React.Component<IProps> {
     handleSubmit = (event: React.FormEvent<HTMLInputElement>): void => {
         event.preventDefault()
 
-        this.props.loginUserAction({
+        this.props.loginUser({
             email: this.email.value,
             password: this.password.value
         })
@@ -67,7 +67,7 @@ class LoginContainer extends React.Component<IProps> {
 // })
 
 const mapDispatchToProps: IDispatchProps = {
-    loginUserAction,
+    loginUser,
     showAlert
 }
 

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { passwordForgotten } from 'data/user/actions'
+import { passwordForgottenUser } from 'data/user/actions'
 import { showAlert } from 'data/ui/actions'
 
 import PasswordForgotten from 'components/Auth/PasswordForgotten'
@@ -14,7 +14,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    passwordForgotten: (data: {email: string}) => void
+    passwordForgottenUser: (data: {email: string}) => void
     showAlert: () => void
 }
 
@@ -27,7 +27,7 @@ class PasswordForgottenContainer extends React.Component<IProps> {
     handleSubmit = (event: React.FormEvent<HTMLInputElement>) => {
         event.preventDefault()
 
-        this.props.passwordForgotten({
+        this.props.passwordForgottenUser({
             email: this.email.value
         })
         // .then((resp) => {
@@ -62,7 +62,7 @@ class PasswordForgottenContainer extends React.Component<IProps> {
 // })
 
 const mapDispatchToProps: IDispatchProps = {
-    passwordForgotten,
+    passwordForgottenUser,
     showAlert
 }
 

@@ -6,9 +6,9 @@ import { fetchExercises } from 'data/exercises/actions'
 const getLifts = () => ({
     [CALL_API]: {
         types: [
-            constants.LIFTS_FETCH_REQUEST,
-            constants.LIFTS_FETCH_SUCCESS,
-            constants.LIFTS_FETCH_FAILURE
+            constants.LIFTS_GET_REQUEST,
+            constants.LIFTS_GET_SUCCESS,
+            constants.LIFTS_GET_FAILURE
         ],
         endpoint: 'lifts',
         method: 'get'

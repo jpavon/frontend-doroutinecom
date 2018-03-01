@@ -21,13 +21,13 @@ const exercises = (state = initialState, action) => {
     const { type, payload, error, meta } = action
 
     switch (type) {
-        case constants.EXERCISES_FETCH_REQUEST:
+        case constants.EXERCISES_GET_REQUEST:
             return request(state)
 
-        case constants.EXERCISES_FETCH_SUCCESS:
+        case constants.EXERCISES_GET_SUCCESS:
             return fetch(state, payload)
 
-        case constants.EXERCISES_FETCH_FAILURE:
+        case constants.EXERCISES_GET_FAILURE:
             return failure(state, error)
 
         case constants.EXERCISES_POST_REQUEST:

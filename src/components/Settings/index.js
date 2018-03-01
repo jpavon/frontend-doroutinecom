@@ -6,11 +6,11 @@ import TopNav from 'components/TopNav'
 
 import './style.css'
 
-const Settings = ({user, updateUser}) => (
+const Settings = ({user, putUser}) => (
     <div className="settings">
         <AutoSaveForm
             initialValues={user}
-            update={updateUser}
+            update={putUser}
             render={() => (
                 <div className="settings-form">
                     <Field
@@ -78,7 +78,7 @@ const Settings = ({user, updateUser}) => (
         />
         <AutoSaveForm
             initialValues={user}
-            update={updateUser}
+            update={putUser}
             render={() => (
                 <div className="settings-form">
                     <Field

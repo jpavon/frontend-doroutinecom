@@ -6,9 +6,9 @@ import { fetchWorkouts } from 'data/workouts/actions'
 const getRoutines = () => ({
     [CALL_API]: {
         types: [
-            constants.ROUTINES_FETCH_REQUEST,
-            constants.ROUTINES_FETCH_SUCCESS,
-            constants.ROUTINES_FETCH_FAILURE
+            constants.ROUTINES_GET_REQUEST,
+            constants.ROUTINES_GET_SUCCESS,
+            constants.ROUTINES_GET_FAILURE
         ],
         endpoint: 'routines',
         method: 'get'

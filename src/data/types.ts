@@ -1,11 +1,11 @@
 // import PropTypes from 'prop-types'
-import { IUserState } from 'data/user/types'
-import { IExercisesState } from 'data/exercises/types'
-import { ILiftsState } from 'data/lifts/types'
-import { IRoutinesState } from 'data/routines/types'
-import { ISetsState } from 'data/sets/types'
-import { IWorkoutsState } from 'data/workouts/types'
-import { IApiOptions } from 'utils/api'
+import { IUser, IUserState } from 'data/user/types'
+import { IExercise, IExercisesState } from 'data/exercises/types'
+import { ILift, ILiftsState } from 'data/lifts/types'
+import { IRoutine, IRoutinesState } from 'data/routines/types'
+import { ISet, ISetsState } from 'data/sets/types'
+import { IWorkout, IWorkoutsState } from 'data/workouts/types'
+// import { IApiOptions } from 'utils/api'
 
 // import {
 //     STATUS_NONE,
@@ -40,16 +40,37 @@ export interface IAction {
 }
 
 export interface IApiAction extends IAction {
-    request: IApiOptions
+    data: object
 }
 
-export interface IApiError {
+export type IApiSuccess =
+    IUser |
+    IExercise[] |
+    ILift[] |
+    IRoutine[] |
+    ISet[] |
+    IWorkout[]
+
+export interface ISuccessAction extends IAction {
+    payload: IApiSuccess
+
+}
+
+export interface IApiFailure {
     errors: {
         [index: string]: string[]
     }
     message: string
 }
 
+export interface IFailureAction extends IAction {
+    error: IApiFailure
+}
+
 export interface IEntitiesStatus {
     [index: number]: string
+}
+
+export interface IData {
+    [index: number]: string | number
 }

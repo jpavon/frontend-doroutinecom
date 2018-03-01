@@ -5,9 +5,9 @@ import { shouldFetch } from 'data/utils'
 const getWorkouts = () => ({
     [CALL_API]: {
         types: [
-            constants.WORKOUTS_FETCH_REQUEST,
-            constants.WORKOUTS_FETCH_SUCCESS,
-            constants.WORKOUTS_FETCH_FAILURE
+            constants.WORKOUTS_GET_REQUEST,
+            constants.WORKOUTS_GET_SUCCESS,
+            constants.WORKOUTS_GET_FAILURE
         ],
         endpoint: 'workouts',
         method: 'get'

@@ -1,8 +1,8 @@
 export const NAME = 'lifts'
 
-export const LIFTS_FETCH_REQUEST = `${NAME}/FETCH_REQUEST`
-export const LIFTS_FETCH_SUCCESS = `${NAME}/FETCH_SUCCESS`
-export const LIFTS_FETCH_FAILURE = `${NAME}/FETCH_FAILURE`
+export const LIFTS_GET_REQUEST = `${NAME}/GET_REQUEST`
+export const LIFTS_GET_SUCCESS = `${NAME}/GET_SUCCESS`
+export const LIFTS_GET_FAILURE = `${NAME}/GET_FAILURE`
 
 export const LIFTS_POST_REQUEST = `${NAME}/POST_REQUEST`
 export const LIFTS_POST_SUCCESS = `${NAME}/POST_SUCCESS`

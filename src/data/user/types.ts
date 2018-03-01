@@ -1,4 +1,4 @@
-import { IFetchStatus, IApiError, IAction } from 'data/types'
+import { IFetchStatus, IApiFailure, IAction } from 'data/types'
 
 export interface IUser {
     id: number
@@ -12,9 +12,7 @@ export interface IUser {
     updatedAt: string
 }
 
-export interface IFormatedUser extends IUser {
-
-}
+export interface IFormatedUser extends IUser {}
 
 export interface IUserState {
     fetchStatus: IFetchStatus
@@ -24,5 +22,44 @@ export interface IUserState {
 
 export interface IUserAction extends IAction {
     payload: IUser
-    error: IApiError
+    error: IApiFailure
+}
+
+export interface ILoginData {
+    email: string
+    password: string
+}
+
+export interface ILoginAction extends IAction {
+    data: ILoginData
+}
+
+export interface IRegisterData {
+    name: string
+    email: string
+    password: string
+    passwordConfirmation: string
+}
+
+export interface IRegisterAction extends IAction {
+    data: IRegisterData
+}
+
+export interface IPasswordForgottenData {
+    email: string
+}
+
+export interface IPasswordForgottenAction extends IAction {
+    data: IPasswordForgottenData
+}
+
+export interface IPasswordResetData {
+    token: string
+    email: string
+    password: string
+    passwordConfirmation: string
+}
+
+export interface IPasswordResetAction extends IAction {
+    data: IPasswordResetData
 }
