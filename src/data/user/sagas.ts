@@ -6,7 +6,7 @@ import { IApiAction } from 'data/types'
 import api from 'utils/api'
 import * as constants from 'data/user/constants'
 import * as actions from 'data/user/actions'
-// import * as uiActions from 'data/ui/actions'
+import * as uiActions from 'data/ui/actions'
 import { fetchAppData, apiSaga } from 'data/sagas'
 
 function* getUserSaga() {
@@ -77,7 +77,23 @@ function* authErrorSaga() {
             constants.USER_PASSWORD_RESET_FAILURE
         ])
 
-        console.log('show error', error)
+        yield put(uiActions.showAlert('error', error.errors))
+    }
+}
+
+function* authPasswordResetSuccessSaga() {
+    while (true) {
+        yield take(constants.USER_PASSWORD_RESET_SUCCESS)
+
+        yield put(uiActions.showAlert('success', 'Your password has been reset, login again.'))
+    }
+}
+
+function* authPasswordForgottenSuccessSaga() {
+    while (true) {
+        yield take(constants.USER_PASSWORD_FORGOTTEN_SUCCESS)
+
+        yield put(uiActions.showAlert('success', 'A password reset email has been sent.'))
     }
 }
 
@@ -103,8 +119,7 @@ function* unauthUserSaga() {
         store.remove('token')
 
         if (error) {
-            console.log('show error')
-            // showAlert('error', error))
+            yield put(uiActions.showAlert('error', error))
         }
     }
 }
@@ -118,5 +133,7 @@ export default [
     takeLatest(constants.USER_PASSWORD_RESET_REQUEST, passwordResetUserSaga),
     spawn(authSaga),
     spawn(unauthUserSaga),
+    spawn(authPasswordResetSuccessSaga),
+    spawn(authPasswordForgottenSuccessSaga),
     spawn(authErrorSaga)
 ]

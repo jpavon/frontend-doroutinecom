@@ -4,14 +4,8 @@ import { connect } from 'react-redux'
 import { ILoginData } from 'data/user/types'
 
 import { loginUser } from 'data/user/actions'
-import { showAlert } from 'data/ui/actions'
 
 import Login from 'components/Auth/Login'
-
-// interface Response {
-//     error: { errors: string[] }
-//     payload: { token: string }
-// }
 
 interface IOwnProps {
 }
@@ -21,7 +15,6 @@ interface IStateProps {
 
 interface IDispatchProps {
     loginUser: (data: ILoginData, resolve: () => void, reject: () => void) => void
-    showAlert: (type: string, message: string[]) => void
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
@@ -44,15 +37,6 @@ class LoginContainer extends React.Component<IProps> {
         }).catch((error) => {
             this.password.value = ''
         })
-
-        // }).then((resp) => {
-        //            if (resp.error) {
-        //                this.password.value = ''
-        //                this.props.showAlert('error', resp.error.errors)
-        //            } else {
-        //                this.props.auth(resp.payload.token)
-        //            }
-        //        })
     }
 
     setRef = (ref: HTMLInputElement, name: 'email' | 'password'): void => {
@@ -74,7 +58,6 @@ class LoginContainer extends React.Component<IProps> {
 
 const mapDispatchToProps: IDispatchProps = {
     loginUser,
-    showAlert
 }
 
 export default connect(null, mapDispatchToProps)(LoginContainer)

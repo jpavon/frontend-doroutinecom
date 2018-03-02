@@ -1,13 +1,15 @@
+import { IUiState, IUiAction } from 'data/ui/types'
+
 import * as constants from 'data/ui/constants'
 
-const initialState = {
+const initialState: IUiState = {
     isLoading: false,
     alert: null,
     isServerError: false,
     isOffline: !window.navigator.onLine
 }
 
-const ui = (state = initialState, action) => {
+const ui = (state = initialState, action: IUiAction): IUiState => {
     const { type, alert } = action
 
     switch (type) {
@@ -24,13 +26,17 @@ const ui = (state = initialState, action) => {
             }
 
         case constants.SHOW_ALERT:
-            return {
-                ...state,
-                alert: {
-                    type: alert.type,
-                    message: alert.message
+            if (alert) {
+                return {
+                    ...state,
+                    alert: {
+                        type: alert.type,
+                        message: alert.message
+                    }
                 }
             }
+
+            return state
 
         case constants.REMOVE_ALERT:
             return {

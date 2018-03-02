@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect'
+
 import { IUser, IFormatedUser } from 'data/user/types'
 import { IRootState } from 'data/types'
 

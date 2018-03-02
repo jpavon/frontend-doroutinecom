@@ -8,7 +8,6 @@ import { IFormatedRoutine } from 'data/routines/types'
 import { createRoutine } from 'data/routines/actions'
 import { routinesSelector, defaultRoutinesSelector } from 'data/routines/selectors'
 import { STATUS_LOADING } from 'data/utils'
-import { showAlert } from 'data/ui/actions'
 
 import Routines from 'components/Routines/Routines'
 import Routine from 'components/Routines/Routine'
@@ -27,7 +26,6 @@ interface IStateProps {
 
 interface IDispatchProps {
     createRoutine: () => void
-    showAlert: () => void
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
@@ -95,7 +93,6 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
 
 const mapDispatchToProps: IDispatchProps = {
     createRoutine,
-    showAlert
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoutinesContainer)

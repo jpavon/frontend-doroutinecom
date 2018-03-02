@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { IRegisterData } from 'data/user/types'
 
 import { registerUser } from 'data/user/actions'
-import { showAlert } from 'data/ui/actions'
 
 import Register from 'components/Auth/Register'
 
@@ -16,7 +15,6 @@ interface IStateProps {
 
 interface IDispatchProps {
     registerUser: (data: IRegisterData) => void
-    showAlert: () => void
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
@@ -61,7 +59,6 @@ class RegisterContainer extends React.Component<IProps> {
 
 const mapDispatchToProps: IDispatchProps = {
     registerUser,
-    showAlert
 }
 
 export default connect(null, mapDispatchToProps)(RegisterContainer)
