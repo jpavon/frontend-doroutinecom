@@ -20,7 +20,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    loginUser: (data: ILoginData, reject: () => void) => void
+    loginUser: (data: ILoginData, resolve: () => void, reject: () => void) => void
     showAlert: (type: string, message: string[]) => void
 }
 
@@ -39,8 +39,9 @@ class LoginContainer extends React.Component<IProps> {
                 email: this.email.value,
                 password: this.password.value
             }
-            this.props.loginUser(data, reject)
-        }).catch(() => {
+
+            this.props.loginUser(data, resolve, reject)
+        }).catch((error) => {
             this.password.value = ''
         })
 

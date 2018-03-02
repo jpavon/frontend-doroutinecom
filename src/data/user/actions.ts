@@ -36,9 +36,10 @@ export const putUserFailure = (payload: IApiFailure) => ({
 })
 
 // login
-export const loginUser = (data: ILoginData, reject: () => void) => ({
+export const loginUser = (data: ILoginData, resolve: () => void, reject: () => void) => ({
     type: constants.USER_LOGIN_REQUEST,
     data,
+    resolve,
     reject
 })
 

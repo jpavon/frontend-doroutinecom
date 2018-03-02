@@ -2,8 +2,7 @@
 import { all, put, take, call } from 'redux-saga/effects'
 
 import { AxiosPromise } from 'axios'
-import { IApiOptions } from 'utils/api'
-import { IAction, ISuccessAction, IFailureAction } from 'data/types'
+import { IApiAction, IAction, ISuccessAction, IFailureAction } from 'data/types'
 
 import * as uiActions from 'data/ui/actions'
 import * as userActions from 'data/user/actions'
@@ -15,20 +14,19 @@ import * as userConstants from 'data/user/constants'
 // import { fetchSets } from 'data/sets/sagas'
 
 export function* apiSaga(
-    fn: (options: IApiOptions) => AxiosPromise,
-    options: IApiOptions,
+    fn: (endpoint: string, data?: object) => AxiosPromise,
+    endpoint: string,
     successAction: (payload?: object) => ISuccessAction | IAction,
     errorAction: (error?: object) => IFailureAction | IAction,
-    reject?: () => void
+    action?: IApiAction
 ) {
     try {
-        const payload = yield call(fn, options)
+        const payload = yield call(fn, endpoint, action && action.data)
         yield put(successAction(payload))
+        if (action && action.resolve) { action.resolve(payload) }
     } catch (error) {
         yield put(errorAction(error))
-        if (reject) {
-            reject()
-        }
+        if (action && action.reject) { action.reject(error) }
     }
 }
 

@@ -6,11 +6,6 @@ import env from 'env'
 // import { unauthUser } from 'data/user/actions'
 // import { setServerError, setOffline } from 'data/ui/actions'
 
-export interface IApiOptions {
-    endpoint: string
-    data?: object
-}
-
 const api = (method: string, endpoint: string, data: object = {}): AxiosPromise => {
     return axios.request({
         url: endpoint,
@@ -50,8 +45,8 @@ const api = (method: string, endpoint: string, data: object = {}): AxiosPromise 
 }
 
 export default {
-    get: (options: IApiOptions) => api('get', options.endpoint, options.data),
-    post: (options: IApiOptions) => api('post', options.endpoint, options.data),
-    put: (options: IApiOptions) => api('put', options.endpoint, options.data),
-    delete: (options: IApiOptions) => api('delete', options.endpoint, options.data)
+    get: (endpoint: string, data?: object) => api('get', endpoint, data),
+    post: (endpoint: string, data?: object) => api('post', endpoint, data),
+    put: (endpoint: string, data?: object) => api('put', endpoint, data),
+    delete: (endpoint: string, data?: object) => api('delete', endpoint, data)
 }

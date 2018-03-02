@@ -12,7 +12,7 @@ import { fetchAppData, apiSaga } from 'data/sagas'
 function* getUserSaga() {
     yield* apiSaga(
         api.get,
-        { endpoint: 'user' },
+        'user',
         actions.getUserSuccess,
         actions.getUserFailure
     )
@@ -21,46 +21,50 @@ function* getUserSaga() {
 function* putUserSaga(action: IApiAction) {
     yield* apiSaga(
         api.put,
-        { endpoint: 'user', data: action.data },
+        'user',
         actions.putUserSuccess,
-        actions.putUserFailure
+        actions.putUserFailure,
+        action
     )
 }
 
 function* loginUserSaga(action: IApiAction) {
     yield* apiSaga(
         api.post,
-        { endpoint: 'login', data: action.data },
+        'login',
         actions.loginUserSuccess,
         actions.loginUserFailure,
-        action.reject
+        action
     )
 }
 
 function* registerUserSaga(action: IApiAction) {
     yield* apiSaga(
         api.post,
-        { endpoint: 'register', data: action.data },
+        'register',
         actions.registerUserSuccess,
-        actions.registerUserFailure
+        actions.registerUserFailure,
+        action
     )
 }
 
 function* passwordForgottenUserSaga(action: IApiAction) {
     yield* apiSaga(
         api.post,
-        { endpoint: 'password/email', data: action.data },
+        'password/email',
         actions.passwordForgottenUserSuccess,
-        actions.passwordForgottenUserFailure
+        actions.passwordForgottenUserFailure,
+        action
     )
 }
 
 function* passwordResetUserSaga(action: IApiAction) {
     yield* apiSaga(
         api.post,
-        { endpoint: 'password/reset', data: action.data },
+        'password/reset',
         actions.passwordResetUserSuccess,
-        actions.passwordResetUserFailure
+        actions.passwordResetUserFailure,
+        action
     )
 }
 

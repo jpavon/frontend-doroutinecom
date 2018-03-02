@@ -1,6 +1,7 @@
 {
     "extends": ["tslint-react"],
     "rules": {
+        "defaultSeverity": "warning",
         "align": [
             true,
             "parameters",
