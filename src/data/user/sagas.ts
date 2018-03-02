@@ -10,63 +10,28 @@ import * as actions from 'data/user/actions'
 import * as uiActions from 'data/ui/actions'
 import { getAppDataSaga } from 'data/sagas'
 
-function* getUserSaga() {
-    yield* apiSaga(
-        api.get,
-        'user',
-        actions.getUserSuccess,
-        actions.getUserFailure
-    )
+function* getUserSaga(action: IApiAction) {
+    yield* apiSaga(api.get, actions.getUserSuccess, actions.getUserFailure, action)
 }
 
 function* putUserSaga(action: IApiAction) {
-    yield* apiSaga(
-        api.put,
-        'user',
-        actions.putUserSuccess,
-        actions.putUserFailure,
-        action
-    )
+    yield* apiSaga(api.put, actions.putUserSuccess, actions.putUserFailure, action)
 }
 
 function* loginUserSaga(action: IApiAction) {
-    yield* apiSaga(
-        api.post,
-        'login',
-        actions.loginUserSuccess,
-        actions.loginUserFailure,
-        action
-    )
+    yield* apiSaga(api.post, actions.loginUserSuccess, actions.loginUserFailure, action)
 }
 
 function* registerUserSaga(action: IApiAction) {
-    yield* apiSaga(
-        api.post,
-        'register',
-        actions.registerUserSuccess,
-        actions.registerUserFailure,
-        action
-    )
+    yield* apiSaga(api.post, actions.registerUserSuccess, actions.registerUserFailure, action)
 }
 
 function* passwordForgottenUserSaga(action: IApiAction) {
-    yield* apiSaga(
-        api.post,
-        'password/email',
-        actions.passwordForgottenUserSuccess,
-        actions.passwordForgottenUserFailure,
-        action
-    )
+    yield* apiSaga(api.post, actions.passwordForgottenUserSuccess, actions.passwordForgottenUserFailure, action)
 }
 
 function* passwordResetUserSaga(action: IApiAction) {
-    yield* apiSaga(
-        api.post,
-        'password/reset',
-        actions.passwordResetUserSuccess,
-        actions.passwordResetUserFailure,
-        action
-    )
+    yield* apiSaga(api.post, actions.passwordResetUserSuccess, actions.passwordResetUserFailure, action)
 }
 
 function* authErrorSaga() {

@@ -84,20 +84,42 @@ class AutoSaveForm extends Component {
     }, 300)
 
     update = (id, name, value) => {
-        this.props.update(id, { [name]: value })
-            .then((resp) => {
-                this.setState({
-                    errors: resp.error ? resp.error.errors : {},
-                    updating: resp.error ? null : name,
-                    reinitializeValues: true
-                })
-
-                debounce(() => {
-                    this.setState({
-                        updating: null,
-                    })
-                }, 500)()
+        new Promise((resolve, reject) => {
+            this.props.update(id, { [name]: value }, resolve, reject)
+        }).then((payload) => {
+            this.setState({
+                updating: name,
+                errors: {}
             })
+
+            debounce(() => {
+                this.setState({
+                    updating: null,
+                })
+            }, 500)()
+        }).catch((error) => {
+            this.setState({
+                errors: error ? error.errors : {},
+            })
+        }).finally(() => {
+            this.setState({
+                reinitializeValues: true
+            })
+        })
+        // this.props.update(id, { [name]: value })
+        //     .then((resp) => {
+        //         this.setState({
+        //             errors: resp.error ? resp.error.errors : {},
+        //             updating: resp.error ? null : name,
+        //             reinitializeValues: true
+        //         })
+
+        //         debounce(() => {
+        //             this.setState({
+        //                 updating: null,
+        //             })
+        //         }, 500)()
+        //     })
     }
 
     render() {

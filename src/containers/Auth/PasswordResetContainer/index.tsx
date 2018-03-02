@@ -16,10 +16,10 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    passwordResetUser: (data: IPasswordResetData) => void
+    passwordResetUser: (data: IPasswordResetData, resolve: () => void, reject: () => void) => void
 }
 
-interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
+interface IProps extends IOwnProps, IStateProps, IDispatchProps { }
 
 class PasswordResetContainer extends React.Component<IProps> {
 
@@ -30,15 +30,17 @@ class PasswordResetContainer extends React.Component<IProps> {
     handleSubmit = (event: React.FormEvent<HTMLInputElement>) => {
         event.preventDefault()
 
-        this.props.passwordResetUser({
-            token: this.props.token,
-            email: this.email.value,
-            password: this.password.value,
-            passwordConfirmation: this.passwordConfirmation.value
+        new Promise((resolve, reject) => {
+            this.props.passwordResetUser({
+                token: this.props.token,
+                email: this.email.value,
+                password: this.password.value,
+                passwordConfirmation: this.passwordConfirmation.value
+            }, resolve, reject)
+        }).catch((error) => {
+            this.password.value = ''
+            this.passwordConfirmation.value = ''
         })
-
-        this.password.value = ''
-        this.passwordConfirmation.value = ''
     }
 
     setRef = (ref: HTMLInputElement, name: 'name' | 'email' | 'password' | 'passwordConfirmation') => {

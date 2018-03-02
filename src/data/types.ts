@@ -40,6 +40,7 @@ export interface IAction {
 }
 
 export interface IApiAction extends IAction {
+    endpoint: string
     data: object
     resolve?: (payload: object) => void
     reject?: (error: object) => void

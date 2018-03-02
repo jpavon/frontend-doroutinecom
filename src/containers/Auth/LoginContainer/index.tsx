@@ -28,12 +28,10 @@ class LoginContainer extends React.Component<IProps> {
         event.preventDefault()
 
         new Promise((resolve, reject) => {
-            const data = {
+            this.props.loginUser({
                 email: this.email.value,
                 password: this.password.value
-            }
-
-            this.props.loginUser(data, resolve, reject)
+            }, resolve, reject)
         }).catch((error) => {
             this.password.value = ''
         })

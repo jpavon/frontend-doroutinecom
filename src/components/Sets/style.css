@@ -36,6 +36,8 @@
     font-size: 1.3rem; }
     .set-inner input[name="weight"]::-webkit-input-placeholder, .set-inner input[name="reps"]::-webkit-input-placeholder {
       color: rgba(68, 68, 68, 0.3); }
+      .set-inner input[name="weight"]::-webkit-input-placeholder:-webkit-autofill, .set-inner input[name="weight"]::-webkit-input-placeholder:-webkit-autofill:hover, .set-inner input[name="weight"]::-webkit-input-placeholder:-webkit-autofill:focus, .set-inner input[name="weight"]::-webkit-input-placeholder:-webkit-autofill, .set-inner input[name="reps"]::-webkit-input-placeholder:-webkit-autofill, .set-inner input[name="reps"]::-webkit-input-placeholder:-webkit-autofill:hover, .set-inner input[name="reps"]::-webkit-input-placeholder:-webkit-autofill:focus, .set-inner input[name="reps"]::-webkit-input-placeholder:-webkit-autofill {
+        -webkit-text-fill-color: rgba(68, 68, 68, 0.3); }
     .set-inner input[name="weight"]:-moz-placeholder, .set-inner input[name="reps"]:-moz-placeholder {
       color: rgba(68, 68, 68, 0.3); }
     .set-inner input[name="weight"]::-moz-placeholder, .set-inner input[name="reps"]::-moz-placeholder {

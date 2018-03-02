@@ -6,6 +6,7 @@ import * as constants from 'data/user/constants'
 // get
 export const getUser = () => ({
     type: constants.USER_GET_REQUEST,
+    endpoint: 'user'
 })
 
 export const getUserSuccess = (payload: IApiSuccess) => ({
@@ -19,10 +20,12 @@ export const getUserFailure = (payload: IApiFailure) => ({
 })
 
 // put
-export const putUser = (id: number, data: IData) => ({
+export const putUser = (id: number, data: IData, resolve: () => void, reject: () => void) => ({
     type: constants.USER_PUT_REQUEST,
-    id,
-    data
+    endpoint: 'user',
+    data,
+    resolve,
+    reject
 })
 
 export const putUserSuccess = (payload: IApiSuccess) => ({
@@ -38,6 +41,7 @@ export const putUserFailure = (payload: IApiFailure) => ({
 // login
 export const loginUser = (data: ILoginData, resolve: () => void, reject: () => void) => ({
     type: constants.USER_LOGIN_REQUEST,
+    endpoint: 'login',
     data,
     resolve,
     reject
@@ -54,9 +58,12 @@ export const loginUserFailure = (payload: IApiFailure) => ({
 })
 
 // register
-export const registerUser = (data: IRegisterData) => ({
+export const registerUser = (data: IRegisterData, resolve: () => void, reject: () => void) => ({
     type: constants.USER_REGISTER_REQUEST,
-    data
+    endpoint: 'register',
+    data,
+    resolve,
+    reject
 })
 
 export const registerUserSuccess = (payload: IApiSuccess) => ({
@@ -72,7 +79,8 @@ export const registerUserFailure = (payload: IApiFailure) => ({
 // passwordForgotten
 export const passwordForgottenUser = (data: IPasswordForgottenData) => ({
     type: constants.USER_PASSWORD_FORGOTTEN_REQUEST,
-    data
+    endpoint: 'password/email',
+    data,
 })
 
 export const passwordForgottenUserSuccess = (payload: IApiSuccess) => ({
@@ -86,9 +94,12 @@ export const passwordForgottenUserFailure = (payload: IApiFailure) => ({
 })
 
 // passwordReset
-export const passwordResetUser = (data: IPasswordResetData) => ({
+export const passwordResetUser = (data: IPasswordResetData, resolve: () => void, reject: () => void) => ({
     type: constants.USER_PASSWORD_RESET_REQUEST,
-    data
+    endpoint: 'password/reset',
+    data,
+    resolve,
+    reject
 })
 
 export const passwordResetUserSuccess = (payload: IApiSuccess) => ({

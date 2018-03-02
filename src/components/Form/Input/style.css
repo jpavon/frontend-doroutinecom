@@ -31,6 +31,8 @@
     appearance: textfield; }
   .input::-webkit-input-placeholder {
     color: rgba(68, 68, 68, 0.5); }
+    .input::-webkit-input-placeholder:-webkit-autofill, .input::-webkit-input-placeholder:-webkit-autofill:hover, .input::-webkit-input-placeholder:-webkit-autofill:focus, .input::-webkit-input-placeholder:-webkit-autofill {
+      -webkit-text-fill-color: rgba(68, 68, 68, 0.5); }
   .input:-moz-placeholder {
     color: rgba(68, 68, 68, 0.5); }
   .input::-moz-placeholder {

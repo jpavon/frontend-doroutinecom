@@ -30,6 +30,13 @@
 @mixin placeholder($color) {
     &::-webkit-input-placeholder {
         color: $color;
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill {
+            -webkit-text-fill-color: $color;
+        }
     }
     &:-moz-placeholder {
         color: $color;

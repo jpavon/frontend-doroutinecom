@@ -20,7 +20,7 @@ interface IStateProps {
 
 interface IDispatchProps {
     unauthUser: (error?: string) => void
-    putUser: (id: number, data: IData) => IApiAction
+    putUser: (id: number, data: IData, resolve: () => void, reject: () => void) => IApiAction
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
