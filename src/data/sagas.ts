@@ -1,46 +1,25 @@
-// import { all, call, put, takeLatest, takeEvery } from 'redux-saga/effects'
-import { all, put, take, call } from 'redux-saga/effects'
-
-import { AxiosPromise } from 'axios'
-import { IApiAction, IAction, ISuccessAction, IFailureAction } from 'data/types'
+import { all, put, take } from 'redux-saga/effects'
 
 import * as uiActions from 'data/ui/actions'
-import * as userActions from 'data/user/actions'
+import { getUser } from 'data/user/actions'
 import * as userConstants from 'data/user/constants'
-// import { fetchRoutines } from 'data/routines/sagas'
-// import { fetchWorkouts } from 'data/workouts/sagas'
-// import { fetchExercises } from 'data/exercises/sagas'
-// import { fetchLifts } from 'data/lifts/sagas'
-// import { fetchSets } from 'data/sets/sagas'
+// import { fetchRoutines } from 'data/routines/actions'
+// import { fetchWorkouts } from 'data/workouts/actions'
+// import { fetchExercises } from 'data/exercises/actions'
+// import { fetchLifts } from 'data/lifts/actions'
+// import { fetchSets } from 'data/sets/actions'
 
-export function* apiSaga(
-    fn: (endpoint: string, data?: object) => AxiosPromise,
-    endpoint: string,
-    successAction: (payload?: object) => ISuccessAction | IAction,
-    errorAction: (error?: object) => IFailureAction | IAction,
-    action?: IApiAction
-) {
-    try {
-        const payload = yield call(fn, endpoint, action && action.data)
-        yield put(successAction(payload))
-        if (action && action.resolve) { action.resolve(payload) }
-    } catch (error) {
-        yield put(errorAction(error))
-        if (action && action.reject) { action.reject(error) }
-    }
-}
-
-export function* fetchAppData() {
+export function* getAppDataSaga() {
         yield put(uiActions.showLoading())
 
         // try {
         // yield all([
-        yield put(userActions.getUser())
-            // call(fetchRotutines),
-            // call(fetchWorkouts),
-            // call(fetchExercises),
-            // call(fetchLifts),
-            // call(fetchSets)
+        yield put(getUser())
+        // yield put(fetchRoutines())
+        // yield put(fetchWorkouts())
+        // yield put(fetchExercises())
+        // yield put(fetchLifts())
+        // yield put(fetchSets())
         // ])
 
         // console.log(request)

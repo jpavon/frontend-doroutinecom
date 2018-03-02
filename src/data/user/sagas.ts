@@ -4,10 +4,11 @@ import * as store from 'store'
 import { IApiAction } from 'data/types'
 
 import api from 'utils/api'
+import apiSaga from 'utils/apiSaga'
 import * as constants from 'data/user/constants'
 import * as actions from 'data/user/actions'
 import * as uiActions from 'data/ui/actions'
-import { fetchAppData, apiSaga } from 'data/sagas'
+import { getAppDataSaga } from 'data/sagas'
 
 function* getUserSaga() {
     yield* apiSaga(
@@ -108,7 +109,7 @@ function* authSaga() {
 
         store.set('token', payload.token)
 
-        yield call(fetchAppData)
+        yield call(getAppDataSaga)
     }
 }
 
