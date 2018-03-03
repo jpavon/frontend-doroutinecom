@@ -1,5 +1,8 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
+
+import { IRootState } from 'data/types'
+import { IAlert } from 'data/ui/types'
+
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 
@@ -7,28 +10,31 @@ import { removeAlert } from 'data/ui/actions'
 
 import Alert from 'components/Alert'
 
-class Layout extends Component {
+interface IOwnProps {
+    header: React.ReactNode
+}
 
-    static propTypes = {
-        alert: PropTypes.shape({
-            type: PropTypes.string.isRequired,
-            message: PropTypes.oneOfType([
-                PropTypes.string,
-                PropTypes.array,
-                PropTypes.object,
-                PropTypes.bool
-            ]).isRequired
-        }),
-        removeAlert: PropTypes.func.isRequired,
-    }
+interface IStateProps {
+    alert: IAlert | null
+}
 
-    constructor(props) {
+interface IDispatchProps {
+    removeAlert: () => void
+}
+
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
+
+class Layout extends React.Component<IProps> {
+
+    constructor(props: IProps) {
         super(props)
 
-        this.props.alert && this.props.removeAlert()
+        if (this.props.alert) {
+            this.props.removeAlert()
+        }
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps: IProps) {
         if (nextProps.alert && nextProps.alert === this.props.alert) {
             this.props.removeAlert()
         }
@@ -36,7 +42,7 @@ class Layout extends Component {
 
     render() {
         return (
-            <Fragment>
+            <>
                 <Helmet>
                     {this.props.header}
                 </Helmet>
@@ -49,17 +55,16 @@ class Layout extends Component {
                     }
                     {this.props.children}
                 </main>
-            </Fragment>
+            </>
         )
     }
 }
 
-
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     alert: state.ui.alert
 })
 
-const mapDispatchToProps = {
+const mapDispatchToProps: IDispatchProps = {
     removeAlert
 }
 

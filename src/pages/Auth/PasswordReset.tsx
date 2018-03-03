@@ -1,8 +1,14 @@
-import React from 'react'
+import * as React from 'react'
+import { RouteComponentProps } from 'react-router'
+
 import Layout from 'pages/Layout'
 import PasswordResetContainer from 'containers/Auth/PasswordResetContainer'
 
-const PasswordReset = ({match}) => (
+interface IParams {
+    token: string
+}
+
+const PasswordReset = ({match}: RouteComponentProps<IParams>) => (
     <Layout
         header={(
             <title>Password Reset</title>

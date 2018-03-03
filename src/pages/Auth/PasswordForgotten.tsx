@@ -1,4 +1,5 @@
-import React from 'react'
+import * as React from 'react'
+
 import Layout from 'pages/Layout'
 import PasswordForgottenContainer from 'containers/Auth/PasswordForgottenContainer'
 

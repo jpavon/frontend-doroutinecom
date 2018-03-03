@@ -1,8 +1,9 @@
-import React from 'react'
+import * as React from 'react'
+
 import Layout from 'pages/Layout'
 import LiftsContainer from 'containers/LiftsContainer'
 
-const Lifts = ({match}) => (
+const Lifts = () => (
     <Layout
         header={(
             <title>Lifts</title>

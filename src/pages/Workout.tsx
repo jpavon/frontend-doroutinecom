@@ -1,8 +1,14 @@
-import React from 'react'
+import * as React from 'react'
+import { RouteComponentProps } from 'react-router'
+
 import Layout from 'pages/Layout'
 import WorkoutContainer from 'containers/WorkoutContainer'
 
-const Workout = ({match}) => (
+interface IParams {
+    workoutId: string
+}
+
+const Workout = ({match}: RouteComponentProps<IParams>) => (
     <Layout
         header={(
             <title>Edit Workout</title>

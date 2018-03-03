@@ -1,8 +1,9 @@
-import React from 'react'
+import * as React from 'react'
+
 import Layout from 'pages/Layout'
 import WorkoutsContainer from 'containers/WorkoutsContainer'
 
-const Workouts = ({match}) => (
+const Workouts = () => (
     <Layout
         header={(
             <title>Workouts</title>

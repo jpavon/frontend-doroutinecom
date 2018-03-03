@@ -13,5 +13,5 @@ export interface IUiAction extends IAction {
 
 export interface IAlert {
     type: string
-    message: string | string[]
+    message: string | string[] | object
 }

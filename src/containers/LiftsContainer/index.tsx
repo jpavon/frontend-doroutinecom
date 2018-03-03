@@ -15,7 +15,6 @@ import NoData from 'components/NoData'
 import TopNav from 'components/TopNav'
 
 interface IOwnProps {
-    isAuth: boolean
 }
 
 interface IStateProps {
