@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 
+import { ILoginData } from 'data/user/types'
+
 import Field from 'components/Field'
 import Auth from 'components/Auth'
 
@@ -8,13 +10,13 @@ import './style.css'
 
 interface IProps {
     handleSubmit: (event: React.FormEvent<HTMLInputElement>) => void
-    setRef: (ref: HTMLInputElement, name: 'email' | 'password') => void
+    setRef: (ref: HTMLInputElement, name: keyof ILoginData) => void
 }
 
-const Login = (props: IProps) => (
+const Login = ({handleSubmit, setRef}: IProps) => (
     <Auth
         className="login"
-        handleSubmit={props.handleSubmit}
+        handleSubmit={handleSubmit}
         footer={(
             <div className="login-password-forgotten">
                 <Link to="/password-forgotten">Password forgotten?</Link>
@@ -28,7 +30,7 @@ const Login = (props: IProps) => (
             id="email"
             name="email"
             placeholder="type@your.email"
-            inputRef={(ref: HTMLInputElement) => props.setRef(ref, 'email')}
+            inputRef={(ref: HTMLInputElement) => setRef(ref, 'email')}
         />
         <Field
             uncontrolled
@@ -37,7 +39,7 @@ const Login = (props: IProps) => (
             name="password"
             type="password"
             placeholder="Type your password"
-            inputRef={(ref: HTMLInputElement) => props.setRef(ref, 'password')}
+            inputRef={(ref: HTMLInputElement) => setRef(ref, 'password')}
         />
     </Auth>
 )

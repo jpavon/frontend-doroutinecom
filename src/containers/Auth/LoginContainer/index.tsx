@@ -37,7 +37,7 @@ class LoginContainer extends React.Component<IProps> {
         })
     }
 
-    setRef = (ref: HTMLInputElement, name: 'email' | 'password'): void => {
+    setRef = (ref: HTMLInputElement, name: keyof ILoginData): void => {
         this[name] = ref
     }
 

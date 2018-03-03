@@ -32,7 +32,7 @@ class PasswordForgottenContainer extends React.Component<IProps> {
         })
     }
 
-    setRef = (ref: HTMLInputElement, name: 'email') => {
+    setRef = (ref: HTMLInputElement, name: keyof IPasswordForgottenData) => {
         this[name] = ref
     }
 

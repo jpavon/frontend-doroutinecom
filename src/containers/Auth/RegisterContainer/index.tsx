@@ -42,7 +42,7 @@ class RegisterContainer extends React.Component<IProps> {
         })
     }
 
-    setRef = (ref: HTMLInputElement, name: 'name' | 'email' | 'password' | 'passwordConfirmation') => {
+    setRef = (ref: HTMLInputElement, name: keyof IRegisterData) => {
         this[name] = ref
     }
 
