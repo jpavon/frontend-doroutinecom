@@ -115,6 +115,12 @@
   version "16.0.38"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.38.tgz#76617433ea10274505f60bb86eddfdd0476ffdc2"
 
+"@types/redux@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@types/redux/-/redux-3.6.0.tgz#f1ebe1e5411518072e4fdfca5c76e16e74c1399a"
+  dependencies:
+    redux "*"
+
 "@types/serve-static@*":
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/@types/serve-static/-/serve-static-1.13.1.tgz#1d2801fa635d274cd97d4ec07e26b21b44127492"
@@ -7241,7 +7247,7 @@ redux-thunk@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.2.0.tgz#e615a16e16b47a19a515766133d1e3e99b7852e5"
 
-redux@^3.6.0, redux@^3.7.2:
+redux@*, redux@^3.6.0, redux@^3.7.2:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/redux/-/redux-3.7.2.tgz#06b73123215901d25d065be342eb026bc1c8537b"
   dependencies:
@@ -7922,10 +7928,6 @@ stdout-stream@^1.4.0:
 stealthy-require@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
-
-store2@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/store2/-/store2-2.7.0.tgz#5e286810ed382d2ddbbd5060a46d791fc97e8d7b"
 
 store@^2.0.12:
   version "2.0.12"

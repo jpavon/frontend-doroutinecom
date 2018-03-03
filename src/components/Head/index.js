@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-const Head = ({children}) => (
+const Head = ({children = null}) => (
     <Helmet
         defaultTitle="doroutine | Keep track of your workouts"
         titleTemplate="%s | doroutine"

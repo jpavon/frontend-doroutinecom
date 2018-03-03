@@ -1,7 +1,9 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
+import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+
+import { IRootState } from 'data/types'
 
 import { fetchAppData } from 'data/globals'
 
@@ -13,18 +15,33 @@ import Loading from 'components/Loading'
 import Head from 'components/Head'
 import Offline from 'components/Offline'
 
-class App extends Component {
+interface IOwnProps {
+}
 
-    static propTypes = {
-        isAuth: PropTypes.bool.isRequired,
-        isLoading: PropTypes.bool.isRequired,
-        isServerError: PropTypes.bool.isRequired,
-        isOffline: PropTypes.bool.isRequired,
+interface IStateProps {
+    isAuth: boolean
+    isLoading: boolean
+    isServerError: boolean
+    isOffline: boolean
+}
 
-        fetchAppData: PropTypes.func.isRequired
+interface IDispatchProps {
+    fetchAppData: () => void
+}
+
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
+
+interface IState {
+    isErrorApp: boolean
+}
+
+class App extends React.Component<IProps, IState> {
+
+    state = {
+        isErrorApp: false
     }
 
-    constructor(props) {
+    constructor(props: IProps) {
         super(props)
 
         if (props.isAuth) {
@@ -32,49 +49,50 @@ class App extends Component {
         }
     }
 
-    state = {
-        isErrorApp: false
-    }
-
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps: IProps) {
         if (nextProps.isServerError && nextProps.isServerError !== this.props.isServerError) {
             this.setState({ isErrorApp: true })
         }
     }
 
-    componentDidCatch(error, info) {
+    componentDidCatch(error: Error/*, info*/) {
         this.setState({ isErrorApp: true })
     }
 
     render() {
-        if (this.props.isOffline) return (<Offline />)
+        if (this.props.isOffline) {
+            return (<Offline />)
+        }
 
         return (
-            <Fragment>
+            <>
                 <Head />
-                <NavContainer isAuth={this.props.isAuth} />
+                <NavContainer />
                 {this.props.isLoading ?
                     <Loading /> :
                     this.state.isErrorApp ?
                         <ErrorApp /> :
-                        <Fragment>
+                        <>
                             <Routes isAuth={this.props.isAuth} />
-                        </Fragment>
+                        </>
                 }
-            </Fragment>
+            </>
         )
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     isAuth: state.user.isAuth,
     isLoading: state.ui.isLoading,
     isServerError: state.ui.isServerError,
     isOffline: state.ui.isOffline
 })
 
-const mapDispatchToProps = {
+const mapDispatchToProps: IDispatchProps = {
     fetchAppData
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+export default compose(
+    withRouter,
+    connect(mapStateToProps, mapDispatchToProps)
+)(App)

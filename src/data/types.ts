@@ -5,6 +5,7 @@ import { ILift, ILiftsState } from 'data/lifts/types'
 import { IRoutine, IRoutinesState } from 'data/routines/types'
 import { ISet, ISetsState } from 'data/sets/types'
 import { IWorkout, IWorkoutsState } from 'data/workouts/types'
+import { IUiState } from 'data/ui/types'
 // import { IApiOptions } from 'utils/api'
 
 // import {
@@ -25,6 +26,7 @@ export interface IRootState {
     routines: IRoutinesState
     sets: ISetsState
     workouts: IWorkoutsState
+    ui: IUiState
 }
 
 export type IFetchStatus =
