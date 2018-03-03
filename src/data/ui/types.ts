@@ -1,10 +1,5 @@
 import { IAction } from 'data/types'
 
-export interface IAlert {
-    type: string
-    message: string | string[]
-}
-
 export interface IUiState {
     isLoading: boolean
     alert: IAlert | null
@@ -14,4 +9,9 @@ export interface IUiState {
 
 export interface IUiAction extends IAction {
     alert?: IAlert
+}
+
+export interface IAlert {
+    type: string
+    message: string | string[]
 }
