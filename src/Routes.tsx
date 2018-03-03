@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
+import { RouteComponentProps } from 'react-router'
 
 import Login from 'pages/Auth/Login'
 import Register from 'pages/Auth/Register'
@@ -16,38 +16,50 @@ import Profile from 'pages/Profile'
 import Settings from 'pages/Settings'
 import NotFound from 'pages/NotFound'
 
-class Routes extends Component {
+interface IProps {
+    isAuth: boolean
+}
 
-    static propTypes = {
-        isAuth: PropTypes.bool.isRequired
-    }
+interface IRouteComponent {
+    exact?: boolean
+    path?: string
+    component: React.SFC<RouteComponentProps<{}>>
+}
+
+class Routes extends React.Component<IProps> {
 
     render() {
-        const PrivateRoute = ({ component: Component, ...rest }) => (
-            <Route {...rest} render={(props) => (
-                this.props.isAuth ?
-                    <Component {...props} /> :
-                    <Redirect
-                        to={{
-                            pathname: '/login',
-                            state: { from: props.location.pathname }
-                        }}
-                    />
-            )} />
+        const PrivateRoute = ({ component: Component, ...rest }: IRouteComponent) => (
+            <Route
+                render={(props) => (
+                    this.props.isAuth ?
+                        <Component {...props} /> :
+                        <Redirect
+                            to={{
+                                pathname: '/login',
+                                state: { from: props.location.pathname }
+                            }}
+                        />
+                )}
+                {...rest}
+            />
         )
 
-        const GuestRoute = ({ component: Component, ...rest }) => (
-            <Route {...rest} render={(props) => (
-                !this.props.isAuth ?
-                    <Component {...props} /> :
-                    <Redirect
-                        to={
-                            (props.location.state && props.location.state.from) ?
-                            props.location.state.from :
-                            '/'
-                        }
-                    />
-            )} />
+        const GuestRoute = ({ component: Component, ...rest }: IRouteComponent) => (
+            <Route
+                render={(props) => (
+                    !this.props.isAuth ?
+                        <Component {...props} /> :
+                        <Redirect
+                            to={
+                                (props.location.state && props.location.state.from) ?
+                                props.location.state.from :
+                                '/'
+                            }
+                        />
+                )}
+                {...rest}
+            />
         )
 
         return (
@@ -66,7 +78,7 @@ class Routes extends Component {
                 <PrivateRoute exact path="/lifts" component={Lifts} />
                 <PrivateRoute exact path="/lifts/:liftId" component={Lift} />
 
-                <PrivateRoute component={NotFound}/>
+                <Route component={NotFound}/>
             </Switch>
         )
     }
