@@ -54,6 +54,7 @@ export interface IAction {
 }
 
 export interface IApiAction extends IAction {
+    method: string
     endpoint: string
     data: object
     resolve?: (payload: object) => void

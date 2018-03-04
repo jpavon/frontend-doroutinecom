@@ -6,6 +6,7 @@ import * as constants from 'data/user/constants'
 // get
 export const getUser = () => ({
     type: constants.USER_GET_REQUEST,
+    method: 'get',
     endpoint: 'user'
 })
 
@@ -22,6 +23,7 @@ export const getUserFailure = (payload: IApiFailure) => ({
 // put
 export const putUser = (id: number, data: IData, resolve: () => void, reject: () => void) => ({
     type: constants.USER_PUT_REQUEST,
+    method: 'put',
     endpoint: 'user',
     data,
     resolve,
@@ -41,6 +43,7 @@ export const putUserFailure = (payload: IApiFailure) => ({
 // login
 export const loginUser = (data: ILoginData, resolve: () => void, reject: () => void) => ({
     type: constants.USER_LOGIN_REQUEST,
+    method: 'post',
     endpoint: 'login',
     data,
     resolve,
@@ -60,6 +63,7 @@ export const loginUserFailure = (payload: IApiFailure) => ({
 // register
 export const registerUser = (data: IRegisterData, resolve: () => void, reject: () => void) => ({
     type: constants.USER_REGISTER_REQUEST,
+    method: 'post',
     endpoint: 'register',
     data,
     resolve,
@@ -79,6 +83,7 @@ export const registerUserFailure = (payload: IApiFailure) => ({
 // passwordForgotten
 export const passwordForgottenUser = (data: IPasswordForgottenData) => ({
     type: constants.USER_PASSWORD_FORGOTTEN_REQUEST,
+    method: 'post',
     endpoint: 'password/email',
     data,
 })
@@ -96,6 +101,7 @@ export const passwordForgottenUserFailure = (payload: IApiFailure) => ({
 // passwordReset
 export const passwordResetUser = (data: IPasswordResetData, resolve: () => void, reject: () => void) => ({
     type: constants.USER_PASSWORD_RESET_REQUEST,
+    method: 'post',
     endpoint: 'password/reset',
     data,
     resolve,

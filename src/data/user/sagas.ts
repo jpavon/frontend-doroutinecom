@@ -3,7 +3,6 @@ import * as store from 'store'
 
 import { IApiAction } from 'data/types'
 
-import api from 'utils/api'
 import apiSaga from 'utils/apiSaga'
 import * as constants from 'data/user/constants'
 import * as actions from 'data/user/actions'
@@ -11,27 +10,27 @@ import * as uiActions from 'data/ui/actions'
 import { getAppDataSaga } from 'data/sagas'
 
 function* getUserSaga(action: IApiAction) {
-    yield* apiSaga(api.get, actions.getUserSuccess, actions.getUserFailure, action)
+    yield* apiSaga(action, actions.getUserSuccess, actions.getUserFailure)
 }
 
 function* putUserSaga(action: IApiAction) {
-    yield* apiSaga(api.put, actions.putUserSuccess, actions.putUserFailure, action)
+    yield* apiSaga(action, actions.putUserSuccess, actions.putUserFailure)
 }
 
 function* loginUserSaga(action: IApiAction) {
-    yield* apiSaga(api.post, actions.loginUserSuccess, actions.loginUserFailure, action)
+    yield* apiSaga(action, actions.loginUserSuccess, actions.loginUserFailure)
 }
 
 function* registerUserSaga(action: IApiAction) {
-    yield* apiSaga(api.post, actions.registerUserSuccess, actions.registerUserFailure, action)
+    yield* apiSaga(action, actions.registerUserSuccess, actions.registerUserFailure)
 }
 
 function* passwordForgottenUserSaga(action: IApiAction) {
-    yield* apiSaga(api.post, actions.passwordForgottenUserSuccess, actions.passwordForgottenUserFailure, action)
+    yield* apiSaga(action, actions.passwordForgottenUserSuccess, actions.passwordForgottenUserFailure)
 }
 
 function* passwordResetUserSaga(action: IApiAction) {
-    yield* apiSaga(api.post, actions.passwordResetUserSuccess, actions.passwordResetUserFailure, action)
+    yield* apiSaga(action, actions.passwordResetUserSuccess, actions.passwordResetUserFailure)
 }
 
 function* authErrorSaga() {
