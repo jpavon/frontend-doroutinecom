@@ -6,16 +6,7 @@ import { IRoutine, IRoutinesState } from 'data/routines/types'
 import { ISet, ISetsState } from 'data/sets/types'
 import { IWorkout, IWorkoutsState } from 'data/workouts/types'
 import { IUiState } from 'data/ui/types'
-// import { IApiOptions } from 'utils/api'
-
-// import {
-//     STATUS_NONE,
-//     STATUS_LOADING,
-//     STATUS_LOADED,
-//     STATUS_FAILED,
-//     STATUS_UPDATING,
-//     STATUS_DELETING
-// } from 'data/utils'
+import * as constants from 'data/constants'
 
 export const StatusType = {}
 
@@ -29,13 +20,34 @@ export interface IRootState {
     ui: IUiState
 }
 
+export type ICrudStateItem =
+    IExercisesState |
+    ILiftsState |
+    IRoutinesState |
+    ISetsState |
+    IWorkoutsState
+
+export type ICrudDataItem =
+    IExercise |
+    ILift |
+    IRoutine |
+    ISet |
+    IWorkout
+
+export type ICrudApiSuccess =
+    IExercise[] |
+    ILift[] |
+    IRoutine[] |
+    ISet[] |
+    IWorkout[]
+
 export type IFetchStatus =
-    'NONE' |
-    'LOADING' |
-    'LOADED' |
-    'FAILED' |
-    'UPDATING' |
-    'DELETING'
+    constants.STATUS_NONE |
+    constants.STATUS_LOADING |
+    constants.STATUS_LOADED |
+    constants.STATUS_FAILED |
+    constants.STATUS_UPDATING |
+    constants.STATUS_DELETING
 
 export interface IAction {
     type: string

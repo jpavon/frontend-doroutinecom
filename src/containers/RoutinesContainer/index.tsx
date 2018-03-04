@@ -7,7 +7,7 @@ import { IFormatedRoutine } from 'data/routines/types'
 // import history from 'utils/history'
 import { createRoutine } from 'data/routines/actions'
 import { routinesSelector, defaultRoutinesSelector } from 'data/routines/selectors'
-import { STATUS_LOADING } from 'data/utils'
+import { STATUS_LOADING } from 'data/constants'
 
 import Routines from 'components/Routines/Routines'
 import Routine from 'components/Routines/Routine'

@@ -3,13 +3,13 @@ import * as store from 'store'
 import { IUserState, IUserAction } from 'data/user/types'
 
 import * as constants from 'data/user/constants'
-import * as helperTypes from 'data/utils'
-import { request, failure } from 'data/utils'
+import * as dataConstants from 'data/constants'
 
 const initialState: IUserState = {
-    fetchStatus: helperTypes.STATUS_NONE,
+    fetchStatus: dataConstants.STATUS_NONE,
     isAuth: !!store.get('token'),
-    entity: null
+    entity: null,
+    error: null
 }
 
 const user = (state = initialState, action: IUserAction): IUserState => {
@@ -17,12 +17,15 @@ const user = (state = initialState, action: IUserAction): IUserState => {
 
     switch (type) {
         case constants.USER_GET_REQUEST:
-            return request(state)
+            return {
+                ...state,
+                fetchStatus: dataConstants.STATUS_LOADING
+            }
 
         case constants.USER_GET_SUCCESS:
             return {
                 ...state,
-                fetchStatus: helperTypes.STATUS_LOADED,
+                fetchStatus: dataConstants.STATUS_LOADED,
                 entity: {
                     ...state.entity,
                     ...payload
@@ -30,15 +33,22 @@ const user = (state = initialState, action: IUserAction): IUserState => {
             }
 
         case constants.USER_GET_FAILURE:
-            return failure(state, error)
+            return {
+                ...state,
+                fetchStatus: dataConstants.STATUS_FAILED,
+                error
+            }
 
         case constants.USER_PUT_REQUEST:
-            return request(state)
+            return {
+                ...state,
+                fetchStatus: dataConstants.STATUS_LOADING
+            }
 
         case constants.USER_PUT_SUCCESS:
             return {
                 ...state,
-                fetchStatus: helperTypes.STATUS_LOADED,
+                fetchStatus: dataConstants.STATUS_LOADED,
                 entity: {
                     ...state.entity,
                     ...payload
@@ -46,7 +56,11 @@ const user = (state = initialState, action: IUserAction): IUserState => {
             }
 
         case constants.USER_PUT_FAILURE:
-            return failure(state, error)
+            return {
+                ...state,
+                fetchStatus: dataConstants.STATUS_FAILED,
+                error
+            }
 
         case constants.USER_AUTH:
             return {

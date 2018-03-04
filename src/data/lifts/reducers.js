@@ -1,5 +1,5 @@
 import * as constants from 'data/lifts/constants'
-import * as helperTypes from 'data/utils'
+import * as dataTypes from 'data/constants'
 import {
     fetch,
     create,
@@ -12,7 +12,7 @@ import {
 } from 'data/utils'
 
 const initialState = {
-    fetchStatus: helperTypes.STATUS_NONE,
+    fetchStatus: dataTypes.STATUS_NONE,
     entitiesStatus: {},
     entities: []
 }

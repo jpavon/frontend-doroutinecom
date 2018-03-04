@@ -7,7 +7,7 @@ import { IRootState, IEntitiesStatus } from 'data/types'
 
 import { createSet, updateSet, removeSet } from 'data/sets/actions'
 import { setsExerciseSelector, previouslyCompletedSetsSelector } from 'data/sets/selectors'
-import { STATUS_DELETING } from 'data/utils'
+import { STATUS_DELETING } from 'data/constants'
 
 import Sets from 'components/Sets/Sets'
 import Set from 'components/Sets/Set'

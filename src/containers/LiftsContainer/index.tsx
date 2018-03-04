@@ -7,7 +7,7 @@ import { IFormatedLift } from 'data/lifts/types'
 // import history from 'utils/history'
 import { liftsSelector } from 'data/lifts/selectors'
 import { createLift } from 'data/lifts/actions'
-import { STATUS_LOADING } from 'data/utils'
+import { STATUS_LOADING } from 'data/constants'
 
 import Lifts from 'components/Lifts/Lifts'
 import Lift from 'components/Lifts/Lift'

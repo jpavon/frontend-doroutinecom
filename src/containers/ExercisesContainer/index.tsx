@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { createExercise, updateExercise, removeExercise } from 'data/exercises/actions'
 import { exercisesRoutineSelector, exercisesWorkoutSelector } from 'data/exercises/selectors'
 import { liftsSelector } from 'data/lifts/selectors'
-import { STATUS_DELETING } from 'data/utils'
+import { STATUS_DELETING } from 'data/constants'
 
 import { IFormatedExercise } from 'data/exercises/types'
 import { IFormatedLift } from 'data/lifts/types'

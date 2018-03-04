@@ -10,7 +10,7 @@ import { now } from 'utils/date'
 import { updateRoutine, removeRoutine } from 'data/routines/actions'
 import { createWorkout } from 'data/workouts/actions'
 import { routineSelector } from 'data/routines/selectors'
-import { STATUS_LOADED, STATUS_DELETING } from 'data/utils'
+import { STATUS_LOADED, STATUS_DELETING } from 'data/constants'
 import { fetchWorkoutsData } from 'data/globals'
 
 import ExercisesContainer from 'containers/ExercisesContainer'

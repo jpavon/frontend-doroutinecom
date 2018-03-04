@@ -17,7 +17,8 @@ export interface IFormatedUser extends IUser {}
 export interface IUserState {
     fetchStatus: IFetchStatus
     isAuth: boolean
-    entity: IUser | null
+    entity: IUser | null,
+    error: IApiFailure | null
 }
 
 export interface IUserAction extends IAction {

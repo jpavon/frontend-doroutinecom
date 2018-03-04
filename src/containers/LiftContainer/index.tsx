@@ -12,7 +12,7 @@ import { liftGraphDataSelector } from 'data/graphs/selectors'
 import { liftSelector } from 'data/lifts/selectors'
 import { topLiftSetsSelector } from 'data/sets/selectors'
 import { updateLift, removeLift } from 'data/lifts/actions'
-import { STATUS_LOADED, STATUS_DELETING } from 'data/utils'
+import { STATUS_LOADED, STATUS_DELETING } from 'data/constants'
 
 import Lift from 'components/Lift'
 import SetsTable from 'components/SetsTable'
