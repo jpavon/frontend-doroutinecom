@@ -1,7 +1,7 @@
 import { CALL_API } from 'utils/apiMiddleware'
 import * as constants from 'data/routines/constants'
 import { shouldFetch } from 'data/utils'
-import { fetchWorkouts } from 'data/workouts/actions'
+import { getWorkouts } from 'data/workouts/actions'
 
 const getRoutines = () => ({
     [CALL_API]: {
@@ -75,6 +75,6 @@ const deleteRoutine = (id) => ({
 export const removeRoutine = (id) => (dispatch, getState) => {
     return dispatch(deleteRoutine(id))
         .then(() => {
-            dispatch(fetchWorkouts(true))
+            dispatch(getWorkouts())
         })
 }

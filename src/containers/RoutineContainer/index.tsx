@@ -4,11 +4,12 @@ import Helmet from 'react-helmet'
 
 import { IRootState } from 'data/types'
 import { IFormatedRoutine } from 'data/routines/types'
+import { IWorkoutData } from 'data/workouts/types'
 
 import history from 'utils/history'
 import { now } from 'utils/date'
 import { updateRoutine, removeRoutine } from 'data/routines/actions'
-import { createWorkout } from 'data/workouts/actions'
+import { postWorkout } from 'data/workouts/actions'
 import { routineSelector } from 'data/routines/selectors'
 import { STATUS_LOADED, STATUS_DELETING } from 'data/constants'
 import { fetchWorkoutsData } from 'data/globals'
@@ -31,7 +32,7 @@ interface IStateProps {
 interface IDispatchProps {
     updateRoutine: () => void
     removeRoutine: (id: number) => void
-    createWorkout: (data: {routineId: number, startedAt: string}) => void
+    postWorkout: (data: IWorkoutData) => void
     fetchWorkoutsData: () => void
 }
 
@@ -55,7 +56,7 @@ class RoutineContainer extends React.Component<IProps> {
     }
 
     handleCreateWorkout = () => {
-        this.props.createWorkout({
+        this.props.postWorkout({
             routineId: this.props.routine.id,
             startedAt: now()
         })
@@ -117,7 +118,7 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
 const mapDispatchToProps: IDispatchProps = {
     updateRoutine,
     removeRoutine,
-    createWorkout,
+    postWorkout,
     fetchWorkoutsData
 }
 

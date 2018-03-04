@@ -34,7 +34,7 @@ export type ICrudDataItem =
     ISet |
     IWorkout
 
-export type ICrudApiSuccess =
+export type ICrudFetchSuccess =
     IExercise[] |
     ILift[] |
     IRoutine[] |
@@ -63,11 +63,11 @@ export interface IApiAction extends IAction {
 
 export type IApiSuccess =
     IUser |
-    IExercise[] |
-    ILift[] |
-    IRoutine[] |
-    ISet[] |
-    IWorkout[]
+    IExercise[] | IExercise |
+    ILift[] | ILift |
+    IRoutine[] | IRoutine |
+    ISet[] | ISet |
+    IWorkout[] | IWorkout
 
 export interface ISuccessAction extends IAction {
     payload: IApiSuccess
@@ -89,6 +89,4 @@ export interface IEntitiesStatus {
     [index: number]: string
 }
 
-export interface IData {
-    [index: number]: string | number
-}
+export type IDataMap<T> = { [P in keyof T]?: T[P] }

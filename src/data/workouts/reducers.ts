@@ -1,3 +1,5 @@
+import { IWorkoutsState, IWorkoutsAction, IWorkout } from 'data/workouts/types'
+
 import * as constants from 'data/workouts/constants'
 import * as dataTypes from 'data/constants'
 import {
@@ -11,21 +13,21 @@ import {
     failure
 } from 'data/utils'
 
-const initialState = {
+const initialState: IWorkoutsState = {
     fetchStatus: dataTypes.STATUS_NONE,
     entitiesStatus: {},
     entities: []
 }
 
-const workouts = (state = initialState, action) => {
-    const { type, payload, error, meta } = action
+const workouts = (state = initialState, action: IWorkoutsAction) => {
+    const { type, payload, error } = action
 
     switch (type) {
         case constants.WORKOUTS_GET_REQUEST:
             return request(state)
 
         case constants.WORKOUTS_GET_SUCCESS:
-            return fetch(state, payload)
+            return fetch(state, (payload as IWorkout[]))
 
         case constants.WORKOUTS_GET_FAILURE:
             return failure(state, error)
@@ -34,25 +36,25 @@ const workouts = (state = initialState, action) => {
             return request(state)
 
         case constants.WORKOUTS_POST_SUCCESS:
-            return create(state, payload)
+            return create(state, (payload as IWorkout))
 
         case constants.WORKOUTS_POST_FAILURE:
             return failure(state, error)
 
         case constants.WORKOUTS_PUT_REQUEST:
-            return putRequest(state, meta.id)
+            return putRequest(state, (payload as IWorkout).id)
 
         case constants.WORKOUTS_PUT_SUCCESS:
-            return update(state, payload)
+            return update(state, (payload as IWorkout))
 
         case constants.WORKOUTS_PUT_FAILURE:
             return failure(state, error)
 
         case constants.WORKOUTS_DELETE_REQUEST:
-            return deleteRequest(state, meta.id)
+            return deleteRequest(state, (payload as IWorkout).id)
 
         case constants.WORKOUTS_DELETE_SUCCESS:
-            return remove(state, meta.id)
+            return remove(state, (payload as IWorkout).id)
 
         case constants.WORKOUTS_DELETE_FAILURE:
             return failure(state, error)

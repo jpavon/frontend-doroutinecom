@@ -1,4 +1,4 @@
-import { IFetchStatus, IApiFailure, IAction } from 'data/types'
+import { IFetchStatus, IApiFailure, IAction, IDataMap } from 'data/types'
 
 export interface IUser {
     id: number
@@ -20,6 +20,8 @@ export interface IUserState {
     entity: IUser | null,
     error: IApiFailure | null
 }
+
+export type IUserData = IDataMap<IUser>
 
 export interface IUserAction extends IAction {
     payload: IUser

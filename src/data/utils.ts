@@ -1,4 +1,4 @@
-import { ICrudStateItem, IApiFailure, ICrudApiSuccess, ICrudDataItem } from 'data/types'
+import { ICrudStateItem, IApiFailure, ICrudFetchSuccess, ICrudDataItem } from 'data/types'
 import * as constants from 'data/constants'
 
 // reducer crud utils
@@ -30,7 +30,7 @@ export const failure = (state: ICrudStateItem, error: IApiFailure) => ({
     error
 })
 
-export const fetch = (state: ICrudStateItem, payload: ICrudApiSuccess) => ({
+export const fetch = (state: ICrudStateItem, payload: ICrudFetchSuccess) => ({
     ...state,
     fetchStatus: constants.STATUS_LOADED,
     entities: payload,

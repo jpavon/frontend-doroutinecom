@@ -1,5 +1,5 @@
-import { IApiSuccess, IApiFailure, IData } from 'data/types'
-import { ILoginData, IRegisterData, IPasswordForgottenData, IPasswordResetData } from 'data/user/types'
+import { IApiSuccess, IApiFailure } from 'data/types'
+import { ILoginData, IRegisterData, IPasswordForgottenData, IPasswordResetData, IUserData } from 'data/user/types'
 
 import * as constants from 'data/user/constants'
 
@@ -21,7 +21,7 @@ export const getUserFailure = (payload: IApiFailure) => ({
 })
 
 // put
-export const putUser = (id: number, data: IData, resolve: () => void, reject: () => void) => ({
+export const putUser = (id: number, data: IUserData, resolve: () => void, reject: () => void) => ({
     type: constants.USER_PUT_REQUEST,
     method: 'put',
     endpoint: 'user',
