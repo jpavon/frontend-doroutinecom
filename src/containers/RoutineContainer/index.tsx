@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 
 import { IRootState } from 'data/types'
 import { IFormatedRoutine } from 'data/routines/types'
-import { IWorkoutData } from 'data/workouts/types'
+import { IWorkoutFromData } from 'data/workouts/types'
 
 import history from 'utils/history'
 import { now } from 'utils/date'
@@ -32,7 +32,7 @@ interface IStateProps {
 interface IDispatchProps {
     updateRoutine: () => void
     removeRoutine: (id: number) => void
-    postWorkout: (data: IWorkoutData) => void
+    postWorkout: (data: IWorkoutFromData) => void
     fetchWorkoutsData: () => void
 }
 

@@ -24,11 +24,19 @@ export interface IWorkoutsState {
     fetchStatus: IFetchStatus
     entitiesStatus: IEntitiesStatus
     entities: IWorkout[]
+    error: IApiFailure | null
 }
 
 export interface IWorkoutsAction extends IAction {
+    id: number
     payload: IWorkout | IWorkout[]
     error: IApiFailure
 }
 
 export type IWorkoutData = IDataMap<IWorkout & {workoutId: number}>
+
+export interface IWorkoutFromData {
+    workoutId?: number
+    routineId: number | null
+    startedAt: string
+}

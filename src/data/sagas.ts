@@ -1,7 +1,9 @@
-import { all, put, take } from 'redux-saga/effects'
+import { all, put, take, takeLatest } from 'redux-saga/effects'
 
+import * as actions from 'data/actions'
 import * as uiActions from 'data/ui/actions'
 import { getUser } from 'data/user/actions'
+import * as constants from 'data/constants'
 import * as userConstants from 'data/user/constants'
 // import { fetchRoutines } from 'data/routines/actions'
 // import { fetchWorkouts } from 'data/workouts/actions'
@@ -62,4 +64,19 @@ export function* getAppDataSaga() {
     // })
 }
 
-export default []
+export function* getWorkoutDataSaga() {
+    // yield put(fetchExercises())
+    // yield put(fetchSets())
+    // test, change for above
+    yield put(getUser())
+
+    yield all([
+        yield take(userConstants.USER_GET_SUCCESS)
+    ])
+
+    yield put(actions.getWorkoutsDataSuccess())
+}
+
+export default [
+    takeLatest(constants.GET_WORKOUTS_DATA_REQUEST, getWorkoutDataSaga),
+]

@@ -3,12 +3,12 @@ import * as constants from 'data/constants'
 
 // reducer crud utils
 
-export const request = (state: ICrudStateItem) => ({
+export const request = (state: ICrudStateItem): ICrudStateItem => ({
     ...state,
-    fetchStatus: constants.STATUS_LOADING
+    fetchStatus: constants.STATUS_LOADING,
 })
 
-export const putRequest = (state: ICrudStateItem, id: number) => ({
+export const putRequest = (state: ICrudStateItem, id: number): ICrudStateItem => ({
     ...request(state),
     entitiesStatus: {
         ...state.entitiesStatus,
@@ -16,7 +16,7 @@ export const putRequest = (state: ICrudStateItem, id: number) => ({
     }
 })
 
-export const deleteRequest = (state: ICrudStateItem, id: number) => ({
+export const deleteRequest = (state: ICrudStateItem, id: number): ICrudStateItem => ({
     ...request(state),
     entitiesStatus: {
         ...state.entitiesStatus,
@@ -24,13 +24,13 @@ export const deleteRequest = (state: ICrudStateItem, id: number) => ({
     }
 })
 
-export const failure = (state: ICrudStateItem, error: IApiFailure) => ({
+export const failure = (state: ICrudStateItem, error: IApiFailure): ICrudStateItem => ({
     ...state,
     fetchStatus: constants.STATUS_FAILED,
     error
 })
 
-export const fetch = (state: ICrudStateItem, payload: ICrudFetchSuccess) => ({
+export const fetch = (state: ICrudStateItem, payload: ICrudFetchSuccess): ICrudStateItem => ({
     ...state,
     fetchStatus: constants.STATUS_LOADED,
     entities: payload,
@@ -40,7 +40,7 @@ export const fetch = (state: ICrudStateItem, payload: ICrudFetchSuccess) => ({
     }), {})
 })
 
-export const create = (state: ICrudStateItem, payload: ICrudDataItem) => ({
+export const create = (state: ICrudStateItem, payload: ICrudDataItem): ICrudStateItem => ({
     ...state,
     fetchStatus: constants.STATUS_LOADED,
     entities: [
@@ -53,7 +53,7 @@ export const create = (state: ICrudStateItem, payload: ICrudDataItem) => ({
     }
 })
 
-export const update = (state: ICrudStateItem, payload: ICrudDataItem) => ({
+export const update = (state: ICrudStateItem, payload: ICrudDataItem): ICrudStateItem => ({
     ...state,
     fetchStatus: constants.STATUS_LOADED,
     entities: (state.entities as ICrudDataItem[]).map((currentItem: ICrudDataItem) => {
@@ -72,7 +72,7 @@ export const update = (state: ICrudStateItem, payload: ICrudDataItem) => ({
     }
 })
 
-export const remove = (state: ICrudStateItem, id: number) => ({
+export const remove = (state: ICrudStateItem, id: number): ICrudStateItem => ({
     ...state,
     fetchStatus: constants.STATUS_LOADED,
     entities: (state.entities as ICrudDataItem[]).filter((i) => (i.id !== id)),
