@@ -6,6 +6,7 @@ import * as constants from 'data/constants'
 export const request = (state: ICrudStateItem): ICrudStateItem => ({
     ...state,
     fetchStatus: constants.STATUS_LOADING,
+    error: null
 })
 
 export const putRequest = (state: ICrudStateItem, id: number): ICrudStateItem => ({
@@ -13,7 +14,8 @@ export const putRequest = (state: ICrudStateItem, id: number): ICrudStateItem =>
     entitiesStatus: {
         ...state.entitiesStatus,
         [id]: constants.STATUS_UPDATING
-    }
+    },
+    error: null
 })
 
 export const deleteRequest = (state: ICrudStateItem, id: number): ICrudStateItem => ({
@@ -21,7 +23,8 @@ export const deleteRequest = (state: ICrudStateItem, id: number): ICrudStateItem
     entitiesStatus: {
         ...state.entitiesStatus,
         [id]: constants.STATUS_DELETING
-    }
+    },
+    error: null
 })
 
 export const failure = (state: ICrudStateItem, error: IApiFailure): ICrudStateItem => ({
@@ -37,7 +40,8 @@ export const fetch = (state: ICrudStateItem, payload: ICrudFetchSuccess): ICrudS
     entitiesStatus: (payload as ICrudDataItem[]).reduce((prev, current) => ({
         ...prev,
         [current.id]: constants.STATUS_LOADED
-    }), {})
+    }), {}),
+    error: null
 })
 
 export const create = (state: ICrudStateItem, payload: ICrudDataItem): ICrudStateItem => ({
@@ -50,7 +54,8 @@ export const create = (state: ICrudStateItem, payload: ICrudDataItem): ICrudStat
     entitiesStatus: {
         ...state.entitiesStatus,
         [payload.id]: constants.STATUS_LOADED
-    }
+    },
+    error: null
 })
 
 export const update = (state: ICrudStateItem, payload: ICrudDataItem): ICrudStateItem => ({
@@ -69,7 +74,8 @@ export const update = (state: ICrudStateItem, payload: ICrudDataItem): ICrudStat
     entitiesStatus: {
         ...state.entitiesStatus,
         [payload.id]: constants.STATUS_LOADED
-    }
+    },
+    error: null
 })
 
 export const remove = (state: ICrudStateItem, id: number): ICrudStateItem => ({
@@ -81,7 +87,8 @@ export const remove = (state: ICrudStateItem, id: number): ICrudStateItem => ({
         .reduce((prev, current) => ({
             ...prev,
             [current]: state.entitiesStatus[current]
-        }), {})
+        }), {}),
+    error: null
 })
 
 // action utils

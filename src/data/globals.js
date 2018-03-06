@@ -4,7 +4,7 @@ import { getUser } from 'data/user/actions'
 import { getRoutines } from 'data/routines/actions'
 import { getWorkouts } from 'data/workouts/actions'
 import { fetchExercises } from 'data/exercises/actions'
-import { fetchLifts } from 'data/lifts/actions'
+import { getLifts } from 'data/lifts/actions'
 import { getSets } from 'data/sets/actions'
 import { showLoading, removeLoading } from 'data/ui/actions'
 
@@ -19,7 +19,7 @@ import { showLoading, removeLoading } from 'data/ui/actions'
 //         dispatch(getRoutines()),
 //         dispatch(getWorkouts()),
 //         dispatch(fetchExercises()),
-//         dispatch(fetchLifts()),
+//         dispatch(getLifts()),
 //         dispatch(getSets())
 //     ]).then(([user]) => {
 //         if (user && user.payload &&
@@ -46,7 +46,7 @@ export const fetchAppData = () => (dispatch, getState) => {
         dispatch(getRoutines()),
         dispatch(getWorkouts()),
         dispatch(fetchExercises()),
-        dispatch(fetchLifts()),
+        dispatch(getLifts()),
         dispatch(getSets())
     ]).then(([user]) => {
         if (user && user.payload &&

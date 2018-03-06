@@ -6,7 +6,7 @@ import { IFormatedLift } from 'data/lifts/types'
 
 // import history from 'utils/history'
 import { liftsSelector } from 'data/lifts/selectors'
-import { createLift } from 'data/lifts/actions'
+import { postLift } from 'data/lifts/actions'
 import { STATUS_LOADING } from 'data/constants'
 
 import Lifts from 'components/Lifts/Lifts'
@@ -23,7 +23,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    createLift: () => void
+    postLift: () => void
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
@@ -31,10 +31,7 @@ interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 class LiftsContainer extends React.Component<IProps> {
 
     handleCreate = () => {
-        this.props.createLift()
-            // .then((resp) => {
-            //     history.push(`/lifts/${resp.payload.id}`)
-            // })
+        this.props.postLift()
     }
 
     render() {
@@ -73,7 +70,7 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
 })
 
 const mapDispatchToProps: IDispatchProps = {
-    createLift,
+    postLift,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LiftsContainer)

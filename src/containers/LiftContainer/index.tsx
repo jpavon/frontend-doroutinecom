@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
 import { IRootState } from 'data/types'
-import { IFormatedLift } from 'data/lifts/types'
+import { IFormatedLift, ILiftRequestData } from 'data/lifts/types'
 import { ITopSet } from 'data/sets/types'
 import { ILiftsGraph } from 'data/graphs/types'
 
@@ -11,7 +11,7 @@ import history from 'utils/history'
 import { liftGraphDataSelector } from 'data/graphs/selectors'
 import { liftSelector } from 'data/lifts/selectors'
 import { topLiftSetsSelector } from 'data/sets/selectors'
-import { updateLift, removeLift } from 'data/lifts/actions'
+import { putLift, deleteLift } from 'data/lifts/actions'
 import { STATUS_LOADED, STATUS_DELETING } from 'data/constants'
 
 import Lift from 'components/Lift'
@@ -34,8 +34,8 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    updateLift: () => void
-    removeLift: (id: number) => void
+    putLift: (id: number, data: ILiftRequestData) => void
+    deleteLift: (id: number) => void
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
@@ -50,10 +50,7 @@ class LiftContainer extends React.Component<IProps> {
 
     handleRemove = () => {
         if (window.confirm('Are you sure you want to delete this lift?')) {
-            this.props.removeLift(this.props.lift.id)
-                // .then(() => {
-                //     history.push('/lifts')
-                // })
+            this.props.deleteLift(this.props.lift.id)
         }
     }
 
@@ -73,7 +70,7 @@ class LiftContainer extends React.Component<IProps> {
                 />
                 <Lift
                     lift={this.props.lift}
-                    update={this.props.updateLift}
+                    update={this.props.putLift}
                 />
                 <TopNav
                     title="Recent Progress"
@@ -118,8 +115,8 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
 })
 
 const mapDispatchToProps: IDispatchProps = {
-    updateLift,
-    removeLift
+    putLift,
+    deleteLift
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LiftContainer)

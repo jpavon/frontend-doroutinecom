@@ -1,4 +1,4 @@
-import { IFetchStatus, IEntitiesStatus } from 'data/types'
+import { IStateMap, IActionMap, IDataRequestMap } from 'data/types'
 
 export interface ILift {
     id: number
@@ -11,8 +11,8 @@ export interface ILift {
 export interface IFormatedLift extends ILift {
 }
 
-export interface ILiftsState {
-    fetchStatus: IFetchStatus
-    entitiesStatus: IEntitiesStatus
-    entities: ILift[]
-}
+export type ILiftsState = IStateMap<ILift>
+
+export type ILiftsAction = IActionMap<ILift>
+
+export type ILiftRequestData = IDataRequestMap<ILift>

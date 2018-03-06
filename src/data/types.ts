@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types'
 import { IUser, IUserState } from 'data/user/types'
 import { IExercise, IExercisesState } from 'data/exercises/types'
 import { ILift, ILiftsState } from 'data/lifts/types'
