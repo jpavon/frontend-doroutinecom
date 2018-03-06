@@ -3,7 +3,7 @@ import store from 'store'
 import { getUser } from 'data/user/actions'
 import { getRoutines } from 'data/routines/actions'
 import { getWorkouts } from 'data/workouts/actions'
-import { fetchExercises } from 'data/exercises/actions'
+import { getExercises } from 'data/exercises/actions'
 import { getLifts } from 'data/lifts/actions'
 import { getSets } from 'data/sets/actions'
 import { showLoading, removeLoading } from 'data/ui/actions'
@@ -18,7 +18,7 @@ import { showLoading, removeLoading } from 'data/ui/actions'
 //         dispatch(fetchUser()),
 //         dispatch(getRoutines()),
 //         dispatch(getWorkouts()),
-//         dispatch(fetchExercises()),
+//         dispatch(getExercises()),
 //         dispatch(getLifts()),
 //         dispatch(getSets())
 //     ]).then(([user]) => {
@@ -45,7 +45,7 @@ export const fetchAppData = () => (dispatch, getState) => {
         dispatch(getUser()),
         dispatch(getRoutines()),
         dispatch(getWorkouts()),
-        dispatch(fetchExercises()),
+        dispatch(getExercises()),
         dispatch(getLifts()),
         dispatch(getSets())
     ]).then(([user]) => {
@@ -67,7 +67,7 @@ export const fetchAppData = () => (dispatch, getState) => {
 
 export const fetchWorkoutsData = () => (dispatch, getState) => {
     return Promise.all([
-        dispatch(fetchExercises(true)),
+        dispatch(getExercises()),
         dispatch(getSets())
     ]).then(() => {
         return Promise.resolve()

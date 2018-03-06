@@ -1,4 +1,4 @@
-import { IFetchStatus, IEntitiesStatus } from 'data/types'
+import { IStateMap, IActionMap, IDataRequestMap } from 'data/types'
 
 export interface IExercise {
     id: number
@@ -14,8 +14,8 @@ export interface IExercise {
 export interface IFormatedExercise extends IExercise {
 }
 
-export interface IExercisesState {
-    fetchStatus: IFetchStatus
-    entitiesStatus: IEntitiesStatus
-    entities: IExercise[]
-}
+export type IExercisesState = IStateMap<IExercise>
+
+export type IExercisesAction = IActionMap<IExercise>
+
+export type IExerciseRequestData = IDataRequestMap<IExercise>

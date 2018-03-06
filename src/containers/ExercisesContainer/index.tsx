@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { createExercise, updateExercise, removeExercise } from 'data/exercises/actions'
+import { postExercise, putExercise, deleteExercise } from 'data/exercises/actions'
 import { exercisesRoutineSelector, exercisesWorkoutSelector } from 'data/exercises/selectors'
 import { liftsSelector } from 'data/lifts/selectors'
 import { STATUS_DELETING } from 'data/constants'
@@ -29,9 +29,9 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    createExercise: (data: {routineId?: number, workoutId?: number }) => void
-    updateExercise: (id: number, data: {}) => void
-    removeExercise: () => void
+    postExercise: (data: {routineId?: number, workoutId?: number }) => void
+    putExercise: (id: number, data: {}) => void
+    deleteExercise: (id: number) => void
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
@@ -75,7 +75,7 @@ class ExercisesContainer extends React.Component<IProps, IState> {
             data['workoutId'] = this.props.workoutId
         }
 
-        this.props.createExercise(data)
+        this.props.postExercise(data)
     }
 
     render() {
@@ -93,8 +93,8 @@ class ExercisesContainer extends React.Component<IProps, IState> {
                                 key={exercise.id}
                                 exercise={exercise}
                                 lifts={this.props.lifts}
-                                update={this.props.updateExercise}
-                                remove={this.props.removeExercise}
+                                update={this.props.putExercise}
+                                remove={this.props.deleteExercise}
                                 isDeleting={this.props.entitiesStatus[exercise.id] === STATUS_DELETING}
                                 isRemoveButtonsVisible={this.state.isRemoveButtonsVisible}
                             >
@@ -126,9 +126,9 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
 })
 
 const mapDispatchToProps: IDispatchProps = {
-    createExercise,
-    updateExercise,
-    removeExercise
+    postExercise,
+    putExercise,
+    deleteExercise
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExercisesContainer)

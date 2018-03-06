@@ -4,6 +4,7 @@ import routines from 'data/routines/sagas'
 import workouts from 'data/workouts/sagas'
 import lifts from 'data/lifts/sagas'
 import sets from 'data/sets/sagas'
+import exercises from 'data/exercises/sagas'
 import user from 'data/user/sagas'
 import ui from 'data/ui/sagas'
 import global from 'data/sagas'
@@ -12,6 +13,7 @@ export default function* rootSaga() {
     yield all([
         ...routines,
         ...sets,
+        ...exercises,
         ...workouts,
         ...lifts,
         ...user,
