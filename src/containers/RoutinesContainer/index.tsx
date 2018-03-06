@@ -5,7 +5,7 @@ import { IRootState } from 'data/types'
 import { IFormatedRoutine } from 'data/routines/types'
 
 // import history from 'utils/history'
-import { createRoutine } from 'data/routines/actions'
+import { postRoutine } from 'data/routines/actions'
 import { routinesSelector, defaultRoutinesSelector } from 'data/routines/selectors'
 import { STATUS_LOADING } from 'data/constants'
 
@@ -25,7 +25,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    createRoutine: () => void
+    postRoutine: () => void
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
@@ -33,10 +33,7 @@ interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 class RoutinesContainer extends React.Component<IProps> {
 
     handleCreate = () => {
-        this.props.createRoutine()
-            // .then((resp) => {
-            //     history.push(`/routines/${resp.payload.id}`)
-            // })
+        this.props.postRoutine()
     }
 
     render() {
@@ -92,7 +89,7 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
 })
 
 const mapDispatchToProps: IDispatchProps = {
-    createRoutine,
+    postRoutine,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoutinesContainer)

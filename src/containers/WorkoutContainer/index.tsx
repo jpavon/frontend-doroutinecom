@@ -71,12 +71,6 @@ class WorkoutContainer extends React.Component<IProps> {
             workoutId: this.props.workout.id,
             startedAt: now()
         })
-        // .then((resp) => {
-        //     this.props.fetchWorkoutsData()
-        //         .then(() => {
-        //             history.push(`/workouts/${resp.payload.id}`)
-        //         })
-        // })
     }
 
     handleRemove = () => {
@@ -84,9 +78,6 @@ class WorkoutContainer extends React.Component<IProps> {
 
         if (window.confirm('Are you sure you want to delete this workout?')) {
             this.props.deleteWorkout(this.props.workout.id)
-            // .then(() => {
-            //     history.push('/workouts')
-            // })
         }
     }
 

@@ -3,13 +3,13 @@ import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
 import { IRootState } from 'data/types'
-import { IFormatedRoutine } from 'data/routines/types'
+import { IFormatedRoutine, IRoutineRequestData } from 'data/routines/types'
 import { IWorkoutFromRequestData } from 'data/workouts/types'
 
 import history from 'utils/history'
 import { now } from 'utils/date'
-import { updateRoutine, removeRoutine } from 'data/routines/actions'
-import { postWorkout } from 'data/workouts/actions'
+import { putRoutine, deleteRoutine } from 'data/routines/actions'
+import { postWorkoutFrom } from 'data/workouts/actions'
 import { routineSelector } from 'data/routines/selectors'
 import { STATUS_LOADED, STATUS_DELETING } from 'data/constants'
 import { fetchWorkoutsData } from 'data/globals'
@@ -30,9 +30,9 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    updateRoutine: () => void
-    removeRoutine: (id: number) => void
-    postWorkout: (data: IWorkoutFromRequestData) => void
+    putRoutine: (id: number, data: IRoutineRequestData) => void
+    deleteRoutine: (id: number) => void
+    postWorkoutFrom: (data: IWorkoutFromRequestData) => void
     fetchWorkoutsData: () => void
 }
 
@@ -48,24 +48,15 @@ class RoutineContainer extends React.Component<IProps> {
 
     handleRemove = () => {
         if (window.confirm('Are you sure you want to delete this routine?')) {
-            this.props.removeRoutine(this.props.routine.id)
-                // .then(() => {
-                //     history.push('/routines')
-                // })
+            this.props.deleteRoutine(this.props.routine.id)
         }
     }
 
     handleCreateWorkout = () => {
-        this.props.postWorkout({
+        this.props.postWorkoutFrom({
             routineId: this.props.routine.id,
             startedAt: now()
         })
-        // .then((resp) => {
-        //     this.props.fetchWorkoutsData()
-        //         .then(() => {
-        //             history.push(`/workouts/${resp.payload.id}`)
-        //         })
-        // })
     }
 
     render() {
@@ -87,7 +78,7 @@ class RoutineContainer extends React.Component<IProps> {
                 />
                 <Routine
                     routine={this.props.routine}
-                    update={this.props.updateRoutine}
+                    update={this.props.putRoutine}
                 >
                     <ExercisesContainer
                         routineId={this.props.routine.id}
@@ -116,9 +107,9 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
 })
 
 const mapDispatchToProps: IDispatchProps = {
-    updateRoutine,
-    removeRoutine,
-    postWorkout,
+    putRoutine,
+    deleteRoutine,
+    postWorkoutFrom,
     fetchWorkoutsData
 }
 

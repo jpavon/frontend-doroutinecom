@@ -1,4 +1,4 @@
-import { IFetchStatus, IEntitiesStatus } from 'data/types'
+import { IStateMap, IActionMap, IDataRequestMap } from 'data/types'
 
 export interface IRoutine {
     id: number
@@ -17,8 +17,8 @@ export interface IRoutine {
 export interface IFormatedRoutine extends IRoutine {
 }
 
-export interface IRoutinesState {
-    fetchStatus: IFetchStatus
-    entitiesStatus: IEntitiesStatus
-    entities: IRoutine[]
-}
+export type IRoutinesState = IStateMap<IRoutine>
+
+export type IRoutinesAction = IActionMap<IRoutine>
+
+export type IRoutineRequestData = IDataRequestMap<IRoutine>
