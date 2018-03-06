@@ -7,7 +7,7 @@ import * as constants from 'data/lifts/constants'
 export const getLifts = () => ({
     type: constants.LIFTS_GET_REQUEST,
     method: 'get',
-    endpoint: 'sets'
+    endpoint: 'lifts'
 })
 
 export const getLiftsSuccess = (payload: IApiSuccess) => ({
@@ -24,7 +24,7 @@ export const getLiftsFailure = (payload: IApiFailure) => ({
 export const postLift = (data?: ILiftRequestData) => ({
     type: constants.LIFTS_POST_REQUEST,
     method: 'post',
-    endpoint: 'sets',
+    endpoint: 'lifts',
     data,
 })
 
@@ -42,7 +42,7 @@ export const postLiftFailure = (payload: IApiFailure) => ({
 export const putLift = (id: number, data: ILiftRequestData, resolve?: () => void, reject?: () => void) => ({
     type: constants.LIFTS_PUT_REQUEST,
     method: 'put',
-    endpoint: `sets/${id}`,
+    endpoint: `lifts/${id}`,
     id,
     data,
     resolve,
@@ -63,7 +63,7 @@ export const putLiftFailure = (payload: IApiFailure) => ({
 export const deleteLift = (id: number) => ({
     type: constants.LIFTS_DELETE_REQUEST,
     method: 'delete',
-    endpoint: `sets/${id}`,
+    endpoint: `lifts/${id}`,
     id
 })
 

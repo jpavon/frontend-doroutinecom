@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 
 import { IRootState } from 'data/types'
 
-import { fetchAppData } from 'data/globals'
+import { getAppData } from 'data/actions'
 
 import NavContainer from 'containers/NavContainer'
 
@@ -26,7 +26,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    fetchAppData: () => void
+    getAppData: () => void
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
@@ -45,7 +45,7 @@ class App extends React.Component<IProps, IState> {
         super(props)
 
         if (props.isAuth) {
-            props.fetchAppData()
+            props.getAppData()
         }
     }
 
@@ -89,7 +89,7 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
 })
 
 const mapDispatchToProps: IDispatchProps = {
-    fetchAppData
+    getAppData
 }
 
 export default compose(

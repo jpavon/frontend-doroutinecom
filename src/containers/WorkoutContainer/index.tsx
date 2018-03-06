@@ -10,7 +10,6 @@ import { now } from 'utils/date'
 import { putWorkout, postWorkoutFrom, deleteWorkout } from 'data/workouts/actions'
 import { workoutSelector } from 'data/workouts/selectors'
 import { STATUS_LOADED, STATUS_DELETING } from 'data/constants'
-import { fetchWorkoutsData } from 'data/globals'
 
 import ExercisesContainer from 'containers/ExercisesContainer'
 
@@ -33,7 +32,6 @@ interface IDispatchProps {
     putWorkout: (id: number, data: IWorkoutRequestData) => void
     postWorkoutFrom: (data: IWorkoutFromRequestData) => void
     deleteWorkout: (id: number) => void
-    fetchWorkoutsData: () => void
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
@@ -163,7 +161,6 @@ const mapDispatchToProps: IDispatchProps = {
     postWorkoutFrom,
     putWorkout,
     deleteWorkout,
-    fetchWorkoutsData
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WorkoutContainer)

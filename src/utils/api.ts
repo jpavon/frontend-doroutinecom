@@ -24,9 +24,6 @@ const api = (method: string, endpoint: string, data: object = {}): AxiosPromise 
     }).then((response: AxiosResponse) => {
         return Promise.resolve(response.data)
     }).catch((error: AxiosError) => {
-        // if (err.response.data.message === 'Unauthenticated.') {
-        //     store.dispatch(unauthUser('You need to log in for access to this page.'))
-        // }
 
         // if (err.response.status > 500) {
         //     store.dispatch(setServerError())
@@ -37,7 +34,7 @@ const api = (method: string, endpoint: string, data: object = {}): AxiosPromise 
         }
 
         if (error.request) {
-            return Promise.reject(error.request)
+            return Promise.reject(error.response && error.response.data)
         }
 
         return Promise.reject('Server Error')

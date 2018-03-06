@@ -1,4 +1,4 @@
-import { takeLatest, spawn, take } from 'redux-saga/effects'
+import { takeLatest, spawn, take, put } from 'redux-saga/effects'
 
 import { IApiAction } from 'data/types'
 
@@ -6,7 +6,7 @@ import history from 'utils/history'
 import apiSaga from 'utils/apiSaga'
 import * as constants from 'data/lifts/constants'
 import * as actions from 'data/lifts/actions'
-// import * as exercisesActions from 'data/exercises/actions'
+import * as exercisesActions from 'data/exercises/actions'
 
 function* getLiftsSaga(action: IApiAction) {
     yield* apiSaga(action, actions.getLiftsSuccess, actions.getLiftsFailure)
@@ -38,7 +38,7 @@ function* watchLiftDeleteSuccess() {
 
         yield history.push('/routines')
 
-        // yield put(exercisesActions.getExercises())
+        yield put(exercisesActions.getExercises())
     }
 }
 
