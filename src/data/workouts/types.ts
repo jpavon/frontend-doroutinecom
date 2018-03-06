@@ -1,4 +1,4 @@
-import { IFetchStatus, IEntitiesStatus, IApiFailure, IAction, IDataMap } from 'data/types'
+import { IStateMap, IActionMap, IDataRequestMap } from 'data/types'
 import { IFormatedRoutine } from 'data/routines/types'
 
 export interface IWorkout {
@@ -20,22 +20,13 @@ export interface IFormatedWorkout extends IWorkout {
     routine?: IFormatedRoutine
 }
 
-export interface IWorkoutsState {
-    fetchStatus: IFetchStatus
-    entitiesStatus: IEntitiesStatus
-    entities: IWorkout[]
-    error: IApiFailure | null
-}
+export type IWorkoutsState = IStateMap<IWorkout>
 
-export interface IWorkoutsAction extends IAction {
-    id: number
-    payload: IWorkout | IWorkout[]
-    error: IApiFailure
-}
+export type IWorkoutsAction = IActionMap<IWorkout>
 
-export type IWorkoutData = IDataMap<IWorkout & {workoutId: number}>
+export type IWorkoutRequestData = IDataRequestMap<IWorkout & {workoutId: number}>
 
-export interface IWorkoutFromData {
+export interface IWorkoutFromRequestData {
     workoutId?: number
     routineId: number | null
     startedAt: string

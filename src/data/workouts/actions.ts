@@ -1,5 +1,5 @@
 import { IApiSuccess, IApiFailure } from 'data/types'
-import { IWorkoutData, IWorkoutFromData } from 'data/workouts/types'
+import { IWorkoutRequestData, IWorkoutFromRequestData } from 'data/workouts/types'
 
 import * as constants from 'data/workouts/constants'
 
@@ -21,7 +21,7 @@ export const getWorkoutsFailure = (payload: IApiFailure) => ({
 })
 
 // post
-export const postWorkout = (data: IWorkoutData) => ({
+export const postWorkout = (data: IWorkoutRequestData) => ({
     type: constants.WORKOUTS_POST_REQUEST,
     method: 'post',
     endpoint: 'workouts',
@@ -39,7 +39,7 @@ export const postWorkoutFailure = (payload: IApiFailure) => ({
 })
 
 // postFrom
-export const postWorkoutFrom = (data: IWorkoutFromData) => ({
+export const postWorkoutFrom = (data: IWorkoutFromRequestData) => ({
     type: constants.WORKOUTS_POST_FROM_REQUEST,
     method: 'post',
     endpoint: 'workouts',
@@ -57,7 +57,7 @@ export const postWorkoutFromFailure = (payload: IApiFailure) => ({
 })
 
 // put
-export const putWorkout = (id: number, data: IWorkoutData, resolve?: () => void, reject?: () => void) => ({
+export const putWorkout = (id: number, data: IWorkoutRequestData, resolve?: () => void, reject?: () => void) => ({
     type: constants.WORKOUTS_PUT_REQUEST,
     method: 'put',
     endpoint: `workouts/${id}`,

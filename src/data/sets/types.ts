@@ -1,6 +1,6 @@
 import { Moment } from 'moment'
 
-import { IFetchStatus, IEntitiesStatus } from 'data/types'
+import { IStateMap, IActionMap, IDataRequestMap } from 'data/types'
 
 export interface ISet {
     id: number
@@ -16,11 +16,9 @@ export interface ISet {
 export interface IFormatedSet extends ISet {
 }
 
-export interface ISetsState {
-    fetchStatus: IFetchStatus
-    entitiesStatus: IEntitiesStatus
-    entities: ISet[]
-}
+export type ISetsState = IStateMap<ISet>
+
+export type ISetsAction = IActionMap<ISet>
 
 export interface ITopSet {
     workoutId: number
@@ -32,3 +30,5 @@ export interface ITopSet {
     weight: number
     completedAt: string
 }
+
+export type ISetRequestData = IDataRequestMap<ISet>

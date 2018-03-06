@@ -71,7 +71,6 @@ export type IApiSuccess =
 
 export interface ISuccessAction extends IAction {
     payload: IApiSuccess
-
 }
 
 export interface IApiFailure {
@@ -89,4 +88,17 @@ export interface IEntitiesStatus {
     [index: number]: string
 }
 
-export type IDataMap<T> = { [P in keyof T]?: T[P] }
+export type IDataRequestMap<T> = { [P in keyof T]?: T[P] }
+
+export interface IStateMap<T> {
+    fetchStatus: IFetchStatus
+    entitiesStatus: IEntitiesStatus
+    entities: T[]
+    error: IApiFailure | null
+}
+
+export interface IActionMap<T> extends IAction {
+    id: number
+    payload: T | T[]
+    error: IApiFailure
+}

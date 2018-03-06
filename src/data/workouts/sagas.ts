@@ -29,7 +29,7 @@ function* deleteWorkoutSaga(action: IApiAction) {
     yield* apiSaga(action, actions.deleteWorkoutSuccess, actions.deleteWorkoutFailure)
 }
 
-function* deleteWorkoutSuccess() {
+function* watchWorkoutDeleteSuccess() {
     while (true) {
         yield take(constants.WORKOUTS_DELETE_SUCCESS)
 
@@ -37,7 +37,7 @@ function* deleteWorkoutSuccess() {
     }
 }
 
-function* postWorkoutFromSuccess() {
+function* watchWorkoutPostFromSuccess() {
     while (true) {
         const { payload } = yield take(constants.WORKOUTS_POST_FROM_SUCCESS)
 
@@ -55,6 +55,6 @@ export default [
     takeLatest(constants.WORKOUTS_POST_REQUEST, postWorkoutSaga),
     takeLatest(constants.WORKOUTS_POST_FROM_REQUEST, postWorkoutFromSaga),
     takeLatest(constants.WORKOUTS_DELETE_REQUEST, deleteWorkoutSaga),
-    spawn(deleteWorkoutSuccess),
-    spawn(postWorkoutFromSuccess)
+    spawn(watchWorkoutDeleteSuccess),
+    spawn(watchWorkoutPostFromSuccess)
 ]

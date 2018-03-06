@@ -5,7 +5,7 @@ import { fetchRoutines } from 'data/routines/actions'
 import { getWorkouts } from 'data/workouts/actions'
 import { fetchExercises } from 'data/exercises/actions'
 import { fetchLifts } from 'data/lifts/actions'
-import { fetchSets } from 'data/sets/actions'
+import { getSets } from 'data/sets/actions'
 import { showLoading, removeLoading } from 'data/ui/actions'
 
 // import * as constants from 'data/constants'
@@ -20,7 +20,7 @@ import { showLoading, removeLoading } from 'data/ui/actions'
 //         dispatch(getWorkouts()),
 //         dispatch(fetchExercises()),
 //         dispatch(fetchLifts()),
-//         dispatch(fetchSets())
+//         dispatch(getSets())
 //     ]).then(([user]) => {
 //         if (user && user.payload &&
 //             (user.payload.startOfWeek !== store.get('startOfWeek') ||
@@ -47,7 +47,7 @@ export const fetchAppData = () => (dispatch, getState) => {
         dispatch(getWorkouts()),
         dispatch(fetchExercises()),
         dispatch(fetchLifts()),
-        dispatch(fetchSets())
+        dispatch(getSets())
     ]).then(([user]) => {
         if (user && user.payload &&
             (user.payload.startOfWeek !== store.get('startOfWeek') ||
@@ -68,7 +68,7 @@ export const fetchAppData = () => (dispatch, getState) => {
 export const fetchWorkoutsData = () => (dispatch, getState) => {
     return Promise.all([
         dispatch(fetchExercises(true)),
-        dispatch(fetchSets(true))
+        dispatch(getSets())
     ]).then(() => {
         return Promise.resolve()
     })

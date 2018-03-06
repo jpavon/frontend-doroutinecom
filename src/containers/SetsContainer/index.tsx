@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IFormatedSet } from 'data/sets/types'
+import { IFormatedSet, ISetRequestData } from 'data/sets/types'
 import { IFormatedUser } from 'data/user/types'
 import { IRootState, IEntitiesStatus } from 'data/types'
 
-import { createSet, updateSet, removeSet } from 'data/sets/actions'
+import { getSets, postSet, deleteSet } from 'data/sets/actions'
 import { setsExerciseSelector, previouslyCompletedSetsSelector } from 'data/sets/selectors'
 import { STATUS_DELETING } from 'data/constants'
 
@@ -28,9 +28,9 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    createSet: (data: {}) => void
-    updateSet: (id: number, data: {}) => void
-    removeSet: () => void
+    getSets: () => void
+    postSet: (data: ISetRequestData) => void
+    deleteSet: (id: number) => void
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
@@ -40,7 +40,7 @@ class SetsContainer extends React.Component<IProps> {
     render() {
         return (
             <Sets
-                create={this.props.createSet}
+                create={this.props.getSets}
                 exerciseId={this.props.exerciseId}
                 user={this.props.user}
                 toggleRemoveButtons={this.props.toggleRemoveButtons}
@@ -52,8 +52,8 @@ class SetsContainer extends React.Component<IProps> {
                         key={set.id}
                         index={i}
                         set={set}
-                        update={this.props.updateSet}
-                        remove={this.props.removeSet}
+                        update={this.props.postSet}
+                        remove={this.props.deleteSet}
                         isDeleting={this.props.entitiesStatus[set.id] === STATUS_DELETING}
                         isRemoveButtonsVisible={!this.props.isWorkout || this.props.isRemoveButtonsVisible}
                         previousSet={this.props.previouslyCompletedSets && this.props.previouslyCompletedSets[i]}
@@ -72,9 +72,9 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
 })
 
 const mapDispatchToProps: IDispatchProps = {
-    createSet,
-    updateSet,
-    removeSet
+    getSets,
+    postSet,
+    deleteSet
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SetsContainer)
