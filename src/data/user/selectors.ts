@@ -11,5 +11,5 @@ export const userSelector = createSelector(
     [
         (state: IRootState) => state.user.entity
     ],
-    (user: IUser): IFormatedUser => user && formatUser(user)
+    (user): IUser | null => user && formatUser(user)
 )

@@ -23,7 +23,7 @@ interface IOwnProps {
 }
 
 interface IStateProps {
-    routine: IFormatedRoutine
+    routine: IFormatedRoutine | null
     isStatusLoaded: boolean
     isDeleting: boolean
 }
@@ -45,12 +45,16 @@ class RoutineContainer extends React.Component<IProps> {
     }
 
     handleRemove = () => {
+        if (!this.props.routine) { return }
+
         if (window.confirm('Are you sure you want to delete this routine?')) {
             this.props.deleteRoutine(this.props.routine.id)
         }
     }
 
     handleCreateWorkout = () => {
+        if (!this.props.routine) { return }
+
         this.props.postWorkoutFrom({
             routineId: this.props.routine.id,
             startedAt: now()

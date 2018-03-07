@@ -1,14 +1,17 @@
 import { createSelector } from 'reselect'
 
-const formatRoutine = (routine) => ({
+import { IRoutine, IFormatedRoutine } from 'data/routines/types'
+import { IRootState } from 'data/types'
+
+const formatRoutine = (routine: IRoutine): IFormatedRoutine => ({
     ...routine
 })
 
-export const routineSelector = (id) => createSelector(
+export const routineSelector = (id: number) => createSelector(
     [
-        (state) => state.routines.entities
+        (state: IRootState) => state.routines.entities
     ],
-    (routines) => {
+    (routines): IFormatedRoutine | null => {
         if (routines.length > 0) {
             const routine = routines.find((routine) => (routine.id === id))
             return routine ? formatRoutine(routine) : null
@@ -19,18 +22,18 @@ export const routineSelector = (id) => createSelector(
 
 export const routinesSelector = createSelector(
     [
-        state => state.routines.entities
+        (state: IRootState) => state.routines.entities
     ],
-    (routines) => routines
+    (routines): IFormatedRoutine[] => routines
         .map((routine) => formatRoutine(routine))
         .filter((routine) => !routine.program)
 )
 
 export const defaultRoutinesSelector = createSelector(
     [
-        state => state.routines.entities
+        (state: IRootState) => state.routines.entities
     ],
-    (routines) => routines
+    (routines): IFormatedRoutine[] => routines
         .map((routine) => formatRoutine(routine))
         .filter((routine) => routine.program)
 )
