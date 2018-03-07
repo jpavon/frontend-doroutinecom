@@ -4,19 +4,19 @@ import { IFormatedRoutine } from 'data/routines/types'
 export interface IWorkout {
     id: number
     userId: number
-    routineId: number | null
-    name?: string
+    routineId: number
+    name: string | null
     startedAt: string
     completedAt: string | null
-    notes: string
+    notes: string | null
     createdAt: string
     updatedAt: string
 }
 
 export interface IFormatedWorkout extends IWorkout {
     displayName: string | null
-    day: string | null
     duration: string | null
+    day: string | null
     routine: IFormatedRoutine | null
 }
 

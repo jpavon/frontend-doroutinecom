@@ -6,8 +6,8 @@ export interface ISet {
     id: number
     userId: number
     exerciseId: number
-    reps: number
-    weight: number
+    reps: number | null
+    weight: number | null
     isCompleted: boolean
     createdAt: string
     updatedAt: string

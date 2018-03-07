@@ -11,7 +11,7 @@ const initialState: IWorkoutsState = {
     error: null
 }
 
-const workouts = (state = initialState, action: IWorkoutsAction): IWorkoutsState => {
+const workouts = (state = initialState, action: IWorkoutsAction) => {
     const { type, payload, error, id } = action
 
     switch (type) {

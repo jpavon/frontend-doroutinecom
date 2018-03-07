@@ -3,9 +3,9 @@ import { IStateMap, IActionMap, IDataRequestMap } from 'data/types'
 export interface IExercise {
     id: number
     userId: number
-    liftId?: number | null
-    workoutId?: number | null
-    routineId?: number | null
+    liftId?: number
+    workoutId?: number
+    routineId?: number
     order?: number | null
     createdAt: string
     updatedAt: string

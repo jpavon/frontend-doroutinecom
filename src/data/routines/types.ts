@@ -3,14 +3,14 @@ import { IStateMap, IActionMap, IDataRequestMap } from 'data/types'
 export interface IRoutine {
     id: number
     userId: number
-    name: string
-    notes: string
+    name: string | null
+    notes: string | null
     createdAt: string
     updatedAt: string
-    program: {
+    program?: {
         id: number
-        name: string
-        content: string
+        name: string | null
+        content: string | null
     } | null
 }
 

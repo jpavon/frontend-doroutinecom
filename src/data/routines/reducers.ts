@@ -11,7 +11,7 @@ const initialState: IRoutinesState = {
     error: null
 }
 
-const routines = (state = initialState, action: IRoutinesAction): IRoutinesState => {
+const routines = (state = initialState, action: IRoutinesAction) => {
     const { type, payload, error, id } = action
 
     switch (type) {

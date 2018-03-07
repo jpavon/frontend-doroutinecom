@@ -3,7 +3,7 @@ import { IStateMap, IActionMap, IDataRequestMap } from 'data/types'
 export interface ILift {
     id: number
     userId: number
-    name: string
+    name: string | null
     createdAt: string
     updatedAt: string
 }

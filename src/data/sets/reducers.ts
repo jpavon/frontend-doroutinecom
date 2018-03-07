@@ -11,7 +11,7 @@ const initialState: ISetsState = {
     error: null
 }
 
-const sets = (state = initialState, action: ISetsAction): ISetsState => {
+const sets = (state = initialState, action: ISetsAction) => {
     const { type, payload, error, id } = action
 
     switch (type) {
