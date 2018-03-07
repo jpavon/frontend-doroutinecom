@@ -1,4 +1,4 @@
-import { IAction } from 'data/types'
+import { IAction, IApiFailure } from 'data/types'
 
 export interface IUiState {
     isLoading: boolean
@@ -13,5 +13,5 @@ export interface IUiAction extends IAction {
 
 export interface IAlert {
     type: string
-    message: string | string[] | object
+    message: string | string[] | IApiFailure['errors']
 }

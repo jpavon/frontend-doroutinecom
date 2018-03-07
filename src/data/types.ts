@@ -1,4 +1,4 @@
-import { IUser, IUserState } from 'data/user/types'
+import { IUser, IAuth, IUserState } from 'data/user/types'
 import { IExercise, IExercisesState } from 'data/exercises/types'
 import { ILift, ILiftsState } from 'data/lifts/types'
 import { IRoutine, IRoutinesState } from 'data/routines/types'
@@ -61,7 +61,7 @@ export interface IApiAction extends IAction {
 }
 
 export type IApiSuccess =
-    IUser |
+    IUser | IAuth |
     IExercise[] | IExercise |
     ILift[] | ILift |
     IRoutine[] | IRoutine |

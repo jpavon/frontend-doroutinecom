@@ -1,3 +1,5 @@
+import { IAlert } from 'data/ui/types'
+
 import * as constants from 'data/ui/constants'
 
 export const showLoading = () => ({
@@ -8,7 +10,7 @@ export const removeLoading = () => ({
     type: constants.REMOVE_LOADING
 })
 
-export const showAlert = (type: string, message: string | string[]) => ({
+export const showAlert = (type: string, message: IAlert['message']) => ({
     type: constants.SHOW_ALERT,
     alert: {
         type,

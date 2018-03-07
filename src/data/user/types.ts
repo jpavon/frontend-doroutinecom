@@ -12,6 +12,10 @@ export interface IUser {
     updatedAt: string
 }
 
+export interface IAuth {
+    token: string
+}
+
 export interface IFormatedUser extends IUser {}
 
 export interface IUserState {
@@ -26,6 +30,10 @@ export type IUserData = IDataRequestMap<IUser>
 export interface IUserAction extends IAction {
     payload: IUser
     error: IApiFailure
+}
+
+export interface IUnauthAction extends IAction  {
+    error?: string
 }
 
 export interface ILoginData {
