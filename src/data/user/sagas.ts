@@ -96,6 +96,7 @@ export default [
     takeLatest(constants.USER_REGISTER_REQUEST, registerUserSaga),
     takeLatest(constants.USER_PASSWORD_FORGOTTEN_REQUEST, passwordForgottenUserSaga),
     takeLatest(constants.USER_PASSWORD_RESET_REQUEST, passwordResetUserSaga),
+
     spawn(authSaga),
     spawn(unauthUserSaga),
     spawn(authPasswordResetSuccessSaga),

@@ -1,6 +1,7 @@
-import { takeLatest, take, spawn, put } from 'redux-saga/effects'
+import { takeLatest, put } from 'redux-saga/effects'
 
-import { IApiAction } from 'data/types'
+import { IApiAction, ISuccessAction } from 'data/types'
+import { IRoutine } from 'data/routines/types'
 
 import history from 'utils/history'
 import apiSaga from 'utils/apiSaga'
@@ -24,22 +25,14 @@ function* deleteRoutineSaga(action: IApiAction) {
     yield* apiSaga(action, actions.deleteRoutineSuccess, actions.deleteRoutineFailure)
 }
 
-function* watchRoutinePostSuccess() {
-    while (true) {
-        const { payload } = yield take(constants.ROUTINES_POST_SUCCESS)
-
-        yield history.push(`/routines/${payload.id}`)
-    }
+function* routinePostSuccess(action: ISuccessAction) {
+    yield history.push(`/routines/${(action.payload as IRoutine).id}`)
 }
 
-function* watchRoutineDeleteSuccess() {
-    while (true) {
-        yield take(constants.ROUTINES_DELETE_SUCCESS)
+function* routineDeleteSuccess() {
+    yield history.push('/routines')
 
-        yield history.push('/routines')
-
-        yield put(workoutsActions.getWorkouts())
-    }
+    yield put(workoutsActions.getWorkouts())
 }
 
 export default [
@@ -47,6 +40,6 @@ export default [
     takeLatest(constants.ROUTINES_PUT_REQUEST, putRoutineSaga),
     takeLatest(constants.ROUTINES_POST_REQUEST, postRoutineSaga),
     takeLatest(constants.ROUTINES_DELETE_REQUEST, deleteRoutineSaga),
-    spawn(watchRoutinePostSuccess),
-    spawn(watchRoutineDeleteSuccess)
+    takeLatest(constants.ROUTINES_POST_SUCCESS, routinePostSuccess),
+    takeLatest(constants.ROUTINES_DELETE_SUCCESS, routineDeleteSuccess)
 ]

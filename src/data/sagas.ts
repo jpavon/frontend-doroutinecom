@@ -4,7 +4,6 @@ import * as store from 'store'
 
 import { IUser } from 'data/user/types'
 
-// import * as actions from 'data/actions'
 import * as uiActions from 'data/ui/actions'
 import * as userActions from 'data/user/actions'
 import * as constants from 'data/constants'
@@ -55,7 +54,7 @@ export function* getWorkoutDataSaga() {
     ])
 }
 
-function* watchUserUnauth() {
+function* watchServerErrors() {
     while (true) {
         const { error } = yield take([
             userConstants.USER_GET_FAILURE,
@@ -76,19 +75,20 @@ function* watchUserUnauth() {
     }
 }
 
-function userSettingsCheck(user: IUser) {
-    if (
-        user.startOfWeek !== store.get('startOfWeek') ||
-        user.dateFormat !== store.get('dateFormat')
-    ) {
+function* userSettingsCheck(user: IUser) {
+    if (user.startOfWeek !== store.get('startOfWeek') ||
+        user.dateFormat !== store.get('dateFormat')) {
+
         store.set('startOfWeek', user.startOfWeek)
         store.set('dateFormat', user.dateFormat)
 
-        window.location.reload(true)
+        yield window.location.reload(true)
+
+        yield call(delay, 1000)
     }
 }
 
 export default [
     takeLatest(constants.GET_APP_DATA_REQUEST, getAppDataSaga),
-    spawn(watchUserUnauth)
+    spawn(watchServerErrors)
 ]

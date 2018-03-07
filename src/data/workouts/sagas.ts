@@ -1,4 +1,4 @@
-import { takeLatest, take, spawn, call } from 'redux-saga/effects'
+import { takeLatest, call } from 'redux-saga/effects'
 
 import { IApiAction, ISuccessAction } from 'data/types'
 import { IWorkout } from 'data/workouts/types'
@@ -8,7 +8,6 @@ import apiSaga from 'utils/apiSaga'
 import * as constants from 'data/workouts/constants'
 import * as actions from 'data/workouts/actions'
 import { getWorkoutDataSaga } from 'data/sagas'
-// import * as globalConstants from 'data/constants'
 
 function* getWorkoutsSaga(action: IApiAction) {
     yield* apiSaga(action, actions.getWorkoutsSuccess, actions.getWorkoutsFailure)
@@ -30,12 +29,8 @@ function* deleteWorkoutSaga(action: IApiAction) {
     yield* apiSaga(action, actions.deleteWorkoutSuccess, actions.deleteWorkoutFailure)
 }
 
-function* watchWorkoutDeleteSuccess() {
-    while (true) {
-        yield take(constants.WORKOUTS_DELETE_SUCCESS)
-
-        yield history.push(`/workouts`)
-    }
+function* workoutDeleteSuccess() {
+    yield history.push(`/workouts`)
 }
 
 function* workoutPostFromSuccess(action: ISuccessAction) {
@@ -50,6 +45,7 @@ export default [
     takeLatest(constants.WORKOUTS_POST_REQUEST, postWorkoutSaga),
     takeLatest(constants.WORKOUTS_POST_FROM_REQUEST, postWorkoutFromSaga),
     takeLatest(constants.WORKOUTS_DELETE_REQUEST, deleteWorkoutSaga),
-    spawn(watchWorkoutDeleteSuccess),
+
+    takeLatest(constants.WORKOUTS_DELETE_SUCCESS, workoutDeleteSuccess),
     takeLatest(constants.WORKOUTS_POST_FROM_SUCCESS, workoutPostFromSuccess)
 ]

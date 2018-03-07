@@ -1,11 +1,11 @@
-import { takeLatest, spawn, take, put } from 'redux-saga/effects'
+import { takeLatest, take, put } from 'redux-saga/effects'
 
-import { IApiAction } from 'data/types'
+import { IApiAction, ISuccessAction } from 'data/types'
+import { ILift } from 'data/lifts/types'
 
 import history from 'utils/history'
 import apiSaga from 'utils/apiSaga'
 import * as constants from 'data/lifts/constants'
-// import * as exercisesConstants from 'data/exercises/constants'
 import * as actions from 'data/lifts/actions'
 import * as exercisesActions from 'data/exercises/actions'
 import * as uiActions from 'data/ui/actions'
@@ -26,28 +26,21 @@ function* deleteLiftSaga(action: IApiAction) {
     yield* apiSaga(action, actions.deleteLiftSuccess, actions.deleteLiftFailure)
 }
 
-function* watchLiftPostSuccess() {
-    while (true) {
-        const { payload } = yield take(constants.LIFTS_POST_SUCCESS)
-
-        yield history.push(`/lifts/${payload.id}`)
-    }
+function* liftPostSuccess(action: ISuccessAction) {
+    yield history.push(`/lifts/${(action.payload as ILift).id}`)
 }
 
-function* watchLiftDeleteSuccess() {
-    while (true) {
-        yield take(constants.LIFTS_DELETE_REQUEST)
+function* liftDeleteRequest() {
+    // remove loading add cancel for errors
+    yield put(uiActions.showLoading())
 
-        yield put(uiActions.showLoading())
+    yield take(constants.LIFTS_DELETE_SUCCESS)
 
-        yield take(constants.LIFTS_DELETE_SUCCESS)
+    yield history.push('/lifts')
 
-        yield history.push('/lifts')
+    yield put(uiActions.removeLoading())
 
-        yield put(uiActions.removeLoading())
-
-        yield put(exercisesActions.getExercises())
-    }
+    yield put(exercisesActions.getExercises())
 }
 
 export default [
@@ -55,6 +48,7 @@ export default [
     takeLatest(constants.LIFTS_PUT_REQUEST, putLiftSaga),
     takeLatest(constants.LIFTS_POST_REQUEST, postLiftSaga),
     takeLatest(constants.LIFTS_DELETE_REQUEST, deleteLiftSaga),
-    spawn(watchLiftPostSuccess),
-    spawn(watchLiftDeleteSuccess)
+
+    takeLatest(constants.LIFTS_POST_SUCCESS, liftPostSuccess),
+    takeLatest(constants.LIFTS_DELETE_REQUEST, liftDeleteRequest)
 ]
