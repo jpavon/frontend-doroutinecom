@@ -100,7 +100,7 @@ class ExercisesContainer extends React.Component<IProps, IState> {
                             >
                                 <SetsContainer
                                     exerciseId={exercise.id}
-                                    liftId={exercise.liftId || null}
+                                    liftId={exercise.liftId}
                                     isWorkout={this.isWorkout}
                                     isRemoveButtonsVisible={this.state.isRemoveButtonsVisible}
                                     toggleRemoveButtons={this.handleToggleRemoveButtons}

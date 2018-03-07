@@ -6,7 +6,7 @@ export interface IExercise {
     liftId?: number
     workoutId?: number
     routineId?: number
-    order?: number | null
+    order?: number
     createdAt: string
     updatedAt: string
 }

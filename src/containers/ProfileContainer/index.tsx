@@ -1,12 +1,14 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { workoutsGraphDataSelector } from 'data/graphs/selectors'
-import { topSetsSelector } from 'data/sets/selectors'
-
 import { IRootState } from 'data/types'
 import { ITopSet } from 'data/sets/types'
 import { IWorkoutGraphData } from 'data/graphs/types'
+import { IFormatedUser } from 'data/user/types'
+
+import { workoutsGraphDataSelector } from 'data/graphs/selectors'
+import { topSetsSelector } from 'data/sets/selectors'
+import { userSelector } from 'data/user/selectors'
 
 import Profile from 'components/Profile'
 import Graph from 'components/Graph'
@@ -20,7 +22,7 @@ interface IOwnProps {
 interface IStateProps {
     workoutsGraphData: IWorkoutGraphData
     topSets: ITopSet[]
-    user: IRootState['user']['entity']
+    user: IFormatedUser | null
 }
 
 interface IDispatchProps {
@@ -67,7 +69,7 @@ class ProfileContainer extends React.Component<IProps> {
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     workoutsGraphData: workoutsGraphDataSelector(state),
     topSets: topSetsSelector(state),
-    user: state.user.entity
+    user: userSelector(state)
 })
 
 // const mapDispatchToProps = {

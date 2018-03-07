@@ -6,6 +6,7 @@ import { IFormatedUser } from 'data/user/types'
 import { IRootState, IEntitiesStatus } from 'data/types'
 
 import { postSet, putSet, deleteSet } from 'data/sets/actions'
+import { userSelector } from 'data/user/selectors'
 import { setsExerciseSelector, previouslyCompletedSetsSelector } from 'data/sets/selectors'
 import { STATUS_DELETING } from 'data/constants'
 
@@ -13,18 +14,18 @@ import Sets from 'components/Sets/Sets'
 import Set from 'components/Sets/Set'
 
 interface IOwnProps {
-    exerciseId: number,
-    liftId: number | null,
-    isWorkout: boolean,
-    toggleRemoveButtons: () => void,
-    isRemoveButtonsVisible: boolean,
+    exerciseId: number
+    liftId?: number
+    isWorkout: boolean
+    toggleRemoveButtons: () => void
+    isRemoveButtonsVisible: boolean
 }
 
 interface IStateProps {
     sets: IFormatedSet[],
-    entitiesStatus: IEntitiesStatus,
-    user: IFormatedUser | null,
-    previouslyCompletedSets?: IFormatedSet[],
+    entitiesStatus: IEntitiesStatus
+    user: IFormatedUser | null
+    previouslyCompletedSets?: IFormatedSet[]
 }
 
 interface IDispatchProps {
@@ -72,7 +73,7 @@ class SetsContainer extends React.Component<IProps> {
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     sets: setsExerciseSelector(props.exerciseId)(state),
     entitiesStatus: state.sets.entitiesStatus,
-    user: state.user.entity,
+    user: userSelector(state),
     previouslyCompletedSets: props.liftId && previouslyCompletedSetsSelector(props.exerciseId, props.liftId)(state),
 })
 

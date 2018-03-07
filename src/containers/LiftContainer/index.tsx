@@ -6,12 +6,14 @@ import { IRootState } from 'data/types'
 import { IFormatedLift, ILiftRequestData } from 'data/lifts/types'
 import { ITopSet } from 'data/sets/types'
 import { ILiftsGraph } from 'data/graphs/types'
+import { IFormatedUser } from 'data/user/types'
 
 import history from 'utils/history'
 import { liftGraphDataSelector } from 'data/graphs/selectors'
 import { liftSelector } from 'data/lifts/selectors'
 import { topLiftSetsSelector } from 'data/sets/selectors'
 import { putLift, deleteLift } from 'data/lifts/actions'
+import { userSelector } from 'data/user/selectors'
 import { STATUS_LOADED, STATUS_DELETING } from 'data/constants'
 
 import Lift from 'components/Lift'
@@ -25,12 +27,12 @@ interface IOwnProps {
 }
 
 interface IStateProps {
-    lift: IFormatedLift
+    lift: IFormatedLift | null
     isStatusLoaded: boolean
     isDeleting: boolean
     liftGraphData: ILiftsGraph
     topLiftSets: ITopSet[]
-    weightMeasure: string | null
+    user: IFormatedUser | null
 }
 
 interface IDispatchProps {
@@ -49,6 +51,8 @@ class LiftContainer extends React.Component<IProps> {
     }
 
     handleRemove = () => {
+        if (!this.props.lift) { return }
+
         if (window.confirm('Are you sure you want to delete this lift?')) {
             this.props.deleteLift(this.props.lift.id)
         }
@@ -85,7 +89,7 @@ class LiftContainer extends React.Component<IProps> {
                 {this.props.topLiftSets.length > 0 ?
                     <SetsTable
                         sets={this.props.topLiftSets}
-                        weightMeasure={this.props.weightMeasure}
+                        weightMeasure={this.props.user && this.props.user.weightMeasure}
                     /> :
                     <NoData
                         text="List of top sets will be displayed here when you complete a workout."
@@ -111,7 +115,7 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     isDeleting: state.lifts.entitiesStatus[props.liftId] === STATUS_DELETING,
     liftGraphData: liftGraphDataSelector(props.liftId)(state),
     topLiftSets: topLiftSetsSelector(props.liftId)(state),
-    weightMeasure: state.user.entity && state.user.entity.weightMeasure
+    user: userSelector(state)
 })
 
 const mapDispatchToProps: IDispatchProps = {
