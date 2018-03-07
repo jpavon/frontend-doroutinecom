@@ -1,26 +1,30 @@
 import { createSelector } from 'reselect'
 
+import { IRootState } from 'data/types'
+import { IWorkout, IFormatedWorkout } from 'data/workouts/types'
+import { IRoutine } from 'data/routines/types'
+
 import moment from 'utils/moment'
 import { formatDuration, longDateFormat } from 'utils/date'
 import { routinesSelector } from 'data/routines/selectors'
 
-const formatWorkout = (workout, routines) => {
+const formatWorkout = (workout: IWorkout, routines: IRoutine[]): IFormatedWorkout => {
     const routine = routines && routines.find((routine) => (routine.id === workout.routineId))
     return {
         ...workout,
-        displayName: routine ? routine.name : workout.name,
+        displayName: routine ? (routine.name || workout.name) : null,
         duration: workout.completedAt && formatDuration(workout.startedAt, workout.completedAt),
         day: workout.completedAt && moment(workout.completedAt).format(longDateFormat),
-        routine
+        routine: routine ? routine : null
     }
 }
 
-export const workoutSelector = (id) => createSelector(
+export const workoutSelector = (id: number) => createSelector(
     [
-        (state) => state.workouts.entities,
+        (state: IRootState) => state.workouts.entities,
         routinesSelector
     ],
-    (workouts, routines) => {
+    (workouts, routines): IFormatedWorkout | null => {
         if (workouts.length > 0) {
             const workout = workouts.find((workout) => (workout.id === id))
             return workout ? formatWorkout(workout, routines) : null
@@ -34,24 +38,29 @@ export const workoutsSelector = createSelector(
         (state) => state.workouts.entities,
         routinesSelector
     ],
-    (workouts, routines) => workouts
-        .map((workout) => formatWorkout(workout, routines))
+    (workouts, routines): IFormatedWorkout[] =>
+        workouts
+            .map((workout) => formatWorkout(workout, routines))
 )
 
 export const completedWorkoutsSelector = createSelector(
     [
         workoutsSelector
     ],
-    (workouts) => workouts.filter((workout) => (workout.completedAt))
-        .sort((a, b) => (moment(b.completedAt) - moment(a.completedAt)))
+    (workouts): IFormatedWorkout[] =>
+        workouts
+            .filter((workout) => (workout.completedAt))
+            .sort((a, b) => (+moment(b.completedAt) - +moment(a.completedAt)))
 )
 
 export const pendingWorkoutsSelector = createSelector(
     [
         workoutsSelector
     ],
-    (workouts) => workouts.filter((workout) => (!workout.completedAt))
-        .sort((a, b) => (moment(b.startedAt) - moment(a.startedAt)))
+    (workouts): IFormatedWorkout[] =>
+        workouts
+            .filter((workout) => (!workout.completedAt))
+            .sort((a, b) => (+moment(b.startedAt) - +moment(a.startedAt)))
 )
 
 // const startWeek = moment().startOf('week')

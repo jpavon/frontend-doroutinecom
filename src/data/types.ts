@@ -44,7 +44,10 @@ export type IFetchStatus =
     constants.STATUS_NONE |
     constants.STATUS_LOADING |
     constants.STATUS_LOADED |
-    constants.STATUS_FAILED |
+    constants.STATUS_FAILED
+
+export type IEntitiesStatusItem =
+    constants.STATUS_LOADED |
     constants.STATUS_UPDATING |
     constants.STATUS_DELETING
 
@@ -84,7 +87,7 @@ export interface IFailureAction extends IAction {
 }
 
 export interface IEntitiesStatus {
-    [index: number]: string
+    [index: number]: IEntitiesStatusItem
 }
 
 export type IDataRequestMap<T> = { [P in keyof T]?: T[P] }

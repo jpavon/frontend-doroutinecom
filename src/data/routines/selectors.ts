@@ -24,16 +24,18 @@ export const routinesSelector = createSelector(
     [
         (state: IRootState) => state.routines.entities
     ],
-    (routines): IFormatedRoutine[] => routines
-        .map((routine) => formatRoutine(routine))
-        .filter((routine) => !routine.program)
+    (routines): IFormatedRoutine[] =>
+        routines
+            .map((routine) => formatRoutine(routine))
+            .filter((routine) => !routine.program)
 )
 
 export const defaultRoutinesSelector = createSelector(
     [
         (state: IRootState) => state.routines.entities
     ],
-    (routines): IFormatedRoutine[] => routines
-        .map((routine) => formatRoutine(routine))
-        .filter((routine) => routine.program)
+    (routines): IFormatedRoutine[] =>
+        routines
+            .map((routine) => formatRoutine(routine))
+            .filter((routine) => routine.program)
 )

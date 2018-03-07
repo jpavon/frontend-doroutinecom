@@ -6,7 +6,7 @@ import { exercisesRoutineSelector, exercisesWorkoutSelector } from 'data/exercis
 import { liftsSelector } from 'data/lifts/selectors'
 import { STATUS_DELETING } from 'data/constants'
 
-import { IFormatedExercise } from 'data/exercises/types'
+import { IFormatedExercise, IExerciseRequestData } from 'data/exercises/types'
 import { IFormatedLift } from 'data/lifts/types'
 import { IRootState, IEntitiesStatus } from 'data/types'
 
@@ -29,7 +29,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    postExercise: (data: {routineId?: number, workoutId?: number }) => void
+    postExercise: (data: IExerciseRequestData) => void
     putExercise: (id: number, data: {}) => void
     deleteExercise: (id: number) => void
 }
@@ -100,7 +100,7 @@ class ExercisesContainer extends React.Component<IProps, IState> {
                             >
                                 <SetsContainer
                                     exerciseId={exercise.id}
-                                    liftId={exercise.liftId}
+                                    liftId={exercise.liftId || null}
                                     isWorkout={this.isWorkout}
                                     isRemoveButtonsVisible={this.state.isRemoveButtonsVisible}
                                     toggleRemoveButtons={this.handleToggleRemoveButtons}

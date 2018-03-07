@@ -7,17 +7,17 @@ export interface IWorkout {
     routineId: number | null
     name?: string
     startedAt: string
-    completedAt?: string | null
-    notes?: string
+    completedAt: string | null
+    notes: string
     createdAt: string
     updatedAt: string
 }
 
 export interface IFormatedWorkout extends IWorkout {
-    displayName?: string,
-    day?: string,
-    duration?: string,
-    routine?: IFormatedRoutine
+    displayName: string | null
+    day: string | null
+    duration: string | null
+    routine: IFormatedRoutine | null
 }
 
 export type IWorkoutsState = IStateMap<IWorkout>

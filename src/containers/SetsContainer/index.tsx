@@ -14,7 +14,7 @@ import Set from 'components/Sets/Set'
 
 interface IOwnProps {
     exerciseId: number,
-    liftId?: number,
+    liftId: number | null,
     isWorkout: boolean,
     toggleRemoveButtons: () => void,
     isRemoveButtonsVisible: boolean,
