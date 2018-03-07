@@ -11,5 +11,4 @@ const env = {
     }
 }
 
-/* tslint:disable */
-export default env[(process as any).env.NODE_ENV] || env.production
+export default env[process.env.NODE_ENV] || env.production

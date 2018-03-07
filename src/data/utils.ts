@@ -14,8 +14,7 @@ export const putRequest = (state: ICrudStateItem, id: number): ICrudStateItem =>
     entitiesStatus: {
         ...state.entitiesStatus,
         [id]: constants.STATUS_UPDATING
-    },
-    error: null
+    }
 })
 
 export const deleteRequest = (state: ICrudStateItem, id: number): ICrudStateItem => ({
@@ -23,8 +22,7 @@ export const deleteRequest = (state: ICrudStateItem, id: number): ICrudStateItem
     entitiesStatus: {
         ...state.entitiesStatus,
         [id]: constants.STATUS_DELETING
-    },
-    error: null
+    }
 })
 
 export const failure = (state: ICrudStateItem, error: IApiFailure): ICrudStateItem => ({
@@ -90,9 +88,3 @@ export const remove = (state: ICrudStateItem, id: number): ICrudStateItem => ({
         }), {}),
     error: null
 })
-
-// action utils
-
-export const shouldFetch = (name: string, state: ICrudStateItem) => (
-    state[name].fetchStatus !== constants.STATUS_LOADED
-)

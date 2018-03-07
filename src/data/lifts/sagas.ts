@@ -5,8 +5,10 @@ import { IApiAction } from 'data/types'
 import history from 'utils/history'
 import apiSaga from 'utils/apiSaga'
 import * as constants from 'data/lifts/constants'
+// import * as exercisesConstants from 'data/exercises/constants'
 import * as actions from 'data/lifts/actions'
 import * as exercisesActions from 'data/exercises/actions'
+import * as uiActions from 'data/ui/actions'
 
 function* getLiftsSaga(action: IApiAction) {
     yield* apiSaga(action, actions.getLiftsSuccess, actions.getLiftsFailure)
@@ -34,9 +36,15 @@ function* watchLiftPostSuccess() {
 
 function* watchLiftDeleteSuccess() {
     while (true) {
+        yield take(constants.LIFTS_DELETE_REQUEST)
+
+        yield put(uiActions.showLoading())
+
         yield take(constants.LIFTS_DELETE_SUCCESS)
 
-        yield history.push('/routines')
+        yield history.push('/lifts')
+
+        yield put(uiActions.removeLoading())
 
         yield put(exercisesActions.getExercises())
     }

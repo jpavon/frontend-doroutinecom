@@ -75,7 +75,7 @@ export const liftGraphDataSelector = (liftId) => createSelector(
             meta: {
                 reps,
                 weight,
-                weightMeasure: user.weightMeasure
+                weightMeasure: user && user.weightMeasure
             }
         }
     }

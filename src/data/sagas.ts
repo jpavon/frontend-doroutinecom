@@ -1,9 +1,10 @@
+import { delay } from 'redux-saga'
 import { all, put, take, takeLatest, call, spawn } from 'redux-saga/effects'
 import * as store from 'store'
 
 import { IUser } from 'data/user/types'
 
-import * as actions from 'data/actions'
+// import * as actions from 'data/actions'
 import * as uiActions from 'data/ui/actions'
 import * as userActions from 'data/user/actions'
 import * as constants from 'data/constants'
@@ -49,18 +50,29 @@ export function* getWorkoutDataSaga() {
     yield put(getSets())
 
     yield all([
-        yield take(setsConstants.SETS_GET_SUCCESS),
-        yield take(exercisesConstants.EXERCISES_GET_SUCCESS)
+        take(setsConstants.SETS_GET_SUCCESS),
+        take(exercisesConstants.EXERCISES_GET_SUCCESS)
     ])
-
-    yield put(actions.getWorkoutsDataSuccess())
 }
 
 function* watchUserUnauth() {
     while (true) {
-        yield take(userConstants.USER_GET_FAILURE)
+        const { error } = yield take([
+            userConstants.USER_GET_FAILURE,
+            routinesConstants.ROUTINES_GET_FAILURE,
+            workoutsConstants.WORKOUTS_GET_FAILURE,
+            exercisesConstants.EXERCISES_GET_FAILURE,
+            setsConstants.SETS_GET_FAILURE,
+            liftsConstants.LIFTS_GET_FAILURE
+        ])
 
-        yield put(userActions.unauthUser('You need to log in for access to this page.'))
+        if (error.message === 'Unauthenticated.') {
+            yield put(userActions.unauthUser('You need to log in for access to this page.'))
+        } else {
+            yield put(uiActions.setServerError())
+        }
+
+        yield call(delay, 1000)
     }
 }
 
@@ -78,6 +90,5 @@ function userSettingsCheck(user: IUser) {
 
 export default [
     takeLatest(constants.GET_APP_DATA_REQUEST, getAppDataSaga),
-    takeLatest(constants.GET_WORKOUTS_DATA_REQUEST, getWorkoutDataSaga),
     spawn(watchUserUnauth)
 ]

@@ -1,10 +1,5 @@
 import * as constants from 'data/ui/constants'
 
-export const showLoadingAction = () => ({
-    type: constants.SHOW_LOADING
-})
-
-// REMOVE
 export const showLoading = () => ({
     type: constants.SHOW_LOADING
 })
