@@ -5,7 +5,7 @@ import { IFormatedSet, ISetRequestData } from 'data/sets/types'
 import { IFormatedUser } from 'data/user/types'
 import { IRootState, IEntitiesStatus } from 'data/types'
 
-import { getSets, postSet, deleteSet } from 'data/sets/actions'
+import { postSet, putSet, deleteSet } from 'data/sets/actions'
 import { setsExerciseSelector, previouslyCompletedSetsSelector } from 'data/sets/selectors'
 import { STATUS_DELETING } from 'data/constants'
 
@@ -28,8 +28,8 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    getSets: () => void
     postSet: (data: ISetRequestData) => void
+    putSet: (id: number, data: ISetRequestData) => void
     deleteSet: (id: number) => void
 }
 
@@ -37,11 +37,16 @@ interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class SetsContainer extends React.Component<IProps> {
 
+    handleCreate = () => {
+        this.props.postSet({
+            exerciseId: this.props.exerciseId
+        })
+    }
+
     render() {
         return (
             <Sets
-                create={this.props.getSets}
-                exerciseId={this.props.exerciseId}
+                create={this.handleCreate}
                 user={this.props.user}
                 toggleRemoveButtons={this.props.toggleRemoveButtons}
                 isRemoveButtonsVisible={this.props.isRemoveButtonsVisible}
@@ -52,7 +57,7 @@ class SetsContainer extends React.Component<IProps> {
                         key={set.id}
                         index={i}
                         set={set}
-                        update={this.props.postSet}
+                        update={this.props.putSet}
                         remove={this.props.deleteSet}
                         isDeleting={this.props.entitiesStatus[set.id] === STATUS_DELETING}
                         isRemoveButtonsVisible={!this.props.isWorkout || this.props.isRemoveButtonsVisible}
@@ -72,8 +77,8 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
 })
 
 const mapDispatchToProps: IDispatchProps = {
-    getSets,
     postSet,
+    putSet,
     deleteSet
 }
 

@@ -5,7 +5,7 @@ import Button from 'components/Button'
 
 import './style.css'
 
-const Sets = ({children, create, exerciseId, user, isWorkout, toggleRemoveButtons, isRemoveButtonsVisible}) => (
+const Sets = ({children, create, user, isWorkout, toggleRemoveButtons, isRemoveButtonsVisible}) => (
     <div className="sets">
         <div className="sets-header">
             <div className="sets-header-item"><small>Set</small></div>
@@ -22,7 +22,7 @@ const Sets = ({children, create, exerciseId, user, isWorkout, toggleRemoveButton
         </Transition>
         <div className="sets-button-create">
             <Button
-                onClick={() => create(exerciseId)}
+                onClick={create}
             >
                 Add Set
             </Button>
