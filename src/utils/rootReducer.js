@@ -22,7 +22,7 @@ const appReducer = combineReducers({
 
 const rootReducer = (state, action) => {
     if (action.type === userConstants.USER_UNAUTH) {
-        state = undefined
+        state = {}
     }
 
     return appReducer(state, action)

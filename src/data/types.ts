@@ -7,8 +7,6 @@ import { IWorkout, IWorkoutsState } from 'data/workouts/types'
 import { IUiState } from 'data/ui/types'
 import * as constants from 'data/constants'
 
-export const StatusType = {}
-
 export interface IRootState {
     user: IUserState
     exercises: IExercisesState

@@ -5,3 +5,4 @@
 // declare module '*.svg'
 
 declare module 'store'
+declare module 'moveto'
