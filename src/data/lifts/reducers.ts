@@ -19,7 +19,7 @@ const lifts = (state = initialState, action: ILiftsAction) => {
             return utils.request(state)
 
         case constants.LIFTS_GET_SUCCESS:
-            return utils.fetch(state, (payload as ILift[]))
+            return utils.getSuccess(state, (payload as ILift[]))
 
         case constants.LIFTS_GET_FAILURE:
             return utils.failure(state, error)
@@ -28,7 +28,7 @@ const lifts = (state = initialState, action: ILiftsAction) => {
             return utils.request(state)
 
         case constants.LIFTS_POST_SUCCESS:
-            return utils.create(state, (payload as ILift))
+            return utils.postSuccess(state, (payload as ILift))
 
         case constants.LIFTS_POST_FAILURE:
             return utils.failure(state, error)
@@ -37,7 +37,7 @@ const lifts = (state = initialState, action: ILiftsAction) => {
             return utils.putRequest(state, id)
 
         case constants.LIFTS_PUT_SUCCESS:
-            return utils.update(state, (payload as ILift))
+            return utils.putSuccess(state, (payload as ILift))
 
         case constants.LIFTS_PUT_FAILURE:
             return utils.failure(state, error)
@@ -46,7 +46,7 @@ const lifts = (state = initialState, action: ILiftsAction) => {
             return utils.deleteRequest(state, id)
 
         case constants.LIFTS_DELETE_SUCCESS:
-            return utils.remove(state, (payload as ILift).id)
+            return utils.deleteSuccess(state, (payload as ILift).id)
 
         case constants.LIFTS_DELETE_FAILURE:
             return utils.failure(state, error)

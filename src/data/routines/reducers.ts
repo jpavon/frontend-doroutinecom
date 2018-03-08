@@ -19,7 +19,7 @@ const routines = (state = initialState, action: IRoutinesAction) => {
             return utils.request(state)
 
         case constants.ROUTINES_GET_SUCCESS:
-            return utils.fetch(state, (payload as IRoutine[]))
+            return utils.getSuccess(state, (payload as IRoutine[]))
 
         case constants.ROUTINES_GET_FAILURE:
             return utils.failure(state, error)
@@ -28,7 +28,7 @@ const routines = (state = initialState, action: IRoutinesAction) => {
             return utils.request(state)
 
         case constants.ROUTINES_POST_SUCCESS:
-            return utils.create(state, (payload as IRoutine))
+            return utils.postSuccess(state, (payload as IRoutine))
 
         case constants.ROUTINES_POST_FAILURE:
             return utils.failure(state, error)
@@ -37,7 +37,7 @@ const routines = (state = initialState, action: IRoutinesAction) => {
             return utils.putRequest(state, id)
 
         case constants.ROUTINES_PUT_SUCCESS:
-            return utils.update(state, (payload as IRoutine))
+            return utils.putSuccess(state, (payload as IRoutine))
 
         case constants.ROUTINES_PUT_FAILURE:
             return utils.failure(state, error)
@@ -46,7 +46,7 @@ const routines = (state = initialState, action: IRoutinesAction) => {
             return utils.deleteRequest(state, id)
 
         case constants.ROUTINES_DELETE_SUCCESS:
-            return utils.remove(state, (payload as IRoutine).id)
+            return utils.deleteSuccess(state, (payload as IRoutine).id)
 
         case constants.ROUTINES_DELETE_FAILURE:
             return utils.failure(state, error)

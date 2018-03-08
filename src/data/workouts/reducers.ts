@@ -19,7 +19,7 @@ const workouts = (state = initialState, action: IWorkoutsAction) => {
             return utils.request(state)
 
         case constants.WORKOUTS_GET_SUCCESS:
-            return utils.fetch(state, (payload as IWorkout[]))
+            return utils.getSuccess(state, (payload as IWorkout[]))
 
         case constants.WORKOUTS_GET_FAILURE:
             return utils.failure(state, error)
@@ -30,7 +30,7 @@ const workouts = (state = initialState, action: IWorkoutsAction) => {
 
         case constants.WORKOUTS_POST_SUCCESS:
         case constants.WORKOUTS_POST_FROM_SUCCESS:
-            return utils.create(state, (payload as IWorkout))
+            return utils.postSuccess(state, (payload as IWorkout))
 
         case constants.WORKOUTS_POST_FAILURE:
         case constants.WORKOUTS_POST_FROM_FAILURE:
@@ -40,7 +40,7 @@ const workouts = (state = initialState, action: IWorkoutsAction) => {
             return utils.putRequest(state, id)
 
         case constants.WORKOUTS_PUT_SUCCESS:
-            return utils.update(state, (payload as IWorkout))
+            return utils.putSuccess(state, (payload as IWorkout))
 
         case constants.WORKOUTS_PUT_FAILURE:
             return utils.failure(state, error)
@@ -49,7 +49,7 @@ const workouts = (state = initialState, action: IWorkoutsAction) => {
             return utils.deleteRequest(state, id)
 
         case constants.WORKOUTS_DELETE_SUCCESS:
-            return utils.remove(state, (payload as IWorkout).id)
+            return utils.deleteSuccess(state, (payload as IWorkout).id)
 
         case constants.WORKOUTS_DELETE_FAILURE:
             return utils.failure(state, error)

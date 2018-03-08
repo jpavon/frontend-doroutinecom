@@ -19,7 +19,7 @@ const sets = (state = initialState, action: ISetsAction) => {
             return utils.request(state)
 
         case constants.SETS_GET_SUCCESS:
-            return utils.fetch(state, (payload as ISet[]))
+            return utils.getSuccess(state, (payload as ISet[]))
 
         case constants.SETS_GET_FAILURE:
             return utils.failure(state, error)
@@ -28,7 +28,7 @@ const sets = (state = initialState, action: ISetsAction) => {
             return utils.request(state)
 
         case constants.SETS_POST_SUCCESS:
-            return utils.create(state, (payload as ISet))
+            return utils.postSuccess(state, (payload as ISet))
 
         case constants.SETS_POST_FAILURE:
             return utils.failure(state, error)
@@ -37,7 +37,7 @@ const sets = (state = initialState, action: ISetsAction) => {
             return utils.putRequest(state, id)
 
         case constants.SETS_PUT_SUCCESS:
-            return utils.update(state, (payload as ISet))
+            return utils.putSuccess(state, (payload as ISet))
 
         case constants.SETS_PUT_FAILURE:
             return utils.failure(state, error)
@@ -46,7 +46,7 @@ const sets = (state = initialState, action: ISetsAction) => {
             return utils.deleteRequest(state, id)
 
         case constants.SETS_DELETE_SUCCESS:
-            return utils.remove(state, (payload as ISet).id)
+            return utils.deleteSuccess(state, (payload as ISet).id)
 
         case constants.SETS_DELETE_FAILURE:
             return utils.failure(state, error)

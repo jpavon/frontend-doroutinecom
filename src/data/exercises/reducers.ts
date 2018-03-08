@@ -19,7 +19,7 @@ const exercises = (state = initialState, action: IExercisesAction) => {
             return utils.request(state)
 
         case constants.EXERCISES_GET_SUCCESS:
-            return utils.fetch(state, (payload as IExercise[]))
+            return utils.getSuccess(state, (payload as IExercise[]))
 
         case constants.EXERCISES_GET_FAILURE:
             return utils.failure(state, error)
@@ -28,7 +28,7 @@ const exercises = (state = initialState, action: IExercisesAction) => {
             return utils.request(state)
 
         case constants.EXERCISES_POST_SUCCESS:
-            return utils.create(state, (payload as IExercise))
+            return utils.postSuccess(state, (payload as IExercise))
 
         case constants.EXERCISES_POST_FAILURE:
             return utils.failure(state, error)
@@ -37,7 +37,7 @@ const exercises = (state = initialState, action: IExercisesAction) => {
             return utils.putRequest(state, id)
 
         case constants.EXERCISES_PUT_SUCCESS:
-            return utils.update(state, (payload as IExercise))
+            return utils.putSuccess(state, (payload as IExercise))
 
         case constants.EXERCISES_PUT_FAILURE:
             return utils.failure(state, error)
@@ -46,7 +46,7 @@ const exercises = (state = initialState, action: IExercisesAction) => {
             return utils.deleteRequest(state, id)
 
         case constants.EXERCISES_DELETE_SUCCESS:
-            return utils.remove(state, (payload as IExercise).id)
+            return utils.deleteSuccess(state, (payload as IExercise).id)
 
         case constants.EXERCISES_DELETE_FAILURE:
             return utils.failure(state, error)
