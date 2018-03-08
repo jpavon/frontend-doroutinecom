@@ -2,7 +2,11 @@ import React from 'react'
 
 import './style.css'
 
-const Workouts = ({children}) => (
+interface IWorkouts {
+    children: React.ReactNode
+}
+
+const Workouts = ({children}: IWorkouts) => (
     <div className="workouts">
         {children}
     </div>

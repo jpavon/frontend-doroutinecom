@@ -23,7 +23,7 @@ const Transition = ({children, className, noData}) => (
             <Fragment>
                 {interpolatedStyles.length > 0 ? interpolatedStyles.map(({ key, style, data }) =>
                     <div
-                        key={ `${key}-transition` }
+                        key={`${key}-transition`}
                         style={{
                             opacity: style.opacity,
                         }}

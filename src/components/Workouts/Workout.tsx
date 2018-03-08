@@ -1,8 +1,14 @@
-import React from 'react'
+import * as React from 'react'
+
+import { IFormatedWorkout } from 'data/workouts/types'
 
 import ListItem from 'components/ListItem'
 
-const Workout = ({workout}) => (
+interface IWorkout {
+    workout: IFormatedWorkout
+}
+
+const Workout = ({workout}: IWorkout) => (
     <ListItem to={`/workouts/${workout.id}`} className="workouts-workout">
         {workout.day &&
             <div className="workouts-workout-day">

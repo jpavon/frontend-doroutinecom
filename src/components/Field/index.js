@@ -10,9 +10,13 @@ import UncontrolledInput from 'components/Form/Input'
 
 import './style.css'
 
-const Field = ({id, label, component = Input, uncontrolled, ...rest}) => {
+const Field = ({id, label, component = 'input', uncontrolled = false, ...rest}) => {
 
-    let Component = component
+    let Component
+
+    if (component === 'input') {
+        Component = Input
+    }
 
     if (component === 'select') {
         Component = Select

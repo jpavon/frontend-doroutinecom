@@ -1,12 +1,24 @@
 import React from 'react'
 
+import { IFormatedWorkout, IWorkoutRequestData } from 'data/workouts/types'
+
 import AutoSaveForm from 'components/AutoSaveForm'
 import Field from 'components/Field'
 import Button from 'components/Button'
 
 import './style.css'
 
-const WorkoutEdit = ({children, workout, update}) => (
+interface IWorkout {
+    children: React.ReactNode,
+    workout: IFormatedWorkout,
+    update: (id: number, data: IWorkoutRequestData) => void
+}
+
+interface IForm {
+    values: IFormatedWorkout
+}
+
+const Workout = ({children, workout, update}: IWorkout) => (
     <div className="workout">
         <div className="workout-routine-name">
             <div>Routine</div>
@@ -21,7 +33,7 @@ const WorkoutEdit = ({children, workout, update}) => (
             <AutoSaveForm
                 initialValues={workout}
                 update={update}
-                render={({values}) => (
+                render={({values}: IForm) => (
                     values.completedAt &&
                         <div className="workout-dates">
                             <Field
@@ -47,7 +59,7 @@ const WorkoutEdit = ({children, workout, update}) => (
             <AutoSaveForm
                 initialValues={workout}
                 update={update}
-                render={({values}) => (
+                render={({values}: IForm) => (
                     <Field
                         component="textarea"
                         label="Additional Notes"
@@ -61,4 +73,4 @@ const WorkoutEdit = ({children, workout, update}) => (
     </div>
 )
 
-export default WorkoutEdit
+export default Workout
