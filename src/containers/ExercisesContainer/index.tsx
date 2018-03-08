@@ -118,9 +118,8 @@ class ExercisesContainer extends React.Component<IProps, IState> {
 }
 
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
-    exercises: props.routineId ?
-        exercisesRoutineSelector(props.routineId)(state) :
-        exercisesWorkoutSelector(props.workoutId)(state),
+    exercises: props.routineId ? exercisesRoutineSelector(props.routineId)(state) :
+        (props.workoutId ? exercisesWorkoutSelector(props.workoutId)(state) : []),
     lifts: liftsSelector(state),
     entitiesStatus: state.exercises.entitiesStatus,
 })
