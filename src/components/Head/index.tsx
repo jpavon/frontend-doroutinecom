@@ -9,7 +9,12 @@ const Head = ({children = null}) => (
         <html lang="en" />
 
         {/* Keep in sync with public/index.html */}
-        <meta name="description" content="Workouts and routines creation web app for the gym. Keep track of sets, weight and reps for all your exercises. See your progress over time for your lifts." />
+        <meta
+            name="description"
+            content="Workouts and routines creation web app for the gym.
+            Keep track of sets, weight and reps for all your exercises.
+            See your progress over time for your lifts."
+        />
 
         {children}
     </Helmet>
