@@ -50,7 +50,12 @@ export const completedWorkoutsSelector = createSelector(
     (workouts): IFormatedWorkout[] =>
         workouts
             .filter((workout) => (workout.completedAt))
-            .sort((a, b) => (+moment(b.completedAt) - +moment(a.completedAt)))
+            .sort((a, b) => {
+                if (b.completedAt && a.completedAt) {
+                    return +moment(b.completedAt) - +moment(a.completedAt)
+                }
+                return 0
+            })
 )
 
 export const pendingWorkoutsSelector = createSelector(

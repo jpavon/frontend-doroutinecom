@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { IRootState } from 'data/types'
 import { ITopSet } from 'data/sets/types'
-import { IWorkoutGraphData } from 'data/graphs/types'
+import { IWorkoutsGraph } from 'data/graphs/types'
 import { IFormatedUser } from 'data/user/types'
 
 import { workoutsGraphDataSelector } from 'data/graphs/selectors'
@@ -20,7 +20,7 @@ interface IOwnProps {
 }
 
 interface IStateProps {
-    workoutsGraphData: IWorkoutGraphData
+    workoutsGraphData: IWorkoutsGraph
     topSets: ITopSet[]
     user: IFormatedUser | null
 }

@@ -1,6 +1,11 @@
 import { createSelector } from 'reselect'
 
+import { IRootState } from 'data/types'
+import { ILiftsGraph, IWorkoutsGraph } from 'data/graphs/types'
+import { IFormatedWorkout } from 'data/workouts/types'
+
 import moment from 'utils/moment'
+import momentRange from 'utils/momentRange'
 import { dayMonthFormat, dateFormat } from 'utils/date'
 import { completedWorkoutsSelector } from 'data/workouts/selectors'
 import { completedExercisesLiftSelector } from 'data/exercises/selectors'
@@ -13,21 +18,21 @@ const weeks = [0, 1, 2, 3, 4].map((id) => ({
 }))
 
 const ranges = weeks.map((week) => ({
-    range: moment().range(week.startWeek, week.endWeek)
+    range: momentRange().range(week.startWeek, week.endWeek)
 }))
 
-const getWorkoutsDataset = (workouts) => {
+const getWorkoutsDataset = (workouts: IFormatedWorkout[]) => {
     const dataset = [0, 0, 0, 0, 0]
 
     workouts.forEach((workout) => {
         ranges.forEach((item, i) => {
-            if (item.range.contains(moment(workout.completedAt))) {
+            if (workout.completedAt && item.range.contains(moment(workout.completedAt))) {
                 dataset[i] = dataset[i] + 1
             }
         })
     })
 
-    if (Math.max(...dataset) === 0) return []
+    if (Math.max(...dataset) === 0) { return [] }
 
     return dataset
 }
@@ -36,7 +41,7 @@ export const workoutsGraphDataSelector = createSelector(
     [
         completedWorkoutsSelector
     ],
-    (workouts) => {
+    (workouts): IWorkoutsGraph => {
         const dataset = getWorkoutsDataset(workouts).reverse()
 
         const labels = weeks.map((week) => {
@@ -51,14 +56,14 @@ export const workoutsGraphDataSelector = createSelector(
     }
 )
 
-export const liftGraphDataSelector = (liftId) => createSelector(
+export const liftGraphDataSelector = (liftId: number) => createSelector(
     [
         completedExercisesLiftSelector(liftId),
         setsSelector,
         completedWorkoutsSelector,
-        (state) => state.user.entity
+        (state: IRootState) => state.user.entity
     ],
-    (exercises, sets, workouts, user) => {
+    (exercises, sets, workouts, user): ILiftsGraph => {
         const topSets = formatTopSets(exercises, sets, workouts)
             .sort((a, b) => (a.moment - b.moment))
 

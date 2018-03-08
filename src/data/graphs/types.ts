@@ -6,11 +6,11 @@ export interface ILiftsGraph {
     meta: {
         reps: number[]
         weight: number[]
-        weightMeasure: string
+        weightMeasure: string | null
     }
 }
 
-export interface IWorkoutGraphData {
+export interface IWorkoutsGraph {
     dataset: number[]
     datasetMax: number
     labels: string[]
