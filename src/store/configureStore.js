@@ -3,13 +3,12 @@ import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 
-import apiMiddleware from 'utils/apiMiddleware'
 import rootReducer from 'utils/rootReducer'
 import rootSaga from 'data/rootSaga'
 
 const sagaMiddleware = createSagaMiddleware()
 
-const middleware = [thunk, apiMiddleware, sagaMiddleware]
+const middleware = [thunk, sagaMiddleware]
 if (process.env.NODE_ENV !== 'production') {
     const logger = createLogger({
         collapsed: true
