@@ -25,7 +25,7 @@ interface IStateProps {
     sets: IFormatedSet[],
     entitiesStatus: IEntitiesStatus
     user: IFormatedUser | null
-    previouslyCompletedSets?: IFormatedSet[]
+    previouslyCompletedSets: IFormatedSet[]
 }
 
 interface IDispatchProps {
@@ -74,7 +74,7 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     sets: setsExerciseSelector(props.exerciseId)(state),
     entitiesStatus: state.sets.entitiesStatus,
     user: userSelector(state),
-    previouslyCompletedSets: props.liftId && previouslyCompletedSetsSelector(props.exerciseId, props.liftId)(state),
+    previouslyCompletedSets: props.liftId ? previouslyCompletedSetsSelector(props.exerciseId, props.liftId)(state) : [],
 })
 
 const mapDispatchToProps: IDispatchProps = {

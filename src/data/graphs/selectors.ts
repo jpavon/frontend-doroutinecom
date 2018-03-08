@@ -64,8 +64,8 @@ export const liftGraphDataSelector = (liftId: number) => createSelector(
         (state: IRootState) => state.user.entity
     ],
     (exercises, sets, workouts, user): ILiftsGraph => {
-        const topSets = formatTopSets(exercises, sets, workouts)
-            .sort((a, b) => (a.moment - b.moment))
+        const topSets = formatTopSets(exercises, sets, workouts, null)
+            .sort((a, b) => (+a.moment - +b.moment))
 
         const dataset = topSets.map((set) => set.rm)
         const labels = topSets.map((set) => set.moment.format(dateFormat))
