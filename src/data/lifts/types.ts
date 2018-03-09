@@ -16,3 +16,9 @@ export type ILiftsState = IStateMap<ILift>
 export type ILiftsAction = IActionMap<ILift>
 
 export type ILiftRequestData = IDataRequestMap<ILift>
+
+export interface ILiftActionArgs {
+    post: (data?: ILiftRequestData) => void
+    put: (id: number, data: ILiftRequestData, resolve?: () => void, reject?: () => void) => void
+    delete: (id: number) => void
+}

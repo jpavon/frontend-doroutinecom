@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
+import { IFormatedExercise, IExerciseActionArgs } from 'data/exercises/types'
+import { IFormatedLift } from 'data/lifts/types'
+import { IRootState, IEntitiesStatus } from 'data/types'
+
 import { postExercise, putExercise, deleteExercise } from 'data/exercises/actions'
 import { exercisesRoutineSelector, exercisesWorkoutSelector } from 'data/exercises/selectors'
 import { liftsSelector } from 'data/lifts/selectors'
 import { STATUS_DELETING } from 'data/constants'
-
-import { IFormatedExercise, IExerciseRequestData } from 'data/exercises/types'
-import { IFormatedLift } from 'data/lifts/types'
-import { IRootState, IEntitiesStatus } from 'data/types'
 
 import SetsContainer from 'containers/SetsContainer'
 
@@ -29,9 +29,9 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    postExercise: (data: IExerciseRequestData) => void
-    putExercise: (id: number, data: {}) => void
-    deleteExercise: (id: number) => void
+    postExercise: IExerciseActionArgs['post']
+    putExercise: IExerciseActionArgs['put']
+    deleteExercise: IExerciseActionArgs['delete']
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}

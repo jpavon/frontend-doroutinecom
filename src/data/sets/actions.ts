@@ -21,7 +21,7 @@ export const getSetsFailure = (payload: IApiFailure) => ({
 })
 
 // post
-export const postSet = (data?: ISetRequestData) => ({
+export const postSet = (data: ISetRequestData) => ({
     type: constants.SETS_POST_REQUEST,
     method: 'post',
     endpoint: 'sets',

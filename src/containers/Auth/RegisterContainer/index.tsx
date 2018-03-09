@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IRegisterData } from 'data/user/types'
+import { IRegisterData, IUserActionArgs } from 'data/user/types'
 
 import { registerUser } from 'data/user/actions'
 
@@ -14,7 +14,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    registerUser: (data: IRegisterData, resolve: () => void, reject: () => void) => void
+    registerUser: IUserActionArgs['register']
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}

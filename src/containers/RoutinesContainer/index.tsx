@@ -2,9 +2,8 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { IRootState } from 'data/types'
-import { IFormatedRoutine } from 'data/routines/types'
+import { IFormatedRoutine, IRoutineActionArgs } from 'data/routines/types'
 
-// import history from 'utils/history'
 import { postRoutine } from 'data/routines/actions'
 import { routinesSelector, defaultRoutinesSelector } from 'data/routines/selectors'
 import { STATUS_LOADING } from 'data/constants'
@@ -25,7 +24,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    postRoutine: () => void
+    postRoutine: IRoutineActionArgs['post']
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}

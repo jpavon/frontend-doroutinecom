@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IPasswordForgottenData } from 'data/user/types'
+import { IPasswordForgottenData, IUserActionArgs } from 'data/user/types'
 
 import { passwordForgottenUser } from 'data/user/actions'
 
@@ -15,7 +15,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    passwordForgottenUser: (data: IPasswordForgottenData) => void
+    passwordForgottenUser: IUserActionArgs['passwordForgotten']
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}

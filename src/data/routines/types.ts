@@ -22,3 +22,9 @@ export type IRoutinesState = IStateMap<IRoutine>
 export type IRoutinesAction = IActionMap<IRoutine>
 
 export type IRoutineRequestData = IDataRequestMap<IRoutine>
+
+export interface IRoutineActionArgs {
+    post: (data?: IRoutineRequestData) => void
+    put: (id: number, data: IRoutineRequestData, resolve?: () => void, reject?: () => void) => void
+    delete: (id: number) => void
+}

@@ -2,8 +2,8 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import * as store from 'store'
 
-import { IFormatedUser, IUserData } from 'data/user/types'
-import { IRootState, IApiAction } from 'data/types'
+import { IFormatedUser, IUserActionArgs } from 'data/user/types'
+import { IRootState } from 'data/types'
 
 import { putUser, unauthUser } from 'data/user/actions'
 import { userSelector } from 'data/user/selectors'
@@ -19,8 +19,8 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    unauthUser: (error?: string) => void
-    putUser: (id: number, data: IUserData, resolve: () => void, reject: () => void) => IApiAction
+    unauthUser: (error?: string) => void,
+    putUser: IUserActionArgs['put']
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}

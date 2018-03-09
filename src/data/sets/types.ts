@@ -32,3 +32,9 @@ export interface ITopSet {
 }
 
 export type ISetRequestData = IDataRequestMap<ISet>
+
+export interface ISetActionArgs {
+    post: (data: ISetRequestData) => void
+    put: (id: number, data: ISetRequestData, resolve?: () => void, reject?: () => void) => void
+    delete: (id: number) => void
+}

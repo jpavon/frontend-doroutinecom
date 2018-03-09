@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { IRootState } from 'data/types'
-import { IFormatedLift } from 'data/lifts/types'
+import { IFormatedLift, ILiftActionArgs } from 'data/lifts/types'
 
 // import history from 'utils/history'
 import { liftsSelector } from 'data/lifts/selectors'
@@ -23,7 +23,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    postLift: () => void
+    postLift: ILiftActionArgs['post']
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}

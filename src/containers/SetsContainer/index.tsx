@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IFormatedSet, ISetRequestData } from 'data/sets/types'
+import { IFormatedSet, ISetActionArgs } from 'data/sets/types'
 import { IFormatedUser } from 'data/user/types'
 import { IRootState, IEntitiesStatus } from 'data/types'
 
@@ -29,9 +29,9 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    postSet: (data: ISetRequestData) => void
-    putSet: (id: number, data: ISetRequestData) => void
-    deleteSet: (id: number) => void
+    postSet: ISetActionArgs['post']
+    putSet: ISetActionArgs['put']
+    deleteSet: ISetActionArgs['delete']
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
