@@ -32,6 +32,14 @@ export const setsExerciseSelector = (exerciseId: number) => createSelector(
         .filter((set) => (set.exerciseId === exerciseId))
 )
 
+export const completedSetsSelector = createSelector(
+    [
+        setsSelector
+    ],
+    (sets): ISet[] => sets
+        .filter((set) => (set.isCompleted))
+)
+
 const round = (x: number, nearest = 0.5) => {
     const value = Math.ceil(x / nearest) * nearest
     return value > 0 ? value : 0

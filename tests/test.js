@@ -80,6 +80,14 @@ describe('auth', async () => {
     }, global.TIMEOUT)
 })
 
+describe('start message is displayed', async () => {
+    test('has 0/3 message', async () => {
+        await goTo(page, '/')
+        await expectSelectorToContainText(page, '.start', '0/3')
+    }, global.TIMEOUT)
+})
+
+
 let liftsLength = 16
 let routinesLength = 3
 
@@ -292,6 +300,14 @@ describe('create workout from routine', async () => {
         await page.waitFor(1000)
     }, global.TIMEOUT)
 
+    test('create and complete another set', async () => {
+        await page.click('.sets-header-item--toggle button')
+        await page.click('.sets-button-create button')
+        setsLength++
+        await page.waitFor(100)
+        await page.click('.set-action label')
+    }, global.TIMEOUT)
+
     test('complete a workout', async () => {
         await page.click('.workout-button-completed')
         await page.waitForSelector('.workout-button-restart')
@@ -339,6 +355,19 @@ describe('top sets table have items', async () => {
         await page.waitForSelector('.lift')
         await expectElementToBeOfLength(page, '.sets-table-item', 1)
     })
+})
+
+describe('start message can be completed', async () => {
+    test('has 3/3 message', async () => {
+        await goTo(page, '/')
+        await expectSelectorToContainText(page, '.start', '3/3')
+    }, global.TIMEOUT)
+
+    test('can be hidden', async () => {
+        await page.click('.start-hide-button')
+        await page.waitFor(100)
+        await expectElementToBeOfLength(page, '.start', 0)
+    }, global.TIMEOUT)
 })
 
 describe('workout deletion', async () => {
