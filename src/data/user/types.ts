@@ -1,4 +1,4 @@
-import { IFetchStatus, IApiFailure, IAction, IDataRequestMap } from 'data/types'
+import { IFetchStatusTypes, IApiFailure, IAction, IDataRequestMap } from 'data/types'
 
 export interface IUser {
     id: number
@@ -19,7 +19,7 @@ export interface IAuth {
 export interface IFormatedUser extends IUser {}
 
 export interface IUserState {
-    fetchStatus: IFetchStatus
+    fetchStatus: IFetchStatusTypes
     isAuth: boolean
     entity: IUser | null,
     error: IApiFailure | null

@@ -17,13 +17,13 @@ export interface IRootState {
     ui: IUiState
 }
 
-export type IFetchStatus =
+export type IFetchStatusTypes =
     constants.STATUS_NONE |
     constants.STATUS_LOADING |
     constants.STATUS_LOADED |
     constants.STATUS_FAILED
 
-export type IEntitiesStatusItem =
+export type IEntitiesStatusTypes =
     constants.STATUS_LOADED |
     constants.STATUS_UPDATING |
     constants.STATUS_DELETING
@@ -64,13 +64,13 @@ export interface IFailureAction extends IAction {
 }
 
 export interface IEntitiesStatus {
-    [index: number]: IEntitiesStatusItem
+    [index: number]: IEntitiesStatusTypes
 }
 
 export type IDataRequestMap<T> = { [P in keyof T]?: T[P] }
 
 export interface IStateMap<T> {
-    fetchStatus: IFetchStatus
+    fetchStatus: IFetchStatusTypes
     entitiesStatus: IEntitiesStatus
     entities: T[]
     error: IApiFailure | null
