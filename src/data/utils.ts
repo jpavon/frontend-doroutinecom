@@ -1,90 +1,98 @@
-import { ICrudStateItem, IApiFailure, ICrudFetchSuccess, ICrudDataItem, } from 'data/types'
+import { IStateMap, IApiFailure, IFetchStatus, IEntitiesStatusItem } from 'data/types'
 import * as constants from 'data/constants'
 
 // reducer crud utils
 
-export const request = (state: ICrudStateItem) => ({
+type Model = {
+    id: number
+}
+
+export const request = <T>(state: IStateMap<T>) => ({
     ...state,
-    fetchStatus: constants.STATUS_LOADING,
+    fetchStatus: constants.STATUS_LOADING as IFetchStatus,
     error: null
 })
 
-export const putRequest = (state: ICrudStateItem, id: number) => ({
+export const putRequest = <T>(state: IStateMap<T>, id: number) => ({
     ...request(state),
     entitiesStatus: {
         ...state.entitiesStatus,
-        [id]: constants.STATUS_UPDATING
+        [id]: constants.STATUS_UPDATING as IEntitiesStatusItem
     }
 })
 
-export const deleteRequest = (state: ICrudStateItem, id: number) => ({
+export const deleteRequest = <T>(state: IStateMap<T>, id: number) => ({
     ...request(state),
     entitiesStatus: {
         ...state.entitiesStatus,
-        [id]: constants.STATUS_DELETING
+        [id]: constants.STATUS_DELETING as IEntitiesStatusItem
     }
 })
 
-export const failure = (state: ICrudStateItem, error: IApiFailure) => ({
+export const failure = <T>(state: IStateMap<T>, error: IApiFailure) => ({
     ...state,
-    fetchStatus: constants.STATUS_FAILED,
+    fetchStatus: constants.STATUS_FAILED as IFetchStatus,
     error
 })
 
-export const getSuccess = (state: ICrudStateItem, payload: ICrudFetchSuccess) => ({
+export const getSuccess = <T extends Model>(state: IStateMap<T>, payload: T[]) => ({
     ...state,
-    fetchStatus: constants.STATUS_LOADED,
+    fetchStatus: constants.STATUS_LOADED as IFetchStatus,
     entities: payload,
-    entitiesStatus: (payload as ICrudDataItem[]).reduce((prev, current) => ({
+    entitiesStatus: payload.reduce((prev, current) => ({
         ...prev,
-        [current.id]: constants.STATUS_LOADED
+        [current.id]: constants.STATUS_LOADED as IEntitiesStatusItem
     }), {}),
     error: null
 })
 
-export const postSuccess = (state: ICrudStateItem, payload: ICrudDataItem) => ({
+export const postSuccess = <T extends Model>(state: IStateMap<T>, payload: T) => ({
     ...state,
-    fetchStatus: constants.STATUS_LOADED,
+    fetchStatus: constants.STATUS_LOADED as IFetchStatus,
     entities: [
         ...state.entities,
         payload
     ],
     entitiesStatus: {
         ...state.entitiesStatus,
-        [payload.id]: constants.STATUS_LOADED
+        [payload.id]: constants.STATUS_LOADED as IEntitiesStatusItem
     },
     error: null
 })
 
-export const putSuccess = (state: ICrudStateItem, payload: ICrudDataItem) => ({
+export const putSuccess = <T extends Model>(state: IStateMap<T>, payload: T) => ({
     ...state,
-    fetchStatus: constants.STATUS_LOADED,
-    entities: (state.entities as ICrudDataItem[]).map((currentItem: ICrudDataItem) => {
+    fetchStatus: constants.STATUS_LOADED as IFetchStatus,
+    entities: state.entities.map((currentItem) => {
         if (currentItem.id !== payload.id) {
             return currentItem
         }
 
-        return {
-            ...currentItem,
-            ...payload
-        }
+        return Object.assign({}, currentItem, payload)
+
+        // change to spread when issue fixed
+        // https://github.com/Microsoft/TypeScript/issues/10727
+        // return {
+        //     ...currentItem,
+        //     ...payload
+        // }
     }),
     entitiesStatus: {
         ...state.entitiesStatus,
-        [payload.id]: constants.STATUS_LOADED
+        [payload.id]: constants.STATUS_LOADED as IEntitiesStatusItem
     },
     error: null
 })
 
-export const deleteSuccess = (state: ICrudStateItem, id: number) => ({
+export const deleteSuccess = <T extends Model>(state: IStateMap<T>, id: number) => ({
     ...state,
-    fetchStatus: constants.STATUS_LOADED,
-    entities: (state.entities as ICrudDataItem[]).filter((i) => (i.id !== id)),
+    fetchStatus: constants.STATUS_LOADED as IFetchStatus,
+    entities: state.entities.filter((i) => (i.id !== id)),
     entitiesStatus: Object.keys(state.entitiesStatus)
         .filter((key) => Number(key) !== id)
         .reduce((prev, current) => ({
             ...prev,
-            [current]: state.entitiesStatus[current]
+            [current]: state.entitiesStatus[current] as IEntitiesStatusItem
         }), {}),
     error: null
 })

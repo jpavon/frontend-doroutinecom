@@ -11,7 +11,7 @@ const initialState: ILiftsState = {
     error: null
 }
 
-const lifts = (state = initialState, action: ILiftsAction) => {
+const lifts = (state = initialState, action: ILiftsAction): ILiftsState => {
     const { type, payload, error, id } = action
 
     switch (type) {

@@ -17,27 +17,6 @@ export interface IRootState {
     ui: IUiState
 }
 
-export type ICrudStateItem =
-    IExercisesState |
-    ILiftsState |
-    IRoutinesState |
-    ISetsState |
-    IWorkoutsState
-
-export type ICrudDataItem =
-    IExercise |
-    ILift |
-    IRoutine |
-    ISet |
-    IWorkout
-
-export type ICrudFetchSuccess =
-    IExercise[] |
-    ILift[] |
-    IRoutine[] |
-    ISet[] |
-    IWorkout[]
-
 export type IFetchStatus =
     constants.STATUS_NONE |
     constants.STATUS_LOADING |
