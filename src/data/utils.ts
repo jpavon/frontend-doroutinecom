@@ -1,15 +1,15 @@
-import { ICrudStateItem, IApiFailure, ICrudFetchSuccess, ICrudDataItem } from 'data/types'
+import { ICrudStateItem, IApiFailure, ICrudFetchSuccess, ICrudDataItem, } from 'data/types'
 import * as constants from 'data/constants'
 
 // reducer crud utils
 
-export const request = (state: ICrudStateItem): ICrudStateItem => ({
+export const request = (state: ICrudStateItem) => ({
     ...state,
     fetchStatus: constants.STATUS_LOADING,
     error: null
 })
 
-export const putRequest = (state: ICrudStateItem, id: number): ICrudStateItem => ({
+export const putRequest = (state: ICrudStateItem, id: number) => ({
     ...request(state),
     entitiesStatus: {
         ...state.entitiesStatus,
@@ -17,7 +17,7 @@ export const putRequest = (state: ICrudStateItem, id: number): ICrudStateItem =>
     }
 })
 
-export const deleteRequest = (state: ICrudStateItem, id: number): ICrudStateItem => ({
+export const deleteRequest = (state: ICrudStateItem, id: number) => ({
     ...request(state),
     entitiesStatus: {
         ...state.entitiesStatus,
@@ -25,13 +25,13 @@ export const deleteRequest = (state: ICrudStateItem, id: number): ICrudStateItem
     }
 })
 
-export const failure = (state: ICrudStateItem, error: IApiFailure): ICrudStateItem => ({
+export const failure = (state: ICrudStateItem, error: IApiFailure) => ({
     ...state,
     fetchStatus: constants.STATUS_FAILED,
     error
 })
 
-export const getSuccess = (state: ICrudStateItem, payload: ICrudFetchSuccess): ICrudStateItem => ({
+export const getSuccess = (state: ICrudStateItem, payload: ICrudFetchSuccess) => ({
     ...state,
     fetchStatus: constants.STATUS_LOADED,
     entities: payload,
@@ -42,7 +42,7 @@ export const getSuccess = (state: ICrudStateItem, payload: ICrudFetchSuccess): I
     error: null
 })
 
-export const postSuccess = (state: ICrudStateItem, payload: ICrudDataItem): ICrudStateItem => ({
+export const postSuccess = (state: ICrudStateItem, payload: ICrudDataItem) => ({
     ...state,
     fetchStatus: constants.STATUS_LOADED,
     entities: [
@@ -56,7 +56,7 @@ export const postSuccess = (state: ICrudStateItem, payload: ICrudDataItem): ICru
     error: null
 })
 
-export const putSuccess = (state: ICrudStateItem, payload: ICrudDataItem): ICrudStateItem => ({
+export const putSuccess = (state: ICrudStateItem, payload: ICrudDataItem) => ({
     ...state,
     fetchStatus: constants.STATUS_LOADED,
     entities: (state.entities as ICrudDataItem[]).map((currentItem: ICrudDataItem) => {
@@ -76,7 +76,7 @@ export const putSuccess = (state: ICrudStateItem, payload: ICrudDataItem): ICrud
     error: null
 })
 
-export const deleteSuccess = (state: ICrudStateItem, id: number): ICrudStateItem => ({
+export const deleteSuccess = (state: ICrudStateItem, id: number) => ({
     ...state,
     fetchStatus: constants.STATUS_LOADED,
     entities: (state.entities as ICrudDataItem[]).filter((i) => (i.id !== id)),

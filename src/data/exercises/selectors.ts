@@ -14,7 +14,7 @@ export const exercisesRoutineSelector = (routineId: number) => createSelector(
     [
         (state: IRootState) => state.exercises.entities
     ],
-    (exercises): IExercise[] => exercises
+    (exercises): IFormatedExercise[] => exercises
         .filter((exercise) => (exercise.routineId === routineId))
         .map((exercise) => formatExercise(exercise))
 )
@@ -23,7 +23,7 @@ export const exercisesWorkoutSelector = (workoutId: number) => createSelector(
     [
         (state: IRootState) => state.exercises.entities
     ],
-    (exercises): IExercise[] => exercises
+    (exercises): IFormatedExercise[] => exercises
         .filter((exercise) => (exercise.workoutId === workoutId))
         .map((exercise) => formatExercise(exercise))
 )
@@ -34,7 +34,7 @@ export const completedExercisesLiftSelector = (liftId: number) => createSelector
         completedWorkoutsSelector,
         liftSelector(liftId)
     ],
-    (exercises, workouts, lift): IExercise[] => {
+    (exercises, workouts, lift): IFormatedExercise[] => {
         const completedWorkoutsIds = workouts.map((workout) => workout.id)
         const completedExercises = exercises
             .filter((exercise) =>
@@ -50,7 +50,7 @@ export const completedExercisesSelector = createSelector(
         (state: IRootState) => state.exercises.entities,
         completedWorkoutsSelector
     ],
-    (exercises, workouts): IExercise[] => {
+    (exercises, workouts): IFormatedExercise[] => {
         const completedWorkoutsIds = workouts.map((workout) => workout.id)
 
         return exercises.filter((exercise) => exercise.workoutId && completedWorkoutsIds.includes(exercise.workoutId))

@@ -20,7 +20,7 @@ export const setsSelector = createSelector(
     [
         (state: IRootState) => state.sets.entities,
     ],
-    (sets): ISet[] => sets
+    (sets): IFormatedSet[] => sets
         .map((set) => formatSet(set))
 )
 
@@ -28,7 +28,7 @@ export const setsExerciseSelector = (exerciseId: number) => createSelector(
     [
         setsSelector
     ],
-    (sets): ISet[] => sets
+    (sets): IFormatedSet[] => sets
         .filter((set) => (set.exerciseId === exerciseId))
 )
 
@@ -36,7 +36,7 @@ export const completedSetsSelector = createSelector(
     [
         setsSelector
     ],
-    (sets): ISet[] => sets
+    (sets): IFormatedSet[] => sets
         .filter((set) => (set.isCompleted))
 )
 

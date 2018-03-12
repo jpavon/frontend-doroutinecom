@@ -51,10 +51,8 @@ export const completedWorkoutsSelector = createSelector(
         workouts
             .filter((workout) => (workout.completedAt))
             .sort((a, b) => {
-                if (b.completedAt && a.completedAt) {
-                    return +moment(b.completedAt) - +moment(a.completedAt)
-                }
-                return 0
+                if (!b.completedAt || !a.completedAt) { return 0 }
+                return +moment(b.completedAt) - +moment(a.completedAt)
             })
 )
 
