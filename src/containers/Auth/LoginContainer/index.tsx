@@ -24,7 +24,7 @@ class LoginContainer extends React.Component<IProps> {
     email: HTMLInputElement
     password: HTMLInputElement
 
-    handleSubmit = (event: React.FormEvent<HTMLInputElement>): void => {
+    handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault()
 
         new Promise((resolve, reject) => {

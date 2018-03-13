@@ -1,23 +1,27 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import * as React from 'react'
+import * as classNames from 'classnames'
 import { Link } from 'react-router-dom'
 
 import './style.css'
 
-import removeIcon from 'media/x.svg'
+const removeIcon = require('media/x.svg')
 
-class Button extends Component {
+interface IProps {
+    href?: string
+    to?: string | null
+    className?: string
+    children: React.ReactNode
 
-    static propTypes = {
-        href: PropTypes.string,
-        to: PropTypes.string,
-        className: PropTypes.string,
-        children: PropTypes.node,
+    danger?: boolean
+    remove?: boolean
 
-        danger: PropTypes.bool,
-        remove: PropTypes.bool,
-    }
+    // rest
+    type?: string
+    // tslint:disable-next-line
+    onClick?: (e: any) => void
+}
+
+class Button extends React.Component<IProps> {
 
     render() {
         const {

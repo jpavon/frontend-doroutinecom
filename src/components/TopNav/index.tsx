@@ -16,7 +16,7 @@ interface IButtonType {
 }
 
 interface IProps {
-    title?: string | React.ReactNode
+    title?: React.ReactNode
     leftLabel?: string
     rightLabel?: string
     left?: IButtonType

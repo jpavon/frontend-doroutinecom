@@ -1,10 +1,17 @@
-import React from 'react'
+import * as React from 'react'
 
 import Button from 'components/Button'
 
 import './style.css'
 
-const Auth = ({children, className, handleSubmit, footer}) => (
+interface IProps {
+    handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+    children: React.ReactNode
+    className: string
+    footer?: React.ReactNode
+}
+
+const Auth = ({children, className, handleSubmit, footer = null}: IProps) => (
     <div className={`auth ${className}`}>
         <form method="post" onSubmit={handleSubmit}>
             <div className="auth-inner">

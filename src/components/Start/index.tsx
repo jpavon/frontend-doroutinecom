@@ -7,7 +7,7 @@ const x = require('media/x.svg')
 
 import './style.css'
 
-interface IStart {
+interface IProps {
     hideStartMessage: () => void
     isHidden: boolean
     hasWorkouts: boolean
@@ -15,7 +15,7 @@ interface IStart {
     hasCompletedSets: boolean
 }
 
-const Start = ({hideStartMessage, isHidden, hasWorkouts, hasCompletedWorkouts, hasCompletedSets}: IStart) => (
+const Start = ({hideStartMessage, isHidden, hasWorkouts, hasCompletedWorkouts, hasCompletedSets}: IProps) => (
     !isHidden ? (
         <div className="start">
             <h2 className="start-title">

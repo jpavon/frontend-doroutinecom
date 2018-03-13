@@ -1,10 +1,20 @@
-import React from 'react'
+import * as React from 'react'
+
+import { IPasswordResetData } from 'data/user/types'
 
 import Auth from 'components/Auth'
 import Field from 'components/Field'
 
-const PasswordReset = ({handleSubmit, setRef}) => (
-    <Auth className="password-reset" handleSubmit={handleSubmit}>
+interface IProps {
+    handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+    setRef: (ref: HTMLInputElement, name: keyof IPasswordResetData) => void
+}
+
+const PasswordReset = ({handleSubmit, setRef}: IProps) => (
+    <Auth
+        className="password-reset"
+        handleSubmit={handleSubmit}
+    >
         <Field
             uncontrolled
             label="Email"
@@ -12,7 +22,7 @@ const PasswordReset = ({handleSubmit, setRef}) => (
             id="email"
             name="email"
             placeholder="Type your email"
-            inputRef={(ref) => setRef(ref, 'email')}
+            inputRef={(ref: HTMLInputElement) => setRef(ref, 'email')}
         />
         <Field
             uncontrolled
@@ -20,7 +30,7 @@ const PasswordReset = ({handleSubmit, setRef}) => (
             type="password"
             id="password"
             placeholder="Type your new password"
-            inputRef={(ref) => setRef(ref, 'password')}
+            inputRef={(ref: HTMLInputElement) => setRef(ref, 'password')}
         />
         <Field
             uncontrolled
@@ -28,7 +38,7 @@ const PasswordReset = ({handleSubmit, setRef}) => (
             type="password"
             id="passwordConfirmation"
             placeholder="Type your new password again"
-            inputRef={(ref) => setRef(ref, 'passwordConfirmation')}
+            inputRef={(ref: HTMLInputElement) => setRef(ref, 'passwordConfirmation')}
         />
     </Auth>
 )

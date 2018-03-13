@@ -4,11 +4,11 @@ import { IFormatedWorkout } from 'data/workouts/types'
 
 import ListItem from 'components/ListItem'
 
-interface IWorkout {
+interface IProps {
     workout: IFormatedWorkout
 }
 
-const Workout = ({workout}: IWorkout) => (
+const Workout = ({workout}: IProps) => (
     <ListItem to={`/workouts/${workout.id}`} className="workouts-workout">
         {workout.day &&
             <div className="workouts-workout-day">

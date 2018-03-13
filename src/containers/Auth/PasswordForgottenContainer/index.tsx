@@ -24,7 +24,7 @@ class PasswordForgottenContainer extends React.Component<IProps> {
 
     email: HTMLInputElement
 
-    handleSubmit = (event: React.FormEvent<HTMLInputElement>) => {
+    handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
         this.props.passwordForgottenUser({

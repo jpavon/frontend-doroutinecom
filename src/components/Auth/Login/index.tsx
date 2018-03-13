@@ -9,7 +9,7 @@ import Auth from 'components/Auth'
 import './style.css'
 
 interface IProps {
-    handleSubmit: (event: React.FormEvent<HTMLInputElement>) => void
+    handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void
     setRef: (ref: HTMLInputElement, name: keyof ILoginData) => void
 }
 

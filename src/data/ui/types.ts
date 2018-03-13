@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { IAction, IApiFailure } from 'data/types'
 
 export interface IUiState {
@@ -13,5 +14,5 @@ export interface IUiAction extends IAction {
 
 export interface IAlert {
     type: string
-    message: string | string[] | IApiFailure['errors']
+    message: string | string[] | IApiFailure['errors'] | React.ReactNode
 }

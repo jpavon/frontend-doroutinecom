@@ -27,7 +27,7 @@ class PasswordResetContainer extends React.Component<IProps> {
     password: HTMLInputElement
     passwordConfirmation: HTMLInputElement
 
-    handleSubmit = (event: React.FormEvent<HTMLInputElement>) => {
+    handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
         new Promise((resolve, reject) => {
