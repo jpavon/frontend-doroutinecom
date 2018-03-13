@@ -10,13 +10,14 @@ interface IProps {
     href?: string
     to?: string | null
     className?: string
-    children: React.ReactNode
+    children?: React.ReactNode
 
     danger?: boolean
     remove?: boolean
 
     // rest
     type?: string
+    disabled?: boolean
     // tslint:disable-next-line
     onClick?: (e: any) => void
 }

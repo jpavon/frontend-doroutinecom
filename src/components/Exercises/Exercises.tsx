@@ -1,12 +1,19 @@
-import React, { Fragment } from 'react'
+import * as React from 'react'
+
+import { IExerciseActionArgs } from 'data/exercises/types'
 
 import Transition from 'components/Transition'
 import Button from 'components/Button'
 
 import './style.css'
 
-const Exercises = ({children, create}) => (
-    <Fragment>
+interface IProps {
+    children: React.ReactNode
+    create: IExerciseActionArgs['post']
+}
+
+const Exercises = ({children, create}: IProps) => (
+    <>
         <div className="exercises">
             <Transition className="exercise">
                 {children}
@@ -19,7 +26,7 @@ const Exercises = ({children, create}) => (
                 Add Exercise
             </Button>
         </div>
-    </Fragment>
+    </>
 )
 
 export default Exercises

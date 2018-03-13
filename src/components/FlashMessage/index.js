@@ -35,9 +35,10 @@ class FlashMessage extends Component {
     }
 
     render() {
-        return this.state.visible
-                    ? (<div className="flash-message"><Loading /></div>)
-                    : null    }
+        return this.state.visible ?
+            (<div className="flash-message"><Loading /></div>) :
+            null
+    }
 }
 
 export default FlashMessage

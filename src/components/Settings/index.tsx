@@ -1,4 +1,6 @@
-import React from 'react'
+import * as React from 'react'
+
+import { IFormatedUser, IUserActionArgs } from 'data/user/types'
 
 import Field from 'components/Field'
 import AutoSaveForm from 'components/AutoSaveForm'
@@ -6,7 +8,12 @@ import TopNav from 'components/TopNav'
 
 import './style.css'
 
-const Settings = ({user, putUser}) => (
+interface IProps {
+    user: IFormatedUser
+    putUser: IUserActionArgs['put']
+}
+
+const Settings = ({user, putUser}: IProps) => (
     <div className="settings">
         <AutoSaveForm
             initialValues={user}

@@ -13,7 +13,7 @@ const getStyles = () => ({
     opacity: spring(1),
 })
 
-const Transition = ({children, className, noData}) => (
+const Transition = ({children, className = ''}) => (
     <TransitionMotion
         styles={children.length > 0 ? children.map((item) => ({ key: `${item.key}`, style: getStyles(), data: item })) : []}
         willLeave={willLeave}

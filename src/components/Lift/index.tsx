@@ -1,16 +1,27 @@
-import React from 'react'
+import * as React from 'react'
+
+import { IFormatedLift, ILiftActionArgs } from 'data/lifts/types'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import Field from 'components/Field'
 
 import './style.css'
 
-const Lift = ({lift, update}) => (
+interface IProps {
+    lift: IFormatedLift
+    update: ILiftActionArgs['put']
+}
+
+interface IForm {
+    values: IFormatedLift
+}
+
+const Lift = ({lift, update}: IProps) => (
     <div className="lift">
         <AutoSaveForm
             initialValues={lift}
             update={update}
-            render={({values}) => (
+            render={({values}: IForm) => (
                 <div className="lift-form">
                     <Field
                         label="Name"

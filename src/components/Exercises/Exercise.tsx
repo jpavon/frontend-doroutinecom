@@ -1,15 +1,32 @@
-import React, { Fragment } from 'react'
+import * as React from 'react'
+
+import { IFormatedExercise, IExerciseActionArgs } from 'data/exercises/types'
+import { IFormatedLift } from 'data/lifts/types'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import Button from 'components/Button'
 import Select from 'components/AutoSaveForm/Select'
 
-const Exercise = ({children, exercise, lifts, update, remove, isDeleting, isRemoveButtonsVisible}) => (
-    <Fragment>
+interface IProps {
+    children: React.ReactNode
+    exercise: IFormatedExercise
+    lifts: IFormatedLift[]
+    update: IExerciseActionArgs['put']
+    remove: IExerciseActionArgs['delete']
+    isDeleting: boolean
+    isRemoveButtonsVisible: boolean
+}
+
+interface IForm {
+    values: IFormatedExercise
+}
+
+const Exercise = ({children, exercise, lifts, update, remove, isDeleting, isRemoveButtonsVisible}: IProps) => (
+    <>
         <AutoSaveForm
             update={update}
             initialValues={exercise}
-            render={({values}) => (
+            render={({values}: IForm) => (
                 <div className="exercise-lift">
                     <Select
                         label="Lift"
@@ -37,7 +54,7 @@ const Exercise = ({children, exercise, lifts, update, remove, isDeleting, isRemo
                 />
             </div>
         }
-    </Fragment>
+    </>
 )
 
 export default Exercise
