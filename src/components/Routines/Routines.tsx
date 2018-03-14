@@ -1,8 +1,8 @@
-import React from 'react'
+import * as React from 'react'
 
 import './style.css'
 
-const Routine = ({children}) => (
+const Routine: React.SFC<{}> = ({children}) => (
     <div className="routines">
         {children}
     </div>

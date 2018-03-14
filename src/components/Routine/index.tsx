@@ -1,17 +1,28 @@
-import React from 'react'
+import * as React from 'react'
+
+import { IFormatedRoutine, IRoutineActionArgs } from 'data/routines/types'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import Field from 'components/Field'
 
 import './style.css'
 
-const Routine = ({children, routine, update}) => (
+interface IRoutineProps {
+    routine: IFormatedRoutine
+    update: IRoutineActionArgs['put']
+}
+
+interface IFormProps {
+    values: IFormatedRoutine
+}
+
+const Routine: React.SFC<IRoutineProps> = ({children, routine, update}) => (
     <div className="routine">
         <div className="routine-form">
             <AutoSaveForm
                 initialValues={routine}
                 update={update}
-                render={({values}) => (
+                render={({values}: IFormProps) => (
                     <Field
                         label="Name"
                         id={`name${values.id}`}
@@ -26,7 +37,7 @@ const Routine = ({children, routine, update}) => (
             <AutoSaveForm
                 initialValues={routine}
                 update={update}
-                render={({values}) => (
+                render={({values}: IFormProps) => (
                     <Field
                         component="textarea"
                         label="Additional Notes"

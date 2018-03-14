@@ -1,8 +1,8 @@
-import React from 'react'
+import * as React from 'react'
 
 import './style.css'
 
-const Saving = () => {
+const Saving: React.SFC<{}> = () => {
     return (
         <div className="saving" />
     )
