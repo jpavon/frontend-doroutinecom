@@ -9,8 +9,7 @@ import Button from 'components/Button'
 import './style.css'
 
 interface IWorkout {
-    children: React.ReactNode,
-    workout: IFormatedWorkout,
+    workout: IFormatedWorkout
     update: (id: number, data: IWorkoutRequestData) => void
 }
 

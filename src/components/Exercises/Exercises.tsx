@@ -8,7 +8,6 @@ import Button from 'components/Button'
 import './style.css'
 
 interface IProps {
-    children: React.ReactNode
     create: IExerciseActionArgs['post']
 }
 

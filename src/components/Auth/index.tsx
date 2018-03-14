@@ -6,7 +6,6 @@ import './style.css'
 
 interface IProps {
     handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void
-    children: React.ReactNode
     className: string
     footer?: React.ReactNode
 }

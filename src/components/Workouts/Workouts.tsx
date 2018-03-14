@@ -2,11 +2,7 @@ import * as React from 'react'
 
 import './style.css'
 
-interface IProps {
-    children: React.ReactNode
-}
-
-const Workouts: React.SFC<IProps> = ({children}) => (
+const Workouts: React.SFC<{}> = ({children}) => (
     <div className="workouts">
         {children}
     </div>

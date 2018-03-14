@@ -8,7 +8,6 @@ import Button from 'components/Button'
 import Select from 'components/AutoSaveForm/Select'
 
 interface IProps {
-    children: React.ReactNode
     exercise: IFormatedExercise
     lifts: IFormatedLift[]
     update: IExerciseActionArgs['put']

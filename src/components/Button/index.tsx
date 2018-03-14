@@ -6,11 +6,10 @@ import './style.css'
 
 const removeIcon = require('media/x.svg')
 
-interface IProps {
+export interface IButtonProps {
     href?: string
     to?: string | null
     className?: string
-    children?: React.ReactNode
 
     danger?: boolean
     remove?: boolean
@@ -22,7 +21,7 @@ interface IProps {
     onClick?: (e: any) => void
 }
 
-class Button extends React.Component<IProps> {
+class Button extends React.Component<IButtonProps> {
 
     render() {
         const {
