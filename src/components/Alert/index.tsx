@@ -1,6 +1,5 @@
 import * as React from 'react'
 import * as classnames from 'classnames'
-import { isString, isPlainObject, isArray } from 'lodash'
 import AnimateOnChange from 'react-animate-on-change'
 
 import { IAlert } from 'data/ui/types'
@@ -19,27 +18,24 @@ class Alert extends React.Component<IProps> {
         message: null
     }
 
-    renderMessage = () => {
+    renderMessage = (): React.ReactNode => {
         const message = this.props.message
 
-        if (isString(message) || isArray(message)) {
+        if (React.isValidElement(message)) {
             return message
-        } else if (isPlainObject(message)) {
+        } else if (message && Object.keys(message).length > 0) {
             return (
-                message && Object.keys(message).length > 0 &&
-                    Object.keys(message).map((messageKey, i) => (
-                        <React.Fragment key={i}>{message[messageKey]} <br /></React.Fragment>
-                    ))
+                Object.keys(message).map((messageKey, i) => (
+                    <React.Fragment key={i}>{message[messageKey]} <br /></React.Fragment>
+                ))
             )
-        } else {
-            return message
         }
+
+        return null
     }
 
     render() {
-        const { type, message, size } = this.props
-
-        if (!type || !message) { return null }
+        const { type, size } = this.props
 
         const className = classnames(
             'alert',

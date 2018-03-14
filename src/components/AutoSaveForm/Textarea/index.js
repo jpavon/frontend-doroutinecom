@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import Alert from 'components/Alert'
+import Alert from 'components/Form/Alert'
 import UncontrolledTextarea from 'components/Form/Textarea'
 import Saving from 'components/Saving'
 
@@ -25,8 +25,6 @@ const Textarea = (props, context) => {
                     {...rest}
                 />
                 <Alert
-                    size="small"
-                    type="error"
                     message={errors[name]}
                 />
             </div>
