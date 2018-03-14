@@ -4,7 +4,7 @@ import * as constants from 'data/lifts/constants'
 import * as dataTypes from 'data/constants'
 import * as utils from 'data/utils'
 
-const initialState: ILiftsState = {
+const initialState: Readonly<ILiftsState> = {
     fetchStatus: dataTypes.STATUS_NONE,
     entitiesStatus: {},
     entities: [],

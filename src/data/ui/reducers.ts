@@ -2,7 +2,7 @@ import { IUiState, IUiAction } from 'data/ui/types'
 
 import * as constants from 'data/ui/constants'
 
-const initialState: IUiState = {
+const initialState: Readonly<IUiState> = {
     isLoading: false,
     alert: null,
     isServerError: false,

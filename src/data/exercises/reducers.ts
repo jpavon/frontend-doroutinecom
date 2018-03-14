@@ -4,7 +4,7 @@ import * as constants from 'data/exercises/constants'
 import * as dataTypes from 'data/constants'
 import * as utils from 'data/utils'
 
-const initialState: IExercisesState = {
+const initialState: Readonly<IExercisesState> = {
     fetchStatus: dataTypes.STATUS_NONE,
     entitiesStatus: {},
     entities: [],

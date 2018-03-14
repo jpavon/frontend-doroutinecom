@@ -12,7 +12,7 @@ interface IProps {
     create: IExerciseActionArgs['post']
 }
 
-const Exercises = ({children, create}: IProps) => (
+const Exercises: React.SFC<IProps> = ({children, create}) => (
     <>
         <div className="exercises">
             <Transition className="exercise">

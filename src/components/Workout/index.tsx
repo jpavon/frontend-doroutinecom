@@ -18,7 +18,7 @@ interface IForm {
     values: IFormatedWorkout
 }
 
-const Workout = ({children, workout, update}: IWorkout) => (
+const Workout: React.SFC<IWorkout> = ({children, workout, update}) => (
     <div className="workout">
         <div className="workout-routine-name">
             <div>Routine</div>

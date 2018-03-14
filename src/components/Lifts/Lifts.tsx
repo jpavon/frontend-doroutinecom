@@ -6,7 +6,7 @@ interface IProps {
     children: React.ReactNode
 }
 
-const Lifts = ({children}: IProps) => (
+const Lifts: React.SFC<IProps> = ({children}) => (
     <div className="lifts">
         {children}
     </div>

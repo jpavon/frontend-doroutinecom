@@ -16,7 +16,7 @@ interface IForm {
     values: IFormatedLift
 }
 
-const Lift = ({lift, update}: IProps) => (
+const Lift: React.SFC<IProps> = ({lift, update}) => (
     <div className="lift">
         <AutoSaveForm
             initialValues={lift}

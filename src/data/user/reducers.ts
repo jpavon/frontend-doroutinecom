@@ -5,7 +5,7 @@ import { IUserState, IUserAction } from 'data/user/types'
 import * as constants from 'data/user/constants'
 import * as dataConstants from 'data/constants'
 
-const initialState: IUserState = {
+const initialState: Readonly<IUserState> = {
     fetchStatus: dataConstants.STATUS_NONE,
     isAuth: !!store.get('token'),
     entity: null,

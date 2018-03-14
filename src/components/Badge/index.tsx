@@ -6,7 +6,7 @@ interface IProps {
     value: number
 }
 
-const Badge = ({value}: IProps) => (
+const Badge: React.SFC<IProps> = ({value}) => (
     <div className="badge">
         {value}
     </div>

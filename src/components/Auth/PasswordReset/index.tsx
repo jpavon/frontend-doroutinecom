@@ -10,7 +10,7 @@ interface IProps {
     setRef: (ref: HTMLInputElement, name: keyof IPasswordResetData) => void
 }
 
-const PasswordReset = ({handleSubmit, setRef}: IProps) => (
+const PasswordReset: React.SFC<IProps> = ({handleSubmit, setRef}) => (
     <Auth
         className="password-reset"
         handleSubmit={handleSubmit}

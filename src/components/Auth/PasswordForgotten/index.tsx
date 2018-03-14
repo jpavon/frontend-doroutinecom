@@ -10,7 +10,7 @@ interface IProps {
     setRef: (ref: HTMLInputElement, name: keyof IPasswordForgottenData) => void
 }
 
-const PasswordForgotten = ({handleSubmit, setRef}: IProps) => (
+const PasswordForgotten: React.SFC<IProps> = ({handleSubmit, setRef}) => (
     <Auth
         className="password-forgotten"
         handleSubmit={handleSubmit}

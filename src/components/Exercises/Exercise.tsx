@@ -21,7 +21,15 @@ interface IForm {
     values: IFormatedExercise
 }
 
-const Exercise = ({children, exercise, lifts, update, remove, isDeleting, isRemoveButtonsVisible}: IProps) => (
+const Exercise: React.SFC<IProps> = ({
+    children,
+    exercise,
+    lifts,
+    update,
+    remove,
+    isDeleting,
+    isRemoveButtonsVisible
+}) => (
     <>
         <AutoSaveForm
             update={update}

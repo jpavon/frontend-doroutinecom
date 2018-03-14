@@ -1,7 +1,11 @@
 import * as React from 'react'
 import Helmet from 'react-helmet'
 
-const Head = ({children = null}) => (
+interface IProps {
+    children?: React.ReactNode
+}
+
+const Head: React.SFC<IProps> = ({children = null}) => (
     <Helmet
         defaultTitle="doroutine | Keep track of your workouts"
         titleTemplate="%s | doroutine"

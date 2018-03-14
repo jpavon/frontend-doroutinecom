@@ -13,7 +13,7 @@ interface IProps {
     putUser: IUserActionArgs['put']
 }
 
-const Settings = ({user, putUser}: IProps) => (
+const Settings: React.SFC<IProps> = ({user, putUser}) => (
     <div className="settings">
         <AutoSaveForm
             initialValues={user}

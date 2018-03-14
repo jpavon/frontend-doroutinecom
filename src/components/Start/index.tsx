@@ -15,7 +15,13 @@ interface IProps {
     hasCompletedSets: boolean
 }
 
-const Start = ({hideStartMessage, isHidden, hasWorkouts, hasCompletedWorkouts, hasCompletedSets}: IProps) => (
+const Start: React.SFC<IProps> = ({
+    hideStartMessage,
+    isHidden,
+    hasWorkouts,
+    hasCompletedWorkouts,
+    hasCompletedSets
+}) => (
     !isHidden ? (
         <div className="start">
             <h2 className="start-title">

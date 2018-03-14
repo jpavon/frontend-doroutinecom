@@ -8,7 +8,7 @@ interface IProps {
     workout: IFormatedWorkout
 }
 
-const Workout = ({workout}: IProps) => (
+const Workout: React.SFC<IProps> = ({workout}) => (
     <ListItem to={`/workouts/${workout.id}`} className="workouts-workout">
         {workout.day &&
             <div className="workouts-workout-day">

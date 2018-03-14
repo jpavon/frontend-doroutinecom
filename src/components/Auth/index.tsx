@@ -11,7 +11,7 @@ interface IProps {
     footer?: React.ReactNode
 }
 
-const Auth = ({children, className, handleSubmit, footer = null}: IProps) => (
+const Auth: React.SFC<IProps> = ({children, className, handleSubmit, footer = null}) => (
     <div className={`auth ${className}`}>
         <form method="post" onSubmit={handleSubmit}>
             <div className="auth-inner">

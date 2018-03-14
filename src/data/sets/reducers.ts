@@ -4,7 +4,7 @@ import * as constants from 'data/sets/constants'
 import * as dataTypes from 'data/constants'
 import * as utils from 'data/utils'
 
-const initialState: ISetsState = {
+const initialState: Readonly<ISetsState> = {
     fetchStatus: dataTypes.STATUS_NONE,
     entitiesStatus: {},
     entities: [],

@@ -4,7 +4,7 @@ const logoFull = require('media/logo-full.svg')
 
 import './style.css'
 
-const Footer = () => (
+const Footer: React.SFC<{}> = () => (
     <footer className="footer">
         <div className="footer-inner">
             <span className="footer-link">Support - <a href="mailto:hello@doroutine.com">hello@doroutine.com</a></span>

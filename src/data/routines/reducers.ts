@@ -4,7 +4,7 @@ import * as constants from 'data/routines/constants'
 import * as dataTypes from 'data/constants'
 import * as utils from 'data/utils'
 
-const initialState: IRoutinesState = {
+const initialState: Readonly<IRoutinesState> = {
     fetchStatus: dataTypes.STATUS_NONE,
     entitiesStatus: {},
     entities: [],

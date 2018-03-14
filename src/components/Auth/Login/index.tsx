@@ -13,7 +13,7 @@ interface IProps {
     setRef: (ref: HTMLInputElement, name: keyof ILoginData) => void
 }
 
-const Login = ({handleSubmit, setRef}: IProps) => (
+const Login: React.SFC<IProps> = ({handleSubmit, setRef}) => (
     <Auth
         className="login"
         handleSubmit={handleSubmit}

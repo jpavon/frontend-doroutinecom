@@ -23,7 +23,7 @@ interface IProps {
     right?: IButtonType
 }
 
-const TopNav = ({title, leftLabel = 'Back', rightLabel = 'Edit', left, right}: IProps) => (
+const TopNav: React.SFC<IProps> = ({title, leftLabel = 'Back', rightLabel = 'Edit', left, right}) => (
     <div
         className={classNames(
             'top-nav',

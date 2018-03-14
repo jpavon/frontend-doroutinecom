@@ -8,7 +8,7 @@ interface IProps {
     lift: IFormatedLift
 }
 
-const Routine = ({lift}: IProps) => (
+const Routine: React.SFC<IProps> = ({lift}) => (
     <ListItem to={`/lifts/${lift.id}`} className="lifts-lift">
         {lift.name || 'No lift name set.'}
     </ListItem>
