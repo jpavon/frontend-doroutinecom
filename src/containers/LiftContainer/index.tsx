@@ -59,7 +59,7 @@ class LiftContainer extends React.Component<IProps> {
     }
 
     render() {
-        return this.props.lift ? (
+        return (this.props.lift && this.props.user) ? (
             <>
                 {this.props.lift.name &&
                     <Helmet>
@@ -89,7 +89,7 @@ class LiftContainer extends React.Component<IProps> {
                 {this.props.topLiftSets.length > 0 ?
                     <SetsTable
                         sets={this.props.topLiftSets}
-                        weightMeasure={this.props.user && this.props.user.weightMeasure}
+                        weightMeasure={this.props.user.weightMeasure}
                     /> :
                     <NoData
                         text="List of top sets will be displayed here when you complete a workout."

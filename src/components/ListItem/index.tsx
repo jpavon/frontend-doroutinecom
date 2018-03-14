@@ -1,9 +1,14 @@
-import React from 'react'
+import * as React from 'react'
 import { Link } from 'react-router-dom'
 
 import './style.css'
 
-const ListItem = (props) => {
+interface IListItemProps {
+    to: string
+    className: string
+}
+
+const ListItem: React.SFC<IListItemProps> = (props) => {
 
     const { to, children, className } = props
 

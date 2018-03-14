@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { IFormatedWorkout, IWorkoutRequestData } from 'data/workouts/types'
+import { IFormatedWorkout, IWorkoutActionArgs } from 'data/workouts/types'
 
 import AutoSaveForm from 'components/AutoSaveForm'
 import Field from 'components/Field'
@@ -8,16 +8,16 @@ import Button from 'components/Button'
 
 import './style.css'
 
-interface IWorkout {
+interface IWorkoutProps {
     workout: IFormatedWorkout
-    update: (id: number, data: IWorkoutRequestData) => void
+    update: IWorkoutActionArgs['put']
 }
 
 interface IForm {
     values: IFormatedWorkout
 }
 
-const Workout: React.SFC<IWorkout> = ({children, workout, update}) => (
+const Workout: React.SFC<IWorkoutProps> = ({children, workout, update}) => (
     <div className="workout">
         <div className="workout-routine-name">
             <div>Routine</div>

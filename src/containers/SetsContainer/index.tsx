@@ -45,7 +45,7 @@ class SetsContainer extends React.Component<IProps> {
     }
 
     render() {
-        return (
+        return this.props.user ? (
             <Sets
                 create={this.handleCreate}
                 user={this.props.user}
@@ -66,7 +66,7 @@ class SetsContainer extends React.Component<IProps> {
                     />
                 ))}
             </Sets>
-        )
+        ) : null
     }
 }
 

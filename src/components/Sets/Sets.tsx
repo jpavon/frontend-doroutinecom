@@ -1,11 +1,29 @@
-import React from 'react'
+import * as React from 'react'
+
+import { IFormatedUser } from 'data/user/types'
+import { ISetActionArgs } from 'data/sets/types'
 
 import Transition from 'components/Transition'
 import Button from 'components/Button'
 
 import './style.css'
 
-const Sets = ({children, create, user, isWorkout, toggleRemoveButtons, isRemoveButtonsVisible}) => (
+interface ISetsProps {
+    user: IFormatedUser
+    create: ISetActionArgs['post']
+    isWorkout: boolean
+    toggleRemoveButtons: () => void
+    isRemoveButtonsVisible: boolean
+}
+
+const Sets: React.SFC<ISetsProps> = ({
+    children,
+    create,
+    user,
+    isWorkout,
+    toggleRemoveButtons,
+    isRemoveButtonsVisible
+}) => (
     <div className="sets">
         <div className="sets-header">
             <div className="sets-header-item"><small>Set</small></div>
@@ -13,8 +31,11 @@ const Sets = ({children, create, user, isWorkout, toggleRemoveButtons, isRemoveB
             <div className="sets-header-item"><small>{user.weightMeasure}</small></div>
             {isWorkout ?
                 <div className="sets-header-item sets-header-item--toggle">
-                    <Button onClick={toggleRemoveButtons}>{isRemoveButtonsVisible ? '✓' : 'X'}</Button>
-                </div> : <div className="sets-header-item"></div>
+                    <Button onClick={toggleRemoveButtons}>
+                        {isRemoveButtonsVisible ? '✓' : 'X'}
+                    </Button>
+                </div> :
+                <div className="sets-header-item" />
             }
         </div>
         <Transition className="set">

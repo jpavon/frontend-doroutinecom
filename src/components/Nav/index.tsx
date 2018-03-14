@@ -1,23 +1,30 @@
-import React from 'react'
+import * as React from 'react'
 import { NavLink } from 'react-router-dom'
-import classNames from 'classnames'
+import * as classNames from 'classnames'
+import { RouteComponentProps } from 'react-router'
 
-import logo from 'media/logo.svg'
-import profileIcon from 'media/profile.svg'
-import routinesIcon from 'media/routines.svg'
-import liftsIcon from 'media/lifts.svg'
-import workoutsIcon from 'media/workouts.svg'
+const logo = require('media/logo.svg')
+const profileIcon = require('media/profile.svg')
+const routinesIcon = require('media/routines.svg')
+const liftsIcon = require('media/lifts.svg')
+const workoutsIcon = require('media/workouts.svg')
 
 import './style.css'
 
-const isProfileActive = (match, location) => {
-    if (match) return true
-    if (location.pathname === '/settings') return true
+const isProfileActive = (match: RouteComponentProps<{}>['match'], location: RouteComponentProps<{}>['location']) => {
+    if (match) { return true }
+    if (location.pathname === '/settings') { return true }
     return false
 }
 
-const Nav = ({isAuth = false, isTouchDevice, isPendingWorkouts}) => (
-    <nav className={classNames(
+interface INavProps {
+    isTouchDevice: boolean
+    isPendingWorkouts: boolean
+}
+
+const Nav: React.SFC<INavProps> = ({isTouchDevice, isPendingWorkouts}) => (
+    <nav
+        className={classNames(
             'nav-container',
             isTouchDevice && 'nav-container--touch'
         )}
@@ -29,14 +36,20 @@ const Nav = ({isAuth = false, isTouchDevice, isPendingWorkouts}) => (
 
             <ul className="nav-list">
                 <li className="nav-item">
-                    <NavLink exact to="/" className="nav-link" activeClassName="nav-link--active" isActive={isProfileActive}>
+                    <NavLink
+                        exact
+                        to="/"
+                        className="nav-link"
+                        activeClassName="nav-link--active"
+                        isActive={isProfileActive}
+                    >
                         <img src={profileIcon} alt="Profile" />
                         Profile
                     </NavLink>
                 </li>
                 <li className="nav-item">
                     <NavLink to="/workouts" className="nav-link" activeClassName="nav-link--active">
-                        {isPendingWorkouts && <div className="nav-link-highlight"></div>}
+                        {isPendingWorkouts && <div className="nav-link-highlight" />}
                         <img src={workoutsIcon} alt="Workouts" />
                         <span>Workouts</span>
                     </NavLink>

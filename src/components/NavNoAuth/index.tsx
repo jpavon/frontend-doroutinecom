@@ -1,11 +1,11 @@
-import React from 'react'
+import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import logo from 'media/logo-full.svg'
+const logo = require('media/logo-full.svg')
 
 import './style.css'
 
-const NavNoAuth = () => (
+const NavNoAuth: React.SFC<{}> = () => (
     <nav className="nav-no-auth">
         <div className="nav-no-auth-logo">
             <img src={logo} alt="Logo" />

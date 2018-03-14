@@ -59,7 +59,7 @@ class ProfileContainer extends React.Component<IProps, IState> {
     }
 
     render() {
-        return (
+        return this.props.user ? (
             <Profile>
                 <TopNav
                     title="Profile"
@@ -87,7 +87,7 @@ class ProfileContainer extends React.Component<IProps, IState> {
                 {this.props.topSets.length > 0 ?
                     <SetsTable
                         sets={this.props.topSets}
-                        weightMeasure={this.props.user && this.props.user.weightMeasure}
+                        weightMeasure={this.props.user.weightMeasure}
                         showLift
                     /> :
                     <NoData
@@ -95,7 +95,7 @@ class ProfileContainer extends React.Component<IProps, IState> {
                     />
                 }
             </Profile>
-        )
+        ) : null
     }
 }
 
