@@ -1,5 +1,6 @@
 import * as React from 'react'
 import * as classnames from 'classnames'
+import { isString } from 'lodash'
 import AnimateOnChange from 'react-animate-on-change'
 
 import { IAlert } from 'data/ui/types'
@@ -21,7 +22,7 @@ class Alert extends React.Component<IProps> {
     renderMessage = (): React.ReactNode => {
         const message = this.props.message
 
-        if (React.isValidElement(message)) {
+        if (React.isValidElement(message) || isString(message)) {
             return message
         } else if (message && Object.keys(message).length > 0) {
             return (
