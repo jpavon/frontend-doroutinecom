@@ -1,14 +1,13 @@
 import * as React from 'react'
 
-import { IExerciseActionArgs } from 'data/exercises/types'
-
-import Transition from 'components/Transition'
+import Transition, { ITransitionProps } from 'components/Transition'
 import Button from 'components/Button'
 
 import './style.css'
 
 interface IProps {
-    create: IExerciseActionArgs['post']
+    children: ITransitionProps['children']
+    create: () => void
 }
 
 const Exercises: React.SFC<IProps> = ({children, create}) => (

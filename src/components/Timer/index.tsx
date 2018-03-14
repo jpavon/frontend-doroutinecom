@@ -1,23 +1,31 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 
 import moment from 'utils/moment'
 
 import './style.css'
 
-class Timer extends Component {
+interface ITimerProps {
+    start: string
+}
 
-    static propTypes = {
-        start: PropTypes.string.isRequired
-    }
+interface ITimerState {
+    hours: string
+    minutes: string
+    seconds: string
+}
 
-    constructor(props) {
+class Timer extends React.Component<ITimerProps, ITimerState> {
+
+    start: Date
+    timer: NodeJS.Timer
+
+    constructor(props: ITimerProps) {
         super(props)
 
         this.state = {
-            hours: 0,
-            minutes: 0,
-            seconds: 0,
+            hours: '0',
+            minutes: '0',
+            seconds: '0',
         }
 
         this.start = moment(props.start).toDate()
@@ -32,12 +40,12 @@ class Timer extends Component {
         clearInterval(this.timer)
     }
 
-    format = (n) => {
-        return n > 9 ? n : '0' + n
+    format = (n: number): string => {
+        return n > 9 ? n + '' : '0' + n
     }
 
     tick = () => {
-        let delta = Math.abs(new Date() - this.start) / 1000
+        let delta = Math.abs(+new Date() - +this.start) / 1000
 
         // calculate (and subtract) whole hours
         const hours = Math.floor(delta / 3600)
@@ -58,7 +66,11 @@ class Timer extends Component {
     }
 
     render() {
-        return (<span className="timer">{this.state.hours}:{this.state.minutes}:{this.state.seconds}</span>)
+        return (
+            <span className="timer">
+                {this.state.hours}:{this.state.minutes}:{this.state.seconds}
+            </span>
+        )
     }
 }
 

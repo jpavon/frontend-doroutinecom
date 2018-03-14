@@ -109,6 +109,12 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-motion@^0.0.25":
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/@types/react-motion/-/react-motion-0.0.25.tgz#2445745ee8e8e6149faa47a36ff6b0d4c21dbf94"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-redux@^5.0.15":
   version "5.0.15"
   resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-5.0.15.tgz#420af2c702ac7aab321cf45bb7d3cb2503dd24d5"

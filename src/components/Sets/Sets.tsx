@@ -3,12 +3,13 @@ import * as React from 'react'
 import { IFormatedUser } from 'data/user/types'
 import { ISetActionArgs } from 'data/sets/types'
 
-import Transition from 'components/Transition'
+import Transition, { ITransitionProps } from 'components/Transition'
 import Button from 'components/Button'
 
 import './style.css'
 
 interface ISetsProps {
+    children: ITransitionProps['children']
     user: IFormatedUser
     create: ISetActionArgs['post']
     isWorkout: boolean

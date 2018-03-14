@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import * as React from 'react'
 import { TransitionMotion, spring } from 'react-motion'
 
 const willEnter = () => ({
@@ -13,14 +13,25 @@ const getStyles = () => ({
     opacity: spring(1),
 })
 
-const Transition = ({children, className = ''}) => (
+type ITransitionElement = React.ReactElement<{key: string}>
+
+export interface ITransitionProps {
+    className?: string
+    children: ITransitionElement | ITransitionElement[]
+}
+
+const Transition: React.SFC<ITransitionProps> = ({children, className = ''}) => (
     <TransitionMotion
-        styles={children.length > 0 ? children.map((item) => ({ key: `${item.key}`, style: getStyles(), data: item })) : []}
+        styles={Array.isArray(children) && children.length > 0 ?
+            (children as ITransitionElement[]).map((item) => (
+                { key: `${item.key}`, style: getStyles(), data: item }
+            )) : []
+        }
         willLeave={willLeave}
         willEnter={willEnter}
     >
         {(interpolatedStyles) =>
-            <Fragment>
+            <>
                 {interpolatedStyles.length > 0 ? interpolatedStyles.map(({ key, style, data }) =>
                     <div
                         key={`${key}-transition`}
@@ -32,7 +43,7 @@ const Transition = ({children, className = ''}) => (
                         {data}
                     </div>
                 ) : children}
-            </Fragment>
+            </>
         }
     </TransitionMotion>
 )
