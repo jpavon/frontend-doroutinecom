@@ -1,30 +1,24 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Chart from 'chart.js'
+import * as React from 'react'
+import * as Chart from 'chart.js'
+
+import { IGraph } from 'data/graphs/types'
 
 import './style.css'
 
-class Graph extends Component {
+interface IGraphProps {
+    type: 'line' | 'bar'
+    data: IGraph
+}
 
-    static propTypes = {
-        type: PropTypes.oneOf(['line', 'bar']),
-        data: PropTypes.shape({
-            labels: PropTypes.array.isRequired,
-            dataset: PropTypes.array.isRequired,
-            datasetMax: PropTypes.number.isRequired,
-            datasetMin: PropTypes.number,
-            meta: PropTypes.object
-        }).isRequired
-    }
+class Graph extends React.Component<IGraphProps> {
 
-    static defaultProps = {
-        type: 'bar'
-    }
+    graph: HTMLCanvasElement | null
 
     componentDidMount() {
 
-        const ctx = this.graph.getContext('2d')
+        const ctx = this.graph && this.graph.getContext('2d')
 
+        const meta = this.props.data.meta
         const datasetMax = this.props.data.datasetMax
         const datasetMin = this.props.data.datasetMin
 
@@ -35,14 +29,14 @@ class Graph extends Component {
 
         const step = datasetMin ?
             Math.max(yAxeStepRange, datasetMax - datasetMin) :
-            datasetMax/8
+            datasetMax / 8
         const stepSize = Math.max(1, Math.round(step / yAxeStepRange) * yAxeStepRange)
 
         const max = datasetMax < 5 ? 5 :
-            Math.round(datasetMax/stepSize) * stepSize + stepSize
+            Math.round(datasetMax / stepSize) * stepSize + stepSize
 
         const min = datasetMin ?
-            Math.max(0, Math.round(datasetMin/stepSize) * stepSize - stepSize * 2) :
+            Math.max(0, Math.round(datasetMin / stepSize) * stepSize - stepSize * 2) :
             0
 
         const options = {
@@ -72,7 +66,7 @@ class Graph extends Component {
             },
             legend: { display: false },
             responsive: true,
-            animation: false,
+            // animation: false,
             barThickness: 1,
             elements: {
                 line: {
@@ -103,28 +97,32 @@ class Graph extends Component {
                 yPadding: 10,
                 titleSpacing: 20,
                 callbacks: {
-                    label: (tooltipItem, data) => {
-                        const reps = data.meta && data.meta.reps
-                        const weight = data.meta && data.meta.weight
-                        return (reps && weight) ?
-                            `${reps[tooltipItem.index]}x${weight[tooltipItem.index]}${data.meta.weightMeasure}` :
+                    // tslint:disable-next-line
+                    label: (tooltipItem: any, data: any) => {
+                        const reps = meta && meta.reps
+                        const weight = meta && meta.weight
+                        const weightMeasure = meta && meta.weightMeasure
+                        return (reps && weight && weightMeasure) ?
+                            `${reps[tooltipItem.index]}x${weight[tooltipItem.index]}${weightMeasure}` :
                             `${tooltipItem.yLabel} Workout${(Number(tooltipItem.yLabel) > 1) ? 's' : ''}`
                     }
                 }
             }
         }
 
-        new Chart(ctx, {
-            type: this.props.type,
-            data: {
-                labels: this.props.data.labels,
-                datasets: [{
-                    data: this.props.data.dataset,
-                }],
-                meta: this.props.data.meta
-            },
-            options
-        })
+        if (ctx) {
+            // tslint:disable-next-line
+            new Chart(ctx, {
+                type: this.props.type,
+                data: {
+                    labels: this.props.data.labels,
+                    datasets: [{
+                        data: this.props.data.dataset,
+                    }]
+                },
+                options
+            })
+        }
     }
 
     render() {

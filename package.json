@@ -18,6 +18,7 @@
     "sync": "ansible-playbook -i ../deployment/hosts ../deployment/site.yml -t sync.app"
   },
   "dependencies": {
+    "@types/chart.js": "^2.7.10",
     "@types/classnames": "^2.2.3",
     "@types/helmet": "^0.0.37",
     "@types/humps": "^1.1.2",

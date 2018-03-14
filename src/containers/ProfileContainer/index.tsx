@@ -4,7 +4,7 @@ import * as store from 'store'
 
 import { IRootState } from 'data/types'
 import { ITopSet } from 'data/sets/types'
-import { IWorkoutsGraph } from 'data/graphs/types'
+import { IGraph } from 'data/graphs/types'
 import { IFormatedUser } from 'data/user/types'
 
 import { workoutsGraphDataSelector } from 'data/graphs/selectors'
@@ -23,7 +23,7 @@ interface IOwnProps {
 }
 
 interface IStateProps {
-    workoutsGraphData: IWorkoutsGraph
+    workoutsGraphData: IGraph
     topSets: ITopSet[]
     user: IFormatedUser | null
     hasWorkouts: boolean
@@ -79,6 +79,7 @@ class ProfileContainer extends React.Component<IProps, IState> {
                     title="Weekly Workouts"
                 />
                 <Graph
+                    type="bar"
                     data={this.props.workoutsGraphData}
                 />
                 <TopNav

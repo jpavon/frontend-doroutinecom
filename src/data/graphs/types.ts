@@ -1,17 +1,11 @@
-export interface ILiftsGraph {
+export interface IGraph {
     dataset: number[]
     datasetMax: number
-    datasetMin: number
+    datasetMin: number | null
     labels: string[]
     meta: {
         reps: number[]
         weight: number[]
         weightMeasure: string | null
-    }
-}
-
-export interface IWorkoutsGraph {
-    dataset: number[]
-    datasetMax: number
-    labels: string[]
+    } | null
 }

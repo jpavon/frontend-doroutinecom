@@ -23,6 +23,10 @@
     "@types/express" "*"
     "@types/node" "*"
 
+"@types/chart.js@^2.7.10":
+  version "2.7.10"
+  resolved "https://registry.yarnpkg.com/@types/chart.js/-/chart.js-2.7.10.tgz#8dd15d5b57ef3c6d4e7ef3b66b0166d950b8f0c5"
+
 "@types/classnames@^2.2.3":
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.3.tgz#3f0ff6873da793870e20a260cada55982f38a9e5"

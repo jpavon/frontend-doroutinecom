@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 import { IRootState } from 'data/types'
 import { IFormatedLift, ILiftActionArgs } from 'data/lifts/types'
 import { ITopSet } from 'data/sets/types'
-import { ILiftsGraph } from 'data/graphs/types'
+import { IGraph } from 'data/graphs/types'
 import { IFormatedUser } from 'data/user/types'
 
 import history from 'utils/history'
@@ -30,7 +30,7 @@ interface IStateProps {
     lift: IFormatedLift | null
     isStatusLoaded: boolean
     isDeleting: boolean
-    liftGraphData: ILiftsGraph
+    liftGraphData: IGraph
     topLiftSets: ITopSet[]
     user: IFormatedUser | null
 }

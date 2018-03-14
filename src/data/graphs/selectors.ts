@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 
 import { IRootState } from 'data/types'
-import { ILiftsGraph, IWorkoutsGraph } from 'data/graphs/types'
+import { IGraph } from 'data/graphs/types'
 import { IFormatedWorkout } from 'data/workouts/types'
 
 import moment from 'utils/moment'
@@ -41,7 +41,7 @@ export const workoutsGraphDataSelector = createSelector(
     [
         completedWorkoutsSelector
     ],
-    (workouts): IWorkoutsGraph => {
+    (workouts): IGraph => {
         const dataset = getWorkoutsDataset(workouts).reverse()
 
         const labels = weeks.map((week) => {
@@ -51,7 +51,9 @@ export const workoutsGraphDataSelector = createSelector(
         return {
             labels,
             dataset,
-            datasetMax: Math.max(...dataset)
+            datasetMax: Math.max(...dataset),
+            datasetMin: null,
+            meta: null
         }
     }
 )
@@ -63,7 +65,7 @@ export const liftGraphDataSelector = (liftId: number) => createSelector(
         completedWorkoutsSelector,
         (state: IRootState) => state.user.entity
     ],
-    (exercises, sets, workouts, user): ILiftsGraph => {
+    (exercises, sets, workouts, user): IGraph => {
         const topSets = formatTopSets(exercises, sets, workouts, null)
             .sort((a, b) => (+a.moment - +b.moment))
 
