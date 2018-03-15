@@ -1,10 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import * as React from 'react'
+import * as classNames from 'classnames'
 
 import './style.css'
 
-const Input = (props) => {
+interface IInputProps {
+    name: string
+    type: string
+    className: string
+    align?: 'right' | 'center'
+    size?: 'large'
+    inputRef: () => void
+}
+
+const Input: React.SFC<IInputProps> = (props) => {
 
     const {
         name,
@@ -31,14 +39,6 @@ const Input = (props) => {
             {...rest}
         />
     )
-}
-
-Input.propTypes = {
-    name: PropTypes.string,
-    type: PropTypes.string,
-    className: PropTypes.string,
-    align: PropTypes.oneOf(['right', 'center']),
-    size: PropTypes.oneOf(['large']),
 }
 
 export default Input

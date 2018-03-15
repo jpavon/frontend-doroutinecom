@@ -1,12 +1,17 @@
-import React from 'react'
-import ReactDatetime from 'react-datetime'
+import * as React from 'react'
+import * as ReactDatetime from 'react-datetime'
 
 import moment from 'utils/moment'
 import { dateFormat, timeFormat } from 'utils/date'
 
 import './style.css'
 
-const Datetime = ({value, name, ...rest}) => (
+interface IDatetimeProps {
+    value: string
+    name: string
+}
+
+const Datetime: React.SFC<IDatetimeProps> = ({value, name, ...rest}) => (
     <ReactDatetime
         dateFormat={dateFormat}
         timeFormat={timeFormat}

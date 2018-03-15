@@ -1,10 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import * as React from 'react'
+import * as classNames from 'classnames'
 
 import './style.css'
 
-const Label = (props) => {
+interface ILabelProps {
+    htmlFor: string
+    className?: string
+}
+
+const Label: React.SFC<ILabelProps> = (props) => {
 
     const {
         children,
@@ -23,12 +27,6 @@ const Label = (props) => {
             {children}
         </label>
     )
-}
-
-Label.propTypes = {
-    children: PropTypes.node.isRequired,
-    htmlFor: PropTypes.string,
-    className: PropTypes.string
 }
 
 export default Label

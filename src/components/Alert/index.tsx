@@ -15,8 +15,7 @@ interface IProps extends IAlert {
 class Alert extends React.Component<IProps> {
 
     static defaultProps = {
-        animate: true,
-        message: null
+        animate: true
     }
 
     renderMessage = (): React.ReactNode => {

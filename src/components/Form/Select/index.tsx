@@ -1,10 +1,25 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import * as React from 'react'
+import * as classNames from 'classnames'
 
 import './style.css'
 
-const Select = (props, context) => {
+interface IOption {
+    id: string
+    name: string
+}
+
+interface ISelectProps {
+    defaultValue?: string
+    value?: string
+    name: string
+    options: IOption[]
+    className: string
+    defaultOptionMessage: string
+    noOptionsMessage: string
+    inputRef: () => void
+}
+
+const Select: React.SFC<ISelectProps> = (props) => {
 
     const {
         name,
@@ -15,8 +30,6 @@ const Select = (props, context) => {
         noOptionsMessage,
         ...rest
     } = props
-
-
 
     return (
         <select
@@ -37,14 +50,6 @@ const Select = (props, context) => {
             }
         </select>
     )
-}
-
-Select.propTypes = {
-    name: PropTypes.string.isRequired,
-    options: PropTypes.array.isRequired,
-    className: PropTypes.string,
-    defaultOptionMessage: PropTypes.string,
-    noOptionsMessage: PropTypes.string
 }
 
 export default Select

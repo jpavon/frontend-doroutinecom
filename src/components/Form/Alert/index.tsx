@@ -1,8 +1,12 @@
-import React from 'react'
+import * as React from 'react'
 
 import './style.css'
 
-const Alert = ({message}) => {
+interface IAlertProps {
+    message: string
+}
+
+const Alert: React.SFC<IAlertProps> = ({message}) => {
     return message ? (
         <span className="form-alert">
             {message}

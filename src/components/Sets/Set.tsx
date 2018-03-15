@@ -35,7 +35,7 @@ const Set: React.SFC<ISetProps> = ({index, set, update, remove, isDeleting, isRe
                 )}
             >
                 <div className="set-inner-item">
-                    <Label>#{index + 1}</Label>
+                    <small>#{index + 1}</small>
                 </div>
                 <div className="set-inner-item">
                     <Input
@@ -53,7 +53,9 @@ const Set: React.SFC<ISetProps> = ({index, set, update, remove, isDeleting, isRe
                 </div>
                 <div className="set-inner-item set-action">
                     {!isRemoveButtonsVisible &&
-                        <Label htmlFor={`set-checkbox${values.id}`}>
+                        <Label
+                            htmlFor={`set-checkbox${values.id}`}
+                        >
                             <Checkbox
                                 id={`set-checkbox${values.id}`}
                                 name="isCompleted"

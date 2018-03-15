@@ -1,12 +1,17 @@
-import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import * as React from 'react'
+import * as classNames from 'classnames'
 
-import tickIcon from 'media/tick.svg'
+const tickIcon = require('media/tick.svg')
 
 import './style.css'
 
-const Checkbox = (props) => {
+interface ICheckboxProps {
+    name: string
+    checked?: boolean
+    className?: string
+}
+
+const Checkbox: React.SFC<ICheckboxProps> = (props) => {
 
     const {
         name,
@@ -15,7 +20,7 @@ const Checkbox = (props) => {
     } = props
 
     return (
-        <Fragment>
+        <>
             <span
                 className={classNames(
                     'checkbox-tick',
@@ -33,14 +38,8 @@ const Checkbox = (props) => {
                 )}
                 {...rest}
             />
-        </Fragment>
+        </>
     )
-}
-
-Checkbox.propTypes = {
-    name: PropTypes.string.isRequired,
-    checked: PropTypes.bool,
-    className: PropTypes.string
 }
 
 export default Checkbox
