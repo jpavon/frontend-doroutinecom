@@ -64,5 +64,6 @@
     &:-webkit-autofill:focus,
     &:-webkit-autofill {
         -webkit-box-shadow: 0 0 0 50px transparent inset, 0 0 0 50px $color inset;
+        box-shadow: 0 0 0 50px transparent inset, 0 0 0 50px $color inset;
     }
 }
