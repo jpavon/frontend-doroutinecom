@@ -25,8 +25,8 @@ function* deleteRoutineSaga(action: IApiAction) {
     yield* apiSaga(action, actions.deleteRoutineSuccess, actions.deleteRoutineFailure)
 }
 
-function* routinePostSuccess(action: ISuccessAction) {
-    yield history.push(`/routines/${(action.payload as IRoutine).id}`)
+function* routinePostSuccess(action: ISuccessAction<IRoutine>) {
+    yield history.push(`/routines/${action.payload.id}`)
 }
 
 function* routineDeleteSuccess() {

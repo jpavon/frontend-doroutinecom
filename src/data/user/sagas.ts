@@ -46,10 +46,10 @@ function* authErrorSaga(action: IFailureAction) {
     yield put(uiActions.showAlert('error', action.error.errors))
 }
 
-function* authSuccessSaga(action: ISuccessAction) {
+function* authSuccessSaga(action: ISuccessAction<IAuth>) {
     yield put(actions.authUser())
 
-    yield store.set('token', (action.payload as IAuth).token)
+    yield store.set('token', action.payload.token)
 
     yield call(getAppDataSaga)
 }

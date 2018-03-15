@@ -1,5 +1,5 @@
-import { IApiSuccess, IApiFailure } from 'data/types'
-import { IWorkoutRequestData, IWorkoutFromRequestData } from 'data/workouts/types'
+import { IApiFailure } from 'data/types'
+import { IWorkout, IWorkoutRequestData, IWorkoutFromRequestData } from 'data/workouts/types'
 
 import * as constants from 'data/workouts/constants'
 
@@ -10,7 +10,7 @@ export const getWorkouts = () => ({
     endpoint: 'workouts'
 })
 
-export const getWorkoutsSuccess = (payload: IApiSuccess) => ({
+export const getWorkoutsSuccess = (payload: IWorkout[]) => ({
     type: constants.WORKOUTS_GET_SUCCESS,
     payload
 })
@@ -28,7 +28,7 @@ export const postWorkout = (data: IWorkoutRequestData) => ({
     data,
 })
 
-export const postWorkoutSuccess = (payload: IApiSuccess) => ({
+export const postWorkoutSuccess = (payload: IWorkout) => ({
     type: constants.WORKOUTS_POST_SUCCESS,
     payload
 })
@@ -46,7 +46,7 @@ export const postWorkoutFrom = (data: IWorkoutFromRequestData) => ({
     data,
 })
 
-export const postWorkoutFromSuccess = (payload: IApiSuccess) => ({
+export const postWorkoutFromSuccess = (payload: IWorkout) => ({
     type: constants.WORKOUTS_POST_FROM_SUCCESS,
     payload
 })
@@ -67,7 +67,7 @@ export const putWorkout = (id: number, data: IWorkoutRequestData, resolve?: () =
     reject
 })
 
-export const putWorkoutSuccess = (payload: IApiSuccess) => ({
+export const putWorkoutSuccess = (payload: IWorkout) => ({
     type: constants.WORKOUTS_PUT_SUCCESS,
     payload
 })
@@ -85,7 +85,7 @@ export const deleteWorkout = (id: number) => ({
     id
 })
 
-export const deleteWorkoutSuccess = (payload: IApiSuccess) => ({
+export const deleteWorkoutSuccess = (payload: IWorkout) => ({
     type: constants.WORKOUTS_DELETE_SUCCESS,
     payload
 })

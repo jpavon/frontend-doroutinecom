@@ -33,10 +33,10 @@ function* workoutDeleteSuccess() {
     yield history.push(`/workouts`)
 }
 
-function* workoutPostFromSuccess(action: ISuccessAction) {
+function* workoutPostFromSuccess(action: ISuccessAction<IWorkout>) {
     yield call(getWorkoutDataSaga)
 
-    yield history.push(`/workouts/${(action.payload as IWorkout).id}`)
+    yield history.push(`/workouts/${action.payload.id}`)
 }
 
 export default [

@@ -1,5 +1,5 @@
-import { IApiSuccess, IApiFailure } from 'data/types'
-import { ISetRequestData } from 'data/sets/types'
+import { IApiFailure } from 'data/types'
+import { ISet, ISetRequestData } from 'data/sets/types'
 
 import * as constants from 'data/sets/constants'
 
@@ -10,7 +10,7 @@ export const getSets = () => ({
     endpoint: 'sets'
 })
 
-export const getSetsSuccess = (payload: IApiSuccess) => ({
+export const getSetsSuccess = (payload: ISet[]) => ({
     type: constants.SETS_GET_SUCCESS,
     payload
 })
@@ -28,7 +28,7 @@ export const postSet = (data: ISetRequestData) => ({
     data,
 })
 
-export const postSetSuccess = (payload: IApiSuccess) => ({
+export const postSetSuccess = (payload: ISet) => ({
     type: constants.SETS_POST_SUCCESS,
     payload
 })
@@ -49,7 +49,7 @@ export const putSet = (id: number, data: ISetRequestData, resolve?: () => void, 
     reject
 })
 
-export const putSetSuccess = (payload: IApiSuccess) => ({
+export const putSetSuccess = (payload: ISet) => ({
     type: constants.SETS_PUT_SUCCESS,
     payload
 })
@@ -67,7 +67,7 @@ export const deleteSet = (id: number) => ({
     id
 })
 
-export const deleteSetSuccess = (payload: IApiSuccess) => ({
+export const deleteSetSuccess = (payload: ISet) => ({
     type: constants.SETS_DELETE_SUCCESS,
     payload
 })

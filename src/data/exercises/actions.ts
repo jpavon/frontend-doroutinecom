@@ -1,5 +1,5 @@
-import { IApiSuccess, IApiFailure } from 'data/types'
-import { IExerciseRequestData } from 'data/exercises/types'
+import { IApiFailure } from 'data/types'
+import { IExercise, IExerciseRequestData } from 'data/exercises/types'
 
 import * as constants from 'data/exercises/constants'
 
@@ -10,7 +10,7 @@ export const getExercises = () => ({
     endpoint: 'exercises'
 })
 
-export const getExercisesSuccess = (payload: IApiSuccess) => ({
+export const getExercisesSuccess = (payload: IExercise[]) => ({
     type: constants.EXERCISES_GET_SUCCESS,
     payload
 })
@@ -28,7 +28,7 @@ export const postExercise = (data?: IExerciseRequestData) => ({
     data,
 })
 
-export const postExerciseSuccess = (payload: IApiSuccess) => ({
+export const postExerciseSuccess = (payload: IExercise) => ({
     type: constants.EXERCISES_POST_SUCCESS,
     payload
 })
@@ -49,7 +49,7 @@ export const putExercise = (id: number, data: IExerciseRequestData, resolve?: ()
     reject
 })
 
-export const putExerciseSuccess = (payload: IApiSuccess) => ({
+export const putExerciseSuccess = (payload: IExercise) => ({
     type: constants.EXERCISES_PUT_SUCCESS,
     payload
 })
@@ -67,7 +67,7 @@ export const deleteExercise = (id: number) => ({
     id
 })
 
-export const deleteExerciseSuccess = (payload: IApiSuccess) => ({
+export const deleteExerciseSuccess = (payload: IExercise) => ({
     type: constants.EXERCISES_DELETE_SUCCESS,
     payload
 })

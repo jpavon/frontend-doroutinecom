@@ -1,5 +1,6 @@
-import { IApiSuccess, IApiFailure } from 'data/types'
+import { IApiFailure } from 'data/types'
 import {
+    IUser,
     ILoginData,
     IRegisterData,
     IPasswordForgottenData,
@@ -16,7 +17,7 @@ export const getUser = () => ({
     endpoint: 'user'
 })
 
-export const getUserSuccess = (payload: IApiSuccess) => ({
+export const getUserSuccess = (payload: IUser) => ({
     type: constants.USER_GET_SUCCESS,
     payload
 })
@@ -36,7 +37,7 @@ export const putUser = (id: number, data: IUserRequestData, resolve: () => void,
     reject
 })
 
-export const putUserSuccess = (payload: IApiSuccess) => ({
+export const putUserSuccess = (payload: IUser) => ({
     type: constants.USER_PUT_SUCCESS,
     payload
 })
@@ -56,7 +57,7 @@ export const loginUser = (data: ILoginData, resolve: () => void, reject: () => v
     reject
 })
 
-export const loginUserSuccess = (payload: IApiSuccess) => ({
+export const loginUserSuccess = (payload: IUser) => ({
     type: constants.USER_LOGIN_SUCCESS,
     payload
 })
@@ -76,7 +77,7 @@ export const registerUser = (data: IRegisterData, resolve: () => void, reject: (
     reject
 })
 
-export const registerUserSuccess = (payload: IApiSuccess) => ({
+export const registerUserSuccess = (payload: IUser) => ({
     type: constants.USER_REGISTER_SUCCESS,
     payload
 })
@@ -94,9 +95,8 @@ export const passwordForgottenUser = (data: IPasswordForgottenData) => ({
     data,
 })
 
-export const passwordForgottenUserSuccess = (payload: IApiSuccess) => ({
-    type: constants.USER_PASSWORD_FORGOTTEN_SUCCESS,
-    payload
+export const passwordForgottenUserSuccess = () => ({
+    type: constants.USER_PASSWORD_FORGOTTEN_SUCCESS
 })
 
 export const passwordForgottenUserFailure = (payload: IApiFailure) => ({
@@ -114,9 +114,8 @@ export const passwordResetUser = (data: IPasswordResetData, resolve: () => void,
     reject
 })
 
-export const passwordResetUserSuccess = (payload: IApiSuccess) => ({
+export const passwordResetUserSuccess = () => ({
     type: constants.USER_PASSWORD_RESET_SUCCESS,
-    payload
 })
 
 export const passwordResetUserFailure = (payload: IApiFailure) => ({

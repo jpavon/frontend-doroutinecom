@@ -19,7 +19,6 @@
     "noUnusedLocals": true,
     "downlevelIteration": true,
     // "allowSyntheticDefaultImports": true,
-    "baseUrl": "src",
     "baseUrl": ".",
     "paths": {
       "*": [

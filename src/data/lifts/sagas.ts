@@ -25,8 +25,8 @@ function* deleteLiftSaga(action: IApiAction) {
     yield* apiSaga(action, actions.deleteLiftSuccess, actions.deleteLiftFailure)
 }
 
-function* liftPostSuccess(action: ISuccessAction) {
-    yield history.push(`/lifts/${(action.payload as ILift).id}`)
+function* liftPostSuccess(action: ISuccessAction<ILift>) {
+    yield history.push(`/lifts/${action.payload.id}`)
 }
 
 function* liftDeleteRequest() {

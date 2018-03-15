@@ -1,5 +1,5 @@
-import { IApiSuccess, IApiFailure } from 'data/types'
-import { IRoutineRequestData } from 'data/routines/types'
+import { IApiFailure } from 'data/types'
+import { IRoutine, IRoutineRequestData } from 'data/routines/types'
 
 import * as constants from 'data/routines/constants'
 
@@ -10,7 +10,7 @@ export const getRoutines = () => ({
     endpoint: 'routines'
 })
 
-export const getRoutinesSuccess = (payload: IApiSuccess) => ({
+export const getRoutinesSuccess = (payload: IRoutine[]) => ({
     type: constants.ROUTINES_GET_SUCCESS,
     payload
 })
@@ -28,7 +28,7 @@ export const postRoutine = (data?: IRoutineRequestData) => ({
     data,
 })
 
-export const postRoutineSuccess = (payload: IApiSuccess) => ({
+export const postRoutineSuccess = (payload: IRoutine) => ({
     type: constants.ROUTINES_POST_SUCCESS,
     payload
 })
@@ -49,7 +49,7 @@ export const putRoutine = (id: number, data: IRoutineRequestData, resolve?: () =
     reject
 })
 
-export const putRoutineSuccess = (payload: IApiSuccess) => ({
+export const putRoutineSuccess = (payload: IRoutine) => ({
     type: constants.ROUTINES_PUT_SUCCESS,
     payload
 })
@@ -67,7 +67,7 @@ export const deleteRoutine = (id: number) => ({
     id
 })
 
-export const deleteRoutineSuccess = (payload: IApiSuccess) => ({
+export const deleteRoutineSuccess = (payload: IRoutine) => ({
     type: constants.ROUTINES_DELETE_SUCCESS,
     payload
 })

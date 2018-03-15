@@ -1,5 +1,5 @@
-import { IApiSuccess, IApiFailure } from 'data/types'
-import { ILiftRequestData } from 'data/lifts/types'
+import { IApiFailure } from 'data/types'
+import { ILift, ILiftRequestData } from 'data/lifts/types'
 
 import * as constants from 'data/lifts/constants'
 
@@ -10,7 +10,7 @@ export const getLifts = () => ({
     endpoint: 'lifts'
 })
 
-export const getLiftsSuccess = (payload: IApiSuccess) => ({
+export const getLiftsSuccess = (payload: ILift[]) => ({
     type: constants.LIFTS_GET_SUCCESS,
     payload
 })
@@ -28,7 +28,7 @@ export const postLift = (data?: ILiftRequestData) => ({
     data,
 })
 
-export const postLiftSuccess = (payload: IApiSuccess) => ({
+export const postLiftSuccess = (payload: ILift) => ({
     type: constants.LIFTS_POST_SUCCESS,
     payload
 })
@@ -49,7 +49,7 @@ export const putLift = (id: number, data: ILiftRequestData, resolve?: () => void
     reject
 })
 
-export const putLiftSuccess = (payload: IApiSuccess) => ({
+export const putLiftSuccess = (payload: ILift) => ({
     type: constants.LIFTS_PUT_SUCCESS,
     payload
 })
@@ -67,7 +67,7 @@ export const deleteLift = (id: number) => ({
     id
 })
 
-export const deleteLiftSuccess = (payload: IApiSuccess) => ({
+export const deleteLiftSuccess = (payload: ILift) => ({
     type: constants.LIFTS_DELETE_SUCCESS,
     payload
 })

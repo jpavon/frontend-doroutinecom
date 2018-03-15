@@ -15,7 +15,7 @@
 }
 
 .button {
-    @include button-color($color-primary)
+    @include button-color($color-primary);
     display: flex;
     font-weight: 400;
     text-align: center;

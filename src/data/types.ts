@@ -1,9 +1,9 @@
-import { IUser, IAuth, IUserState } from 'data/user/types'
-import { IExercise, IExercisesState } from 'data/exercises/types'
-import { ILift, ILiftsState } from 'data/lifts/types'
-import { IRoutine, IRoutinesState } from 'data/routines/types'
-import { ISet, ISetsState } from 'data/sets/types'
-import { IWorkout, IWorkoutsState } from 'data/workouts/types'
+import { IUserState } from 'data/user/types'
+import { IExercisesState } from 'data/exercises/types'
+import { ILiftsState } from 'data/lifts/types'
+import { IRoutinesState } from 'data/routines/types'
+import { ISetsState } from 'data/sets/types'
+import { IWorkoutsState } from 'data/workouts/types'
 import { IUiState } from 'data/ui/types'
 import * as constants from 'data/constants'
 
@@ -40,16 +40,8 @@ export interface IApiAction extends IAction {
     reject?: (error: object) => void
 }
 
-export type IApiSuccess =
-    IUser | IAuth |
-    IExercise[] | IExercise |
-    ILift[] | ILift |
-    IRoutine[] | IRoutine |
-    ISet[] | ISet |
-    IWorkout[] | IWorkout
-
-export interface ISuccessAction extends IAction {
-    payload: IApiSuccess
+export interface ISuccessAction<P> extends IAction {
+    payload: P
 }
 
 export interface IApiFailure {
