@@ -3,21 +3,21 @@ import * as classNames from 'classnames'
 
 import './style.css'
 
-export interface IOption {
+interface IOption {
     id: number | string
     name: string | null
 }
 
-interface ISelectProps {
-    defaultValue?: string
-    value?: string
+export interface ISelectProps {
+    id: string
     name: string
     options: IOption[]
-    className?: string
     defaultOptionMessage?: string
-    noOptionsMessage?: string
+    defaultValue?: string
+    value?: string
+    className?: string
     inputRef?: () => void
-    onChange?: (event: React.SyntheticEvent<HTMLSelectElement>) => void
+    onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
 const Select: React.SFC<ISelectProps> = (props) => {
@@ -28,7 +28,6 @@ const Select: React.SFC<ISelectProps> = (props) => {
         className,
         inputRef,
         defaultOptionMessage,
-        noOptionsMessage,
         ...rest
     } = props
 

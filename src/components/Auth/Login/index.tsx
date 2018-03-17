@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { ILoginData } from 'data/user/types'
 
+import Input from 'components/Form/Input'
 import Field from 'components/Field'
 import Auth from 'components/Auth'
 
@@ -23,24 +24,24 @@ const Login: React.SFC<IProps> = ({handleSubmit, setRef}) => (
             </div>
         )}
     >
-        <Field
-            uncontrolled
-            label="Email"
-            type="email"
-            id="email"
-            name="email"
-            placeholder="type@your.email"
-            inputRef={(ref: HTMLInputElement) => setRef(ref, 'email')}
-        />
-        <Field
-            uncontrolled
-            label="Password"
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Type your password"
-            inputRef={(ref: HTMLInputElement) => setRef(ref, 'password')}
-        />
+        <Field label="Email" id="email">
+            <Input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="type@your.email"
+                inputRef={(ref: HTMLInputElement) => setRef(ref, 'email')}
+            />
+        </Field>
+        <Field label="Password" id="password">
+            <Input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Type your password"
+                inputRef={(ref: HTMLInputElement) => setRef(ref, 'password')}
+            />
+        </Field>
     </Auth>
 )
 

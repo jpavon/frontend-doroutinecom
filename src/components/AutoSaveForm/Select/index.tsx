@@ -1,43 +1,23 @@
 import * as React from 'react'
 import * as PropTypes from 'prop-types'
 
+import { IAutoSaveFormContext } from 'components/AutoSaveForm'
+
 import Alert from 'components/Form/Alert'
-import UncontrolledSelect from 'components/Form/Select'
+import UncontrolledSelect, { ISelectProps } from 'components/Form/Select'
 import Saving from 'components/Saving'
 
-export interface IOption {
-    id: number | string
-    name: string | null
+interface IAutoSaveFormSelectProps extends ISelectProps {
+    noOptionsMessage?: string
 }
 
-interface ISelectProps {
-    name: string
-    options: IOption[]
-    noOptionsMessage: string
-
-    // ...rest
-    // tslint:disable-next-line
-    [key: string]: any
-}
-
-interface ISelectContext {
-    formContext: {
-        onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
-        values: object
-        errors: {
-            [index: string]: string
-        }
-        updating: string | null
-    }
-}
-
-class Select extends React.Component<ISelectProps> {
+class Select extends React.Component<IAutoSaveFormSelectProps> {
 
     static contextTypes = {
         formContext: PropTypes.object.isRequired
     }
 
-    context: ISelectContext
+    context: IAutoSaveFormContext<HTMLSelectElement>
 
     render() {
 
@@ -45,6 +25,7 @@ class Select extends React.Component<ISelectProps> {
             name,
             options,
             noOptionsMessage,
+            defaultOptionMessage,
             ...rest
         } = this.props
 
@@ -58,10 +39,11 @@ class Select extends React.Component<ISelectProps> {
                     value={values[name] || ''}
                     options={options || []}
                     onChange={onChange}
+                    defaultOptionMessage={defaultOptionMessage}
                     {...rest}
                 />
                 <Alert
-                    message={options.length < 1 ? noOptionsMessage : null}
+                    message={(options.length < 1 && noOptionsMessage) ? noOptionsMessage : null}
                 />
                 <Alert
                     message={errors[name]}

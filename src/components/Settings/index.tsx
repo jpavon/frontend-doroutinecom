@@ -4,6 +4,8 @@ import { IFormatedUser, IUserActionArgs } from 'data/user/types'
 
 import Field from 'components/Field'
 import AutoSaveForm from 'components/AutoSaveForm'
+import Select from 'components/AutoSaveForm/Select'
+import Input from 'components/AutoSaveForm/Input'
 import TopNav from 'components/TopNav'
 
 import './style.css'
@@ -20,63 +22,37 @@ const Settings: React.SFC<IProps> = ({user, putUser}) => (
             update={putUser}
             render={() => (
                 <div className="settings-form">
-                    <Field
-                        component="select"
-                        label="Weight measure"
-                        id="weightMeasure"
-                        name="weightMeasure"
-                        options={[
-                            {id: 'kg', name: 'kg'},
-                            {id: 'lbs', name: 'lbs'},
-                        ]}
-                    />
-                    <Field
-                        component="select"
-                        label="Start of week"
-                        id="startOfWeek"
-                        name="startOfWeek"
-                        options={[
-                            {id: 'monday', name: 'Monday'},
-                            {id: 'sunday', name: 'Sunday'},
-                        ]}
-                    />
-                    <Field
-                        component="select"
-                        label="Date format"
-                        id="dateFormat"
-                        name="dateFormat"
-                        options={[
-                            {id: 'DD/MM/YYYY', name: 'DD/MM/YYYY'},
-                            {id: 'YYYY/MM/DD', name: 'YYYY/MM/DD'},
-                            {id: 'MM/DD/YYYY', name: 'MM/DD/YYYY'}
-                        ]}
-                    />
-                    {/*<Field
-                        component="select"
-                        label="Training Max"
-                        id="trainingMax"
-                        name="trainingMax"
-                        options={[
-                            {id: '100', name: '100%'},
-                            {id: '95', name: '95%'},
-                            {id: '90', name: '90%'},
-                            {id: '85', name: '85%'},
-                            {id: '80', name: '80%'},
-                            {id: '75', name: '75%'}
-                        ]}
-                    />
-                    <div className="routine-settings-item">
-                        <Label htmlFor={`precision${values.id}`}>Precision</Label>
+                    <Field label="Weight measure" id="weightMeasure">
                         <Select
-                            id={`precision${values.id}`}
-                            name="precision"
+                            id="weightMeasure"
+                            name="weightMeasure"
                             options={[
-                                {id: '5', name: '5'},
-                                {id: '2.5', name: '2.5'},
-                                {id: '0.5', name: '0.5'},
+                                {id: 'kg', name: 'kg'},
+                                {id: 'lbs', name: 'lbs'},
                             ]}
                         />
-                    </div>*/}
+                    </Field>
+                    <Field label="Start of week" id="startOfWeek">
+                        <Select
+                            id="startOfWeek"
+                            name="startOfWeek"
+                            options={[
+                                { id: 'monday', name: 'Monday' },
+                                { id: 'sunday', name: 'Sunday' },
+                            ]}
+                        />
+                    </Field>
+                    <Field label="Date format" id="dateFormat">
+                        <Select
+                            id="dateFormat"
+                            name="dateFormat"
+                            options={[
+                                { id: 'DD/MM/YYYY', name: 'DD/MM/YYYY' },
+                                { id: 'YYYY/MM/DD', name: 'YYYY/MM/DD' },
+                                { id: 'MM/DD/YYYY', name: 'MM/DD/YYYY' }
+                            ]}
+                        />
+                    </Field>
                 </div>
             )}
         />
@@ -88,16 +64,18 @@ const Settings: React.SFC<IProps> = ({user, putUser}) => (
             update={putUser}
             render={() => (
                 <div className="settings-form">
-                    <Field
-                        label="Name"
-                        id="name"
-                        name="name"
-                    />
-                    <Field
-                        label="Email"
-                        id="email"
-                        name="email"
-                    />
+                    <Field label="Name" id="name">
+                        <Input
+                            id="name"
+                            name="name"
+                        />
+                    </Field>
+                    <Field label="Email" id="email">
+                        <Input
+                            id="email"
+                            name="email"
+                        />
+                    </Field>
                 </div>
             )}
         />

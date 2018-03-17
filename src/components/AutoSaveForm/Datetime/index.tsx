@@ -2,33 +2,11 @@ import * as React from 'react'
 import * as PropTypes from 'prop-types'
 import { Moment } from 'moment'
 
-import UncontrolledDatetime from 'components/Form/Datetime'
+import { IAutoSaveFormContext } from 'components/AutoSaveForm'
+
+import UncontrolledDatetime, { IDatetimeProps } from 'components/Form/Datetime'
 import Alert from 'components/Form/Alert'
 import Saving from 'components/Saving'
-
-interface IDatetimeProps {
-    name: string
-
-    // ...rest
-    // tslint:disable-next-line
-    [key: string]: any
-}
-
-interface IDate {
-    name: string
-    moment: Moment
-}
-
-interface IDatetimeContext {
-    formContext: {
-        onChange: (event: null, date: IDate) => void
-        values: object
-        errors: {
-            [index: string]: string
-        }
-        updating: string | null
-    }
-}
 
 class Input extends React.Component<IDatetimeProps> {
 
@@ -36,7 +14,7 @@ class Input extends React.Component<IDatetimeProps> {
         formContext: PropTypes.object.isRequired
     }
 
-    context: IDatetimeContext
+    context: IAutoSaveFormContext
 
     render() {
         const {

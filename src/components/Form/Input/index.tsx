@@ -3,16 +3,17 @@ import * as classNames from 'classnames'
 
 import './style.css'
 
-interface IInputProps {
+export interface IInputProps {
+    id: string
     name: string
     value?: string
-    id?: string
     type?: string
     className?: string
     align?: 'right' | 'center'
     size?: 'large'
-    inputRef?: () => void
-    onChange: (event: React.SyntheticEvent<HTMLInputElement>) => void
+    inputRef?: (ref: HTMLInputElement) => void
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+    placeholder?: string
 }
 
 const Input: React.SFC<IInputProps> = (props) => {

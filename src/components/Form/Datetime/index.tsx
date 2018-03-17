@@ -7,9 +7,10 @@ import { dateFormat, timeFormat } from 'utils/date'
 
 import './style.css'
 
-interface IDatetimeProps {
-    value: string
+export interface IDatetimeProps {
+    id: string
     name: string
+    value?: string
     onChange?: (moment: Moment) => void
 }
 

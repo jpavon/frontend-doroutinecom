@@ -1,26 +1,10 @@
 import * as React from 'react'
 import * as PropTypes from 'prop-types'
 
+import { IAutoSaveFormContext } from 'components/AutoSaveForm'
+
 import Alert from 'components/Form/Alert'
-import UncontrolledCheckbox from 'components/Form/Checkbox'
-
-interface ICheckboxProps {
-    name: string
-
-    // ...rest
-    // tslint:disable-next-line
-    [key: string]: any
-}
-
-interface ICheckboxContext {
-    formContext: {
-        onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-        values: object
-        errors: {
-            [index: string]: string
-        }
-    }
-}
+import UncontrolledCheckbox, { ICheckboxProps } from 'components/Form/Checkbox'
 
 class Checkbox extends React.Component<ICheckboxProps> {
 
@@ -28,7 +12,7 @@ class Checkbox extends React.Component<ICheckboxProps> {
         formContext: PropTypes.object.isRequired
     }
 
-    context: ICheckboxContext
+    context: IAutoSaveFormContext
 
     render() {
         const {

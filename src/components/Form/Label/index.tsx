@@ -13,16 +13,16 @@ const Label: React.SFC<ILabelProps> = (props) => {
     const {
         children,
         className,
-        ...rest
+        htmlFor
     } = props
 
     return (
         <label
+            htmlFor={htmlFor}
             className={classNames(
                 'label',
                 className
             )}
-            {...rest}
         >
             {children}
         </label>

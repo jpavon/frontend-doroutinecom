@@ -3,6 +3,8 @@ import * as React from 'react'
 import { IFormatedWorkout, IWorkoutActionArgs } from 'data/workouts/types'
 
 import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
+import Datetime from 'components/AutoSaveForm/Datetime'
+import Textarea from 'components/AutoSaveForm/Textarea'
 import Field from 'components/Field'
 import Button from 'components/Button'
 
@@ -29,21 +31,23 @@ const Workout: React.SFC<IWorkoutProps> = ({children, workout, update}) => (
                 initialValues={workout}
                 update={update}
                 render={({values}: IAutoSaveFormState) => (
-                    values.completedAt &&
+                    values.completedAt ? (
                         <div className="workout-dates">
-                            <Field
-                                component="datetime"
-                                label="Started at"
-                                id={`startedAt${values.id}`}
-                                name="startedAt"
-                            />
-                            <Field
-                                component="datetime"
-                                label="Completed at"
-                                id={`completedAt${values.id}`}
-                                name="completedAt"
-                            />
+                            <Field label="Started at" id={`startedAt${values.id}`}>
+                                <Datetime
+                                    id={`startedAt${values.id}`}
+                                    name="startedAt"
+                                />
+                            </Field>
+
+                            <Field label="Completed at" id={`completedAt${values.id}`}>
+                                <Datetime
+                                    id={`completedAt${values.id}`}
+                                    name="completedAt"
+                                />
+                            </Field>
                         </div>
+                    ) : null
                 )}
             />
         </div>
@@ -55,13 +59,13 @@ const Workout: React.SFC<IWorkoutProps> = ({children, workout, update}) => (
                 initialValues={workout}
                 update={update}
                 render={({values}: IAutoSaveFormState) => (
-                    <Field
-                        component="textarea"
-                        label="Additional Notes"
-                        id={`notes${values.id}`}
-                        name="notes"
-                        placeholder="Type any extra exercises or annotations"
-                    />
+                    <Field label="Additional Notes" id={`notes${values.id}`}>
+                        <Textarea
+                            id={`notes${values.id}`}
+                            name="notes"
+                            placeholder="Type any extra exercises or annotations"
+                        />
+                    </Field>
                 )}
             />
         </div>

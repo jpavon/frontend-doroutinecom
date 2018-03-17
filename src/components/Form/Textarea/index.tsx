@@ -4,14 +4,16 @@ import TextareaAutosize from 'react-autosize-textarea'
 
 import './style.css'
 
-interface ITextareaProps {
+export interface ITextareaProps {
+    id: string
     name: string
     className?: string
-    value: string
-    onChange: (event: React.SyntheticEvent<HTMLTextAreaElement>) => void
+    value?: string
+    placeholder?: string
+    onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
 }
 
-const Textarea: React.SFC<ITextareaProps> = ({name, className, ...rest}) => (
+const Textarea: React.SFC<ITextareaProps> = ({name, className, value, onChange}) => (
     <TextareaAutosize
         rows={2}
         name={name}
@@ -19,7 +21,8 @@ const Textarea: React.SFC<ITextareaProps> = ({name, className, ...rest}) => (
             'textarea',
             className
         )}
-        {...rest}
+        value={value}
+        onChange={onChange}
     />
 )
 

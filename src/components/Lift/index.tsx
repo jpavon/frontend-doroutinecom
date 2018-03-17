@@ -3,6 +3,7 @@ import * as React from 'react'
 import { IFormatedLift, ILiftActionArgs } from 'data/lifts/types'
 
 import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
+import Input from 'components/AutoSaveForm/Input'
 import Field from 'components/Field'
 
 import './style.css'
@@ -19,12 +20,13 @@ const Lift: React.SFC<IProps> = ({lift, update}) => (
             update={update}
             render={({values}: IAutoSaveFormState) => (
                 <div className="lift-form">
-                    <Field
-                        label="Name"
-                        id="name"
-                        name="name"
-                        placeholder="Type the lift name"
-                    />
+                    <Field label="Name" id="name">
+                        <Input
+                            id="name"
+                            name="name"
+                            placeholder="Type the lift name"
+                        />
+                    </Field>
                 </div>
             )}
         />

@@ -4,11 +4,6 @@ import { debounce, isEqual } from 'lodash'
 import { serverDateFormat } from 'utils/date'
 import { Moment } from 'moment'
 
-interface IDate {
-    name: string
-    moment: Moment
-}
-
 interface IValues {
     id: number
     // tslint:disable-next-line
@@ -24,9 +19,24 @@ interface IAutoSaveFormProps {
 
 export interface IAutoSaveFormState {
     values: IValues
-    errors: object
+    errors: {
+        [index: string]: string
+    }
     updating: string | null
-    reinitializeValues: boolean
+}
+
+interface IDate {
+    name: string
+    moment: Moment
+}
+
+export interface IAutoSaveFormContext<P = HTMLInputElement> {
+    formContext: {
+        onChange: (event: React.ChangeEvent<P> | null, date?: IDate) => void
+        values: IAutoSaveFormState['values']
+        errors: IAutoSaveFormState['errors']
+        updating: IAutoSaveFormState['updating']
+    }
 }
 
 class AutoSaveForm extends React.Component<IAutoSaveFormProps, IAutoSaveFormState> {
@@ -35,8 +45,10 @@ class AutoSaveForm extends React.Component<IAutoSaveFormProps, IAutoSaveFormStat
         formContext: PropTypes.object.isRequired
     }
 
-    getChildContext = () => ({
-        formContext : {
+    reinitializeValues: boolean
+
+    getChildContext = (): IAutoSaveFormContext => ({
+        formContext: {
             ...this.state,
             onChange: this.handleChange,
         }
@@ -49,13 +61,14 @@ class AutoSaveForm extends React.Component<IAutoSaveFormProps, IAutoSaveFormStat
             values: props.initialValues,
             errors: {},
             updating: null,
-            reinitializeValues: true
         }
+
+        this.reinitializeValues = true
     }
 
     componentWillReceiveProps(nextProps: IAutoSaveFormProps) {
         if (
-            this.state.reinitializeValues &&
+            this.reinitializeValues &&
             !isEqual(this.props.initialValues, nextProps.initialValues)
         ) {
             this.initialize(nextProps.initialValues)
@@ -83,7 +96,6 @@ class AutoSaveForm extends React.Component<IAutoSaveFormProps, IAutoSaveFormStat
         }
 
         this.setState((prevState) => ({
-            reinitializeValues: false,
             values: {
                 ...prevState.values,
                 [name]: value
@@ -98,6 +110,8 @@ class AutoSaveForm extends React.Component<IAutoSaveFormProps, IAutoSaveFormStat
     }
 
     update = (id: number, name: string, value: string | boolean) => {
+
+        this.reinitializeValues = false
 
         new Promise((resolve, reject) => {
             this.props.update(id, { [name]: value }, resolve, reject)
@@ -117,9 +131,7 @@ class AutoSaveForm extends React.Component<IAutoSaveFormProps, IAutoSaveFormStat
                 errors: error ? error.errors : {},
             })
         }).finally(() => {
-            this.setState({
-                reinitializeValues: true
-            })
+            this.reinitializeValues = true
         })
     }
 

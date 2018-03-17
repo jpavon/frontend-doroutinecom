@@ -2,7 +2,7 @@ const faker = require('faker')
 
 module.exports = {
     globals: {
-        TIMEOUT: 8000,
+        TIMEOUT: 10000,
         USER: {
             name: '_T_' + faker.name.firstName(),
             email: '_T_' + faker.internet.email(),

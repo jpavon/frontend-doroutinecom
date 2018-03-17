@@ -1,28 +1,11 @@
 import * as React from 'react'
 import * as PropTypes from 'prop-types'
 
+import { IAutoSaveFormContext } from 'components/AutoSaveForm'
+
 import Alert from 'components/Form/Alert'
-import UncontrolledTextarea from 'components/Form/Textarea'
+import UncontrolledTextarea, { ITextareaProps } from 'components/Form/Textarea'
 import Saving from 'components/Saving'
-
-interface ITextareaProps {
-    name: string
-
-    // ...rest
-    // tslint:disable-next-line
-    [key: string]: any
-}
-
-interface ITextareaContext {
-    formContext: {
-        onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
-        values: object
-        errors: {
-            [index: string]: string
-        }
-        updating: string | null
-    }
-}
 
 class Textarea extends React.Component<ITextareaProps> {
 
@@ -30,7 +13,7 @@ class Textarea extends React.Component<ITextareaProps> {
         formContext: PropTypes.object.isRequired
     }
 
-    context: ITextareaContext
+    context: IAutoSaveFormContext<HTMLTextAreaElement>
 
     render() {
 

@@ -35,16 +35,18 @@ const Set: React.SFC<ISetProps> = ({index, set, update, remove, isDeleting, isRe
                 </div>
                 <div className="set-inner-item">
                     <Input
+                        id="reps"
                         type="number"
                         name="reps"
-                        placeholder={(previousSet && previousSet.reps) ? previousSet.reps : 'Reps'}
+                        placeholder={(previousSet && previousSet.reps) ? '' + previousSet.reps : 'Reps'}
                     />
                 </div>
                 <div className="set-inner-item">
                     <Input
+                        id="weight"
                         type="number"
                         name="weight"
-                        placeholder={(previousSet && previousSet.weight) ? previousSet.weight : 'Weight'}
+                        placeholder={(previousSet && previousSet.weight) ? '' + previousSet.weight : 'Weight'}
                     />
                 </div>
                 <div className="set-inner-item set-action">

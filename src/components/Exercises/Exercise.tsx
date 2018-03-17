@@ -32,6 +32,7 @@ const Exercise: React.SFC<IProps> = ({
             render={({values}: IAutoSaveFormState) => (
                 <div className="exercise-lift">
                     <Select
+                        id="liftId"
                         name="liftId"
                         options={lifts}
                         defaultOptionMessage="Select a lift"

@@ -3,6 +3,8 @@ import * as React from 'react'
 import { IFormatedRoutine, IRoutineActionArgs } from 'data/routines/types'
 
 import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
+import Input from 'components/AutoSaveForm/Input'
+import Textarea from 'components/AutoSaveForm/Textarea'
 import Field from 'components/Field'
 
 import './style.css'
@@ -19,12 +21,13 @@ const Routine: React.SFC<IRoutineProps> = ({children, routine, update}) => (
                 initialValues={routine}
                 update={update}
                 render={({values}: IAutoSaveFormState) => (
-                    <Field
-                        label="Name"
-                        id={`name${values.id}`}
-                        name="name"
-                        placeholder="Type your routine name"
-                    />
+                    <Field label="Name" id={`name${values.id}`}>
+                        <Input
+                            id={`name${values.id}`}
+                            name="name"
+                            placeholder="Type your routine name"
+                        />
+                    </Field>
                 )}
             />
         </div>
@@ -34,13 +37,13 @@ const Routine: React.SFC<IRoutineProps> = ({children, routine, update}) => (
                 initialValues={routine}
                 update={update}
                 render={({values}: IAutoSaveFormState) => (
-                    <Field
-                        component="textarea"
-                        label="Additional Notes"
-                        id={`notes${values.id}`}
-                        name="notes"
-                        placeholder="Type any extra exercises or annotations"
-                    />
+                    <Field label="Additional Notes" id={`notes${values.id}`}>
+                        <Textarea
+                            id={`notes${values.id}`}
+                            name="notes"
+                            placeholder="Type any extra exercises or annotations"
+                        />
+                    </Field>
                 )}
             />
         </div>
