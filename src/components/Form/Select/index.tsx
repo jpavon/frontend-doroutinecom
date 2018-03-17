@@ -3,9 +3,9 @@ import * as classNames from 'classnames'
 
 import './style.css'
 
-interface IOption {
-    id: string
-    name: string
+export interface IOption {
+    id: number | string
+    name: string | null
 }
 
 interface ISelectProps {
@@ -13,10 +13,11 @@ interface ISelectProps {
     value?: string
     name: string
     options: IOption[]
-    className: string
-    defaultOptionMessage: string
-    noOptionsMessage: string
-    inputRef: () => void
+    className?: string
+    defaultOptionMessage?: string
+    noOptionsMessage?: string
+    inputRef?: () => void
+    onChange?: (event: React.SyntheticEvent<HTMLSelectElement>) => void
 }
 
 const Select: React.SFC<ISelectProps> = (props) => {

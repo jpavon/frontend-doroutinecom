@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { IFormatedWorkout, IWorkoutActionArgs } from 'data/workouts/types'
 
-import AutoSaveForm from 'components/AutoSaveForm'
+import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
 import Field from 'components/Field'
 import Button from 'components/Button'
 
@@ -11,10 +11,6 @@ import './style.css'
 interface IWorkoutProps {
     workout: IFormatedWorkout
     update: IWorkoutActionArgs['put']
-}
-
-interface IForm {
-    values: IFormatedWorkout
 }
 
 const Workout: React.SFC<IWorkoutProps> = ({children, workout, update}) => (
@@ -32,7 +28,7 @@ const Workout: React.SFC<IWorkoutProps> = ({children, workout, update}) => (
             <AutoSaveForm
                 initialValues={workout}
                 update={update}
-                render={({values}: IForm) => (
+                render={({values}: IAutoSaveFormState) => (
                     values.completedAt &&
                         <div className="workout-dates">
                             <Field
@@ -58,7 +54,7 @@ const Workout: React.SFC<IWorkoutProps> = ({children, workout, update}) => (
             <AutoSaveForm
                 initialValues={workout}
                 update={update}
-                render={({values}: IForm) => (
+                render={({values}: IAutoSaveFormState) => (
                     <Field
                         component="textarea"
                         label="Additional Notes"

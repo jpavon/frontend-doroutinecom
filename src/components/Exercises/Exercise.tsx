@@ -3,7 +3,7 @@ import * as React from 'react'
 import { IFormatedExercise, IExerciseActionArgs } from 'data/exercises/types'
 import { IFormatedLift } from 'data/lifts/types'
 
-import AutoSaveForm from 'components/AutoSaveForm'
+import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
 import Button from 'components/Button'
 import Select from 'components/AutoSaveForm/Select'
 
@@ -14,10 +14,6 @@ interface IProps {
     remove: IExerciseActionArgs['delete']
     isDeleting: boolean
     isRemoveButtonsVisible: boolean
-}
-
-interface IForm {
-    values: IFormatedExercise
 }
 
 const Exercise: React.SFC<IProps> = ({
@@ -33,11 +29,9 @@ const Exercise: React.SFC<IProps> = ({
         <AutoSaveForm
             update={update}
             initialValues={exercise}
-            render={({values}: IForm) => (
+            render={({values}: IAutoSaveFormState) => (
                 <div className="exercise-lift">
                     <Select
-                        label="Lift"
-                        id="liftId"
                         name="liftId"
                         options={lifts}
                         defaultOptionMessage="Select a lift"

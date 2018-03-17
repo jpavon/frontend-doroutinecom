@@ -3,7 +3,7 @@ import * as classNames from 'classnames'
 
 import { IFormatedSet, ISetActionArgs } from 'data/sets/types'
 
-import AutoSaveForm from 'components/AutoSaveForm'
+import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
 import Button from 'components/Button'
 import Checkbox from 'components/AutoSaveForm/Checkbox'
@@ -19,15 +19,11 @@ interface ISetProps {
     previousSet: IFormatedSet | null
 }
 
-interface IForm {
-    values: IFormatedSet
-}
-
 const Set: React.SFC<ISetProps> = ({index, set, update, remove, isDeleting, isRemoveButtonsVisible, previousSet}) => (
     <AutoSaveForm
         initialValues={set}
         update={update}
-        render={({values}: IForm) => (
+        render={({values}: IAutoSaveFormState) => (
             <div
                 className={classNames(
                     'set-inner',

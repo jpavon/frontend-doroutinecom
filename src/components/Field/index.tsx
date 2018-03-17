@@ -1,4 +1,6 @@
-import React from 'react'
+import * as React from 'react'
+
+import { IOption } from 'components/Form/Select'
 
 import Label from 'components/Form/Label'
 import Input from 'components/AutoSaveForm/Input'
@@ -10,13 +12,24 @@ import UncontrolledInput from 'components/Form/Input'
 
 import './style.css'
 
-const Field = ({id, label, component = 'input', uncontrolled = false, ...rest}) => {
+interface IFieldProps {
+    id: string
+    label: string
+    component?: string
+    uncontrolled?: boolean
 
-    let Component
+    // rest
+    type?: string
+    name?: string
+    placeholder?: string
+    inputRef?: (ref: HTMLInputElement) => void
+    options?: IOption[]
+}
 
-    if (component === 'input') {
-        Component = Input
-    }
+const Field: React.SFC<IFieldProps> = ({id, label, component, uncontrolled = false, ...rest}) => {
+
+    // tslint:disable-next-line
+    let Component: React.ComponentClass<any> | React.SFC<any> = Input
 
     if (component === 'select') {
         Component = Select
@@ -40,7 +53,7 @@ const Field = ({id, label, component = 'input', uncontrolled = false, ...rest}) 
 
     return (
         <div className="field">
-            <Label htmlFor={id}>{label}</Label>
+            <Label htmlFor={'' + id}>{label}</Label>
             <Component
                 id={id}
                 {...rest}

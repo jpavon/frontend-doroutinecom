@@ -1,16 +1,35 @@
-import { Component } from 'react'
-import PropTypes from 'prop-types'
-import debounce from 'lodash/debounce'
+import * as React from 'react'
+import * as PropTypes from 'prop-types'
+import { debounce, isEqual } from 'lodash'
 import { serverDateFormat } from 'utils/date'
-import isEqual from 'lodash/isEqual'
+import { Moment } from 'moment'
 
-class AutoSaveForm extends Component {
+interface IDate {
+    name: string
+    moment: Moment
+}
 
-    static propTypes = {
-        initialValues: PropTypes.object.isRequired,
-        update: PropTypes.func.isRequired,
-        render: PropTypes.func.isRequired
-    }
+interface IValues {
+    id: number
+    // tslint:disable-next-line
+    [index: string]: any
+}
+
+interface IAutoSaveFormProps {
+    initialValues: IValues
+    // tslint:disable-next-line
+    update: (id: number, data: { [index: string]: any }, resolve?: () => void, reject?: () => void) => void
+    render: (state: IAutoSaveFormState) => React.ReactNode
+}
+
+export interface IAutoSaveFormState {
+    values: IValues
+    errors: object
+    updating: string | null
+    reinitializeValues: boolean
+}
+
+class AutoSaveForm extends React.Component<IAutoSaveFormProps, IAutoSaveFormState> {
 
     static childContextTypes = {
         formContext: PropTypes.object.isRequired
@@ -23,7 +42,7 @@ class AutoSaveForm extends Component {
         }
     })
 
-    constructor(props) {
+    constructor(props: IAutoSaveFormProps) {
         super(props)
 
         this.state = {
@@ -34,7 +53,7 @@ class AutoSaveForm extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps: IAutoSaveFormProps) {
         if (
             this.state.reinitializeValues &&
             !isEqual(this.props.initialValues, nextProps.initialValues)
@@ -43,23 +62,24 @@ class AutoSaveForm extends Component {
         }
     }
 
-    initialize = (values) => {
+    initialize = (values: IValues) => {
         this.setState({
             values
         })
     }
 
-    handleChange = (event, date) => {
-        let name
-        let value
+    handleChange = (event: React.ChangeEvent<HTMLInputElement>, date?: IDate) => {
+        let name: string
+        let value: string | boolean
 
         if (event) {
             const target = event.target
             name = event.target.name
             value = target.type === 'checkbox' ? target.checked : target.value
         } else {
-            name = date.name
-            value = date.moment.format(serverDateFormat)
+            // change this, find better way
+            name = date ? date.name : ''
+            value = date ? date.moment.format(serverDateFormat) : ''
         }
 
         this.setState((prevState) => ({
@@ -70,20 +90,15 @@ class AutoSaveForm extends Component {
             }
         }))
 
-        const args = [this.state.values.id, name, value]
-
         if (event && (event.target.type === 'select' || event.target.type === 'checkbox')) {
-            this.update(...args)
+            this.update(this.state.values.id, name, value)
         } else {
-            this.debounceUpdate(...args)
+            this.debounceUpdate(this.state.values.id, name, value)
         }
     }
 
-    debounceUpdate = debounce((...args) => {
-        this.update(...args)
-    }, 300)
+    update = (id: number, name: string, value: string | boolean) => {
 
-    update = (id, name, value) => {
         new Promise((resolve, reject) => {
             this.props.update(id, { [name]: value }, resolve, reject)
         }).then((payload) => {
@@ -121,6 +136,9 @@ class AutoSaveForm extends Component {
         //         }, 500)()
         //     })
     }
+
+    // tslint:disable-next-line
+    debounceUpdate = debounce(this.update, 300)
 
     render() {
         return this.props.render(this.state)

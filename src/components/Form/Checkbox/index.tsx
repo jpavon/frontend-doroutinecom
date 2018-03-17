@@ -6,17 +6,21 @@ const tickIcon = require('media/tick.svg')
 import './style.css'
 
 interface ICheckboxProps {
+    id: string
     name: string
-    checked?: boolean
+    checked: boolean
     className?: string
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const Checkbox: React.SFC<ICheckboxProps> = (props) => {
 
     const {
+        id,
         name,
         className,
-        ...rest
+        checked,
+        onChange
     } = props
 
     return (
@@ -24,19 +28,21 @@ const Checkbox: React.SFC<ICheckboxProps> = (props) => {
             <span
                 className={classNames(
                     'checkbox-tick',
-                    props.checked && 'checkbox-tick--checked'
+                    checked && 'checkbox-tick--checked'
                 )}
             >
-                {props.checked && <img src={tickIcon} alt="Checkbox" />}
+                {checked && <img src={tickIcon} alt="Checkbox" />}
             </span>
             <input
+                id={id}
                 name={name}
+                checked={checked}
                 type="checkbox"
                 className={classNames(
                     'checkbox',
                     className
                 )}
-                {...rest}
+                onChange={onChange}
             />
         </>
     )

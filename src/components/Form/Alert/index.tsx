@@ -3,7 +3,7 @@ import * as React from 'react'
 import './style.css'
 
 interface IAlertProps {
-    message: string
+    message: string | null
 }
 
 const Alert: React.SFC<IAlertProps> = ({message}) => {

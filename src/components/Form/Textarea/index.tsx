@@ -6,7 +6,9 @@ import './style.css'
 
 interface ITextareaProps {
     name: string
-    className: string
+    className?: string
+    value: string
+    onChange: (event: React.SyntheticEvent<HTMLTextAreaElement>) => void
 }
 
 const Textarea: React.SFC<ITextareaProps> = ({name, className, ...rest}) => (

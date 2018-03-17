@@ -5,11 +5,14 @@ import './style.css'
 
 interface IInputProps {
     name: string
-    type: string
-    className: string
+    value?: string
+    id?: string
+    type?: string
+    className?: string
     align?: 'right' | 'center'
     size?: 'large'
-    inputRef: () => void
+    inputRef?: () => void
+    onChange: (event: React.SyntheticEvent<HTMLInputElement>) => void
 }
 
 const Input: React.SFC<IInputProps> = (props) => {
