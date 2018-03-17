@@ -121,20 +121,6 @@ class AutoSaveForm extends React.Component<IAutoSaveFormProps, IAutoSaveFormStat
                 reinitializeValues: true
             })
         })
-        // this.props.update(id, { [name]: value })
-        //     .then((resp) => {
-        //         this.setState({
-        //             errors: resp.error ? resp.error.errors : {},
-        //             updating: resp.error ? null : name,
-        //             reinitializeValues: true
-        //         })
-
-        //         debounce(() => {
-        //             this.setState({
-        //                 updating: null,
-        //             })
-        //         }, 500)()
-        //     })
     }
 
     // tslint:disable-next-line
