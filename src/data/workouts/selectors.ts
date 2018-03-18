@@ -12,7 +12,7 @@ const formatWorkout = (workout: IWorkout, routines: IRoutine[]): IFormatedWorkou
     const routine = routines && routines.find((routine) => (routine.id === workout.routineId))
     return {
         ...workout,
-        displayName: routine ? (routine.name || workout.name) : null,
+        displayName: routine ? routine.name : workout.name,
         duration: workout.completedAt && formatDuration(workout.startedAt, workout.completedAt),
         day: workout.completedAt && moment(workout.completedAt).format(longDateFormat),
         routine: routine ? routine : null
