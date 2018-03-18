@@ -93,7 +93,7 @@ class RoutineContainer extends React.Component<IProps> {
                             onClick: this.handleRemove,
                             danger: true,
                             disabled: this.props.isDeleting,
-                            className: 'routine-button-remove'
+                            className: 'routine-button-delete'
                         }}
                     />
                 }

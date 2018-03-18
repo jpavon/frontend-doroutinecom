@@ -153,7 +153,7 @@ describe('lift deletion', async () => {
         page.on('dialog', async (dialog) => {
             await dialog.accept()
         })
-        await page.click('.lift-button-remove')
+        await page.click('.lift-button-delete')
         liftsLength--
         await page.waitForSelector('.lifts')
         await expectElementToBeOfLength(page, '.lifts-lift', liftsLength)
@@ -376,7 +376,7 @@ describe('workout deletion', async () => {
         await page.waitForSelector('.workouts-workout')
         await page.click('.workouts-workout')
         await page.waitForSelector('.workout')
-        await page.click('.workout-button-remove')
+        await page.click('.workout-button-delete')
         workoutsLength--
         await page.waitForSelector('.workouts')
         await expectElementToBeOfLength(page, '.workouts-workout', workoutsLength)
@@ -390,7 +390,7 @@ describe('routine deletion', async () => {
         await page.click('.routine-button-create')
         routinesLength++
         await page.waitForSelector('.routine')
-        await page.click('.routine-button-remove')
+        await page.click('.routine-button-delete')
         routinesLength--
         await page.waitForSelector('.routines')
         await expectElementToBeOfLength(page, '.routines-routine', routinesLength)

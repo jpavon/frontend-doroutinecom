@@ -66,7 +66,7 @@ const Set: React.SFC<ISetProps> = ({index, set, update, remove, isDeleting, isRe
                             danger
                             onClick={() => remove(set.id)}
                             disabled={isDeleting}
-                            className="set-button-remove"
+                            className="set-button-delete"
                         />
                     }
                 </div>

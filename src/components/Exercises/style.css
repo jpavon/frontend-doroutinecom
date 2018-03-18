@@ -13,11 +13,11 @@
   .exercise:last-child {
     margin-bottom: 0; }
 
-.exercise-button-remove {
+.exercise-button-delete {
   position: absolute;
   top: 12px;
   right: 0; }
-  .exercise-button-remove button {
+  .exercise-button-delete button {
     padding: 9px 18px; }
 
 .exercise-lift {

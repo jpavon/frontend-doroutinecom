@@ -143,7 +143,7 @@ class WorkoutContainer extends React.Component<IProps> {
                         onClick: this.handleRemove,
                         danger: true,
                         disabled: this.props.isDeleting,
-                        className: 'workout-button-remove'
+                        className: 'workout-button-delete'
                     }}
                 />
             </>

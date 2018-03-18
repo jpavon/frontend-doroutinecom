@@ -101,7 +101,7 @@ class LiftContainer extends React.Component<IProps> {
                         onClick: this.handleRemove,
                         danger: true,
                         disabled: this.props.isDeleting,
-                        className: 'lift-button-remove'
+                        className: 'lift-button-delete'
                     }}
                 />
             </>
