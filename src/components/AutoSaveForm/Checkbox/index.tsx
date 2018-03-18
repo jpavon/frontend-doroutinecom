@@ -16,7 +16,6 @@ class Checkbox extends React.Component<ICheckboxProps> {
 
     render() {
         const {
-            id,
             name,
             ...rest
         } = this.props
@@ -26,7 +25,6 @@ class Checkbox extends React.Component<ICheckboxProps> {
         return (
             <>
                 <UncontrolledCheckbox
-                    id={id}
                     name={name}
                     checked={values[name]}
                     onChange={onChange}

@@ -23,9 +23,7 @@ class Select extends React.Component<IAutoSaveFormSelectProps> {
 
         const {
             name,
-            options,
             noOptionsMessage,
-            defaultOptionMessage,
             ...rest
         } = this.props
 
@@ -37,13 +35,11 @@ class Select extends React.Component<IAutoSaveFormSelectProps> {
                 <UncontrolledSelect
                     name={name}
                     value={values[name] || ''}
-                    options={options || []}
                     onChange={onChange}
-                    defaultOptionMessage={defaultOptionMessage}
                     {...rest}
                 />
                 <Alert
-                    message={(options.length < 1 && noOptionsMessage) ? noOptionsMessage : null}
+                    message={(this.props.options.length < 1 && noOptionsMessage) ? noOptionsMessage : null}
                 />
                 <Alert
                     message={errors[name]}

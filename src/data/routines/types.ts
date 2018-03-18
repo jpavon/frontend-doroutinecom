@@ -1,4 +1,4 @@
-import { IStateMap, IActionMap, IDataRequestMap } from 'data/types'
+import { IStateMap, IActionMap } from 'data/types'
 
 export interface IRoutine {
     id: number
@@ -21,7 +21,7 @@ export type IRoutinesState = IStateMap<IRoutine>
 
 export type IRoutinesAction = IActionMap<IRoutine>
 
-export type IRoutineRequestData = IDataRequestMap<IRoutine>
+export type IRoutineRequestData = Partial<IRoutine>
 
 export interface IRoutineActionArgs {
     post: (data?: IRoutineRequestData) => void

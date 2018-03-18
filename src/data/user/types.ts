@@ -1,4 +1,4 @@
-import { IFetchStatusType, IApiFailure, IAction, IDataRequestMap } from 'data/types'
+import { IFetchStatusType, IApiFailure, IAction } from 'data/types'
 
 export interface IUser {
     id: number
@@ -25,7 +25,7 @@ export interface IUserState {
     error: IApiFailure | null
 }
 
-export type IUserRequestData = IDataRequestMap<IUser>
+export type IUserRequestData = Partial<IUser>
 
 export interface IUserActionArgs {
     put: (id: number, data: IUserRequestData, resolve: () => void, reject: () => void) => void

@@ -59,8 +59,6 @@ export interface IEntitiesStatus {
     [index: number]: IEntitiesStatusType
 }
 
-export type IDataRequestMap<T> = { [P in keyof T]?: T[P] }
-
 export interface IStateMap<T> {
     fetchStatus: IFetchStatusType
     entitiesStatus: IEntitiesStatus

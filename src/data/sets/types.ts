@@ -1,6 +1,6 @@
 import { Moment } from 'moment'
 
-import { IStateMap, IActionMap, IDataRequestMap } from 'data/types'
+import { IStateMap, IActionMap } from 'data/types'
 
 export interface ISet {
     id: number
@@ -31,7 +31,7 @@ export interface ITopSet {
     completedAt: string
 }
 
-export type ISetRequestData = IDataRequestMap<ISet>
+export type ISetRequestData = Partial<ISet>
 
 export interface ISetActionArgs {
     post: (data: ISetRequestData) => void

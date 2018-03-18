@@ -1,4 +1,4 @@
-import { IStateMap, IActionMap, IDataRequestMap } from 'data/types'
+import { IStateMap, IActionMap } from 'data/types'
 
 export interface ILift {
     id: number
@@ -15,7 +15,7 @@ export type ILiftsState = IStateMap<ILift>
 
 export type ILiftsAction = IActionMap<ILift>
 
-export type ILiftRequestData = IDataRequestMap<ILift>
+export type ILiftRequestData = Partial<ILift>
 
 export interface ILiftActionArgs {
     post: (data?: ILiftRequestData) => void
