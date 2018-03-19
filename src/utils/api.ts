@@ -3,8 +3,6 @@ import { camelizeKeys, decamelizeKeys } from 'humps'
 import * as store from 'store'
 
 import env from 'env'
-// import { unauthUser } from 'data/user/actions'
-// import { setServerError, setOffline } from 'data/ui/actions'
 
 const api = (method: string, endpoint: string, data: object = {}): AxiosPromise => {
     return axios.request({
@@ -12,8 +10,7 @@ const api = (method: string, endpoint: string, data: object = {}): AxiosPromise 
         method: method,
         baseURL: `${env.API_URL}/`,
         headers: {
-            'Authorization':
-            `Bearer ${store.get('token')}`
+            'Authorization': `Bearer ${store.get('token')}`
         },
         data: data && decamelizeKeys(data),
         /* tslint:disable:no-any */
@@ -24,15 +21,9 @@ const api = (method: string, endpoint: string, data: object = {}): AxiosPromise 
     }).then((response: AxiosResponse) => {
         return Promise.resolve(response.data)
     }).catch((error: AxiosError) => {
-
-        // if (err.response.status > 500) {
-        //     store.dispatch(setServerError())
-        // }
-
         if (error.response && error.response.data && error.response.data.errors) {
             return Promise.reject(error.response.data)
         }
-
         if (error.request) {
             return Promise.reject(error.response && error.response.data)
         }
