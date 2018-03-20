@@ -3,7 +3,8 @@
   padding-top: 2rem;
   padding-bottom: 6rem;
   text-align: center;
-  background-color: #ececec; }
+  background-color: rgba(76, 144, 194, 0.1);
+  border-top: 3px solid rgba(76, 144, 194, 0.1); }
   .app .footer {
     background-color: transparent;
     padding-top: 0; }
@@ -11,13 +12,16 @@
 .footer-inner {
   padding: 18px; }
 
-.footer-item, .footer-link {
-  display: inline-block;
-  text-decoration: none;
+.footer-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
   margin-bottom: 1rem;
   font-size: .8rem; }
-  .footer-item:nth-child(1), .footer-link:nth-child(1) {
-    margin-left: 0; }
 
-.footer-item {
-  color: #888; }
+.button.footer-link {
+  display: inline-flex;
+  font-size: .8rem;
+  margin-left: 9px;
+  padding: 0; }

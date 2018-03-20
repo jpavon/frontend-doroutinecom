@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="25px" height="16px" viewBox="0 0 25 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="14px" viewBox="0 0 24 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
     <title>logo</title>
     <desc>Created with Sketch.</desc>
@@ -7,11 +7,11 @@
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="logo">
             <g id="Group-2">
-                <polygon id="Line" fill="#989898" points="25 7 0 7 0 8 25 8"></polygon>
-                <polygon id="Line-Copy" fill="#7F7F7F" points="25 8 0 8 0 9 25 9"></polygon>
-                <polygon id="Line-Copy-14" fill="#D05252" points="11 0 11 16 14 16 14 0"></polygon>
-                <polygon id="Line-Copy-15" fill="#D05252" points="3 0 3 16 6 16 6 0"></polygon>
-                <polygon id="Line-Copy-16" fill="#D05252" points="7 0 7 16 10 16 10 0"></polygon>
+                <polygon id="Line" fill="#989898" points="24 6 0 6 0 7 24 7"></polygon>
+                <polygon id="Line-Copy" fill="#7F7F7F" points="24 7 0 7 0 8 24 8"></polygon>
+                <polygon id="Line-Copy-14" fill="#D05252" points="11 0 11 14 14 14 14 0"></polygon>
+                <polygon id="Line-Copy-15" fill="#D05252" points="3 0 3 14 6 14 6 0"></polygon>
+                <polygon id="Line-Copy-16" fill="#D05252" points="7 0 7 14 10 14 10 0"></polygon>
             </g>
         </g>
     </g>

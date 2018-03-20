@@ -5,7 +5,8 @@
     padding-top: 2rem;
     padding-bottom: 6rem;
     text-align: center;
-    background-color: darken($color-background, 5%);
+    background-color: rgba($color-primary, .1);
+    border-top: 3px solid rgba($color-primary, .1);
 
     .app & {
         background-color: transparent;
@@ -17,17 +18,18 @@
     padding: $spacing;
 }
 
-    .footer-item, .footer-link {
-        display: inline-block;
-        text-decoration: none;
+    .footer-item {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
         margin-bottom: 1rem;
         font-size: .8rem;
-
-        &:nth-child(1) {
-            margin-left: 0;
-        }
     }
 
-    .footer-item {
-        color: #888;
+    .button.footer-link {
+        display: inline-flex;
+        font-size: .8rem;
+        margin-left: $spacing/2;
+        padding: 0;
     }
