@@ -71,6 +71,7 @@ export const putSuccess = <T extends Model>(state: IStateMap<T>, payload: T): IS
         return Object.assign({}, currentItem, payload)
 
         // spread bug https://github.com/Microsoft/TypeScript/issues/10727
+        // https://github.com/Microsoft/TypeScript/pull/13288#issuecomment-367396818
         // return {
         //     ...currentItem,
         //     ...payload

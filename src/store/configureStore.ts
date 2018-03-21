@@ -3,6 +3,8 @@ import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 
+import { IRootState } from 'data/types'
+
 import rootReducer from 'utils/rootReducer'
 import rootSaga from 'data/rootSaga'
 
@@ -16,7 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
     middleware.push(logger)
 }
 
-const configureStore = (preloadedState: object = {}) => {
+const configureStore = (preloadedState?: IRootState) => {
     const store = createStore(
         rootReducer,
         preloadedState,
