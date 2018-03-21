@@ -2,11 +2,11 @@
 
 .footer {
     position: relative;
-    padding-top: 2rem;
+    padding-top: 1rem;
     padding-bottom: 6rem;
     text-align: center;
-    background-color: rgba($color-primary, .1);
-    border-top: 3px solid rgba($color-primary, .1);
+    background-color: $color-background-light;
+    border-top: 10px solid rgba($color-font, .05);
 
     .app & {
         background-color: transparent;
