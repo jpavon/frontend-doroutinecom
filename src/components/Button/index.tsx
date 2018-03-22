@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as classNames from 'classnames'
 import { Link } from 'react-router-dom'
 
-import './style.css'
+import './style.scss'
 
 const removeIcon = require('media/x.svg')
 

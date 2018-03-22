@@ -5,7 +5,7 @@ import AnimateOnChange from 'react-animate-on-change'
 
 import { IAlert } from 'data/ui/types'
 
-import './style.css'
+import './style.scss'
 
 interface IProps extends IAlert {
     size?: string

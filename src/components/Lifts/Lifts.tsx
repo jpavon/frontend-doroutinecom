@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import './style.css'
+import './style.scss'
 
 const Lifts: React.SFC<{}> = ({children}) => (
     <div className="lifts">

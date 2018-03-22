@@ -3,7 +3,7 @@ import * as classNames from 'classnames'
 
 const tickIcon = require('media/tick.svg')
 
-import './style.css'
+import './style.scss'
 
 export interface ICheckboxProps {
     id: string

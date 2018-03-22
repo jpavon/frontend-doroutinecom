@@ -5,7 +5,7 @@ import { Moment } from 'moment'
 import moment from 'utils/moment'
 import { dateFormat, timeFormat } from 'utils/date'
 
-import './style.css'
+import './style.scss'
 
 export interface IDatetimeProps {
     id: string

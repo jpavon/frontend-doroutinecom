@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import moment from 'utils/moment'
 
-import './style.css'
+import './style.scss'
 
 interface ITimerProps {
     start: string

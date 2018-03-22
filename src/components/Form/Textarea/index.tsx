@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as classNames from 'classnames'
 import TextareaAutosize from 'react-autosize-textarea'
 
-import './style.css'
+import './style.scss'
 
 export interface ITextareaProps {
     id: string

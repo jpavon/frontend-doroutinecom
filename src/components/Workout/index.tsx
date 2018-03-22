@@ -9,7 +9,7 @@ import Textarea from 'components/AutoSaveForm/Textarea'
 import Field from 'components/Field'
 import Button from 'components/Button'
 
-import './style.css'
+import './style.scss'
 
 interface IWorkoutProps {
     workout: IFormatedWorkout

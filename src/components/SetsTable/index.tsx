@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { ITopSet } from 'data/sets/types'
 
-import './style.css'
+import './style.scss'
 
 interface ILiftSetsTable {
     sets: ITopSet[]

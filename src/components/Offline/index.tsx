@@ -4,7 +4,7 @@ import Button from 'components/Button'
 
 const logo = require('media/logo.svg')
 
-import './style.css'
+import './style.scss'
 
 const Offline: React.SFC<{}> = () => (
     <div className="offline">

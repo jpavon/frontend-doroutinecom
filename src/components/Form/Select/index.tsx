@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 
-import './style.css'
+import './style.scss'
 
 interface IOption {
     id: number | string

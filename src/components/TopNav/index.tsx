@@ -3,7 +3,7 @@ import * as classNames from 'classnames'
 
 import Button, { IButtonProps } from 'components/Button'
 
-import './style.css'
+import './style.scss'
 
 const arrowLeftIcon = require('media/arrow-left.svg')
 

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 
-import './style.css'
+import './style.scss'
 
 export interface IInputProps {
     id: string

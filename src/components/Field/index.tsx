@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import Label from 'components/Form/Label'
 
-import './style.css'
+import './style.scss'
 
 interface IFieldProps {
     id: string

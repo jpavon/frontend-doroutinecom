@@ -3,7 +3,7 @@ import * as Chart from 'chart.js'
 
 import { IGraph } from 'data/graphs/types'
 
-import './style.css'
+import './style.scss'
 
 interface IGraphProps {
     type: 'line' | 'bar'

@@ -6,7 +6,7 @@ import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
 import Field from 'components/Field'
 
-import './style.css'
+import './style.scss'
 
 interface IProps {
     lift: IFormatedLift

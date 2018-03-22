@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import Button from 'components/Button'
 
-import './style.css'
+import './style.scss'
 
 interface IProps {
     handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void

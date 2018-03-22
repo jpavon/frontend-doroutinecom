@@ -6,7 +6,7 @@ import { ISetActionArgs } from 'data/sets/types'
 import Transition, { ITransitionProps } from 'components/Transition'
 import Button from 'components/Button'
 
-import './style.css'
+import './style.scss'
 
 interface ISetsProps {
     children: ITransitionProps['children']

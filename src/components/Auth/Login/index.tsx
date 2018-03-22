@@ -7,7 +7,7 @@ import Input from 'components/Form/Input'
 import Field from 'components/Field'
 import Auth from 'components/Auth'
 
-import './style.css'
+import './style.scss'
 
 interface IProps {
     handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void

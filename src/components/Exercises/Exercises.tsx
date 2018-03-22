@@ -3,7 +3,7 @@ import * as React from 'react'
 import Transition, { ITransitionProps } from 'components/Transition'
 import Button from 'components/Button'
 
-import './style.css'
+import './style.scss'
 
 interface IProps {
     children: ITransitionProps['children']

@@ -8,7 +8,7 @@ import Select from 'components/AutoSaveForm/Select'
 import Input from 'components/AutoSaveForm/Input'
 import TopNav from 'components/TopNav'
 
-import './style.css'
+import './style.scss'
 
 interface IProps {
     user: IFormatedUser

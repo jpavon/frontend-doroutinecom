@@ -2,7 +2,7 @@ import * as React from 'react'
 
 const logoFull = require('media/logo-full.svg')
 
-import './style.css'
+import './style.scss'
 
 const Footer: React.SFC<{}> = () => (
     <footer className="footer">

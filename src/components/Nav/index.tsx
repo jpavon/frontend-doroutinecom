@@ -9,7 +9,7 @@ const routinesIcon = require('media/routines.svg')
 const liftsIcon = require('media/lifts.svg')
 const workoutsIcon = require('media/workouts.svg')
 
-import './style.css'
+import './style.scss'
 
 const isProfileActive = (match: RouteComponentProps<{}>['match'], location: RouteComponentProps<{}>['location']) => {
     if (match) { return true }

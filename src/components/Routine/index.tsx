@@ -7,7 +7,7 @@ import Input from 'components/AutoSaveForm/Input'
 import Textarea from 'components/AutoSaveForm/Textarea'
 import Field from 'components/Field'
 
-import './style.css'
+import './style.scss'
 
 interface IRoutineProps {
     routine: IFormatedRoutine

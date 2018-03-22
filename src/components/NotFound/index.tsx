@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import Helmet from 'react-helmet'
 
-import './style.css'
+import './style.scss'
 
 const NotFound: React.SFC<{}> = () => (
     <>

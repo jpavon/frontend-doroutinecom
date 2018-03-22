@@ -5,7 +5,7 @@ import Button from 'components/Button'
 const tickIcon = require('media/tick.svg')
 const x = require('media/x.svg')
 
-import './style.css'
+import './style.scss'
 
 interface IProps {
     hideStartMessage: () => void

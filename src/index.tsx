@@ -10,7 +10,7 @@ import ScrollToTop from 'components/ScrollToTop'
 
 import App from 'App'
 
-import 'styles/global.css'
+import 'styles/global.scss'
 
 const store = configureStore()
 

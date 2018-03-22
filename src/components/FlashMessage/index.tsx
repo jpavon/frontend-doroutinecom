@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Loading from 'components/Loading'
 
-import './style.css'
+import './style.scss'
 
 interface IFlashMessageProps {
     visible: boolean
