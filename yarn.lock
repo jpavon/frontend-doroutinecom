@@ -6773,9 +6773,9 @@ react-router@^4.2.0:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
-"react-scripts-ts@https://github.com/jpavon/react-scripts-ts":
-  version "2.13.0"
-  resolved "https://github.com/jpavon/react-scripts-ts#e604a196d9e42f2f31ec23ca8e2ed40b2d4bf0e6"
+react-scripts-ts@^2.14.0:
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/react-scripts-ts/-/react-scripts-ts-2.14.0.tgz#efde0e970f4efb36b49dbaa907c957c281048d9b"
   dependencies:
     autoprefixer "7.1.6"
     babel-jest "^22.1.0"
