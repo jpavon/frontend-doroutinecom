@@ -6,6 +6,7 @@ import './style.scss'
 interface ILabelProps {
     htmlFor: string
     className?: string
+    title?: string
 }
 
 const Label: React.SFC<ILabelProps> = (props) => {
@@ -13,7 +14,8 @@ const Label: React.SFC<ILabelProps> = (props) => {
     const {
         children,
         className,
-        htmlFor
+        htmlFor,
+        title
     } = props
 
     return (
@@ -23,6 +25,7 @@ const Label: React.SFC<ILabelProps> = (props) => {
                 'label',
                 className
             )}
+            title={title}
         >
             {children}
         </label>

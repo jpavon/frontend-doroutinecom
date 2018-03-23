@@ -53,6 +53,7 @@ const Exercise: React.SFC<IProps> = ({
                     danger
                     onClick={() => remove(exercise.id)}
                     disabled={isDeleting}
+                    title="Delete Exercise"
                 />
             </div>
         }

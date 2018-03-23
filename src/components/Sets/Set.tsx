@@ -53,6 +53,7 @@ const Set: React.SFC<ISetProps> = ({index, set, update, remove, isDeleting, isRe
                     {!isRemoveButtonsVisible &&
                         <Label
                             htmlFor={`set-checkbox${values.id}`}
+                            title="Mark as Completed"
                         >
                             <Checkbox
                                 id={`set-checkbox${values.id}`}
@@ -67,6 +68,7 @@ const Set: React.SFC<ISetProps> = ({index, set, update, remove, isDeleting, isRe
                             onClick={() => remove(set.id)}
                             disabled={isDeleting}
                             className="set-button-delete"
+                            title="Delete Set"
                         />
                     }
                 </div>

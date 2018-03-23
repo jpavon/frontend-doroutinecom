@@ -11,6 +11,7 @@ export interface ICheckboxProps {
     checked?: boolean
     className?: string
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+    title?: string
 }
 
 const Checkbox: React.SFC<ICheckboxProps> = (props) => {

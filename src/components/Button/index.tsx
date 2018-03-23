@@ -19,6 +19,7 @@ export interface IButtonProps {
     disabled?: boolean
     // tslint:disable-next-line
     onClick?: (e: any) => void
+    title?: string
 }
 
 class Button extends React.Component<IButtonProps> {
