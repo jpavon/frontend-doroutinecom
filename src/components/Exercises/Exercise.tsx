@@ -47,7 +47,7 @@ const Exercise: React.SFC<IProps> = ({
         />
         {children}
         {isRemoveButtonsVisible &&
-            <div className="exercise-button-remove">
+            <div className="exercise-button-delete">
                 <Button
                     remove
                     danger
