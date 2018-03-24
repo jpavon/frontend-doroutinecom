@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import Button from 'components/Button'
 
-const logo = require('media/logo.svg')
+import logo from 'media/logo.svg'
 
 import './style.scss'
 

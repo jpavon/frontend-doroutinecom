@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import './style.scss'
 
-const removeIcon = require('media/x.svg')
+import removeIcon from 'media/x.svg'
 
 export interface IButtonProps {
     href?: string

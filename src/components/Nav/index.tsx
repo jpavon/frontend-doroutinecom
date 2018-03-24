@@ -3,11 +3,11 @@ import { NavLink } from 'react-router-dom'
 import * as classNames from 'classnames'
 import { RouteComponentProps } from 'react-router'
 
-const logo = require('media/logo.svg')
-const profileIcon = require('media/profile.svg')
-const routinesIcon = require('media/routines.svg')
-const liftsIcon = require('media/lifts.svg')
-const workoutsIcon = require('media/workouts.svg')
+import logo from 'media/logo.svg'
+import profileIcon from 'media/profile.svg'
+import routinesIcon from 'media/routines.svg'
+import liftsIcon from 'media/lifts.svg'
+import workoutsIcon from 'media/workouts.svg'
 
 import './style.scss'
 

@@ -2,8 +2,8 @@ import * as React from 'react'
 
 import Button from 'components/Button'
 
-const tickIcon = require('media/tick.svg')
-const x = require('media/x.svg')
+import tickIcon from 'media/tick.svg'
+import x from 'media/x.svg'
 
 import './style.scss'
 

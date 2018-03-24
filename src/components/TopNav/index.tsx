@@ -5,7 +5,7 @@ import Button, { IButtonProps } from 'components/Button'
 
 import './style.scss'
 
-const arrowLeftIcon = require('media/arrow-left.svg')
+import arrowLeftIcon from 'media/arrow-left.svg'
 
 interface IProps {
     title?: React.ReactNode

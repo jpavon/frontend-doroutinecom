@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-const logoFull = require('media/logo-full.svg')
+import logoFull from 'media/logo-full.svg'
 
 import './style.scss'
 

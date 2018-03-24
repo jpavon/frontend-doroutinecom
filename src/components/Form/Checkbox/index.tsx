@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 
-const tickIcon = require('media/tick.svg')
+import tickIcon from 'media/tick.svg'
 
 import './style.scss'
 
