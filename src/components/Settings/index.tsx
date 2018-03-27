@@ -27,8 +27,8 @@ const Settings: React.SFC<IProps> = ({user, putUser}) => (
                             id="weightMeasure"
                             name="weightMeasure"
                             options={[
-                                {id: 'kg', name: 'kg'},
-                                {id: 'lbs', name: 'lbs'},
+                                { id: 'kg', name: 'kg' },
+                                { id: 'lbs', name: 'lbs' },
                             ]}
                         />
                     </Field>
