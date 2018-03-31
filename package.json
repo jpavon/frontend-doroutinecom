@@ -7,7 +7,6 @@
     "build": "react-scripts-ts build",
     "test": "NODE_ENV=development jest",
     "test-production": "NODE_ENV=production jest",
-    "eject": "react-scripts-ts eject",
     "sync": "ansible-playbook -i ../deployment/hosts ../deployment/site.yml -t sync.app",
     "deploy": "npm-run-all -s build sync"
   },
@@ -50,8 +49,6 @@
     "moment": "^2.20.1",
     "moment-range": "^3.1.1",
     "moveto": "^1.7.1",
-    "node-sass": "^4.7.2",
-    "node-sass-chokidar": "^1.2.0",
     "normalize.css": "^8.0.0",
     "normalizr": "^3.2.4",
     "npm-run-all": "^4.1.2",
@@ -70,7 +67,7 @@
     "react-motion": "^0.5.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
-    "react-scripts-ts": "https://github.com/jpavon/react-scripts-ts#master",
+    "@jpavon/react-scripts-ts": "^0.2.3",
     "react-tabs": "^2.2.1",
     "react-textarea-autosize": "^6.0.0",
     "react-transition-group": "^2.2.1",
@@ -86,8 +83,6 @@
     "seamless-immutable": "^7.1.2",
     "store": "^2.0.12",
     "superstruct": "^0.5.0",
-    "tslint": "^5.9.1",
-    "typescript": "^2.7.2",
     "why-did-you-update": "^0.1.0"
   }
 }
