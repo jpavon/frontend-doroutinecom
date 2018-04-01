@@ -154,7 +154,7 @@ export const previouslyCompletedSetsSelector = (exerciseId: number, liftId: numb
             }
         }).sort((a, b) => {
             if (a.completedAt && b.completedAt) {
-                return +moment(b.completedAt) - +moment(a.completedAt)
+                return Number(moment(b.completedAt)) - Number(moment(a.completedAt))
             }
             return 0
         })

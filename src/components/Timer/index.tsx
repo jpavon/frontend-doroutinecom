@@ -45,7 +45,7 @@ class Timer extends React.Component<ITimerProps, ITimerState> {
     }
 
     tick = () => {
-        let delta = Math.abs(+new Date() - +this.start) / 1000
+        let delta = Math.abs(Number(new Date()) - Number(this.start)) / 1000
 
         // calculate (and subtract) whole hours
         const hours = Math.floor(delta / 3600)

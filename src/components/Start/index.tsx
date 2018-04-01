@@ -25,7 +25,9 @@ const Start: React.SFC<IProps> = ({
     !isHidden ? (
         <div className="start">
             <h2 className="start-title">
-                Getting Started - Completed {+hasWorkouts + +hasCompletedWorkouts + +hasCompletedSets}/3
+                Getting Started - Completed {
+                    Number(hasWorkouts) + Number(hasCompletedWorkouts) + Number(hasCompletedSets)
+                }/3
             </h2>
             <div className="start-list">
                 <div className="start-list-item">
