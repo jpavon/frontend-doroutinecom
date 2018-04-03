@@ -29,7 +29,7 @@ interface IAutoSaveFormChangeOptions {
     debounced: boolean
 }
 
-export interface IAutoSaveFormContext<P = HTMLInputElement> {
+export interface IAutoSaveFormContext {
     formContext: {
         onChange: (options: IAutoSaveFormChangeOptions) => void
         values: IAutoSaveFormState['values']

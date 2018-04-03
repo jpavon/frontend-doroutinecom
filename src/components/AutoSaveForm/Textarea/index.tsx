@@ -13,7 +13,7 @@ class Textarea extends React.Component<ITextareaProps> {
         formContext: PropTypes.object.isRequired
     }
 
-    context: IAutoSaveFormContext<HTMLTextAreaElement>
+    context: IAutoSaveFormContext
 
     render() {
 

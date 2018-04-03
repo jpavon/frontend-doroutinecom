@@ -17,7 +17,7 @@ class Select extends React.Component<IAutoSaveFormSelectProps> {
         formContext: PropTypes.object.isRequired
     }
 
-    context: IAutoSaveFormContext<HTMLSelectElement>
+    context: IAutoSaveFormContext
 
     render() {
 
