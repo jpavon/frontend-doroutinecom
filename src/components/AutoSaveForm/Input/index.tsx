@@ -31,7 +31,13 @@ class Input extends React.Component<IInputProps> {
                 <UncontrolledInput
                     name={name}
                     value={value}
-                    onChange={onChange}
+                    onChange={(event) => {
+                        onChange({
+                            name,
+                            value: event.target.value,
+                            debounced: true
+                        })
+                    }}
                     {...rest}
                 />
                 <Alert

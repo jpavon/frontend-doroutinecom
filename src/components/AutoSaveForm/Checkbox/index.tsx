@@ -27,7 +27,13 @@ class Checkbox extends React.Component<ICheckboxProps> {
                 <UncontrolledCheckbox
                     name={name}
                     checked={values[name]}
-                    onChange={onChange}
+                    onChange={(event) => {
+                        onChange({
+                            name,
+                            value: event.target.checked,
+                            debounced: false
+                        })
+                    }}
                     {...rest}
                 />
                 <Alert

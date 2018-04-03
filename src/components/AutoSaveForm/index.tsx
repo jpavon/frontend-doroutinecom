@@ -1,8 +1,6 @@
 import * as React from 'react'
 import * as PropTypes from 'prop-types'
 import { debounce, isEqual } from 'lodash'
-import { serverDateFormat } from 'utils/date'
-import { Moment } from 'moment'
 
 interface IValues {
     id: number
@@ -25,14 +23,15 @@ export interface IAutoSaveFormState {
     updating: string | null
 }
 
-interface IDate {
+interface IAutoSaveFormChangeOptions {
     name: string
-    moment: Moment
+    value: string | boolean
+    debounced: boolean
 }
 
 export interface IAutoSaveFormContext<P = HTMLInputElement> {
     formContext: {
-        onChange: (event: React.ChangeEvent<P> | null, date?: IDate) => void
+        onChange: (options: IAutoSaveFormChangeOptions) => void
         values: IAutoSaveFormState['values']
         errors: IAutoSaveFormState['errors']
         updating: IAutoSaveFormState['updating']
@@ -81,31 +80,19 @@ class AutoSaveForm extends React.Component<IAutoSaveFormProps, IAutoSaveFormStat
         })
     }
 
-    handleChange = (event: React.ChangeEvent<HTMLInputElement>, date?: IDate) => {
-        let name: string
-        let value: string | boolean
-
-        if (event) {
-            const target = event.target
-            name = event.target.name
-            value = target.type === 'checkbox' ? target.checked : target.value
-        } else {
-            // change this, find better way
-            name = date ? date.name : ''
-            value = date ? date.moment.format(serverDateFormat) : ''
-        }
+    handleChange = (options: IAutoSaveFormChangeOptions) => {
 
         this.setState((prevState) => ({
             values: {
                 ...prevState.values,
-                [name]: value
+                [options.name]: options.value
             }
         }))
 
-        if (event && (event.target.type === 'select' || event.target.type === 'checkbox')) {
-            this.update(this.state.values.id, name, value)
+        if (options.debounced) {
+            this.debounceUpdate(this.state.values.id, options.name, options.value)
         } else {
-            this.debounceUpdate(this.state.values.id, name, value)
+            this.update(this.state.values.id, options.name, options.value)
         }
     }
 

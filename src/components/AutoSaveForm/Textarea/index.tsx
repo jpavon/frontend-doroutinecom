@@ -30,7 +30,13 @@ class Textarea extends React.Component<ITextareaProps> {
                 <UncontrolledTextarea
                     name={name}
                     value={values[name] || ''}
-                    onChange={onChange}
+                    onChange={(event) => {
+                        onChange({
+                            name,
+                            value: event.target.value,
+                            debounced: true
+                        })
+                    }}
                     {...rest}
                 />
                 <Alert

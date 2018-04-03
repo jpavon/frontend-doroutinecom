@@ -35,7 +35,13 @@ class Select extends React.Component<IAutoSaveFormSelectProps> {
                 <UncontrolledSelect
                     name={name}
                     value={values[name] || ''}
-                    onChange={onChange}
+                    onChange={(event) => {
+                        onChange({
+                            name,
+                            value: event.target.value,
+                            debounced: true
+                        })
+                    }}
                     {...rest}
                 />
                 <Alert

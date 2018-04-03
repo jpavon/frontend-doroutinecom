@@ -4,6 +4,8 @@ import { Moment } from 'moment'
 
 import { IAutoSaveFormContext } from 'components/AutoSaveForm'
 
+import { serverDateFormat } from 'utils/date'
+
 import UncontrolledDatetime, { IDatetimeProps } from 'components/Form/Datetime'
 import Alert from 'components/Form/Alert'
 import Saving from 'components/Saving'
@@ -31,7 +33,11 @@ class Input extends React.Component<IDatetimeProps> {
                     name={name}
                     value={values[name] || ''}
                     onChange={(moment: Moment) => {
-                        onChange(null, {name, moment})
+                        onChange({
+                            name,
+                            value: moment.format(serverDateFormat),
+                            debounced: false
+                        })
                     }}
                     {...rest}
                 />
