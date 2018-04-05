@@ -1,17 +1,14 @@
 import * as React from 'react'
 import * as ReactDatetime from 'react-datetime'
-import { Moment } from 'moment'
 
 import moment from 'utils/moment'
 import { dateFormat, timeFormat } from 'utils/date'
 
 import './style.scss'
 
-export interface IDatetimeProps {
+export interface IDatetimeProps extends ReactDatetime.DatetimepickerProps {
     id: string
     name: string
-    value?: string
-    onChange?: (moment: Moment) => void
 }
 
 const Datetime: React.SFC<IDatetimeProps> = ({value, name, ...rest}) => (

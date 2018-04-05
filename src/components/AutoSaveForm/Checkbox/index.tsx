@@ -6,7 +6,11 @@ import { IAutoSaveFormContext } from 'components/AutoSaveForm'
 import Alert from 'components/Form/Alert'
 import UncontrolledCheckbox, { ICheckboxProps } from 'components/Form/Checkbox'
 
-class Checkbox extends React.Component<ICheckboxProps> {
+interface IAutoSaveCheckboxProps extends ICheckboxProps {
+    name: string
+}
+
+class Checkbox extends React.Component<IAutoSaveCheckboxProps> {
 
     static contextTypes = {
         formContext: PropTypes.object.isRequired

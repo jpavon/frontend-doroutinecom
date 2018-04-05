@@ -3,17 +3,9 @@ import * as classNames from 'classnames'
 
 import './style.scss'
 
-export interface IInputProps {
-    id: string
-    name: string
-    value?: string
-    type?: string
-    className?: string
+export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     align?: 'right' | 'center'
-    size?: 'large'
     inputRef?: (ref: HTMLInputElement) => void
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-    placeholder?: string
 }
 
 const Input: React.SFC<IInputProps> = (props) => {
@@ -24,7 +16,6 @@ const Input: React.SFC<IInputProps> = (props) => {
         className,
         inputRef,
         align,
-        size,
         ...rest
     } = props
 
@@ -37,7 +28,6 @@ const Input: React.SFC<IInputProps> = (props) => {
                 'input',
                 align === 'right' && 'input--right',
                 align === 'center' && 'input--center',
-                size === 'large' && 'input--large',
                 className
             )}
             {...rest}

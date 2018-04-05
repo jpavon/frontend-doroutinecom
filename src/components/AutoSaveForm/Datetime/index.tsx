@@ -10,7 +10,10 @@ import UncontrolledDatetime, { IDatetimeProps } from 'components/Form/Datetime'
 import Alert from 'components/Form/Alert'
 import Saving from 'components/Saving'
 
-class Input extends React.Component<IDatetimeProps> {
+interface IAutoSaveDatetimeProps extends IDatetimeProps {
+}
+
+class Input extends React.Component<IAutoSaveDatetimeProps> {
 
     static contextTypes = {
         formContext: PropTypes.object.isRequired

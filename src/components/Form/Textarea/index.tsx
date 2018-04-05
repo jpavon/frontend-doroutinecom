@@ -4,13 +4,7 @@ import TextareaAutosize from 'react-autosize-textarea'
 
 import './style.scss'
 
-export interface ITextareaProps {
-    id: string
-    name: string
-    className?: string
-    value?: string
-    placeholder?: string
-    onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
+export interface ITextareaProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
 }
 
 const Textarea: React.SFC<ITextareaProps> = ({name, className, value, onChange}) => (

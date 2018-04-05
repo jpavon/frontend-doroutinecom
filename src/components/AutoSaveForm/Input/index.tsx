@@ -7,7 +7,11 @@ import Alert from 'components/Form/Alert'
 import UncontrolledInput, { IInputProps } from 'components/Form/Input'
 import Saving from 'components/Saving'
 
-class Input extends React.Component<IInputProps> {
+interface IAutoSaveInputProps extends IInputProps {
+    name: string
+}
+
+class Input extends React.Component<IAutoSaveInputProps> {
 
     static contextTypes = {
         formContext: PropTypes.object.isRequired

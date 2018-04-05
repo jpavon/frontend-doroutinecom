@@ -8,16 +8,10 @@ interface IOption {
     name: string | null
 }
 
-export interface ISelectProps {
-    id: string
-    name: string
+export interface ISelectProps extends React.InputHTMLAttributes<HTMLSelectElement> {
     options: IOption[]
     defaultOptionMessage?: string
-    defaultValue?: string
-    value?: string
-    className?: string
     inputRef?: () => void
-    onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
 const Select: React.SFC<ISelectProps> = (props) => {

@@ -7,7 +7,11 @@ import Alert from 'components/Form/Alert'
 import UncontrolledTextarea, { ITextareaProps } from 'components/Form/Textarea'
 import Saving from 'components/Saving'
 
-class Textarea extends React.Component<ITextareaProps> {
+interface IAutoSaveFormTextareaProps extends ITextareaProps {
+    name: string
+}
+
+class Textarea extends React.Component<IAutoSaveFormTextareaProps> {
 
     static contextTypes = {
         formContext: PropTypes.object.isRequired

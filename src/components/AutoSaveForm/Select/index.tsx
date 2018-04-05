@@ -8,6 +8,7 @@ import UncontrolledSelect, { ISelectProps } from 'components/Form/Select'
 import Saving from 'components/Saving'
 
 interface IAutoSaveFormSelectProps extends ISelectProps {
+    name: string
     noOptionsMessage?: string
 }
 

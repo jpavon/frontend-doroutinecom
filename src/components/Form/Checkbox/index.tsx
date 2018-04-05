@@ -5,13 +5,7 @@ import tickIcon from 'media/tick.svg'
 
 import './style.scss'
 
-export interface ICheckboxProps {
-    id: string
-    name: string
-    checked?: boolean
-    className?: string
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-    title?: string
+export interface ICheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Checkbox: React.SFC<ICheckboxProps> = (props) => {
