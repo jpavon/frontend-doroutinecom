@@ -1,11 +1,11 @@
 import { ISetsState, ISetsAction } from 'data/sets/types'
 
 import constants from 'data/sets/constants'
-import dataTypes from 'data/constants'
+import { statusConstants } from 'data/constants'
 import * as utils from 'data/utils'
 
 const initialState: Readonly<ISetsState> = {
-    fetchStatus: dataTypes.STATUS_NONE,
+    fetchStatus: statusConstants.STATUS_NONE,
     entitiesStatus: {},
     entities: [],
     error: null

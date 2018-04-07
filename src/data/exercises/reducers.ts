@@ -1,11 +1,11 @@
 import { IExercisesState, IExercisesAction } from 'data/exercises/types'
 
 import constants from 'data/exercises/constants'
-import dataTypes from 'data/constants'
+import { statusConstants } from 'data/constants'
 import * as utils from 'data/utils'
 
 const initialState: Readonly<IExercisesState> = {
-    fetchStatus: dataTypes.STATUS_NONE,
+    fetchStatus: statusConstants.STATUS_NONE,
     entitiesStatus: {},
     entities: [],
     error: null

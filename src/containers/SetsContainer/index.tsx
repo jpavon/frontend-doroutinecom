@@ -8,7 +8,7 @@ import { IRootState, IEntitiesStatus } from 'data/types'
 import { postSet, putSet, deleteSet } from 'data/sets/actions'
 import { userSelector } from 'data/user/selectors'
 import { setsExerciseSelector, previouslyCompletedSetsSelector } from 'data/sets/selectors'
-import constants from 'data/constants'
+import { statusConstants } from 'data/constants'
 
 import Sets from 'components/Sets/Sets'
 import Set from 'components/Sets/Set'
@@ -60,7 +60,7 @@ class SetsContainer extends React.Component<IProps> {
                         set={set}
                         update={this.props.putSet}
                         remove={this.props.deleteSet}
-                        isDeleting={this.props.entitiesStatus[set.id] === constants.STATUS_DELETING}
+                        isDeleting={this.props.entitiesStatus[set.id] === statusConstants.STATUS_DELETING}
                         isRemoveButtonsVisible={!this.props.isWorkout || this.props.isRemoveButtonsVisible}
                         previousSet={this.props.previouslyCompletedSets && this.props.previouslyCompletedSets[i]}
                     />

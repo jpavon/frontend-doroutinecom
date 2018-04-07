@@ -3,10 +3,10 @@ import * as store from 'store'
 import { IUserState, IUserAction } from 'data/user/types'
 
 import constants from 'data/user/constants'
-import dataConstants from 'data/constants'
+import { statusConstants } from 'data/constants'
 
 const initialState: Readonly<IUserState> = {
-    fetchStatus: dataConstants.STATUS_NONE,
+    fetchStatus: statusConstants.STATUS_NONE,
     isAuth: !!store.get('token'),
     entity: null,
     error: null
@@ -17,13 +17,13 @@ const user = (state = initialState, action: IUserAction): IUserState => {
         case constants.USER_GET_REQUEST:
             return {
                 ...state,
-                fetchStatus: dataConstants.STATUS_LOADING
+                fetchStatus: statusConstants.STATUS_LOADING
             }
 
         case constants.USER_GET_SUCCESS:
             return {
                 ...state,
-                fetchStatus: dataConstants.STATUS_LOADED,
+                fetchStatus: statusConstants.STATUS_LOADED,
                 entity: {
                     ...state.entity,
                     ...action.payload
@@ -33,20 +33,20 @@ const user = (state = initialState, action: IUserAction): IUserState => {
         case constants.USER_GET_FAILURE:
             return {
                 ...state,
-                fetchStatus: dataConstants.STATUS_FAILED,
+                fetchStatus: statusConstants.STATUS_FAILED,
                 error: action.error
             }
 
         case constants.USER_PUT_REQUEST:
             return {
                 ...state,
-                fetchStatus: dataConstants.STATUS_LOADING
+                fetchStatus: statusConstants.STATUS_LOADING
             }
 
         case constants.USER_PUT_SUCCESS:
             return {
                 ...state,
-                fetchStatus: dataConstants.STATUS_LOADED,
+                fetchStatus: statusConstants.STATUS_LOADED,
                 entity: {
                     ...state.entity,
                     ...action.payload
@@ -56,7 +56,7 @@ const user = (state = initialState, action: IUserAction): IUserState => {
         case constants.USER_PUT_FAILURE:
             return {
                 ...state,
-                fetchStatus: dataConstants.STATUS_FAILED,
+                fetchStatus: statusConstants.STATUS_FAILED,
                 error: action.error
             }
 

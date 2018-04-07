@@ -9,7 +9,7 @@ import history from 'utils/history'
 import { now } from 'utils/date'
 import { putWorkout, postWorkoutFrom, deleteWorkout } from 'data/workouts/actions'
 import { workoutSelector } from 'data/workouts/selectors'
-import constants from 'data/constants'
+import { statusConstants } from 'data/constants'
 
 import ExercisesContainer from 'containers/ExercisesContainer'
 
@@ -153,8 +153,8 @@ class WorkoutContainer extends React.Component<IProps> {
 
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     workout: workoutSelector(props.workoutId)(state),
-    isStatusLoaded: state.workouts.fetchStatus === constants.STATUS_LOADED,
-    isDeleting: state.workouts.entitiesStatus[props.workoutId] === constants.STATUS_DELETING
+    isStatusLoaded: state.workouts.fetchStatus === statusConstants.STATUS_LOADED,
+    isDeleting: state.workouts.entitiesStatus[props.workoutId] === statusConstants.STATUS_DELETING
 })
 
 const mapDispatchToProps: IDispatchProps = {

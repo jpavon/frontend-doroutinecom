@@ -10,7 +10,7 @@ import { now } from 'utils/date'
 import { putRoutine, deleteRoutine } from 'data/routines/actions'
 import { postWorkoutFrom } from 'data/workouts/actions'
 import { routineSelector } from 'data/routines/selectors'
-import constants from 'data/constants'
+import { statusConstants } from 'data/constants'
 
 import ExercisesContainer from 'containers/ExercisesContainer'
 
@@ -103,8 +103,8 @@ class RoutineContainer extends React.Component<IProps> {
 
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     routine: routineSelector(props.routineId)(state),
-    isStatusLoaded: state.routines.fetchStatus === constants.STATUS_LOADED,
-    isDeleting: state.routines.entitiesStatus[props.routineId] === constants.STATUS_DELETING
+    isStatusLoaded: state.routines.fetchStatus === statusConstants.STATUS_LOADED,
+    isDeleting: state.routines.entitiesStatus[props.routineId] === statusConstants.STATUS_DELETING
 })
 
 const mapDispatchToProps: IDispatchProps = {

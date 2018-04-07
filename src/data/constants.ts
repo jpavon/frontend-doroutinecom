@@ -1,16 +1,16 @@
-enum constants {
+export enum statusConstants {
     STATUS_NONE = 'NONE',
     STATUS_LOADING = 'LOADING',
     STATUS_LOADED = 'LOADED',
     STATUS_FAILED = 'FAILED',
     STATUS_UPDATING = 'UPDATING',
     STATUS_DELETING = 'DELETING',
+}
 
+export enum globalConstants {
     GET_APP_DATA_REQUEST = 'global/GET_APP_DATA_REQUEST',
     GET_APP_DATA_SUCCESS = 'global/GET_APP_DATA_SUCCESS',
 
     GET_WORKOUTS_DATA_REQUEST = 'global/GET_WORKOUTS_DATA_REQUEST',
     GET_WORKOUTS_DATA_SUCCESS = 'global/GET_WORKOUTS_DATA_SUCCESS'
 }
-
-export default constants

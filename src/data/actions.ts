@@ -1,5 +1,5 @@
-import constants from 'data/constants'
+import { globalConstants } from 'data/constants'
 
 export const getAppData = () => ({
-    type: constants.GET_APP_DATA_REQUEST,
+    type: globalConstants.GET_APP_DATA_REQUEST,
 })

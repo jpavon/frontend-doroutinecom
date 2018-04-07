@@ -5,7 +5,7 @@ import { IRoutinesState } from 'data/routines/types'
 import { ISetsState } from 'data/sets/types'
 import { IWorkoutsState } from 'data/workouts/types'
 import { IUiState } from 'data/ui/types'
-import constants from 'data/constants'
+import { statusConstants } from 'data/constants'
 
 export interface IRootState {
     user: IUserState
@@ -16,17 +16,6 @@ export interface IRootState {
     workouts: IWorkoutsState
     ui: IUiState
 }
-
-export type IFetchStatusType =
-    constants.STATUS_NONE |
-    constants.STATUS_LOADING |
-    constants.STATUS_LOADED |
-    constants.STATUS_FAILED
-
-export type IEntitiesStatusType =
-    constants.STATUS_LOADED |
-    constants.STATUS_UPDATING |
-    constants.STATUS_DELETING
 
 export interface IAction {
     type: string
@@ -56,11 +45,11 @@ export interface IFailureAction extends IAction {
 }
 
 export interface IEntitiesStatus {
-    [index: number]: IEntitiesStatusType
+    [index: number]: statusConstants
 }
 
 export interface IStateMap<T> {
-    fetchStatus: IFetchStatusType
+    fetchStatus: statusConstants
     entitiesStatus: IEntitiesStatus
     entities: T[]
     error: IApiFailure | null

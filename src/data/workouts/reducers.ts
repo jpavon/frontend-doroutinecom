@@ -1,11 +1,11 @@
 import { IWorkoutsState, IWorkoutsAction } from 'data/workouts/types'
 
 import constants from 'data/workouts/constants'
-import dataTypes from 'data/constants'
+import { statusConstants } from 'data/constants'
 import * as utils from 'data/utils'
 
 const initialState: Readonly<IWorkoutsState> = {
-    fetchStatus: dataTypes.STATUS_NONE,
+    fetchStatus: statusConstants.STATUS_NONE,
     entitiesStatus: {},
     entities: [],
     error: null

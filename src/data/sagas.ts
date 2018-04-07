@@ -6,7 +6,7 @@ import { IUser } from 'data/user/types'
 
 import * as uiActions from 'data/ui/actions'
 import * as userActions from 'data/user/actions'
-import constants from 'data/constants'
+import { globalConstants } from 'data/constants'
 import userConstants from 'data/user/constants'
 import routinesConstants from 'data/routines/constants'
 import workoutsConstants from 'data/workouts/constants'
@@ -89,6 +89,6 @@ function* userSettingsCheck(user: IUser) {
 }
 
 export default [
-    takeLatest(constants.GET_APP_DATA_REQUEST, getAppDataSaga),
+    takeLatest(globalConstants.GET_APP_DATA_REQUEST, getAppDataSaga),
     spawn(watchServerErrors)
 ]

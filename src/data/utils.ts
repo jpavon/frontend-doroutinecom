@@ -1,6 +1,6 @@
-import { IStateMap, IApiFailure, IFetchStatusType, IEntitiesStatusType } from 'data/types'
+import { IStateMap, IApiFailure } from 'data/types'
 
-import constants from 'data/constants'
+import { statusConstants } from 'data/constants'
 
 // reducer crud utils
 
@@ -10,7 +10,7 @@ type Model = {
 
 export const request = <T>(state: IStateMap<T>): IStateMap<T> => ({
     ...state,
-    fetchStatus: constants.STATUS_LOADING as IFetchStatusType,
+    fetchStatus: statusConstants.STATUS_LOADING,
     error: null
 })
 
@@ -18,7 +18,7 @@ export const putRequest = <T>(state: IStateMap<T>, id: number): IStateMap<T> => 
     ...request(state),
     entitiesStatus: {
         ...state.entitiesStatus,
-        [id]: constants.STATUS_UPDATING as IEntitiesStatusType
+        [id]: statusConstants.STATUS_UPDATING
     }
 })
 
@@ -26,44 +26,44 @@ export const deleteRequest = <T>(state: IStateMap<T>, id: number): IStateMap<T> 
     ...request(state),
     entitiesStatus: {
         ...state.entitiesStatus,
-        [id]: constants.STATUS_DELETING as IEntitiesStatusType
+        [id]: statusConstants.STATUS_DELETING
     }
 })
 
 export const failure = <T>(state: IStateMap<T>, error: IApiFailure): IStateMap<T> => ({
     ...state,
-    fetchStatus: constants.STATUS_FAILED as IFetchStatusType,
+    fetchStatus: statusConstants.STATUS_FAILED,
     error
 })
 
 export const getSuccess = <T extends Model>(state: IStateMap<T>, payload: T[]): IStateMap<T> => ({
     ...state,
-    fetchStatus: constants.STATUS_LOADED as IFetchStatusType,
+    fetchStatus: statusConstants.STATUS_LOADED,
     entities: payload,
     entitiesStatus: payload.reduce((prev, current) => ({
         ...prev,
-        [current.id]: constants.STATUS_LOADED as IEntitiesStatusType
+        [current.id]: statusConstants.STATUS_LOADED
     }), {}),
     error: null
 })
 
 export const postSuccess = <T extends Model>(state: IStateMap<T>, payload: T): IStateMap<T> => ({
     ...state,
-    fetchStatus: constants.STATUS_LOADED as IFetchStatusType,
+    fetchStatus: statusConstants.STATUS_LOADED,
     entities: [
         ...state.entities,
         payload
     ],
     entitiesStatus: {
         ...state.entitiesStatus,
-        [payload.id]: constants.STATUS_LOADED as IEntitiesStatusType
+        [payload.id]: statusConstants.STATUS_LOADED
     },
     error: null
 })
 
 export const putSuccess = <T extends Model>(state: IStateMap<T>, payload: T): IStateMap<T> => ({
     ...state,
-    fetchStatus: constants.STATUS_LOADED as IFetchStatusType,
+    fetchStatus: statusConstants.STATUS_LOADED,
     entities: state.entities.map((currentItem) => {
         if (currentItem.id !== payload.id) {
             return currentItem
@@ -80,20 +80,20 @@ export const putSuccess = <T extends Model>(state: IStateMap<T>, payload: T): IS
     }),
     entitiesStatus: {
         ...state.entitiesStatus,
-        [payload.id]: constants.STATUS_LOADED as IEntitiesStatusType
+        [payload.id]: statusConstants.STATUS_LOADED
     },
     error: null
 })
 
 export const deleteSuccess = <T extends Model>(state: IStateMap<T>, id: number): IStateMap<T> => ({
     ...state,
-    fetchStatus: constants.STATUS_LOADED as IFetchStatusType,
+    fetchStatus: statusConstants.STATUS_LOADED,
     entities: state.entities.filter((i) => (i.id !== id)),
     entitiesStatus: Object.keys(state.entitiesStatus)
         .filter((key) => Number(key) !== id)
         .reduce((prev, current) => ({
             ...prev,
-            [current]: state.entitiesStatus[current] as IEntitiesStatusType
+            [current]: state.entitiesStatus[current]
         }), {}),
     error: null
 })

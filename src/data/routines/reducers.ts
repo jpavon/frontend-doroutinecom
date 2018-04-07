@@ -1,11 +1,11 @@
 import { IRoutinesState, IRoutinesAction } from 'data/routines/types'
 
 import constants from 'data/routines/constants'
-import dataTypes from 'data/constants'
+import { statusConstants } from 'data/constants'
 import * as utils from 'data/utils'
 
 const initialState: Readonly<IRoutinesState> = {
-    fetchStatus: dataTypes.STATUS_NONE,
+    fetchStatus: statusConstants.STATUS_NONE,
     entitiesStatus: {},
     entities: [],
     error: null

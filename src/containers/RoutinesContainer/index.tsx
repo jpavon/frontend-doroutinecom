@@ -6,7 +6,7 @@ import { IFormatedRoutine } from 'data/routines/types'
 
 import { postRoutine } from 'data/routines/actions'
 import { routinesSelector, defaultRoutinesSelector } from 'data/routines/selectors'
-import constants from 'data/constants'
+import { statusConstants } from 'data/constants'
 
 import Routines from 'components/Routines/Routines'
 import Routine from 'components/Routines/Routine'
@@ -84,7 +84,7 @@ class RoutinesContainer extends React.Component<IProps> {
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     routines: routinesSelector(state),
     defaultRoutines: defaultRoutinesSelector(state),
-    isLoading: state.routines.fetchStatus === constants.STATUS_LOADING,
+    isLoading: state.routines.fetchStatus === statusConstants.STATUS_LOADING,
 })
 
 const mapDispatchToProps: IDispatchProps = {

@@ -1,11 +1,11 @@
 import { ILiftsState, ILiftsAction } from 'data/lifts/types'
 
 import constants from 'data/lifts/constants'
-import dataTypes from 'data/constants'
+import { statusConstants } from 'data/constants'
 import * as utils from 'data/utils'
 
 const initialState: Readonly<ILiftsState> = {
-    fetchStatus: dataTypes.STATUS_NONE,
+    fetchStatus: statusConstants.STATUS_NONE,
     entitiesStatus: {},
     entities: [],
     error: null

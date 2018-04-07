@@ -1,4 +1,5 @@
-import { IFetchStatusType, IApiFailure } from 'data/types'
+import { IApiFailure } from 'data/types'
+import { statusConstants } from 'data/constants'
 import * as actionTypes from 'data/user/actions'
 
 export interface IUser {
@@ -20,7 +21,7 @@ export interface IAuth {
 export interface IFormatedUser extends IUser {}
 
 export interface IUserState {
-    fetchStatus: IFetchStatusType
+    fetchStatus: statusConstants
     isAuth: boolean
     entity: IUser | null,
     error: IApiFailure | null
