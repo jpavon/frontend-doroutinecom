@@ -1,5 +1,6 @@
-import { IStateMap, IActionMap } from 'data/types'
+import { IStateMap } from 'data/types'
 import { IFormatedRoutine } from 'data/routines/types'
+import * as actionTypes from 'data/workouts/actions'
 
 export interface IWorkout {
     id: number
@@ -22,7 +23,7 @@ export interface IFormatedWorkout extends IWorkout {
 
 export type IWorkoutsState = IStateMap<IWorkout>
 
-export type IWorkoutsAction = IActionMap<IWorkout>
+export type IWorkoutsAction = ReturnType<typeof actionTypes[keyof typeof actionTypes]>
 
 export type IWorkoutRequestData = Partial<IWorkout & {workoutId: number}>
 

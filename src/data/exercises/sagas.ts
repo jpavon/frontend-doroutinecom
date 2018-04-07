@@ -3,7 +3,7 @@ import { takeLatest } from 'redux-saga/effects'
 import { IApiAction } from 'data/types'
 
 import apiSaga from 'utils/apiSaga'
-import * as constants from 'data/exercises/constants'
+import constants from 'data/exercises/constants'
 import * as actions from 'data/exercises/actions'
 
 function* getExercisesSaga(action: IApiAction) {

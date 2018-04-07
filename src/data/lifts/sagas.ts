@@ -5,7 +5,7 @@ import { ILift } from 'data/lifts/types'
 
 import history from 'utils/history'
 import apiSaga from 'utils/apiSaga'
-import * as constants from 'data/lifts/constants'
+import constants from 'data/lifts/constants'
 import * as actions from 'data/lifts/actions'
 import * as exercisesActions from 'data/exercises/actions'
 

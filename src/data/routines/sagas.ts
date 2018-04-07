@@ -5,7 +5,7 @@ import { IRoutine } from 'data/routines/types'
 
 import history from 'utils/history'
 import apiSaga from 'utils/apiSaga'
-import * as constants from 'data/routines/constants'
+import constants from 'data/routines/constants'
 import * as actions from 'data/routines/actions'
 import * as workoutsActions from 'data/workouts/actions'
 

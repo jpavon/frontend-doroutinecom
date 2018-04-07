@@ -5,7 +5,7 @@ import { IRoutinesState } from 'data/routines/types'
 import { ISetsState } from 'data/sets/types'
 import { IWorkoutsState } from 'data/workouts/types'
 import { IUiState } from 'data/ui/types'
-import * as constants from 'data/constants'
+import constants from 'data/constants'
 
 export interface IRootState {
     user: IUserState

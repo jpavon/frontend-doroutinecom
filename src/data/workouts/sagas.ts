@@ -5,7 +5,7 @@ import { IWorkout } from 'data/workouts/types'
 
 import history from 'utils/history'
 import apiSaga from 'utils/apiSaga'
-import * as constants from 'data/workouts/constants'
+import constants from 'data/workouts/constants'
 import * as actions from 'data/workouts/actions'
 import { getWorkoutDataSaga } from 'data/sagas'
 

@@ -1,5 +1,6 @@
 import { IStateMap, IApiFailure, IFetchStatusType, IEntitiesStatusType } from 'data/types'
-import * as constants from 'data/constants'
+
+import constants from 'data/constants'
 
 // reducer crud utils
 

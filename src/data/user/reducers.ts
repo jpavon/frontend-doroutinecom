@@ -2,8 +2,8 @@ import * as store from 'store'
 
 import { IUserState, IUserAction } from 'data/user/types'
 
-import * as constants from 'data/user/constants'
-import * as dataConstants from 'data/constants'
+import constants from 'data/user/constants'
+import dataConstants from 'data/constants'
 
 const initialState: Readonly<IUserState> = {
     fetchStatus: dataConstants.STATUS_NONE,
@@ -13,9 +13,7 @@ const initialState: Readonly<IUserState> = {
 }
 
 const user = (state = initialState, action: IUserAction): IUserState => {
-    const { type, payload, error } = action
-
-    switch (type) {
+    switch (action.type) {
         case constants.USER_GET_REQUEST:
             return {
                 ...state,
@@ -28,7 +26,7 @@ const user = (state = initialState, action: IUserAction): IUserState => {
                 fetchStatus: dataConstants.STATUS_LOADED,
                 entity: {
                     ...state.entity,
-                    ...payload
+                    ...action.payload
                 }
             }
 
@@ -36,7 +34,7 @@ const user = (state = initialState, action: IUserAction): IUserState => {
             return {
                 ...state,
                 fetchStatus: dataConstants.STATUS_FAILED,
-                error
+                error: action.error
             }
 
         case constants.USER_PUT_REQUEST:
@@ -51,7 +49,7 @@ const user = (state = initialState, action: IUserAction): IUserState => {
                 fetchStatus: dataConstants.STATUS_LOADED,
                 entity: {
                     ...state.entity,
-                    ...payload
+                    ...action.payload
                 }
             }
 
@@ -59,7 +57,7 @@ const user = (state = initialState, action: IUserAction): IUserState => {
             return {
                 ...state,
                 fetchStatus: dataConstants.STATUS_FAILED,
-                error
+                error: action.error
             }
 
         case constants.USER_AUTH:

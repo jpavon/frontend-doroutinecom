@@ -1,4 +1,5 @@
-import { IStateMap, IActionMap } from 'data/types'
+import { IStateMap } from 'data/types'
+import * as actionTypes from 'data/lifts/actions'
 
 export interface ILift {
     id: number
@@ -13,7 +14,7 @@ export interface IFormatedLift extends ILift {
 
 export type ILiftsState = IStateMap<ILift>
 
-export type ILiftsAction = IActionMap<ILift>
+export type ILiftsAction = ReturnType<typeof actionTypes[keyof typeof actionTypes]>
 
 export type ILiftRequestData = Partial<ILift>
 

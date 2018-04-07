@@ -1,7 +1,7 @@
-import { ISetsState, ISetsAction, ISet } from 'data/sets/types'
+import { ISetsState, ISetsAction } from 'data/sets/types'
 
-import * as constants from 'data/sets/constants'
-import * as dataTypes from 'data/constants'
+import constants from 'data/sets/constants'
+import dataTypes from 'data/constants'
 import * as utils from 'data/utils'
 
 const initialState: Readonly<ISetsState> = {
@@ -12,44 +12,42 @@ const initialState: Readonly<ISetsState> = {
 }
 
 const sets = (state = initialState, action: ISetsAction): ISetsState => {
-    const { type, payload, error, id } = action
-
-    switch (type) {
+    switch (action.type) {
         case constants.SETS_GET_REQUEST:
             return utils.request(state)
 
         case constants.SETS_GET_SUCCESS:
-            return utils.getSuccess(state, (payload as ISet[]))
+            return utils.getSuccess(state, action.payload)
 
         case constants.SETS_GET_FAILURE:
-            return utils.failure(state, error)
+            return utils.failure(state, action.error)
 
         case constants.SETS_POST_REQUEST:
             return utils.request(state)
 
         case constants.SETS_POST_SUCCESS:
-            return utils.postSuccess(state, (payload as ISet))
+            return utils.postSuccess(state, action.payload)
 
         case constants.SETS_POST_FAILURE:
-            return utils.failure(state, error)
+            return utils.failure(state, action.error)
 
         case constants.SETS_PUT_REQUEST:
-            return utils.putRequest(state, id)
+            return utils.putRequest(state, action.id)
 
         case constants.SETS_PUT_SUCCESS:
-            return utils.putSuccess(state, (payload as ISet))
+            return utils.putSuccess(state, action.payload)
 
         case constants.SETS_PUT_FAILURE:
-            return utils.failure(state, error)
+            return utils.failure(state, action.error)
 
         case constants.SETS_DELETE_REQUEST:
-            return utils.deleteRequest(state, id)
+            return utils.deleteRequest(state, action.id)
 
         case constants.SETS_DELETE_SUCCESS:
-            return utils.deleteSuccess(state, (payload as ISet).id)
+            return utils.deleteSuccess(state, action.payload.id)
 
         case constants.SETS_DELETE_FAILURE:
-            return utils.failure(state, error)
+            return utils.failure(state, action.error)
 
         default:
             return state

@@ -2,10 +2,11 @@ import { call, put, takeLatest } from 'redux-saga/effects'
 import * as store from 'store'
 
 import { IApiAction, ISuccessAction, IFailureAction } from 'data/types'
-import { IAuth, IUnauthAction } from 'data/user/types'
+import { IAuth } from 'data/user/types'
+import { unauthUser as unauthUserType } from 'data/user/actions'
 
 import apiSaga from 'utils/apiSaga'
-import * as constants from 'data/user/constants'
+import constants from 'data/user/constants'
 import * as actions from 'data/user/actions'
 import * as uiActions from 'data/ui/actions'
 import { getAppDataSaga } from 'data/sagas'
@@ -54,7 +55,7 @@ function* authSuccessSaga(action: ISuccessAction<IAuth>) {
     yield call(getAppDataSaga)
 }
 
-function* unauthUserSaga(action: IUnauthAction) {
+function* unauthUserSaga(action: ReturnType<typeof unauthUserType>) {
     yield store.remove('token')
 
     if (action.error) {

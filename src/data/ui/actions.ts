@@ -1,16 +1,18 @@
 import { IAlert } from 'data/ui/types'
 
-import * as constants from 'data/ui/constants'
+import constants from 'data/ui/constants'
 
-export const showLoading = () => ({
+const createAction = <T extends { type: constants }>(d: T): T => d
+
+export const showLoading = () => createAction({
     type: constants.SHOW_LOADING
 })
 
-export const removeLoading = () => ({
+export const removeLoading = () => createAction({
     type: constants.REMOVE_LOADING
 })
 
-export const showAlert = (type: string, message: IAlert['message']) => ({
+export const showAlert = (type: string, message: IAlert['message']) => createAction({
     type: constants.SHOW_ALERT,
     alert: {
         type,
@@ -18,14 +20,14 @@ export const showAlert = (type: string, message: IAlert['message']) => ({
     }
 })
 
-export const removeAlert = () => ({
+export const removeAlert = () => createAction({
     type: constants.REMOVE_ALERT
 })
 
-export const setServerError = () => ({
+export const setServerError = () => createAction({
     type: constants.SET_SERVER_ERROR
 })
 
-export const setOffline = () => ({
+export const setOffline = () => createAction({
     type: constants.SET_OFFLINE
 })

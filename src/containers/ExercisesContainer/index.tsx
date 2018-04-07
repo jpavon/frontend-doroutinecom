@@ -8,7 +8,7 @@ import { IRootState, IEntitiesStatus } from 'data/types'
 import { postExercise, putExercise, deleteExercise } from 'data/exercises/actions'
 import { exercisesRoutineSelector, exercisesWorkoutSelector } from 'data/exercises/selectors'
 import { liftsSelector } from 'data/lifts/selectors'
-import { STATUS_DELETING } from 'data/constants'
+import constants from 'data/constants'
 
 import SetsContainer from 'containers/SetsContainer'
 
@@ -95,7 +95,7 @@ class ExercisesContainer extends React.Component<IProps, IState> {
                                 lifts={this.props.lifts}
                                 update={this.props.putExercise}
                                 remove={this.props.deleteExercise}
-                                isDeleting={this.props.entitiesStatus[exercise.id] === STATUS_DELETING}
+                                isDeleting={this.props.entitiesStatus[exercise.id] === constants.STATUS_DELETING}
                                 isRemoveButtonsVisible={this.state.isRemoveButtonsVisible}
                             >
                                 <SetsContainer

@@ -1,4 +1,5 @@
-import { IStateMap, IActionMap } from 'data/types'
+import { IStateMap } from 'data/types'
+import * as actionTypes from 'data/routines/actions'
 
 export interface IRoutine {
     id: number
@@ -19,7 +20,7 @@ export interface IFormatedRoutine extends IRoutine {
 
 export type IRoutinesState = IStateMap<IRoutine>
 
-export type IRoutinesAction = IActionMap<IRoutine>
+export type IRoutinesAction = ReturnType<typeof actionTypes[keyof typeof actionTypes]>
 
 export type IRoutineRequestData = Partial<IRoutine>
 

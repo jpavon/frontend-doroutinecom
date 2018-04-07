@@ -1,4 +1,5 @@
-import { IFetchStatusType, IApiFailure, IAction } from 'data/types'
+import { IFetchStatusType, IApiFailure } from 'data/types'
+import * as actionTypes from 'data/user/actions'
 
 export interface IUser {
     id: number
@@ -35,14 +36,7 @@ export interface IUserActionArgs {
     passwordReset: (data: IPasswordResetData, resolve: () => void, reject: () => void) => void
 }
 
-export interface IUserAction extends IAction {
-    payload: IUser
-    error: IApiFailure
-}
-
-export interface IUnauthAction extends IAction  {
-    error?: string
-}
+export type IUserAction = ReturnType<typeof actionTypes[keyof typeof actionTypes]>
 
 export interface ILoginData {
     email: string

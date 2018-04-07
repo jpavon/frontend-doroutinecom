@@ -1,6 +1,6 @@
 import { IUiState, IUiAction } from 'data/ui/types'
 
-import * as constants from 'data/ui/constants'
+import constants from 'data/ui/constants'
 
 const initialState: Readonly<IUiState> = {
     isLoading: false,

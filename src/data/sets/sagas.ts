@@ -3,7 +3,7 @@ import { takeLatest } from 'redux-saga/effects'
 import { IApiAction } from 'data/types'
 
 import apiSaga from 'utils/apiSaga'
-import * as constants from 'data/sets/constants'
+import constants from 'data/sets/constants'
 import * as actions from 'data/sets/actions'
 
 function* getSetsSaga(action: IApiAction) {

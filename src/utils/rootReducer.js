@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import * as userConstants from 'data/user/constants'
+import userConstants from 'data/user/constants'
 
 import user from 'data/user/reducers'
 import routines from 'data/routines/reducers'

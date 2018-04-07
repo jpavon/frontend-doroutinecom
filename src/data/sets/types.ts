@@ -1,6 +1,6 @@
-import { Moment } from 'moment'
-
-import { IStateMap, IActionMap } from 'data/types'
+import { Moment as MomentType } from 'moment'
+import { IStateMap } from 'data/types'
+import * as actionTypes from 'data/sets/actions'
 
 export interface ISet {
     id: number
@@ -18,13 +18,13 @@ export interface IFormatedSet extends ISet {
 
 export type ISetsState = IStateMap<ISet>
 
-export type ISetsAction = IActionMap<ISet>
+export type ISetsAction = ReturnType<typeof actionTypes[keyof typeof actionTypes]>
 
 export interface ITopSet {
     workoutId: number
     liftId: number
     lift: string | null
-    moment: Moment
+    moment: MomentType
     reps: number
     rm: number
     weight: number

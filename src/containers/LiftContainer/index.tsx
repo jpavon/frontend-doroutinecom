@@ -14,7 +14,7 @@ import { liftSelector } from 'data/lifts/selectors'
 import { topLiftSetsSelector } from 'data/sets/selectors'
 import { putLift, deleteLift } from 'data/lifts/actions'
 import { userSelector } from 'data/user/selectors'
-import { STATUS_LOADED, STATUS_DELETING } from 'data/constants'
+import constants from 'data/constants'
 
 import Lift from 'components/Lift'
 import SetsTable from 'components/SetsTable'
@@ -111,8 +111,8 @@ class LiftContainer extends React.Component<IProps> {
 
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     lift: liftSelector(props.liftId)(state),
-    isStatusLoaded: state.lifts.fetchStatus === STATUS_LOADED,
-    isDeleting: state.lifts.entitiesStatus[props.liftId] === STATUS_DELETING,
+    isStatusLoaded: state.lifts.fetchStatus === constants.STATUS_LOADED,
+    isDeleting: state.lifts.entitiesStatus[props.liftId] === constants.STATUS_DELETING,
     liftGraphData: liftGraphDataSelector(props.liftId)(state),
     topLiftSets: topLiftSetsSelector(props.liftId)(state),
     user: userSelector(state)

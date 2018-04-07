@@ -7,7 +7,7 @@ import { IFormatedLift, ILiftActionArgs } from 'data/lifts/types'
 // import history from 'utils/history'
 import { liftsSelector } from 'data/lifts/selectors'
 import { postLift } from 'data/lifts/actions'
-import { STATUS_LOADING } from 'data/constants'
+import constants from 'data/constants'
 
 import Lifts from 'components/Lifts/Lifts'
 import Lift from 'components/Lifts/Lift'
@@ -66,7 +66,7 @@ class LiftsContainer extends React.Component<IProps> {
 
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     lifts: liftsSelector(state),
-    isLoading: state.lifts.fetchStatus === STATUS_LOADING,
+    isLoading: state.lifts.fetchStatus === constants.STATUS_LOADING,
 })
 
 const mapDispatchToProps: IDispatchProps = {
