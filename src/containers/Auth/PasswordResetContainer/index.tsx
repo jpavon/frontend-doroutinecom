@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IPasswordResetData, IUserActionArgs } from 'data/user/types'
+import { IPasswordResetData } from 'data/user/types'
 
 import { passwordResetUser } from 'data/user/actions'
 
@@ -16,7 +16,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    passwordResetUser: IUserActionArgs['passwordReset']
+    passwordResetUser: typeof passwordResetUser
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps { }

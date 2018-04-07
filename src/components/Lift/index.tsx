@@ -1,6 +1,7 @@
 import * as React from 'react'
 
-import { IFormatedLift, ILiftActionArgs } from 'data/lifts/types'
+import { IFormatedLift } from 'data/lifts/types'
+import { putLift } from 'data/lifts/actions'
 
 import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
@@ -10,7 +11,7 @@ import './style.scss'
 
 interface IProps {
     lift: IFormatedLift
-    update: ILiftActionArgs['put']
+    update: typeof putLift
 }
 
 const Lift: React.SFC<IProps> = ({lift, update}) => (

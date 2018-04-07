@@ -1,6 +1,7 @@
 import * as React from 'react'
 
-import { IFormatedWorkout, IWorkoutActionArgs } from 'data/workouts/types'
+import { IFormatedWorkout } from 'data/workouts/types'
+import { putWorkout } from 'data/workouts/actions'
 
 import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
 import Datetime from 'components/AutoSaveForm/Datetime'
@@ -13,7 +14,7 @@ import './style.scss'
 
 interface IWorkoutProps {
     workout: IFormatedWorkout
-    update: IWorkoutActionArgs['put']
+    update: typeof putWorkout
 }
 
 const Workout: React.SFC<IWorkoutProps> = ({children, workout, update}) => (

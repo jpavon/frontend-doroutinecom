@@ -1,7 +1,6 @@
 import * as React from 'react'
 
 import { IFormatedUser } from 'data/user/types'
-import { ISetActionArgs } from 'data/sets/types'
 
 import Transition, { ITransitionProps } from 'components/Transition'
 import Button from 'components/Button'
@@ -11,7 +10,7 @@ import './style.scss'
 interface ISetsProps {
     children: ITransitionProps['children']
     user: IFormatedUser
-    create: ISetActionArgs['post']
+    create: () => void
     isWorkout: boolean
     toggleRemoveButtons: () => void
     isRemoveButtonsVisible: boolean

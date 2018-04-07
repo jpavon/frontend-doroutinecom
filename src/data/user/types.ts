@@ -28,14 +28,6 @@ export interface IUserState {
 
 export type IUserRequestData = Partial<IUser>
 
-export interface IUserActionArgs {
-    put: (id: number, data: IUserRequestData, resolve: () => void, reject: () => void) => void
-    login: (data: ILoginData, resolve: () => void, reject: () => void) => void
-    register: (data: IRegisterData, resolve: () => void, reject: () => void) => void,
-    passwordForgotten: (data: IPasswordForgottenData) => void,
-    passwordReset: (data: IPasswordResetData, resolve: () => void, reject: () => void) => void
-}
-
 export type IUserAction = ReturnType<typeof actionTypes[keyof typeof actionTypes]>
 
 export interface ILoginData {

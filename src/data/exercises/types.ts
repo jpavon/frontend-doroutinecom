@@ -20,9 +20,3 @@ export type IExercisesState = IStateMap<IExercise>
 export type IExercisesAction = ReturnType<typeof actionTypes[keyof typeof actionTypes]>
 
 export type IExerciseRequestData = Partial<IExercise>
-
-export interface IExerciseActionArgs {
-    post: (data?: IExerciseRequestData) => void
-    put: (id: number, data: IExerciseRequestData, resolve?: () => void, reject?: () => void) => void
-    delete: (id: number) => void
-}

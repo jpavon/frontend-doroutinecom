@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { ILoginData, IUserActionArgs } from 'data/user/types'
+import { ILoginData } from 'data/user/types'
 
 import { loginUser } from 'data/user/actions'
 
@@ -14,7 +14,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    loginUser: IUserActionArgs['login']
+    loginUser: typeof loginUser
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}

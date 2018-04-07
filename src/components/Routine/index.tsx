@@ -1,6 +1,7 @@
 import * as React from 'react'
 
-import { IFormatedRoutine, IRoutineActionArgs } from 'data/routines/types'
+import { IFormatedRoutine } from 'data/routines/types'
+import { putRoutine } from 'data/routines/actions'
 
 import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
@@ -11,7 +12,7 @@ import './style.scss'
 
 interface IRoutineProps {
     routine: IFormatedRoutine
-    update: IRoutineActionArgs['put']
+    update: typeof putRoutine
 }
 
 const Routine: React.SFC<IRoutineProps> = ({children, routine, update}) => (

@@ -1,6 +1,7 @@
 import * as React from 'react'
 
-import { IFormatedUser, IUserActionArgs } from 'data/user/types'
+import { IFormatedUser } from 'data/user/types'
+import { putUser } from 'data/user/actions'
 
 import Field from 'components/Field'
 import AutoSaveForm from 'components/AutoSaveForm'
@@ -12,7 +13,7 @@ import './style.scss'
 
 interface IProps {
     user: IFormatedUser
-    putUser: IUserActionArgs['put']
+    putUser: typeof putUser
 }
 
 const Settings: React.SFC<IProps> = ({user, putUser}) => (

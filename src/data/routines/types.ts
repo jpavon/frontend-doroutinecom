@@ -23,9 +23,3 @@ export type IRoutinesState = IStateMap<IRoutine>
 export type IRoutinesAction = ReturnType<typeof actionTypes[keyof typeof actionTypes]>
 
 export type IRoutineRequestData = Partial<IRoutine>
-
-export interface IRoutineActionArgs {
-    post: (data?: IRoutineRequestData) => void
-    put: (id: number, data: IRoutineRequestData, resolve?: () => void, reject?: () => void) => void
-    delete: (id: number) => void
-}

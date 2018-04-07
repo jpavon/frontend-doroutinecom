@@ -32,10 +32,3 @@ export interface IWorkoutFromRequestData {
     routineId: number | null
     startedAt: string
 }
-
-export interface IWorkoutActionArgs {
-    post: (data: IWorkoutRequestData) => void
-    postFrom: (data: IWorkoutFromRequestData) => void
-    put: (id: number, data: IWorkoutRequestData, resolve?: () => void, reject?: () => void) => void
-    delete: (id: number) => void
-}

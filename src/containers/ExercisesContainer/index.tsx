@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IFormatedExercise, IExerciseActionArgs } from 'data/exercises/types'
+import { IFormatedExercise } from 'data/exercises/types'
 import { IFormatedLift } from 'data/lifts/types'
 import { IRootState, IEntitiesStatus } from 'data/types'
 
@@ -29,9 +29,9 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    postExercise: IExerciseActionArgs['post']
-    putExercise: IExerciseActionArgs['put']
-    deleteExercise: IExerciseActionArgs['delete']
+    postExercise: typeof postExercise
+    putExercise: typeof putExercise
+    deleteExercise: typeof deleteExercise
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}

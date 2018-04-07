@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
 import { IRootState } from 'data/types'
-import { IFormatedLift, ILiftActionArgs } from 'data/lifts/types'
+import { IFormatedLift } from 'data/lifts/types'
 import { ITopSet } from 'data/sets/types'
 import { IGraph } from 'data/graphs/types'
 import { IFormatedUser } from 'data/user/types'
@@ -36,8 +36,8 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    putLift: ILiftActionArgs['put']
-    deleteLift: ILiftActionArgs['delete']
+    putLift: typeof putLift
+    deleteLift: typeof deleteLift
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}

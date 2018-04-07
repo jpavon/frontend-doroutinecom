@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
 import { IRootState } from 'data/types'
-import { IFormatedRoutine, IRoutineActionArgs } from 'data/routines/types'
-import { IWorkoutActionArgs } from 'data/workouts/types'
+import { IFormatedRoutine } from 'data/routines/types'
 
 import history from 'utils/history'
 import { now } from 'utils/date'
@@ -29,9 +28,9 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-    putRoutine: IRoutineActionArgs['put']
-    deleteRoutine: IRoutineActionArgs['delete']
-    postWorkoutFrom: IWorkoutActionArgs['postFrom']
+    putRoutine: typeof putRoutine
+    deleteRoutine: typeof deleteRoutine
+    postWorkoutFrom: typeof postWorkoutFrom
 }
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
