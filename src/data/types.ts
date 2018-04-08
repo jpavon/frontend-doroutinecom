@@ -54,9 +54,3 @@ export interface IStateMap<T> {
     entities: T[]
     error: IApiFailure | null
 }
-
-export interface IActionMap<T> extends IAction {
-    id: number
-    payload: T | T[]
-    error: IApiFailure
-}

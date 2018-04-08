@@ -88,8 +88,8 @@ describe('start message is displayed', async () => {
 })
 
 
-let liftsLength = 16
-let routinesLength = 3
+let liftsLength = 0 // 16
+let routinesLength = 0 // 3
 
 describe('default routines and lifts are created', async () => {
     test('check lifts', async () => {
