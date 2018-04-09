@@ -16,9 +16,9 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-"@jpavon/react-scripts-ts@^0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@jpavon/react-scripts-ts/-/react-scripts-ts-0.2.4.tgz#da97040dc8315ab8e5d8476bc59c9034ad3140a9"
+"@jpavon/react-scripts-ts@^0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@jpavon/react-scripts-ts/-/react-scripts-ts-0.2.5.tgz#602ff98fc1b521733eb56e018c4879188b199170"
   dependencies:
     autoprefixer "7.1.6"
     babel-jest "^22.1.0"
@@ -50,7 +50,7 @@
     tsconfig-paths-webpack-plugin "^2.0.0"
     tslint "^5.7.0"
     tslint-react "^3.2.0"
-    typescript "^2.7.1"
+    typescript "^2.8.1"
     uglifyjs-webpack-plugin "^1.1.8"
     url-loader "0.6.2"
     webpack "^3.11.0"
@@ -67,9 +67,9 @@
     "@types/express" "*"
     "@types/node" "*"
 
-"@types/chart.js@^2.7.10":
-  version "2.7.10"
-  resolved "https://registry.yarnpkg.com/@types/chart.js/-/chart.js-2.7.10.tgz#8dd15d5b57ef3c6d4e7ef3b66b0166d950b8f0c5"
+"@types/chart.js@^2.7.11":
+  version "2.7.11"
+  resolved "https://registry.yarnpkg.com/@types/chart.js/-/chart.js-2.7.11.tgz#40e392efc91d8e42a9a7cc21b7b082acbe693c40"
 
 "@types/classnames@^2.2.3":
   version "2.2.3"
@@ -180,8 +180,8 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^16.0.38":
-  version "16.3.5"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.5.tgz#bd3b21285602ea7cadb4b9e0d9711d96fd5692cc"
+  version "16.3.6"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.6.tgz#50cec71f14cbaaf49a53167dc1d6739be1d43f12"
   dependencies:
     csstype "^2.0.0"
 
@@ -7960,7 +7960,7 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript@^2.7.1:
+typescript@^2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.8.1.tgz#6160e4f8f195d5ba81d4876f9c0cc1fbc0820624"
 
