@@ -11,7 +11,7 @@
     "deploy": "npm-run-all -s build sync"
   },
   "dependencies": {
-    "@jpavon/react-scripts-ts": "^0.2.5",
+    "@jpavon/react-scripts-ts": "^0.2.7",
     "@types/chart.js": "^2.7.11",
     "@types/classnames": "^2.2.3",
     "@types/helmet": "^0.0.37",
@@ -33,7 +33,6 @@
     "babel-core": "^6.26.0",
     "babel-jest": "^22.4.3",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "chalk": "^2.3.0",
     "chart.js": "^2.7.1",
