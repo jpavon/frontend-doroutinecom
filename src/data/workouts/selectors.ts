@@ -2,20 +2,25 @@ import { createSelector } from 'reselect'
 
 import { IRootState } from 'data/types'
 import { IWorkout, IFormatedWorkout } from 'data/workouts/types'
-import { IRoutine } from 'data/routines/types'
+import { IFormatedRoutine } from 'data/routines/types'
 
 import moment from 'utils/moment'
 import { formatDuration, longDateFormat } from 'utils/date'
 import { routinesSelector } from 'data/routines/selectors'
 
-const formatWorkout = (workout: IWorkout, routines: IRoutine[]): IFormatedWorkout => {
+const formatWorkout = (
+    workout: IWorkout,
+    routines: IFormatedRoutine[],
+    liftNames?: string[]
+): IFormatedWorkout => {
     const routine = routines && routines.find((routine) => (routine.id === workout.routineId))
     return {
         ...workout,
         displayName: routine ? routine.name : workout.name,
         duration: workout.completedAt && formatDuration(workout.startedAt, workout.completedAt),
         day: workout.completedAt && moment(workout.completedAt).format(longDateFormat),
-        routine: routine ? routine : null
+        routine: routine || null,
+        liftNames
     }
 }
 
@@ -36,11 +41,23 @@ export const workoutSelector = (id: number) => createSelector(
 export const workoutsSelector = createSelector(
     [
         (state) => state.workouts.entities,
-        routinesSelector
+        routinesSelector,
+        (state) => state.exercises.entities,
+        (state) => state.lifts.entities,
     ],
-    (workouts, routines): IFormatedWorkout[] =>
+    (workouts, routines, exercises, lifts): IFormatedWorkout[] =>
         workouts
-            .map((workout) => formatWorkout(workout, routines))
+            .map((workout) => {
+                const workoutExercisesLiftsIds = exercises
+                    .filter((exercise) => (exercise.workoutId === workout.id))
+                    .map((exercise) => exercise.liftId)
+
+                const liftNames = lifts
+                        .filter((lift) => workoutExercisesLiftsIds.includes(lift.id))
+                        .map((lift) => `${lift.name}`)
+
+                return formatWorkout(workout, routines, liftNames)
+            })
 )
 
 export const completedWorkoutsSelector = createSelector(

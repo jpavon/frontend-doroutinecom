@@ -19,6 +19,7 @@ export interface IFormatedWorkout extends IWorkout {
     duration: string | null
     day: string | null
     routine: IFormatedRoutine | null
+    liftNames?: string[]
 }
 
 export type IWorkoutsState = IStateMap<IWorkout>

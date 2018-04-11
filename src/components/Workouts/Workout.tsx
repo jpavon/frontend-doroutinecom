@@ -9,7 +9,11 @@ interface IProps {
 }
 
 const Workout: React.SFC<IProps> = ({workout}) => (
-    <ListItem to={`/workouts/${workout.id}`} className="workouts-workout">
+    <ListItem
+        to={`/workouts/${workout.id}`}
+        className="workouts-workout"
+        info={workout.liftNames}
+    >
         {workout.day &&
             <div className="workouts-workout-day">
                 {workout.day}
