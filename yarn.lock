@@ -68,9 +68,9 @@
     "@types/express" "*"
     "@types/node" "*"
 
-"@types/chart.js@^2.7.11":
-  version "2.7.11"
-  resolved "https://registry.yarnpkg.com/@types/chart.js/-/chart.js-2.7.11.tgz#40e392efc91d8e42a9a7cc21b7b082acbe693c40"
+"@types/chart.js@^2.7.14":
+  version "2.7.14"
+  resolved "https://registry.yarnpkg.com/@types/chart.js/-/chart.js-2.7.14.tgz#4c4602b3ae2285ef4a196e4e11ec168342c0ec28"
 
 "@types/classnames@^2.2.3":
   version "2.2.3"
@@ -109,13 +109,13 @@
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@types/humps/-/humps-1.1.2.tgz#fbcaf596d20ff2ed78f8f511c5d6a943b51101d6"
 
-"@types/jest@^22.2.0":
-  version "22.2.2"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-22.2.2.tgz#afe5dacbd00d65325f52da0ed3e76e259629ac9d"
+"@types/jest@^22.2.3":
+  version "22.2.3"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-22.2.3.tgz#0157c0316dc3722c43a7b71de3fdf3acbccef10d"
 
-"@types/lodash@^4.14.106":
-  version "4.14.106"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.106.tgz#6093e9a02aa567ddecfe9afadca89e53e5dce4dd"
+"@types/lodash@^4.14.108":
+  version "4.14.108"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.108.tgz#02656af3add2e5b3174f830862c47421c00ef817"
 
 "@types/mime@*":
   version "2.0.0"
@@ -131,9 +131,9 @@
   version "8.10.7"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.7.tgz#40c0058c115bd42ee9bf35d7a217eeef1acd2716"
 
-"@types/node@^9.4.7":
-  version "9.6.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.3.tgz#f5fd440f8a9867b65ae76d442e269622a1db00b5"
+"@types/node@^6.0.107":
+  version "6.0.107"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.107.tgz#917613ed129a5fd6601dc4b644c4c324aaad4f4c"
 
 "@types/promise.prototype.finally@^2.0.2":
   version "2.0.2"
@@ -150,21 +150,21 @@
     "@types/node" "*"
     "@types/react" "*"
 
-"@types/react-helmet@^5.0.5":
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-5.0.5.tgz#30a12b0431732a20882f0fa9b75bf56ff91700d3"
+"@types/react-helmet@^5.0.6":
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-5.0.6.tgz#49607cbb72e1bb7dcefa9174cb591434d3b6f0af"
   dependencies:
     "@types/react" "*"
 
-"@types/react-motion@^0.0.25":
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/@types/react-motion/-/react-motion-0.0.25.tgz#2445745ee8e8e6149faa47a36ff6b0d4c21dbf94"
+"@types/react-motion@^0.0.26":
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/@types/react-motion/-/react-motion-0.0.26.tgz#16ba807ae3c4bf3cb67791c91bdfa9074ceb5ec9"
   dependencies:
     "@types/react" "*"
 
-"@types/react-redux@^5.0.15":
-  version "5.0.16"
-  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-5.0.16.tgz#46f1b2043abd2b4364a857100abf5e5a6ef94bf0"
+"@types/react-redux@^5.0.19":
+  version "5.0.19"
+  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-5.0.19.tgz#d9e9af54c619b7495fffcfa23a0b8922d68316c4"
   dependencies:
     "@types/react" "*"
     redux "^3.6.0"
@@ -190,9 +190,9 @@
   dependencies:
     csstype "^2.0.0"
 
-"@types/redux-logger@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@types/redux-logger/-/redux-logger-3.0.5.tgz#d1a02758f90845899cd304aa0912daeba2028eb6"
+"@types/redux-logger@^3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@types/redux-logger/-/redux-logger-3.0.6.tgz#4cf9d5b596b576b030a4bb671547f0ab63f81a73"
   dependencies:
     redux "^3.6.0"
 
@@ -6402,9 +6402,9 @@ react-animate-on-change@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-animate-on-change/-/react-animate-on-change-1.0.1.tgz#fb6f14e50132b1b0d12abe6e5426794b69dea5e4"
 
-react-autosize-textarea@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/react-autosize-textarea/-/react-autosize-textarea-3.0.2.tgz#2b6840a69f7138719abcea5a429ecf7301768c07"
+react-autosize-textarea@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/react-autosize-textarea/-/react-autosize-textarea-3.0.3.tgz#30e8e081f35eb73b3667dc01cf4e8927c278466b"
   dependencies:
     autosize "^4.0.0"
     line-height "^0.3.1"
@@ -6458,9 +6458,9 @@ react-dock@^0.2.4:
     lodash.debounce "^3.1.1"
     prop-types "^15.5.8"
 
-react-dom@^16.3.1:
-  version "16.3.1"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.1.tgz#6a3c90a4fb62f915bdbcf6204422d93a7d4ca573"
+react-dom@^16.3.2:
+  version "16.3.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.2.tgz#cb90f107e09536d683d84ed5d4888e9640e0e4df"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
