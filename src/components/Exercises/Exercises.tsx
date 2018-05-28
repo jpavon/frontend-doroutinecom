@@ -1,12 +1,11 @@
 import * as React from 'react'
 
-import Transition, { ITransitionProps } from 'components/Transition'
+import Transition from 'components/Transition'
 import Button from 'components/Button'
 
 import './style.scss'
 
 interface IProps {
-    children: ITransitionProps['children']
     create: () => void
 }
 
@@ -14,7 +13,8 @@ const Exercises: React.SFC<IProps> = ({children, create}) => (
     <>
         <div className="exercises">
             <Transition className="exercise">
-                {children}
+                { // tslint:disable-next-line:no-any
+                    children as React.ReactElement<any>}
             </Transition>
         </div>
         <div className="exercises-button-create">

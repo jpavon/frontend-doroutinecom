@@ -1,51 +1,34 @@
 import * as React from 'react'
-import { TransitionMotion, spring } from 'react-motion'
-
-const willEnter = () => ({
-    opacity: 0,
-})
-
-const willLeave = () => ({
-    opacity: spring(0),
-})
-
-const getStyles = () => ({
-    opacity: spring(1),
-})
-
-type ITransitionElement = React.ReactElement<{key: string}>
+import { Transition as SpringTransition, animated } from 'react-spring'
 
 export interface ITransitionProps {
+    // tslint:disable-next-line:no-any
+    children: React.ReactElement<any>
     className?: string
-    children: ITransitionElement | ITransitionElement[]
 }
 
-const Transition: React.SFC<ITransitionProps> = ({children, className = ''}) => (
-    <TransitionMotion
-        styles={Array.isArray(children) && children.length > 0 ?
-            (children as ITransitionElement[]).map((item) => (
-                { key: `${item.key}`, style: getStyles(), data: item }
-            )) : []
-        }
-        willLeave={willLeave}
-        willEnter={willEnter}
-    >
-        {(interpolatedStyles) =>
-            <>
-                {interpolatedStyles.length > 0 ? interpolatedStyles.map(({ key, style, data }) =>
-                    <div
-                        key={`${key}-transition`}
-                        style={{
-                            opacity: style.opacity,
-                        }}
-                        className={className}
+const Transition: React.SFC<ITransitionProps> = (props) => {
+    if (Array.isArray(props.children) && props.children.length > 0) {
+        return (
+            <SpringTransition
+                keys={(props.children as {key: string}[]).map((item) => item.key)}
+                from={{ opacity: 0 }}
+                enter={{ opacity: 1 }}
+                leave={{ opacity: 0 }}
+            >
+                {props.children.map((item) => (styles: object) => (
+                    <animated.div
+                        className={props.className}
+                        style={{...styles }}
                     >
-                        {data}
-                    </div>
-                ) : children}
-            </>
-        }
-    </TransitionMotion>
-)
+                        {item}
+                    </animated.div>
+                ))}
+            </SpringTransition>
+        )
+    }
+
+    return props.children
+}
 
 export default Transition

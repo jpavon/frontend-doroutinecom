@@ -2,13 +2,12 @@ import * as React from 'react'
 
 import { IFormatedUser } from 'data/user/types'
 
-import Transition, { ITransitionProps } from 'components/Transition'
+import Transition from 'components/Transition'
 import Button from 'components/Button'
 
 import './style.scss'
 
 interface ISetsProps {
-    children: ITransitionProps['children']
     user: IFormatedUser
     create: () => void
     isWorkout: boolean
@@ -39,7 +38,8 @@ const Sets: React.SFC<ISetsProps> = ({
             }
         </div>
         <Transition className="set">
-            {children}
+            { // tslint:disable-next-line:no-any
+                children as React.ReactElement<any>}
         </Transition>
         <div className="sets-button-create">
             <Button
