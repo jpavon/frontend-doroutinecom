@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as classnames from 'classnames'
 import { isString } from 'lodash'
-import AnimateOnChange from 'react-animate-on-change'
+import { Spring } from 'react-spring'
 
 import { IAlert } from 'data/ui/types'
 
@@ -45,19 +45,19 @@ class Alert extends React.Component<IProps> {
             size === 'small' && 'alert--small'
         )
 
-        return this.props.animate ? (
-            <AnimateOnChange
-                baseClassName={className}
-                animationClassName="alert--fade-in"
-                animate
-            >
-                {this.renderMessage()}
-            </AnimateOnChange>
+        return (this.props.animate ? (
+            <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                {(styles: object) => (
+                    <div className={className} style={styles}>
+                        {this.renderMessage()}
+                    </div>
+                )}
+            </Spring>
         ) : (
             <div className={className}>
                 {this.renderMessage()}
             </div>
-        )
+        ))
     }
 }
 

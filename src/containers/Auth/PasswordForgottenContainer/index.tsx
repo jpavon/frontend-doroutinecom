@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IPasswordForgottenData } from 'data/user/types'
-
 import { passwordForgottenUser } from 'data/user/actions'
 
 import PasswordForgotten from 'components/Auth/PasswordForgotten'
@@ -22,18 +20,14 @@ interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class PasswordForgottenContainer extends React.Component<IProps> {
 
-    email: HTMLInputElement
+    email: React.RefObject<HTMLInputElement> = React.createRef()
 
     handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
         this.props.passwordForgottenUser({
-            email: this.email.value
+            email: this.email.current!.value
         })
-    }
-
-    setRef = (ref: HTMLInputElement, name: keyof IPasswordForgottenData) => {
-        this[name] = ref
     }
 
     render() {
@@ -44,7 +38,7 @@ class PasswordForgottenContainer extends React.Component<IProps> {
                 />
                 <PasswordForgotten
                     handleSubmit={this.handleSubmit}
-                    setRef={this.setRef}
+                    emailRef={this.email}
                 />
             </>
         )

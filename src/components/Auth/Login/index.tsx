@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 
-import { ILoginData } from 'data/user/types'
-
 import Input from 'components/Form/Input'
 import Field from 'components/Field'
 import Auth from 'components/Auth'
@@ -11,10 +9,11 @@ import './style.scss'
 
 interface IProps {
     handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void
-    setRef: (ref: HTMLInputElement, name: keyof ILoginData) => void
+    emailRef: React.RefObject<HTMLInputElement>
+    passwordRef: React.RefObject<HTMLInputElement>
 }
 
-const Login: React.SFC<IProps> = ({handleSubmit, setRef}) => (
+const Login: React.SFC<IProps> = ({handleSubmit, emailRef, passwordRef}) => (
     <Auth
         className="login"
         handleSubmit={handleSubmit}
@@ -30,7 +29,7 @@ const Login: React.SFC<IProps> = ({handleSubmit, setRef}) => (
                 type="email"
                 name="email"
                 placeholder="type@your.email"
-                inputRef={(ref: HTMLInputElement) => setRef(ref, 'email')}
+                inputRef={emailRef}
             />
         </Field>
         <Field label="Password" id="password">
@@ -39,7 +38,7 @@ const Login: React.SFC<IProps> = ({handleSubmit, setRef}) => (
                 name="password"
                 type="password"
                 placeholder="Type your password"
-                inputRef={(ref: HTMLInputElement) => setRef(ref, 'password')}
+                inputRef={passwordRef}
             />
         </Field>
     </Auth>

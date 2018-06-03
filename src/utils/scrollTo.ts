@@ -16,7 +16,7 @@ const scrollTo = (className: string, options = {}) => {
         const elements = document.getElementsByClassName(className)
         const el = elements[elements.length - 1]
 
-        if (!isElementInViewport(el)) {
+        if (el && !isElementInViewport(el)) {
             const move = new moveTo(options)
             move.move(el)
         }

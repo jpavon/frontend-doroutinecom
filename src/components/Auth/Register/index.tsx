@@ -1,7 +1,5 @@
 import * as React from 'react'
 
-import { IRegisterData } from 'data/user/types'
-
 import Input from 'components/Form/Input'
 import Auth from 'components/Auth'
 import Field from 'components/Field'
@@ -10,20 +8,23 @@ import './style.scss'
 
 interface IProps {
     handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void
-    setRef: (ref: HTMLInputElement, name: keyof IRegisterData) => void
+    nameRef: React.RefObject<HTMLInputElement>
+    emailRef: React.RefObject<HTMLInputElement>
+    passwordRef: React.RefObject<HTMLInputElement>
+    passwordConfirmationRef: React.RefObject<HTMLInputElement>
 }
 
-const Login: React.SFC<IProps> = ({handleSubmit, setRef}) => (
+const Login: React.SFC<IProps> = (props) => (
     <Auth
         className="register"
-        handleSubmit={handleSubmit}
+        handleSubmit={props.handleSubmit}
     >
         <Field label="Name" id="name">
             <Input
                 id="name"
                 name="name"
                 placeholder="Type your name"
-                inputRef={(ref: HTMLInputElement) => setRef(ref, 'name')}
+                inputRef={props.nameRef}
             />
         </Field>
         <Field label="Email" id="email">
@@ -32,7 +33,7 @@ const Login: React.SFC<IProps> = ({handleSubmit, setRef}) => (
                 type="email"
                 name="email"
                 placeholder="Type your email"
-                inputRef={(ref: HTMLInputElement) => setRef(ref, 'email')}
+                inputRef={props.emailRef}
             />
         </Field>
         <Field label="Password" id="password">
@@ -41,7 +42,7 @@ const Login: React.SFC<IProps> = ({handleSubmit, setRef}) => (
                 type="password"
                 name="password"
                 placeholder="Type your password"
-                inputRef={(ref: HTMLInputElement) => setRef(ref, 'password')}
+                inputRef={props.passwordRef}
             />
         </Field>
         <Field label="Type password again" id="passwordConfirmation">
@@ -50,7 +51,7 @@ const Login: React.SFC<IProps> = ({handleSubmit, setRef}) => (
                 type="password"
                 name="passwordConfirmation"
                 placeholder="Type your password again"
-                inputRef={(ref: HTMLInputElement) => setRef(ref, 'passwordConfirmation')}
+                inputRef={props.passwordConfirmationRef}
             />
         </Field>
     </Auth>

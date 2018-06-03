@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IPasswordResetData } from 'data/user/types'
-
 import { passwordResetUser } from 'data/user/actions'
 
 import PasswordReset from 'components/Auth/PasswordReset'
@@ -23,9 +21,9 @@ interface IProps extends IOwnProps, IStateProps, IDispatchProps { }
 
 class PasswordResetContainer extends React.Component<IProps> {
 
-    email: HTMLInputElement
-    password: HTMLInputElement
-    passwordConfirmation: HTMLInputElement
+    email: React.RefObject<HTMLInputElement> = React.createRef()
+    password: React.RefObject<HTMLInputElement> = React.createRef()
+    passwordConfirmation: React.RefObject<HTMLInputElement> = React.createRef()
 
     handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -33,18 +31,14 @@ class PasswordResetContainer extends React.Component<IProps> {
         new Promise((resolve, reject) => {
             this.props.passwordResetUser({
                 token: this.props.token,
-                email: this.email.value,
-                password: this.password.value,
-                passwordConfirmation: this.passwordConfirmation.value
+                email: this.email.current!.value,
+                password: this.password.current!.value,
+                passwordConfirmation: this.passwordConfirmation.current!.value
             }, resolve, reject)
         }).catch((error) => {
-            this.password.value = ''
-            this.passwordConfirmation.value = ''
+            this.password.current!.value = ''
+            this.passwordConfirmation.current!.value = ''
         })
-    }
-
-    setRef = (ref: HTMLInputElement, name: keyof IPasswordResetData) => {
-        this[name] = ref
     }
 
     render() {
@@ -55,7 +49,9 @@ class PasswordResetContainer extends React.Component<IProps> {
                 />
                 <PasswordReset
                     handleSubmit={this.handleSubmit}
-                    setRef={this.setRef}
+                    emailRef={this.email}
+                    passwordRef={this.password}
+                    passwordConfirmationRef={this.passwordConfirmation}
                 />
             </>
         )

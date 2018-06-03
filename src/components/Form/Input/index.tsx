@@ -5,7 +5,7 @@ import './style.scss'
 
 export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     align?: 'right' | 'center'
-    inputRef?: (ref: HTMLInputElement) => void
+    inputRef?: React.RefObject<HTMLInputElement>
 }
 
 const Input: React.SFC<IInputProps> = (props) => {

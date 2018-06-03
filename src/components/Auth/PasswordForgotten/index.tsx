@@ -1,17 +1,15 @@
 import * as React from 'react'
 
-import { IPasswordForgottenData } from 'data/user/types'
-
 import Input from 'components/Form/Input'
 import Auth from 'components/Auth'
 import Field from 'components/Field'
 
 interface IProps {
     handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void
-    setRef: (ref: HTMLInputElement, name: keyof IPasswordForgottenData) => void
+    emailRef: React.RefObject<HTMLInputElement>
 }
 
-const PasswordForgotten: React.SFC<IProps> = ({handleSubmit, setRef}) => (
+const PasswordForgotten: React.SFC<IProps> = ({handleSubmit, emailRef}) => (
     <Auth
         className="password-forgotten"
         handleSubmit={handleSubmit}
@@ -22,7 +20,7 @@ const PasswordForgotten: React.SFC<IProps> = ({handleSubmit, setRef}) => (
                 type="email"
                 name="email"
                 placeholder="Type your email"
-                inputRef={(ref: HTMLInputElement) => setRef(ref, 'email')}
+                inputRef={emailRef}
             />
         </Field>
     </Auth>

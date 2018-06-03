@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IRegisterData } from 'data/user/types'
-
 import { registerUser } from 'data/user/actions'
 
 import Register from 'components/Auth/Register'
@@ -21,36 +19,35 @@ interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class RegisterContainer extends React.Component<IProps> {
 
-    name: HTMLInputElement
-    email: HTMLInputElement
-    password: HTMLInputElement
-    passwordConfirmation: HTMLInputElement
+    name: React.RefObject<HTMLInputElement> = React.createRef()
+    email: React.RefObject<HTMLInputElement> = React.createRef()
+    password: React.RefObject<HTMLInputElement> = React.createRef()
+    passwordConfirmation: React.RefObject<HTMLInputElement> = React.createRef()
 
     handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
         new Promise((resolve, reject) => {
             this.props.registerUser({
-                name: this.name.value,
-                email: this.email.value,
-                password: this.password.value,
-                passwordConfirmation: this.passwordConfirmation.value
+                name: this.name.current!.value,
+                email: this.email.current!.value,
+                password: this.password.current!.value,
+                passwordConfirmation: this.passwordConfirmation.current!.value
             }, resolve, reject)
         }).catch((error) => {
-            this.password.value = ''
-            this.passwordConfirmation.value = ''
+            this.password.current!.value = ''
+            this.passwordConfirmation.current!.value = ''
         })
-    }
-
-    setRef = (ref: HTMLInputElement, name: keyof IRegisterData) => {
-        this[name] = ref
     }
 
     render() {
         return (
             <Register
                 handleSubmit={this.handleSubmit}
-                setRef={this.setRef}
+                nameRef={this.name}
+                emailRef={this.email}
+                passwordRef={this.password}
+                passwordConfirmationRef={this.passwordConfirmation}
             />
         )
     }

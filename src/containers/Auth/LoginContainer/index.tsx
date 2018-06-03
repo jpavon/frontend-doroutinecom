@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { ILoginData } from 'data/user/types'
-
 import { loginUser } from 'data/user/actions'
 
 import Login from 'components/Auth/Login'
@@ -21,31 +19,28 @@ interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class LoginContainer extends React.Component<IProps> {
 
-    email: HTMLInputElement
-    password: HTMLInputElement
+    email: React.RefObject<HTMLInputElement> = React.createRef()
+    password: React.RefObject<HTMLInputElement> = React.createRef()
 
     handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault()
 
         new Promise((resolve, reject) => {
             this.props.loginUser({
-                email: this.email.value,
-                password: this.password.value
+                email: this.email.current!.value,
+                password: this.password.current!.value
             }, resolve, reject)
         }).catch((error) => {
-            this.password.value = ''
+            this.password.current!.value = ''
         })
-    }
-
-    setRef = (ref: HTMLInputElement, name: keyof ILoginData): void => {
-        this[name] = ref
     }
 
     render() {
         return (
             <Login
                 handleSubmit={this.handleSubmit}
-                setRef={this.setRef}
+                emailRef={this.email}
+                passwordRef={this.password}
             />
         )
     }

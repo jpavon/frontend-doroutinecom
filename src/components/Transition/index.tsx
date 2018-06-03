@@ -3,7 +3,7 @@ import { Transition as SpringTransition, animated } from 'react-spring'
 
 export interface ITransitionProps {
     // tslint:disable-next-line:no-any
-    children: React.ReactElement<any>
+    children: React.ReactElement<{key: string}>
     className?: string
 }
 

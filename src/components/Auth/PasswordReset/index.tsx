@@ -1,17 +1,17 @@
 import * as React from 'react'
 
-import { IPasswordResetData } from 'data/user/types'
-
 import Input from 'components/Form/Input'
 import Auth from 'components/Auth'
 import Field from 'components/Field'
 
 interface IProps {
     handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void
-    setRef: (ref: HTMLInputElement, name: keyof IPasswordResetData) => void
+    emailRef: React.RefObject<HTMLInputElement>
+    passwordRef: React.RefObject<HTMLInputElement>
+    passwordConfirmationRef: React.RefObject<HTMLInputElement>
 }
 
-const PasswordReset: React.SFC<IProps> = ({handleSubmit, setRef}) => (
+const PasswordReset: React.SFC<IProps> = ({handleSubmit, emailRef, passwordRef, passwordConfirmationRef}) => (
     <Auth
         className="password-reset"
         handleSubmit={handleSubmit}
@@ -22,7 +22,7 @@ const PasswordReset: React.SFC<IProps> = ({handleSubmit, setRef}) => (
                 type="email"
                 name="email"
                 placeholder="Type your email"
-                inputRef={(ref: HTMLInputElement) => setRef(ref, 'email')}
+                inputRef={emailRef}
             />
         </Field>
 
@@ -32,7 +32,7 @@ const PasswordReset: React.SFC<IProps> = ({handleSubmit, setRef}) => (
                 type="password"
                 name="password"
                 placeholder="Type your new password"
-                inputRef={(ref: HTMLInputElement) => setRef(ref, 'password')}
+                inputRef={passwordRef}
             />
         </Field>
 
@@ -42,7 +42,7 @@ const PasswordReset: React.SFC<IProps> = ({handleSubmit, setRef}) => (
                 type="password"
                 name="passwordConfirmation"
                 placeholder="Type your new password again"
-                inputRef={(ref: HTMLInputElement) => setRef(ref, 'passwordConfirmation')}
+                inputRef={passwordConfirmationRef}
             />
         </Field>
     </Auth>
