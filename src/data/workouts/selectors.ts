@@ -7,14 +7,15 @@ import { IFormatedRoutine } from 'data/routines/types'
 import moment from 'utils/moment'
 import { formatDuration, longDateFormat } from 'utils/date'
 import { routinesSelector } from 'data/routines/selectors'
+import { order } from 'data/utils'
 
 const formatWorkout = (
     workout: IWorkout,
     routines: IFormatedRoutine[],
     liftNames?: string[]
 ): IFormatedWorkout => {
-    const routine =
-        routines && routines.find((routine) => routine.id === workout.routineId)
+    const routine = routines.find((routine) => routine.id === workout.routineId)
+
     return {
         ...workout,
         displayName: routine ? routine.name : workout.name,
@@ -29,32 +30,30 @@ const formatWorkout = (
     }
 }
 
-export const workoutSelector = (id: number) =>
-    createSelector(
-        [(state: IRootState) => state.workouts.entities, routinesSelector],
-        (workouts, routines): IFormatedWorkout | null => {
-            if (workouts.length > 0) {
-                const workout = workouts.find((workout) => workout.id === id)
-                return workout ? formatWorkout(workout, routines) : null
-            }
-            return null
-        }
-    )
+export const workoutSelector = createSelector(
+    [
+        (state: IRootState, id: number) => state.workouts.entities[id],
+        routinesSelector
+    ],
+    (workout, routines) => {
+        return workout ? formatWorkout(workout, routines) : null
+    }
+)
 
 export const workoutsSelector = createSelector(
     [
-        (state) => state.workouts.entities,
+        (state) => order(state.workouts.entitiesOrder, state.workouts.entities),
         routinesSelector,
         (state) => state.exercises.entities,
         (state) => state.lifts.entities
     ],
     (workouts, routines, exercises, lifts): IFormatedWorkout[] =>
-        workouts.map((workout) => {
-            const workoutExercisesLiftsIds = exercises
+        Object.values(workouts).map((workout) => {
+            const workoutExercisesLiftsIds = Object.values(exercises)
                 .filter((exercise) => exercise.workoutId === workout.id)
                 .map((exercise) => exercise.liftId)
 
-            const liftNames = lifts
+            const liftNames = Object.values(lifts)
                 .filter((lift) => workoutExercisesLiftsIds.includes(lift.id))
                 .map((lift) => `${lift.name}`)
 

@@ -6,7 +6,7 @@ import constants from 'data/user/constants'
 import { statusConstants } from 'data/constants'
 
 const initialState: Readonly<IUserState> = {
-    fetchStatus: statusConstants.STATUS_NONE,
+    status: statusConstants.STATUS_NONE,
     isAuth: !!store.get('token'),
     entity: null,
     error: null
@@ -17,13 +17,13 @@ const user = (state = initialState, action: IUserAction): IUserState => {
         case constants.USER_GET_REQUEST:
             return {
                 ...state,
-                fetchStatus: statusConstants.STATUS_LOADING
+                status: statusConstants.STATUS_LOADING
             }
 
         case constants.USER_GET_SUCCESS:
             return {
                 ...state,
-                fetchStatus: statusConstants.STATUS_LOADED,
+                status: statusConstants.STATUS_LOADED,
                 entity: {
                     ...state.entity,
                     ...action.payload
@@ -33,20 +33,20 @@ const user = (state = initialState, action: IUserAction): IUserState => {
         case constants.USER_GET_FAILURE:
             return {
                 ...state,
-                fetchStatus: statusConstants.STATUS_FAILED,
+                status: statusConstants.STATUS_FAILED,
                 error: action.error
             }
 
         case constants.USER_PUT_REQUEST:
             return {
                 ...state,
-                fetchStatus: statusConstants.STATUS_LOADING
+                status: statusConstants.STATUS_LOADING
             }
 
         case constants.USER_PUT_SUCCESS:
             return {
                 ...state,
-                fetchStatus: statusConstants.STATUS_LOADED,
+                status: statusConstants.STATUS_LOADED,
                 entity: {
                     ...state.entity,
                     ...action.payload
@@ -56,7 +56,7 @@ const user = (state = initialState, action: IUserAction): IUserState => {
         case constants.USER_PUT_FAILURE:
             return {
                 ...state,
-                fetchStatus: statusConstants.STATUS_FAILED,
+                status: statusConstants.STATUS_FAILED,
                 error: action.error
             }
 

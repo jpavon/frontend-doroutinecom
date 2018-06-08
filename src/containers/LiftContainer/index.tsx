@@ -100,8 +100,8 @@ class LiftContainer extends React.Component<IProps> {
 }
 
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
-    lift: liftSelector(props.liftId)(state),
-    isStatusLoaded: state.lifts.fetchStatus === statusConstants.STATUS_LOADED,
+    lift: liftSelector(state, props.liftId),
+    isStatusLoaded: state.lifts.status === statusConstants.STATUS_LOADED,
     isDeleting:
         state.lifts.entitiesStatus[props.liftId] ===
         statusConstants.STATUS_DELETING,

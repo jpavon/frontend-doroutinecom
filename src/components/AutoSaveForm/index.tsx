@@ -8,6 +8,14 @@ interface IValues {
     [index: string]: any
 }
 
+export interface IAutoSaveFormState {
+    values: IValues
+    errors: {
+        [index: string]: string
+    }
+    updating: string | null
+}
+
 interface IAutoSaveFormProps {
     initialValues: IValues
     update: (
@@ -18,14 +26,6 @@ interface IAutoSaveFormProps {
         reject?: () => void
     ) => void
     render: (state: IAutoSaveFormState) => React.ReactNode
-}
-
-export interface IAutoSaveFormState {
-    values: IValues
-    errors: {
-        [index: string]: string
-    }
-    updating: string | null
 }
 
 interface IAutoSaveFormChangeOptions {
@@ -112,7 +112,7 @@ class AutoSaveForm extends React.Component<
         new Promise((resolve, reject) => {
             this.props.update(id, { [name]: value }, resolve, reject)
         })
-            .then((payload) => {
+            .then(() => {
                 this.setState({
                     updating: name,
                     errors: {}
@@ -134,7 +134,6 @@ class AutoSaveForm extends React.Component<
             })
     }
 
-    // tslint:disable-next-line
     debounceUpdate = debounce(this.update, 300)
 
     render() {

@@ -49,8 +49,11 @@ export interface IEntitiesStatus {
 }
 
 export interface IStateMap<T> {
-    fetchStatus: statusConstants
+    status: statusConstants
+    entities: {
+        [index: number]: T
+    }
     entitiesStatus: IEntitiesStatus
-    entities: T[]
+    entitiesOrder: number[]
     error: IApiFailure | null
 }

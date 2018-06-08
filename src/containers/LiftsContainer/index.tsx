@@ -60,7 +60,7 @@ class LiftsContainer extends React.Component<IProps> {
 
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     lifts: liftsSelector(state),
-    isLoading: state.lifts.fetchStatus === statusConstants.STATUS_LOADING
+    isLoading: state.lifts.status === statusConstants.STATUS_LOADING
 })
 
 const mapDispatchToProps: IDispatchProps = {

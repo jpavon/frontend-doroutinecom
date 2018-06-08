@@ -14,21 +14,25 @@ import {
 } from 'data/exercises/selectors'
 import { completedWorkoutsSelector } from 'data/workouts/selectors'
 import { liftsSelector } from 'data/lifts/selectors'
+import { order } from 'data/utils'
 
 const formatSet = (set: ISet): IFormatedSet => ({
     ...set
 })
 
 export const setsSelector = createSelector(
-    [(state: IRootState) => state.sets.entities],
-    (sets): IFormatedSet[] => sets.map((set) => formatSet(set))
+    [
+        (state: IRootState) =>
+            order(state.sets.entitiesOrder, state.sets.entities)
+    ],
+    (sets): IFormatedSet[] => Object.values(sets).map((set) => formatSet(set))
 )
 
 export const setsExerciseSelector = (exerciseId: number) =>
     createSelector(
         [setsSelector],
         (sets): IFormatedSet[] =>
-            sets.filter((set) => set.exerciseId === exerciseId)
+            Object.values(sets).filter((set) => set.exerciseId === exerciseId)
     )
 
 export const completedSetsSelector = createSelector(

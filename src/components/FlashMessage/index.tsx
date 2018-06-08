@@ -16,7 +16,7 @@ class FlashMessage extends React.Component<
     IFlashMessageProps,
     IFlashMessageState
 > {
-    timer: NodeJS.Timer | null
+    timer: number | null
 
     constructor(props: IFlashMessageProps) {
         super(props)
@@ -43,7 +43,7 @@ class FlashMessage extends React.Component<
             clearTimeout(this.timer)
         }
 
-        this.timer = setTimeout(() => {
+        this.timer = window.setTimeout(() => {
             this.setState({ visible: false })
             this.timer = null
         }, this.state.delay)
@@ -51,7 +51,7 @@ class FlashMessage extends React.Component<
 
     componentWillUnmount() {
         if (this.timer) {
-            clearTimeout(this.timer)
+            window.clearTimeout(this.timer)
         }
     }
 

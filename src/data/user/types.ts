@@ -21,7 +21,7 @@ export interface IAuth {
 export interface IFormatedUser extends IUser {}
 
 export interface IUserState {
-    fetchStatus: statusConstants
+    status: statusConstants
     isAuth: boolean
     entity: IUser | null
     error: IApiFailure | null

@@ -5,9 +5,10 @@ import { statusConstants } from 'data/constants'
 import * as utils from 'data/utils'
 
 const initialState: Readonly<IRoutinesState> = {
-    fetchStatus: statusConstants.STATUS_NONE,
+    status: statusConstants.STATUS_NONE,
+    entities: {},
+    entitiesOrder: [],
     entitiesStatus: {},
-    entities: [],
     error: null
 }
 

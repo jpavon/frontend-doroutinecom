@@ -2,6 +2,11 @@ import { IStateMap, IApiFailure } from 'data/types'
 
 import { statusConstants } from 'data/constants'
 
+export const order = <T>(
+    order: number[],
+    entities: IStateMap<T>['entities']
+): T[] => order.map((id) => entities[id])
+
 // reducer crud utils
 
 type Model = {
@@ -10,7 +15,7 @@ type Model = {
 
 export const request = <T>(state: IStateMap<T>): IStateMap<T> => ({
     ...state,
-    fetchStatus: statusConstants.STATUS_LOADING,
+    status: statusConstants.STATUS_LOADING,
     error: null
 })
 
@@ -41,7 +46,7 @@ export const failure = <T>(
     error: IApiFailure
 ): IStateMap<T> => ({
     ...state,
-    fetchStatus: statusConstants.STATUS_FAILED,
+    status: statusConstants.STATUS_FAILED,
     error
 })
 
@@ -50,8 +55,15 @@ export const getSuccess = <T extends Model>(
     payload: T[]
 ): IStateMap<T> => ({
     ...state,
-    fetchStatus: statusConstants.STATUS_LOADED,
-    entities: payload,
+    status: statusConstants.STATUS_LOADED,
+    entities: payload.reduce(
+        (acc, current) => ({
+            ...acc,
+            [current.id]: current
+        }),
+        {}
+    ),
+    entitiesOrder: payload.map((item) => item.id),
     entitiesStatus: payload.reduce(
         (prev, current) => ({
             ...prev,
@@ -67,8 +79,9 @@ export const postSuccess = <T extends Model>(
     payload: T
 ): IStateMap<T> => ({
     ...state,
-    fetchStatus: statusConstants.STATUS_LOADED,
-    entities: [...state.entities, payload],
+    status: statusConstants.STATUS_LOADED,
+    entities: { ...state.entities, [payload.id]: payload },
+    entitiesOrder: [...state.entitiesOrder, payload.id],
     entitiesStatus: {
         ...state.entitiesStatus,
         [payload.id]: statusConstants.STATUS_LOADED
@@ -81,21 +94,8 @@ export const putSuccess = <T extends Model>(
     payload: T
 ): IStateMap<T> => ({
     ...state,
-    fetchStatus: statusConstants.STATUS_LOADED,
-    entities: state.entities.map((currentItem) => {
-        if (currentItem.id !== payload.id) {
-            return currentItem
-        }
-
-        return Object.assign({}, currentItem, payload)
-
-        // spread bug https://github.com/Microsoft/TypeScript/issues/10727
-        // https://github.com/Microsoft/TypeScript/pull/13288#issuecomment-367396818
-        // return {
-        //     ...currentItem,
-        //     ...payload
-        // }
-    }),
+    status: statusConstants.STATUS_LOADED,
+    entities: { ...state.entities, [payload.id]: payload },
     entitiesStatus: {
         ...state.entitiesStatus,
         [payload.id]: statusConstants.STATUS_LOADED
@@ -108,13 +108,22 @@ export const deleteSuccess = <T extends Model>(
     id: number
 ): IStateMap<T> => ({
     ...state,
-    fetchStatus: statusConstants.STATUS_LOADED,
-    entities: state.entities.filter((i) => i.id !== id),
+    status: statusConstants.STATUS_LOADED,
+    entities: Object.keys(state.entities)
+        .filter((key) => Number(key) !== id)
+        .reduce(
+            (acc, current) => ({
+                ...acc,
+                [current]: state.entities[current]
+            }),
+            {}
+        ),
+    entitiesOrder: state.entitiesOrder.filter((item) => item !== id),
     entitiesStatus: Object.keys(state.entitiesStatus)
         .filter((key) => Number(key) !== id)
         .reduce(
-            (prev, current) => ({
-                ...prev,
+            (acc, current) => ({
+                ...acc,
                 [current]: state.entitiesStatus[current]
             }),
             {}

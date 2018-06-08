@@ -76,7 +76,7 @@ class RoutinesContainer extends React.Component<IProps> {
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     routines: routinesSelector(state),
     defaultRoutines: defaultRoutinesSelector(state),
-    isLoading: state.routines.fetchStatus === statusConstants.STATUS_LOADING
+    isLoading: state.routines.status === statusConstants.STATUS_LOADING
 })
 
 const mapDispatchToProps: IDispatchProps = {

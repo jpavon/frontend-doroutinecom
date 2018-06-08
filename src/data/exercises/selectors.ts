@@ -5,6 +5,7 @@ import { IRootState } from 'data/types'
 
 import { completedWorkoutsSelector } from 'data/workouts/selectors'
 import { liftSelector } from 'data/lifts/selectors'
+import { order } from 'data/utils'
 
 const formatExercise = (exercise: IExercise): IFormatedExercise => ({
     ...exercise
@@ -12,7 +13,10 @@ const formatExercise = (exercise: IExercise): IFormatedExercise => ({
 
 export const exercisesRoutineSelector = (routineId: number) =>
     createSelector(
-        [(state: IRootState) => state.exercises.entities],
+        [
+            (state: IRootState) =>
+                order(state.exercises.entitiesOrder, state.exercises.entities)
+        ],
         (exercises): IFormatedExercise[] =>
             exercises
                 .filter((exercise) => exercise.routineId === routineId)
@@ -23,7 +27,7 @@ export const exercisesWorkoutSelector = (workoutId: number) =>
     createSelector(
         [(state: IRootState) => state.exercises.entities],
         (exercises): IFormatedExercise[] =>
-            exercises
+            Object.values(exercises)
                 .filter((exercise) => exercise.workoutId === workoutId)
                 .map((exercise) => formatExercise(exercise))
     )
@@ -33,11 +37,11 @@ export const completedExercisesLiftSelector = (liftId: number) =>
         [
             (state: IRootState) => state.exercises.entities,
             completedWorkoutsSelector,
-            liftSelector(liftId)
+            (state) => liftSelector(state, liftId)
         ],
         (exercises, workouts, lift): IFormatedExercise[] => {
             const completedWorkoutsIds = workouts.map((workout) => workout.id)
-            const completedExercises = exercises.filter(
+            const completedExercises = Object.values(exercises).filter(
                 (exercise) =>
                     exercise.workoutId &&
                     completedWorkoutsIds.includes(exercise.workoutId)
@@ -57,7 +61,7 @@ export const completedExercisesSelector = createSelector(
     (exercises, workouts): IFormatedExercise[] => {
         const completedWorkoutsIds = workouts.map((workout) => workout.id)
 
-        return exercises.filter(
+        return Object.values(exercises).filter(
             (exercise) =>
                 exercise.workoutId &&
                 completedWorkoutsIds.includes(exercise.workoutId)

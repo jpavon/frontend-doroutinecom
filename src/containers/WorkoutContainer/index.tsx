@@ -166,9 +166,8 @@ class WorkoutContainer extends React.Component<IProps> {
 }
 
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
-    workout: workoutSelector(props.workoutId)(state),
-    isStatusLoaded:
-        state.workouts.fetchStatus === statusConstants.STATUS_LOADED,
+    workout: workoutSelector(state, props.workoutId),
+    isStatusLoaded: state.workouts.status === statusConstants.STATUS_LOADED,
     isDeleting:
         state.workouts.entitiesStatus[props.workoutId] ===
         statusConstants.STATUS_DELETING

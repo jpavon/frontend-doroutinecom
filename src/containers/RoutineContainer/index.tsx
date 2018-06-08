@@ -37,6 +37,7 @@ interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class RoutineContainer extends React.Component<IProps> {
     componentDidMount() {
+        console.log(this.props)
         if (this.props.isStatusLoaded && !this.props.routine) {
             history.replace('/routines')
         }
@@ -105,9 +106,8 @@ class RoutineContainer extends React.Component<IProps> {
 }
 
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
-    routine: routineSelector(props.routineId)(state),
-    isStatusLoaded:
-        state.routines.fetchStatus === statusConstants.STATUS_LOADED,
+    routine: routineSelector(state, props.routineId),
+    isStatusLoaded: state.routines.status === statusConstants.STATUS_LOADED,
     isDeleting:
         state.routines.entitiesStatus[props.routineId] ===
         statusConstants.STATUS_DELETING
