@@ -2,7 +2,7 @@
 
 .nav-container {
     background-color: $color-background-light;
-    border-bottom: 1px solid rgba($color-font, 0.05);
+    border-bottom: 2px solid rgba($color-font, 0.05);
 
     &.nav-container--touch {
         position: fixed;
