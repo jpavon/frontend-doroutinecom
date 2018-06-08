@@ -11,7 +11,10 @@ const initialState: Readonly<IExercisesState> = {
     error: null
 }
 
-const exercises = (state = initialState, action: IExercisesAction): IExercisesState => {
+const exercises = (
+    state = initialState,
+    action: IExercisesAction
+): IExercisesState => {
     switch (action.type) {
         case constants.EXERCISES_GET_REQUEST:
             return utils.request(state)

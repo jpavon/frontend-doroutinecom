@@ -1,5 +1,6 @@
+import { ActionType } from 'typesafe-actions'
 import { IStateMap } from 'data/types'
-import * as actionTypes from 'data/exercises/actions'
+import * as actions from 'data/exercises/actions'
 
 export interface IExercise {
     id: number
@@ -12,11 +13,10 @@ export interface IExercise {
     updatedAt: string
 }
 
-export interface IFormatedExercise extends IExercise {
-}
+export interface IFormatedExercise extends IExercise {}
 
 export type IExercisesState = IStateMap<IExercise>
 
-export type IExercisesAction = ReturnType<typeof actionTypes[keyof typeof actionTypes]>
+export type IExercisesAction = ActionType<typeof actions>
 
 export type IExerciseRequestData = Partial<IExercise>

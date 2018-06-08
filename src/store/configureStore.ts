@@ -1,16 +1,15 @@
 import { createStore, applyMiddleware, compose, Middleware } from 'redux'
-import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 
 import { IRootState } from 'data/types'
 
-import rootReducer from 'utils/rootReducer'
-import rootSaga from 'data/rootSaga'
+import rootReducer from 'store/rootReducer'
+import rootSaga from 'store/rootSaga'
 
 const sagaMiddleware = createSagaMiddleware()
 
-const middleware: Middleware[] = [thunk, sagaMiddleware]
+const middleware: Middleware[] = [sagaMiddleware]
 if (process.env.NODE_ENV !== 'production') {
     const logger = createLogger({
         collapsed: true

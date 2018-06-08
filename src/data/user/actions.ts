@@ -10,28 +10,31 @@ import {
 
 import constants from 'data/user/constants'
 
-const createAction = <T extends { type: constants }>(d: T): T => d
-
 // get
-export const getUser = () => createAction({
-    type: constants.USER_GET_REQUEST,
+export const getUser = () => ({
+    type: constants.USER_GET_REQUEST as constants.USER_GET_REQUEST,
     method: 'get',
     endpoint: 'user'
 })
 
-export const getUserSuccess = (payload: IUser) => createAction({
-    type: constants.USER_GET_SUCCESS,
+export const getUserSuccess = (payload: IUser) => ({
+    type: constants.USER_GET_SUCCESS as constants.USER_GET_SUCCESS,
     payload
 })
 
-export const getUserFailure = (payload: IApiFailure) => createAction({
-    type: constants.USER_GET_FAILURE,
+export const getUserFailure = (payload: IApiFailure) => ({
+    type: constants.USER_GET_FAILURE as constants.USER_GET_FAILURE,
     error: payload
 })
 
 // put
-export const putUser = (id: number, data: IUserRequestData, resolve: () => void, reject: () => void) => createAction({
-    type: constants.USER_PUT_REQUEST,
+export const putUser = (
+    id: number,
+    data: IUserRequestData,
+    resolve: () => void,
+    reject: () => void
+) => ({
+    type: constants.USER_PUT_REQUEST as constants.USER_PUT_REQUEST,
     method: 'put',
     endpoint: 'user',
     data,
@@ -39,19 +42,23 @@ export const putUser = (id: number, data: IUserRequestData, resolve: () => void,
     reject
 })
 
-export const putUserSuccess = (payload: IUser) => createAction({
-    type: constants.USER_PUT_SUCCESS,
+export const putUserSuccess = (payload: IUser) => ({
+    type: constants.USER_PUT_SUCCESS as constants.USER_PUT_SUCCESS,
     payload
 })
 
-export const putUserFailure = (payload: IApiFailure) => createAction({
-    type: constants.USER_PUT_FAILURE,
+export const putUserFailure = (payload: IApiFailure) => ({
+    type: constants.USER_PUT_FAILURE as constants.USER_PUT_FAILURE,
     error: payload
 })
 
 // login
-export const loginUser = (data: ILoginData, resolve: () => void, reject: () => void) => createAction({
-    type: constants.USER_LOGIN_REQUEST,
+export const loginUser = (
+    data: ILoginData,
+    resolve: () => void,
+    reject: () => void
+) => ({
+    type: constants.USER_LOGIN_REQUEST as constants.USER_LOGIN_REQUEST,
     method: 'post',
     endpoint: 'login',
     data,
@@ -59,19 +66,23 @@ export const loginUser = (data: ILoginData, resolve: () => void, reject: () => v
     reject
 })
 
-export const loginUserSuccess = (payload: IUser) => createAction({
-    type: constants.USER_LOGIN_SUCCESS,
+export const loginUserSuccess = (payload: IUser) => ({
+    type: constants.USER_LOGIN_SUCCESS as constants.USER_LOGIN_SUCCESS,
     payload
 })
 
-export const loginUserFailure = (payload: IApiFailure) => createAction({
-    type: constants.USER_LOGIN_FAILURE,
+export const loginUserFailure = (payload: IApiFailure) => ({
+    type: constants.USER_LOGIN_FAILURE as constants.USER_LOGIN_FAILURE,
     error: payload
 })
 
 // register
-export const registerUser = (data: IRegisterData, resolve: () => void, reject: () => void) => createAction({
-    type: constants.USER_REGISTER_REQUEST,
+export const registerUser = (
+    data: IRegisterData,
+    resolve: () => void,
+    reject: () => void
+) => ({
+    type: constants.USER_REGISTER_REQUEST as constants.USER_REGISTER_REQUEST,
     method: 'post',
     endpoint: 'register',
     data,
@@ -79,36 +90,40 @@ export const registerUser = (data: IRegisterData, resolve: () => void, reject: (
     reject
 })
 
-export const registerUserSuccess = (payload: IUser) => createAction({
-    type: constants.USER_REGISTER_SUCCESS,
+export const registerUserSuccess = (payload: IUser) => ({
+    type: constants.USER_REGISTER_SUCCESS as constants.USER_REGISTER_SUCCESS,
     payload
 })
 
-export const registerUserFailure = (payload: IApiFailure) => createAction({
-    type: constants.USER_REGISTER_FAILURE,
+export const registerUserFailure = (payload: IApiFailure) => ({
+    type: constants.USER_REGISTER_FAILURE as constants.USER_REGISTER_FAILURE,
     error: payload
 })
 
 // passwordForgotten
-export const passwordForgottenUser = (data: IPasswordForgottenData) => createAction({
-    type: constants.USER_PASSWORD_FORGOTTEN_REQUEST,
+export const passwordForgottenUser = (data: IPasswordForgottenData) => ({
+    type: constants.USER_PASSWORD_FORGOTTEN_REQUEST as constants.USER_PASSWORD_FORGOTTEN_REQUEST,
     method: 'post',
     endpoint: 'password/email',
-    data,
+    data
 })
 
-export const passwordForgottenUserSuccess = () => createAction({
-    type: constants.USER_PASSWORD_FORGOTTEN_SUCCESS
+export const passwordForgottenUserSuccess = () => ({
+    type: constants.USER_PASSWORD_FORGOTTEN_SUCCESS as constants.USER_PASSWORD_FORGOTTEN_SUCCESS
 })
 
-export const passwordForgottenUserFailure = (payload: IApiFailure) => createAction({
-    type: constants.USER_PASSWORD_FORGOTTEN_FAILURE,
+export const passwordForgottenUserFailure = (payload: IApiFailure) => ({
+    type: constants.USER_PASSWORD_FORGOTTEN_FAILURE as constants.USER_PASSWORD_FORGOTTEN_FAILURE,
     error: payload
 })
 
 // passwordReset
-export const passwordResetUser = (data: IPasswordResetData, resolve: () => void, reject: () => void) => createAction({
-    type: constants.USER_PASSWORD_RESET_REQUEST,
+export const passwordResetUser = (
+    data: IPasswordResetData,
+    resolve: () => void,
+    reject: () => void
+) => ({
+    type: constants.USER_PASSWORD_RESET_REQUEST as constants.USER_PASSWORD_RESET_REQUEST,
     method: 'post',
     endpoint: 'password/reset',
     data,
@@ -116,22 +131,22 @@ export const passwordResetUser = (data: IPasswordResetData, resolve: () => void,
     reject
 })
 
-export const passwordResetUserSuccess = () => createAction({
-    type: constants.USER_PASSWORD_RESET_SUCCESS,
+export const passwordResetUserSuccess = () => ({
+    type: constants.USER_PASSWORD_RESET_SUCCESS as constants.USER_PASSWORD_RESET_SUCCESS
 })
 
-export const passwordResetUserFailure = (payload: IApiFailure) => createAction({
-    type: constants.USER_PASSWORD_RESET_FAILURE,
+export const passwordResetUserFailure = (payload: IApiFailure) => ({
+    type: constants.USER_PASSWORD_RESET_FAILURE as constants.USER_PASSWORD_RESET_FAILURE,
     error: payload
 })
 
 // auth
-export const authUser = () => createAction({
-    type: constants.USER_AUTH,
+export const authUser = () => ({
+    type: constants.USER_AUTH as constants.USER_AUTH
 })
 
 // unauth
-export const unauthUser = (error?: string) => createAction({
-    type: constants.USER_UNAUTH,
+export const unauthUser = (error?: string) => ({
+    type: constants.USER_UNAUTH as constants.USER_UNAUTH,
     error
 })
