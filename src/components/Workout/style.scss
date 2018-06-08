@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import 'variables.scss';
 
 .workout-routine-name {
     display: flex;
@@ -21,7 +21,7 @@
     margin-left: $spacing;
     margin-top: 3px;
     color: $color-danger;
-    font-size: .8rem;
+    font-size: 0.8rem;
 }
 
 .workout-dates {

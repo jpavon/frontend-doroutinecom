@@ -23,7 +23,6 @@ export interface IButtonProps {
 }
 
 class Button extends React.Component<IButtonProps> {
-
     render() {
         const {
             to,

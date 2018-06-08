@@ -1,7 +1,6 @@
-@import "variables.scss";
+@import 'variables.scss';
 
 .nav-no-auth {
-
 }
 
 .nav-no-auth-logo {
@@ -17,13 +16,14 @@
 }
 
 .nav-no-auth-link {
-    font-size: .9rem;
+    font-size: 0.9rem;
     margin: 0 $spacing * 2;
     display: inline-block;
-    letter-spacing: .05rem;
+    letter-spacing: 0.05rem;
     color: $color-font;
 
-    &:hover, &.nav-no-auth-link--active {
-        color: $color-primary
+    &:hover,
+    &.nav-no-auth-link--active {
+        color: $color-primary;
     }
 }

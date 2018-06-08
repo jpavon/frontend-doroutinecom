@@ -11,7 +11,10 @@ const NotFound: React.SFC<{}> = () => (
         </Helmet>
         <div className="not-found">
             <div className="not-found-title">Page not found.</div>
-            <p>Try using the navigation above or going to the <Link to="/">homepage</Link>.</p>
+            <p>
+                Try using the navigation above or going to the{' '}
+                <Link to="/">homepage</Link>.
+            </p>
         </div>
     </>
 )

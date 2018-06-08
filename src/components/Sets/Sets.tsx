@@ -25,28 +25,33 @@ const Sets: React.SFC<ISetsProps> = ({
 }) => (
     <div className="sets">
         <div className="sets-header">
-            <div className="sets-header-item"><small>Set</small></div>
-            <div className="sets-header-item"><small>Reps</small></div>
-            <div className="sets-header-item"><small>{user.weightMeasure}</small></div>
-            {isWorkout ?
+            <div className="sets-header-item">
+                <small>Set</small>
+            </div>
+            <div className="sets-header-item">
+                <small>Reps</small>
+            </div>
+            <div className="sets-header-item">
+                <small>{user.weightMeasure}</small>
+            </div>
+            {isWorkout ? (
                 <div className="sets-header-item sets-header-item--toggle">
                     <Button onClick={toggleRemoveButtons}>
                         {isRemoveButtonsVisible ? '✓' : 'X'}
                     </Button>
-                </div> :
+                </div>
+            ) : (
                 <div className="sets-header-item" />
-            }
+            )}
         </div>
         <Transition className="set">
-            { // tslint:disable-next-line:no-any
-                children as React.ReactElement<any>}
+            {
+                // tslint:disable-next-line:no-any
+                children as React.ReactElement<any>
+            }
         </Transition>
         <div className="sets-button-create">
-            <Button
-                onClick={create}
-            >
-                Add Set
-            </Button>
+            <Button onClick={create}>Add Set</Button>
         </div>
     </div>
 )

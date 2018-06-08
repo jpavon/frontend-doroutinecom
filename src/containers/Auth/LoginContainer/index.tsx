@@ -5,11 +5,9 @@ import { loginUser } from 'data/user/actions'
 
 import Login from 'components/Auth/Login'
 
-interface IOwnProps {
-}
+interface IOwnProps {}
 
-interface IStateProps {
-}
+interface IStateProps {}
 
 interface IDispatchProps {
     loginUser: typeof loginUser
@@ -18,7 +16,6 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class LoginContainer extends React.Component<IProps> {
-
     email: React.RefObject<HTMLInputElement> = React.createRef()
     password: React.RefObject<HTMLInputElement> = React.createRef()
 
@@ -26,10 +23,14 @@ class LoginContainer extends React.Component<IProps> {
         event.preventDefault()
 
         new Promise((resolve, reject) => {
-            this.props.loginUser({
-                email: this.email.current!.value,
-                password: this.password.current!.value
-            }, resolve, reject)
+            this.props.loginUser(
+                {
+                    email: this.email.current!.value,
+                    password: this.password.current!.value
+                },
+                resolve,
+                reject
+            )
         }).catch((error) => {
             this.password.current!.value = ''
         })
@@ -50,7 +51,10 @@ class LoginContainer extends React.Component<IProps> {
 // })
 
 const mapDispatchToProps: IDispatchProps = {
-    loginUser,
+    loginUser
 }
 
-export default connect(null, mapDispatchToProps)(LoginContainer)
+export default connect(
+    null,
+    mapDispatchToProps
+)(LoginContainer)

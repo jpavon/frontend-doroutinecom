@@ -27,37 +27,47 @@ interface IRouteComponent {
 }
 
 class Routes extends React.Component<IProps> {
-
     render() {
-        const PrivateRoute = ({ component: Component, ...rest }: IRouteComponent) => (
+        const PrivateRoute = ({
+            component: Component,
+            ...rest
+        }: IRouteComponent) => (
             <Route
-                render={(props) => (
-                    this.props.isAuth ?
-                        <Component {...props} /> :
+                render={(props) =>
+                    this.props.isAuth ? (
+                        <Component {...props} />
+                    ) : (
                         <Redirect
                             to={{
                                 pathname: '/login',
                                 state: { from: props.location.pathname }
                             }}
                         />
-                )}
+                    )
+                }
                 {...rest}
             />
         )
 
-        const GuestRoute = ({ component: Component, ...rest }: IRouteComponent) => (
+        const GuestRoute = ({
+            component: Component,
+            ...rest
+        }: IRouteComponent) => (
             <Route
-                render={(props) => (
-                    !this.props.isAuth ?
-                        <Component {...props} /> :
+                render={(props) =>
+                    !this.props.isAuth ? (
+                        <Component {...props} />
+                    ) : (
                         <Redirect
                             to={
-                                (props.location.state && props.location.state.from) ?
-                                props.location.state.from :
-                                '/'
+                                props.location.state &&
+                                props.location.state.from
+                                    ? props.location.state.from
+                                    : '/'
                             }
                         />
-                )}
+                    )
+                }
                 {...rest}
             />
         )
@@ -66,19 +76,35 @@ class Routes extends React.Component<IProps> {
             <Switch>
                 <GuestRoute exact path="/login" component={Login} />
                 <GuestRoute exact path="/register" component={Register} />
-                <GuestRoute exact path="/password-forgotten" component={PasswordForgotten} />
-                <GuestRoute exact path="/password-reset/:token" component={PasswordReset} />
+                <GuestRoute
+                    exact
+                    path="/password-forgotten"
+                    component={PasswordForgotten}
+                />
+                <GuestRoute
+                    exact
+                    path="/password-reset/:token"
+                    component={PasswordReset}
+                />
 
                 <PrivateRoute exact path="/" component={Profile} />
                 <PrivateRoute exact path="/settings" component={Settings} />
                 <PrivateRoute exact path="/workouts" component={Workouts} />
-                <PrivateRoute exact path="/workouts/:workoutId" component={Workout} />
+                <PrivateRoute
+                    exact
+                    path="/workouts/:workoutId"
+                    component={Workout}
+                />
                 <PrivateRoute exact path="/routines" component={Routines} />
-                <PrivateRoute exact path="/routines/:routineId" component={Routine} />
+                <PrivateRoute
+                    exact
+                    path="/routines/:routineId"
+                    component={Routine}
+                />
                 <PrivateRoute exact path="/lifts" component={Lifts} />
                 <PrivateRoute exact path="/lifts/:liftId" component={Lift} />
 
-                <Route component={NotFound}/>
+                <Route component={NotFound} />
             </Switch>
         )
     }

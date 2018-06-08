@@ -8,8 +8,6 @@ const formatUser = (user: IUser): IFormatedUser => ({
 })
 
 export const userSelector = createSelector(
-    [
-        (state: IRootState) => state.user.entity
-    ],
+    [(state: IRootState) => state.user.entity],
     (user): IFormatedUser | null => user && formatUser(user)
 )

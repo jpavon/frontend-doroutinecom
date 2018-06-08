@@ -5,11 +5,7 @@ import SettingsContainer from 'containers/SettingsContainer'
 import Footer from 'components/Footer'
 
 const Settings = () => (
-    <Layout
-        header={(
-            <title>Settings</title>
-        )}
-    >
+    <Layout header={<title>Settings</title>}>
         <SettingsContainer />
         <Footer />
     </Layout>

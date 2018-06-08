@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import 'variables.scss';
 
 .info {
     margin-bottom: $spacing;
@@ -13,15 +13,15 @@
 .info-content {
     margin-top: $spacing;
     padding: $spacing * 2;
-    background-color: rgba($color-info, .1);
-    border: 1px solid rgba($color-info, .2);
+    background-color: rgba($color-info, 0.1);
+    border: 1px solid rgba($color-info, 0.2);
 
     h2 {
         font-weight: 500;
     }
 
     p {
-        font-size: .95rem;
+        font-size: 0.95rem;
         margin-bottom: $spacing * 1.5;
         line-height: 1.5;
 

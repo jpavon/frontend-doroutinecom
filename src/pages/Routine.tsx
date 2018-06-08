@@ -8,15 +8,9 @@ interface IParams {
     routineId: string
 }
 
-const Routine = ({match}: RouteComponentProps<IParams>) => (
-    <Layout
-        header={(
-            <title>Routine</title>
-        )}
-    >
-        <RoutineContainer
-            routineId={Number(match.params.routineId)}
-        />
+const Routine = ({ match }: RouteComponentProps<IParams>) => (
+    <Layout header={<title>Routine</title>}>
+        <RoutineContainer routineId={Number(match.params.routineId)} />
     </Layout>
 )
 

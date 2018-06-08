@@ -5,8 +5,15 @@ import { IFormatedExercise } from 'data/exercises/types'
 import { IFormatedLift } from 'data/lifts/types'
 import { IRootState, IEntitiesStatus } from 'data/types'
 
-import { postExercise, putExercise, deleteExercise } from 'data/exercises/actions'
-import { exercisesRoutineSelector, exercisesWorkoutSelector } from 'data/exercises/selectors'
+import {
+    postExercise,
+    putExercise,
+    deleteExercise
+} from 'data/exercises/actions'
+import {
+    exercisesRoutineSelector,
+    exercisesWorkoutSelector
+} from 'data/exercises/selectors'
 import { liftsSelector } from 'data/lifts/selectors'
 import { statusConstants } from 'data/constants'
 
@@ -41,7 +48,6 @@ interface IState {
 }
 
 class ExercisesContainer extends React.Component<IProps, IState> {
-
     isRoutine: boolean
     isWorkout: boolean
 
@@ -52,7 +58,7 @@ class ExercisesContainer extends React.Component<IProps, IState> {
         this.isWorkout = !!props.workoutId
 
         this.state = {
-            isRemoveButtonsVisible: !!props.routineId ? true : false,
+            isRemoveButtonsVisible: !!props.routineId ? true : false
         }
     }
 
@@ -81,13 +87,9 @@ class ExercisesContainer extends React.Component<IProps, IState> {
     render() {
         return (
             <>
-                <TopNav
-                    title="Exercises"
-                />
-                <Exercises
-                    create={this.handleCreate}
-                >
-                    {this.props.exercises.length > 0 ?
+                <TopNav title="Exercises" />
+                <Exercises create={this.handleCreate}>
+                    {this.props.exercises.length > 0 ? (
                         this.props.exercises.map((exercise, i) => (
                             <Exercise
                                 key={exercise.id}
@@ -95,22 +97,30 @@ class ExercisesContainer extends React.Component<IProps, IState> {
                                 lifts={this.props.lifts}
                                 update={this.props.putExercise}
                                 remove={this.props.deleteExercise}
-                                isDeleting={this.props.entitiesStatus[exercise.id] === statusConstants.STATUS_DELETING}
-                                isRemoveButtonsVisible={this.state.isRemoveButtonsVisible}
+                                isDeleting={
+                                    this.props.entitiesStatus[exercise.id] ===
+                                    statusConstants.STATUS_DELETING
+                                }
+                                isRemoveButtonsVisible={
+                                    this.state.isRemoveButtonsVisible
+                                }
                             >
                                 <SetsContainer
                                     exerciseId={exercise.id}
                                     liftId={exercise.liftId}
                                     isWorkout={this.isWorkout}
-                                    isRemoveButtonsVisible={this.state.isRemoveButtonsVisible}
-                                    toggleRemoveButtons={this.handleToggleRemoveButtons}
+                                    isRemoveButtonsVisible={
+                                        this.state.isRemoveButtonsVisible
+                                    }
+                                    toggleRemoveButtons={
+                                        this.handleToggleRemoveButtons
+                                    }
                                 />
                             </Exercise>
-                        )) :
-                        <NoData
-                            text="No exercises created."
-                        />
-                    }
+                        ))
+                    ) : (
+                        <NoData text="No exercises created." />
+                    )}
                 </Exercises>
             </>
         )
@@ -118,10 +128,13 @@ class ExercisesContainer extends React.Component<IProps, IState> {
 }
 
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
-    exercises: props.routineId ? exercisesRoutineSelector(props.routineId)(state) :
-        (props.workoutId ? exercisesWorkoutSelector(props.workoutId)(state) : []),
+    exercises: props.routineId
+        ? exercisesRoutineSelector(props.routineId)(state)
+        : props.workoutId
+            ? exercisesWorkoutSelector(props.workoutId)(state)
+            : [],
     lifts: liftsSelector(state),
-    entitiesStatus: state.exercises.entitiesStatus,
+    entitiesStatus: state.exercises.entitiesStatus
 })
 
 const mapDispatchToProps: IDispatchProps = {
@@ -130,4 +143,7 @@ const mapDispatchToProps: IDispatchProps = {
     deleteExercise
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExercisesContainer)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ExercisesContainer)

@@ -1,4 +1,4 @@
-@import "Form/Input/style.scss";
+@import 'Form/Input/style.scss';
 
 /*!
  * https://github.com/YouCanBookMe/react-datetime
@@ -15,7 +15,7 @@
     margin-top: 1px;
     z-index: 99999 !important;
     background: #fff;
-    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     border: 1px solid #f9f9f9;
 }
 .rdtOpen .rdtPicker {
@@ -112,10 +112,10 @@
 .rdtNext span {
     display: block;
     -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none;   /* Chrome/Safari/Opera */
-    -khtml-user-select: none;    /* Konqueror */
-    -moz-user-select: none;      /* Firefox */
-    -ms-user-select: none;       /* Internet Explorer/Edge */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
 }
 
@@ -188,10 +188,10 @@ td.rdtYear:hover {
     display: block;
 
     -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none;   /* Chrome/Safari/Opera */
-    -khtml-user-select: none;    /* Konqueror */
-    -moz-user-select: none;      /* Firefox */
-    -ms-user-select: none;       /* Internet Explorer/Edge */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
 }
 .rdtCounter .rdtBtn:hover {
@@ -214,15 +214,14 @@ td.rdtYear:hover {
     margin-top: 37px;
 }
 
-
 // Added styles
-
 
 .rdt input {
     @extend .input;
 }
 
-.rdtPicker .rdtTimeToggle, .rdtTime th.rdtSwitch {
+.rdtPicker .rdtTimeToggle,
+.rdtTime th.rdtSwitch {
     padding: 10px 0;
     font-weight: 700;
     font-size: 20px;
@@ -232,7 +231,8 @@ td.rdtYear:hover {
     padding: 10px 0;
 }
 
-.rdtPicker td.rdtActive, .rdtPicker td.rdtActive:hover {
+.rdtPicker td.rdtActive,
+.rdtPicker td.rdtActive:hover {
     text-shadow: none;
 }
 

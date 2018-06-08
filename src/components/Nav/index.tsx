@@ -11,9 +11,16 @@ import workoutsIcon from 'media/workouts.svg'
 
 import './style.scss'
 
-const isProfileActive = (match: RouteComponentProps<{}>['match'], location: RouteComponentProps<{}>['location']) => {
-    if (match) { return true }
-    if (location.pathname === '/settings') { return true }
+const isProfileActive = (
+    match: RouteComponentProps<{}>['match'],
+    location: RouteComponentProps<{}>['location']
+) => {
+    if (match) {
+        return true
+    }
+    if (location.pathname === '/settings') {
+        return true
+    }
     return false
 }
 
@@ -22,7 +29,7 @@ interface INavProps {
     isPendingWorkouts: boolean
 }
 
-const Nav: React.SFC<INavProps> = ({isTouchDevice, isPendingWorkouts}) => (
+const Nav: React.SFC<INavProps> = ({ isTouchDevice, isPendingWorkouts }) => (
     <nav
         className={classNames(
             'nav-container',
@@ -30,8 +37,12 @@ const Nav: React.SFC<INavProps> = ({isTouchDevice, isPendingWorkouts}) => (
         )}
     >
         <div className="nav">
-            <NavLink to="/" className="nav-logo" activeClassName="nav-link--active">
-                <img src={logo} alt="Logo"/>
+            <NavLink
+                to="/"
+                className="nav-logo"
+                activeClassName="nav-link--active"
+            >
+                <img src={logo} alt="Logo" />
             </NavLink>
 
             <ul className="nav-list">
@@ -48,20 +59,34 @@ const Nav: React.SFC<INavProps> = ({isTouchDevice, isPendingWorkouts}) => (
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/workouts" className="nav-link" activeClassName="nav-link--active">
-                        {isPendingWorkouts && <div className="nav-link-highlight" />}
+                    <NavLink
+                        to="/workouts"
+                        className="nav-link"
+                        activeClassName="nav-link--active"
+                    >
+                        {isPendingWorkouts && (
+                            <div className="nav-link-highlight" />
+                        )}
                         <img src={workoutsIcon} alt="Workouts" />
                         <span>Workouts</span>
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/routines" className="nav-link" activeClassName="nav-link--active">
+                    <NavLink
+                        to="/routines"
+                        className="nav-link"
+                        activeClassName="nav-link--active"
+                    >
                         <img src={routinesIcon} alt="Routines" />
                         <span>Routines</span>
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/lifts" className="nav-link" activeClassName="nav-link--active">
+                    <NavLink
+                        to="/lifts"
+                        className="nav-link"
+                        activeClassName="nav-link--active"
+                    >
                         <img src={liftsIcon} alt="Lifts" />
                         Lifts
                     </NavLink>

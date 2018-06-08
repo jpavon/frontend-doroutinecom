@@ -10,21 +10,18 @@ import { pendingWorkoutsSelector } from 'data/workouts/selectors'
 import Nav from 'components/Nav'
 import NavNoAuth from 'components/NavNoAuth'
 
-interface IOwnProps {
-}
+interface IOwnProps {}
 
 interface IStateProps {
     isAuth: boolean
     isPendingWorkouts: boolean
 }
 
-interface IDispatchProps {
-}
+interface IDispatchProps {}
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class NavContainer extends React.Component<IProps> {
-
     isTouchDevice: boolean
 
     constructor(props: IProps) {
@@ -34,16 +31,14 @@ class NavContainer extends React.Component<IProps> {
     }
 
     render() {
-        return this.props.isAuth ?
-            (
-                <Nav
-                    isTouchDevice={this.isTouchDevice}
-                    isPendingWorkouts={this.props.isPendingWorkouts}
-                />
-            ) :
-            (
-                <NavNoAuth />
-            )
+        return this.props.isAuth ? (
+            <Nav
+                isTouchDevice={this.isTouchDevice}
+                isPendingWorkouts={this.props.isPendingWorkouts}
+            />
+        ) : (
+            <NavNoAuth />
+        )
     }
 }
 
@@ -52,10 +47,12 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     isPendingWorkouts: pendingWorkoutsSelector(state).length > 0
 })
 
-const mapDispatchToProps: IDispatchProps = {
-}
+const mapDispatchToProps: IDispatchProps = {}
 
 export default compose(
     withRouter,
-    connect(mapStateToProps, mapDispatchToProps),
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )
 )(NavContainer)

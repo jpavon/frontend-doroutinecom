@@ -4,11 +4,7 @@ import Layout from 'pages/Layout'
 import LiftsContainer from 'containers/LiftsContainer'
 
 const Lifts = () => (
-    <Layout
-        header={(
-            <title>Lifts</title>
-        )}
-    >
+    <Layout header={<title>Lifts</title>}>
         <LiftsContainer />
     </Layout>
 )

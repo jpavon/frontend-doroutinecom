@@ -1,16 +1,19 @@
 .saving {
-  position: absolute;
-  top: 50%;
-  right: 9px;
-  margin-top: -8px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border-top: 2px solid #4c90c2;
-  border-right: 2px solid transparent;
-  animation: spinner .6s linear infinite;
-  z-index: 90; }
+    position: absolute;
+    top: 50%;
+    right: 9px;
+    margin-top: -8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border-top: 2px solid #4c90c2;
+    border-right: 2px solid transparent;
+    animation: spinner 0.6s linear infinite;
+    z-index: 90;
+}
 
 @keyframes spinner {
-  0% {
-    transform: rotate(360deg); } }
+    0% {
+        transform: rotate(360deg);
+    }
+}

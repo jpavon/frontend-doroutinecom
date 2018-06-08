@@ -11,11 +11,10 @@ import { userSelector } from 'data/user/selectors'
 import Settings from 'components/Settings'
 import TopNav from 'components/TopNav'
 
-interface IOwnProps {
-}
+interface IOwnProps {}
 
 interface IStateProps {
-    user: IFormatedUser | null,
+    user: IFormatedUser | null
 }
 
 interface IDispatchProps {
@@ -26,7 +25,6 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class SettingsContainer extends React.Component<IProps> {
-
     handleUnauthUser = (event: React.FormEvent<HTMLInputElement>) => {
         event.preventDefault()
 
@@ -38,20 +36,26 @@ class SettingsContainer extends React.Component<IProps> {
             return
         }
 
-        if (nextProps.user.startOfWeek && nextProps.user.startOfWeek !== this.props.user.startOfWeek) {
+        if (
+            nextProps.user.startOfWeek &&
+            nextProps.user.startOfWeek !== this.props.user.startOfWeek
+        ) {
             store.set('startOfWeek', nextProps.user.startOfWeek)
             window.location.reload(true)
         }
 
-        if (nextProps.user.dateFormat && nextProps.user.dateFormat !== this.props.user.dateFormat) {
+        if (
+            nextProps.user.dateFormat &&
+            nextProps.user.dateFormat !== this.props.user.dateFormat
+        ) {
             store.set('dateFormat', nextProps.user.dateFormat)
             window.location.reload(true)
         }
     }
 
     render() {
-        return this.props.user &&
-            (
+        return (
+            this.props.user && (
                 <>
                     <TopNav
                         title="General"
@@ -73,6 +77,7 @@ class SettingsContainer extends React.Component<IProps> {
                     />
                 </>
             )
+        )
     }
 }
 
@@ -85,4 +90,7 @@ const mapDispatchToProps: IDispatchProps = {
     unauthUser
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsContainer)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(SettingsContainer)

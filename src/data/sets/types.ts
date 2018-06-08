@@ -13,12 +13,13 @@ export interface ISet {
     updatedAt: string
 }
 
-export interface IFormatedSet extends ISet {
-}
+export interface IFormatedSet extends ISet {}
 
 export type ISetsState = IStateMap<ISet>
 
-export type ISetsAction = ReturnType<typeof actionTypes[keyof typeof actionTypes]>
+export type ISetsAction = ReturnType<
+    typeof actionTypes[keyof typeof actionTypes]
+>
 
 export interface ITopSet {
     workoutId: number

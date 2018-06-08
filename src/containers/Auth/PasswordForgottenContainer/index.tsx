@@ -6,11 +6,9 @@ import { passwordForgottenUser } from 'data/user/actions'
 import PasswordForgotten from 'components/Auth/PasswordForgotten'
 import TopNav from 'components/TopNav'
 
-interface IOwnProps {
-}
+interface IOwnProps {}
 
-interface IStateProps {
-}
+interface IStateProps {}
 
 interface IDispatchProps {
     passwordForgottenUser: typeof passwordForgottenUser
@@ -19,7 +17,6 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class PasswordForgottenContainer extends React.Component<IProps> {
-
     email: React.RefObject<HTMLInputElement> = React.createRef()
 
     handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -33,9 +30,7 @@ class PasswordForgottenContainer extends React.Component<IProps> {
     render() {
         return (
             <>
-                <TopNav
-                    title="Password Forgotten"
-                />
+                <TopNav title="Password Forgotten" />
                 <PasswordForgotten
                     handleSubmit={this.handleSubmit}
                     emailRef={this.email}
@@ -49,7 +44,10 @@ class PasswordForgottenContainer extends React.Component<IProps> {
 // })
 
 const mapDispatchToProps: IDispatchProps = {
-    passwordForgottenUser,
+    passwordForgottenUser
 }
 
-export default connect(null, mapDispatchToProps)(PasswordForgottenContainer)
+export default connect(
+    null,
+    mapDispatchToProps
+)(PasswordForgottenContainer)

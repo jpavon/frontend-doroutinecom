@@ -7,7 +7,11 @@ import { IFormatedWorkout } from 'data/workouts/types'
 
 import history from 'utils/history'
 import { now } from 'utils/date'
-import { putWorkout, postWorkoutFrom, deleteWorkout } from 'data/workouts/actions'
+import {
+    putWorkout,
+    postWorkoutFrom,
+    deleteWorkout
+} from 'data/workouts/actions'
 import { workoutSelector } from 'data/workouts/selectors'
 import { statusConstants } from 'data/constants'
 
@@ -37,7 +41,6 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class WorkoutContainer extends React.Component<IProps> {
-
     componentDidMount() {
         if (this.props.isStatusLoaded && !this.props.workout) {
             history.replace('/workouts')
@@ -45,7 +48,9 @@ class WorkoutContainer extends React.Component<IProps> {
     }
 
     handleCompleted = () => {
-        if (!this.props.workout) { return }
+        if (!this.props.workout) {
+            return
+        }
 
         this.props.putWorkout(this.props.workout.id, {
             completedAt: now()
@@ -53,7 +58,9 @@ class WorkoutContainer extends React.Component<IProps> {
     }
 
     handleRestart = () => {
-        if (!this.props.workout) { return }
+        if (!this.props.workout) {
+            return
+        }
 
         this.props.putWorkout(this.props.workout.id, {
             startedAt: now(),
@@ -62,7 +69,9 @@ class WorkoutContainer extends React.Component<IProps> {
     }
 
     handleCreate = () => {
-        if (!this.props.workout) { return }
+        if (!this.props.workout) {
+            return
+        }
 
         this.props.postWorkoutFrom({
             routineId: this.props.workout.routineId,
@@ -72,7 +81,9 @@ class WorkoutContainer extends React.Component<IProps> {
     }
 
     handleRemove = () => {
-        if (!this.props.workout) { return }
+        if (!this.props.workout) {
+            return
+        }
 
         if (window.confirm('Are you sure you want to delete this workout?')) {
             this.props.deleteWorkout(this.props.workout.id)
@@ -82,21 +93,26 @@ class WorkoutContainer extends React.Component<IProps> {
     render() {
         return this.props.workout ? (
             <>
-                {this.props.workout.displayName &&
+                {this.props.workout.displayName && (
                     <Helmet>
                         <title>{this.props.workout.displayName}</title>
                     </Helmet>
-                }
+                )}
                 <Alert
                     type={this.props.workout.completedAt ? 'success' : 'info'}
                     message={
-                        this.props.workout.completedAt ?
-                            (<>
-                                Completed {this.props.workout.duration && 'in ' + this.props.workout.duration}
-                            </>) :
-                            (<>
-                                In Progress <Timer start={this.props.workout.startedAt} />
-                            </>)
+                        this.props.workout.completedAt ? (
+                            <>
+                                Completed{' '}
+                                {this.props.workout.duration &&
+                                    'in ' + this.props.workout.duration}
+                            </>
+                        ) : (
+                            <>
+                                In Progress{' '}
+                                <Timer start={this.props.workout.startedAt} />
+                            </>
+                        )
                     }
                     size="small"
                     animate={false}
@@ -106,36 +122,34 @@ class WorkoutContainer extends React.Component<IProps> {
                     left={{
                         to: `/workouts`
                     }}
-                    rightLabel={this.props.workout.completedAt ?
-                        'Restart' :
-                        'Completed'
+                    rightLabel={
+                        this.props.workout.completedAt ? 'Restart' : 'Completed'
                     }
-                    right={this.props.workout.completedAt ?
-                        {
-                            onClick: this.handleRestart,
-                            className: 'workout-button-restart'
-                        } :
-                        {
-                            onClick: this.handleCompleted,
-                            className: 'workout-button-completed'
-                        }
+                    right={
+                        this.props.workout.completedAt
+                            ? {
+                                  onClick: this.handleRestart,
+                                  className: 'workout-button-restart'
+                              }
+                            : {
+                                  onClick: this.handleCompleted,
+                                  className: 'workout-button-completed'
+                              }
                     }
                 />
-                {this.props.workout.completedAt &&
+                {this.props.workout.completedAt && (
                     <TopNav
                         rightLabel="Perform again as New Workout"
                         right={{
-                            onClick: this.handleCreate,
+                            onClick: this.handleCreate
                         }}
                     />
-                }
+                )}
                 <Workout
                     workout={this.props.workout}
                     update={this.props.putWorkout}
                 >
-                    <ExercisesContainer
-                        workoutId={this.props.workoutId}
-                    />
+                    <ExercisesContainer workoutId={this.props.workoutId} />
                 </Workout>
                 <TopNav
                     rightLabel="Delete Workout"
@@ -153,14 +167,20 @@ class WorkoutContainer extends React.Component<IProps> {
 
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     workout: workoutSelector(props.workoutId)(state),
-    isStatusLoaded: state.workouts.fetchStatus === statusConstants.STATUS_LOADED,
-    isDeleting: state.workouts.entitiesStatus[props.workoutId] === statusConstants.STATUS_DELETING
+    isStatusLoaded:
+        state.workouts.fetchStatus === statusConstants.STATUS_LOADED,
+    isDeleting:
+        state.workouts.entitiesStatus[props.workoutId] ===
+        statusConstants.STATUS_DELETING
 })
 
 const mapDispatchToProps: IDispatchProps = {
     postWorkoutFrom,
     putWorkout,
-    deleteWorkout,
+    deleteWorkout
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(WorkoutContainer)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(WorkoutContainer)

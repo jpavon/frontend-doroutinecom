@@ -21,45 +21,55 @@ const Start: React.SFC<IProps> = ({
     hasWorkouts,
     hasCompletedWorkouts,
     hasCompletedSets
-}) => (
+}) =>
     !isHidden ? (
         <div className="start">
             <h2 className="start-title">
-                Getting Started - Completed {
-                    Number(hasWorkouts) + Number(hasCompletedWorkouts) + Number(hasCompletedSets)
-                }/3
+                Getting Started - Completed{' '}
+                {Number(hasWorkouts) +
+                    Number(hasCompletedWorkouts) +
+                    Number(hasCompletedSets)}/3
             </h2>
             <div className="start-list">
                 <div className="start-list-item">
-                    {!hasWorkouts ?
-                        <img src={x} alt="Not Completed" /> :
+                    {!hasWorkouts ? (
+                        <img src={x} alt="Not Completed" />
+                    ) : (
                         <img src={tickIcon} alt="Completed" />
-                    }
+                    )}
                     Create your first workout from a routine
                     <Button to="/routines">Routines</Button>
                 </div>
                 <div className="start-list-item">
-                    {!hasCompletedSets ?
-                        <img src={x} alt="Not Completed" /> :
+                    {!hasCompletedSets ? (
+                        <img src={x} alt="Not Completed" />
+                    ) : (
                         <img src={tickIcon} alt="Completed" />
-                    }
+                    )}
                     Complete multiple sets on a workout
                     <Button to="/workouts">Workouts</Button>
                 </div>
                 <div className="start-list-item">
-                    {!hasCompletedWorkouts ?
-                        <img src={x} alt="Not Completed" /> :
+                    {!hasCompletedWorkouts ? (
+                        <img src={x} alt="Not Completed" />
+                    ) : (
                         <img src={tickIcon} alt="Completed" />
-                    }
+                    )}
                     Complete a workout
                     <Button to="/workouts">Workouts</Button>
                 </div>
             </div>
-            {hasWorkouts && hasCompletedSets && hasCompletedWorkouts &&
-                <Button className="start-hide-button" onClick={hideStartMessage}>Hide this message</Button>
-            }
+            {hasWorkouts &&
+                hasCompletedSets &&
+                hasCompletedWorkouts && (
+                    <Button
+                        className="start-hide-button"
+                        onClick={hideStartMessage}
+                    >
+                        Hide this message
+                    </Button>
+                )}
         </div>
     ) : null
-)
 
 export default Start

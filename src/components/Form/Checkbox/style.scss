@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import 'variables.scss';
 
 .checkbox {
     display: none;
@@ -11,7 +11,7 @@
     border: 2px solid $color-border;
     user-select: none;
     cursor: pointer;
-    transition: border .2s;
+    transition: border 0.2s;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
@@ -21,7 +21,7 @@
     }
 
     &:hover {
-        border-color: rgba($color-primary, .5);
+        border-color: rgba($color-primary, 0.5);
     }
 
     &.checkbox-tick--checked {

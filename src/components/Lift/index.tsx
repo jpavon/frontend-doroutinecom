@@ -14,12 +14,12 @@ interface IProps {
     update: typeof putLift
 }
 
-const Lift: React.SFC<IProps> = ({lift, update}) => (
+const Lift: React.SFC<IProps> = ({ lift, update }) => (
     <div className="lift">
         <AutoSaveForm
             initialValues={lift}
             update={update}
-            render={({values}: IAutoSaveFormState) => (
+            render={({ values }: IAutoSaveFormState) => (
                 <div className="lift-form">
                     <Field label="Name" id="name">
                         <Input

@@ -7,7 +7,10 @@ import { IRootState, IEntitiesStatus } from 'data/types'
 
 import { postSet, putSet, deleteSet } from 'data/sets/actions'
 import { userSelector } from 'data/user/selectors'
-import { setsExerciseSelector, previouslyCompletedSetsSelector } from 'data/sets/selectors'
+import {
+    setsExerciseSelector,
+    previouslyCompletedSetsSelector
+} from 'data/sets/selectors'
 import { statusConstants } from 'data/constants'
 
 import Sets from 'components/Sets/Sets'
@@ -22,7 +25,7 @@ interface IOwnProps {
 }
 
 interface IStateProps {
-    sets: IFormatedSet[],
+    sets: IFormatedSet[]
     entitiesStatus: IEntitiesStatus
     user: IFormatedUser | null
     previouslyCompletedSets: IFormatedSet[]
@@ -37,7 +40,6 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class SetsContainer extends React.Component<IProps> {
-
     handleCreate = () => {
         this.props.postSet({
             exerciseId: this.props.exerciseId
@@ -60,9 +62,18 @@ class SetsContainer extends React.Component<IProps> {
                         set={set}
                         update={this.props.putSet}
                         remove={this.props.deleteSet}
-                        isDeleting={this.props.entitiesStatus[set.id] === statusConstants.STATUS_DELETING}
-                        isRemoveButtonsVisible={!this.props.isWorkout || this.props.isRemoveButtonsVisible}
-                        previousSet={this.props.previouslyCompletedSets && this.props.previouslyCompletedSets[i]}
+                        isDeleting={
+                            this.props.entitiesStatus[set.id] ===
+                            statusConstants.STATUS_DELETING
+                        }
+                        isRemoveButtonsVisible={
+                            !this.props.isWorkout ||
+                            this.props.isRemoveButtonsVisible
+                        }
+                        previousSet={
+                            this.props.previouslyCompletedSets &&
+                            this.props.previouslyCompletedSets[i]
+                        }
                     />
                 ))}
             </Sets>
@@ -74,7 +85,9 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     sets: setsExerciseSelector(props.exerciseId)(state),
     entitiesStatus: state.sets.entitiesStatus,
     user: userSelector(state),
-    previouslyCompletedSets: props.liftId ? previouslyCompletedSetsSelector(props.exerciseId, props.liftId)(state) : [],
+    previouslyCompletedSets: props.liftId
+        ? previouslyCompletedSetsSelector(props.exerciseId, props.liftId)(state)
+        : []
 })
 
 const mapDispatchToProps: IDispatchProps = {
@@ -83,4 +96,7 @@ const mapDispatchToProps: IDispatchProps = {
     deleteSet
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SetsContainer)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(SetsContainer)

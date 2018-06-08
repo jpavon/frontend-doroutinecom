@@ -7,6 +7,4 @@ function* alertSaga() {
     yield scrollTo('alert', { tolerance: 15 })
 }
 
-export default [
-    takeLatest(constants.SHOW_ALERT, alertSaga)
-]
+export default [takeLatest(constants.SHOW_ALERT, alertSaga)]

@@ -1,36 +1,47 @@
 .exercises-button-create {
-  display: flex;
-  padding-right: 18px;
-  margin-bottom: 18px; }
-  .exercises-button-create button {
-    margin: auto; }
+    display: flex;
+    padding-right: 18px;
+    margin-bottom: 18px;
+}
+.exercises-button-create button {
+    margin: auto;
+}
 
 .exercise {
-  position: relative;
-  margin-bottom: 27px; }
-  .exercise .field:last-child {
-    margin-bottom: 0; }
-  .exercise:last-child {
-    margin-bottom: 0; }
+    position: relative;
+    margin-bottom: 27px;
+}
+.exercise .field:last-child {
+    margin-bottom: 0;
+}
+.exercise:last-child {
+    margin-bottom: 0;
+}
 
 .exercise-button-delete {
-  position: absolute;
-  top: 12px;
-  right: 0; }
-  .exercise-button-delete button {
-    padding: 9px 18px; }
+    position: absolute;
+    top: 12px;
+    right: 0;
+}
+.exercise-button-delete button {
+    padding: 9px 18px;
+}
 
 .exercise-lift {
-  padding: 18px;
-  padding-bottom: 9px; }
-  .exercise-lift > div {
-    margin-right: 40px; }
-  .exercise-lift select {
+    padding: 18px;
+    padding-bottom: 9px;
+}
+.exercise-lift > div {
+    margin-right: 40px;
+}
+.exercise-lift select {
     width: auto;
-    font-size: 1.1rem; }
-  .exercise-lift .button {
+    font-size: 1.1rem;
+}
+.exercise-lift .button {
     display: inline-block;
     padding: 0;
     margin-bottom: 4px;
     margin-left: 18px;
-    margin-right: 36px; }
+    margin-right: 36px;
+}

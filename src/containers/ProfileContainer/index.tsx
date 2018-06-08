@@ -10,7 +10,10 @@ import { IFormatedUser } from 'data/user/types'
 import { workoutsGraphDataSelector } from 'data/graphs/selectors'
 import { topSetsSelector, completedSetsSelector } from 'data/sets/selectors'
 import { userSelector } from 'data/user/selectors'
-import { workoutsSelector, completedWorkoutsSelector } from 'data/workouts/selectors'
+import {
+    workoutsSelector,
+    completedWorkoutsSelector
+} from 'data/workouts/selectors'
 
 import Profile from 'components/Profile'
 import Graph from 'components/Graph'
@@ -19,8 +22,7 @@ import SetsTable from 'components/SetsTable'
 import NoData from 'components/NoData'
 import Start from 'components/Start'
 
-interface IOwnProps {
-}
+interface IOwnProps {}
 
 interface IStateProps {
     workoutsGraphData: IGraph
@@ -31,8 +33,7 @@ interface IStateProps {
     hasCompletedSets: boolean
 }
 
-interface IDispatchProps {
-}
+interface IDispatchProps {}
 
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
@@ -41,7 +42,6 @@ interface IState {
 }
 
 class ProfileContainer extends React.Component<IProps, IState> {
-
     constructor(props: IProps) {
         super(props)
 
@@ -75,26 +75,18 @@ class ProfileContainer extends React.Component<IProps, IState> {
                     hasCompletedWorkouts={this.props.hasCompletedWorkouts}
                     hasCompletedSets={this.props.hasCompletedSets}
                 />
-                <TopNav
-                    title="Weekly Workouts"
-                />
-                <Graph
-                    type="bar"
-                    data={this.props.workoutsGraphData}
-                />
-                <TopNav
-                    title="Recent Top Sets"
-                />
-                {this.props.topSets.length > 0 ?
+                <TopNav title="Weekly Workouts" />
+                <Graph type="bar" data={this.props.workoutsGraphData} />
+                <TopNav title="Recent Top Sets" />
+                {this.props.topSets.length > 0 ? (
                     <SetsTable
                         sets={this.props.topSets}
                         weightMeasure={this.props.user.weightMeasure}
                         showLift
-                    /> :
-                    <NoData
-                        text="List of top sets will be displayed here when you complete a workout."
                     />
-                }
+                ) : (
+                    <NoData text="List of top sets will be displayed here when you complete a workout." />
+                )}
             </Profile>
         ) : null
     }
@@ -112,4 +104,7 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
 // const mapDispatchToProps = {
 // }
 
-export default connect(mapStateToProps, null)(ProfileContainer)
+export default connect(
+    mapStateToProps,
+    null
+)(ProfileContainer)

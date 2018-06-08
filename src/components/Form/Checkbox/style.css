@@ -1,20 +1,25 @@
 .checkbox {
-  display: none; }
+    display: none;
+}
 
 .checkbox-tick {
-  display: flex;
-  width: 30px;
-  height: 30px;
-  border: 2px solid #e4e9ea;
-  user-select: none;
-  cursor: pointer;
-  transition: border .2s;
-  border-radius: 50%;
-  align-items: center;
-  justify-content: center; }
-  .checkbox-tick img {
-    display: block; }
-  .checkbox-tick:hover {
-    border-color: rgba(76, 144, 194, 0.5); }
-  .checkbox-tick.checkbox-tick--checked {
-    border-color: #4c90c2; }
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #e4e9ea;
+    user-select: none;
+    cursor: pointer;
+    transition: border 0.2s;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+.checkbox-tick img {
+    display: block;
+}
+.checkbox-tick:hover {
+    border-color: rgba(76, 144, 194, 0.5);
+}
+.checkbox-tick.checkbox-tick--checked {
+    border-color: #4c90c2;
+}

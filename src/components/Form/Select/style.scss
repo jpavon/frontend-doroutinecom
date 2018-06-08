@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import 'variables.scss';
 
 .select {
     position: relative;
@@ -7,7 +7,7 @@
     max-width: 100%;
 
     appearance: none;
-    font-size: .9rem;
+    font-size: 0.9rem;
     color: $color-font;
     border: 0px solid $color-border-input;
     text-overflow: ellipsis;
@@ -22,6 +22,6 @@
     }
 
     &.select--default-option {
-        color: rgba($color-font, .6);
+        color: rgba($color-font, 0.6);
     }
 }

@@ -1,5 +1,5 @@
-@import "variables.scss";
-@import "mixins.scss";
+@import 'variables.scss';
+@import 'mixins.scss';
 
 @mixin layout() {
     flex: 1;
@@ -14,7 +14,6 @@
 }
 
 .sets {
-
 }
 
 .sets-button-create {
@@ -51,7 +50,6 @@
 
 // single
 
-
 .set-inner {
     position: relative;
     display: flex;
@@ -60,13 +58,14 @@
     align-items: center;
 
     &.set-inner--is-completed {
-        background-color: rgba($color-primary, .05);
+        background-color: rgba($color-primary, 0.05);
     }
 
-    input[name="weight"], input[name="reps"] {
+    input[name='weight'],
+    input[name='reps'] {
         font-size: 1.3rem;
 
-        @include placeholder(rgba($color-font, .3));
+        @include placeholder(rgba($color-font, 0.3));
     }
 }
 
@@ -79,7 +78,8 @@
 .set-action {
     display: flex;
 
-    > label, > button {
+    > label,
+    > button {
         cursor: pointer;
         padding: $spacing/2 0;
         margin: 0;

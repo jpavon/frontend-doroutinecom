@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import 'variables.scss';
 
 .footer {
     position: relative;
@@ -17,18 +17,18 @@
     padding: $spacing;
 }
 
-    .footer-item {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        color: #666;
-        margin-bottom: 1rem;
-        font-size: .8rem;
-    }
+.footer-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+}
 
-    .button.footer-link {
-        display: inline-flex;
-        font-size: .8rem;
-        margin-left: $spacing/2;
-        padding: 0;
-    }
+.button.footer-link {
+    display: inline-flex;
+    font-size: 0.8rem;
+    margin-left: $spacing/2;
+    padding: 0;
+}

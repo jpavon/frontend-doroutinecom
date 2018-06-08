@@ -26,5 +26,5 @@ export default [
     takeLatest(constants.SETS_GET_REQUEST, getSetsSaga),
     takeLatest(constants.SETS_PUT_REQUEST, putSetSaga),
     takeLatest(constants.SETS_POST_REQUEST, postSetSaga),
-    takeLatest(constants.SETS_DELETE_REQUEST, deleteSetSaga),
+    takeLatest(constants.SETS_DELETE_REQUEST, deleteSetSaga)
 ]

@@ -66,7 +66,11 @@ function* watchServerErrors() {
         ])
 
         if (error.message === 'Unauthenticated.') {
-            yield put(userActions.unauthUser('You need to log in for access to this page.'))
+            yield put(
+                userActions.unauthUser(
+                    'You need to log in for access to this page.'
+                )
+            )
         } else {
             yield put(uiActions.setServerError())
         }
@@ -76,9 +80,10 @@ function* watchServerErrors() {
 }
 
 function* userSettingsCheck(user: IUser) {
-    if (user.startOfWeek !== store.get('startOfWeek') ||
-        user.dateFormat !== store.get('dateFormat')) {
-
+    if (
+        user.startOfWeek !== store.get('startOfWeek') ||
+        user.dateFormat !== store.get('dateFormat')
+    ) {
         store.set('startOfWeek', user.startOfWeek)
         store.set('dateFormat', user.dateFormat)
 

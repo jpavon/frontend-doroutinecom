@@ -1,5 +1,5 @@
-@import "~normalize.css";
-@import "variables.scss";
+@import '~normalize.css';
+@import 'variables.scss';
 
 html {
     box-sizing: border-box;
@@ -41,10 +41,15 @@ body {
     padding-bottom: $spacing * 6;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 400;
     margin: 0;
-    margin-bottom: .4rem;
+    margin-bottom: 0.4rem;
 }
 
 h2 {
@@ -61,20 +66,21 @@ p {
 }
 
 a {
-    font-size: .9rem;
+    font-size: 0.9rem;
     color: $color-font;
     text-decoration: none;
 
-    transition: .2s all;
+    transition: 0.2s all;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         color: $color-primary;
     }
 }
 
 small {
-    font-size: .8rem;
+    font-size: 0.8rem;
     font-weight: 400;
-    letter-spacing: .05rem;
+    letter-spacing: 0.05rem;
     color: #777777;
 }

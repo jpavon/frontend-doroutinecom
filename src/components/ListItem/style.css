@@ -1,21 +1,28 @@
 .list-item {
-  display: block;
-  font-size: 1em;
-  padding: 14px 18px;
-  text-decoration: none;
-  border-bottom: 1px solid #e4e9ea;
-  transition: border-color .2s;
-  background-color: transparent;
-  background-image: url("../../media/arrow-right.svg");
-  background-repeat: no-repeat;
-  background-position: right 18px center;
-  transition: color .2s, background-position .2s; }
-  .list-item:hover, .list-item:focus {
+    display: block;
+    font-size: 1em;
+    padding: 14px 18px;
+    text-decoration: none;
+    border-bottom: 1px solid #e4e9ea;
+    transition: border-color 0.2s;
+    background-color: transparent;
+    background-image: url('../../media/arrow-right.svg');
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+    transition: color 0.2s, background-position 0.2s;
+}
+.list-item:hover,
+.list-item:focus {
     color: #4c90c2;
-    background-position: right 12px center; }
-    .list-item:hover [class*='day'], .list-item:focus [class*='day'] {
-      color: #444; }
-  .list-item [class*='day'] {
-    color: #444; }
-  .list-item:first-child {
-    border-top: 1px solid #e4e9ea; }
+    background-position: right 12px center;
+}
+.list-item:hover [class*='day'],
+.list-item:focus [class*='day'] {
+    color: #444;
+}
+.list-item [class*='day'] {
+    color: #444;
+}
+.list-item:first-child {
+    border-top: 1px solid #e4e9ea;
+}

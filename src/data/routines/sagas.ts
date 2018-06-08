@@ -10,11 +10,19 @@ import * as actions from 'data/routines/actions'
 import * as workoutsActions from 'data/workouts/actions'
 
 function* getRoutinesSaga(action: IApiAction) {
-    yield* apiSaga(action, actions.getRoutinesSuccess, actions.getRoutinesFailure)
+    yield* apiSaga(
+        action,
+        actions.getRoutinesSuccess,
+        actions.getRoutinesFailure
+    )
 }
 
 function* postRoutineSaga(action: IApiAction) {
-    yield* apiSaga(action, actions.postRoutineSuccess, actions.postRoutineFailure)
+    yield* apiSaga(
+        action,
+        actions.postRoutineSuccess,
+        actions.postRoutineFailure
+    )
 }
 
 function* putRoutineSaga(action: IApiAction) {
@@ -22,7 +30,11 @@ function* putRoutineSaga(action: IApiAction) {
 }
 
 function* deleteRoutineSaga(action: IApiAction) {
-    yield* apiSaga(action, actions.deleteRoutineSuccess, actions.deleteRoutineFailure)
+    yield* apiSaga(
+        action,
+        actions.deleteRoutineSuccess,
+        actions.deleteRoutineFailure
+    )
 }
 
 function* routinePostSuccess(action: ISuccessAction<IRoutine>) {

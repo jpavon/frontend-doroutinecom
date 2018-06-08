@@ -10,17 +10,15 @@ interface IOwnProps {
     token: string
 }
 
-interface IStateProps {
-}
+interface IStateProps {}
 
 interface IDispatchProps {
     passwordResetUser: typeof passwordResetUser
 }
 
-interface IProps extends IOwnProps, IStateProps, IDispatchProps { }
+interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class PasswordResetContainer extends React.Component<IProps> {
-
     email: React.RefObject<HTMLInputElement> = React.createRef()
     password: React.RefObject<HTMLInputElement> = React.createRef()
     passwordConfirmation: React.RefObject<HTMLInputElement> = React.createRef()
@@ -29,12 +27,17 @@ class PasswordResetContainer extends React.Component<IProps> {
         event.preventDefault()
 
         new Promise((resolve, reject) => {
-            this.props.passwordResetUser({
-                token: this.props.token,
-                email: this.email.current!.value,
-                password: this.password.current!.value,
-                passwordConfirmation: this.passwordConfirmation.current!.value
-            }, resolve, reject)
+            this.props.passwordResetUser(
+                {
+                    token: this.props.token,
+                    email: this.email.current!.value,
+                    password: this.password.current!.value,
+                    passwordConfirmation: this.passwordConfirmation.current!
+                        .value
+                },
+                resolve,
+                reject
+            )
         }).catch((error) => {
             this.password.current!.value = ''
             this.passwordConfirmation.current!.value = ''
@@ -44,9 +47,7 @@ class PasswordResetContainer extends React.Component<IProps> {
     render() {
         return (
             <>
-                <TopNav
-                    title="Password Reset"
-                />
+                <TopNav title="Password Reset" />
                 <PasswordReset
                     handleSubmit={this.handleSubmit}
                     emailRef={this.email}
@@ -62,7 +63,10 @@ class PasswordResetContainer extends React.Component<IProps> {
 // })
 
 const mapDispatchToProps: IDispatchProps = {
-    passwordResetUser,
+    passwordResetUser
 }
 
-export default connect(null, mapDispatchToProps)(PasswordResetContainer)
+export default connect(
+    null,
+    mapDispatchToProps
+)(PasswordResetContainer)

@@ -1,21 +1,26 @@
 .profile-data {
-  display: flex;
-  flex-wrap: wrap; }
+    display: flex;
+    flex-wrap: wrap;
+}
 
 .profile-data-col {
-  flex: 1; }
+    flex: 1;
+}
 
 .profile-data-item {
-  padding: 18px; }
+    padding: 18px;
+}
 
 .profile-data-value {
-  font-size: 1.8rem;
-  text-align: center;
-  margin-bottom: .4rem;
-  font-weight: 500; }
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+}
 
 .profile-data-title {
-  font-size: .7rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  text-align: center; }
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+}

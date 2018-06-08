@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import 'variables.scss';
 
 @mixin layout() {
     padding-right: $spacing/2;
@@ -16,7 +16,6 @@
 }
 
 .sets-table {
-
 }
 
 .sets-table-top {
@@ -24,7 +23,7 @@
     padding: $spacing / 1.5 $spacing;
 
     border-bottom: 2px solid $color-border;
-    background-color: rgba($color-primary, .05);
+    background-color: rgba($color-primary, 0.05);
 
     > div {
         @include layout();
@@ -40,7 +39,7 @@
     display: flex;
     padding: $spacing / 2 $spacing;
     border-bottom: 1px solid $color-border;
-    transition: .2s color;
+    transition: 0.2s color;
 
     > div {
         @include layout();

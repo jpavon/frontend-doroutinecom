@@ -13,7 +13,6 @@ interface IProps extends IAlert {
 }
 
 class Alert extends React.Component<IProps> {
-
     static defaultProps = {
         animate: true
     }
@@ -24,11 +23,11 @@ class Alert extends React.Component<IProps> {
         if (React.isValidElement(message) || isString(message)) {
             return message
         } else if (message && Object.keys(message).length > 0) {
-            return (
-                Object.keys(message).map((messageKey, i) => (
-                    <React.Fragment key={i}>{message[messageKey]} <br /></React.Fragment>
-                ))
-            )
+            return Object.keys(message).map((messageKey, i) => (
+                <React.Fragment key={i}>
+                    {message[messageKey]} <br />
+                </React.Fragment>
+            ))
         }
 
         return null
@@ -45,7 +44,7 @@ class Alert extends React.Component<IProps> {
             size === 'small' && 'alert--small'
         )
 
-        return (this.props.animate ? (
+        return this.props.animate ? (
             <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
                 {(styles: object) => (
                     <div className={className} style={styles}>
@@ -54,10 +53,8 @@ class Alert extends React.Component<IProps> {
                 )}
             </Spring>
         ) : (
-            <div className={className}>
-                {this.renderMessage()}
-            </div>
-        ))
+            <div className={className}>{this.renderMessage()}</div>
+        )
     }
 }
 

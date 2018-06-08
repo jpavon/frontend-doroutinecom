@@ -8,15 +8,9 @@ interface IParams {
     workoutId: string
 }
 
-const Workout = ({match}: RouteComponentProps<IParams>) => (
-    <Layout
-        header={(
-            <title>Edit Workout</title>
-        )}
-    >
-        <WorkoutContainer
-            workoutId={Number(match.params.workoutId)}
-        />
+const Workout = ({ match }: RouteComponentProps<IParams>) => (
+    <Layout header={<title>Edit Workout</title>}>
+        <WorkoutContainer workoutId={Number(match.params.workoutId)} />
     </Layout>
 )
 

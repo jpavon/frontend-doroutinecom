@@ -8,14 +8,14 @@ interface IOption {
     name: string | null
 }
 
-export interface ISelectProps extends React.InputHTMLAttributes<HTMLSelectElement> {
+export interface ISelectProps
+    extends React.InputHTMLAttributes<HTMLSelectElement> {
     options: IOption[]
     defaultOptionMessage?: string
     inputRef?: () => void
 }
 
 const Select: React.SFC<ISelectProps> = (props) => {
-
     const {
         name,
         options,
@@ -31,17 +31,19 @@ const Select: React.SFC<ISelectProps> = (props) => {
             ref={inputRef}
             className={classNames(
                 'select',
-                (!props.value && !props.defaultValue) && 'select--default-option',
-                className,
+                !props.value && !props.defaultValue && 'select--default-option',
+                className
             )}
             {...rest}
         >
-            {(!props.value && !props.defaultValue) && <option>{defaultOptionMessage}</option>}
+            {!props.value &&
+                !props.defaultValue && <option>{defaultOptionMessage}</option>}
             {options.length > 0 &&
                 options.map((option, i) => (
-                    <option key={i} value={option.id}>{option.name}</option>
-                ))
-            }
+                    <option key={i} value={option.id}>
+                        {option.name}
+                    </option>
+                ))}
         </select>
     )
 }

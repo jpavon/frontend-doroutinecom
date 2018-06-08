@@ -12,7 +12,6 @@ interface IAutoSaveInputProps extends IInputProps {
 }
 
 class Input extends React.Component<IAutoSaveInputProps> {
-
     static contextTypes = {
         formContext: PropTypes.object.isRequired
     }
@@ -20,17 +19,14 @@ class Input extends React.Component<IAutoSaveInputProps> {
     context: IAutoSaveFormContext
 
     render() {
-        const {
-            name,
-            ...rest
-        } = this.props
+        const { name, ...rest } = this.props
 
         const { values, errors, onChange, updating } = this.context.formContext
 
         const value = values[name] !== null ? String(values[name]) : ''
 
         return (
-            <div style={{position: 'relative'}}>
+            <div style={{ position: 'relative' }}>
                 {updating === name && <Saving />}
                 <UncontrolledInput
                     name={name}
@@ -44,9 +40,7 @@ class Input extends React.Component<IAutoSaveInputProps> {
                     }}
                     {...rest}
                 />
-                <Alert
-                    message={errors[name]}
-                />
+                <Alert message={errors[name]} />
             </div>
         )
     }

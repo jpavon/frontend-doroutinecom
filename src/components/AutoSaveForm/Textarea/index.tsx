@@ -12,7 +12,6 @@ interface IAutoSaveFormTextareaProps extends ITextareaProps {
 }
 
 class Textarea extends React.Component<IAutoSaveFormTextareaProps> {
-
     static contextTypes = {
         formContext: PropTypes.object.isRequired
     }
@@ -20,16 +19,12 @@ class Textarea extends React.Component<IAutoSaveFormTextareaProps> {
     context: IAutoSaveFormContext
 
     render() {
-
-        const {
-            name,
-            ...rest
-        } = this.props
+        const { name, ...rest } = this.props
 
         const { values, errors, onChange, updating } = this.context.formContext
 
         return (
-            <div style={{position: 'relative'}}>
+            <div style={{ position: 'relative' }}>
                 {updating === name && <Saving />}
                 <UncontrolledTextarea
                     name={name}
@@ -43,9 +38,7 @@ class Textarea extends React.Component<IAutoSaveFormTextareaProps> {
                     }}
                     {...rest}
                 />
-                <Alert
-                    message={errors[name]}
-                />
+                <Alert message={errors[name]} />
             </div>
         )
     }

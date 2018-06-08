@@ -4,7 +4,7 @@ export enum statusConstants {
     STATUS_LOADED = 'LOADED',
     STATUS_FAILED = 'FAILED',
     STATUS_UPDATING = 'UPDATING',
-    STATUS_DELETING = 'DELETING',
+    STATUS_DELETING = 'DELETING'
 }
 
 export enum globalConstants {

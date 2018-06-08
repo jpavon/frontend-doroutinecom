@@ -9,11 +9,8 @@ interface IProps {
     emailRef: React.RefObject<HTMLInputElement>
 }
 
-const PasswordForgotten: React.SFC<IProps> = ({handleSubmit, emailRef}) => (
-    <Auth
-        className="password-forgotten"
-        handleSubmit={handleSubmit}
-    >
+const PasswordForgotten: React.SFC<IProps> = ({ handleSubmit, emailRef }) => (
+    <Auth className="password-forgotten" handleSubmit={handleSubmit}>
         <Field label="Email" id="email">
             <Input
                 id="email"

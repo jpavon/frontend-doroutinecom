@@ -5,11 +5,9 @@ import { registerUser } from 'data/user/actions'
 
 import Register from 'components/Auth/Register'
 
-interface IOwnProps {
-}
+interface IOwnProps {}
 
-interface IStateProps {
-}
+interface IStateProps {}
 
 interface IDispatchProps {
     registerUser: typeof registerUser
@@ -18,7 +16,6 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class RegisterContainer extends React.Component<IProps> {
-
     name: React.RefObject<HTMLInputElement> = React.createRef()
     email: React.RefObject<HTMLInputElement> = React.createRef()
     password: React.RefObject<HTMLInputElement> = React.createRef()
@@ -28,12 +25,17 @@ class RegisterContainer extends React.Component<IProps> {
         event.preventDefault()
 
         new Promise((resolve, reject) => {
-            this.props.registerUser({
-                name: this.name.current!.value,
-                email: this.email.current!.value,
-                password: this.password.current!.value,
-                passwordConfirmation: this.passwordConfirmation.current!.value
-            }, resolve, reject)
+            this.props.registerUser(
+                {
+                    name: this.name.current!.value,
+                    email: this.email.current!.value,
+                    password: this.password.current!.value,
+                    passwordConfirmation: this.passwordConfirmation.current!
+                        .value
+                },
+                resolve,
+                reject
+            )
         }).catch((error) => {
             this.password.current!.value = ''
             this.passwordConfirmation.current!.value = ''
@@ -57,7 +59,10 @@ class RegisterContainer extends React.Component<IProps> {
 // })
 
 const mapDispatchToProps: IDispatchProps = {
-    registerUser,
+    registerUser
 }
 
-export default connect(null, mapDispatchToProps)(RegisterContainer)
+export default connect(
+    null,
+    mapDispatchToProps
+)(RegisterContainer)

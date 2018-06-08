@@ -15,11 +15,12 @@ export interface IRoutine {
     } | null
 }
 
-export interface IFormatedRoutine extends IRoutine {
-}
+export interface IFormatedRoutine extends IRoutine {}
 
 export type IRoutinesState = IStateMap<IRoutine>
 
-export type IRoutinesAction = ReturnType<typeof actionTypes[keyof typeof actionTypes]>
+export type IRoutinesAction = ReturnType<
+    typeof actionTypes[keyof typeof actionTypes]
+>
 
 export type IRoutineRequestData = Partial<IRoutine>

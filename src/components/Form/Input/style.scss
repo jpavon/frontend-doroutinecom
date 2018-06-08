@@ -1,5 +1,5 @@
-@import "variables.scss";
-@import "mixins.scss";
+@import 'variables.scss';
+@import 'mixins.scss';
 
 .input {
     position: relative;
@@ -7,7 +7,7 @@
     padding: $spacing / 2 0;
     width: 100%;
 
-    font-size: .9rem;
+    font-size: 0.9rem;
     border-radius: 3px;
     background-color: transparent;
     color: $color-font;
@@ -35,21 +35,21 @@
     }
 
     &.input--large {
-        padding: .5rem;
+        padding: 0.5rem;
         font-size: 1.4rem;
     }
 
-    &[type=number]::-webkit-outer-spin-button,
-    &[type=number]::-webkit-inner-spin-button {
+    &[type='number']::-webkit-outer-spin-button,
+    &[type='number']::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
     }
 
-    &[type=number] {
+    &[type='number'] {
         -moz-appearance: textfield;
         -webkit-appearance: textfield;
         appearance: textfield;
     }
 
-    @include placeholder(rgba($color-font, .5));
+    @include placeholder(rgba($color-font, 0.5));
 }

@@ -30,7 +30,7 @@ const Exercise: React.SFC<IProps> = ({
         <AutoSaveForm
             update={update}
             initialValues={exercise}
-            render={({values}: IAutoSaveFormState) => (
+            render={({ values }: IAutoSaveFormState) => (
                 <div className="exercise-lift">
                     <Select
                         id="liftId"
@@ -39,15 +39,16 @@ const Exercise: React.SFC<IProps> = ({
                         defaultOptionMessage="Select a lift"
                         noOptionsMessage="No lift created."
                     />
-                    {values.liftId ?
-                        <Button to={`/lifts/${values.liftId}`}>Info</Button> :
+                    {values.liftId ? (
+                        <Button to={`/lifts/${values.liftId}`}>Info</Button>
+                    ) : (
                         <Button to="/lifts">Create</Button>
-                    }
+                    )}
                 </div>
             )}
         />
         {children}
-        {isRemoveButtonsVisible &&
+        {isRemoveButtonsVisible && (
             <div className="exercise-button-delete">
                 <Button
                     remove
@@ -57,7 +58,7 @@ const Exercise: React.SFC<IProps> = ({
                     title="Delete Exercise"
                 />
             </div>
-        }
+        )}
     </>
 )
 

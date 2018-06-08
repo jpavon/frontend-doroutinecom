@@ -24,9 +24,11 @@ export interface IFormatedWorkout extends IWorkout {
 
 export type IWorkoutsState = IStateMap<IWorkout>
 
-export type IWorkoutsAction = ReturnType<typeof actionTypes[keyof typeof actionTypes]>
+export type IWorkoutsAction = ReturnType<
+    typeof actionTypes[keyof typeof actionTypes]
+>
 
-export type IWorkoutRequestData = Partial<IWorkout & {workoutId: number}>
+export type IWorkoutRequestData = Partial<IWorkout & { workoutId: number }>
 
 export interface IWorkoutFromRequestData {
     workoutId?: number

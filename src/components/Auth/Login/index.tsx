@@ -13,15 +13,15 @@ interface IProps {
     passwordRef: React.RefObject<HTMLInputElement>
 }
 
-const Login: React.SFC<IProps> = ({handleSubmit, emailRef, passwordRef}) => (
+const Login: React.SFC<IProps> = ({ handleSubmit, emailRef, passwordRef }) => (
     <Auth
         className="login"
         handleSubmit={handleSubmit}
-        footer={(
+        footer={
             <div className="login-password-forgotten">
                 <Link to="/password-forgotten">Password forgotten?</Link>
             </div>
-        )}
+        }
     >
         <Field label="Email" id="email">
             <Input

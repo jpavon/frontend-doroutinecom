@@ -4,11 +4,7 @@ import Layout from 'pages/Layout'
 import ProfileContainer from 'containers/ProfileContainer'
 
 const Profile = () => (
-    <Layout
-        header={(
-            <title>Profile</title>
-        )}
-    >
+    <Layout header={<title>Profile</title>}>
         <ProfileContainer />
     </Layout>
 )

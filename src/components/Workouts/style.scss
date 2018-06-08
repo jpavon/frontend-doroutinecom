@@ -1,8 +1,7 @@
-@import "variables.scss";
-@import "mixins.scss";
+@import 'variables.scss';
+@import 'mixins.scss';
 
 .workouts-container {
-
     .no-data {
     }
 }
@@ -17,10 +16,9 @@
 }
 
 .workouts-workout-day {
-    font-size: .8rem;
-    margin-bottom: .4rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.4rem;
 }
 
 .workout-button-delete {
 }
-

@@ -1,10 +1,10 @@
-@import "variables.scss";
+@import 'variables.scss';
 
 .label {
     display: block;
-    font-size: .8rem;
+    font-size: 0.8rem;
     font-weight: 400;
-    letter-spacing: .05rem;
+    letter-spacing: 0.05rem;
     margin-right: $spacing;
     color: lighten($color-font, 20%);
 

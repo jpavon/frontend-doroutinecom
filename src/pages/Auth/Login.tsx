@@ -4,11 +4,7 @@ import Layout from 'pages/Layout'
 import LoginContainer from 'containers/Auth/LoginContainer'
 
 const Login = () => (
-    <Layout
-        header={(
-            <title>Login</title>
-        )}
-    >
+    <Layout header={<title>Login</title>}>
         <LoginContainer />
     </Layout>
 )

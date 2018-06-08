@@ -14,8 +14,7 @@ import Lift from 'components/Lifts/Lift'
 import NoData from 'components/NoData'
 import TopNav from 'components/TopNav'
 
-interface IOwnProps {
-}
+interface IOwnProps {}
 
 interface IStateProps {
     lifts: IFormatedLift[]
@@ -29,7 +28,6 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class LiftsContainer extends React.Component<IProps> {
-
     handleCreate = () => {
         this.props.postLift()
     }
@@ -47,17 +45,13 @@ class LiftsContainer extends React.Component<IProps> {
                     }}
                 />
                 <Lifts>
-                    {this.props.lifts.length > 0 ?
+                    {this.props.lifts.length > 0 ? (
                         this.props.lifts.map((lift, i) => (
-                            <Lift
-                                key={lift.id}
-                                lift={lift}
-                            />
-                        )) :
-                        <NoData
-                            text="No lift created"
-                        />
-                    }
+                            <Lift key={lift.id} lift={lift} />
+                        ))
+                    ) : (
+                        <NoData text="No lift created" />
+                    )}
                 </Lifts>
             </>
         )
@@ -66,11 +60,14 @@ class LiftsContainer extends React.Component<IProps> {
 
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     lifts: liftsSelector(state),
-    isLoading: state.lifts.fetchStatus === statusConstants.STATUS_LOADING,
+    isLoading: state.lifts.fetchStatus === statusConstants.STATUS_LOADING
 })
 
 const mapDispatchToProps: IDispatchProps = {
-    postLift,
+    postLift
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LiftsContainer)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(LiftsContainer)

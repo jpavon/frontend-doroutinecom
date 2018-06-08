@@ -36,7 +36,6 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class RoutineContainer extends React.Component<IProps> {
-
     componentDidMount() {
         if (this.props.isStatusLoaded && !this.props.routine) {
             history.replace('/routines')
@@ -44,7 +43,9 @@ class RoutineContainer extends React.Component<IProps> {
     }
 
     handleRemove = () => {
-        if (!this.props.routine) { return }
+        if (!this.props.routine) {
+            return
+        }
 
         if (window.confirm('Are you sure you want to delete this routine?')) {
             this.props.deleteRoutine(this.props.routine.id)
@@ -52,7 +53,9 @@ class RoutineContainer extends React.Component<IProps> {
     }
 
     handleCreateWorkout = () => {
-        if (!this.props.routine) { return }
+        if (!this.props.routine) {
+            return
+        }
 
         this.props.postWorkoutFrom({
             routineId: this.props.routine.id,
@@ -63,9 +66,11 @@ class RoutineContainer extends React.Component<IProps> {
     render() {
         return this.props.routine ? (
             <>
-                {this.props.routine.name &&
-                    <Helmet><title>{this.props.routine.name}</title></Helmet>
-                }
+                {this.props.routine.name && (
+                    <Helmet>
+                        <title>{this.props.routine.name}</title>
+                    </Helmet>
+                )}
                 <TopNav
                     title="Routine"
                     left={{
@@ -81,11 +86,9 @@ class RoutineContainer extends React.Component<IProps> {
                     routine={this.props.routine}
                     update={this.props.putRoutine}
                 >
-                    <ExercisesContainer
-                        routineId={this.props.routine.id}
-                    />
+                    <ExercisesContainer routineId={this.props.routine.id} />
                 </Routine>
-                {!this.props.routine.program &&
+                {!this.props.routine.program && (
                     <TopNav
                         rightLabel="Delete Routine"
                         right={{
@@ -95,7 +98,7 @@ class RoutineContainer extends React.Component<IProps> {
                             className: 'routine-button-delete'
                         }}
                     />
-                }
+                )}
             </>
         ) : null
     }
@@ -103,14 +106,20 @@ class RoutineContainer extends React.Component<IProps> {
 
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     routine: routineSelector(props.routineId)(state),
-    isStatusLoaded: state.routines.fetchStatus === statusConstants.STATUS_LOADED,
-    isDeleting: state.routines.entitiesStatus[props.routineId] === statusConstants.STATUS_DELETING
+    isStatusLoaded:
+        state.routines.fetchStatus === statusConstants.STATUS_LOADED,
+    isDeleting:
+        state.routines.entitiesStatus[props.routineId] ===
+        statusConstants.STATUS_DELETING
 })
 
 const mapDispatchToProps: IDispatchProps = {
     putRoutine,
     deleteRoutine,
-    postWorkoutFrom,
+    postWorkoutFrom
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RoutineContainer)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(RoutineContainer)

@@ -5,7 +5,10 @@ import { IRootState } from 'data/types'
 import { IFormatedRoutine } from 'data/routines/types'
 
 import { postRoutine } from 'data/routines/actions'
-import { routinesSelector, defaultRoutinesSelector } from 'data/routines/selectors'
+import {
+    routinesSelector,
+    defaultRoutinesSelector
+} from 'data/routines/selectors'
 import { statusConstants } from 'data/constants'
 
 import Routines from 'components/Routines/Routines'
@@ -14,8 +17,7 @@ import NoData from 'components/NoData'
 import TopNav from 'components/TopNav'
 import Info from 'components/Info'
 
-interface IOwnProps {
-}
+interface IOwnProps {}
 
 interface IStateProps {
     routines: IFormatedRoutine[]
@@ -30,7 +32,6 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class RoutinesContainer extends React.Component<IProps> {
-
     handleCreate = () => {
         this.props.postRoutine()
     }
@@ -48,34 +49,25 @@ class RoutinesContainer extends React.Component<IProps> {
                     }}
                 />
                 <Routines>
-                    {this.props.routines.length > 0 ?
+                    {this.props.routines.length > 0 ? (
                         this.props.routines.map((routine, i) => (
-                            <Routine
-                                key={routine.id}
-                                routine={routine}
-                            />
-                        )) :
-                        <NoData
-                            text="No routine created."
-                        />
-                    }
+                            <Routine key={routine.id} routine={routine} />
+                        ))
+                    ) : (
+                        <NoData text="No routine created." />
+                    )}
                 </Routines>
-                {this.props.defaultRoutines.length > 0 &&
+                {this.props.defaultRoutines.length > 0 && (
                     <>
-                        <TopNav
-                            title="PPL"
-                        />
+                        <TopNav title="PPL" />
                         <Info name="ppl" />
                         <Routines>
                             {this.props.defaultRoutines.map((routine, i) => (
-                                <Routine
-                                    key={routine.id}
-                                    routine={routine}
-                                />
+                                <Routine key={routine.id} routine={routine} />
                             ))}
                         </Routines>
                     </>
-                }
+                )}
             </>
         )
     }
@@ -84,11 +76,14 @@ class RoutinesContainer extends React.Component<IProps> {
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     routines: routinesSelector(state),
     defaultRoutines: defaultRoutinesSelector(state),
-    isLoading: state.routines.fetchStatus === statusConstants.STATUS_LOADING,
+    isLoading: state.routines.fetchStatus === statusConstants.STATUS_LOADING
 })
 
 const mapDispatchToProps: IDispatchProps = {
-    postRoutine,
+    postRoutine
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RoutinesContainer)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(RoutinesContainer)

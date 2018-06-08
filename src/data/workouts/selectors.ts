@@ -13,75 +13,74 @@ const formatWorkout = (
     routines: IFormatedRoutine[],
     liftNames?: string[]
 ): IFormatedWorkout => {
-    const routine = routines && routines.find((routine) => (routine.id === workout.routineId))
+    const routine =
+        routines && routines.find((routine) => routine.id === workout.routineId)
     return {
         ...workout,
         displayName: routine ? routine.name : workout.name,
-        duration: workout.completedAt && formatDuration(workout.startedAt, workout.completedAt),
-        day: workout.completedAt && moment(workout.completedAt).format(longDateFormat),
+        duration:
+            workout.completedAt &&
+            formatDuration(workout.startedAt, workout.completedAt),
+        day:
+            workout.completedAt &&
+            moment(workout.completedAt).format(longDateFormat),
         routine: routine || null,
         liftNames
     }
 }
 
-export const workoutSelector = (id: number) => createSelector(
-    [
-        (state: IRootState) => state.workouts.entities,
-        routinesSelector
-    ],
-    (workouts, routines): IFormatedWorkout | null => {
-        if (workouts.length > 0) {
-            const workout = workouts.find((workout) => (workout.id === id))
-            return workout ? formatWorkout(workout, routines) : null
+export const workoutSelector = (id: number) =>
+    createSelector(
+        [(state: IRootState) => state.workouts.entities, routinesSelector],
+        (workouts, routines): IFormatedWorkout | null => {
+            if (workouts.length > 0) {
+                const workout = workouts.find((workout) => workout.id === id)
+                return workout ? formatWorkout(workout, routines) : null
+            }
+            return null
         }
-        return null
-    }
-)
+    )
 
 export const workoutsSelector = createSelector(
     [
         (state) => state.workouts.entities,
         routinesSelector,
         (state) => state.exercises.entities,
-        (state) => state.lifts.entities,
+        (state) => state.lifts.entities
     ],
     (workouts, routines, exercises, lifts): IFormatedWorkout[] =>
-        workouts
-            .map((workout) => {
-                const workoutExercisesLiftsIds = exercises
-                    .filter((exercise) => (exercise.workoutId === workout.id))
-                    .map((exercise) => exercise.liftId)
+        workouts.map((workout) => {
+            const workoutExercisesLiftsIds = exercises
+                .filter((exercise) => exercise.workoutId === workout.id)
+                .map((exercise) => exercise.liftId)
 
-                const liftNames = lifts
-                        .filter((lift) => workoutExercisesLiftsIds.includes(lift.id))
-                        .map((lift) => `${lift.name}`)
+            const liftNames = lifts
+                .filter((lift) => workoutExercisesLiftsIds.includes(lift.id))
+                .map((lift) => `${lift.name}`)
 
-                return formatWorkout(workout, routines, liftNames)
-            })
+            return formatWorkout(workout, routines, liftNames)
+        })
 )
 
 export const completedWorkoutsSelector = createSelector(
-    [
-        workoutsSelector
-    ],
+    [workoutsSelector],
     (workouts): IFormatedWorkout[] =>
-        workouts
-            .filter((workout) => (workout.completedAt))
-            .sort((a, b) => {
-                if (!b.completedAt || !a.completedAt) { return 0 }
-                return Number(moment(b.completedAt)) - Number(moment(a.completedAt))
-            })
+        workouts.filter((workout) => workout.completedAt).sort((a, b) => {
+            if (!b.completedAt || !a.completedAt) {
+                return 0
+            }
+            return Number(moment(b.completedAt)) - Number(moment(a.completedAt))
+        })
 )
 
 export const pendingWorkoutsSelector = createSelector(
-    [
-        workoutsSelector
-    ],
+    [workoutsSelector],
     (workouts): IFormatedWorkout[] =>
         workouts
-            .filter((workout) => (!workout.completedAt))
-            .sort((a, b) => (
-                Number(moment(b.startedAt)) - Number(moment(a.startedAt)))
+            .filter((workout) => !workout.completedAt)
+            .sort(
+                (a, b) =>
+                    Number(moment(b.startedAt)) - Number(moment(a.startedAt))
             )
 )
 

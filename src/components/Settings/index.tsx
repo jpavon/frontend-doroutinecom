@@ -16,7 +16,7 @@ interface IProps {
     putUser: typeof putUser
 }
 
-const Settings: React.SFC<IProps> = ({user, putUser}) => (
+const Settings: React.SFC<IProps> = ({ user, putUser }) => (
     <div className="settings">
         <AutoSaveForm
             initialValues={user}
@@ -29,7 +29,7 @@ const Settings: React.SFC<IProps> = ({user, putUser}) => (
                             name="weightMeasure"
                             options={[
                                 { id: 'kg', name: 'kg' },
-                                { id: 'lbs', name: 'lbs' },
+                                { id: 'lbs', name: 'lbs' }
                             ]}
                         />
                     </Field>
@@ -39,7 +39,7 @@ const Settings: React.SFC<IProps> = ({user, putUser}) => (
                             name="startOfWeek"
                             options={[
                                 { id: 'monday', name: 'Monday' },
-                                { id: 'sunday', name: 'Sunday' },
+                                { id: 'sunday', name: 'Sunday' }
                             ]}
                         />
                     </Field>
@@ -57,25 +57,17 @@ const Settings: React.SFC<IProps> = ({user, putUser}) => (
                 </div>
             )}
         />
-        <TopNav
-            title="User"
-        />
+        <TopNav title="User" />
         <AutoSaveForm
             initialValues={user}
             update={putUser}
             render={() => (
                 <div className="settings-form">
                     <Field label="Name" id="name">
-                        <Input
-                            id="name"
-                            name="name"
-                        />
+                        <Input id="name" name="name" />
                     </Field>
                     <Field label="Email" id="email">
-                        <Input
-                            id="email"
-                            name="email"
-                        />
+                        <Input id="email" name="email" />
                     </Field>
                 </div>
             )}

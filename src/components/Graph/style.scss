@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import 'variables.scss';
 
 .graph {
     position: relative;
@@ -14,7 +14,7 @@
     margin-right: 15%;
     padding: $spacing $spacing * 2;
 
-    background-color: rgba($color-primary, .5);
+    background-color: rgba($color-primary, 0.5);
     color: #fff;
     text-align: center;
 

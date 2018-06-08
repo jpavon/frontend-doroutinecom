@@ -13,7 +13,6 @@ interface IAutoSaveFormSelectProps extends ISelectProps {
 }
 
 class Select extends React.Component<IAutoSaveFormSelectProps> {
-
     static contextTypes = {
         formContext: PropTypes.object.isRequired
     }
@@ -21,17 +20,12 @@ class Select extends React.Component<IAutoSaveFormSelectProps> {
     context: IAutoSaveFormContext
 
     render() {
-
-        const {
-            name,
-            noOptionsMessage,
-            ...rest
-        } = this.props
+        const { name, noOptionsMessage, ...rest } = this.props
 
         const { values, errors, onChange, updating } = this.context.formContext
 
         return (
-            <span style={{position: 'relative'}}>
+            <span style={{ position: 'relative' }}>
                 {updating === name && <Saving />}
                 <UncontrolledSelect
                     name={name}
@@ -46,11 +40,13 @@ class Select extends React.Component<IAutoSaveFormSelectProps> {
                     {...rest}
                 />
                 <Alert
-                    message={(this.props.options.length < 1 && noOptionsMessage) ? noOptionsMessage : null}
+                    message={
+                        this.props.options.length < 1 && noOptionsMessage
+                            ? noOptionsMessage
+                            : null
+                    }
                 />
-                <Alert
-                    message={errors[name]}
-                />
+                <Alert message={errors[name]} />
             </span>
         )
     }

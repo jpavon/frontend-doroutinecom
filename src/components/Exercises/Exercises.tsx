@@ -9,20 +9,18 @@ interface IProps {
     create: () => void
 }
 
-const Exercises: React.SFC<IProps> = ({children, create}) => (
+const Exercises: React.SFC<IProps> = ({ children, create }) => (
     <>
         <div className="exercises">
             <Transition className="exercise">
-                { // tslint:disable-next-line:no-any
-                    children as React.ReactElement<any>}
+                {
+                    // tslint:disable-next-line:no-any
+                    children as React.ReactElement<any>
+                }
             </Transition>
         </div>
         <div className="exercises-button-create">
-            <Button
-                onClick={create}
-            >
-                Add Exercise
-            </Button>
+            <Button onClick={create}>Add Exercise</Button>
         </div>
     </>
 )

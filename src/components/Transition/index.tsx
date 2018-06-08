@@ -3,7 +3,7 @@ import { Transition as SpringTransition, animated } from 'react-spring'
 
 export interface ITransitionProps {
     // tslint:disable-next-line:no-any
-    children: React.ReactElement<{key: string}>
+    children: React.ReactElement<{ key: string }>
     className?: string
 }
 
@@ -11,7 +11,9 @@ const Transition: React.SFC<ITransitionProps> = (props) => {
     if (Array.isArray(props.children) && props.children.length > 0) {
         return (
             <SpringTransition
-                keys={(props.children as {key: string}[]).map((item) => item.key)}
+                keys={(props.children as { key: string }[]).map(
+                    (item) => item.key
+                )}
                 from={{ opacity: 0 }}
                 enter={{ opacity: 1 }}
                 leave={{ opacity: 0 }}
@@ -19,7 +21,7 @@ const Transition: React.SFC<ITransitionProps> = (props) => {
                 {props.children.map((item) => (styles: object) => (
                     <animated.div
                         className={props.className}
-                        style={{...styles }}
+                        style={{ ...styles }}
                     >
                         {item}
                     </animated.div>

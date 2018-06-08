@@ -17,44 +17,51 @@ interface IWorkoutProps {
     update: typeof putWorkout
 }
 
-const Workout: React.SFC<IWorkoutProps> = ({children, workout, update}) => (
+const Workout: React.SFC<IWorkoutProps> = ({ children, workout, update }) => (
     <div className="workout">
         <div className="workout-routine-name">
-
-            {workout.routine ?
+            {workout.routine ? (
                 <>
                     <div>Routine</div>
-                    <Button to={workout.routine && `/routines/${workout.routineId}`}>
+                    <Button
+                        to={workout.routine && `/routines/${workout.routineId}`}
+                    >
                         {workout.displayName}
                     </Button>
-                </> :
-                <div className="workout-routine-name-deleted">Routine for this workout has been deleted.</div>
-            }
+                </>
+            ) : (
+                <div className="workout-routine-name-deleted">
+                    Routine for this workout has been deleted.
+                </div>
+            )}
         </div>
         <div className="workout-form">
             <AutoSaveForm
                 initialValues={workout}
                 update={update}
-                render={({values}: IAutoSaveFormState) => (
+                render={({ values }: IAutoSaveFormState) => (
                     <>
                         {!workout.routine && (
                             <Field label="Name" id="name">
-                                <Input
-                                    id="name"
-                                    name="name"
-                                />
+                                <Input id="name" name="name" />
                             </Field>
                         )}
                         {values.completedAt && (
                             <div className="workout-dates">
-                                <Field label="Started at" id={`startedAt${values.id}`}>
+                                <Field
+                                    label="Started at"
+                                    id={`startedAt${values.id}`}
+                                >
                                     <Datetime
                                         id={`startedAt${values.id}`}
                                         name="startedAt"
                                     />
                                 </Field>
 
-                                <Field label="Completed at" id={`completedAt${values.id}`}>
+                                <Field
+                                    label="Completed at"
+                                    id={`completedAt${values.id}`}
+                                >
                                     <Datetime
                                         id={`completedAt${values.id}`}
                                         name="completedAt"
@@ -73,7 +80,7 @@ const Workout: React.SFC<IWorkoutProps> = ({children, workout, update}) => (
             <AutoSaveForm
                 initialValues={workout}
                 update={update}
-                render={({values}: IAutoSaveFormState) => (
+                render={({ values }: IAutoSaveFormState) => (
                     <Field label="Additional Notes" id={`notes${values.id}`}>
                         <Textarea
                             id={`notes${values.id}`}

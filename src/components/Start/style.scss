@@ -1,9 +1,9 @@
-@import "variables.scss";
+@import 'variables.scss';
 
 .start {
     padding: $spacing * 1.5;
-    background-color: rgba($color-primary, .1);
-    border: 1px solid rgba($color-primary, .15);
+    background-color: rgba($color-primary, 0.1);
+    border: 1px solid rgba($color-primary, 0.15);
 
     text-align: center;
 
@@ -21,7 +21,7 @@
 
 .start-list {
     img {
-        margin-right: .5rem;
+        margin-right: 0.5rem;
         width: 24px;
         height: 24px;
     }

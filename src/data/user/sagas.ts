@@ -24,23 +24,42 @@ function* loginUserSaga(action: IApiAction) {
 }
 
 function* registerUserSaga(action: IApiAction) {
-    yield* apiSaga(action, actions.registerUserSuccess, actions.registerUserFailure)
+    yield* apiSaga(
+        action,
+        actions.registerUserSuccess,
+        actions.registerUserFailure
+    )
 }
 
 function* passwordForgottenUserSaga(action: IApiAction) {
-    yield* apiSaga(action, actions.passwordForgottenUserSuccess, actions.passwordForgottenUserFailure)
+    yield* apiSaga(
+        action,
+        actions.passwordForgottenUserSuccess,
+        actions.passwordForgottenUserFailure
+    )
 }
 
 function* authPasswordForgottenSuccessSaga() {
-    yield put(uiActions.showAlert('success', 'A password reset email has been sent.'))
+    yield put(
+        uiActions.showAlert('success', 'A password reset email has been sent.')
+    )
 }
 
 function* passwordResetUserSaga(action: IApiAction) {
-    yield* apiSaga(action, actions.passwordResetUserSuccess, actions.passwordResetUserFailure)
+    yield* apiSaga(
+        action,
+        actions.passwordResetUserSuccess,
+        actions.passwordResetUserFailure
+    )
 }
 
 function* authPasswordResetSuccessSaga() {
-    yield put(uiActions.showAlert('success', 'Your password has been reset, login again.'))
+    yield put(
+        uiActions.showAlert(
+            'success',
+            'Your password has been reset, login again.'
+        )
+    )
 }
 
 function* authErrorSaga(action: IFailureAction) {
@@ -71,21 +90,33 @@ export default [
 
     takeLatest(constants.USER_REGISTER_REQUEST, registerUserSaga),
 
-    takeLatest(constants.USER_PASSWORD_FORGOTTEN_REQUEST, passwordForgottenUserSaga),
-    takeLatest(constants.USER_PASSWORD_FORGOTTEN_SUCCESS, authPasswordForgottenSuccessSaga),
+    takeLatest(
+        constants.USER_PASSWORD_FORGOTTEN_REQUEST,
+        passwordForgottenUserSaga
+    ),
+    takeLatest(
+        constants.USER_PASSWORD_FORGOTTEN_SUCCESS,
+        authPasswordForgottenSuccessSaga
+    ),
 
     takeLatest(constants.USER_PASSWORD_RESET_REQUEST, passwordResetUserSaga),
-    takeLatest(constants.USER_PASSWORD_RESET_SUCCESS, authPasswordResetSuccessSaga),
+    takeLatest(
+        constants.USER_PASSWORD_RESET_SUCCESS,
+        authPasswordResetSuccessSaga
+    ),
 
-    takeLatest([
-        constants.USER_LOGIN_FAILURE,
-        constants.USER_REGISTER_FAILURE,
-        constants.USER_PASSWORD_FORGOTTEN_FAILURE,
-        constants.USER_PASSWORD_RESET_FAILURE
-    ], authErrorSaga),
-    takeLatest([
-        constants.USER_LOGIN_SUCCESS,
-        constants.USER_REGISTER_SUCCESS
-    ], authSuccessSaga),
+    takeLatest(
+        [
+            constants.USER_LOGIN_FAILURE,
+            constants.USER_REGISTER_FAILURE,
+            constants.USER_PASSWORD_FORGOTTEN_FAILURE,
+            constants.USER_PASSWORD_RESET_FAILURE
+        ],
+        authErrorSaga
+    ),
+    takeLatest(
+        [constants.USER_LOGIN_SUCCESS, constants.USER_REGISTER_SUCCESS],
+        authSuccessSaga
+    ),
     takeLatest(constants.USER_UNAUTH, unauthUserSaga)
 ]

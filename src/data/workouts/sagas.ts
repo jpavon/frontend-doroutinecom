@@ -10,15 +10,27 @@ import * as actions from 'data/workouts/actions'
 import { getWorkoutDataSaga } from 'data/sagas'
 
 function* getWorkoutsSaga(action: IApiAction) {
-    yield* apiSaga(action, actions.getWorkoutsSuccess, actions.getWorkoutsFailure)
+    yield* apiSaga(
+        action,
+        actions.getWorkoutsSuccess,
+        actions.getWorkoutsFailure
+    )
 }
 
 function* postWorkoutSaga(action: IApiAction) {
-    yield* apiSaga(action, actions.postWorkoutSuccess, actions.postWorkoutFailure)
+    yield* apiSaga(
+        action,
+        actions.postWorkoutSuccess,
+        actions.postWorkoutFailure
+    )
 }
 
 function* postWorkoutFromSaga(action: IApiAction) {
-    yield* apiSaga(action, actions.postWorkoutFromSuccess, actions.postWorkoutFromFailure)
+    yield* apiSaga(
+        action,
+        actions.postWorkoutFromSuccess,
+        actions.postWorkoutFromFailure
+    )
 }
 
 function* putWorkoutSaga(action: IApiAction) {
@@ -26,7 +38,11 @@ function* putWorkoutSaga(action: IApiAction) {
 }
 
 function* deleteWorkoutSaga(action: IApiAction) {
-    yield* apiSaga(action, actions.deleteWorkoutSuccess, actions.deleteWorkoutFailure)
+    yield* apiSaga(
+        action,
+        actions.deleteWorkoutSuccess,
+        actions.deleteWorkoutFailure
+    )
 }
 
 function* workoutDeleteSuccess() {

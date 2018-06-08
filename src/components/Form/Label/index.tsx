@@ -10,21 +10,12 @@ interface ILabelProps {
 }
 
 const Label: React.SFC<ILabelProps> = (props) => {
-
-    const {
-        children,
-        className,
-        htmlFor,
-        title
-    } = props
+    const { children, className, htmlFor, title } = props
 
     return (
         <label
             htmlFor={htmlFor}
-            className={classNames(
-                'label',
-                className
-            )}
+            className={classNames('label', className)}
             title={title}
         >
             {children}

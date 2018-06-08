@@ -9,11 +9,12 @@ export interface ILift {
     updatedAt: string
 }
 
-export interface IFormatedLift extends ILift {
-}
+export interface IFormatedLift extends ILift {}
 
 export type ILiftsState = IStateMap<ILift>
 
-export type ILiftsAction = ReturnType<typeof actionTypes[keyof typeof actionTypes]>
+export type ILiftsAction = ReturnType<
+    typeof actionTypes[keyof typeof actionTypes]
+>
 
 export type ILiftRequestData = Partial<ILift>

@@ -43,7 +43,6 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class LiftContainer extends React.Component<IProps> {
-
     componentDidMount() {
         if (this.props.isStatusLoaded && !this.props.lift) {
             history.replace('/lifts')
@@ -51,7 +50,9 @@ class LiftContainer extends React.Component<IProps> {
     }
 
     handleRemove = () => {
-        if (!this.props.lift) { return }
+        if (!this.props.lift) {
+            return
+        }
 
         if (window.confirm('Are you sure you want to delete this lift?')) {
             this.props.deleteLift(this.props.lift.id)
@@ -59,42 +60,31 @@ class LiftContainer extends React.Component<IProps> {
     }
 
     render() {
-        return (this.props.lift && this.props.user) ? (
+        return this.props.lift && this.props.user ? (
             <>
-                {this.props.lift.name &&
+                {this.props.lift.name && (
                     <Helmet>
                         <title>{this.props.lift.name}</title>
                     </Helmet>
-                }
+                )}
                 <TopNav
                     title="Lift"
                     left={{
                         to: '/lifts'
                     }}
                 />
-                <Lift
-                    lift={this.props.lift}
-                    update={this.props.putLift}
-                />
-                <TopNav
-                    title="Recent Progress"
-                />
-                <Graph
-                    type="line"
-                    data={this.props.liftGraphData}
-                />
-                <TopNav
-                    title="Top Sets"
-                />
-                {this.props.topLiftSets.length > 0 ?
+                <Lift lift={this.props.lift} update={this.props.putLift} />
+                <TopNav title="Recent Progress" />
+                <Graph type="line" data={this.props.liftGraphData} />
+                <TopNav title="Top Sets" />
+                {this.props.topLiftSets.length > 0 ? (
                     <SetsTable
                         sets={this.props.topLiftSets}
                         weightMeasure={this.props.user.weightMeasure}
-                    /> :
-                    <NoData
-                        text="List of top sets will be displayed here when you complete a workout."
                     />
-                }
+                ) : (
+                    <NoData text="List of top sets will be displayed here when you complete a workout." />
+                )}
                 <TopNav
                     rightLabel="Delete Lift"
                     right={{
@@ -112,7 +102,9 @@ class LiftContainer extends React.Component<IProps> {
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     lift: liftSelector(props.liftId)(state),
     isStatusLoaded: state.lifts.fetchStatus === statusConstants.STATUS_LOADED,
-    isDeleting: state.lifts.entitiesStatus[props.liftId] === statusConstants.STATUS_DELETING,
+    isDeleting:
+        state.lifts.entitiesStatus[props.liftId] ===
+        statusConstants.STATUS_DELETING,
     liftGraphData: liftGraphDataSelector(props.liftId)(state),
     topLiftSets: topLiftSetsSelector(props.liftId)(state),
     user: userSelector(state)
@@ -123,4 +115,7 @@ const mapDispatchToProps: IDispatchProps = {
     deleteLift
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LiftContainer)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(LiftContainer)

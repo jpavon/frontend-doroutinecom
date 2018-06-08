@@ -20,11 +20,19 @@ interface ISetProps {
     previousSet: IFormatedSet | null
 }
 
-const Set: React.SFC<ISetProps> = ({index, set, update, remove, isDeleting, isRemoveButtonsVisible, previousSet}) => (
+const Set: React.SFC<ISetProps> = ({
+    index,
+    set,
+    update,
+    remove,
+    isDeleting,
+    isRemoveButtonsVisible,
+    previousSet
+}) => (
     <AutoSaveForm
         initialValues={set}
         update={update}
-        render={({values}: IAutoSaveFormState) => (
+        render={({ values }: IAutoSaveFormState) => (
             <div
                 className={classNames(
                     'set-inner',
@@ -39,7 +47,11 @@ const Set: React.SFC<ISetProps> = ({index, set, update, remove, isDeleting, isRe
                         id="reps"
                         type="number"
                         name="reps"
-                        placeholder={(previousSet && previousSet.reps) ? '' + previousSet.reps : 'Reps'}
+                        placeholder={
+                            previousSet && previousSet.reps
+                                ? '' + previousSet.reps
+                                : 'Reps'
+                        }
                     />
                 </div>
                 <div className="set-inner-item">
@@ -47,11 +59,15 @@ const Set: React.SFC<ISetProps> = ({index, set, update, remove, isDeleting, isRe
                         id="weight"
                         type="number"
                         name="weight"
-                        placeholder={(previousSet && previousSet.weight) ? '' + previousSet.weight : 'Weight'}
+                        placeholder={
+                            previousSet && previousSet.weight
+                                ? '' + previousSet.weight
+                                : 'Weight'
+                        }
                     />
                 </div>
                 <div className="set-inner-item set-action">
-                    {!isRemoveButtonsVisible &&
+                    {!isRemoveButtonsVisible && (
                         <Label
                             htmlFor={`set-checkbox${values.id}`}
                             title="Mark as Completed"
@@ -61,8 +77,8 @@ const Set: React.SFC<ISetProps> = ({index, set, update, remove, isDeleting, isRe
                                 name="isCompleted"
                             />
                         </Label>
-                    }
-                    {isRemoveButtonsVisible &&
+                    )}
+                    {isRemoveButtonsVisible && (
                         <Button
                             remove
                             danger
@@ -71,7 +87,7 @@ const Set: React.SFC<ISetProps> = ({index, set, update, remove, isDeleting, isRe
                             className="set-button-delete"
                             title="Delete Set"
                         />
-                    }
+                    )}
                 </div>
             </div>
         )}

@@ -10,11 +10,9 @@ import UncontrolledDatetime, { IDatetimeProps } from 'components/Form/Datetime'
 import Alert from 'components/Form/Alert'
 import Saving from 'components/Saving'
 
-interface IAutoSaveDatetimeProps extends IDatetimeProps {
-}
+interface IAutoSaveDatetimeProps extends IDatetimeProps {}
 
 class Input extends React.Component<IAutoSaveDatetimeProps> {
-
     static contextTypes = {
         formContext: PropTypes.object.isRequired
     }
@@ -22,15 +20,15 @@ class Input extends React.Component<IAutoSaveDatetimeProps> {
     context: IAutoSaveFormContext
 
     render() {
-        const {
-            name,
-            ...rest
-        } = this.props
+        const { name, ...rest } = this.props
 
         const { values, errors, onChange, updating } = this.context.formContext
 
         return (
-            <div className={`datetime-${name}`} style={{position: 'relative'}}>
+            <div
+                className={`datetime-${name}`}
+                style={{ position: 'relative' }}
+            >
                 {updating === name && <Saving />}
                 <UncontrolledDatetime
                     name={name}
@@ -44,9 +42,7 @@ class Input extends React.Component<IAutoSaveDatetimeProps> {
                     }}
                     {...rest}
                 />
-                <Alert
-                    message={errors[name]}
-                />
+                <Alert message={errors[name]} />
             </div>
         )
     }

@@ -17,7 +17,7 @@ enum constants {
 
     WORKOUTS_DELETE_REQUEST = 'workouts/DELETE_REQUEST',
     WORKOUTS_DELETE_SUCCESS = 'workouts/DELETE_SUCCESS',
-    WORKOUTS_DELETE_FAILURE = 'workouts/DELETE_FAILURE',
+    WORKOUTS_DELETE_FAILURE = 'workouts/DELETE_FAILURE'
 }
 
 export default constants

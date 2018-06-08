@@ -21,9 +21,7 @@ const configureStore = (preloadedState?: IRootState) => {
     const store = createStore(
         rootReducer,
         preloadedState,
-        compose(
-            applyMiddleware(...middleware)
-        )
+        compose(applyMiddleware(...middleware))
     )
 
     sagaMiddleware.run(rootSaga)

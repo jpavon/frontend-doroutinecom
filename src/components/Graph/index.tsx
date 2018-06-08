@@ -11,58 +11,66 @@ interface IGraphProps {
 }
 
 class Graph extends React.Component<IGraphProps> {
-
     graph: HTMLCanvasElement | null
 
     componentDidMount() {
-
         const ctx = this.graph && this.graph.getContext('2d')
 
         const meta = this.props.data.meta
         const datasetMax = this.props.data.datasetMax
         const datasetMin = this.props.data.datasetMin
 
-        const yAxeStepRange = datasetMax < 8 ? 1 :
-            datasetMax < 20 ? 2 :
-            datasetMax < 50 ? 5 :
-            10
+        const yAxeStepRange =
+            datasetMax < 8 ? 1 : datasetMax < 20 ? 2 : datasetMax < 50 ? 5 : 10
 
-        const step = datasetMin ?
-            Math.max(yAxeStepRange, datasetMax - datasetMin) :
-            datasetMax / 8
-        const stepSize = Math.max(1, Math.round(step / yAxeStepRange) * yAxeStepRange)
+        const step = datasetMin
+            ? Math.max(yAxeStepRange, datasetMax - datasetMin)
+            : datasetMax / 8
+        const stepSize = Math.max(
+            1,
+            Math.round(step / yAxeStepRange) * yAxeStepRange
+        )
 
-        const max = datasetMax < 5 ? 5 :
-            Math.round(datasetMax / stepSize) * stepSize + stepSize
+        const max =
+            datasetMax < 5
+                ? 5
+                : Math.round(datasetMax / stepSize) * stepSize + stepSize
 
-        const min = datasetMin ?
-            Math.max(0, Math.round(datasetMin / stepSize) * stepSize - stepSize * 2) :
-            0
+        const min = datasetMin
+            ? Math.max(
+                  0,
+                  Math.round(datasetMin / stepSize) * stepSize - stepSize * 2
+              )
+            : 0
 
         const options = {
             scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        min,
-                        max,
-                        stepSize: stepSize,
-                        autoSkip: false,
-                    },
-                    // scaleLabel: {
-                    //     display: this.props.type === 'line',
-                    //     labelString: 'Estimated 1RM'
-                    // }
-                }],
-                xAxes: [{
-                    stacked: false,
-                    ticks: {
-                        autoSkip: false,
-                    },
-                    gridLines: {
-                        display: false
+                yAxes: [
+                    {
+                        ticks: {
+                            beginAtZero: true,
+                            min,
+                            max,
+                            stepSize: stepSize,
+                            autoSkip: false
+                        }
+                        // scaleLabel: {
+                        //     display: this.props.type === 'line',
+                        //     labelString: 'Estimated 1RM'
+                        // }
                     }
-                }]
+                ],
+                xAxes: [
+                    {
+                        stacked: false,
+                        ticks: {
+                            autoSkip: false
+                        },
+                        gridLines: {
+                            display: false
+                        }
+                    }
+                ]
             },
             legend: { display: false },
             responsive: true,
@@ -84,8 +92,8 @@ class Graph extends React.Component<IGraphProps> {
                 },
                 rectangle: {
                     backgroundColor: 'rgba(76, 144, 194, .4)',
-                    borderWidth: 1,
-                },
+                    borderWidth: 1
+                }
             },
             tooltips: {
                 displayColors: false,
@@ -102,9 +110,13 @@ class Graph extends React.Component<IGraphProps> {
                         const reps = meta && meta.reps
                         const weight = meta && meta.weight
                         const weightMeasure = meta && meta.weightMeasure
-                        return (reps && weight && weightMeasure) ?
-                            `${reps[tooltipItem.index]}x${weight[tooltipItem.index]}${weightMeasure}` :
-                            `${tooltipItem.yLabel} Workout${(Number(tooltipItem.yLabel) > 1) ? 's' : ''}`
+                        return reps && weight && weightMeasure
+                            ? `${reps[tooltipItem.index]}x${
+                                  weight[tooltipItem.index]
+                              }${weightMeasure}`
+                            : `${tooltipItem.yLabel} Workout${
+                                  Number(tooltipItem.yLabel) > 1 ? 's' : ''
+                              }`
                     }
                 }
             }
@@ -116,9 +128,11 @@ class Graph extends React.Component<IGraphProps> {
                 type: this.props.type,
                 data: {
                     labels: this.props.data.labels,
-                    datasets: [{
-                        data: this.props.data.dataset,
-                    }]
+                    datasets: [
+                        {
+                            data: this.props.data.dataset
+                        }
+                    ]
                 },
                 options
             })
@@ -128,12 +142,16 @@ class Graph extends React.Component<IGraphProps> {
     render() {
         return (
             <div className="graph">
-                {this.props.data.dataset.length === 0 &&
+                {this.props.data.dataset.length === 0 && (
                     <div className="graph-no-data">
                         Complete a workout to start tracking your progress.
                     </div>
-                }
-                <canvas width="800" height="320" ref={(ref) => this.graph = ref} />
+                )}
+                <canvas
+                    width="800"
+                    height="320"
+                    ref={(ref) => (this.graph = ref)}
+                />
             </div>
         )
     }

@@ -12,11 +12,13 @@ const Offline: React.SFC<{}> = () => (
             <img src={logo} alt="Logo" />
         </div>
         <p className="offline-text">
-            You need internet connection to continue using doroutine,
-            refresh the page when you are connected to the internet.
+            You need internet connection to continue using doroutine, refresh
+            the page when you are connected to the internet.
         </p>
         <div className="offline-button">
-            <Button onClick={() => window.location.reload(true)}>Refresh</Button>
+            <Button onClick={() => window.location.reload(true)}>
+                Refresh
+            </Button>
         </div>
     </div>
 )

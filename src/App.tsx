@@ -15,8 +15,7 @@ import Loading from 'components/Loading'
 import Head from 'components/Head'
 import Offline from 'components/Offline'
 
-interface IOwnProps {
-}
+interface IOwnProps {}
 
 interface IStateProps {
     isAuth: boolean
@@ -36,7 +35,6 @@ interface IState {
 }
 
 class App extends React.Component<IProps, IState> {
-
     state = {
         isErrorApp: false
     }
@@ -50,32 +48,36 @@ class App extends React.Component<IProps, IState> {
     }
 
     componentWillReceiveProps(nextProps: IProps) {
-        if (nextProps.isServerError && nextProps.isServerError !== this.props.isServerError) {
+        if (
+            nextProps.isServerError &&
+            nextProps.isServerError !== this.props.isServerError
+        ) {
             this.setState({ isErrorApp: true })
         }
     }
 
-    componentDidCatch(error: Error/*, info*/) {
+    componentDidCatch(error: Error /*, info*/) {
         this.setState({ isErrorApp: true })
     }
 
     render() {
         if (this.props.isOffline) {
-            return (<Offline />)
+            return <Offline />
         }
 
         return (
             <>
                 <Head />
                 <NavContainer />
-                {this.props.isLoading ?
-                    <Loading /> :
-                    this.state.isErrorApp ?
-                        <ErrorApp /> :
-                        <>
-                            <Routes isAuth={this.props.isAuth} />
-                        </>
-                }
+                {this.props.isLoading ? (
+                    <Loading />
+                ) : this.state.isErrorApp ? (
+                    <ErrorApp />
+                ) : (
+                    <>
+                        <Routes isAuth={this.props.isAuth} />
+                    </>
+                )}
             </>
         )
     }
@@ -94,5 +96,8 @@ const mapDispatchToProps: IDispatchProps = {
 
 export default compose(
     withRouter,
-    connect(mapStateToProps, mapDispatchToProps)
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )
 )(App)

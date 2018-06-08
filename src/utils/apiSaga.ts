@@ -10,11 +10,19 @@ export default function* apiSaga(
     failureAction: (error: object) => IAction
 ) {
     try {
-        const payload = yield call(api[action.method], action.endpoint, action.data)
+        const payload = yield call(
+            api[action.method],
+            action.endpoint,
+            action.data
+        )
         yield put(successAction(payload))
-        if (action.resolve) { action.resolve(payload) }
+        if (action.resolve) {
+            action.resolve(payload)
+        }
     } catch (error) {
         yield put(failureAction(error))
-        if (action.reject) { action.reject(error) }
+        if (action.reject) {
+            action.reject(error)
+        }
     }
 }

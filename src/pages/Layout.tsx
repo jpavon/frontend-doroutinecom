@@ -25,7 +25,6 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class Layout extends React.Component<IProps> {
-
     constructor(props: IProps) {
         super(props)
 
@@ -43,16 +42,14 @@ class Layout extends React.Component<IProps> {
     render() {
         return (
             <>
-                <Helmet>
-                    {this.props.header}
-                </Helmet>
+                <Helmet>{this.props.header}</Helmet>
                 <main className="container">
-                    {this.props.alert &&
+                    {this.props.alert && (
                         <Alert
                             type={this.props.alert.type}
                             message={this.props.alert.message}
                         />
-                    }
+                    )}
                     {this.props.children}
                 </main>
             </>
@@ -68,4 +65,7 @@ const mapDispatchToProps: IDispatchProps = {
     removeAlert
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Layout)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Layout)

@@ -8,15 +8,9 @@ interface IParams {
     liftId: string
 }
 
-const Lift = ({match}: RouteComponentProps<IParams>) => (
-    <Layout
-        header={(
-            <title>Lift</title>
-        )}
-    >
-        <LiftContainer
-            liftId={Number(match.params.liftId)}
-        />
+const Lift = ({ match }: RouteComponentProps<IParams>) => (
+    <Layout header={<title>Lift</title>}>
+        <LiftContainer liftId={Number(match.params.liftId)} />
     </Layout>
 )
 

@@ -4,14 +4,19 @@ import { debounce, isEqual } from 'lodash'
 
 interface IValues {
     id: number
-    // tslint:disable-next-line
+    // tslint:disable-next-line:no-any
     [index: string]: any
 }
 
 interface IAutoSaveFormProps {
     initialValues: IValues
-    // tslint:disable-next-line
-    update: (id: number, data: { [index: string]: any }, resolve?: () => void, reject?: () => void) => void
+    update: (
+        id: number,
+        // tslint:disable-next-line:no-any
+        data: { [index: string]: any },
+        resolve?: () => void,
+        reject?: () => void
+    ) => void
     render: (state: IAutoSaveFormState) => React.ReactNode
 }
 
@@ -38,8 +43,10 @@ export interface IAutoSaveFormContext {
     }
 }
 
-class AutoSaveForm extends React.Component<IAutoSaveFormProps, IAutoSaveFormState> {
-
+class AutoSaveForm extends React.Component<
+    IAutoSaveFormProps,
+    IAutoSaveFormState
+> {
     static childContextTypes = {
         formContext: PropTypes.object.isRequired
     }
@@ -49,7 +56,7 @@ class AutoSaveForm extends React.Component<IAutoSaveFormProps, IAutoSaveFormStat
     getChildContext = (): IAutoSaveFormContext => ({
         formContext: {
             ...this.state,
-            onChange: this.handleChange,
+            onChange: this.handleChange
         }
     })
 
@@ -59,7 +66,7 @@ class AutoSaveForm extends React.Component<IAutoSaveFormProps, IAutoSaveFormStat
         this.state = {
             values: props.initialValues,
             errors: {},
-            updating: null,
+            updating: null
         }
 
         this.reinitializeValues = true
@@ -81,7 +88,6 @@ class AutoSaveForm extends React.Component<IAutoSaveFormProps, IAutoSaveFormStat
     }
 
     handleChange = (options: IAutoSaveFormChangeOptions) => {
-
         this.setState((prevState) => ({
             values: {
                 ...prevState.values,
@@ -90,36 +96,42 @@ class AutoSaveForm extends React.Component<IAutoSaveFormProps, IAutoSaveFormStat
         }))
 
         if (options.debounced) {
-            this.debounceUpdate(this.state.values.id, options.name, options.value)
+            this.debounceUpdate(
+                this.state.values.id,
+                options.name,
+                options.value
+            )
         } else {
             this.update(this.state.values.id, options.name, options.value)
         }
     }
 
     update = (id: number, name: string, value: string | boolean) => {
-
         this.reinitializeValues = false
 
         new Promise((resolve, reject) => {
             this.props.update(id, { [name]: value }, resolve, reject)
-        }).then((payload) => {
-            this.setState({
-                updating: name,
-                errors: {}
-            })
-
-            debounce(() => {
-                this.setState({
-                    updating: null,
-                })
-            }, 500)()
-        }).catch((error) => {
-            this.setState({
-                errors: error ? error.errors : {},
-            })
-        }).finally(() => {
-            this.reinitializeValues = true
         })
+            .then((payload) => {
+                this.setState({
+                    updating: name,
+                    errors: {}
+                })
+
+                debounce(() => {
+                    this.setState({
+                        updating: null
+                    })
+                }, 500)()
+            })
+            .catch((error) => {
+                this.setState({
+                    errors: error ? error.errors : {}
+                })
+            })
+            .finally(() => {
+                this.reinitializeValues = true
+            })
     }
 
     // tslint:disable-next-line

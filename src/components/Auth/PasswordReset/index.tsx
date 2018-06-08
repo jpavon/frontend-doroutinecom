@@ -11,11 +11,13 @@ interface IProps {
     passwordConfirmationRef: React.RefObject<HTMLInputElement>
 }
 
-const PasswordReset: React.SFC<IProps> = ({handleSubmit, emailRef, passwordRef, passwordConfirmationRef}) => (
-    <Auth
-        className="password-reset"
-        handleSubmit={handleSubmit}
-    >
+const PasswordReset: React.SFC<IProps> = ({
+    handleSubmit,
+    emailRef,
+    passwordRef,
+    passwordConfirmationRef
+}) => (
+    <Auth className="password-reset" handleSubmit={handleSubmit}>
         <Field label="Email" id="email">
             <Input
                 id="email"

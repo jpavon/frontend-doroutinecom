@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import 'variables.scss';
 
 .alert {
     display: block;
@@ -12,34 +12,38 @@
     opacity: 1;
 }
 
-    .alert--success {
-        background-color: $color-success;
-        text-shadow: 0 1px 2px darken($color-success, 15%);
-    }
+.alert--success {
+    background-color: $color-success;
+    text-shadow: 0 1px 2px darken($color-success, 15%);
+}
 
-    .alert--error {
-        background-color: $color-danger;
-        text-shadow: 0 1px 2px darken($color-danger, 15%);
-    }
+.alert--error {
+    background-color: $color-danger;
+    text-shadow: 0 1px 2px darken($color-danger, 15%);
+}
 
-    .alert--info {
-        background-color: $color-info;
-        text-shadow: 0 1px 2px darken($color-info, 15%);
-    }
+.alert--info {
+    background-color: $color-info;
+    text-shadow: 0 1px 2px darken($color-info, 15%);
+}
 
-    .alert--small {
-        padding: $spacing-small;
-        font-size: .8rem;
-        line-height: 1.1;
-        margin-bottom: 0;
-        border-width: 1px;
-    }
+.alert--small {
+    padding: $spacing-small;
+    font-size: 0.8rem;
+    line-height: 1.1;
+    margin-bottom: 0;
+    border-width: 1px;
+}
 
-    .alert--fade-in {
-        animation: fade-in 1s;
-    }
+.alert--fade-in {
+    animation: fade-in 1s;
+}
 
 @keyframes fade-in {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

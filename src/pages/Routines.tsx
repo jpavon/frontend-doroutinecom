@@ -4,11 +4,7 @@ import Layout from 'pages/Layout'
 import RoutinesContainer from 'containers/RoutinesContainer'
 
 const Routines = () => (
-    <Layout
-        header={(
-            <title>Routines</title>
-        )}
-    >
+    <Layout header={<title>Routines</title>}>
         <RoutinesContainer />
     </Layout>
 )

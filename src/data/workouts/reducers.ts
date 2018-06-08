@@ -11,7 +11,10 @@ const initialState: Readonly<IWorkoutsState> = {
     error: null
 }
 
-const workouts = (state = initialState, action: IWorkoutsAction): IWorkoutsState => {
+const workouts = (
+    state = initialState,
+    action: IWorkoutsAction
+): IWorkoutsState => {
     switch (action.type) {
         case constants.WORKOUTS_GET_REQUEST:
             return utils.request(state)

@@ -7,23 +7,20 @@ const formatRoutine = (routine: IRoutine): IFormatedRoutine => ({
     ...routine
 })
 
-export const routineSelector = (id: number) => createSelector(
-    [
-        (state: IRootState) => state.routines.entities
-    ],
-    (routines): IFormatedRoutine | null => {
-        if (routines.length > 0) {
-            const routine = routines.find((routine) => (routine.id === id))
-            return routine ? formatRoutine(routine) : null
+export const routineSelector = (id: number) =>
+    createSelector(
+        [(state: IRootState) => state.routines.entities],
+        (routines): IFormatedRoutine | null => {
+            if (routines.length > 0) {
+                const routine = routines.find((routine) => routine.id === id)
+                return routine ? formatRoutine(routine) : null
+            }
+            return null
         }
-        return null
-    }
-)
+    )
 
 export const routinesSelector = createSelector(
-    [
-        (state: IRootState) => state.routines.entities
-    ],
+    [(state: IRootState) => state.routines.entities],
     (routines): IFormatedRoutine[] =>
         routines
             .map((routine) => formatRoutine(routine))
@@ -31,9 +28,7 @@ export const routinesSelector = createSelector(
 )
 
 export const defaultRoutinesSelector = createSelector(
-    [
-        (state: IRootState) => state.routines.entities
-    ],
+    [(state: IRootState) => state.routines.entities],
     (routines): IFormatedRoutine[] =>
         routines
             .map((routine) => formatRoutine(routine))

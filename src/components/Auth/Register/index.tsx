@@ -15,10 +15,7 @@ interface IProps {
 }
 
 const Login: React.SFC<IProps> = (props) => (
-    <Auth
-        className="register"
-        handleSubmit={props.handleSubmit}
-    >
+    <Auth className="register" handleSubmit={props.handleSubmit}>
         <Field label="Name" id="name">
             <Input
                 id="name"

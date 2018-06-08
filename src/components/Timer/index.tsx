@@ -15,7 +15,6 @@ interface ITimerState {
 }
 
 class Timer extends React.Component<ITimerProps, ITimerState> {
-
     start: Date
     timer: NodeJS.Timer
 
@@ -25,7 +24,7 @@ class Timer extends React.Component<ITimerProps, ITimerState> {
         this.state = {
             hours: '0',
             minutes: '0',
-            seconds: '0',
+            seconds: '0'
         }
 
         this.start = moment(props.start).toDate()

@@ -11,7 +11,7 @@ export interface IDatetimeProps extends ReactDatetime.DatetimepickerProps {
     name: string
 }
 
-const Datetime: React.SFC<IDatetimeProps> = ({value, name, ...rest}) => (
+const Datetime: React.SFC<IDatetimeProps> = ({ value, name, ...rest }) => (
     <ReactDatetime
         dateFormat={dateFormat}
         timeFormat={timeFormat}

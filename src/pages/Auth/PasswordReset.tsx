@@ -8,12 +8,8 @@ interface IParams {
     token: string
 }
 
-const PasswordReset = ({match}: RouteComponentProps<IParams>) => (
-    <Layout
-        header={(
-            <title>Password Reset</title>
-        )}
-    >
+const PasswordReset = ({ match }: RouteComponentProps<IParams>) => (
+    <Layout header={<title>Password Reset</title>}>
         <PasswordResetContainer token={match.params.token} />
     </Layout>
 )

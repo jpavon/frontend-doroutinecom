@@ -1,64 +1,82 @@
 @import url(~normalize.css);
 html {
-  box-sizing: border-box;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-kerning: auto;
-  -webkit-text-size-adjust: 100%; }
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-kerning: auto;
+    -webkit-text-size-adjust: 100%;
+}
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
-  text-rendering: inherit;
-  -webkit-font-smoothing: inherit;
-  -moz-osx-font-smoothing: inherit;
-  font-kerning: inherit;
-  -webkit-text-size-adjust: inherit; }
+    box-sizing: inherit;
+    text-rendering: inherit;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    font-kerning: inherit;
+    -webkit-text-size-adjust: inherit;
+}
 
 body {
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  color: #444;
-  overflow-y: scroll;
-  background-color: #f9f9f9;
-  font-weight: 400; }
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    color: #444;
+    overflow-y: scroll;
+    background-color: #f9f9f9;
+    font-weight: 400;
+}
 
 #root {
-  min-height: 100%; }
+    min-height: 100%;
+}
 
 .container {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  min-height: 100%;
-  padding-bottom: 108px; }
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 100%;
+    padding-bottom: 108px;
+}
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
-  margin: 0;
-  margin-bottom: .4rem; }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 0.4rem;
+}
 
 h2 {
-  font-size: 1.1rem; }
+    font-size: 1.1rem;
+}
 
 img {
-  max-width: 100%;
-  height: auto; }
+    max-width: 100%;
+    height: auto;
+}
 
 p {
-  font-size: 1rem; }
+    font-size: 1rem;
+}
 
 a {
-  font-size: .9rem;
-  color: #444;
-  text-decoration: none;
-  transition: .2s all; }
-  a:hover, a:focus {
-    color: #4c90c2; }
+    font-size: 0.9rem;
+    color: #444;
+    text-decoration: none;
+    transition: 0.2s all;
+}
+a:hover,
+a:focus {
+    color: #4c90c2;
+}
 
 small {
-  font-size: .8rem;
-  font-weight: 400;
-  letter-spacing: .05rem;
-  color: #777777; }
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.05rem;
+    color: #777777;
+}

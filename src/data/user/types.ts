@@ -23,13 +23,15 @@ export interface IFormatedUser extends IUser {}
 export interface IUserState {
     fetchStatus: statusConstants
     isAuth: boolean
-    entity: IUser | null,
+    entity: IUser | null
     error: IApiFailure | null
 }
 
 export type IUserRequestData = Partial<IUser>
 
-export type IUserAction = ReturnType<typeof actionTypes[keyof typeof actionTypes]>
+export type IUserAction = ReturnType<
+    typeof actionTypes[keyof typeof actionTypes]
+>
 
 export interface ILoginData {
     email: string

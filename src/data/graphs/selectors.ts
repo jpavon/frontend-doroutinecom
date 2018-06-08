@@ -13,8 +13,12 @@ import { setsSelector } from 'data/sets/selectors'
 import { formatTopSets } from 'data/sets/selectors'
 
 const weeks = [0, 1, 2, 3, 4].map((id) => ({
-    startWeek: moment().subtract(id, 'weeks').startOf('week'),
-    endWeek: moment().subtract(id, 'weeks').endOf('week')
+    startWeek: moment()
+        .subtract(id, 'weeks')
+        .startOf('week'),
+    endWeek: moment()
+        .subtract(id, 'weeks')
+        .endOf('week')
 }))
 
 const ranges = weeks.map((week) => ({
@@ -26,27 +30,34 @@ const getWorkoutsDataset = (workouts: IFormatedWorkout[]) => {
 
     workouts.forEach((workout) => {
         ranges.forEach((item, i) => {
-            if (workout.completedAt && item.range.contains(moment(workout.completedAt))) {
+            if (
+                workout.completedAt &&
+                item.range.contains(moment(workout.completedAt))
+            ) {
                 dataset[i] = dataset[i] + 1
             }
         })
     })
 
-    if (Math.max(...dataset) === 0) { return [] }
+    if (Math.max(...dataset) === 0) {
+        return []
+    }
 
     return dataset
 }
 
 export const workoutsGraphDataSelector = createSelector(
-    [
-        completedWorkoutsSelector
-    ],
+    [completedWorkoutsSelector],
     (workouts): IGraph => {
         const dataset = getWorkoutsDataset(workouts).reverse()
 
-        const labels = weeks.map((week) => {
-            return `${week.startWeek.format(dayMonthFormat)} ${week.endWeek.format(dayMonthFormat)}`
-        }).reverse()
+        const labels = weeks
+            .map((week) => {
+                return `${week.startWeek.format(
+                    dayMonthFormat
+                )} ${week.endWeek.format(dayMonthFormat)}`
+            })
+            .reverse()
 
         return {
             labels,
@@ -58,32 +69,34 @@ export const workoutsGraphDataSelector = createSelector(
     }
 )
 
-export const liftGraphDataSelector = (liftId: number) => createSelector(
-    [
-        completedExercisesLiftSelector(liftId),
-        setsSelector,
-        completedWorkoutsSelector,
-        (state: IRootState) => state.user.entity
-    ],
-    (exercises, sets, workouts, user): IGraph => {
-        const topSets = formatTopSets(exercises, sets, workouts, null)
-            .sort((a, b) => (Number(a.moment) - Number(b.moment)))
+export const liftGraphDataSelector = (liftId: number) =>
+    createSelector(
+        [
+            completedExercisesLiftSelector(liftId),
+            setsSelector,
+            completedWorkoutsSelector,
+            (state: IRootState) => state.user.entity
+        ],
+        (exercises, sets, workouts, user): IGraph => {
+            const topSets = formatTopSets(exercises, sets, workouts, null).sort(
+                (a, b) => Number(a.moment) - Number(b.moment)
+            )
 
-        const dataset = topSets.map((set) => set.rm)
-        const labels = topSets.map((set) => set.moment.format(dateFormat))
-        const reps = topSets.map((set) => set.reps)
-        const weight = topSets.map((set) => set.weight)
+            const dataset = topSets.map((set) => set.rm)
+            const labels = topSets.map((set) => set.moment.format(dateFormat))
+            const reps = topSets.map((set) => set.reps)
+            const weight = topSets.map((set) => set.weight)
 
-        return {
-            labels,
-            dataset,
-            datasetMax: dataset.length > 0 ? Math.max(...dataset) : 0,
-            datasetMin: dataset.length > 0 ? Math.min(...dataset) : 0,
-            meta: {
-                reps,
-                weight,
-                weightMeasure: user && user.weightMeasure
+            return {
+                labels,
+                dataset,
+                datasetMax: dataset.length > 0 ? Math.max(...dataset) : 0,
+                datasetMin: dataset.length > 0 ? Math.min(...dataset) : 0,
+                meta: {
+                    reps,
+                    weight,
+                    weightMeasure: user && user.weightMeasure
+                }
             }
         }
-    }
-)
+    )

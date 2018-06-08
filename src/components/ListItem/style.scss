@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import 'variables.scss';
 
 .list-item {
     display: block;
@@ -6,14 +6,15 @@
     padding: $spacing - 4 $spacing;
     text-decoration: none;
     border-bottom: 1px solid $color-border;
-    transition: border-color .2s;
+    transition: border-color 0.2s;
     background-color: transparent;
     background-image: url('../../media/arrow-right.svg');
     background-repeat: no-repeat;
     background-position: right $spacing center;
-    transition: color .2s, background-position .2s;
+    transition: color 0.2s, background-position 0.2s;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         color: $color-primary;
         background-position: right $spacing/1.5 center;
 
@@ -32,6 +33,6 @@
 }
 
 .list-item-info {
-    font-size: .9rem;
-    margin-top: .5rem;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
 }

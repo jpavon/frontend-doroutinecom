@@ -11,7 +11,10 @@ const initialState: Readonly<IRoutinesState> = {
     error: null
 }
 
-const routines = (state = initialState, action: IRoutinesAction): IRoutinesState => {
+const routines = (
+    state = initialState,
+    action: IRoutinesAction
+): IRoutinesState => {
     switch (action.type) {
         case constants.ROUTINES_GET_REQUEST:
             return utils.request(state)

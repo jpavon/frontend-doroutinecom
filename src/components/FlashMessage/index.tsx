@@ -12,8 +12,10 @@ interface IFlashMessageState {
     delay: number
 }
 
-class FlashMessage extends React.Component<IFlashMessageProps, IFlashMessageState> {
-
+class FlashMessage extends React.Component<
+    IFlashMessageProps,
+    IFlashMessageState
+> {
     timer: NodeJS.Timer | null
 
     constructor(props: IFlashMessageProps) {
@@ -28,7 +30,7 @@ class FlashMessage extends React.Component<IFlashMessageProps, IFlashMessageStat
     componentWillReceiveProps(nextProps: IFlashMessageProps) {
         if (nextProps.visible) {
             this.setTimer()
-            this.setState({visible: true})
+            this.setState({ visible: true })
         }
     }
 
@@ -37,16 +39,20 @@ class FlashMessage extends React.Component<IFlashMessageProps, IFlashMessageStat
     }
 
     setTimer() {
-        if (this.timer) { clearTimeout(this.timer) }
+        if (this.timer) {
+            clearTimeout(this.timer)
+        }
 
         this.timer = setTimeout(() => {
-            this.setState({visible: false})
+            this.setState({ visible: false })
             this.timer = null
         }, this.state.delay)
     }
 
     componentWillUnmount() {
-        if (this.timer) { clearTimeout(this.timer) }
+        if (this.timer) {
+            clearTimeout(this.timer)
+        }
     }
 
     render() {
