@@ -52,6 +52,7 @@ export const formatTopSets = (
     lifts: ILift[] | null
 ): ITopSet[] => {
     const completedExercisesIds = exercises.map((exercise) => exercise.id)
+
     const completedSets = sets
         .filter((set) => completedExercisesIds.includes(set.exerciseId))
         .map((set) => ({
@@ -59,30 +60,33 @@ export const formatTopSets = (
             rm: round(Number(set.weight) * (36 / (37 - Number(set.reps))))
         }))
 
-    const topSets = completedSets.reduce((prev, curr) => {
-        if (
-            prev[curr.exerciseId] &&
-            prev[curr.exerciseId].rm === 0 &&
-            (curr.reps && prev[curr.exerciseId].reps > curr.reps)
-        ) {
-            return {
-                ...prev
+    type TopSets = {
+        [index: number]: { weight: number; reps: number; rm: number }
+    }
+    let topSets = completedSets.reduce(
+        (acc, curr) => {
+            if (
+                acc[curr.exerciseId] &&
+                acc[curr.exerciseId].rm === 0 &&
+                (curr.reps && acc[curr.exerciseId].reps > curr.reps) &&
+                acc[curr.exerciseId].rm > curr.rm
+            ) {
+                return {
+                    ...acc
+                }
             }
-        }
 
-        if (prev[curr.exerciseId] && prev[curr.exerciseId].rm > curr.rm) {
-            return { ...prev }
-        } else {
             return {
-                ...prev,
+                ...acc,
                 [curr.exerciseId]: {
                     weight: curr.weight || 0,
                     reps: curr.reps || 0,
                     rm: curr.rm
                 }
             }
-        }
-    }, {})
+        },
+        {} as TopSets
+    )
 
     Object.keys(topSets).forEach((exerciseId) => {
         const exercise = exercises.find(
@@ -91,20 +95,30 @@ export const formatTopSets = (
         const workout = workouts.find(
             (workout) => (exercise ? exercise.workoutId === workout.id : false)
         )
-        topSets[exerciseId].completedAt =
-            workout &&
-            workout.completedAt &&
-            moment(workout.completedAt).format(dateFormat)
-        topSets[exerciseId].moment =
-            workout && workout.completedAt && moment(workout.completedAt)
-        topSets[exerciseId].workoutId = workout && workout.id
-        topSets[exerciseId].liftId = exercise && exercise.liftId
+
         const lift =
             lifts &&
             lifts.find(
                 (lift) => (exercise ? lift.id === exercise.liftId : false)
             )
-        topSets[exerciseId].lift = lift && lift.name
+
+        topSets = {
+            ...topSets,
+            [exerciseId]: {
+                ...topSets[exerciseId],
+                completedAt:
+                    workout &&
+                    workout.completedAt &&
+                    moment(workout.completedAt).format(dateFormat),
+                moment:
+                    workout &&
+                    workout.completedAt &&
+                    moment(workout.completedAt),
+                workoutId: workout && workout.id,
+                liftId: exercise && exercise.liftId,
+                lift: lift && lift.name
+            }
+        }
     })
 
     return Object.keys(topSets)
@@ -153,10 +167,7 @@ export const topLiftSetsSelector = (liftId: number) =>
         }
     )
 
-export const previouslyCompletedSetsSelector = (
-    exerciseId: number,
-    liftId: number
-) =>
+export const previouslyCompletedSetsSelector = (liftId: number) =>
     createSelector(
         [
             completedExercisesLiftSelector(liftId),

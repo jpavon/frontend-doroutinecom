@@ -86,7 +86,7 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     entitiesStatus: state.sets.entitiesStatus,
     user: userSelector(state),
     previouslyCompletedSets: props.liftId
-        ? previouslyCompletedSetsSelector(props.exerciseId, props.liftId)(state)
+        ? previouslyCompletedSetsSelector(props.liftId)(state)
         : []
 })
 

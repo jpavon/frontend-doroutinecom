@@ -6,16 +6,13 @@ import { IFormatedRoutine } from 'data/routines/types'
 
 import moment from 'utils/moment'
 import { formatDuration, longDateFormat } from 'utils/date'
-import { routinesSelector } from 'data/routines/selectors'
 import { order } from 'data/utils'
 
 const formatWorkout = (
     workout: IWorkout,
-    routines: IFormatedRoutine[],
+    routine: IFormatedRoutine,
     liftNames?: string[]
 ): IFormatedWorkout => {
-    const routine = routines.find((routine) => routine.id === workout.routineId)
-
     return {
         ...workout,
         displayName: routine ? routine.name : workout.name,
@@ -33,17 +30,20 @@ const formatWorkout = (
 export const workoutSelector = createSelector(
     [
         (state: IRootState, id: number) => state.workouts.entities[id],
-        routinesSelector
+        (state) => state.routines.entities
     ],
     (workout, routines) => {
-        return workout ? formatWorkout(workout, routines) : null
+        return workout
+            ? formatWorkout(workout, routines[workout.routineId])
+            : null
     }
 )
 
 export const workoutsSelector = createSelector(
     [
-        (state) => order(state.workouts.entitiesOrder, state.workouts.entities),
-        routinesSelector,
+        (state: IRootState) =>
+            order(state.workouts.entitiesOrder, state.workouts.entities),
+        (state) => state.routines.entities,
         (state) => state.exercises.entities,
         (state) => state.lifts.entities
     ],
@@ -57,7 +57,11 @@ export const workoutsSelector = createSelector(
                 .filter((lift) => workoutExercisesLiftsIds.includes(lift.id))
                 .map((lift) => `${lift.name}`)
 
-            return formatWorkout(workout, routines, liftNames)
+            return formatWorkout(
+                workout,
+                routines[workout.routineId],
+                liftNames
+            )
         })
 )
 
