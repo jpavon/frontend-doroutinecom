@@ -41,8 +41,7 @@ export const workoutSelector = createSelector(
 
 export const workoutsSelector = createSelector(
     [
-        (state: IRootState) =>
-            order(state.workouts.entitiesOrder, state.workouts.entities),
+        (state: IRootState) => order(state.workouts),
         (state) => state.routines.entities,
         (state) => state.exercises.entities,
         (state) => state.lifts.entities

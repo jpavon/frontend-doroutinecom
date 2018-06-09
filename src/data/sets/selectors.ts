@@ -21,10 +21,7 @@ const formatSet = (set: ISet): IFormatedSet => ({
 })
 
 export const setsSelector = createSelector(
-    [
-        (state: IRootState) =>
-            order(state.sets.entitiesOrder, state.sets.entities)
-    ],
+    [(state: IRootState) => order(state.sets)],
     (sets): IFormatedSet[] => Object.values(sets).map((set) => formatSet(set))
 )
 

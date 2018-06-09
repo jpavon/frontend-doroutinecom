@@ -16,10 +16,7 @@ export const liftSelector = createSelector(
 )
 
 export const liftsSelector = createSelector(
-    [
-        (state: IRootState) =>
-            order(state.lifts.entitiesOrder, state.lifts.entities)
-    ],
+    [(state: IRootState) => order(state.lifts)],
     (lifts): IFormatedLift[] =>
         Object.values(lifts).map((lift) => formatLift(lift))
 )
@@ -27,10 +24,8 @@ export const liftsSelector = createSelector(
 export const liftExerciseSelector = (exerciseId: number) =>
     createSelector(
         [
-            (state: IRootState) =>
-                order(state.exercises.entitiesOrder, state.exercises.entities),
-            (state: IRootState) =>
-                order(state.lifts.entitiesOrder, state.lifts.entities)
+            (state: IRootState) => order(state.exercises),
+            (state: IRootState) => order(state.lifts)
         ],
         (exercises, lifts): IFormatedLift | null => {
             const exercise = exercises[exerciseId]

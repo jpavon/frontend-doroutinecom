@@ -16,10 +16,7 @@ export const routineSelector = createSelector(
 )
 
 export const routinesSelector = createSelector(
-    [
-        (state: IRootState) =>
-            order(state.routines.entitiesOrder, state.routines.entities)
-    ],
+    [(state: IRootState) => order(state.routines)],
     (routines): IFormatedRoutine[] =>
         Object.values(routines)
             .map((routine) => formatRoutine(routine))
@@ -27,10 +24,7 @@ export const routinesSelector = createSelector(
 )
 
 export const defaultRoutinesSelector = createSelector(
-    [
-        (state: IRootState) =>
-            order(state.routines.entitiesOrder, state.routines.entities)
-    ],
+    [(state: IRootState) => order(state.routines)],
     (routines): IFormatedRoutine[] =>
         Object.values(routines)
             .map((routine) => formatRoutine(routine))

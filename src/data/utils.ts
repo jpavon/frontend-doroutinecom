@@ -2,10 +2,8 @@ import { IStateMap, IApiFailure } from 'data/types'
 
 import { statusConstants } from 'data/constants'
 
-export const order = <T>(
-    order: number[],
-    entities: IStateMap<T>['entities']
-): T[] => order.map((id) => entities[id])
+export const order = <T>(entityState: IStateMap<T>): T[] =>
+    entityState.entitiesOrder.map((id) => entityState.entities[id])
 
 // reducer crud utils
 

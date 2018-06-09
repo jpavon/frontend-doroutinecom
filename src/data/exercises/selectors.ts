@@ -13,10 +13,7 @@ const formatExercise = (exercise: IExercise): IFormatedExercise => ({
 
 export const exercisesRoutineSelector = (routineId: number) =>
     createSelector(
-        [
-            (state: IRootState) =>
-                order(state.exercises.entitiesOrder, state.exercises.entities)
-        ],
+        [(state: IRootState) => order(state.exercises)],
         (exercises): IFormatedExercise[] =>
             exercises
                 .filter((exercise) => exercise.routineId === routineId)
