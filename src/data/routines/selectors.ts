@@ -11,7 +11,7 @@ const formatRoutine = (routine: IRoutine): IFormatedRoutine => ({
 export const routineSelector = createSelector(
     [(state: IRootState, id: number) => state.routines.entities[id]],
     (routine) => {
-        return formatRoutine(routine)
+        return routine ? formatRoutine(routine) : null
     }
 )
 

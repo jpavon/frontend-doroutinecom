@@ -79,11 +79,14 @@ export const liftGraphDataSelector = (liftId: number) =>
         ],
         (exercises, sets, workouts, user): IGraph => {
             const topSets = formatTopSets(exercises, sets, workouts, null).sort(
-                (a, b) => Number(a.moment) - Number(b.moment)
+                (a, b) =>
+                    Number(a.completeAtMoment) - Number(b.completeAtMoment)
             )
 
             const dataset = topSets.map((set) => set.rm)
-            const labels = topSets.map((set) => set.moment.format(dateFormat))
+            const labels = topSets.map((set) =>
+                set.completeAtMoment.format(dateFormat)
+            )
             const reps = topSets.map((set) => set.reps)
             const weight = topSets.map((set) => set.weight)
 

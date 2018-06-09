@@ -11,7 +11,7 @@ const formatLift = (lift: ILift): IFormatedLift => ({
 export const liftSelector = createSelector(
     [(state: IRootState, id: number) => state.lifts.entities[id]],
     (lift) => {
-        return formatLift(lift)
+        return lift ? formatLift(lift) : null
     }
 )
 

@@ -50,77 +50,62 @@ export const formatTopSets = (
 ): ITopSet[] => {
     const completedExercisesIds = exercises.map((exercise) => exercise.id)
 
-    const completedSets = sets
-        .filter((set) => completedExercisesIds.includes(set.exerciseId))
-        .map((set) => ({
-            ...set,
-            rm: round(Number(set.weight) * (36 / (37 - Number(set.reps))))
-        }))
+    const completedSets = sets.filter((set) =>
+        completedExercisesIds.includes(set.exerciseId)
+    )
 
-    type TopSets = {
-        [index: number]: { weight: number; reps: number; rm: number }
-    }
-    let topSets = completedSets.reduce(
+    const topSets = completedSets.reduce(
         (acc, curr) => {
+            const rm = round(
+                Number(curr.weight) * (36 / (37 - Number(curr.reps)))
+            )
+
+            const exercise = exercises.find(
+                (exercise) => exercise.id === Number(curr.exerciseId)
+            )
+
+            const lift =
+                lifts &&
+                lifts.find(
+                    (lift) => (exercise ? lift.id === exercise.liftId : false)
+                )
+
             if (
                 acc[curr.exerciseId] &&
                 acc[curr.exerciseId].rm === 0 &&
                 (curr.reps && acc[curr.exerciseId].reps > curr.reps) &&
-                acc[curr.exerciseId].rm > curr.rm
+                (rm && acc[curr.exerciseId].rm > rm)
             ) {
-                return {
-                    ...acc
-                }
+                return acc
             }
+
+            const workout = workouts.find(
+                (workout) =>
+                    exercise ? exercise.workoutId === workout.id : false
+            )
 
             return {
                 ...acc,
                 [curr.exerciseId]: {
                     weight: curr.weight || 0,
                     reps: curr.reps || 0,
-                    rm: curr.rm
+                    rm: rm,
+                    completedAt: moment(workout!.completedAt!).format(
+                        dateFormat
+                    ),
+                    completeAtMoment: moment(workout!.completedAt!),
+                    workoutId: workout!.id,
+                    liftId: exercise!.liftId!,
+                    lift: lift ? lift.name : null
                 }
             }
         },
-        {} as TopSets
+        {} as {
+            [index: number]: ITopSet
+        }
     )
 
-    Object.keys(topSets).forEach((exerciseId) => {
-        const exercise = exercises.find(
-            (exercise) => exercise.id === Number(exerciseId)
-        )
-        const workout = workouts.find(
-            (workout) => (exercise ? exercise.workoutId === workout.id : false)
-        )
-
-        const lift =
-            lifts &&
-            lifts.find(
-                (lift) => (exercise ? lift.id === exercise.liftId : false)
-            )
-
-        topSets = {
-            ...topSets,
-            [exerciseId]: {
-                ...topSets[exerciseId],
-                completedAt:
-                    workout &&
-                    workout.completedAt &&
-                    moment(workout.completedAt).format(dateFormat),
-                moment:
-                    workout &&
-                    workout.completedAt &&
-                    moment(workout.completedAt),
-                workoutId: workout && workout.id,
-                liftId: exercise && exercise.liftId,
-                lift: lift && lift.name
-            }
-        }
-    })
-
-    return Object.keys(topSets)
-        .map((exerciseId) => topSets[exerciseId])
-        .filter((set) => set.liftId)
+    return Object.values(topSets).filter((set) => set.liftId)
 }
 
 export const topSetsSelector = createSelector(
@@ -132,10 +117,10 @@ export const topSetsSelector = createSelector(
     ],
     (exercises, sets, workouts, lifts): ITopSet[] => {
         return formatTopSets(exercises, sets, workouts, lifts).sort((a, b) => {
-            // order by moment, otherwise by weight
-            if (a.moment < b.moment) {
+            // order by completeAt, otherwise by weight
+            if (a.completeAtMoment < b.completeAtMoment) {
                 return 1
-            } else if (a.moment > b.moment) {
+            } else if (a.completeAtMoment > b.completeAtMoment) {
                 return -1
             }
 

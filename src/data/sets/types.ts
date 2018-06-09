@@ -22,14 +22,14 @@ export type ISetsAction = ReturnType<
 >
 
 export interface ITopSet {
-    workoutId: number
-    liftId: number
-    lift: string | null
-    moment: MomentType
     reps: number
     rm: number
     weight: number
     completedAt: string
+    completeAtMoment: MomentType
+    workoutId: number
+    liftId: number
+    lift: string | null
 }
 
 export type ISetRequestData = Partial<ISet>

@@ -2,7 +2,6 @@ import * as React from 'react'
 import { Transition as SpringTransition, animated } from 'react-spring'
 
 export interface ITransitionProps {
-    // tslint:disable-next-line:no-any
     children: React.ReactElement<{ key: string }>
     className?: string
 }
@@ -11,6 +10,7 @@ const Transition: React.SFC<ITransitionProps> = (props) => {
     if (Array.isArray(props.children) && props.children.length > 0) {
         return (
             <SpringTransition
+                native
                 keys={(props.children as { key: string }[]).map(
                     (item) => item.key
                 )}
