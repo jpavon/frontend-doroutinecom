@@ -47,13 +47,13 @@ class AutoSaveForm extends React.Component<
     IAutoSaveFormProps,
     IAutoSaveFormState
 > {
-    static childContextTypes = {
+    public static childContextTypes = {
         formContext: PropTypes.object.isRequired
     }
 
-    reinitializeValues: boolean
+    public reinitializeValues: boolean
 
-    getChildContext = (): IAutoSaveFormContext => ({
+    public getChildContext = (): IAutoSaveFormContext => ({
         formContext: {
             ...this.state,
             onChange: this.handleChange
@@ -72,7 +72,7 @@ class AutoSaveForm extends React.Component<
         this.reinitializeValues = true
     }
 
-    componentWillReceiveProps(nextProps: IAutoSaveFormProps) {
+    public componentWillReceiveProps(nextProps: IAutoSaveFormProps) {
         if (
             this.reinitializeValues &&
             !isEqual(this.props.initialValues, nextProps.initialValues)
@@ -81,13 +81,13 @@ class AutoSaveForm extends React.Component<
         }
     }
 
-    initialize = (values: IValues) => {
+    public initialize = (values: IValues) => {
         this.setState({
             values
         })
     }
 
-    handleChange = (options: IAutoSaveFormChangeOptions) => {
+    public handleChange = (options: IAutoSaveFormChangeOptions) => {
         this.setState((prevState) => ({
             values: {
                 ...prevState.values,
@@ -106,7 +106,7 @@ class AutoSaveForm extends React.Component<
         }
     }
 
-    update = (id: number, name: string, value: string | boolean) => {
+    public update = (id: number, name: string, value: string | boolean) => {
         this.reinitializeValues = false
 
         new Promise((resolve, reject) => {
@@ -134,9 +134,9 @@ class AutoSaveForm extends React.Component<
             })
     }
 
-    debounceUpdate = debounce(this.update, 300)
+    public debounceUpdate = debounce(this.update, 300)
 
-    render() {
+    public render() {
         return this.props.render(this.state)
     }
 }

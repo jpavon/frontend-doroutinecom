@@ -80,8 +80,8 @@ const Set: React.SFC<ISetProps> = ({
                     )}
                     {isRemoveButtonsVisible && (
                         <Button
-                            remove
-                            danger
+                            remove={true}
+                            danger={true}
                             onClick={() => remove(set.id)}
                             disabled={isDeleting}
                             className="set-button-delete"

@@ -10,8 +10,8 @@ const Transition: React.SFC<ITransitionProps> = (props) => {
     if (Array.isArray(props.children) && props.children.length > 0) {
         return (
             <SpringTransition
-                native
-                keys={(props.children as { key: string }[]).map(
+                native={true}
+                keys={(props.children as Array<{ key: string }>).map(
                     (item) => item.key
                 )}
                 from={{ opacity: 0 }}

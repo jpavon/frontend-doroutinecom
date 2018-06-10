@@ -15,8 +15,8 @@ interface ITimerState {
 }
 
 class Timer extends React.Component<ITimerProps, ITimerState> {
-    start: Date
-    timer: NodeJS.Timer
+    public start: Date
+    public timer: NodeJS.Timer
 
     constructor(props: ITimerProps) {
         super(props)
@@ -30,20 +30,20 @@ class Timer extends React.Component<ITimerProps, ITimerState> {
         this.start = moment(props.start).toDate()
     }
 
-    componentDidMount() {
+    public componentDidMount() {
         this.tick()
         this.timer = setInterval(this.tick, 1000)
     }
 
-    componentWillUnmount() {
+    public componentWillUnmount() {
         clearInterval(this.timer)
     }
 
-    format = (n: number): string => {
+    private format = (n: number): string => {
         return n > 9 ? n + '' : '0' + n
     }
 
-    tick = () => {
+    private tick = () => {
         let delta = Math.abs(Number(new Date()) - Number(this.start)) / 1000
 
         // calculate (and subtract) whole hours
@@ -64,7 +64,7 @@ class Timer extends React.Component<ITimerProps, ITimerState> {
         })
     }
 
-    render() {
+    public render() {
         return (
             <span className="timer">
                 {this.state.hours}:{this.state.minutes}:{this.state.seconds}

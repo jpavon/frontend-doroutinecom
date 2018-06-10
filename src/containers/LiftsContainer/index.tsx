@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { IRootState } from 'data/types'
 import { IFormatedLift } from 'data/lifts/types'
 
-// import history from 'utils/history'
 import { liftsSelector } from 'data/lifts/selectors'
 import { postLift } from 'data/lifts/actions'
 import { statusConstants } from 'data/constants'
@@ -28,11 +27,11 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class LiftsContainer extends React.Component<IProps> {
-    handleCreate = () => {
+    private handleCreate = () => {
         this.props.postLift()
     }
 
-    render() {
+    public render() {
         return (
             <>
                 <TopNav

@@ -32,11 +32,11 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class RoutinesContainer extends React.Component<IProps> {
-    handleCreate = () => {
+    private handleCreate = () => {
         this.props.postRoutine()
     }
 
-    render() {
+    public render() {
         return (
             <>
                 <TopNav

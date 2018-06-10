@@ -50,7 +50,7 @@ class ProfileContainer extends React.Component<IProps, IState> {
         }
     }
 
-    hideStartMessage = () => {
+    private hideStartMessage = () => {
         store.set('hideStartMessage', true)
 
         this.setState({
@@ -58,7 +58,7 @@ class ProfileContainer extends React.Component<IProps, IState> {
         })
     }
 
-    render() {
+    public render() {
         return this.props.user ? (
             <Profile>
                 <TopNav
@@ -82,7 +82,7 @@ class ProfileContainer extends React.Component<IProps, IState> {
                     <SetsTable
                         sets={this.props.topSets}
                         weightMeasure={this.props.user.weightMeasure}
-                        showLift
+                        showLift={true}
                     />
                 ) : (
                     <NoData text="List of top sets will be displayed here when you complete a workout." />

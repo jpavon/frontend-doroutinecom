@@ -43,13 +43,13 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class LiftContainer extends React.Component<IProps> {
-    componentDidMount() {
+    public componentDidMount() {
         if (this.props.isStatusLoaded && !this.props.lift) {
             history.replace('/lifts')
         }
     }
 
-    handleRemove = () => {
+    private handleRemove = () => {
         if (!this.props.lift) {
             return
         }
@@ -59,7 +59,7 @@ class LiftContainer extends React.Component<IProps> {
         }
     }
 
-    render() {
+    public render() {
         return this.props.lift && this.props.user ? (
             <>
                 {this.props.lift.name && (

@@ -40,13 +40,13 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class SetsContainer extends React.Component<IProps> {
-    handleCreate = () => {
+    private handleCreate = () => {
         this.props.postSet({
             exerciseId: this.props.exerciseId
         })
     }
 
-    render() {
+    public render() {
         return this.props.user ? (
             <Sets
                 create={this.handleCreate}

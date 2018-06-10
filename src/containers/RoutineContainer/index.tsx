@@ -36,14 +36,13 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class RoutineContainer extends React.Component<IProps> {
-    componentDidMount() {
-        console.log(this.props)
+    public componentDidMount() {
         if (this.props.isStatusLoaded && !this.props.routine) {
             history.replace('/routines')
         }
     }
 
-    handleRemove = () => {
+    private handleRemove = () => {
         if (!this.props.routine) {
             return
         }
@@ -53,7 +52,7 @@ class RoutineContainer extends React.Component<IProps> {
         }
     }
 
-    handleCreateWorkout = () => {
+    private handleCreateWorkout = () => {
         if (!this.props.routine) {
             return
         }
@@ -64,7 +63,7 @@ class RoutineContainer extends React.Component<IProps> {
         })
     }
 
-    render() {
+    public render() {
         return this.props.routine ? (
             <>
                 {this.props.routine.name && (

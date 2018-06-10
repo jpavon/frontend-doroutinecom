@@ -26,83 +26,128 @@ interface IRouteComponent {
     component: React.SFC<RouteComponentProps<{}>>
 }
 
+const PrivateRoute = ({
+    component: Component,
+    isAuth,
+    ...rest
+}: IRouteComponent & IProps) => (
+    <Route
+        render={(props) =>
+            isAuth ? (
+                <Component {...props} />
+            ) : (
+                <Redirect
+                    to={{
+                        pathname: '/login',
+                        state: { from: props.location.pathname }
+                    }}
+                />
+            )
+        }
+        {...rest}
+    />
+)
+
+const GuestRoute = ({
+    component: Component,
+    isAuth,
+    ...rest
+}: IRouteComponent & IProps) => (
+    <Route
+        render={(props) =>
+            !isAuth ? (
+                <Component {...props} />
+            ) : (
+                <Redirect
+                    to={
+                        props.location.state && props.location.state.from
+                            ? props.location.state.from
+                            : '/'
+                    }
+                />
+            )
+        }
+        {...rest}
+    />
+)
+
 class Routes extends React.Component<IProps> {
-    render() {
-        const PrivateRoute = ({
-            component: Component,
-            ...rest
-        }: IRouteComponent) => (
-            <Route
-                render={(props) =>
-                    this.props.isAuth ? (
-                        <Component {...props} />
-                    ) : (
-                        <Redirect
-                            to={{
-                                pathname: '/login',
-                                state: { from: props.location.pathname }
-                            }}
-                        />
-                    )
-                }
-                {...rest}
-            />
-        )
-
-        const GuestRoute = ({
-            component: Component,
-            ...rest
-        }: IRouteComponent) => (
-            <Route
-                render={(props) =>
-                    !this.props.isAuth ? (
-                        <Component {...props} />
-                    ) : (
-                        <Redirect
-                            to={
-                                props.location.state &&
-                                props.location.state.from
-                                    ? props.location.state.from
-                                    : '/'
-                            }
-                        />
-                    )
-                }
-                {...rest}
-            />
-        )
-
+    public render() {
         return (
             <Switch>
-                <GuestRoute exact path="/login" component={Login} />
-                <GuestRoute exact path="/register" component={Register} />
                 <GuestRoute
-                    exact
+                    exact={true}
+                    path="/login"
+                    component={Login}
+                    isAuth={this.props.isAuth}
+                />
+                <GuestRoute
+                    exact={true}
+                    path="/register"
+                    component={Register}
+                    isAuth={this.props.isAuth}
+                />
+                <GuestRoute
+                    exact={true}
                     path="/password-forgotten"
                     component={PasswordForgotten}
+                    isAuth={this.props.isAuth}
                 />
                 <GuestRoute
-                    exact
+                    exact={true}
                     path="/password-reset/:token"
                     component={PasswordReset}
+                    isAuth={this.props.isAuth}
                 />
 
-                <PrivateRoute exact path="/" component={Profile} />
-                <PrivateRoute exact path="/settings" component={Settings} />
-                <PrivateRoute exact path="/workouts" component={Workouts} />
                 <PrivateRoute
-                    exact
+                    exact={true}
+                    path="/"
+                    component={Profile}
+                    isAuth={this.props.isAuth}
+                />
+                <PrivateRoute
+                    exact={true}
+                    path="/settings"
+                    component={Settings}
+                    isAuth={this.props.isAuth}
+                />
+                <PrivateRoute
+                    exact={true}
+                    path="/workouts"
+                    component={Workouts}
+                    isAuth={this.props.isAuth}
+                />
+                <PrivateRoute
+                    exact={true}
                     path="/workouts/:workoutId"
                     component={Workout}
+                    isAuth={this.props.isAuth}
                 />
-                <PrivateRoute exact path="/routines" component={Routines} />
                 <PrivateRoute
-                    exact
+                    exact={true}
+                    path="/routines"
+                    component={Routines}
+                    isAuth={this.props.isAuth}
+                />
+                <PrivateRoute
+                    exact={true}
                     path="/routines/:routineId"
                     component={Routine}
+                    isAuth={this.props.isAuth}
                 />
-                <PrivateRoute exact path="/lifts" component={Lifts} />
-                <PrivateRoute exact path="/lifts/:liftId" component={Lift} />
+                <PrivateRoute
+                    exact={true}
+                    path="/lifts"
+                    component={Lifts}
+                    isAuth={this.props.isAuth}
+                />
+                <PrivateRoute
+                    exact={true}
+                    path="/lifts/:liftId"
+                    component={Lift}
+                    isAuth={this.props.isAuth}
+                />
 
                 <Route component={NotFound} />
             </Switch>

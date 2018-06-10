@@ -41,13 +41,13 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class WorkoutContainer extends React.Component<IProps> {
-    componentDidMount() {
+    public componentDidMount() {
         if (this.props.isStatusLoaded && !this.props.workout) {
             history.replace('/workouts')
         }
     }
 
-    handleCompleted = () => {
+    private handleCompleted = () => {
         if (!this.props.workout) {
             return
         }
@@ -57,7 +57,7 @@ class WorkoutContainer extends React.Component<IProps> {
         })
     }
 
-    handleRestart = () => {
+    private handleRestart = () => {
         if (!this.props.workout) {
             return
         }
@@ -68,7 +68,7 @@ class WorkoutContainer extends React.Component<IProps> {
         })
     }
 
-    handleCreate = () => {
+    private handleCreate = () => {
         if (!this.props.workout) {
             return
         }
@@ -80,7 +80,7 @@ class WorkoutContainer extends React.Component<IProps> {
         })
     }
 
-    handleRemove = () => {
+    private handleRemove = () => {
         if (!this.props.workout) {
             return
         }
@@ -90,7 +90,7 @@ class WorkoutContainer extends React.Component<IProps> {
         }
     }
 
-    render() {
+    public render() {
         return this.props.workout ? (
             <>
                 {this.props.workout.displayName && (

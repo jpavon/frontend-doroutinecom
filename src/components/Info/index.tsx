@@ -21,7 +21,7 @@ class Info extends React.Component<ILIftProps, ILIftState> {
         }
     }
 
-    render() {
+    public render() {
         return (
             <div className="info">
                 <Button

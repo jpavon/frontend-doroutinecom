@@ -13,13 +13,13 @@ interface IAutoSaveFormSelectProps extends ISelectProps {
 }
 
 class Select extends React.Component<IAutoSaveFormSelectProps> {
-    static contextTypes = {
+    public static contextTypes = {
         formContext: PropTypes.object.isRequired
     }
 
-    context: IAutoSaveFormContext
+    public context: IAutoSaveFormContext
 
-    render() {
+    public render() {
         const { name, noOptionsMessage, ...rest } = this.props
 
         const { values, errors, onChange, updating } = this.context.formContext

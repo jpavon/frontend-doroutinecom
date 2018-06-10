@@ -33,13 +33,13 @@ class Layout extends React.Component<IProps> {
         }
     }
 
-    componentWillReceiveProps(nextProps: IProps) {
+    public componentWillReceiveProps(nextProps: IProps) {
         if (nextProps.alert && nextProps.alert === this.props.alert) {
             this.props.removeAlert()
         }
     }
 
-    render() {
+    public render() {
         return (
             <>
                 <Helmet>{this.props.header}</Helmet>

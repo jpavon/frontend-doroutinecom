@@ -27,7 +27,7 @@ interface IDispatchProps {}
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class WorkoutsContainer extends React.Component<IProps> {
-    render() {
+    public render() {
         return (
             <>
                 <TopNav

@@ -48,7 +48,7 @@ const Nav: React.SFC<INavProps> = ({ isTouchDevice, isPendingWorkouts }) => (
             <ul className="nav-list">
                 <li className="nav-item">
                     <NavLink
-                        exact
+                        exact={true}
                         to="/"
                         className="nav-link"
                         activeClassName="nav-link--active"

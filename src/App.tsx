@@ -35,7 +35,7 @@ interface IState {
 }
 
 class App extends React.Component<IProps, IState> {
-    state = {
+    public readonly state = {
         isErrorApp: false
     }
 
@@ -47,7 +47,7 @@ class App extends React.Component<IProps, IState> {
         }
     }
 
-    componentWillReceiveProps(nextProps: IProps) {
+    public componentWillReceiveProps(nextProps: IProps) {
         if (
             nextProps.isServerError &&
             nextProps.isServerError !== this.props.isServerError
@@ -56,11 +56,11 @@ class App extends React.Component<IProps, IState> {
         }
     }
 
-    componentDidCatch(error: Error /*, info*/) {
+    public componentDidCatch(error: Error /*, info*/) {
         this.setState({ isErrorApp: true })
     }
 
-    render() {
+    public render() {
         if (this.props.isOffline) {
             return <Offline />
         }

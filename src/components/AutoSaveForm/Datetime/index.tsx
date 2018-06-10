@@ -13,13 +13,13 @@ import Saving from 'components/Saving'
 interface IAutoSaveDatetimeProps extends IDatetimeProps {}
 
 class Input extends React.Component<IAutoSaveDatetimeProps> {
-    static contextTypes = {
+    public static contextTypes = {
         formContext: PropTypes.object.isRequired
     }
 
-    context: IAutoSaveFormContext
+    public context: IAutoSaveFormContext
 
-    render() {
+    public render() {
         const { name, ...rest } = this.props
 
         const { values, errors, onChange, updating } = this.context.formContext

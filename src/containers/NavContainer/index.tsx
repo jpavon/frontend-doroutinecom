@@ -22,7 +22,7 @@ interface IDispatchProps {}
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class NavContainer extends React.Component<IProps> {
-    isTouchDevice: boolean
+    private isTouchDevice: boolean
 
     constructor(props: IProps) {
         super(props)
@@ -30,7 +30,7 @@ class NavContainer extends React.Component<IProps> {
         this.isTouchDevice = 'ontouchstart' in document.documentElement
     }
 
-    render() {
+    public render() {
         return this.props.isAuth ? (
             <Nav
                 isTouchDevice={this.isTouchDevice}

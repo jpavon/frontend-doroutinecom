@@ -7,7 +7,7 @@ export const order = <T>(entityState: IStateMap<T>): T[] =>
 
 // reducer crud utils
 
-type Model = {
+interface Model {
     id: number
 }
 

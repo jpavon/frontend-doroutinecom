@@ -11,13 +11,13 @@ interface IAutoSaveCheckboxProps extends ICheckboxProps {
 }
 
 class Checkbox extends React.Component<IAutoSaveCheckboxProps> {
-    static contextTypes = {
+    public static contextTypes = {
         formContext: PropTypes.object.isRequired
     }
 
-    context: IAutoSaveFormContext
+    public context: IAutoSaveFormContext
 
-    render() {
+    public render() {
         const { name, ...rest } = this.props
 
         const { values, errors, onChange } = this.context.formContext

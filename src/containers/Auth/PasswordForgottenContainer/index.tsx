@@ -17,9 +17,9 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class PasswordForgottenContainer extends React.Component<IProps> {
-    email: React.RefObject<HTMLInputElement> = React.createRef()
+    private email: React.RefObject<HTMLInputElement> = React.createRef()
 
-    handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    private handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
         this.props.passwordForgottenUser({
@@ -27,7 +27,7 @@ class PasswordForgottenContainer extends React.Component<IProps> {
         })
     }
 
-    render() {
+    public render() {
         return (
             <>
                 <TopNav title="Password Forgotten" />

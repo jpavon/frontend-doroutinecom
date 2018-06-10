@@ -12,7 +12,7 @@ const api = (
     return axios
         .request({
             url: endpoint,
-            method: method,
+            method,
             baseURL: `${env.API_URL}/`,
             headers: {
                 Authorization: `Bearer ${store.get('token')}`

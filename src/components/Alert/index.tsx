@@ -13,11 +13,11 @@ interface IProps extends IAlert {
 }
 
 class Alert extends React.Component<IProps> {
-    static defaultProps = {
+    public static defaultProps = {
         animate: true
     }
 
-    renderMessage = (): React.ReactNode => {
+    private renderMessage = (): React.ReactNode => {
         const message = this.props.message
 
         if (React.isValidElement(message) || isString(message)) {
@@ -33,7 +33,7 @@ class Alert extends React.Component<IProps> {
         return null
     }
 
-    render() {
+    public render() {
         const { type, size } = this.props
 
         const className = classnames(

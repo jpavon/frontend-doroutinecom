@@ -16,7 +16,7 @@ class FlashMessage extends React.Component<
     IFlashMessageProps,
     IFlashMessageState
 > {
-    timer: number | null
+    public timer: number | null
 
     constructor(props: IFlashMessageProps) {
         super(props)
@@ -27,18 +27,24 @@ class FlashMessage extends React.Component<
         }
     }
 
-    componentWillReceiveProps(nextProps: IFlashMessageProps) {
+    public componentWillReceiveProps(nextProps: IFlashMessageProps) {
         if (nextProps.visible) {
             this.setTimer()
             this.setState({ visible: true })
         }
     }
 
-    componentDidMount() {
+    public componentDidMount() {
         this.setTimer()
     }
 
-    setTimer() {
+    public componentWillUnmount() {
+        if (this.timer) {
+            window.clearTimeout(this.timer)
+        }
+    }
+
+    private setTimer() {
         if (this.timer) {
             clearTimeout(this.timer)
         }
@@ -49,13 +55,7 @@ class FlashMessage extends React.Component<
         }, this.state.delay)
     }
 
-    componentWillUnmount() {
-        if (this.timer) {
-            window.clearTimeout(this.timer)
-        }
-    }
-
-    render() {
+    public render() {
         return this.state.visible ? (
             <div className="flash-message">
                 <Loading />

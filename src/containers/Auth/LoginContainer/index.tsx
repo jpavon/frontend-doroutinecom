@@ -16,10 +16,10 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class LoginContainer extends React.Component<IProps> {
-    email: React.RefObject<HTMLInputElement> = React.createRef()
-    password: React.RefObject<HTMLInputElement> = React.createRef()
+    private email: React.RefObject<HTMLInputElement> = React.createRef()
+    private password: React.RefObject<HTMLInputElement> = React.createRef()
 
-    handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    private handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault()
 
         new Promise((resolve, reject) => {
@@ -36,7 +36,7 @@ class LoginContainer extends React.Component<IProps> {
         })
     }
 
-    render() {
+    public render() {
         return (
             <Login
                 handleSubmit={this.handleSubmit}

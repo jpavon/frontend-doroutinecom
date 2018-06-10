@@ -11,9 +11,9 @@ interface IGraphProps {
 }
 
 class Graph extends React.Component<IGraphProps> {
-    graph: HTMLCanvasElement | null
+    public graph: HTMLCanvasElement | null
 
-    componentDidMount() {
+    public componentDidMount() {
         const ctx = this.graph && this.graph.getContext('2d')
 
         const meta = this.props.data.meta
@@ -51,7 +51,7 @@ class Graph extends React.Component<IGraphProps> {
                             beginAtZero: true,
                             min,
                             max,
-                            stepSize: stepSize,
+                            stepSize,
                             autoSkip: false
                         }
                         // scaleLabel: {
@@ -139,7 +139,7 @@ class Graph extends React.Component<IGraphProps> {
         }
     }
 
-    render() {
+    public render() {
         return (
             <div className="graph">
                 {this.props.data.dataset.length === 0 && (

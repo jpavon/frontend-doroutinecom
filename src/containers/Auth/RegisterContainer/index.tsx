@@ -16,12 +16,14 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class RegisterContainer extends React.Component<IProps> {
-    name: React.RefObject<HTMLInputElement> = React.createRef()
-    email: React.RefObject<HTMLInputElement> = React.createRef()
-    password: React.RefObject<HTMLInputElement> = React.createRef()
-    passwordConfirmation: React.RefObject<HTMLInputElement> = React.createRef()
+    private name: React.RefObject<HTMLInputElement> = React.createRef()
+    private email: React.RefObject<HTMLInputElement> = React.createRef()
+    private password: React.RefObject<HTMLInputElement> = React.createRef()
+    private passwordConfirmation: React.RefObject<
+        HTMLInputElement
+    > = React.createRef()
 
-    handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    private handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
         new Promise((resolve, reject) => {
@@ -42,7 +44,7 @@ class RegisterContainer extends React.Component<IProps> {
         })
     }
 
-    render() {
+    public render() {
         return (
             <Register
                 handleSubmit={this.handleSubmit}

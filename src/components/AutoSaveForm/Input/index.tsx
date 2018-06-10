@@ -12,13 +12,13 @@ interface IAutoSaveInputProps extends IInputProps {
 }
 
 class Input extends React.Component<IAutoSaveInputProps> {
-    static contextTypes = {
+    public static contextTypes = {
         formContext: PropTypes.object.isRequired
     }
 
-    context: IAutoSaveFormContext
+    public context: IAutoSaveFormContext
 
-    render() {
+    public render() {
         const { name, ...rest } = this.props
 
         const { values, errors, onChange, updating } = this.context.formContext

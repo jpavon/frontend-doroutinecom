@@ -89,7 +89,7 @@ export const formatTopSets = (
                 [curr.exerciseId]: {
                     weight: curr.weight || 0,
                     reps: curr.reps || 0,
-                    rm: rm,
+                    rm,
                     completedAt: moment(workout!.completedAt!).format(
                         dateFormat
                     ),

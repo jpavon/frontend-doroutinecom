@@ -48,8 +48,8 @@ interface IState {
 }
 
 class ExercisesContainer extends React.Component<IProps, IState> {
-    isRoutine: boolean
-    isWorkout: boolean
+    private isRoutine: boolean
+    private isWorkout: boolean
 
     constructor(props: IProps) {
         super(props)
@@ -62,13 +62,13 @@ class ExercisesContainer extends React.Component<IProps, IState> {
         }
     }
 
-    handleToggleRemoveButtons = () => {
+    private handleToggleRemoveButtons = () => {
         this.setState((prevState) => ({
             isRemoveButtonsVisible: !prevState.isRemoveButtonsVisible
         }))
     }
 
-    handleCreate = () => {
+    private handleCreate = () => {
         const data = {}
 
         if (this.isRoutine) {
@@ -84,7 +84,7 @@ class ExercisesContainer extends React.Component<IProps, IState> {
         this.props.postExercise(data)
     }
 
-    render() {
+    public render() {
         return (
             <>
                 <TopNav title="Exercises" />

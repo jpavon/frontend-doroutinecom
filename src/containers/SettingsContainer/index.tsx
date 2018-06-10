@@ -25,13 +25,13 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class SettingsContainer extends React.Component<IProps> {
-    handleUnauthUser = (event: React.FormEvent<HTMLInputElement>) => {
+    private handleUnauthUser = (event: React.FormEvent<HTMLInputElement>) => {
         event.preventDefault()
 
         this.props.unauthUser()
     }
 
-    componentWillReceiveProps(nextProps: IProps) {
+    public componentWillReceiveProps(nextProps: IProps) {
         if (!nextProps.user || !this.props.user) {
             return
         }
@@ -53,7 +53,7 @@ class SettingsContainer extends React.Component<IProps> {
         }
     }
 
-    render() {
+    public render() {
         return (
             this.props.user && (
                 <>
