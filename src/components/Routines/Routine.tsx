@@ -1,11 +1,11 @@
 import * as React from 'react'
 
-import { IFormatedRoutine } from 'data/routines/types'
+import { IRoutine } from 'data/routines/types'
 
 import ListItem from 'components/ListItem'
 
 interface IRoutinesProps {
-    routine: IFormatedRoutine
+    routine: IRoutine
 }
 
 const Routine: React.SFC<IRoutinesProps> = ({ routine }) => (

@@ -16,7 +16,7 @@ interface ITimerState {
 
 class Timer extends React.Component<ITimerProps, ITimerState> {
     public start: Date
-    public timer: NodeJS.Timer
+    public timer: number
 
     constructor(props: ITimerProps) {
         super(props)
@@ -32,11 +32,11 @@ class Timer extends React.Component<ITimerProps, ITimerState> {
 
     public componentDidMount() {
         this.tick()
-        this.timer = setInterval(this.tick, 1000)
+        this.timer = window.setInterval(this.tick, 1000)
     }
 
     public componentWillUnmount() {
-        clearInterval(this.timer)
+        window.clearInterval(this.timer)
     }
 
     private format = (n: number): string => {

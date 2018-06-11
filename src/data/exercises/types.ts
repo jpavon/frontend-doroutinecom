@@ -13,8 +13,6 @@ export interface IExercise {
     updatedAt: string
 }
 
-export interface IFormatedExercise extends IExercise {}
-
 export type IExercisesState = IStateMap<IExercise>
 
 export type IExercisesAction = ActionType<typeof actions>

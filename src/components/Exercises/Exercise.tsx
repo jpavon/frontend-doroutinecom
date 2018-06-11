@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import { IFormatedExercise } from 'data/exercises/types'
-import { IFormatedLift } from 'data/lifts/types'
+import { IExercise } from 'data/exercises/types'
+import { ILift } from 'data/lifts/types'
 import { putExercise, deleteExercise } from 'data/exercises/actions'
 
 import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
@@ -9,8 +9,8 @@ import Button from 'components/Button'
 import Select from 'components/AutoSaveForm/Select'
 
 interface IProps {
-    exercise: IFormatedExercise
-    lifts: IFormatedLift[]
+    exercise: IExercise
+    lifts: ILift[]
     update: typeof putExercise
     remove: typeof deleteExercise
     isDeleting: boolean

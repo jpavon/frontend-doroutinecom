@@ -1,11 +1,11 @@
 import * as React from 'react'
 
-import { IFormatedLift } from 'data/lifts/types'
+import { ILift } from 'data/lifts/types'
 
 import ListItem from 'components/ListItem'
 
 interface IProps {
-    lift: IFormatedLift
+    lift: ILift
 }
 
 const Routine: React.SFC<IProps> = ({ lift }) => (

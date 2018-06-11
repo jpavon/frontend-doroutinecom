@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IFormatedExercise } from 'data/exercises/types'
-import { IFormatedLift } from 'data/lifts/types'
+import { ILift } from 'data/lifts/types'
 import { IRootState, IEntitiesStatus } from 'data/types'
+import { IExercise } from 'data/exercises/types'
 
 import {
     postExercise,
@@ -30,8 +30,8 @@ interface IOwnProps {
 }
 
 interface IStateProps {
-    exercises: IFormatedExercise[]
-    lifts: IFormatedLift[]
+    exercises: IExercise[]
+    lifts: ILift[]
     entitiesStatus: IEntitiesStatus
 }
 

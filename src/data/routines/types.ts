@@ -15,8 +15,6 @@ export interface IRoutine {
     } | null
 }
 
-export interface IFormatedRoutine extends IRoutine {}
-
 export type IRoutinesState = IStateMap<IRoutine>
 
 export type IRoutinesAction = ReturnType<

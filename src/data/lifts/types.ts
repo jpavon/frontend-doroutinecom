@@ -9,8 +9,6 @@ export interface ILift {
     updatedAt: string
 }
 
-export interface IFormatedLift extends ILift {}
-
 export type ILiftsState = IStateMap<ILift>
 
 export type ILiftsAction = ReturnType<

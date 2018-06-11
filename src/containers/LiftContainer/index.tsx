@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
 import { IRootState } from 'data/types'
-import { IFormatedLift } from 'data/lifts/types'
+import { ILift } from 'data/lifts/types'
 import { ITopSet } from 'data/sets/types'
 import { IGraph } from 'data/graphs/types'
 import { IFormatedUser } from 'data/user/types'
@@ -27,7 +27,7 @@ interface IOwnProps {
 }
 
 interface IStateProps {
-    lift: IFormatedLift | null
+    lift: ILift | null
     isStatusLoaded: boolean
     isDeleting: boolean
     liftGraphData: IGraph

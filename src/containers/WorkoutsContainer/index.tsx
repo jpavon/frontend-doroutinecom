@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IFormatedWorkout } from 'data/workouts/types'
+import { IWorkout } from 'data/workouts/types'
 import { IRootState } from 'data/types'
 
 import {
@@ -10,16 +10,16 @@ import {
 } from 'data/workouts/selectors'
 
 import Workouts from 'components/Workouts/Workouts'
-import Workout from 'components/Workouts/Workout'
 import NoData from 'components/NoData'
 import TopNav from 'components/TopNav'
 import Badge from 'components/Badge'
+import WorkoutContainer from 'containers/WorkoutsContainer/WorkoutContainer'
 
 interface IOwnProps {}
 
 interface IStateProps {
-    completedWorkouts: IFormatedWorkout[]
-    pendingWorkouts: IFormatedWorkout[]
+    completedWorkouts: IWorkout[]
+    pendingWorkouts: IWorkout[]
 }
 
 interface IDispatchProps {}
@@ -41,7 +41,10 @@ class WorkoutsContainer extends React.Component<IProps> {
                 <Workouts>
                     {this.props.pendingWorkouts.length > 0 ? (
                         this.props.pendingWorkouts.map((workout, i) => (
-                            <Workout key={workout.id} workout={workout} />
+                            <WorkoutContainer
+                                key={workout.id}
+                                workout={workout}
+                            />
                         ))
                     ) : (
                         <NoData text="You can start a workout from a routine or an already completed workout." />
@@ -51,7 +54,10 @@ class WorkoutsContainer extends React.Component<IProps> {
                 <Workouts>
                     {this.props.completedWorkouts.length > 0 ? (
                         this.props.completedWorkouts.map((workout, i) => (
-                            <Workout key={workout.id} workout={workout} />
+                            <WorkoutContainer
+                                key={workout.id}
+                                workout={workout}
+                            />
                         ))
                     ) : (
                         <NoData text="No completed workouts." />

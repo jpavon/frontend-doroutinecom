@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { IFormatedRoutine } from 'data/routines/types'
+import { IRoutine } from 'data/routines/types'
 import { putRoutine } from 'data/routines/actions'
 
 import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
@@ -11,7 +11,7 @@ import Field from 'components/Field'
 import './style.scss'
 
 interface IRoutineProps {
-    routine: IFormatedRoutine
+    routine: IRoutine
     update: typeof putRoutine
 }
 

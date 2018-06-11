@@ -1,32 +1,26 @@
 import { createSelector } from 'reselect'
 
-import { IExercise, IFormatedExercise } from 'data/exercises/types'
+import { IExercise } from 'data/exercises/types'
 import { IRootState } from 'data/types'
 
 import { completedWorkoutsSelector } from 'data/workouts/selectors'
 import { liftSelector } from 'data/lifts/selectors'
 import { order } from 'data/utils'
 
-const formatExercise = (exercise: IExercise): IFormatedExercise => ({
-    ...exercise
-})
-
 export const exercisesRoutineSelector = (routineId: number) =>
     createSelector(
         [(state: IRootState) => order(state.exercises)],
-        (exercises): IFormatedExercise[] =>
-            exercises
-                .filter((exercise) => exercise.routineId === routineId)
-                .map((exercise) => formatExercise(exercise))
+        (exercises): IExercise[] =>
+            exercises.filter((exercise) => exercise.routineId === routineId)
     )
 
 export const exercisesWorkoutSelector = (workoutId: number) =>
     createSelector(
         [(state: IRootState) => state.exercises.entities],
-        (exercises): IFormatedExercise[] =>
-            Object.values(exercises)
-                .filter((exercise) => exercise.workoutId === workoutId)
-                .map((exercise) => formatExercise(exercise))
+        (exercises): IExercise[] =>
+            Object.values(exercises).filter(
+                (exercise) => exercise.workoutId === workoutId
+            )
     )
 
 export const completedExercisesLiftSelector = (liftId: number) =>
@@ -36,7 +30,7 @@ export const completedExercisesLiftSelector = (liftId: number) =>
             completedWorkoutsSelector,
             (state) => liftSelector(state, liftId)
         ],
-        (exercises, workouts, lift): IFormatedExercise[] => {
+        (exercises, workouts, lift): IExercise[] => {
             const completedWorkoutsIds = workouts.map((workout) => workout.id)
             const completedExercises = Object.values(exercises).filter(
                 (exercise) =>
@@ -55,7 +49,7 @@ export const completedExercisesSelector = createSelector(
         (state: IRootState) => state.exercises.entities,
         completedWorkoutsSelector
     ],
-    (exercises, workouts): IFormatedExercise[] => {
+    (exercises, workouts): IExercise[] => {
         const completedWorkoutsIds = workouts.map((workout) => workout.id)
 
         return Object.values(exercises).filter(

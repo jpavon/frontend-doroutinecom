@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 
 import { IRootState } from 'data/types'
 import { IGraph } from 'data/graphs/types'
-import { IFormatedWorkout } from 'data/workouts/types'
+import { IWorkout } from 'data/workouts/types'
 
 import moment from 'utils/moment'
 import momentRange from 'utils/momentRange'
@@ -25,7 +25,7 @@ const ranges = weeks.map((week) => ({
     range: momentRange().range(week.startWeek, week.endWeek)
 }))
 
-const getWorkoutsDataset = (workouts: IFormatedWorkout[]) => {
+const getWorkoutsDataset = (workouts: IWorkout[]) => {
     const dataset = [0, 0, 0, 0, 0]
 
     workouts.forEach((workout) => {

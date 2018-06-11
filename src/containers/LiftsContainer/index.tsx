@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { IRootState } from 'data/types'
-import { IFormatedLift } from 'data/lifts/types'
+import { ILift } from 'data/lifts/types'
 
 import { liftsSelector } from 'data/lifts/selectors'
 import { postLift } from 'data/lifts/actions'
@@ -16,7 +16,7 @@ import TopNav from 'components/TopNav'
 interface IOwnProps {}
 
 interface IStateProps {
-    lifts: IFormatedLift[]
+    lifts: ILift[]
     isLoading: boolean
 }
 

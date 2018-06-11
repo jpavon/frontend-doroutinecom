@@ -1,25 +1,16 @@
 import { IStateMap } from 'data/types'
-import { IFormatedRoutine } from 'data/routines/types'
 import * as actionTypes from 'data/workouts/actions'
 
 export interface IWorkout {
     id: number
     userId: number
-    routineId: number
+    routineId: number | null
     name: string | null
     startedAt: string
     completedAt: string | null
     notes: string | null
     createdAt: string
     updatedAt: string
-}
-
-export interface IFormatedWorkout extends IWorkout {
-    displayName: string | null
-    duration: string | null
-    day: string | null
-    routine: IFormatedRoutine | null
-    liftNames?: string[]
 }
 
 export type IWorkoutsState = IStateMap<IWorkout>

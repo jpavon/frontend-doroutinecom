@@ -1,25 +1,24 @@
 import * as React from 'react'
 
-import { IFormatedWorkout } from 'data/workouts/types'
+import { IWorkout } from 'data/workouts/types'
 
 import ListItem from 'components/ListItem'
 
 interface IProps {
-    workout: IFormatedWorkout
+    workout: IWorkout
+    liftNames: string[]
+    day: string | null
+    displayName: string | null
 }
 
-const Workout: React.SFC<IProps> = ({ workout }) => (
+const Workout: React.SFC<IProps> = (props) => (
     <ListItem
-        to={`/workouts/${workout.id}`}
+        to={`/workouts/${props.workout.id}`}
         className="workouts-workout"
-        info={workout.liftNames}
+        info={props.liftNames}
     >
-        {workout.day && (
-            <div className="workouts-workout-day">{workout.day}</div>
-        )}
-        <div className="workouts-workout-name">
-            {workout.displayName || 'No workout name set.'}
-        </div>
+        {props.day && <div className="workouts-workout-day">{props.day}</div>}
+        <div className="workouts-workout-name">{props.displayName}</div>
     </ListItem>
 )
 

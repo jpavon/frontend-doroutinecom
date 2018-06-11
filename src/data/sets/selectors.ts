@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect'
 
 import { IRootState } from 'data/types'
-import { ISet, IFormatedSet, ITopSet } from 'data/sets/types'
-import { IFormatedExercise } from 'data/exercises/types'
-import { IFormatedWorkout } from 'data/workouts/types'
+import { ISet, ITopSet } from 'data/sets/types'
+import { IExercise } from 'data/exercises/types'
+import { IWorkout } from 'data/workouts/types'
 import { ILift } from 'data/lifts/types'
 
 import moment from 'utils/moment'
@@ -16,25 +16,21 @@ import { completedWorkoutsSelector } from 'data/workouts/selectors'
 import { liftsSelector } from 'data/lifts/selectors'
 import { order } from 'data/utils'
 
-const formatSet = (set: ISet): IFormatedSet => ({
-    ...set
-})
-
 export const setsSelector = createSelector(
     [(state: IRootState) => order(state.sets)],
-    (sets): IFormatedSet[] => Object.values(sets).map((set) => formatSet(set))
+    (sets): ISet[] => sets
 )
 
 export const setsExerciseSelector = (exerciseId: number) =>
     createSelector(
         [setsSelector],
-        (sets): IFormatedSet[] =>
+        (sets): ISet[] =>
             Object.values(sets).filter((set) => set.exerciseId === exerciseId)
     )
 
 export const completedSetsSelector = createSelector(
     [setsSelector],
-    (sets): IFormatedSet[] => sets.filter((set) => set.isCompleted)
+    (sets): ISet[] => sets.filter((set) => set.isCompleted)
 )
 
 const round = (x: number, nearest = 0.5) => {
@@ -43,9 +39,9 @@ const round = (x: number, nearest = 0.5) => {
 }
 
 export const formatTopSets = (
-    exercises: IFormatedExercise[],
-    sets: IFormatedSet[],
-    workouts: IFormatedWorkout[],
+    exercises: IExercise[],
+    sets: ISet[],
+    workouts: IWorkout[],
     lifts: ILift[] | null
 ): ITopSet[] => {
     const completedExercisesIds = exercises.map((exercise) => exercise.id)
@@ -156,7 +152,7 @@ export const previouslyCompletedSetsSelector = (liftId: number) =>
             setsSelector,
             completedWorkoutsSelector
         ],
-        (exercises, sets, workouts): IFormatedSet[] => {
+        (exercises, sets, workouts): ISet[] => {
             const exercisesDates = exercises
                 .map((exercise) => {
                     const workout = workouts.find(

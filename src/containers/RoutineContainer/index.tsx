@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
 import { IRootState } from 'data/types'
-import { IFormatedRoutine } from 'data/routines/types'
+import { IRoutine } from 'data/routines/types'
 
 import history from 'utils/history'
 import { now } from 'utils/date'
@@ -22,7 +22,7 @@ interface IOwnProps {
 }
 
 interface IStateProps {
-    routine: IFormatedRoutine | null
+    routine: IRoutine | null
     isStatusLoaded: boolean
     isDeleting: boolean
 }

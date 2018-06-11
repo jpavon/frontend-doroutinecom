@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
 import { IRootState } from 'data/types'
-import { IFormatedWorkout } from 'data/workouts/types'
 
 import history from 'utils/history'
 import { now } from 'utils/date'
@@ -12,7 +11,12 @@ import {
     postWorkoutFrom,
     deleteWorkout
 } from 'data/workouts/actions'
-import { workoutSelector } from 'data/workouts/selectors'
+import {
+    workoutSelector,
+    workoutDisplayNameSelector,
+    workoutRoutineSelector,
+    workoutDisplayDurationSelector
+} from 'data/workouts/selectors'
 import { statusConstants } from 'data/constants'
 
 import ExercisesContainer from 'containers/ExercisesContainer'
@@ -21,13 +25,18 @@ import Alert from 'components/Alert'
 import TopNav from 'components/TopNav'
 import Workout from 'components/Workout'
 import Timer from 'components/Timer'
+import { IWorkout } from 'data/workouts/types'
+import { IRoutine } from 'data/routines/types'
 
 interface IOwnProps {
     workoutId: number
 }
 
 interface IStateProps {
-    workout: IFormatedWorkout | null
+    workout: IWorkout | null
+    displayName: string | null
+    duration: string | null
+    routine: IRoutine | null
     isStatusLoaded: boolean
     isDeleting: boolean
 }
@@ -93,9 +102,9 @@ class WorkoutContainer extends React.Component<IProps> {
     public render() {
         return this.props.workout ? (
             <>
-                {this.props.workout.displayName && (
+                {this.props.displayName && (
                     <Helmet>
-                        <title>{this.props.workout.displayName}</title>
+                        <title>{this.props.displayName}</title>
                     </Helmet>
                 )}
                 <Alert
@@ -104,8 +113,8 @@ class WorkoutContainer extends React.Component<IProps> {
                         this.props.workout.completedAt ? (
                             <>
                                 Completed{' '}
-                                {this.props.workout.duration &&
-                                    'in ' + this.props.workout.duration}
+                                {this.props.duration &&
+                                    'in ' + this.props.duration}
                             </>
                         ) : (
                             <>
@@ -147,6 +156,8 @@ class WorkoutContainer extends React.Component<IProps> {
                 )}
                 <Workout
                     workout={this.props.workout}
+                    displayName={this.props.displayName}
+                    routine={this.props.routine}
                     update={this.props.putWorkout}
                 >
                     <ExercisesContainer workoutId={this.props.workoutId} />
@@ -167,6 +178,9 @@ class WorkoutContainer extends React.Component<IProps> {
 
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     workout: workoutSelector(state, props.workoutId),
+    displayName: workoutDisplayNameSelector(state, props.workoutId),
+    duration: workoutDisplayDurationSelector(state, props.workoutId),
+    routine: workoutRoutineSelector(state, props.workoutId),
     isStatusLoaded: state.workouts.status === statusConstants.STATUS_LOADED,
     isDeleting:
         state.workouts.entitiesStatus[props.workoutId] ===

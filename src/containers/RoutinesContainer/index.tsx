@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { IRootState } from 'data/types'
-import { IFormatedRoutine } from 'data/routines/types'
+import { IRoutine } from 'data/routines/types'
 
 import { postRoutine } from 'data/routines/actions'
 import {
@@ -20,8 +20,8 @@ import Info from 'components/Info'
 interface IOwnProps {}
 
 interface IStateProps {
-    routines: IFormatedRoutine[]
-    defaultRoutines: IFormatedRoutine[]
+    routines: IRoutine[]
+    defaultRoutines: IRoutine[]
     isLoading: boolean
 }
 

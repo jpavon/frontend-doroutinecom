@@ -1,24 +1,19 @@
 import { createSelector } from 'reselect'
 
-import { ILift, IFormatedLift } from 'data/lifts/types'
+import { ILift } from 'data/lifts/types'
 import { IRootState } from 'data/types'
 import { order } from 'data/utils'
 
-const formatLift = (lift: ILift): IFormatedLift => ({
-    ...lift
-})
-
 export const liftSelector = createSelector(
     [(state: IRootState, id: number) => state.lifts.entities[id]],
-    (lift) => {
-        return lift ? formatLift(lift) : null
+    (lift): ILift | null => {
+        return lift || null
     }
 )
 
 export const liftsSelector = createSelector(
     [(state: IRootState) => order(state.lifts)],
-    (lifts): IFormatedLift[] =>
-        Object.values(lifts).map((lift) => formatLift(lift))
+    (lifts): ILift[] => lifts
 )
 
 export const liftExerciseSelector = (exerciseId: number) =>
@@ -27,11 +22,11 @@ export const liftExerciseSelector = (exerciseId: number) =>
             (state: IRootState) => order(state.exercises),
             (state: IRootState) => order(state.lifts)
         ],
-        (exercises, lifts): IFormatedLift | null => {
+        (exercises, lifts): ILift | null => {
             const exercise = exercises[exerciseId]
 
             const lift = exercise && exercise.liftId && lifts[exercise.liftId]
 
-            return lift ? formatLift(lift) : null
+            return lift || null
         }
     )

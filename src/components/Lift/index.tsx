@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { IFormatedLift } from 'data/lifts/types'
+import { ILift } from 'data/lifts/types'
 import { putLift } from 'data/lifts/actions'
 
 import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
@@ -10,7 +10,7 @@ import Field from 'components/Field'
 import './style.scss'
 
 interface IProps {
-    lift: IFormatedLift
+    lift: ILift
     update: typeof putLift
 }
 

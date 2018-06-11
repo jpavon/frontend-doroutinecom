@@ -1,72 +1,76 @@
 import { createSelector } from 'reselect'
 
 import { IRootState } from 'data/types'
-import { IWorkout, IFormatedWorkout } from 'data/workouts/types'
-import { IFormatedRoutine } from 'data/routines/types'
+import { IWorkout } from 'data/workouts/types'
 
 import moment from 'utils/moment'
-import { formatDuration, longDateFormat } from 'utils/date'
 import { order } from 'data/utils'
-
-const formatWorkout = (
-    workout: IWorkout,
-    routine: IFormatedRoutine,
-    liftNames?: string[]
-): IFormatedWorkout => {
-    return {
-        ...workout,
-        displayName: routine ? routine.name : workout.name,
-        duration:
-            workout.completedAt &&
-            formatDuration(workout.startedAt, workout.completedAt),
-        day:
-            workout.completedAt &&
-            moment(workout.completedAt).format(longDateFormat),
-        routine: routine || null,
-        liftNames
-    }
-}
+import { formatDuration, longDateFormat } from 'utils/date'
 
 export const workoutSelector = createSelector(
-    [
-        (state: IRootState, id: number) => state.workouts.entities[id],
-        (state) => state.routines.entities
-    ],
-    (workout, routines) => {
-        return workout
-            ? formatWorkout(workout, routines[workout.routineId])
-            : null
-    }
+    [(state: IRootState, id: number) => state.workouts.entities[id]],
+    (workout) => workout || null
 )
 
 export const workoutsSelector = createSelector(
+    [(state: IRootState) => order(state.workouts)],
+    (workouts): IWorkout[] => workouts
+)
+
+export const workoutDisplayNameSelector = createSelector(
+    [workoutSelector, (state: IRootState) => state.routines.entities],
+    (workout, routines) => {
+        const routine =
+            workout && workout.routineId ? routines[workout.routineId] : null
+        return (
+            (routine ? routine.name : workout && workout.name) ||
+            'No workout name set.'
+        )
+    }
+)
+
+export const workoutDisplayDurationSelector = createSelector(
+    [workoutSelector],
+    (workout) =>
+        workout &&
+        workout.completedAt &&
+        formatDuration(workout.startedAt, workout.completedAt)
+)
+
+export const workoutRoutineSelector = createSelector(
+    [workoutSelector, (state: IRootState) => state.routines.entities],
+    (workout, routines) =>
+        workout && workout.routineId ? routines[workout.routineId] : null
+)
+
+export const workoutDisplayDaySelector = createSelector(
+    [workoutSelector],
+    (workout) =>
+        workout.completedAt &&
+        moment(workout.completedAt).format(longDateFormat)
+)
+
+export const workoutLiftNamesSelector = createSelector(
     [
-        (state: IRootState) => order(state.workouts),
-        (state) => state.routines.entities,
+        workoutSelector,
         (state) => state.exercises.entities,
         (state) => state.lifts.entities
     ],
-    (workouts, routines, exercises, lifts): IFormatedWorkout[] =>
-        Object.values(workouts).map((workout) => {
-            const workoutExercisesLiftsIds = Object.values(exercises)
-                .filter((exercise) => exercise.workoutId === workout.id)
-                .map((exercise) => exercise.liftId)
+    (workout, exercises, lifts) => {
+        const workoutExercisesLiftsIds = Object.values(exercises)
+            .filter((exercise) => exercise.workoutId === workout.id)
+            .map((exercise) => exercise.liftId)
 
-            const liftNames = Object.values(lifts)
-                .filter((lift) => workoutExercisesLiftsIds.includes(lift.id))
-                .map((lift) => `${lift.name}`)
-
-            return formatWorkout(
-                workout,
-                routines[workout.routineId],
-                liftNames
-            )
-        })
+        const workoutLifts = Object.values(lifts).filter((lift) =>
+            workoutExercisesLiftsIds.includes(lift.id)
+        )
+        return workoutLifts && workoutLifts.map((lift) => `${lift.name}`)
+    }
 )
 
 export const completedWorkoutsSelector = createSelector(
     [workoutsSelector],
-    (workouts): IFormatedWorkout[] =>
+    (workouts): IWorkout[] =>
         workouts.filter((workout) => workout.completedAt).sort((a, b) => {
             if (!b.completedAt || !a.completedAt) {
                 return 0
@@ -77,7 +81,7 @@ export const completedWorkoutsSelector = createSelector(
 
 export const pendingWorkoutsSelector = createSelector(
     [workoutsSelector],
-    (workouts): IFormatedWorkout[] =>
+    (workouts): IWorkout[] =>
         workouts
             .filter((workout) => !workout.completedAt)
             .sort(
