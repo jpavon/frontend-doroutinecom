@@ -10,6 +10,7 @@ import ScrollToTop from 'components/ScrollToTop'
 
 import App from 'App'
 
+import 'normalize.css'
 import 'styles/global.scss'
 
 const store = configureStore()

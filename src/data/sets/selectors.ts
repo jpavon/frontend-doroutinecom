@@ -15,6 +15,7 @@ import {
 import { completedWorkoutsSelector } from 'data/workouts/selectors'
 import { liftsSelector } from 'data/lifts/selectors'
 import { order } from 'data/utils'
+import calculateRepMax from 'utils/calculateRepMax'
 
 export const setsSelector = createSelector(
     [(state: IRootState) => order(state.sets)],
@@ -24,19 +25,13 @@ export const setsSelector = createSelector(
 export const setsExerciseSelector = (exerciseId: number) =>
     createSelector(
         [setsSelector],
-        (sets): ISet[] =>
-            Object.values(sets).filter((set) => set.exerciseId === exerciseId)
+        (sets): ISet[] => sets.filter((set) => set.exerciseId === exerciseId)
     )
 
 export const completedSetsSelector = createSelector(
     [setsSelector],
     (sets): ISet[] => sets.filter((set) => set.isCompleted)
 )
-
-const round = (x: number, nearest = 0.5) => {
-    const value = Math.ceil(x / nearest) * nearest
-    return value > 0 ? value : 0
-}
 
 export const formatTopSets = (
     exercises: IExercise[],
@@ -52,9 +47,14 @@ export const formatTopSets = (
 
     const topSets = completedSets.reduce(
         (acc, curr) => {
-            const rm = round(
-                Number(curr.weight) * (36 / (37 - Number(curr.reps)))
-            )
+            const currentRm =
+                curr.reps && curr.weight
+                    ? calculateRepMax(curr.reps, curr.weight)
+                    : 0
+
+            if (acc[curr.exerciseId] && acc[curr.exerciseId].rm > currentRm) {
+                return acc
+            }
 
             const exercise = exercises.find(
                 (exercise) => exercise.id === Number(curr.exerciseId)
@@ -66,15 +66,6 @@ export const formatTopSets = (
                     (lift) => (exercise ? lift.id === exercise.liftId : false)
                 )
 
-            if (
-                acc[curr.exerciseId] &&
-                acc[curr.exerciseId].rm === 0 &&
-                (curr.reps && acc[curr.exerciseId].reps > curr.reps) &&
-                (rm && acc[curr.exerciseId].rm > rm)
-            ) {
-                return acc
-            }
-
             const workout = workouts.find(
                 (workout) =>
                     exercise ? exercise.workoutId === workout.id : false
@@ -85,7 +76,7 @@ export const formatTopSets = (
                 [curr.exerciseId]: {
                     weight: curr.weight || 0,
                     reps: curr.reps || 0,
-                    rm,
+                    rm: currentRm,
                     completedAt: moment(workout!.completedAt!).format(
                         dateFormat
                     ),
@@ -104,7 +95,7 @@ export const formatTopSets = (
     return Object.values(topSets).filter((set) => set.liftId)
 }
 
-export const topSetsSelector = createSelector(
+export const topSetsCompletedSelector = createSelector(
     [
         completedExercisesSelector,
         setsSelector,
@@ -131,7 +122,7 @@ export const topSetsSelector = createSelector(
     }
 )
 
-export const topLiftSetsSelector = (liftId: number) =>
+export const topSetsForALiftSelector = (liftId: number) =>
     createSelector(
         [
             completedExercisesLiftSelector(liftId),

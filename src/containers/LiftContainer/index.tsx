@@ -11,7 +11,7 @@ import { IFormatedUser } from 'data/user/types'
 import history from 'utils/history'
 import { liftGraphDataSelector } from 'data/graphs/selectors'
 import { liftSelector } from 'data/lifts/selectors'
-import { topLiftSetsSelector } from 'data/sets/selectors'
+import { topSetsForALiftSelector } from 'data/sets/selectors'
 import { putLift, deleteLift } from 'data/lifts/actions'
 import { userSelector } from 'data/user/selectors'
 import { statusConstants } from 'data/constants'
@@ -106,7 +106,7 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
         state.lifts.entitiesStatus[props.liftId] ===
         statusConstants.STATUS_DELETING,
     liftGraphData: liftGraphDataSelector(props.liftId)(state),
-    topLiftSets: topLiftSetsSelector(props.liftId)(state),
+    topLiftSets: topSetsForALiftSelector(props.liftId)(state),
     user: userSelector(state)
 })
 

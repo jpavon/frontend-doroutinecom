@@ -8,7 +8,10 @@ import { IGraph } from 'data/graphs/types'
 import { IFormatedUser } from 'data/user/types'
 
 import { workoutsGraphDataSelector } from 'data/graphs/selectors'
-import { topSetsSelector, completedSetsSelector } from 'data/sets/selectors'
+import {
+    topSetsCompletedSelector,
+    completedSetsSelector
+} from 'data/sets/selectors'
 import { userSelector } from 'data/user/selectors'
 import {
     workoutsSelector,
@@ -94,7 +97,7 @@ class ProfileContainer extends React.Component<IProps, IState> {
 
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     workoutsGraphData: workoutsGraphDataSelector(state),
-    topSets: topSetsSelector(state),
+    topSets: topSetsCompletedSelector(state),
     user: userSelector(state),
     hasWorkouts: workoutsSelector(state).length > 0,
     hasCompletedWorkouts: completedWorkoutsSelector(state).length > 0,
