@@ -10,9 +10,7 @@ const initialState: Readonly<IUiState> = {
 }
 
 const ui = (state = initialState, action: IUiAction): IUiState => {
-    const { type, alert } = action
-
-    switch (type) {
+    switch (action.type) {
         case constants.SHOW_LOADING:
             return {
                 ...state,
@@ -26,17 +24,13 @@ const ui = (state = initialState, action: IUiAction): IUiState => {
             }
 
         case constants.SHOW_ALERT:
-            if (alert) {
-                return {
-                    ...state,
-                    alert: {
-                        type: alert.type,
-                        message: alert.message
-                    }
+            return {
+                ...state,
+                alert: {
+                    type: action.type,
+                    message: action.message
                 }
             }
-
-            return state
 
         case constants.REMOVE_ALERT:
             return {

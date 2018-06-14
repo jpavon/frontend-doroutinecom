@@ -41,7 +41,10 @@ function* passwordForgottenUserSaga(action: IApiAction) {
 
 function* authPasswordForgottenSuccessSaga() {
     yield put(
-        uiActions.showAlert('success', 'A password reset email has been sent.')
+        uiActions.showAlert({
+            type: 'success',
+            message: 'A password reset email has been sent.'
+        })
     )
 }
 
@@ -55,15 +58,17 @@ function* passwordResetUserSaga(action: IApiAction) {
 
 function* authPasswordResetSuccessSaga() {
     yield put(
-        uiActions.showAlert(
-            'success',
-            'Your password has been reset, login again.'
-        )
+        uiActions.showAlert({
+            type: 'success',
+            message: 'Your password has been reset, login again.'
+        })
     )
 }
 
 function* authErrorSaga(action: IFailureAction) {
-    yield put(uiActions.showAlert('error', action.error.errors))
+    yield put(
+        uiActions.showAlert({ type: 'error', message: action.error.errors })
+    )
 }
 
 function* authSuccessSaga(action: ISuccessAction<IAuth>) {
@@ -78,7 +83,7 @@ function* unauthUserSaga(action: ReturnType<typeof unauthUserType>) {
     yield store.remove('token')
 
     if (action.error) {
-        yield put(uiActions.showAlert('error', action.error))
+        yield put(uiActions.showAlert({ type: 'error', message: action.error }))
     }
 }
 

@@ -1,31 +1,18 @@
 import { IAlert } from 'data/ui/types'
 
+import action from 'utils/action'
 import constants from 'data/ui/constants'
 
-export const showLoading = () => ({
-    type: constants.SHOW_LOADING as constants.SHOW_LOADING
-})
+export const showLoading = action(constants.SHOW_LOADING)
 
-export const removeLoading = () => ({
-    type: constants.REMOVE_LOADING as constants.REMOVE_LOADING
-})
+export const removeLoading = action(constants.REMOVE_LOADING)
 
-export const showAlert = (type: string, message: IAlert['message']) => ({
-    type: constants.SHOW_ALERT as constants.SHOW_ALERT,
-    alert: {
-        type,
-        message
-    }
-})
+export const showAlert = action(constants.SHOW_ALERT).with(
+    (alert: IAlert) => alert
+)
 
-export const removeAlert = () => ({
-    type: constants.REMOVE_ALERT as constants.REMOVE_ALERT
-})
+export const removeAlert = action(constants.REMOVE_ALERT)
 
-export const setServerError = () => ({
-    type: constants.SET_SERVER_ERROR as constants.SET_SERVER_ERROR
-})
+export const setServerError = action(constants.SET_SERVER_ERROR)
 
-export const setOffline = () => ({
-    type: constants.SET_OFFLINE as constants.SET_OFFLINE
-})
+export const setOffline = action(constants.SET_OFFLINE)
