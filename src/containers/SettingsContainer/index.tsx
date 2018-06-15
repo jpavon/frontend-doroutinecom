@@ -25,7 +25,7 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class SettingsContainer extends React.Component<IProps> {
-    private handleUnauthUser = (event: React.FormEvent<HTMLInputElement>) => {
+    private handleUnauthUser = (event: React.FormEvent<HTMLAnchorElement>) => {
         event.preventDefault()
 
         this.props.unauthUser()
@@ -59,7 +59,7 @@ class SettingsContainer extends React.Component<IProps> {
                 <>
                     <TopNav
                         title="General"
-                        left={{
+                        leftButton={{
                             to: '/'
                         }}
                     />
@@ -69,7 +69,7 @@ class SettingsContainer extends React.Component<IProps> {
                     />
                     <TopNav
                         rightLabel="Logout"
-                        right={{
+                        rightAnchor={{
                             onClick: this.handleUnauthUser,
                             danger: true,
                             className: 'logout'

@@ -69,7 +69,7 @@ class LiftContainer extends React.Component<IProps> {
                 )}
                 <TopNav
                     title="Lift"
-                    left={{
+                    leftButton={{
                         to: '/lifts'
                     }}
                 />
@@ -87,7 +87,7 @@ class LiftContainer extends React.Component<IProps> {
                 )}
                 <TopNav
                     rightLabel="Delete Lift"
-                    right={{
+                    rightAnchor={{
                         onClick: this.handleRemove,
                         danger: true,
                         disabled: this.props.isDeleting,

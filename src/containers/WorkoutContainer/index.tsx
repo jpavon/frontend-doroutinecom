@@ -128,13 +128,13 @@ class WorkoutContainer extends React.Component<IProps> {
                 />
                 <TopNav
                     title="Workout"
-                    left={{
+                    leftButton={{
                         to: `/workouts`
                     }}
                     rightLabel={
                         this.props.workout.completedAt ? 'Restart' : 'Completed'
                     }
-                    right={
+                    rightAnchor={
                         this.props.workout.completedAt
                             ? {
                                   onClick: this.handleRestart,
@@ -149,7 +149,7 @@ class WorkoutContainer extends React.Component<IProps> {
                 {this.props.workout.completedAt && (
                     <TopNav
                         rightLabel="Perform again as New Workout"
-                        right={{
+                        rightAnchor={{
                             onClick: this.handleCreate
                         }}
                     />
@@ -164,7 +164,7 @@ class WorkoutContainer extends React.Component<IProps> {
                 </Workout>
                 <TopNav
                     rightLabel="Delete Workout"
-                    right={{
+                    rightAnchor={{
                         onClick: this.handleRemove,
                         danger: true,
                         disabled: this.props.isDeleting,

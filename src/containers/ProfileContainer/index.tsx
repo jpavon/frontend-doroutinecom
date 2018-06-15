@@ -67,7 +67,7 @@ class ProfileContainer extends React.Component<IProps, IState> {
                 <TopNav
                     title="Profile"
                     rightLabel="Settings"
-                    right={{
+                    rightButton={{
                         to: '/settings'
                     }}
                 />

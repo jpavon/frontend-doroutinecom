@@ -1,6 +1,5 @@
 import * as React from 'react'
 import * as classnames from 'classnames'
-import { isString } from 'lodash'
 import { Spring } from 'react-spring'
 
 import { IAlert } from 'data/ui/types'
@@ -20,12 +19,14 @@ class Alert extends React.Component<IProps> {
     private renderMessage = (): React.ReactNode => {
         const message = this.props.message
 
-        if (React.isValidElement(message) || isString(message)) {
+        if (React.isValidElement(message)) {
             return message
-        } else if (message && Object.keys(message).length > 0) {
-            return Object.keys(message).map((messageKey, i) => (
+        }
+
+        if (message && Object.values(message).length > 0) {
+            return Object.values(message).map((message, i) => (
                 <React.Fragment key={i}>
-                    {message[messageKey]} <br />
+                    {message} <br />
                 </React.Fragment>
             ))
         }

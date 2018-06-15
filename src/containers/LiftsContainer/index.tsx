@@ -37,7 +37,7 @@ class LiftsContainer extends React.Component<IProps> {
                 <TopNav
                     title="Lifts"
                     rightLabel="Create"
-                    right={{
+                    rightAnchor={{
                         onClick: this.handleCreate,
                         disabled: this.props.isLoading,
                         className: 'lift-button-create'

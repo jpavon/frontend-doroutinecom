@@ -73,11 +73,11 @@ class RoutineContainer extends React.Component<IProps> {
                 )}
                 <TopNav
                     title="Routine"
-                    left={{
+                    leftButton={{
                         to: '/routines'
                     }}
                     rightLabel="Start Workout"
-                    right={{
+                    rightAnchor={{
                         onClick: this.handleCreateWorkout,
                         className: 'routine-button-create-workout'
                     }}
@@ -91,7 +91,7 @@ class RoutineContainer extends React.Component<IProps> {
                 {!this.props.routine.program && (
                     <TopNav
                         rightLabel="Delete Routine"
-                        right={{
+                        rightAnchor={{
                             onClick: this.handleRemove,
                             danger: true,
                             disabled: this.props.isDeleting,

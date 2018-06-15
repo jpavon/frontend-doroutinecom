@@ -42,7 +42,7 @@ class RoutinesContainer extends React.Component<IProps> {
                 <TopNav
                     title="Your Routines"
                     rightLabel="Create"
-                    right={{
+                    rightAnchor={{
                         onClick: this.handleCreate,
                         disabled: this.props.isLoading,
                         className: 'routine-button-create'
