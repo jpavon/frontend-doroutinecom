@@ -13,8 +13,6 @@ export interface ISet {
     updatedAt: string
 }
 
-export interface IFormatedSet extends ISet {}
-
 export type ISetsState = IStateMap<ISet>
 
 export type ISetsAction = ReturnType<

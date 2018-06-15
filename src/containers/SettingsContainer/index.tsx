@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import * as store from 'store'
 
-import { IFormatedUser } from 'data/user/types'
+import { IUser } from 'data/user/types'
 import { IRootState } from 'data/types'
 
 import { putUser, unauthUser } from 'data/user/actions'
@@ -14,7 +14,7 @@ import TopNav from 'components/TopNav'
 interface IOwnProps {}
 
 interface IStateProps {
-    user: IFormatedUser | null
+    user: IUser | null
 }
 
 interface IDispatchProps {

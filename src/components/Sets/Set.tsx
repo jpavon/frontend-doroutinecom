@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 
-import { IFormatedSet } from 'data/sets/types'
+import { ISet } from 'data/sets/types'
 import { putSet, deleteSet } from 'data/sets/actions'
 
 import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
@@ -12,12 +12,12 @@ import Label from 'components/Form/Label'
 
 interface ISetProps {
     index: number
-    set: IFormatedSet
+    set: ISet
     update: typeof putSet
     remove: typeof deleteSet
     isDeleting: boolean
     isRemoveButtonsVisible: boolean
-    previousSet: IFormatedSet | null
+    previousSet: ISet | null
 }
 
 const Set: React.SFC<ISetProps> = ({

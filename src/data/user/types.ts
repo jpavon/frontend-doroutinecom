@@ -18,8 +18,6 @@ export interface IAuth {
     token: string
 }
 
-export interface IFormatedUser extends IUser {}
-
 export interface IUserState {
     status: statusConstants
     isAuth: boolean

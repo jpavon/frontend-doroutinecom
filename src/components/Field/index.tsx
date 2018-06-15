@@ -12,7 +12,7 @@ interface IFieldProps {
 
 const Field: React.SFC<IFieldProps> = ({ id, label, children }) => (
     <div className="field">
-        <Label htmlFor={'' + id}>{label}</Label>
+        <Label htmlFor={id}>{label}</Label>
         {children}
     </div>
 )

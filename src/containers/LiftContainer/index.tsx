@@ -6,7 +6,7 @@ import { IRootState } from 'data/types'
 import { ILift } from 'data/lifts/types'
 import { ITopSet } from 'data/sets/types'
 import { IGraph } from 'data/graphs/types'
-import { IFormatedUser } from 'data/user/types'
+import { IUser } from 'data/user/types'
 
 import history from 'utils/history'
 import { liftGraphDataSelector } from 'data/graphs/selectors'
@@ -32,7 +32,7 @@ interface IStateProps {
     isDeleting: boolean
     liftGraphData: IGraph
     topLiftSets: ITopSet[]
-    user: IFormatedUser | null
+    user: IUser | null
 }
 
 interface IDispatchProps {

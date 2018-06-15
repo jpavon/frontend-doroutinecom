@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { IFormatedUser } from 'data/user/types'
+import { IUser } from 'data/user/types'
 import { putUser } from 'data/user/actions'
 
 import Field from 'components/Field'
@@ -12,7 +12,7 @@ import TopNav from 'components/TopNav'
 import './style.scss'
 
 interface IProps {
-    user: IFormatedUser
+    user: IUser
     putUser: typeof putUser
 }
 

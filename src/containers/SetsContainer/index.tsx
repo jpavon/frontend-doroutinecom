@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IFormatedSet } from 'data/sets/types'
-import { IFormatedUser } from 'data/user/types'
+import { ISet } from 'data/sets/types'
+import { IUser } from 'data/user/types'
 import { IRootState, IEntitiesStatus } from 'data/types'
 
 import { postSet, putSet, deleteSet } from 'data/sets/actions'
@@ -25,10 +25,10 @@ interface IOwnProps {
 }
 
 interface IStateProps {
-    sets: IFormatedSet[]
+    sets: ISet[]
     entitiesStatus: IEntitiesStatus
-    user: IFormatedUser | null
-    previouslyCompletedSets: IFormatedSet[]
+    user: IUser | null
+    previouslyCompletedSets: ISet[]
 }
 
 interface IDispatchProps {

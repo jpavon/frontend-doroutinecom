@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { IFormatedUser } from 'data/user/types'
+import { IUser } from 'data/user/types'
 
 import Transition from 'components/Transition'
 import Button from 'components/Button'
@@ -8,7 +8,7 @@ import Button from 'components/Button'
 import './style.scss'
 
 interface ISetsProps {
-    user: IFormatedUser
+    user: IUser
     create: () => void
     isWorkout: boolean
     toggleRemoveButtons: () => void

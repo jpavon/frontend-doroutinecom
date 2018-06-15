@@ -5,7 +5,7 @@ import * as store from 'store'
 import { IRootState } from 'data/types'
 import { ITopSet } from 'data/sets/types'
 import { IGraph } from 'data/graphs/types'
-import { IFormatedUser } from 'data/user/types'
+import { IUser } from 'data/user/types'
 
 import { workoutsGraphDataSelector } from 'data/graphs/selectors'
 import {
@@ -30,7 +30,7 @@ interface IOwnProps {}
 interface IStateProps {
     workoutsGraphData: IGraph
     topSets: ITopSet[]
-    user: IFormatedUser | null
+    user: IUser | null
     hasWorkouts: boolean
     hasCompletedWorkouts: boolean
     hasCompletedSets: boolean
