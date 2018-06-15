@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux'
 
+import { IRootState } from 'data/types'
+import { IUserAction } from 'data/user/types'
 import userConstants from 'data/user/constants'
 
 import user from 'data/user/reducers'
@@ -20,9 +22,9 @@ const appReducer = combineReducers({
     ui
 })
 
-const rootReducer = (state, action) => {
+const rootReducer = (state: IRootState, action: IUserAction) => {
     if (action.type === userConstants.USER_UNAUTH) {
-        state = {}
+        state = {} as IRootState
     }
 
     return appReducer(state, action)
