@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as classnames from 'classnames'
 import { Spring } from 'react-spring'
+import { isString } from 'lodash'
 
 import { IAlert } from 'data/ui/types'
 
@@ -19,7 +20,7 @@ class Alert extends React.Component<IProps> {
     private renderMessage = (): React.ReactNode => {
         const message = this.props.message
 
-        if (React.isValidElement(message)) {
+        if ((message && React.isValidElement(message)) || isString(message)) {
             return message
         }
 
