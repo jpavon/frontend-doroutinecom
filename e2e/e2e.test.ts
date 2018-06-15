@@ -11,22 +11,6 @@ import {
 
 import fixtures from './fixtures'
 
-let page: puppeteer.Page
-let browser: puppeteer.Browser
-
-beforeAll(async () => {
-    browser = await puppeteer.launch({
-        headless: true,
-        slowMo: 0
-    })
-    page = await browser.newPage()
-    await page.setViewport({ width: 1200, height: 800 })
-})
-
-afterAll(() => {
-    browser.close()
-})
-
 describe('auth', async () => {
     test(
         'user can register',
