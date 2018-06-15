@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as PropTypes from 'prop-types'
-import { debounce, isEqual } from 'lodash'
+import { debounce } from 'lodash'
+import * as isEqual from 'react-fast-compare'
 
 interface IValues {
     id: number
@@ -95,6 +96,8 @@ class AutoSaveForm extends React.Component<
             }
         }))
 
+        this.reinitializeValues = false
+
         if (options.debounced) {
             this.debounceUpdate(
                 this.state.values.id,
@@ -107,8 +110,6 @@ class AutoSaveForm extends React.Component<
     }
 
     public update = (id: number, name: string, value: string | boolean) => {
-        this.reinitializeValues = false
-
         new Promise((resolve, reject) => {
             this.props.update(id, { [name]: value }, resolve, reject)
         })
