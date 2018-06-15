@@ -67,7 +67,10 @@ function* authPasswordResetSuccessSaga() {
 
 function* authErrorSaga(action: IFailureAction) {
     yield put(
-        uiActions.showAlert({ type: 'error', message: action.error.errors })
+        uiActions.showAlert({
+            type: 'error',
+            message: action.error.errors
+        })
     )
 }
 

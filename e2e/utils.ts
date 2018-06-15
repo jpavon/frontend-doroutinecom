@@ -1,10 +1,16 @@
+import * as puppeteer from 'puppeteer'
+
 import env from '../src/env'
 
-export const goTo = async (page, url) => {
+export const goTo = async (page: puppeteer.Page, url: string) => {
     await page.goto(env.APP_URL + url, { waitUntil: 'load' })
 }
 
-export const expectSelectorToContainText = async (page, selector, text) => {
+export const expectSelectorToContainText = async (
+    page: puppeteer.Page,
+    selector: string,
+    text: string
+) => {
     await page.waitForSelector(selector)
     const selectorText = await page.evaluate((selector) => {
         const el = document.querySelector(selector)
@@ -13,7 +19,11 @@ export const expectSelectorToContainText = async (page, selector, text) => {
     expect(selectorText).toContain(text)
 }
 
-export const expectSelectOptionToBe = async (page, selector, text) => {
+export const expectSelectOptionToBe = async (
+    page: puppeteer.Page,
+    selector: string,
+    text: string
+) => {
     await page.waitForSelector(selector)
     const selectorText = await page.evaluate((selector) => {
         const el = document.querySelector(selector)
@@ -22,7 +32,11 @@ export const expectSelectOptionToBe = async (page, selector, text) => {
     expect(selectorText).toBe(text)
 }
 
-export const expectCheckboxToBe = async (page, selector, value) => {
+export const expectCheckboxToBe = async (
+    page: puppeteer.Page,
+    selector: string,
+    value: string | number
+) => {
     await page.waitForSelector(selector)
     const selectorValue = await page.evaluate((selector) => {
         const el = document.querySelector(selector)
@@ -31,25 +45,37 @@ export const expectCheckboxToBe = async (page, selector, value) => {
     expect(selectorValue).toBe(value)
 }
 
-export const selectOption = async (page, selector, text) => {
+export const selectOption = async (
+    page: puppeteer.Page,
+    selector: string,
+    text: string
+) => {
     await page.waitForSelector(selector)
-    await page.evaluate((selector, text) => {
-        const select = document.querySelector(selector)
+    await page.evaluate(
+        (selector, text) => {
+            const select = document.querySelector(selector)
 
-        for (let i = 0; i < select.options.length; i++) {
-            if (select.options[i].text === text) {
-                select.selectedIndex = i
-                break
+            for (let i = 0; i < select.options.length; i++) {
+                if (select.options[i].text === text) {
+                    select.selectedIndex = i
+                    break
+                }
             }
-        }
 
-        const event = new Event('change', { bubbles: true })
-        event.simulated = true
-        select.dispatchEvent(event)
-    }, selector, text)
+            const event = new Event('change', { bubbles: true })
+            ;(event as any).simulated = true
+            select.dispatchEvent(event)
+        },
+        selector,
+        text
+    )
 }
 
-export const expectElementToBeOfLength = async (page, selector, length) => {
+export const expectElementToBeOfLength = async (
+    page: puppeteer.Page,
+    selector: string,
+    length: number
+) => {
     if (length !== 0) {
         await page.waitForSelector(selector)
     }
@@ -60,7 +86,7 @@ export const expectElementToBeOfLength = async (page, selector, length) => {
     expect(selectorLength).toBe(length)
 }
 
-// export const typeUpdate = async (page, selector, updatedText) => {
+// export const typeUpdate = async (page: puppeteer.Page, selector, updatedText) => {
 //     await page.evaluate((selector, updatedText) => {
 //         const input = document.querySelector(selector)
 

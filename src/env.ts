@@ -11,4 +11,6 @@ const env = {
     }
 }
 
-export default env[process.env.NODE_ENV] || env.production
+export default (process.env.NODE_ENV
+    ? env[process.env.NODE_ENV]
+    : env.production)
