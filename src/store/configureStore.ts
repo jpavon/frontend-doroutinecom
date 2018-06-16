@@ -2,8 +2,6 @@ import { createStore, applyMiddleware, compose, Middleware } from 'redux'
 import { createLogger } from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 
-import { IRootState } from 'data/types'
-
 import rootReducer from 'store/rootReducer'
 import rootSaga from 'store/rootSaga'
 
@@ -17,10 +15,10 @@ if (process.env.NODE_ENV !== 'production') {
     middleware.push(logger)
 }
 
-const configureStore = (preloadedState?: IRootState) => {
+const configureStore = () => {
     const store = createStore(
         rootReducer,
-        preloadedState,
+        {},
         compose(applyMiddleware(...middleware))
     )
 
