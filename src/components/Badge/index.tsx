@@ -6,8 +6,8 @@ interface IProps {
     value: number
 }
 
-const Badge: React.SFC<IProps> = ({ value }) => (
-    <div className="badge">{value}</div>
+const Badge: React.SFC<IProps> = (props) => (
+    <div className="badge">{props.value}</div>
 )
 
 export default Badge

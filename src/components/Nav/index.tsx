@@ -29,11 +29,11 @@ interface INavProps {
     isPendingWorkouts: boolean
 }
 
-const Nav: React.SFC<INavProps> = ({ isTouchDevice, isPendingWorkouts }) => (
+const Nav: React.SFC<INavProps> = (props) => (
     <nav
         className={classNames(
             'nav-container',
-            isTouchDevice && 'nav-container--touch'
+            props.isTouchDevice && 'nav-container--touch'
         )}
     >
         <div className="nav">
@@ -64,7 +64,7 @@ const Nav: React.SFC<INavProps> = ({ isTouchDevice, isPendingWorkouts }) => (
                         className="nav-link"
                         activeClassName="nav-link--active"
                     >
-                        {isPendingWorkouts && (
+                        {props.isPendingWorkouts && (
                             <div className="nav-link-highlight" />
                         )}
                         <img src={workoutsIcon} alt="Workouts" />

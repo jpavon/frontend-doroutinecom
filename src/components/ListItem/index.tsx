@@ -10,23 +10,25 @@ interface IListItemProps {
 }
 
 const ListItem: React.SFC<IListItemProps> = (props) => {
-    const { to, children, className, info } = props
-
-    const Element = to ? Link : 'div'
+    const Element = props.to ? Link : 'div'
 
     return (
-        <Element to={to} className={`list-item ${className}`}>
-            {children}
-            {info &&
-                info.length > 0 && (
+        <Element to={props.to} className={`list-item ${props.className}`}>
+            {props.children}
+            {props.info &&
+                props.info.length > 0 && (
                     <div className="list-item-info">
                         Exercises:{' '}
-                        {info.map((item, index) => {
-                            if (info.length === index + 1) {
-                                return item
-                            }
-                            return `${item}, `
-                        })}
+                        {props.info &&
+                            props.info.map((item, index) => {
+                                if (
+                                    props.info &&
+                                    props.info.length === index + 1
+                                ) {
+                                    return item
+                                }
+                                return `${item}, `
+                            })}
                     </div>
                 )}
         </Element>

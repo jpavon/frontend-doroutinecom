@@ -8,9 +8,9 @@ interface IProps {
     lift: ILift
 }
 
-const Routine: React.SFC<IProps> = ({ lift }) => (
-    <ListItem to={`/lifts/${lift.id}`} className="lifts-lift">
-        {lift.name || 'No lift name set.'}
+const Routine: React.SFC<IProps> = (props) => (
+    <ListItem to={`/lifts/${props.lift.id}`} className="lifts-lift">
+        {props.lift.name || 'No lift name set.'}
     </ListItem>
 )
 

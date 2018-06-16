@@ -10,6 +10,7 @@ import { userSelector } from 'data/user/selectors'
 
 import Settings from 'components/Settings'
 import TopNav from 'components/TopNav'
+import Button from 'components/Button'
 
 interface IOwnProps {}
 
@@ -59,21 +60,26 @@ class SettingsContainer extends React.Component<IProps> {
                 <>
                     <TopNav
                         title="General"
-                        leftButton={{
-                            to: '/'
-                        }}
+                        leftButton={
+                            <Button to="/" backIcon={true}>
+                                Back
+                            </Button>
+                        }
                     />
                     <Settings
                         user={this.props.user}
                         putUser={this.props.putUser}
                     />
                     <TopNav
-                        rightLabel="Logout"
-                        rightAnchor={{
-                            onClick: this.handleUnauthUser,
-                            danger: true,
-                            className: 'logout'
-                        }}
+                        rightButton={
+                            <Button
+                                onClick={this.handleUnauthUser}
+                                danger={true}
+                                className="logout"
+                            >
+                                Logout
+                            </Button>
+                        }
                     />
                 </>
             )

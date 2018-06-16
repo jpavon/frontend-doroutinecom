@@ -16,11 +16,11 @@ interface IProps {
     putUser: typeof putUser
 }
 
-const Settings: React.SFC<IProps> = ({ user, putUser }) => (
+const Settings: React.SFC<IProps> = (props) => (
     <div className="settings">
         <AutoSaveForm
-            initialValues={user}
-            update={putUser}
+            initialValues={props.user}
+            update={props.putUser}
             render={() => (
                 <div className="settings-form">
                     <Field label="Weight measure" id="weightMeasure">
@@ -59,8 +59,8 @@ const Settings: React.SFC<IProps> = ({ user, putUser }) => (
         />
         <TopNav title="User" />
         <AutoSaveForm
-            initialValues={user}
-            update={putUser}
+            initialValues={props.user}
+            update={props.putUser}
             render={() => (
                 <div className="settings-form">
                     <Field label="Name" id="name">

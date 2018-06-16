@@ -7,20 +7,17 @@ import './style.scss'
 
 interface IProps {
     create: () => void
+    // tslint:disable-next-line:no-any
+    exercises: React.ReactElement<any> | Array<React.ReactElement<any>>
 }
 
-const Exercises: React.SFC<IProps> = ({ children, create }) => (
+const Exercises: React.SFC<IProps> = (props) => (
     <>
         <div className="exercises">
-            <Transition className="exercise">
-                {
-                    // tslint:disable-next-line:no-any
-                    children as React.ReactElement<any>
-                }
-            </Transition>
+            <Transition className="exercise" render={props.exercises} />
         </div>
         <div className="exercises-button-create">
-            <Button onClick={create}>Add Exercise</Button>
+            <Button onClick={props.create}>Add Exercise</Button>
         </div>
     </>
 )

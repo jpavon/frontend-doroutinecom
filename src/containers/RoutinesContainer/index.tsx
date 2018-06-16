@@ -16,6 +16,7 @@ import Routine from 'components/Routines/Routine'
 import NoData from 'components/NoData'
 import TopNav from 'components/TopNav'
 import Info from 'components/Info'
+import Button from 'components/Button'
 
 interface IOwnProps {}
 
@@ -41,12 +42,15 @@ class RoutinesContainer extends React.Component<IProps> {
             <>
                 <TopNav
                     title="Your Routines"
-                    rightLabel="Create"
-                    rightAnchor={{
-                        onClick: this.handleCreate,
-                        disabled: this.props.isLoading,
-                        className: 'routine-button-create'
-                    }}
+                    rightButton={
+                        <Button
+                            onClick={this.handleCreate}
+                            disabled={this.props.isLoading}
+                            className="routine-button-create"
+                        >
+                            Create
+                        </Button>
+                    }
                 />
                 <Routines>
                     {this.props.routines.length > 0 ? (

@@ -15,12 +15,12 @@ interface IRoutineProps {
     update: typeof putRoutine
 }
 
-const Routine: React.SFC<IRoutineProps> = ({ children, routine, update }) => (
+const Routine: React.SFC<IRoutineProps> = (props) => (
     <div className="routine">
         <div className="routine-form">
             <AutoSaveForm
-                initialValues={routine}
-                update={update}
+                initialValues={props.routine}
+                update={props.update}
                 render={({ values }: IAutoSaveFormState) => (
                     <Field label="Name" id={`name${values.id}`}>
                         <Input
@@ -32,11 +32,11 @@ const Routine: React.SFC<IRoutineProps> = ({ children, routine, update }) => (
                 )}
             />
         </div>
-        {children}
+        {props.children}
         <div className="routine-form">
             <AutoSaveForm
-                initialValues={routine}
-                update={update}
+                initialValues={props.routine}
+                update={props.update}
                 render={({ values }: IAutoSaveFormState) => (
                     <Field label="Additional Notes" id={`notes${values.id}`}>
                         <Textarea

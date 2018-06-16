@@ -8,20 +8,16 @@ import './style.scss'
 interface ILiftSetsTable {
     sets: ITopSet[]
     weightMeasure: string
-    showLift?: boolean
+    showLiftColumn: boolean
 }
 
-const LiftSetsTable: React.SFC<ILiftSetsTable> = ({
-    sets,
-    weightMeasure,
-    showLift = false
-}) => (
+const LiftSetsTable: React.SFC<ILiftSetsTable> = (props) => (
     <div className="sets-table">
         <div className="sets-table-top">
             <div>
                 <small>Date</small>
             </div>
-            {showLift && (
+            {props.showLiftColumn && (
                 <div>
                     <small>Lift</small>
                 </div>
@@ -30,33 +26,35 @@ const LiftSetsTable: React.SFC<ILiftSetsTable> = ({
                 <small>Reps</small>
             </div>
             <div className="sets-table-number sets-table-right">
-                <small>{weightMeasure}</small>
+                <small>{props.weightMeasure}</small>
             </div>
-            {!showLift && (
+            {!props.showLiftColumn && (
                 <div className="sets-table-right">
                     <small>Estimated 1RM</small>
                 </div>
             )}
         </div>
-        {sets.map((set, i) => (
+        {props.sets.map((set, i) => (
             <Link
                 key={i}
                 to={
-                    showLift
+                    props.showLiftColumn
                         ? `/lifts/${set.liftId}`
                         : `/workouts/${set.workoutId}`
                 }
                 className="sets-table-item"
             >
                 <div>{set.completedAt}</div>
-                {showLift && <div>{set.lift}</div>}
+                {props.showLiftColumn && <div>{set.lift}</div>}
                 <div className="sets-table-number sets-table-right">
                     {set.reps}
                 </div>
                 <div className="sets-table-number sets-table-right">
                     {set.weight}
                 </div>
-                {!showLift && <div className="sets-table-right">{set.rm}</div>}
+                {!props.showLiftColumn && (
+                    <div className="sets-table-right">{set.rm}</div>
+                )}
             </Link>
         ))}
     </div>

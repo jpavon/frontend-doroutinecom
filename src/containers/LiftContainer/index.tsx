@@ -21,6 +21,7 @@ import SetsTable from 'components/SetsTable'
 import TopNav from 'components/TopNav'
 import Graph from 'components/Graph'
 import NoData from 'components/NoData'
+import Button from 'components/Button'
 
 interface IOwnProps {
     liftId: number
@@ -69,9 +70,11 @@ class LiftContainer extends React.Component<IProps> {
                 )}
                 <TopNav
                     title="Lift"
-                    leftButton={{
-                        to: '/lifts'
-                    }}
+                    leftButton={
+                        <Button to="/lifts" backIcon={true}>
+                            Back
+                        </Button>
+                    }
                 />
                 <Lift lift={this.props.lift} update={this.props.putLift} />
                 <TopNav title="Recent Progress" />
@@ -81,18 +84,22 @@ class LiftContainer extends React.Component<IProps> {
                     <SetsTable
                         sets={this.props.topLiftSets}
                         weightMeasure={this.props.user.weightMeasure}
+                        showLiftColumn={false}
                     />
                 ) : (
                     <NoData text="List of top sets will be displayed here when you complete a workout." />
                 )}
                 <TopNav
-                    rightLabel="Delete Lift"
-                    rightAnchor={{
-                        onClick: this.handleRemove,
-                        danger: true,
-                        disabled: this.props.isDeleting,
-                        className: 'lift-button-delete'
-                    }}
+                    rightButton={
+                        <Button
+                            onClick={this.handleRemove}
+                            danger={true}
+                            disabled={this.props.isDeleting}
+                            className="lift-button-delete"
+                        >
+                            Delete Lift
+                        </Button>
+                    }
                 />
             </>
         ) : null

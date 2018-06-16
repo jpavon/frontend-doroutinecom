@@ -8,6 +8,8 @@ import Button from 'components/Button'
 import './style.scss'
 
 interface ISetsProps {
+    // tslint:disable-next-line:no-any
+    sets: Array<React.ReactElement<any>>
     user: IUser
     create: () => void
     isWorkout: boolean
@@ -15,14 +17,7 @@ interface ISetsProps {
     isRemoveButtonsVisible: boolean
 }
 
-const Sets: React.SFC<ISetsProps> = ({
-    children,
-    create,
-    user,
-    isWorkout,
-    toggleRemoveButtons,
-    isRemoveButtonsVisible
-}) => (
+const Sets: React.SFC<ISetsProps> = (props) => (
     <div className="sets">
         <div className="sets-header">
             <div className="sets-header-item">
@@ -32,26 +27,21 @@ const Sets: React.SFC<ISetsProps> = ({
                 <small>Reps</small>
             </div>
             <div className="sets-header-item">
-                <small>{user.weightMeasure}</small>
+                <small>{props.user.weightMeasure}</small>
             </div>
-            {isWorkout ? (
+            {props.isWorkout ? (
                 <div className="sets-header-item sets-header-item--toggle">
-                    <Button onClick={toggleRemoveButtons}>
-                        {isRemoveButtonsVisible ? '✓' : 'X'}
+                    <Button onClick={props.toggleRemoveButtons}>
+                        {props.isRemoveButtonsVisible ? '✓' : 'X'}
                     </Button>
                 </div>
             ) : (
                 <div className="sets-header-item" />
             )}
         </div>
-        <Transition className="set">
-            {
-                // tslint:disable-next-line:no-any
-                children as React.ReactElement<any>
-            }
-        </Transition>
+        <Transition className="set" render={props.sets} />
         <div className="sets-button-create">
-            <Button onClick={create}>Add Set</Button>
+            <Button onClick={props.create}>Add Set</Button>
         </div>
     </div>
 )

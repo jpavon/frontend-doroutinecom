@@ -20,20 +20,19 @@ interface IWorkoutProps {
     update: typeof putWorkout
 }
 
-const Workout: React.SFC<IWorkoutProps> = ({
-    children,
-    workout,
-    update,
-    displayName,
-    routine
-}) => (
+const Workout: React.SFC<IWorkoutProps> = (props) => (
     <div className="workout">
         <div className="workout-routine-name">
-            {routine ? (
+            {props.routine ? (
                 <>
                     <div>Routine</div>
-                    <Button to={routine && `/routines/${workout.routineId}`}>
-                        {displayName}
+                    <Button
+                        to={
+                            props.routine &&
+                            `/routines/${props.workout.routineId}`
+                        }
+                    >
+                        {props.displayName}
                     </Button>
                 </>
             ) : (
@@ -44,16 +43,16 @@ const Workout: React.SFC<IWorkoutProps> = ({
         </div>
         <div className="workout-form">
             <AutoSaveForm
-                initialValues={workout}
-                update={update}
+                initialValues={props.workout}
+                update={props.update}
                 render={() => (
                     <>
-                        {!routine && (
+                        {!props.routine && (
                             <Field label="Name" id="name">
                                 <Input id="name" name="name" />
                             </Field>
                         )}
-                        {workout.completedAt && (
+                        {props.workout.completedAt && (
                             <div className="workout-dates">
                                 <Field label="Started at" id="startedAt">
                                     <Datetime id="startedAt" name="startedAt" />
@@ -72,12 +71,12 @@ const Workout: React.SFC<IWorkoutProps> = ({
             />
         </div>
 
-        {children}
+        {props.children}
 
         <div className="workout-form">
             <AutoSaveForm
-                initialValues={workout}
-                update={update}
+                initialValues={props.workout}
+                update={props.update}
                 render={({ values }: IAutoSaveFormState) => (
                     <Field label="Additional Notes" id={`notes${values.id}`}>
                         <Textarea

@@ -88,40 +88,44 @@ class ExercisesContainer extends React.Component<IProps, IState> {
         return (
             <>
                 <TopNav title="Exercises" />
-                <Exercises create={this.handleCreate}>
-                    {this.props.exercises.length > 0 ? (
-                        this.props.exercises.map((exercise, i) => (
-                            <Exercise
-                                key={exercise.id}
-                                exercise={exercise}
-                                lifts={this.props.lifts}
-                                update={this.props.putExercise}
-                                remove={this.props.deleteExercise}
-                                isDeleting={
-                                    this.props.entitiesStatus[exercise.id] ===
-                                    statusConstants.STATUS_DELETING
-                                }
-                                isRemoveButtonsVisible={
-                                    this.state.isRemoveButtonsVisible
-                                }
-                            >
-                                <SetsContainer
-                                    exerciseId={exercise.id}
-                                    liftId={exercise.liftId}
-                                    isWorkout={this.isWorkout}
+                <Exercises
+                    create={this.handleCreate}
+                    exercises={
+                        this.props.exercises.length > 0 ? (
+                            this.props.exercises.map((exercise, i) => (
+                                <Exercise
+                                    key={exercise.id}
+                                    exercise={exercise}
+                                    lifts={this.props.lifts}
+                                    update={this.props.putExercise}
+                                    remove={this.props.deleteExercise}
+                                    isDeleting={
+                                        this.props.entitiesStatus[
+                                            exercise.id
+                                        ] === statusConstants.STATUS_DELETING
+                                    }
                                     isRemoveButtonsVisible={
                                         this.state.isRemoveButtonsVisible
                                     }
-                                    toggleRemoveButtons={
-                                        this.handleToggleRemoveButtons
-                                    }
-                                />
-                            </Exercise>
-                        ))
-                    ) : (
-                        <NoData text="No exercises created." />
-                    )}
-                </Exercises>
+                                >
+                                    <SetsContainer
+                                        exerciseId={exercise.id}
+                                        liftId={exercise.liftId}
+                                        isWorkout={this.isWorkout}
+                                        isRemoveButtonsVisible={
+                                            this.state.isRemoveButtonsVisible
+                                        }
+                                        toggleRemoveButtons={
+                                            this.handleToggleRemoveButtons
+                                        }
+                                    />
+                                </Exercise>
+                            ))
+                        ) : (
+                            <NoData text="No exercises created." />
+                        )
+                    }
+                />
             </>
         )
     }

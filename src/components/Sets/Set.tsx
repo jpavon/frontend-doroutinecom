@@ -20,18 +20,10 @@ interface ISetProps {
     previousSet: ISet | null
 }
 
-const Set: React.SFC<ISetProps> = ({
-    index,
-    set,
-    update,
-    remove,
-    isDeleting,
-    isRemoveButtonsVisible,
-    previousSet
-}) => (
+const Set: React.SFC<ISetProps> = (props) => (
     <AutoSaveForm
-        initialValues={set}
-        update={update}
+        initialValues={props.set}
+        update={props.update}
         render={({ values }: IAutoSaveFormState) => (
             <div
                 className={classNames(
@@ -40,34 +32,34 @@ const Set: React.SFC<ISetProps> = ({
                 )}
             >
                 <div className="set-inner-item">
-                    <small>#{index + 1}</small>
+                    <small>#{props.index + 1}</small>
                 </div>
-                <div className="set-inner-item">
+                <div className="set-inner-item" data-e2e="reps">
                     <Input
                         id="reps"
                         type="number"
                         name="reps"
                         placeholder={
-                            previousSet && previousSet.reps
-                                ? '' + previousSet.reps
+                            props.previousSet && props.previousSet.reps
+                                ? '' + props.previousSet.reps
                                 : 'Reps'
                         }
                     />
                 </div>
-                <div className="set-inner-item">
+                <div className="set-inner-item" data-e2e="weight">
                     <Input
                         id="weight"
                         type="number"
                         name="weight"
                         placeholder={
-                            previousSet && previousSet.weight
-                                ? '' + previousSet.weight
+                            props.previousSet && props.previousSet.weight
+                                ? '' + props.previousSet.weight
                                 : 'Weight'
                         }
                     />
                 </div>
                 <div className="set-inner-item set-action">
-                    {!isRemoveButtonsVisible && (
+                    {!props.isRemoveButtonsVisible && (
                         <Label
                             htmlFor={`set-checkbox${values.id}`}
                             title="Mark as Completed"
@@ -78,12 +70,12 @@ const Set: React.SFC<ISetProps> = ({
                             />
                         </Label>
                     )}
-                    {isRemoveButtonsVisible && (
+                    {props.isRemoveButtonsVisible && (
                         <Button
-                            remove={true}
+                            removeIcon={true}
                             danger={true}
-                            onClick={() => remove(set.id)}
-                            disabled={isDeleting}
+                            onClick={() => props.remove(props.set.id)}
+                            disabled={props.isDeleting}
                             className="set-button-delete"
                             title="Delete Set"
                         />

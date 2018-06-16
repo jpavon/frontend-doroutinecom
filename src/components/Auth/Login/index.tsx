@@ -13,10 +13,10 @@ interface IProps {
     passwordRef: React.RefObject<HTMLInputElement>
 }
 
-const Login: React.SFC<IProps> = ({ handleSubmit, emailRef, passwordRef }) => (
+const Login: React.SFC<IProps> = (props) => (
     <Auth
         className="login"
-        handleSubmit={handleSubmit}
+        handleSubmit={props.handleSubmit}
         footer={
             <div className="login-password-forgotten">
                 <Link to="/password-forgotten">Password forgotten?</Link>
@@ -29,7 +29,7 @@ const Login: React.SFC<IProps> = ({ handleSubmit, emailRef, passwordRef }) => (
                 type="email"
                 name="email"
                 placeholder="type@your.email"
-                inputRef={emailRef}
+                inputRef={props.emailRef}
             />
         </Field>
         <Field label="Password" id="password">
@@ -38,7 +38,7 @@ const Login: React.SFC<IProps> = ({ handleSubmit, emailRef, passwordRef }) => (
                 name="password"
                 type="password"
                 placeholder="Type your password"
-                inputRef={passwordRef}
+                inputRef={props.passwordRef}
             />
         </Field>
     </Auth>

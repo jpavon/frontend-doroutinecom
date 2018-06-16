@@ -24,6 +24,7 @@ import TopNav from 'components/TopNav'
 import SetsTable from 'components/SetsTable'
 import NoData from 'components/NoData'
 import Start from 'components/Start'
+import Button from 'components/Button'
 
 interface IOwnProps {}
 
@@ -66,10 +67,7 @@ class ProfileContainer extends React.Component<IProps, IState> {
             <Profile>
                 <TopNav
                     title="Profile"
-                    rightLabel="Settings"
-                    rightButton={{
-                        to: '/settings'
-                    }}
+                    rightButton={<Button to="/settings">Settings</Button>}
                 />
                 <Start
                     hideStartMessage={this.hideStartMessage}
@@ -85,7 +83,7 @@ class ProfileContainer extends React.Component<IProps, IState> {
                     <SetsTable
                         sets={this.props.topSets}
                         weightMeasure={this.props.user.weightMeasure}
-                        showLift={true}
+                        showLiftColumn={true}
                     />
                 ) : (
                     <NoData text="List of top sets will be displayed here when you complete a workout." />

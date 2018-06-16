@@ -10,20 +10,15 @@ interface IProps {
     footer?: React.ReactNode
 }
 
-const Auth: React.SFC<IProps> = ({
-    children,
-    className,
-    handleSubmit,
-    footer = null
-}) => (
-    <div className={`auth ${className}`}>
-        <form method="post" onSubmit={handleSubmit}>
-            <div className="auth-inner">{children}</div>
+const Auth: React.SFC<IProps> = (props) => (
+    <div className={`auth ${props.className}`}>
+        <form method="post" onSubmit={props.handleSubmit}>
+            <div className="auth-inner">{props.children}</div>
             <div className="auth-button">
                 <Button type="submit">Submit</Button>
             </div>
         </form>
-        {footer}
+        {props.footer || null}
     </div>
 )
 

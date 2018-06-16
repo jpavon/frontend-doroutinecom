@@ -15,24 +15,18 @@ interface IProps {
     hasCompletedSets: boolean
 }
 
-const Start: React.SFC<IProps> = ({
-    hideStartMessage,
-    isHidden,
-    hasWorkouts,
-    hasCompletedWorkouts,
-    hasCompletedSets
-}) =>
-    !isHidden ? (
+const Start: React.SFC<IProps> = (props) =>
+    !props.isHidden ? (
         <div className="start">
             <h2 className="start-title">
                 Getting Started - Completed{' '}
-                {Number(hasWorkouts) +
-                    Number(hasCompletedWorkouts) +
-                    Number(hasCompletedSets)}/3
+                {Number(props.hasWorkouts) +
+                    Number(props.hasCompletedWorkouts) +
+                    Number(props.hasCompletedSets)}/3
             </h2>
             <div className="start-list">
                 <div className="start-list-item">
-                    {!hasWorkouts ? (
+                    {!props.hasWorkouts ? (
                         <img src={x} alt="Not Completed" />
                     ) : (
                         <img src={tickIcon} alt="Completed" />
@@ -41,7 +35,7 @@ const Start: React.SFC<IProps> = ({
                     <Button to="/routines">Routines</Button>
                 </div>
                 <div className="start-list-item">
-                    {!hasCompletedSets ? (
+                    {!props.hasCompletedSets ? (
                         <img src={x} alt="Not Completed" />
                     ) : (
                         <img src={tickIcon} alt="Completed" />
@@ -50,7 +44,7 @@ const Start: React.SFC<IProps> = ({
                     <Button to="/workouts">Workouts</Button>
                 </div>
                 <div className="start-list-item">
-                    {!hasCompletedWorkouts ? (
+                    {!props.hasCompletedWorkouts ? (
                         <img src={x} alt="Not Completed" />
                     ) : (
                         <img src={tickIcon} alt="Completed" />
@@ -59,12 +53,12 @@ const Start: React.SFC<IProps> = ({
                     <Button to="/workouts">Workouts</Button>
                 </div>
             </div>
-            {hasWorkouts &&
-                hasCompletedSets &&
-                hasCompletedWorkouts && (
+            {props.hasWorkouts &&
+                props.hasCompletedSets &&
+                props.hasCompletedWorkouts && (
                     <Button
                         className="start-hide-button"
-                        onClick={hideStartMessage}
+                        onClick={props.hideStartMessage}
                     >
                         Hide this message
                     </Button>

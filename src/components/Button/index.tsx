@@ -5,12 +5,14 @@ import { omit } from 'lodash'
 
 import './style.scss'
 
-import removeIcon from 'media/x.svg'
+import xIcon from 'media/x.svg'
+import arrowLeftIcon from 'media/arrow-left.svg'
 
 interface IExtraProps {
     disabled?: boolean
     danger?: boolean
-    remove?: boolean
+    removeIcon?: boolean
+    backIcon?: boolean
 }
 
 export type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> &
@@ -30,13 +32,14 @@ class Button<T = undefined> extends React.Component<
 > {
     public render() {
         // spread with generics not working https://github.com/Microsoft/TypeScript/issues/10727
-        const { className, danger, remove, children } = this.props
+        const { className, danger, removeIcon, backIcon, children } = this.props
         // omit used props
         const rest = omit(
             this.props,
             'className',
             'danger',
-            'remove',
+            'removeIcon',
+            'backIcon',
             'children'
         )
 
@@ -51,7 +54,8 @@ class Button<T = undefined> extends React.Component<
                 )}
                 {...rest}
             >
-                {remove && <img src={removeIcon} alt="Remove" />}
+                {removeIcon && <img src={xIcon} alt="Remove" />}
+                {backIcon && <img src={arrowLeftIcon} alt="Back" />}
 
                 {children}
             </Element>

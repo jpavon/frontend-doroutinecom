@@ -7,18 +7,13 @@ import './style.scss'
 export interface ITextareaProps
     extends React.InputHTMLAttributes<HTMLTextAreaElement> {}
 
-const Textarea: React.SFC<ITextareaProps> = ({
-    name,
-    className,
-    value,
-    onChange
-}) => (
+const Textarea: React.SFC<ITextareaProps> = (props) => (
     <TextareaAutosize
         rows={2}
-        name={name}
-        className={classNames('textarea', className)}
-        value={value}
-        onChange={onChange}
+        name={props.name}
+        className={classNames('textarea', props.className)}
+        value={props.value}
+        onChange={props.onChange}
     />
 )
 

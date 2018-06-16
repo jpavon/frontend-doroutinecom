@@ -54,8 +54,7 @@ class SetsContainer extends React.Component<IProps> {
                 toggleRemoveButtons={this.props.toggleRemoveButtons}
                 isRemoveButtonsVisible={this.props.isRemoveButtonsVisible}
                 isWorkout={this.props.isWorkout}
-            >
-                {this.props.sets.map((set, i) => (
+                sets={this.props.sets.map((set, i) => (
                     <Set
                         key={set.id}
                         index={i}
@@ -76,7 +75,7 @@ class SetsContainer extends React.Component<IProps> {
                         }
                     />
                 ))}
-            </Sets>
+            />
         ) : null
     }
 }

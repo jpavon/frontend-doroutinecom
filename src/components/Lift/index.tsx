@@ -3,7 +3,7 @@ import * as React from 'react'
 import { ILift } from 'data/lifts/types'
 import { putLift } from 'data/lifts/actions'
 
-import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
+import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
 import Field from 'components/Field'
 
@@ -14,12 +14,12 @@ interface IProps {
     update: typeof putLift
 }
 
-const Lift: React.SFC<IProps> = ({ lift, update }) => (
+const Lift: React.SFC<IProps> = (props) => (
     <div className="lift">
         <AutoSaveForm
-            initialValues={lift}
-            update={update}
-            render={({ values }: IAutoSaveFormState) => (
+            initialValues={props.lift}
+            update={props.update}
+            render={() => (
                 <div className="lift-form">
                     <Field label="Name" id="name">
                         <Input

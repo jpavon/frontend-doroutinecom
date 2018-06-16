@@ -36,14 +36,12 @@ class Alert extends React.Component<IProps> {
     }
 
     public render() {
-        const { type, size } = this.props
-
         const className = classnames(
             'alert',
-            type === 'success' && 'alert--success',
-            type === 'error' && 'alert--error',
-            type === 'info' && 'alert--info',
-            size === 'small' && 'alert--small'
+            this.props.type === 'success' && 'alert--success',
+            this.props.type === 'error' && 'alert--error',
+            this.props.type === 'info' && 'alert--info',
+            this.props.size === 'small' && 'alert--small'
         )
 
         return this.props.animate ? (

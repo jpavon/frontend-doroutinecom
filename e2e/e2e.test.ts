@@ -173,16 +173,16 @@ describe('lifts creation', async () => {
             await page.waitForSelector('.lift')
             await page.click('.lift input')
             await page.type('.lift-form input', fixtures.LIFT.name)
-            await page.waitFor(1000)
         },
         fixtures.TIMEOUT
     )
 })
 
-describe('lift is saved on reload', async () => {
+describe('lift is saved', async () => {
     test(
-        'lift is saved',
+        'lift is saved  on reload',
         async () => {
+            await page.waitFor(1000)
             await page.reload()
             await page.waitForSelector('.lift')
             await expectSelectorToContainText(page, '.lift', fixtures.LIFT.name)
@@ -371,10 +371,14 @@ describe('routine shows validation errors', async () => {
     test(
         'set weight',
         async () => {
-            await page.click('.set input[name=weight]')
-            await page.type('.set input[name=weight]', '.333')
-            await page.waitFor(1000)
-            await expectSelectorToContainText(page, '.set', 'format is invalid')
+            await page.click('input[name=weight]')
+            await page.type('input[name=weight]', '.333')
+            await page.waitForSelector('[data-e2e="weight"] .form-alert')
+            await expectSelectorToContainText(
+                page,
+                '[data-e2e="weight"] .form-alert',
+                'format is invalid'
+            )
         },
         fixtures.TIMEOUT
     )
@@ -382,10 +386,14 @@ describe('routine shows validation errors', async () => {
     test(
         'set reps',
         async () => {
-            await page.click('.set input[name=reps]')
-            await page.type('.set input[name=reps]', '.333')
-            await page.waitFor(1000)
-            await expectSelectorToContainText(page, '.set', 'format is invalid')
+            await page.click('input[name=reps]')
+            await page.type('input[name=reps]', '.333')
+            await page.waitForSelector('[data-e2e="reps"] .form-alert')
+            await expectSelectorToContainText(
+                page,
+                '[data-e2e="reps"] .form-alert',
+                'format is invalid'
+            )
         },
         fixtures.TIMEOUT
     )
@@ -460,7 +468,7 @@ describe('create workout from routine', async () => {
             await page.click('.sets-header-item--toggle button')
             await page.click('.sets-button-create button')
             setsLength++
-            await page.waitFor(100)
+            await page.waitFor(300)
             await page.click('.set-action label')
         },
         fixtures.TIMEOUT

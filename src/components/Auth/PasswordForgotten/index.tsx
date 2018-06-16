@@ -9,15 +9,15 @@ interface IProps {
     emailRef: React.RefObject<HTMLInputElement>
 }
 
-const PasswordForgotten: React.SFC<IProps> = ({ handleSubmit, emailRef }) => (
-    <Auth className="password-forgotten" handleSubmit={handleSubmit}>
+const PasswordForgotten: React.SFC<IProps> = (props) => (
+    <Auth className="password-forgotten" handleSubmit={props.handleSubmit}>
         <Field label="Email" id="email">
             <Input
                 id="email"
                 type="email"
                 name="email"
                 placeholder="Type your email"
-                inputRef={emailRef}
+                inputRef={props.emailRef}
             />
         </Field>
     </Auth>

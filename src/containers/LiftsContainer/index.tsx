@@ -12,6 +12,7 @@ import Lifts from 'components/Lifts/Lifts'
 import Lift from 'components/Lifts/Lift'
 import NoData from 'components/NoData'
 import TopNav from 'components/TopNav'
+import Button from 'components/Button'
 
 interface IOwnProps {}
 
@@ -36,12 +37,15 @@ class LiftsContainer extends React.Component<IProps> {
             <>
                 <TopNav
                     title="Lifts"
-                    rightLabel="Create"
-                    rightAnchor={{
-                        onClick: this.handleCreate,
-                        disabled: this.props.isLoading,
-                        className: 'lift-button-create'
-                    }}
+                    rightButton={
+                        <Button
+                            onClick={this.handleCreate}
+                            disabled={this.props.isLoading}
+                            className="lift-button-create"
+                        >
+                            Create
+                        </Button>
+                    }
                 />
                 <Lifts>
                     {this.props.lifts.length > 0 ? (

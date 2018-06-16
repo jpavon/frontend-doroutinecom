@@ -8,9 +8,9 @@ interface IRoutinesProps {
     routine: IRoutine
 }
 
-const Routine: React.SFC<IRoutinesProps> = ({ routine }) => (
-    <ListItem to={`/routines/${routine.id}`} className="routines-routine">
-        {routine.name || 'No routine name set.'}
+const Routine: React.SFC<IRoutinesProps> = (props) => (
+    <ListItem to={`/routines/${props.routine.id}`} className="routines-routine">
+        {props.routine.name || 'No routine name set.'}
     </ListItem>
 )
 

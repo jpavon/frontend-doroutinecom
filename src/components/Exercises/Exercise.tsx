@@ -17,25 +17,17 @@ interface IProps {
     isRemoveButtonsVisible: boolean
 }
 
-const Exercise: React.SFC<IProps> = ({
-    children,
-    exercise,
-    lifts,
-    update,
-    remove,
-    isDeleting,
-    isRemoveButtonsVisible
-}) => (
+const Exercise: React.SFC<IProps> = (props) => (
     <>
         <AutoSaveForm
-            update={update}
-            initialValues={exercise}
+            update={props.update}
+            initialValues={props.exercise}
             render={({ values }: IAutoSaveFormState) => (
                 <div className="exercise-lift">
                     <Select
                         id="liftId"
                         name="liftId"
-                        options={lifts}
+                        options={props.lifts}
                         defaultOptionMessage="Select a lift"
                         noOptionsMessage="No lift created."
                     />
@@ -47,14 +39,14 @@ const Exercise: React.SFC<IProps> = ({
                 </div>
             )}
         />
-        {children}
-        {isRemoveButtonsVisible && (
+        {props.children}
+        {props.isRemoveButtonsVisible && (
             <div className="exercise-button-delete">
                 <Button
-                    remove={true}
+                    removeIcon={true}
                     danger={true}
-                    onClick={() => remove(exercise.id)}
-                    disabled={isDeleting}
+                    onClick={() => props.remove(props.exercise.id)}
+                    disabled={props.isDeleting}
                     title="Delete Exercise"
                 />
             </div>

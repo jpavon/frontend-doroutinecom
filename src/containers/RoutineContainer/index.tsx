@@ -16,6 +16,7 @@ import ExercisesContainer from 'containers/ExercisesContainer'
 
 import Routine from 'components/Routine'
 import TopNav from 'components/TopNav'
+import Button from 'components/Button'
 
 interface IOwnProps {
     routineId: number
@@ -73,14 +74,19 @@ class RoutineContainer extends React.Component<IProps> {
                 )}
                 <TopNav
                     title="Routine"
-                    leftButton={{
-                        to: '/routines'
-                    }}
-                    rightLabel="Start Workout"
-                    rightAnchor={{
-                        onClick: this.handleCreateWorkout,
-                        className: 'routine-button-create-workout'
-                    }}
+                    leftButton={
+                        <Button to="/routines" backIcon={true}>
+                            Back
+                        </Button>
+                    }
+                    rightButton={
+                        <Button
+                            onClick={this.handleCreateWorkout}
+                            className="routine-button-create-workout"
+                        >
+                            Start Workout
+                        </Button>
+                    }
                 />
                 <Routine
                     routine={this.props.routine}
@@ -90,13 +96,16 @@ class RoutineContainer extends React.Component<IProps> {
                 </Routine>
                 {!this.props.routine.program && (
                     <TopNav
-                        rightLabel="Delete Routine"
-                        rightAnchor={{
-                            onClick: this.handleRemove,
-                            danger: true,
-                            disabled: this.props.isDeleting,
-                            className: 'routine-button-delete'
-                        }}
+                        rightButton={
+                            <Button
+                                onClick={this.handleRemove}
+                                danger={true}
+                                disabled={this.props.isDeleting}
+                                className="routine-button-delete"
+                            >
+                                Delete Routine
+                            </Button>
+                        }
                     />
                 )}
             </>

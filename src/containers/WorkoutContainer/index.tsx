@@ -27,6 +27,7 @@ import Workout from 'components/Workout'
 import Timer from 'components/Timer'
 import { IWorkout } from 'data/workouts/types'
 import { IRoutine } from 'data/routines/types'
+import Button from 'components/Button'
 
 interface IOwnProps {
     workoutId: number
@@ -128,30 +129,36 @@ class WorkoutContainer extends React.Component<IProps> {
                 />
                 <TopNav
                     title="Workout"
-                    leftButton={{
-                        to: `/workouts`
-                    }}
-                    rightLabel={
-                        this.props.workout.completedAt ? 'Restart' : 'Completed'
+                    leftButton={
+                        <Button to="/workouts" backIcon={true}>
+                            Back
+                        </Button>
                     }
-                    rightAnchor={
-                        this.props.workout.completedAt
-                            ? {
-                                  onClick: this.handleRestart,
-                                  className: 'workout-button-restart'
-                              }
-                            : {
-                                  onClick: this.handleCompleted,
-                                  className: 'workout-button-completed'
-                              }
+                    rightButton={
+                        this.props.workout.completedAt ? (
+                            <Button
+                                onClick={this.handleRestart}
+                                className="workout-button-restart"
+                            >
+                                Restart
+                            </Button>
+                        ) : (
+                            <Button
+                                onClick={this.handleCompleted}
+                                className="workout-button-completed"
+                            >
+                                Completed
+                            </Button>
+                        )
                     }
                 />
                 {this.props.workout.completedAt && (
                     <TopNav
-                        rightLabel="Perform again as New Workout"
-                        rightAnchor={{
-                            onClick: this.handleCreate
-                        }}
+                        rightButton={
+                            <Button onClick={this.handleCreate}>
+                                Perform again as New Workout
+                            </Button>
+                        }
                     />
                 )}
                 <Workout
@@ -163,13 +170,16 @@ class WorkoutContainer extends React.Component<IProps> {
                     <ExercisesContainer workoutId={this.props.workoutId} />
                 </Workout>
                 <TopNav
-                    rightLabel="Delete Workout"
-                    rightAnchor={{
-                        onClick: this.handleRemove,
-                        danger: true,
-                        disabled: this.props.isDeleting,
-                        className: 'workout-button-delete'
-                    }}
+                    rightButton={
+                        <Button
+                            onClick={this.handleRemove}
+                            danger={true}
+                            disabled={this.props.isDeleting}
+                            className="workout-button-delete"
+                        >
+                            Delete Workout
+                        </Button>
+                    }
                 />
             </>
         ) : null

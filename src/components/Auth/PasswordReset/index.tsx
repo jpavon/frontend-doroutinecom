@@ -11,20 +11,15 @@ interface IProps {
     passwordConfirmationRef: React.RefObject<HTMLInputElement>
 }
 
-const PasswordReset: React.SFC<IProps> = ({
-    handleSubmit,
-    emailRef,
-    passwordRef,
-    passwordConfirmationRef
-}) => (
-    <Auth className="password-reset" handleSubmit={handleSubmit}>
+const PasswordReset: React.SFC<IProps> = (props) => (
+    <Auth className="password-reset" handleSubmit={props.handleSubmit}>
         <Field label="Email" id="email">
             <Input
                 id="email"
                 type="email"
                 name="email"
                 placeholder="Type your email"
-                inputRef={emailRef}
+                inputRef={props.emailRef}
             />
         </Field>
 
@@ -34,7 +29,7 @@ const PasswordReset: React.SFC<IProps> = ({
                 type="password"
                 name="password"
                 placeholder="Type your new password"
-                inputRef={passwordRef}
+                inputRef={props.passwordRef}
             />
         </Field>
 
@@ -44,7 +39,7 @@ const PasswordReset: React.SFC<IProps> = ({
                 type="password"
                 name="passwordConfirmation"
                 placeholder="Type your new password again"
-                inputRef={passwordConfirmationRef}
+                inputRef={props.passwordConfirmationRef}
             />
         </Field>
     </Auth>

@@ -10,10 +10,10 @@ interface IFieldProps {
     children: React.ReactElement<{}>
 }
 
-const Field: React.SFC<IFieldProps> = ({ id, label, children }) => (
+const Field: React.SFC<IFieldProps> = (props) => (
     <div className="field">
-        <Label htmlFor={id}>{label}</Label>
-        {children}
+        <Label htmlFor={props.id}>{props.label}</Label>
+        {props.children}
     </div>
 )
 
