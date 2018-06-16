@@ -1,7 +1,6 @@
 import * as React from 'react'
-import * as PropTypes from 'prop-types'
 
-import { IAutoSaveFormContext } from 'components/AutoSaveForm'
+import { AutoSaveFormConsumer } from 'components/AutoSaveForm'
 
 import Alert from 'components/Form/Alert'
 import UncontrolledSelect, { ISelectProps } from 'components/Form/Select'
@@ -12,44 +11,36 @@ interface IAutoSaveFormSelectProps extends ISelectProps {
     noOptionsMessage?: string
 }
 
-class Select extends React.Component<IAutoSaveFormSelectProps> {
-    public static contextTypes = {
-        formContext: PropTypes.object.isRequired
-    }
-
-    public context: IAutoSaveFormContext
-
-    public render() {
-        const { name, noOptionsMessage, ...rest } = this.props
-
-        const { values, errors, onChange, updating } = this.context.formContext
-
-        return (
-            <span style={{ position: 'relative' }}>
-                {updating === name && <Saving />}
-                <UncontrolledSelect
-                    name={name}
-                    value={values[name] || ''}
-                    onChange={(event) => {
-                        onChange({
-                            name,
-                            value: event.target.value,
-                            debounced: true
-                        })
-                    }}
-                    {...rest}
-                />
-                <Alert
-                    message={
-                        this.props.options.length < 1 && noOptionsMessage
-                            ? noOptionsMessage
-                            : null
-                    }
-                />
-                <Alert message={errors[name]} />
-            </span>
-        )
-    }
-}
+const Select: React.SFC<IAutoSaveFormSelectProps> = (props) => (
+    <AutoSaveFormConsumer>
+        {({ values, errors, onChange, updating }) => {
+            const { noOptionsMessage, ...rest } = props
+            return (
+                <span style={{ position: 'relative' }}>
+                    {updating === props.name && <Saving />}
+                    <UncontrolledSelect
+                        value={(values[props.name] as string) || ''}
+                        onChange={(event) => {
+                            onChange({
+                                name: props.name,
+                                value: event.target.value,
+                                debounced: true
+                            })
+                        }}
+                        {...rest}
+                    />
+                    <Alert
+                        message={
+                            props.options.length < 1 && noOptionsMessage
+                                ? noOptionsMessage
+                                : null
+                        }
+                    />
+                    <Alert message={errors[props.name]} />
+                </span>
+            )
+        }}
+    </AutoSaveFormConsumer>
+)
 
 export default Select

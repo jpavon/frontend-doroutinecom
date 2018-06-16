@@ -1,5 +1,4 @@
 import * as React from 'react'
-import * as PropTypes from 'prop-types'
 import { debounce } from 'lodash'
 
 interface IValues {
@@ -35,36 +34,25 @@ interface IAutoSaveFormChangeOptions {
 }
 
 export interface IAutoSaveFormContext {
-    formContext: {
-        onChange: (options: IAutoSaveFormChangeOptions) => void
-        values: IAutoSaveFormState['values']
-        errors: IAutoSaveFormState['errors']
-        updating: IAutoSaveFormState['updating']
-    }
+    onChange: (options: IAutoSaveFormChangeOptions) => void
+    values: IAutoSaveFormState['values']
+    errors: IAutoSaveFormState['errors']
+    updating: IAutoSaveFormState['updating']
 }
 
 interface IUpdateData {
     id: number
     name: string
-    value: string | boolean
+    value: string | number | boolean | null
 }
+
+const Context = React.createContext({} as IAutoSaveFormContext)
 
 class AutoSaveForm extends React.Component<
     IAutoSaveFormProps,
     IAutoSaveFormState
 > {
-    public static childContextTypes = {
-        formContext: PropTypes.object.isRequired
-    }
-
     public reinitializeValues: boolean
-
-    public getChildContext = (): IAutoSaveFormContext => ({
-        formContext: {
-            ...this.state,
-            onChange: this.handleChange
-        }
-    })
 
     constructor(props: IAutoSaveFormProps) {
         super(props)
@@ -144,8 +132,19 @@ class AutoSaveForm extends React.Component<
     public debounceUpdate = debounce(this.update, 300)
 
     public render() {
-        return this.props.render(this.state)
+        const store: IAutoSaveFormContext = {
+            ...this.state,
+            onChange: this.handleChange
+        }
+
+        return (
+            <Context.Provider value={store}>
+                {this.props.render(this.state)}
+            </Context.Provider>
+        )
     }
 }
+
+export const AutoSaveFormConsumer = Context.Consumer
 
 export default AutoSaveForm

@@ -1,7 +1,6 @@
 import * as React from 'react'
-import * as PropTypes from 'prop-types'
 
-import { IAutoSaveFormContext } from 'components/AutoSaveForm'
+import { AutoSaveFormConsumer } from 'components/AutoSaveForm'
 
 import Alert from 'components/Form/Alert'
 import UncontrolledTextarea, { ITextareaProps } from 'components/Form/Textarea'
@@ -11,37 +10,28 @@ interface IAutoSaveFormTextareaProps extends ITextareaProps {
     name: string
 }
 
-class Textarea extends React.Component<IAutoSaveFormTextareaProps> {
-    public static contextTypes = {
-        formContext: PropTypes.object.isRequired
-    }
-
-    public context: IAutoSaveFormContext
-
-    public render() {
-        const { name, ...rest } = this.props
-
-        const { values, errors, onChange, updating } = this.context.formContext
-
-        return (
-            <div style={{ position: 'relative' }}>
-                {updating === name && <Saving />}
-                <UncontrolledTextarea
-                    name={name}
-                    value={values[name] || ''}
-                    onChange={(event) => {
-                        onChange({
-                            name,
-                            value: event.target.value,
-                            debounced: true
-                        })
-                    }}
-                    {...rest}
-                />
-                <Alert message={errors[name]} />
-            </div>
-        )
-    }
-}
+const Textarea: React.SFC<IAutoSaveFormTextareaProps> = (props) => (
+    <AutoSaveFormConsumer>
+        {({ values, errors, onChange, updating }) => {
+            return (
+                <div style={{ position: 'relative' }}>
+                    {updating === props.name && <Saving />}
+                    <UncontrolledTextarea
+                        value={(values[props.name] as string) || ''}
+                        onChange={(event) => {
+                            onChange({
+                                name,
+                                value: event.target.value,
+                                debounced: true
+                            })
+                        }}
+                        {...props}
+                    />
+                    <Alert message={errors[props.name]} />
+                </div>
+            )
+        }}
+    </AutoSaveFormConsumer>
+)
 
 export default Textarea

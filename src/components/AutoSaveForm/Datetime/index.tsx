@@ -1,8 +1,7 @@
 import * as React from 'react'
-import * as PropTypes from 'prop-types'
 import { Moment } from 'moment'
 
-import { IAutoSaveFormContext } from 'components/AutoSaveForm'
+import { AutoSaveFormConsumer } from 'components/AutoSaveForm'
 
 import { serverDateFormat } from 'utils/date'
 
@@ -12,40 +11,32 @@ import Saving from 'components/Saving'
 
 interface IAutoSaveDatetimeProps extends IDatetimeProps {}
 
-class Input extends React.Component<IAutoSaveDatetimeProps> {
-    public static contextTypes = {
-        formContext: PropTypes.object.isRequired
-    }
+const Datetime: React.SFC<IAutoSaveDatetimeProps> = (props) => (
+    <AutoSaveFormConsumer>
+        {({ values, errors, onChange, updating }) => {
+            return (
+                <div
+                    className={`datetime-${props.name}`}
+                    style={{ position: 'relative' }}
+                >
+                    {updating === props.name && <Saving />}
+                    <UncontrolledDatetime
+                        name={props.name}
+                        value={(values[props.name] as string) || ''}
+                        onChange={(moment: Moment) => {
+                            onChange({
+                                name: props.name,
+                                value: moment.format(serverDateFormat),
+                                debounced: false
+                            })
+                        }}
+                        {...props}
+                    />
+                    <Alert message={errors[props.name]} />
+                </div>
+            )
+        }}
+    </AutoSaveFormConsumer>
+)
 
-    public context: IAutoSaveFormContext
-
-    public render() {
-        const { name, ...rest } = this.props
-
-        const { values, errors, onChange, updating } = this.context.formContext
-
-        return (
-            <div
-                className={`datetime-${name}`}
-                style={{ position: 'relative' }}
-            >
-                {updating === name && <Saving />}
-                <UncontrolledDatetime
-                    name={name}
-                    value={values[name] || ''}
-                    onChange={(moment: Moment) => {
-                        onChange({
-                            name,
-                            value: moment.format(serverDateFormat),
-                            debounced: false
-                        })
-                    }}
-                    {...rest}
-                />
-                <Alert message={errors[name]} />
-            </div>
-        )
-    }
-}
-
-export default Input
+export default Datetime
