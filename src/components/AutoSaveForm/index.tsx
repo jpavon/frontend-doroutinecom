@@ -52,7 +52,7 @@ class AutoSaveForm extends React.Component<
     IAutoSaveFormProps,
     IAutoSaveFormState
 > {
-    public reinitializeValues: boolean
+    private canUpdateState: boolean = false
 
     constructor(props: IAutoSaveFormProps) {
         super(props)
@@ -62,8 +62,14 @@ class AutoSaveForm extends React.Component<
             errors: {},
             updating: null
         }
+    }
 
-        this.reinitializeValues = true
+    public componentDidMount() {
+        this.canUpdateState = true
+    }
+
+    public componentWillUnmount() {
+        this.canUpdateState = false
     }
 
     public initialize = (values: IValues) => {
@@ -79,8 +85,6 @@ class AutoSaveForm extends React.Component<
                 [options.name]: options.value
             }
         }))
-
-        this.reinitializeValues = false
 
         const data: IUpdateData = {
             id: this.state.values.id,
@@ -105,27 +109,27 @@ class AutoSaveForm extends React.Component<
             )
         })
             .then(() => {
-                this.setState(
-                    {
+                if (this.canUpdateState) {
+                    this.setState({
                         updating: data.name,
                         errors: {}
-                    },
-                    () => {
-                        this.reinitializeValues = true
-                    }
-                )
+                    })
+                }
 
                 debounce(() => {
-                    this.setState({
-                        updating: null
-                    })
-                    this.reinitializeValues = true
+                    if (this.canUpdateState) {
+                        this.setState({
+                            updating: null
+                        })
+                    }
                 }, 500)()
             })
             .catch((error) => {
-                this.setState({
-                    errors: error ? error.errors : {}
-                })
+                if (this.canUpdateState) {
+                    this.setState({
+                        errors: error ? error.errors : {}
+                    })
+                }
             })
     }
 
