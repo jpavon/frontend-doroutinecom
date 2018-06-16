@@ -46,31 +46,22 @@ const Workout: React.SFC<IWorkoutProps> = ({
             <AutoSaveForm
                 initialValues={workout}
                 update={update}
-                render={({ values }: IAutoSaveFormState) => (
+                render={() => (
                     <>
                         {!routine && (
                             <Field label="Name" id="name">
                                 <Input id="name" name="name" />
                             </Field>
                         )}
-                        {values.completedAt && (
+                        {workout.completedAt && (
                             <div className="workout-dates">
-                                <Field
-                                    label="Started at"
-                                    id={`startedAt${values.id}`}
-                                >
-                                    <Datetime
-                                        id={`startedAt${values.id}`}
-                                        name="startedAt"
-                                    />
+                                <Field label="Started at" id="startedAt">
+                                    <Datetime id="startedAt" name="startedAt" />
                                 </Field>
 
-                                <Field
-                                    label="Completed at"
-                                    id={`completedAt${values.id}`}
-                                >
+                                <Field label="Completed at" id="completedAt">
                                     <Datetime
-                                        id={`completedAt${values.id}`}
+                                        id="completedAt"
                                         name="completedAt"
                                     />
                                 </Field>
