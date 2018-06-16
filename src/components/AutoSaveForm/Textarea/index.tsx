@@ -20,7 +20,7 @@ const Textarea: React.SFC<IAutoSaveFormTextareaProps> = (props) => (
                         value={(values[props.name] as string) || ''}
                         onChange={(event) => {
                             onChange({
-                                name,
+                                name: props.name,
                                 value: event.target.value,
                                 debounced: true
                             })
