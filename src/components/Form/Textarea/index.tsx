@@ -14,6 +14,7 @@ const Textarea: React.SFC<ITextareaProps> = (props) => (
         className={classNames('textarea', props.className)}
         value={props.value}
         onChange={props.onChange}
+        {...props}
     />
 )
 

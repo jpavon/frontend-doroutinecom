@@ -36,7 +36,6 @@ const Set: React.SFC<ISetProps> = (props) => (
                 </div>
                 <div className="set-inner-item" data-e2e="reps">
                     <Input
-                        id="reps"
                         type="number"
                         name="reps"
                         placeholder={
@@ -48,7 +47,6 @@ const Set: React.SFC<ISetProps> = (props) => (
                 </div>
                 <div className="set-inner-item" data-e2e="weight">
                     <Input
-                        id="weight"
                         type="number"
                         name="weight"
                         placeholder={
