@@ -1,5 +1,5 @@
-@import 'variables.scss';
-@import 'Form/Input/style.scss';
+@import 'styles/variables.scss';
+@import 'components/Form/Input/style.scss';
 
 .textarea {
     @extend .input;
