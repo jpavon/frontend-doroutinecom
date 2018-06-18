@@ -3,11 +3,11 @@ import { NavLink } from 'react-router-dom'
 import * as classNames from 'classnames'
 import { RouteComponentProps } from 'react-router'
 
-import logo from 'media/logo.svg'
-import profileIcon from 'media/profile.svg'
-import routinesIcon from 'media/routines.svg'
-import liftsIcon from 'media/lifts.svg'
-import workoutsIcon from 'media/workouts.svg'
+import LogoSvg from 'media/logo.svg'
+import ProfileSvg from 'media/profile.svg'
+import WorkoutsSvg from 'media/workouts.svg'
+import RoutinesSvg from 'media/routines.svg'
+import LiftsSvg from 'media/lifts.svg'
 
 import './style.scss'
 
@@ -42,7 +42,7 @@ const Nav: React.SFC<INavProps> = (props) => (
                 className="nav-logo"
                 activeClassName="nav-link--active"
             >
-                <img src={logo} alt="Logo" />
+                <LogoSvg />
             </NavLink>
 
             <ul className="nav-list">
@@ -54,7 +54,7 @@ const Nav: React.SFC<INavProps> = (props) => (
                         activeClassName="nav-link--active"
                         isActive={isProfileActive}
                     >
-                        <img src={profileIcon} alt="Profile" />
+                        <ProfileSvg />
                         Profile
                     </NavLink>
                 </li>
@@ -67,7 +67,7 @@ const Nav: React.SFC<INavProps> = (props) => (
                         {props.isPendingWorkouts && (
                             <div className="nav-link-highlight" />
                         )}
-                        <img src={workoutsIcon} alt="Workouts" />
+                        <WorkoutsSvg />
                         <span>Workouts</span>
                     </NavLink>
                 </li>
@@ -77,7 +77,7 @@ const Nav: React.SFC<INavProps> = (props) => (
                         className="nav-link"
                         activeClassName="nav-link--active"
                     >
-                        <img src={routinesIcon} alt="Routines" />
+                        <RoutinesSvg />
                         <span>Routines</span>
                     </NavLink>
                 </li>
@@ -87,7 +87,7 @@ const Nav: React.SFC<INavProps> = (props) => (
                         className="nav-link"
                         activeClassName="nav-link--active"
                     >
-                        <img src={liftsIcon} alt="Lifts" />
+                        <LiftsSvg />
                         Lifts
                     </NavLink>
                 </li>

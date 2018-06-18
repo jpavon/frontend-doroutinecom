@@ -2,14 +2,14 @@ import * as React from 'react'
 
 import Button from 'components/Button'
 
-import logo from 'media/logo.svg'
+import Logo from 'media/logo.svg'
 
 import './style.scss'
 
 const Offline: React.SFC<{}> = () => (
     <div className="offline">
         <div className="offline-logo">
-            <img src={logo} alt="Logo" />
+            <Logo />
         </div>
         <p className="offline-text">
             You need internet connection to continue using doroutine, refresh

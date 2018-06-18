@@ -5,8 +5,8 @@ import { omit } from 'lodash'
 
 import './style.scss'
 
-import xIcon from 'media/x.svg'
-import arrowLeftIcon from 'media/arrow-left.svg'
+import XSvg from 'media/x.svg'
+import ArrowLeftSvg from 'media/arrow-left.svg'
 
 interface IExtraProps {
     disabled?: boolean
@@ -54,8 +54,8 @@ class Button<T = undefined> extends React.Component<
                 )}
                 {...rest}
             >
-                {removeIcon && <img src={xIcon} alt="Remove" />}
-                {backIcon && <img src={arrowLeftIcon} alt="Back" />}
+                {removeIcon && <XSvg />}
+                {backIcon && <ArrowLeftSvg />}
 
                 {children}
             </Element>

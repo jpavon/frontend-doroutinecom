@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 
-import tickIcon from 'media/tick.svg'
+import TickSvg from 'media/tick.svg'
 
 import './style.scss'
 
@@ -19,7 +19,7 @@ const Checkbox: React.SFC<ICheckboxProps> = (props) => {
                     checked && 'checkbox-tick--checked'
                 )}
             >
-                {checked && <img src={tickIcon} alt="Checkbox" />}
+                {checked && <TickSvg />}
             </span>
             <input
                 id={id}

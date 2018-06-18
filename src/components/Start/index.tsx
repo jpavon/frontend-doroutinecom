@@ -2,8 +2,8 @@ import * as React from 'react'
 
 import Button from 'components/Button'
 
-import tickIcon from 'media/tick.svg'
-import x from 'media/x.svg'
+import TickSvg from 'media/tick.svg'
+import XSvg from 'media/x.svg'
 
 import './style.scss'
 
@@ -26,29 +26,17 @@ const Start: React.SFC<IProps> = (props) =>
             </h2>
             <div className="start-list">
                 <div className="start-list-item">
-                    {!props.hasWorkouts ? (
-                        <img src={x} alt="Not Completed" />
-                    ) : (
-                        <img src={tickIcon} alt="Completed" />
-                    )}
+                    {!props.hasWorkouts ? <XSvg /> : <TickSvg />}
                     Create your first workout from a routine
                     <Button to="/routines">Routines</Button>
                 </div>
                 <div className="start-list-item">
-                    {!props.hasCompletedSets ? (
-                        <img src={x} alt="Not Completed" />
-                    ) : (
-                        <img src={tickIcon} alt="Completed" />
-                    )}
+                    {!props.hasCompletedSets ? <XSvg /> : <TickSvg />}
                     Complete multiple sets on a workout
                     <Button to="/workouts">Workouts</Button>
                 </div>
                 <div className="start-list-item">
-                    {!props.hasCompletedWorkouts ? (
-                        <img src={x} alt="Not Completed" />
-                    ) : (
-                        <img src={tickIcon} alt="Completed" />
-                    )}
+                    {!props.hasCompletedWorkouts ? <XSvg /> : <TickSvg />}
                     Complete a workout
                     <Button to="/workouts">Workouts</Button>
                 </div>

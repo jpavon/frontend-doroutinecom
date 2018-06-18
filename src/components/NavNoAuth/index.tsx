@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import logo from 'media/logo-full.svg'
+import LogoFullSvg from 'media/logo-full.svg'
 
 import './style.scss'
 
 const NavNoAuth: React.SFC<{}> = () => (
     <nav className="nav-no-auth">
         <div className="nav-no-auth-logo">
-            <img src={logo} alt="Logo" />
+            <LogoFullSvg />
         </div>
         <div className="nav-no-auth-links">
             <NavLink

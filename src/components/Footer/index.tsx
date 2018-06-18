@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import logoFull from 'media/logo-full.svg'
+import LogoFullSvg from 'media/logo-full.svg'
 
 import './style.scss'
 
@@ -18,7 +18,7 @@ const Footer: React.SFC<{}> = () => (
             </span>
             <br />
             <br />
-            <img src={logoFull} alt="doroutine logo" />
+            <LogoFullSvg />
             <br />
         </div>
     </footer>
