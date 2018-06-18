@@ -8,11 +8,11 @@ import {
     IUserRequestData
 } from 'data/user/types'
 
+import action from 'utils/action'
 import constants from 'data/user/constants'
 
 // get
-export const getUser = () => ({
-    type: constants.USER_GET_REQUEST as constants.USER_GET_REQUEST,
+export const getUser = action(constants.USER_GET_REQUEST, {
     method: 'get',
     endpoint: 'user'
 })

@@ -4,7 +4,7 @@ enum Type {
     TEST = 'TEST'
 }
 
-interface Payload {
+interface Data {
     id: number
     name: string
 }
@@ -26,9 +26,9 @@ test('action with type and payload', () => {
 })
 
 test('action with payload creator', () => {
-    const creator = createAction(Type.TEST).with((user: Payload) => user)
+    const creator = createAction(Type.TEST).with((user: Data) => user)
 
-    const action: { type: Type.TEST; payload: Payload } = creator({
+    const action: { type: Type.TEST; payload: Data } = creator({
         id: 1,
         name: 'test'
     })
@@ -44,13 +44,13 @@ test('action with payload creator', () => {
 
 test('action with payload and meta creator', () => {
     const creator = createAction(Type.TEST).with(
-        (user: Payload) => user,
+        (user: Data) => user,
         (user) => ({
             id: user.id
         })
     )
 
-    const action: { type: Type.TEST; payload: Payload } = creator({
+    const action: { type: Type.TEST; payload: Data } = creator({
         id: 1,
         name: 'test'
     })

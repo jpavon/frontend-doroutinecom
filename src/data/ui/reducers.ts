@@ -27,8 +27,8 @@ const ui = (state = initialState, action: IUiAction): IUiState => {
             return {
                 ...state,
                 alert: {
-                    type: action.alert.type,
-                    message: action.alert.message
+                    type: action.payload.type,
+                    message: action.payload.message
                 }
             }
 

@@ -1,28 +1,27 @@
-type Action<T extends string, P> = P extends undefined
+type Action<T extends string, D> = D extends void
     ? { type: T }
-    : { type: T } & P
+    : { type: T } & D
 
-const action = <T extends string, P = undefined>(
-    actionType: T,
-    payload?: P
-) => {
+// type ActionPayloadMeta<T extends string, P, M> = M extends void
+//     ? { type: T; payload: P }
+//     : { type: T; payload: P; meta: M }
+
+type ActionMeta<P, M> = M extends void
+    ? { payload: P }
+    : { payload: P; meta: M }
+
+const action = <T extends string, D = void>(actionType: T, data?: D) => {
     const constructor = () =>
         Object.assign(
-            {},
             {
                 type: actionType
             },
-            payload
-        ) as Action<T, P>
+            data
+        ) as Action<T, D>
 
-    const map = <P, R = { payload?: P }>(payloadCreator: (payload: P) => R) => (
-        payload: P
-    ) =>
-        Object.assign(
-            {},
-            { type: actionType },
-            payloadCreator(payload)
-        ) as Action<T, R>
+    const map = <P, M = void, R = ActionMeta<P, M>>(
+        dataCreator: (data: P) => R
+    ) => (data: P) => Object.assign({}, { type: actionType }, dataCreator(data))
 
     return Object.assign(constructor, {
         with: map

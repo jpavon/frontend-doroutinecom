@@ -1,6 +1,12 @@
 {
     "typescript.tsdk": "node_modules/typescript/lib",
-    "files.exclude": {
-        "**/*.css": true,
+    "[typescript]": {
+        "editor.formatOnSave": true
     },
+    "[typescriptreact]": {
+        "editor.formatOnSave": true
+    },
+    "[scss]": {
+        "editor.formatOnSave": true
+    }
 }

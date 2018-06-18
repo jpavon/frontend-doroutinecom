@@ -7,9 +7,11 @@ export const showLoading = action(constants.SHOW_LOADING)
 
 export const removeLoading = action(constants.REMOVE_LOADING)
 
-export const showAlert = action(constants.SHOW_ALERT).with((alert: IAlert) => ({
-    alert
-}))
+export const showAlert = action(constants.SHOW_ALERT).with<IAlert>(
+    (payload) => ({
+        payload
+    })
+)
 
 export const removeAlert = action(constants.REMOVE_ALERT)
 
