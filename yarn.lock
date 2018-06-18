@@ -23,9 +23,9 @@
     core-js "^2.5.6"
     regenerator-runtime "^0.11.1"
 
-"@jpavon/react-scripts-ts@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@jpavon/react-scripts-ts/-/react-scripts-ts-0.4.0.tgz#9ab96e759132035fc18a12ca28db536f2acd0c99"
+"@jpavon/react-scripts-ts@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@jpavon/react-scripts-ts/-/react-scripts-ts-0.4.2.tgz#683a589c21929499cbc4b02053abdfe5678b8771"
   dependencies:
     autoprefixer "7.1.6"
     awesome-typescript-loader "4.0.0"
@@ -48,7 +48,7 @@
     node-sass "^4.8.3"
     object-assign "4.1.1"
     postcss-flexbugs-fixes "^3.3.1"
-    postcss-loader "^2.1.5"
+    postcss-loader "2.0.8"
     promise "8.0.1"
     raf "3.4.0"
     react-dev-utils "^5.0.1"
@@ -6599,14 +6599,14 @@ postcss-load-plugins@^2.3.0:
     cosmiconfig "^2.1.1"
     object-assign "^4.1.0"
 
-postcss-loader@^2.1.5:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-2.1.5.tgz#3c6336ee641c8f95138172533ae461a83595e788"
+postcss-loader@2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-2.0.8.tgz#8c67ddb029407dfafe684a406cfc16bad2ce0814"
   dependencies:
     loader-utils "^1.1.0"
     postcss "^6.0.0"
     postcss-load-config "^1.2.0"
-    schema-utils "^0.4.0"
+    schema-utils "^0.3.0"
 
 postcss-merge-idents@^2.1.5:
   version "2.1.7"
@@ -7766,7 +7766,7 @@ schema-utils@^0.3.0:
   dependencies:
     ajv "^5.0.0"
 
-schema-utils@^0.4.0, schema-utils@^0.4.5:
+schema-utils@^0.4.5:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-0.4.5.tgz#21836f0608aac17b78f9e3e24daff14a5ca13a3e"
   dependencies:
