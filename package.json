@@ -57,7 +57,7 @@
     "puppeteer": "^1.5.0",
     "react": "^16.4.1",
     "react-addons-shallow-compare": "^15.6.2",
-    "react-autosize-textarea": "^3.0.3",
+    "react-autosize-textarea": "^4.0.0",
     "react-datetime": "^2.13.0",
     "react-dom": "^16.4.1",
     "react-fast-compare": "^2.0.0",
