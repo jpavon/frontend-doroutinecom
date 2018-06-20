@@ -11,7 +11,7 @@
     "deploy": "npm-run-all -s build sync"
   },
   "dependencies": {
-    "@jpavon/react-scripts-ts": "0.5.1",
+    "@jpavon/react-scripts-ts": "^0.5.5",
     "@types/chart.js": "^2.7.14",
     "@types/classnames": "^2.2.3",
     "@types/expect-puppeteer": "^2.2.2",
