@@ -57,18 +57,15 @@ export const formatTopSets = (
             }
 
             const exercise = exercises.find(
-                (exercise) => exercise.id === Number(curr.exerciseId)
+                (e) => e.id === Number(curr.exerciseId)
             )
 
             const lift =
                 lifts &&
-                lifts.find(
-                    (lift) => (exercise ? lift.id === exercise.liftId : false)
-                )
+                lifts.find((l) => (exercise ? l.id === exercise.liftId : false))
 
             const workout = workouts.find(
-                (workout) =>
-                    exercise ? exercise.workoutId === workout.id : false
+                (w) => (exercise ? w.id === exercise.workoutId : false)
             )
 
             return {
@@ -147,7 +144,7 @@ export const previouslyCompletedSetsSelector = (liftId: number) =>
             const exercisesDates = exercises
                 .map((exercise) => {
                     const workout = workouts.find(
-                        (workout) => workout.id === exercise.workoutId
+                        (w) => w.id === exercise.workoutId
                     )
                     return {
                         exerciseId: exercise.id,

@@ -19,17 +19,17 @@ const action = <T extends string, P = undefined>(
             payload ? { payload } : undefined
         ) as Action<T, P>
 
-    const map = <P, M = undefined, R = { payload?: P; meta?: M }>(
-        payloadCreator: (payload: P) => R,
-        metaCreator?: (payload: P) => M
-    ) => (payload: P) =>
+    const map = <PP, M = undefined, R = { payload?: P; meta?: M }>(
+        payloadCreator: (payload: PP) => R,
+        metaCreator?: (payload: PP) => M
+    ) => (passedPayload: PP) =>
         Object.assign(
             {},
             { type: actionType },
-            { payload: payloadCreator(payload) },
+            { payload: payloadCreator(passedPayload) },
             metaCreator
                 ? {
-                      meta: metaCreator(payload)
+                      meta: metaCreator(passedPayload)
                   }
                 : undefined
         ) as MetaAction<T, R, M>

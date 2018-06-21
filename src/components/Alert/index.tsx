@@ -25,9 +25,9 @@ class Alert extends React.Component<IProps> {
         }
 
         if (message && Object.values(message).length > 0) {
-            return Object.values(message).map((message, i) => (
+            return Object.values(message).map((m, i) => (
                 <React.Fragment key={i}>
-                    {message} <br />
+                    {m} <br />
                 </React.Fragment>
             ))
         }

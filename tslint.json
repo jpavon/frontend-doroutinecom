@@ -12,7 +12,6 @@
         "member-ordering": false,
         "jsx-no-lambda": false,
         "interface-name": false,
-        "no-shadowed-variable": false,
         "no-any": true
     }
 }

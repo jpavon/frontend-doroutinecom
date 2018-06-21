@@ -21,7 +21,8 @@ const action = <T extends string, D = void>(actionType: T, data?: D) => {
 
     const map = <P, M = void, R = ActionMeta<P, M>>(
         dataCreator: (data: P) => R
-    ) => (data: P) => Object.assign({}, { type: actionType }, dataCreator(data))
+    ) => (passedData: P) =>
+        Object.assign({}, { type: actionType }, dataCreator(passedData))
 
     return Object.assign(constructor, {
         with: map
