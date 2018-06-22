@@ -74,9 +74,7 @@ class App extends React.Component<IProps, IState> {
                 ) : this.state.isErrorApp ? (
                     <ErrorApp />
                 ) : (
-                    <>
-                        <Routes isAuth={this.props.isAuth} />
-                    </>
+                    <Routes isAuth={this.props.isAuth} />
                 )}
             </>
         )
