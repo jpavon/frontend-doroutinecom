@@ -2,6 +2,7 @@
     "extends": [
         "tslint:recommended",
         "tslint-react",
+        "tslint-react-a11y",
         "tslint-config-prettier"
     ],
     "rules": {
@@ -12,7 +13,8 @@
         "member-ordering": false,
         "jsx-no-lambda": false,
         "interface-name": false,
-        "no-any": true
+        "no-any": true,
+        "react-a11y-titles": false
     },
     "defaultSeverity": "warning"
 }

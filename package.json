@@ -80,6 +80,7 @@
     "store": "^2.0.12",
     "ts-jest": "^22.4.6",
     "tslint-config-prettier": "^1.13.0",
+    "tslint-react-a11y": "^1.0.0",
     "typesafe-actions": "^2.0.4",
     "typescript": "^2.9.2"
   },

@@ -28,6 +28,7 @@ const Checkbox: React.SFC<ICheckboxProps> = (props) => {
                 type="checkbox"
                 className={classNames('checkbox', className)}
                 onChange={onChange}
+                aria-checked={checked}
             />
         </>
     )

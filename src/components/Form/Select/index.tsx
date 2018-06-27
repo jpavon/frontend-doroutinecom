@@ -37,10 +37,18 @@ const Select: React.SFC<ISelectProps> = (props) => {
             {...rest}
         >
             {!props.value &&
-                !props.defaultValue && <option>{defaultOptionMessage}</option>}
+                !props.defaultValue && (
+                    <option aria-selected={false}>
+                        {defaultOptionMessage}
+                    </option>
+                )}
             {options.length > 0 &&
                 options.map((option, i) => (
-                    <option key={i} value={option.id}>
+                    <option
+                        key={option.id}
+                        value={option.id}
+                        aria-selected={Number(props.value) === option.id}
+                    >
                         {option.name}
                     </option>
                 ))}
