@@ -30,7 +30,7 @@ interface IAutoSaveFormProps {
 interface IAutoSaveFormChangeOptions {
     name: string
     value: string | boolean
-    debounced: boolean
+    debounced?: boolean
 }
 
 export interface IAutoSaveFormContext {
