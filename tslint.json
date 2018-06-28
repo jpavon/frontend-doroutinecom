@@ -14,7 +14,8 @@
         "jsx-no-lambda": false,
         "interface-name": false,
         "no-any": true,
-        "react-a11y-titles": false
+        "react-a11y-titles": false,
+        "react-a11y-image-button-has-alt": false
     },
     "defaultSeverity": "warning"
 }
