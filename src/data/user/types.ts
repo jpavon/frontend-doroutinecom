@@ -1,6 +1,6 @@
 import { IApiFailure } from 'data/types'
 import { statusConstants } from 'data/constants'
-import * as actionTypes from 'data/user/actions'
+import * as actions from 'data/user/actions'
 
 export interface IUser {
     id: number
@@ -27,9 +27,7 @@ export interface IUserState {
 
 export type IUserRequestData = Partial<IUser>
 
-export type IUserAction = ReturnType<
-    typeof actionTypes[keyof typeof actionTypes]
->
+export type IUserAction = ReturnType<typeof actions[keyof typeof actions]>
 
 export interface ILoginData {
     email: string

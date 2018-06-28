@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { IApiFailure } from 'data/types'
-import * as actionTypes from 'data/ui/actions'
+import * as actions from 'data/ui/actions'
 
 export interface IUiState {
     isLoading: boolean
@@ -9,7 +9,7 @@ export interface IUiState {
     isOffline: boolean
 }
 
-export type IUiAction = ReturnType<typeof actionTypes[keyof typeof actionTypes]>
+export type IUiAction = ReturnType<typeof actions[keyof typeof actions]>
 
 export interface IAlert {
     type: string

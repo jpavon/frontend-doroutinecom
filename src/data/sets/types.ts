@@ -1,6 +1,6 @@
 import { Moment as MomentType } from 'moment'
 import { IStateMap } from 'data/types'
-import * as actionTypes from 'data/sets/actions'
+import * as actions from 'data/sets/actions'
 
 export interface ISet {
     id: number
@@ -15,9 +15,7 @@ export interface ISet {
 
 export type ISetsState = IStateMap<ISet>
 
-export type ISetsAction = ReturnType<
-    typeof actionTypes[keyof typeof actionTypes]
->
+export type ISetsAction = ReturnType<typeof actions[keyof typeof actions]>
 
 export interface ITopSet {
     reps: number
