@@ -18,13 +18,9 @@ class FlashMessage extends React.Component<
 > {
     public timer: number | null
 
-    constructor(props: IFlashMessageProps) {
-        super(props)
-
-        this.state = {
-            visible: props.visible,
-            delay: 1000
-        }
+    public readonly state = {
+        visible: this.props.visible,
+        delay: 1000
     }
 
     public componentWillReceiveProps(nextProps: IFlashMessageProps) {

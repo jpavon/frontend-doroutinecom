@@ -49,17 +49,18 @@ interface IState {
 
 class ExercisesContainer extends React.Component<IProps, IState> {
     private isRoutine: boolean
+
     private isWorkout: boolean
+
+    public readonly state = {
+        isRemoveButtonsVisible: !!this.props.routineId ? true : false
+    }
 
     constructor(props: IProps) {
         super(props)
 
         this.isRoutine = !!props.routineId
         this.isWorkout = !!props.workoutId
-
-        this.state = {
-            isRemoveButtonsVisible: !!props.routineId ? true : false
-        }
     }
 
     private handleToggleRemoveButtons = () => {

@@ -16,16 +16,17 @@ interface ITimerState {
 
 class Timer extends React.Component<ITimerProps, ITimerState> {
     public start: Date
+
     public timer: number
+
+    public readonly state = {
+        hours: '0',
+        minutes: '0',
+        seconds: '0'
+    }
 
     constructor(props: ITimerProps) {
         super(props)
-
-        this.state = {
-            hours: '0',
-            minutes: '0',
-            seconds: '0'
-        }
 
         this.start = moment(props.start).toDate()
     }

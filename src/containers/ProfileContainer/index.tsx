@@ -46,12 +46,8 @@ interface IState {
 }
 
 class ProfileContainer extends React.Component<IProps, IState> {
-    constructor(props: IProps) {
-        super(props)
-
-        this.state = {
-            hideStartMessage: !!store.get('hideStartMessage')
-        }
+    public readonly state = {
+        hideStartMessage: !!store.get('hideStartMessage')
     }
 
     private hideStartMessage = () => {

@@ -13,12 +13,8 @@ interface ILIftState {
 }
 
 class Info extends React.Component<ILIftProps, ILIftState> {
-    constructor(props: ILIftProps) {
-        super(props)
-
-        this.state = {
-            open: false
-        }
+    public readonly state = {
+        open: false
     }
 
     public render() {

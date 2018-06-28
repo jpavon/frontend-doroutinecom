@@ -54,14 +54,10 @@ class AutoSaveForm extends React.Component<
 > {
     private canUpdateState: boolean = false
 
-    constructor(props: IAutoSaveFormProps) {
-        super(props)
-
-        this.state = {
-            values: props.initialValues,
-            errors: {},
-            updating: null
-        }
+    public readonly state = {
+        values: this.props.initialValues,
+        errors: {},
+        updating: null
     }
 
     public componentDidMount() {
