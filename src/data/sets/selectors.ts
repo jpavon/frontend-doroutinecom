@@ -84,9 +84,7 @@ export const formatTopSets = (
                 }
             }
         },
-        {} as {
-            [index: number]: ITopSet
-        }
+        {} as Record<number, ITopSet>
     )
 
     return Object.values(topSets).filter((set) => set.liftId)

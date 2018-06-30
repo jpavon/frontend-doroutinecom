@@ -42,9 +42,7 @@ export interface IFailureAction extends IAction {
     error: IApiFailure
 }
 
-export interface IEntitiesStatus {
-    [index: number]: statusConstants
-}
+export type IEntitiesStatus = Record<number, statusConstants>
 
 export interface IStateMap<T> {
     status: statusConstants

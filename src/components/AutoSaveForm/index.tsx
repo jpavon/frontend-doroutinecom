@@ -9,9 +9,7 @@ interface IValues {
 
 export interface IAutoSaveFormState {
     values: IValues
-    errors: {
-        [index: string]: string
-    }
+    errors: Record<string, string>
     updating: string | null
 }
 
@@ -20,7 +18,7 @@ interface IAutoSaveFormProps {
     update: (
         id: number,
         // tslint:disable-next-line:no-any
-        data: { [index: string]: any },
+        data: Record<string, any>,
         resolve?: () => void,
         reject?: () => void
     ) => void
