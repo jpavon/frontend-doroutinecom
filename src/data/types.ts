@@ -34,9 +34,7 @@ export interface ISuccessAction<P> extends IAction {
 }
 
 export interface IApiFailure {
-    errors: {
-        [index: string]: string[]
-    }
+    errors: Record<string, string[]>
     message: string
 }
 
@@ -50,9 +48,7 @@ export interface IEntitiesStatus {
 
 export interface IStateMap<T> {
     status: statusConstants
-    entities: {
-        [index: number]: T
-    }
+    entities: Record<number, T>
     entitiesStatus: IEntitiesStatus
     entitiesOrder: number[]
     error: IApiFailure | null

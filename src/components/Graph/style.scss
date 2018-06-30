@@ -1,18 +1,31 @@
 @import 'styles/variables.scss';
 
-.graph {
-    position: relative;
-    margin-bottom: $spacing * 2;
-}
+// .graph {
+//     position: relative;
+//     margin-bottom: $spacing * 2;
+// }
 
-.graph-no-data {
-    position: absolute;
-    top: 15%;
-    left: 0;
-    right: 0;
-    margin-left: 15%;
-    margin-right: 15%;
+// .graph-no-data {
+//     // position: absolute;
+//     top: 15%;
+//     left: 0;
+//     right: 0;
+//     margin-left: 15%;
+//     margin-right: 15%;
+//     padding: $spacing $spacing * 2;
+
+//     background-color: rgba($color-primary, 0.5);
+//     color: #fff;
+//     text-align: center;
+
+//     @media (max-width: 500px) {
+//         padding: $spacing / 2 $spacing;
+//     }
+// }
+
+.graph-empty {
     padding: $spacing $spacing * 2;
+    margin-bottom: $spacing;
 
     background-color: rgba($color-primary, 0.5);
     color: #fff;

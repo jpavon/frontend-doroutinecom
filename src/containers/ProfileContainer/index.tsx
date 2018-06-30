@@ -4,10 +4,12 @@ import * as store from 'store'
 
 import { IRootState } from 'data/types'
 import { ITopSet } from 'data/sets/types'
-import { IGraph } from 'data/graphs/types'
 import { IUser } from 'data/user/types'
 
-import { workoutsGraphDataSelector } from 'data/graphs/selectors'
+import {
+    weeklyWorkoutsSelector,
+    WeeklyWorkoutGraph
+} from 'data/graphs/selectors'
 import {
     topSetsCompletedSelector,
     completedSetsSelector
@@ -19,17 +21,17 @@ import {
 } from 'data/workouts/selectors'
 
 import Profile from 'components/Profile'
-import Graph from 'components/Graph'
 import TopNav from 'components/TopNav'
 import SetsTable from 'components/SetsTable'
 import NoData from 'components/NoData'
 import Start from 'components/Start'
 import Button from 'components/Button'
+import GraphWeeklyWorkouts from 'components/Graph/GraphWeeklyWorkouts'
 
 interface IOwnProps {}
 
 interface IStateProps {
-    workoutsGraphData: IGraph
+    weeklyWorkouts: WeeklyWorkoutGraph[]
     topSets: ITopSet[]
     user: IUser | null
     hasWorkouts: boolean
@@ -73,7 +75,7 @@ class ProfileContainer extends React.Component<IProps, IState> {
                     hasCompletedSets={this.props.hasCompletedSets}
                 />
                 <TopNav title="Weekly Workouts" />
-                <Graph type="bar" data={this.props.workoutsGraphData} />
+                <GraphWeeklyWorkouts data={this.props.weeklyWorkouts} />
                 <TopNav title="Recent Top Sets" />
                 {this.props.topSets.length > 0 ? (
                     <SetsTable
@@ -90,7 +92,7 @@ class ProfileContainer extends React.Component<IProps, IState> {
 }
 
 const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
-    workoutsGraphData: workoutsGraphDataSelector(state),
+    weeklyWorkouts: weeklyWorkoutsSelector(state),
     topSets: topSetsCompletedSelector(state),
     user: userSelector(state),
     hasWorkouts: workoutsSelector(state).length > 0,

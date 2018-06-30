@@ -5,11 +5,10 @@ import Helmet from 'react-helmet'
 import { IRootState } from 'data/types'
 import { ILift } from 'data/lifts/types'
 import { ITopSet } from 'data/sets/types'
-import { IGraph } from 'data/graphs/types'
 import { IUser } from 'data/user/types'
 
 import history from 'utils/history'
-import { liftGraphDataSelector } from 'data/graphs/selectors'
+import { liftSetsGraphSelector, LiftSetsGraph } from 'data/graphs/selectors'
 import { liftSelector } from 'data/lifts/selectors'
 import { topSetsForALiftSelector } from 'data/sets/selectors'
 import { putLift, deleteLift } from 'data/lifts/actions'
@@ -19,9 +18,9 @@ import { statusConstants } from 'data/constants'
 import Lift from 'components/Lift'
 import SetsTable from 'components/SetsTable'
 import TopNav from 'components/TopNav'
-import Graph from 'components/Graph'
 import NoData from 'components/NoData'
 import Button from 'components/Button'
+import GraphLift from 'components/Graph/GraphLift'
 
 interface IOwnProps {
     liftId: number
@@ -31,7 +30,7 @@ interface IStateProps {
     lift: ILift | null
     isStatusLoaded: boolean
     isDeleting: boolean
-    liftGraphData: IGraph
+    liftSetsGraph: LiftSetsGraph[]
     topLiftSets: ITopSet[]
     user: IUser | null
 }
@@ -78,7 +77,8 @@ class LiftContainer extends React.Component<IProps> {
                 />
                 <Lift lift={this.props.lift} update={this.props.putLift} />
                 <TopNav title="Recent Progress" />
-                <Graph type="line" data={this.props.liftGraphData} />
+                {/* <Graph type="line" data={this.props.liftGraphData} /> */}
+                <GraphLift data={this.props.liftSetsGraph} />
                 <TopNav title="Top Sets" />
                 {this.props.topLiftSets.length > 0 ? (
                     <SetsTable
@@ -112,7 +112,7 @@ const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
     isDeleting:
         state.lifts.entitiesStatus[props.liftId] ===
         statusConstants.STATUS_DELETING,
-    liftGraphData: liftGraphDataSelector(props.liftId)(state),
+    liftSetsGraph: liftSetsGraphSelector(props.liftId)(state),
     topLiftSets: topSetsForALiftSelector(props.liftId)(state),
     user: userSelector(state)
 })

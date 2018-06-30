@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect'
 
 import { IRootState } from 'data/types'
-import { IGraph } from 'data/graphs/types'
 import { IWorkout } from 'data/workouts/types'
 
 import moment from 'utils/moment'
@@ -46,30 +45,34 @@ const getWorkoutsDataset = (workouts: IWorkout[]) => {
     return dataset
 }
 
-export const workoutsGraphDataSelector = createSelector(
+export interface WeeklyWorkoutGraph {
+    week: string
+    completed: number
+}
+
+export const weeklyWorkoutsSelector = createSelector(
     [completedWorkoutsSelector],
-    (workouts): IGraph => {
-        const dataset = getWorkoutsDataset(workouts).reverse()
+    (workouts): WeeklyWorkoutGraph[] => {
+        const dataset = getWorkoutsDataset(workouts)
 
-        const labels = weeks
-            .map((week) => {
-                return `${week.startWeek.format(
+        return weeks
+            .map((week, index) => ({
+                week: `${week.startWeek.format(
                     dayMonthFormat
-                )} ${week.endWeek.format(dayMonthFormat)}`
-            })
+                )} ${week.endWeek.format(dayMonthFormat)}`,
+                completed: dataset[index] || 0
+            }))
             .reverse()
-
-        return {
-            labels,
-            dataset,
-            datasetMax: Math.max(...dataset),
-            datasetMin: null,
-            meta: null
-        }
     }
 )
 
-export const liftGraphDataSelector = (liftId: number) =>
+export interface LiftSetsGraph {
+    rm: number
+    day: string
+    set: string
+}
+
+export const liftSetsGraphSelector = (liftId: number) =>
     createSelector(
         [
             completedExercisesLiftSelector(liftId),
@@ -77,29 +80,16 @@ export const liftGraphDataSelector = (liftId: number) =>
             completedWorkoutsSelector,
             (state: IRootState) => state.user.entity
         ],
-        (exercises, sets, workouts, user): IGraph => {
+        (exercises, sets, workouts, user): LiftSetsGraph[] => {
             const topSets = formatTopSets(exercises, sets, workouts, null).sort(
                 (a, b) =>
                     Number(a.completeAtMoment) - Number(b.completeAtMoment)
             )
 
-            const dataset = topSets.map((set) => set.rm)
-            const labels = topSets.map((set) =>
-                set.completeAtMoment.format(dateFormat)
-            )
-            const reps = topSets.map((set) => set.reps)
-            const weight = topSets.map((set) => set.weight)
-
-            return {
-                labels,
-                dataset,
-                datasetMax: dataset.length > 0 ? Math.max(...dataset) : 0,
-                datasetMin: dataset.length > 0 ? Math.min(...dataset) : 0,
-                meta: {
-                    reps,
-                    weight,
-                    weightMeasure: user && user.weightMeasure
-                }
-            }
+            return topSets.map((set) => ({
+                rm: set.rm,
+                day: set.completeAtMoment.format(dateFormat),
+                set: `${set.reps}x${set.weight}${user!.weightMeasure}`
+            }))
         }
     )
