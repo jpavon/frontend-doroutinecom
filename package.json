@@ -85,6 +85,9 @@
     "tslint-react-a11y": "^1.0.0",
     "typescript": "^2.9.2"
   },
+  "resolutions": {
+    "uglify-es": "npm:terser"
+  },
   "browserslist": {
     "development": [
       "last 2 chrome versions",
