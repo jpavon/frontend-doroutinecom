@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { debounce } from 'lodash'
 
-interface Wrapper {
+interface Props {
     render: (
         data: {
             width: number
@@ -10,11 +10,15 @@ interface Wrapper {
     ) => React.ReactNode
 }
 
-class GraphWrapper extends React.Component<Wrapper> {
+interface State {
+    width: number | null
+}
+
+class GraphWrapper extends React.Component<Props, State> {
     private ref: React.RefObject<HTMLDivElement> = React.createRef()
 
     public readonly state = {
-        width: window.innerWidth || 800
+        width: null
     }
 
     public componentDidMount() {
@@ -27,7 +31,7 @@ class GraphWrapper extends React.Component<Wrapper> {
     }
 
     private updateWidth = () => {
-        if (this.ref && this.ref.current && this.ref.current.parentElement) {
+        if (this.ref.current && this.ref.current.parentElement) {
             this.setState({ width: this.ref.current.parentElement.clientWidth })
         }
     }
@@ -36,10 +40,14 @@ class GraphWrapper extends React.Component<Wrapper> {
 
     public render() {
         const width = this.state.width
-        const height = width / 2.3
         return (
             <div style={{ position: 'relative' }} ref={this.ref}>
-                {this.props.render({ width, height })}
+                {width
+                    ? this.props.render({
+                          width,
+                          height: Math.round(width / 2.3)
+                      })
+                    : null}
             </div>
         )
     }
