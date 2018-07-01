@@ -76,10 +76,9 @@ class LiftContainer extends React.Component<IProps> {
                     }
                 />
                 <Lift lift={this.props.lift} update={this.props.putLift} />
-                <TopNav title="Recent Progress" />
-                {/* <Graph type="line" data={this.props.liftGraphData} /> */}
+                <TopNav title="Recent progress" />
                 <GraphLift data={this.props.liftSetsGraph} />
-                <TopNav title="Top Sets" />
+                <TopNav title="Top sets" />
                 {this.props.topLiftSets.length > 0 ? (
                     <SetsTable
                         sets={this.props.topLiftSets}
