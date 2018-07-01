@@ -85,7 +85,7 @@ const GraphLift: React.SFC<GraphLift> = (props) => {
                                     y={y}
                                     stroke={null}
                                     strokeWidth={null}
-                                    fill={'rgba(76, 144, 194, .1)'}
+                                    fill={'rgba(76, 144, 194, .05)'}
                                     curve={curveMonotoneX}
                                 />
                                 <LinePath
@@ -123,7 +123,7 @@ const GraphLift: React.SFC<GraphLift> = (props) => {
                                         position: 'absolute',
                                         backgroundColor: 'transparent',
                                         boxShadow: 'none',
-                                        color: 'rgba(76, 144, 194, .7)',
+                                        color: 'rgba(76, 144, 194, 1)',
                                         fontSize: 14,
                                         top: yScale(y(d)) - 14,
                                         left: xScale(x(d)) + marginLeft - 10,

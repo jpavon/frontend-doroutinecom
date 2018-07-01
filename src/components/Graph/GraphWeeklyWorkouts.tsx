@@ -70,7 +70,7 @@ const GraphWeeklyWorkouts: React.SFC<GraphWeeklyWorkouts> = (props) => (
                                             height={barHeight}
                                             x={xScale(x(d))}
                                             y={yScale(y(d))}
-                                            fill="rgba(76, 144, 194, .2)"
+                                            fill="rgba(76, 144, 194, .6)"
                                         />
                                     </Group>
                                 )
@@ -86,14 +86,15 @@ const GraphWeeklyWorkouts: React.SFC<GraphWeeklyWorkouts> = (props) => (
                                 key={i}
                                 style={{
                                     position: 'absolute',
+                                    top: yScale(y(d)) + 26,
+                                    left: xScale(x(d)) + marginLeft - 12,
+                                    width: xScale.bandwidth(),
+                                    textAlign: 'right',
                                     backgroundColor: 'transparent',
                                     boxShadow: 'none',
-                                    color: 'rgba(76, 144, 194, .7)',
-                                    width: xScale.bandwidth(),
-                                    textAlign: 'center',
-                                    fontSize: 20,
-                                    top: yScale(y(d)) - 16,
-                                    left: xScale(x(d)) + marginLeft
+                                    color: '#fff',
+                                    fontSize: width > 600 ? 26 : 20,
+                                    textShadow: '0px 1px 2px rgba(0,0,0,.2)'
                                 }}
                             >
                                 {y(d)}
