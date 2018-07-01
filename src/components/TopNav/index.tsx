@@ -5,8 +5,8 @@ import './style.scss'
 
 interface IProps {
     title?: React.ReactNode
-    leftButton?: JSX.Element
-    rightButton?: JSX.Element
+    leftButton?: React.ReactNode
+    rightButton?: React.ReactNode
 }
 
 const TopNav: React.SFC<IProps> = (props) => {
