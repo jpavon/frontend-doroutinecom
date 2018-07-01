@@ -22,12 +22,14 @@
     display: flex;
     padding: $spacing / 1.5 $spacing;
 
-    border-bottom: 2px solid $color-border;
-    background-color: rgba($color-primary, 0.05);
+    background-color: rgba($color-primary, 0.1);
+    border-bottom: 1px solid rgba($color-primary, 0.15);
 
     > div {
         @include layout();
         align-self: flex-end;
+        font-size: 13px;
+        letter-spacing: 0.1em;
 
         &:first-letter {
             text-transform: capitalize;

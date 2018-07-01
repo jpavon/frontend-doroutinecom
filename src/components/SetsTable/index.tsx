@@ -14,24 +14,14 @@ interface ILiftSetsTable {
 const LiftSetsTable: React.SFC<ILiftSetsTable> = (props) => (
     <div className="sets-table">
         <div className="sets-table-top">
-            <div>
-                <small>Date</small>
-            </div>
-            {props.showLiftColumn && (
-                <div>
-                    <small>Lift</small>
-                </div>
-            )}
+            <div>Date</div>
+            {props.showLiftColumn && <div>Lift</div>}
+            <div className="sets-table-number sets-table-right">Reps</div>
             <div className="sets-table-number sets-table-right">
-                <small>Reps</small>
-            </div>
-            <div className="sets-table-number sets-table-right">
-                <small>{props.weightMeasure}</small>
+                {props.weightMeasure}
             </div>
             {!props.showLiftColumn && (
-                <div className="sets-table-right">
-                    <small>Estimated 1RM</small>
-                </div>
+                <div className="sets-table-right">Estimated 1RM</div>
             )}
         </div>
         {props.sets.map((set, i) => (
