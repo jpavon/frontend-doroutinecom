@@ -33,7 +33,7 @@ class WorkoutsContainer extends React.Component<IProps> {
                 <TopNav
                     title={
                         <>
-                            In Progress{' '}
+                            In progress{' '}
                             <Badge value={this.props.pendingWorkouts.length} />
                         </>
                     }

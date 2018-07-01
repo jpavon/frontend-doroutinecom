@@ -59,13 +59,14 @@ class SettingsContainer extends React.Component<IProps> {
             this.props.user && (
                 <>
                     <TopNav
-                        title="General"
+                        title="Settings"
                         leftButton={
                             <Button to="/" backIcon={true}>
                                 Back
                             </Button>
                         }
                     />
+                    <TopNav title="General" />
                     <Settings
                         user={this.props.user}
                         putUser={this.props.putUser}

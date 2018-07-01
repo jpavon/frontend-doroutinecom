@@ -73,7 +73,7 @@ class RoutineContainer extends React.Component<IProps> {
                     </Helmet>
                 )}
                 <TopNav
-                    title="Routine"
+                    title="Edit routine"
                     leftButton={
                         <Button to="/routines" backIcon={true}>
                             Back

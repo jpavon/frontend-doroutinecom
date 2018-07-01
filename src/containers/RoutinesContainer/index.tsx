@@ -41,7 +41,7 @@ class RoutinesContainer extends React.Component<IProps> {
         return (
             <>
                 <TopNav
-                    title="Your Routines"
+                    title="Routines"
                     rightButton={
                         <Button
                             onClick={this.handleCreate}

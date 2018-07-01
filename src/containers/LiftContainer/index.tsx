@@ -68,7 +68,7 @@ class LiftContainer extends React.Component<IProps> {
                     </Helmet>
                 )}
                 <TopNav
-                    title="Lift"
+                    title="Edit lift"
                     leftButton={
                         <Button to="/lifts" backIcon={true}>
                             Back

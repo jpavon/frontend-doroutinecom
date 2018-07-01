@@ -74,9 +74,9 @@ class ProfileContainer extends React.Component<IProps, IState> {
                     hasCompletedWorkouts={this.props.hasCompletedWorkouts}
                     hasCompletedSets={this.props.hasCompletedSets}
                 />
-                <TopNav title="Weekly Workouts" />
+                <TopNav title="Weekly workouts" />
                 <GraphWeeklyWorkouts data={this.props.weeklyWorkouts} />
-                <TopNav title="Recent Top Sets" />
+                <TopNav title="Recent top sets" />
                 {this.props.topSets.length > 0 ? (
                     <SetsTable
                         sets={this.props.topSets}

@@ -128,7 +128,7 @@ class WorkoutContainer extends React.Component<IProps> {
                     animate={false}
                 />
                 <TopNav
-                    title="Workout"
+                    title="Edit workout"
                     leftButton={
                         <Button to="/workouts" backIcon={true}>
                             Back
