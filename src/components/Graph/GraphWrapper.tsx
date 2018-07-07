@@ -15,7 +15,7 @@ interface State {
 }
 
 class GraphWrapper extends React.Component<Props, State> {
-    private ref: React.RefObject<HTMLDivElement> = React.createRef()
+    private ref = React.createRef<HTMLDivElement>()
 
     public readonly state = {
         width: null

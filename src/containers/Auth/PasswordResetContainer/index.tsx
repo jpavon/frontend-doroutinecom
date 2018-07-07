@@ -19,11 +19,9 @@ interface IDispatchProps {
 interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
 
 class PasswordResetContainer extends React.Component<IProps> {
-    private email: React.RefObject<HTMLInputElement> = React.createRef()
-    private password: React.RefObject<HTMLInputElement> = React.createRef()
-    private passwordConfirmation: React.RefObject<
-        HTMLInputElement
-    > = React.createRef()
+    private email = React.createRef<HTMLInputElement>()
+    private password = React.createRef<HTMLInputElement>()
+    private passwordConfirmation = React.createRef<HTMLInputElement>()
 
     private handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
