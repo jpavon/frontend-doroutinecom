@@ -1,54 +1,46 @@
 import * as React from 'react'
 import { debounce } from 'lodash'
 
-interface IValues {
-    id: number
-    // tslint:disable-next-line:no-any
-    [index: string]: any
-}
-
-export interface IAutoSaveFormState {
-    values: IValues
+export interface IAutoSaveFormState<T> {
+    values: T
     errors: Record<string, string>
     updating: string | null
 }
 
-interface IAutoSaveFormProps {
-    initialValues: IValues
+interface IAutoSaveFormProps<T> {
+    initialValues: T
     update: (
         id: number,
-        // tslint:disable-next-line:no-any
-        data: Record<string, any>,
+        data: Partial<T>,
         resolve?: () => void,
         reject?: () => void
     ) => void
-    render: (state: IAutoSaveFormState) => React.ReactNode
+    render: (state: IAutoSaveFormState<T>) => React.ReactNode
 }
 
-interface IAutoSaveFormChangeOptions {
-    name: string
-    value: string | boolean
+interface INameValue<T> {
+    name: keyof T
+    value: T[keyof T]
+}
+
+interface IAutoSaveFormChangeOptions<T> extends INameValue<T> {
     debounced?: boolean
 }
 
-export interface IAutoSaveFormContext {
-    onChange: (options: IAutoSaveFormChangeOptions) => void
-    values: IAutoSaveFormState['values']
-    errors: IAutoSaveFormState['errors']
-    updating: IAutoSaveFormState['updating']
-}
-
-interface IUpdateData {
+interface IUpdateData<T> extends INameValue<T> {
     id: number
-    name: string
-    value: string | number | boolean | null
 }
 
-const Context = React.createContext({} as IAutoSaveFormContext)
+export interface IAutoSaveFormContext<T> extends IAutoSaveFormState<T> {
+    onChange: (options: IAutoSaveFormChangeOptions<T>) => void
+}
 
-class AutoSaveForm extends React.Component<
-    IAutoSaveFormProps,
-    IAutoSaveFormState
+// tslint:disable-next-line:no-any
+const Context = React.createContext({} as IAutoSaveFormContext<any>)
+
+class AutoSaveForm<T extends { id: number }> extends React.Component<
+    IAutoSaveFormProps<T>,
+    IAutoSaveFormState<T>
 > {
     private canUpdateState: boolean = false
 
@@ -66,21 +58,28 @@ class AutoSaveForm extends React.Component<
         this.canUpdateState = false
     }
 
-    public initialize = (values: IValues) => {
+    public initialize = (values: T) => {
         this.setState({
             values
         })
     }
 
-    public handleChange = (options: IAutoSaveFormChangeOptions) => {
+    public handleChange = (options: IAutoSaveFormChangeOptions<T>) => {
+        // spread issue with generics https://github.com/Microsoft/TypeScript/issues/10727
+        // this.setState((prevState) => ({
+        //     values: {
+        //         ...prevState.values,
+        //         [options.name]: options.value
+        //     }
+        // }))
+
         this.setState((prevState) => ({
-            values: {
-                ...prevState.values,
+            values: Object.assign({}, prevState.values, {
                 [options.name]: options.value
-            }
+            })
         }))
 
-        const data: IUpdateData = {
+        const data: IUpdateData<T> = {
             id: this.state.values.id,
             name: options.name,
             value: options.value
@@ -93,11 +92,11 @@ class AutoSaveForm extends React.Component<
         }
     }
 
-    public update = (data: IUpdateData) => {
+    public update = (data: IUpdateData<T>) => {
         new Promise((resolve, reject) => {
             this.props.update(
                 data.id,
-                { [data.name]: data.value },
+                { [data.name]: data.value } as Partial<T>,
                 resolve,
                 reject
             )
@@ -105,7 +104,7 @@ class AutoSaveForm extends React.Component<
             .then(() => {
                 if (this.canUpdateState) {
                     this.setState({
-                        updating: data.name,
+                        updating: data.name as string,
                         errors: {}
                     })
                 }
@@ -130,7 +129,7 @@ class AutoSaveForm extends React.Component<
     public debounceUpdate = debounce(this.update, 300)
 
     public render() {
-        const store: IAutoSaveFormContext = {
+        const store: IAutoSaveFormContext<T> = {
             ...this.state,
             onChange: this.handleChange
         }

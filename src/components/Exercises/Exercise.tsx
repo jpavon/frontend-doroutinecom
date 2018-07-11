@@ -4,7 +4,7 @@ import { IExercise } from 'data/exercises/types'
 import { ILift } from 'data/lifts/types'
 import { putExercise, deleteExercise } from 'data/exercises/actions'
 
-import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
+import AutoSaveForm from 'components/AutoSaveForm'
 import Button from 'components/Button'
 import Select from 'components/AutoSaveForm/Select'
 
@@ -22,7 +22,7 @@ const Exercise: React.SFC<IProps> = (props) => (
         <AutoSaveForm
             update={props.update}
             initialValues={props.exercise}
-            render={({ values }: IAutoSaveFormState) => (
+            render={({ values }) => (
                 <div className="exercise-lift">
                     <Select
                         id="liftId"

@@ -3,7 +3,7 @@ import * as React from 'react'
 import { IWorkout } from 'data/workouts/types'
 import { putWorkout } from 'data/workouts/actions'
 
-import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
+import AutoSaveForm from 'components/AutoSaveForm'
 import Datetime from 'components/AutoSaveForm/Datetime'
 import Input from 'components/AutoSaveForm/Input'
 import Textarea from 'components/AutoSaveForm/Textarea'
@@ -77,7 +77,7 @@ const Workout: React.SFC<IWorkoutProps> = (props) => (
             <AutoSaveForm
                 initialValues={props.workout}
                 update={props.update}
-                render={({ values }: IAutoSaveFormState) => (
+                render={({ values }) => (
                     <Field label="Additional Notes" id={`notes${values.id}`}>
                         <Textarea
                             id={`notes${values.id}`}

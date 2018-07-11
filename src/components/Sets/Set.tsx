@@ -4,7 +4,7 @@ import * as classNames from 'classnames'
 import { ISet } from 'data/sets/types'
 import { putSet, deleteSet } from 'data/sets/actions'
 
-import AutoSaveForm, { IAutoSaveFormState } from 'components/AutoSaveForm'
+import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
 import Button from 'components/Button'
 import Checkbox from 'components/AutoSaveForm/Checkbox'
@@ -24,7 +24,7 @@ const Set: React.SFC<ISetProps> = (props) => (
     <AutoSaveForm
         initialValues={props.set}
         update={props.update}
-        render={({ values }: IAutoSaveFormState) => (
+        render={({ values }) => (
             <div
                 className={classNames(
                     'set-inner',
