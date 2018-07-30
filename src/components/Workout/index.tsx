@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import { IRoutine } from 'data/routines/types'
 import { IWorkout } from 'data/workouts/types'
 import { putWorkout } from 'data/workouts/actions'
 
@@ -11,7 +12,6 @@ import Field from 'components/Field'
 import Button from 'components/Button'
 
 import './style.scss'
-import { IRoutine } from 'data/routines/types'
 
 interface IWorkoutProps {
     workout: IWorkout

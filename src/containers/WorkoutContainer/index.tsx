@@ -2,6 +2,8 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
+import { IWorkout } from 'data/workouts/types'
+import { IRoutine } from 'data/routines/types'
 import { IRootState } from 'data/types'
 
 import history from 'utils/history'
@@ -25,8 +27,6 @@ import Alert from 'components/Alert'
 import TopNav from 'components/TopNav'
 import Workout from 'components/Workout'
 import Timer from 'components/Timer'
-import { IWorkout } from 'data/workouts/types'
-import { IRoutine } from 'data/routines/types'
 import Button from 'components/Button'
 
 interface IOwnProps {
