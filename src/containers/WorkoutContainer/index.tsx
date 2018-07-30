@@ -162,6 +162,7 @@ class WorkoutContainer extends React.Component<IProps> {
                     />
                 )}
                 <Workout
+                    key={this.props.workout.id}
                     workout={this.props.workout}
                     displayName={this.props.displayName}
                     routine={this.props.routine}

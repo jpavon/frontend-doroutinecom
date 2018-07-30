@@ -26,7 +26,8 @@ const Datetime: React.SFC<IAutoSaveDatetimeProps> = (props) => (
                         onChange={(moment: Moment) => {
                             onChange({
                                 name: props.name,
-                                value: moment.format(serverDateFormat)
+                                value: moment.format(serverDateFormat),
+                                debounced: true
                             })
                         }}
                         {...props}

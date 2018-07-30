@@ -43,6 +43,7 @@ const Workout: React.SFC<IWorkoutProps> = (props) => (
         </div>
         <div className="workout-form">
             <AutoSaveForm
+                key={`${props.workout.id}-${props.workout.completedAt}`}
                 initialValues={props.workout}
                 update={props.update}
                 render={() => (

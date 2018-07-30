@@ -20,7 +20,8 @@ const Checkbox: React.SFC<IAutoSaveCheckboxProps> = (props) => (
                         onChange={(event) => {
                             onChange({
                                 name: props.name,
-                                value: event.target.checked
+                                value: event.target.checked,
+                                debounced: true
                             })
                         }}
                         {...props}
