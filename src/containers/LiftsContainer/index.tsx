@@ -11,7 +11,7 @@ import { statusConstants } from 'data/constants'
 import Lifts from 'components/Lifts/Lifts'
 import Lift from 'components/Lifts/Lift'
 import NoData from 'components/NoData'
-import TopNav from 'components/TopNav'
+import NavBar from 'components/NavBar'
 import Button from 'components/Button'
 
 interface IOwnProps {}
@@ -35,7 +35,7 @@ class LiftsContainer extends React.Component<IProps> {
     public render() {
         return (
             <>
-                <TopNav
+                <NavBar
                     title="Lifts"
                     rightButton={
                         <Button

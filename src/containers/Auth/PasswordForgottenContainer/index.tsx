@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { passwordForgottenUser } from 'data/user/actions'
 
 import PasswordForgotten from 'components/Auth/PasswordForgotten'
-import TopNav from 'components/TopNav'
+import NavBar from 'components/NavBar'
 
 interface IOwnProps {}
 
@@ -30,7 +30,7 @@ class PasswordForgottenContainer extends React.Component<IProps> {
     public render() {
         return (
             <>
-                <TopNav title="Password Forgotten" />
+                <NavBar title="Password Forgotten" />
                 <PasswordForgotten
                     handleSubmit={this.handleSubmit}
                     emailRef={this.email}

@@ -21,7 +21,7 @@ import {
 } from 'data/workouts/selectors'
 
 import Profile from 'components/Profile'
-import TopNav from 'components/TopNav'
+import NavBar from 'components/NavBar'
 import SetsTable from 'components/SetsTable'
 import NoData from 'components/NoData'
 import Start from 'components/Start'
@@ -63,7 +63,7 @@ class ProfileContainer extends React.Component<IProps, IState> {
     public render() {
         return this.props.user ? (
             <Profile>
-                <TopNav
+                <NavBar
                     title="Profile"
                     rightButton={<Button to="/settings">Settings</Button>}
                 />
@@ -74,9 +74,9 @@ class ProfileContainer extends React.Component<IProps, IState> {
                     hasCompletedWorkouts={this.props.hasCompletedWorkouts}
                     hasCompletedSets={this.props.hasCompletedSets}
                 />
-                <TopNav title="Weekly workouts" />
+                <NavBar title="Weekly workouts" />
                 <GraphWeeklyWorkouts data={this.props.weeklyWorkouts} />
-                <TopNav title="Recent top sets" />
+                <NavBar title="Recent top sets" />
                 {this.props.topSets.length > 0 ? (
                     <SetsTable
                         sets={this.props.topSets}

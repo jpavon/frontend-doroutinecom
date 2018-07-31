@@ -9,7 +9,7 @@ import { putUser, unauthUser } from 'data/user/actions'
 import { userSelector } from 'data/user/selectors'
 
 import Settings from 'components/Settings'
-import TopNav from 'components/TopNav'
+import NavBar from 'components/NavBar'
 import Button from 'components/Button'
 
 interface IOwnProps {}
@@ -58,7 +58,7 @@ class SettingsContainer extends React.Component<IProps> {
         return (
             this.props.user && (
                 <>
-                    <TopNav
+                    <NavBar
                         title="Settings"
                         leftButton={
                             <Button to="/" backIcon={true}>
@@ -66,12 +66,12 @@ class SettingsContainer extends React.Component<IProps> {
                             </Button>
                         }
                     />
-                    <TopNav title="General" />
+                    <NavBar title="General" />
                     <Settings
                         user={this.props.user}
                         putUser={this.props.putUser}
                     />
-                    <TopNav
+                    <NavBar
                         rightButton={
                             <Button
                                 onClick={this.handleUnauthUser}

@@ -7,7 +7,7 @@ import Field from 'components/Field'
 import AutoSaveForm from 'components/AutoSaveForm'
 import Select from 'components/AutoSaveForm/Select'
 import Input from 'components/AutoSaveForm/Input'
-import TopNav from 'components/TopNav'
+import NavBar from 'components/NavBar'
 
 import './style.scss'
 
@@ -57,7 +57,7 @@ const Settings: React.SFC<IProps> = (props) => (
                 </div>
             )}
         />
-        <TopNav title="User" />
+        <NavBar title="User" />
         <AutoSaveForm
             initialValues={props.user}
             update={props.putUser}

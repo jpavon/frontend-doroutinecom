@@ -24,7 +24,7 @@ import { statusConstants } from 'data/constants'
 import ExercisesContainer from 'containers/ExercisesContainer'
 
 import Alert from 'components/Alert'
-import TopNav from 'components/TopNav'
+import NavBar from 'components/NavBar'
 import Workout from 'components/Workout'
 import Timer from 'components/Timer'
 import Button from 'components/Button'
@@ -127,7 +127,7 @@ class WorkoutContainer extends React.Component<IProps> {
                     size="small"
                     animate={false}
                 />
-                <TopNav
+                <NavBar
                     title="Edit workout"
                     leftButton={
                         <Button to="/workouts" backIcon={true}>
@@ -153,7 +153,7 @@ class WorkoutContainer extends React.Component<IProps> {
                     }
                 />
                 {this.props.workout.completedAt && (
-                    <TopNav
+                    <NavBar
                         rightButton={
                             <Button onClick={this.handleCreate}>
                                 Perform again as New Workout
@@ -170,7 +170,7 @@ class WorkoutContainer extends React.Component<IProps> {
                 >
                     <ExercisesContainer workoutId={this.props.workoutId} />
                 </Workout>
-                <TopNav
+                <NavBar
                     rightButton={
                         <Button
                             onClick={this.handleRemove}

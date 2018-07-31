@@ -20,7 +20,7 @@ import { statusConstants } from 'data/constants'
 import SetsContainer from 'containers/SetsContainer'
 
 import NoData from 'components/NoData'
-import TopNav from 'components/TopNav'
+import NavBar from 'components/NavBar'
 import Exercises from 'components/Exercises/Exercises'
 import Exercise from 'components/Exercises/Exercise'
 
@@ -88,7 +88,7 @@ class ExercisesContainer extends React.Component<IProps, IState> {
     public render() {
         return (
             <>
-                <TopNav title="Exercises" />
+                <NavBar title="Exercises" />
                 <Exercises
                     create={this.handleCreate}
                     exercises={

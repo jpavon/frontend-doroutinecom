@@ -14,7 +14,7 @@ import { statusConstants } from 'data/constants'
 import Routines from 'components/Routines/Routines'
 import Routine from 'components/Routines/Routine'
 import NoData from 'components/NoData'
-import TopNav from 'components/TopNav'
+import NavBar from 'components/NavBar'
 import Info from 'components/Info'
 import Button from 'components/Button'
 
@@ -40,7 +40,7 @@ class RoutinesContainer extends React.Component<IProps> {
     public render() {
         return (
             <>
-                <TopNav
+                <NavBar
                     title="Routines"
                     rightButton={
                         <Button
@@ -63,7 +63,7 @@ class RoutinesContainer extends React.Component<IProps> {
                 </Routines>
                 {this.props.defaultRoutines.length > 0 && (
                     <>
-                        <TopNav title="PPL" />
+                        <NavBar title="PPL" />
                         <Info name="ppl" />
                         <Routines>
                             {this.props.defaultRoutines.map((routine, i) => (

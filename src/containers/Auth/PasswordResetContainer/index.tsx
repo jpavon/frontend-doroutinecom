@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { passwordResetUser } from 'data/user/actions'
 
 import PasswordReset from 'components/Auth/PasswordReset'
-import TopNav from 'components/TopNav'
+import NavBar from 'components/NavBar'
 
 interface IOwnProps {
     token: string
@@ -47,7 +47,7 @@ class PasswordResetContainer extends React.Component<IProps> {
     public render() {
         return (
             <>
-                <TopNav title="Password Reset" />
+                <NavBar title="Password Reset" />
                 <PasswordReset
                     handleSubmit={this.handleSubmit}
                     emailRef={this.email}

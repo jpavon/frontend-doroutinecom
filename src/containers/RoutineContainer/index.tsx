@@ -15,7 +15,7 @@ import { statusConstants } from 'data/constants'
 import ExercisesContainer from 'containers/ExercisesContainer'
 
 import Routine from 'components/Routine'
-import TopNav from 'components/TopNav'
+import NavBar from 'components/NavBar'
 import Button from 'components/Button'
 
 interface IOwnProps {
@@ -72,7 +72,7 @@ class RoutineContainer extends React.Component<IProps> {
                         <title>{this.props.routine.name}</title>
                     </Helmet>
                 )}
-                <TopNav
+                <NavBar
                     title="Edit routine"
                     leftButton={
                         <Button to="/routines" backIcon={true}>
@@ -95,7 +95,7 @@ class RoutineContainer extends React.Component<IProps> {
                     <ExercisesContainer routineId={this.props.routine.id} />
                 </Routine>
                 {!this.props.routine.program && (
-                    <TopNav
+                    <NavBar
                         rightButton={
                             <Button
                                 onClick={this.handleRemove}

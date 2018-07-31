@@ -17,7 +17,7 @@ import { statusConstants } from 'data/constants'
 
 import Lift from 'components/Lift'
 import SetsTable from 'components/SetsTable'
-import TopNav from 'components/TopNav'
+import NavBar from 'components/NavBar'
 import NoData from 'components/NoData'
 import Button from 'components/Button'
 import GraphLift from 'components/Graph/GraphLift'
@@ -67,7 +67,7 @@ class LiftContainer extends React.Component<IProps> {
                         <title>{this.props.lift.name}</title>
                     </Helmet>
                 )}
-                <TopNav
+                <NavBar
                     title="Edit lift"
                     leftButton={
                         <Button to="/lifts" backIcon={true}>
@@ -76,9 +76,9 @@ class LiftContainer extends React.Component<IProps> {
                     }
                 />
                 <Lift lift={this.props.lift} update={this.props.putLift} />
-                <TopNav title="Recent progress" />
+                <NavBar title="Recent progress" />
                 <GraphLift data={this.props.liftSetsGraph} />
-                <TopNav title="Top sets" />
+                <NavBar title="Top sets" />
                 {this.props.topLiftSets.length > 0 ? (
                     <SetsTable
                         sets={this.props.topLiftSets}
@@ -88,7 +88,7 @@ class LiftContainer extends React.Component<IProps> {
                 ) : (
                     <NoData text="List of top sets will be displayed here when you complete a workout." />
                 )}
-                <TopNav
+                <NavBar
                     rightButton={
                         <Button
                             onClick={this.handleRemove}

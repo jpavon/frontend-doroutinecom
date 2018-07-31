@@ -9,7 +9,7 @@ interface IProps {
     rightButton?: React.ReactNode
 }
 
-const TopNav: React.SFC<IProps> = (props) => {
+const NavBar: React.SFC<IProps> = (props) => {
     return (
         <div
             className={classNames(
@@ -28,4 +28,4 @@ const TopNav: React.SFC<IProps> = (props) => {
     )
 }
 
-export default TopNav
+export default NavBar

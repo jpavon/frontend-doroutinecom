@@ -11,7 +11,7 @@ import {
 
 import Workouts from 'components/Workouts/Workouts'
 import NoData from 'components/NoData'
-import TopNav from 'components/TopNav'
+import NavBar from 'components/NavBar'
 import Badge from 'components/Badge'
 import WorkoutContainer from 'containers/WorkoutsContainer/WorkoutContainer'
 
@@ -30,7 +30,7 @@ class WorkoutsContainer extends React.Component<IProps> {
     public render() {
         return (
             <>
-                <TopNav
+                <NavBar
                     title={
                         <>
                             In progress{' '}
@@ -50,7 +50,7 @@ class WorkoutsContainer extends React.Component<IProps> {
                         <NoData text="You can start a workout from a routine or an already completed workout." />
                     )}
                 </Workouts>
-                <TopNav title="Completed" />
+                <NavBar title="Completed" />
                 <Workouts>
                     {this.props.completedWorkouts.length > 0 ? (
                         this.props.completedWorkouts.map((workout, i) => (
