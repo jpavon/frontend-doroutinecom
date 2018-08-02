@@ -1,9 +1,8 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
 
 import { ITopSet } from 'data/sets/types'
 
-import './style.scss'
+import { SetsTableTop, SetsTableItem } from './style'
 
 interface ILiftSetsTable {
     sets: ITopSet[]
@@ -12,8 +11,8 @@ interface ILiftSetsTable {
 }
 
 const LiftSetsTable: React.SFC<ILiftSetsTable> = (props) => (
-    <div className="sets-table">
-        <div className="sets-table-top">
+    <>
+        <SetsTableTop>
             <div>Date</div>
             {props.showLiftColumn && <div>Lift</div>}
             <div className="sets-table-number sets-table-right">Reps</div>
@@ -23,9 +22,9 @@ const LiftSetsTable: React.SFC<ILiftSetsTable> = (props) => (
             {!props.showLiftColumn && (
                 <div className="sets-table-right">Estimated 1RM</div>
             )}
-        </div>
+        </SetsTableTop>
         {props.sets.map((set, i) => (
-            <Link
+            <SetsTableItem
                 key={i}
                 to={
                     props.showLiftColumn
@@ -45,9 +44,9 @@ const LiftSetsTable: React.SFC<ILiftSetsTable> = (props) => (
                 {!props.showLiftColumn && (
                     <div className="sets-table-right">{set.rm}</div>
                 )}
-            </Link>
+            </SetsTableItem>
         ))}
-    </div>
+    </>
 )
 
 export default LiftSetsTable

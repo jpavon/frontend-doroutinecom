@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import Button from 'components/Button'
 
-import './style.scss'
+import { Info as StyledInfo, InfoContent } from './style'
 
 interface ILIftProps {
     name: string
@@ -19,7 +19,7 @@ class Info extends React.Component<ILIftProps, ILIftState> {
 
     public render() {
         return (
-            <div className="info">
+            <StyledInfo>
                 <Button
                     onClick={() =>
                         this.setState((prevState) => ({
@@ -31,7 +31,7 @@ class Info extends React.Component<ILIftProps, ILIftState> {
                 </Button>
 
                 {this.state.open && (
-                    <div className="info-content">
+                    <InfoContent>
                         <h2>The Program</h2>
                         <p>
                             This is a 6 days per week linear progression
@@ -66,9 +66,9 @@ class Info extends React.Component<ILIftProps, ILIftState> {
                             band pull aparts and shoulder dislocations to warmup
                             your shoulders.
                         </p>
-                    </div>
+                    </InfoContent>
                 )}
-            </div>
+            </StyledInfo>
         )
     }
 }

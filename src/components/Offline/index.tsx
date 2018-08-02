@@ -1,26 +1,29 @@
 import * as React from 'react'
 
 import Button from 'components/Button'
-
 import Logo from 'media/logo.svg'
-
-import './style.scss'
+import {
+    Offline as StyledOffline,
+    OfflineLogo,
+    OfflineText,
+    OfflineButton
+} from './style'
 
 const Offline: React.SFC<{}> = () => (
-    <div className="offline">
-        <div className="offline-logo">
+    <StyledOffline>
+        <OfflineLogo>
             <Logo />
-        </div>
-        <p className="offline-text">
+        </OfflineLogo>
+        <OfflineText>
             You need internet connection to continue using doroutine, refresh
             the page when you are connected to the internet.
-        </p>
-        <div className="offline-button">
+        </OfflineText>
+        <OfflineButton>
             <Button onClick={() => window.location.reload(true)}>
                 Refresh
             </Button>
-        </div>
-    </div>
+        </OfflineButton>
+    </StyledOffline>
 )
 
 export default Offline

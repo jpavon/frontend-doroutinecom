@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import './style.scss'
+import { Spinner } from './style'
 
 class Loading extends React.Component {
     public timer: number
@@ -20,7 +20,7 @@ class Loading extends React.Component {
     }
 
     public render() {
-        return this.state.render ? <div className="spinner" /> : null
+        return this.state.render ? <Spinner /> : null
     }
 }
 

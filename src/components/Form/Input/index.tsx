@@ -1,28 +1,20 @@
 import * as React from 'react'
-import * as classNames from 'classnames'
 
-import './style.scss'
+import { Input as StyledInput } from './style'
 
 export interface IInputProps
     extends React.InputHTMLAttributes<HTMLInputElement> {
-    align?: 'right' | 'center'
     inputRef?: React.RefObject<HTMLInputElement>
 }
 
 const Input: React.SFC<IInputProps> = (props) => {
-    const { name, type, className, inputRef, align, ...rest } = props
+    const { name, type, className, inputRef, ...rest } = props
 
     return (
-        <input
+        <StyledInput
             name={name}
             type={type || 'text'}
-            ref={inputRef}
-            className={classNames(
-                'input',
-                align === 'right' && 'input--right',
-                align === 'center' && 'input--center',
-                className
-            )}
+            innerRef={inputRef}
             {...rest}
         />
     )

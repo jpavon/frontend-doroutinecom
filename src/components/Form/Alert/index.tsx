@@ -1,15 +1,13 @@
 import * as React from 'react'
 
-import './style.scss'
+import { FormAlert } from './style'
 
 interface IAlertProps {
     message: string | null
 }
 
 const Alert: React.SFC<IAlertProps> = (props) => {
-    return props.message ? (
-        <span className="form-alert">{props.message}</span>
-    ) : null
+    return props.message ? <FormAlert>{props.message}</FormAlert> : null
 }
 
 export default Alert

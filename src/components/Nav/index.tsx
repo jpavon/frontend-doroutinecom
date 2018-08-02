@@ -1,6 +1,4 @@
 import * as React from 'react'
-import { NavLink } from 'react-router-dom'
-import * as classNames from 'classnames'
 import { RouteComponentProps } from 'react-router'
 
 import LogoSvg from 'media/logo.svg'
@@ -9,7 +7,15 @@ import WorkoutsSvg from 'media/workouts.svg'
 import RoutinesSvg from 'media/routines.svg'
 import LiftsSvg from 'media/lifts.svg'
 
-import './style.scss'
+import {
+    NavContainer,
+    Nav as StyledNav,
+    NavItem,
+    NavLink,
+    NavLinkHighlight,
+    NavList,
+    NavLogo
+} from './style'
 
 const isProfileActive = (
     match: RouteComponentProps<{}>['match'],
@@ -30,70 +36,46 @@ interface INavProps {
 }
 
 const Nav: React.SFC<INavProps> = (props) => (
-    <nav
-        className={classNames(
-            'nav-container',
-            props.isTouchDevice && 'nav-container--touch'
-        )}
-    >
-        <div className="nav">
-            <NavLink
-                to="/"
-                className="nav-logo"
-                activeClassName="nav-link--active"
-            >
+    <NavContainer>
+        <StyledNav>
+            <NavLogo to="/" className="nav-logo" activeClassName="active">
                 <LogoSvg />
-            </NavLink>
+            </NavLogo>
 
-            <ul className="nav-list">
-                <li className="nav-item">
+            <NavList>
+                <NavItem>
                     <NavLink
                         exact={true}
                         to="/"
-                        className="nav-link"
-                        activeClassName="nav-link--active"
+                        activeClassName="active"
                         isActive={isProfileActive}
                     >
                         <ProfileSvg />
                         Profile
                     </NavLink>
-                </li>
-                <li className="nav-item">
-                    <NavLink
-                        to="/workouts"
-                        className="nav-link"
-                        activeClassName="nav-link--active"
-                    >
-                        {props.isPendingWorkouts && (
-                            <div className="nav-link-highlight" />
-                        )}
+                </NavItem>
+                <NavItem>
+                    <NavLink to="/workouts" activeClassName="active">
+                        {props.isPendingWorkouts && <NavLinkHighlight />}
                         <WorkoutsSvg />
                         <span>Workouts</span>
                     </NavLink>
-                </li>
-                <li className="nav-item">
-                    <NavLink
-                        to="/routines"
-                        className="nav-link"
-                        activeClassName="nav-link--active"
-                    >
+                </NavItem>
+                <NavItem>
+                    <NavLink to="/routines" activeClassName="active">
                         <RoutinesSvg />
                         <span>Routines</span>
                     </NavLink>
-                </li>
-                <li className="nav-item">
-                    <NavLink
-                        to="/lifts"
-                        className="nav-link"
-                        activeClassName="nav-link--active"
-                    >
+                </NavItem>
+                <NavItem>
+                    <NavLink to="/lifts" activeClassName="active">
                         <LiftsSvg />
                         Lifts
                     </NavLink>
-                </li>
-            </ul>
-        </div>
-    </nav>
+                </NavItem>
+            </NavList>
+        </StyledNav>
+    </NavContainer>
 )
 
 export default Nav

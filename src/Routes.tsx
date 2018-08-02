@@ -1,26 +1,25 @@
 import * as React from 'react'
-import { Route, Switch, Redirect } from 'react-router-dom'
-import { RouteComponentProps } from 'react-router'
+import { Route, Switch, Redirect, RouteComponentProps } from 'react-router-dom'
 
-import Login from 'pages/Auth/Login'
-import Register from 'pages/Auth/Register'
-import PasswordForgotten from 'pages/Auth/PasswordForgotten'
-import PasswordReset from 'pages/Auth/PasswordReset'
-import Routines from 'pages/Routines'
-import Routine from 'pages/Routine'
-import Workout from 'pages/Workout'
-import Workouts from 'pages/Workouts'
-import Lift from 'pages/Lift'
-import Lifts from 'pages/Lifts'
-import Profile from 'pages/Profile'
-import Settings from 'pages/Settings'
-import NotFound from 'pages/NotFound'
+import Login from 'views/auth/Login'
+import Register from 'views/auth/Register'
+import PasswordForgotten from 'views/auth/PasswordForgotten'
+import PasswordReset from 'views/auth/PasswordReset'
+import Routines from 'views/Routines'
+import Routine from 'views/Routine'
+import Workout from 'views/Workout'
+import Workouts from 'views/Workouts'
+import Lift from 'views/Lift'
+import Lifts from 'views/Lifts'
+import Profile from 'views/Profile'
+import Settings from 'views/Settings'
+import NotFound from 'views/NotFound'
 
-interface IProps {
+interface Props {
     isAuth: boolean
 }
 
-interface IRouteComponent {
+interface RouteProps {
     exact?: boolean
     path?: string
     component: React.SFC<RouteComponentProps<{}>>
@@ -30,7 +29,7 @@ const PrivateRoute = ({
     component: Component,
     isAuth,
     ...rest
-}: IRouteComponent & IProps) => (
+}: RouteProps & Props) => (
     <Route
         render={(props) =>
             isAuth ? (
@@ -52,7 +51,7 @@ const GuestRoute = ({
     component: Component,
     isAuth,
     ...rest
-}: IRouteComponent & IProps) => (
+}: RouteProps & Props) => (
     <Route
         render={(props) =>
             !isAuth ? (
@@ -71,7 +70,7 @@ const GuestRoute = ({
     />
 )
 
-class Routes extends React.Component<IProps> {
+class Routes extends React.Component<Props> {
     public render() {
         return (
             <Switch>

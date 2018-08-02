@@ -1,13 +1,11 @@
 import * as React from 'react'
 
-import './style.scss'
+import { GraphEmpty as StyledGraphEmpty } from './style'
 
-interface Props {}
-
-const GraphEmpty: React.SFC<Props> = (props) => (
-    <div className="graph-empty">
+const GraphEmpty: React.SFC = () => (
+    <StyledGraphEmpty>
         Complete a workout with this lift to start tracking your progress.
-    </div>
+    </StyledGraphEmpty>
 )
 
 export default GraphEmpty

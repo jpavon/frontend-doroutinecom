@@ -1,37 +1,32 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
 
-import './style.scss'
+import { ListItem as StyledListItem, ListItemInfo } from './style'
 
 interface IListItemProps {
     to: string
-    className: string
     info?: string[]
 }
 
 const ListItem: React.SFC<IListItemProps> = (props) => {
-    const Element = props.to ? Link : 'div'
+    const { info, children, ...rest } = props
 
     return (
-        <Element to={props.to} className={`list-item ${props.className}`}>
-            {props.children}
-            {props.info &&
-                props.info.length > 0 && (
-                    <div className="list-item-info">
+        <StyledListItem {...rest}>
+            {children}
+            {info &&
+                info.length > 0 && (
+                    <ListItemInfo>
                         Exercises:{' '}
-                        {props.info &&
-                            props.info.map((item, index) => {
-                                if (
-                                    props.info &&
-                                    props.info.length === index + 1
-                                ) {
+                        {info &&
+                            info.map((item, index) => {
+                                if (info && info.length === index + 1) {
                                     return item
                                 }
                                 return `${item}, `
                             })}
-                    </div>
+                    </ListItemInfo>
                 )}
-        </Element>
+        </StyledListItem>
     )
 }
 

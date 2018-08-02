@@ -1,7 +1,7 @@
 import * as React from 'react'
-import * as classNames from 'classnames'
 
-import './style.scss'
+import ArrowDown from 'media/arrow-down.svg'
+import { SelectWrapper, Select as StyledSelect } from './style'
 
 interface IOption {
     id: number | string
@@ -26,33 +26,33 @@ const Select: React.SFC<ISelectProps> = (props) => {
     } = props
 
     return (
-        <select
-            name={name}
-            ref={inputRef}
-            className={classNames(
-                'select',
-                !props.value && !props.defaultValue && 'select--default-option',
-                className
-            )}
-            {...rest}
-        >
-            {!props.value &&
-                !props.defaultValue && (
-                    <option aria-selected={false}>
-                        {defaultOptionMessage}
-                    </option>
-                )}
-            {options.length > 0 &&
-                options.map((option, i) => (
-                    <option
-                        key={option.id}
-                        value={option.id}
-                        aria-selected={Number(props.value) === option.id}
-                    >
-                        {option.name}
-                    </option>
-                ))}
-        </select>
+        <SelectWrapper>
+            <ArrowDown />
+
+            <StyledSelect
+                name={name}
+                ref={inputRef}
+                isDefaultOption={!props.value && !props.defaultValue}
+                {...rest}
+            >
+                {!props.value &&
+                    !props.defaultValue && (
+                        <option aria-selected={false}>
+                            {defaultOptionMessage}
+                        </option>
+                    )}
+                {options.length > 0 &&
+                    options.map((option, i) => (
+                        <option
+                            key={option.id}
+                            value={option.id}
+                            aria-selected={Number(props.value) === option.id}
+                        >
+                            {option.name}
+                        </option>
+                    ))}
+            </StyledSelect>
+        </SelectWrapper>
     )
 }
 

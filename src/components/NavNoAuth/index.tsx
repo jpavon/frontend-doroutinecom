@@ -1,31 +1,22 @@
 import * as React from 'react'
-import { NavLink } from 'react-router-dom'
 
 import LogoFullSvg from 'media/logo-full.svg'
 
-import './style.scss'
+import { NavNoAuthLink, NavNoAuthLinks, NavNoAuthLogo } from './style'
 
 const NavNoAuth: React.SFC<{}> = () => (
-    <nav className="nav-no-auth">
-        <div className="nav-no-auth-logo">
+    <nav>
+        <NavNoAuthLogo>
             <LogoFullSvg />
-        </div>
-        <div className="nav-no-auth-links">
-            <NavLink
-                to="/login"
-                className="nav-no-auth-link"
-                activeClassName="nav-no-auth-link--active"
-            >
+        </NavNoAuthLogo>
+        <NavNoAuthLinks>
+            <NavNoAuthLink to="/login" activeClassName="active">
                 Log In
-            </NavLink>
-            <NavLink
-                to="/register"
-                className="nav-no-auth-link"
-                activeClassName="nav-no-auth-link--active"
-            >
+            </NavNoAuthLink>
+            <NavNoAuthLink to="/register" activeClassName="active">
                 Sign In
-            </NavLink>
-        </div>
+            </NavNoAuthLink>
+        </NavNoAuthLinks>
     </nav>
 )
 

@@ -2,28 +2,3 @@
 
 .nav-no-auth {
 }
-
-.nav-no-auth-logo {
-    margin: $spacing * 2 0 $spacing * 3;
-    text-align: center;
-}
-
-.nav-no-auth-links {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    margin-bottom: $spacing * 2;
-}
-
-.nav-no-auth-link {
-    font-size: 0.9rem;
-    margin: 0 $spacing * 2;
-    display: inline-block;
-    letter-spacing: 0.05rem;
-    color: $color-font;
-
-    &:hover,
-    &.nav-no-auth-link--active {
-        color: $color-primary;
-    }
-}

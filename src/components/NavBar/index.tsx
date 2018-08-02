@@ -1,7 +1,6 @@
 import * as React from 'react'
-import * as classNames from 'classnames'
 
-import './style.scss'
+import { TopNav, TopNavTitle, TopNavLeft, TopNavRight } from './style'
 
 interface IProps {
     title?: React.ReactNode
@@ -11,20 +10,13 @@ interface IProps {
 
 const NavBar: React.SFC<IProps> = (props) => {
     return (
-        <div
-            className={classNames(
-                'top-nav',
-                !props.title && 'top-nav--no-title'
-            )}
-        >
-            {props.leftButton && (
-                <div className="top-nav-left">{props.leftButton}</div>
-            )}
-            {props.title && <h1 className="top-nav-title">{props.title}</h1>}
+        <TopNav noTitle={!props.title}>
+            {props.leftButton && <TopNavLeft>{props.leftButton}</TopNavLeft>}
+            {props.title && <TopNavTitle>{props.title}</TopNavTitle>}
             {props.rightButton && (
-                <div className="top-nav-right">{props.rightButton}</div>
+                <TopNavRight>{props.rightButton}</TopNavRight>
             )}
-        </div>
+        </TopNav>
     )
 }
 

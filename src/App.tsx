@@ -7,7 +7,7 @@ import { IRootState } from 'data/types'
 
 import { getAppData } from 'data/actions'
 
-import NavContainer from 'containers/NavContainer'
+import NavContainer from 'views/Nav'
 
 import Routes from 'Routes'
 import ErrorApp from 'components/ErrorApp'

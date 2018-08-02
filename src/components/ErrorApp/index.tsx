@@ -1,15 +1,15 @@
 import * as React from 'react'
 
-import './style.scss'
+import { ErrorApp as StyledErrorApp, ErrorAppTitle } from './style'
 
-const ErrorApp: React.SFC<{}> = () => (
-    <div className="error-app">
-        <div className="error-app-title">Application error.</div>
+const ErrorApp: React.SFC = () => (
+    <StyledErrorApp>
+        <ErrorAppTitle>Application error.</ErrorAppTitle>
         <p>
             Try reloading the page or contact support if this error keeps
             happening.
         </p>
-    </div>
+    </StyledErrorApp>
 )
 
 export default ErrorApp

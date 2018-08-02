@@ -1,25 +1,19 @@
 import * as React from 'react'
-import * as classNames from 'classnames'
 
-import './style.scss'
+import { Label as StyledLabel } from './style'
 
-interface ILabelProps {
+interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
     htmlFor: string
-    className?: string
     title?: string
 }
 
 const Label: React.SFC<ILabelProps> = (props) => {
-    const { children, className, htmlFor, title } = props
+    const { children, htmlFor, title } = props
 
     return (
-        <label
-            htmlFor={htmlFor}
-            className={classNames('label', className)}
-            title={title}
-        >
+        <StyledLabel htmlFor={htmlFor} title={title} {...props}>
             {children}
-        </label>
+        </StyledLabel>
     )
 }
 

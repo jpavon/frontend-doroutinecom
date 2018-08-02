@@ -1,36 +1,37 @@
 import * as React from 'react'
 import { Transition as SpringTransition, animated } from 'react-spring'
 
-export interface ITransitionProps {
+// tslint:disable-next-line:no-any
+type SFC<P = {}> = (props: P) => React.ReactElement<any> | null
+
+export interface Transition {
     // tslint:disable-next-line:no-any
-    render: React.ReactElement<any> | Array<React.ReactElement<any>>
-    className?: string
+    children: React.ReactElement<any> | Array<React.ReactElement<any>>
+    e2e?: string
 }
 
-const Transition: React.SFC<ITransitionProps> = (props) => {
-    if (Array.isArray(props.render) && props.render.length > 0) {
+const Transition: SFC<Transition> = (props) => {
+    if (Array.isArray(props.children) && props.children.length > 0) {
         return (
             <SpringTransition
                 native={true}
-                keys={props.render.map((item) => item.key)}
+                keys={props.children.map((item) => item.key)}
                 from={{ opacity: 0 }}
                 enter={{ opacity: 1 }}
                 leave={{ opacity: 0 }}
             >
-                {props.render.map((item) => (styles: object) => (
-                    <animated.div
-                        className={props.className}
-                        style={{ ...styles }}
-                    >
+                {props.children.map((item) => (styles: object) => (
+                    <animated.div data-e2e={props.e2e} style={{ ...styles }}>
                         {item}
                     </animated.div>
                 ))}
             </SpringTransition>
         )
+    } else if (!Array.isArray(props.children)) {
+        return props.children
     }
 
-    // tslint:disable-next-line:no-any
-    return props.render as React.ReactElement<any>
+    return null
 }
 
 export default Transition

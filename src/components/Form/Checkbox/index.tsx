@@ -3,7 +3,7 @@ import * as classNames from 'classnames'
 
 import TickSvg from 'media/tick.svg'
 
-import './style.scss'
+import { Checkbox as StyledCheckbox, CheckboxTick } from './style'
 
 export interface ICheckboxProps
     extends React.InputHTMLAttributes<HTMLInputElement> {}
@@ -13,15 +13,10 @@ const Checkbox: React.SFC<ICheckboxProps> = (props) => {
 
     return (
         <>
-            <span
-                className={classNames(
-                    'checkbox-tick',
-                    checked && 'checkbox-tick--checked'
-                )}
-            >
+            <CheckboxTick checked={checked}>
                 {checked && <TickSvg />}
-            </span>
-            <input
+            </CheckboxTick>
+            <StyledCheckbox
                 id={id}
                 name={name}
                 checked={checked}

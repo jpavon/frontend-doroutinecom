@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import moment from 'utils/moment'
 
-import './style.scss'
+import { Timer as StyledTimer } from './style'
 
 interface ITimerProps {
     start: string
@@ -67,9 +67,9 @@ class Timer extends React.Component<ITimerProps, ITimerState> {
 
     public render() {
         return (
-            <span className="timer">
+            <StyledTimer>
                 {this.state.hours}:{this.state.minutes}:{this.state.seconds}
-            </span>
+            </StyledTimer>
         )
     }
 }

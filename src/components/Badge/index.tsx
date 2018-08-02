@@ -1,13 +1,13 @@
 import * as React from 'react'
 
-import './style.scss'
+import { BadgeWrapper } from './style'
 
 interface IProps {
     value: number
 }
 
 const Badge: React.SFC<IProps> = (props) => (
-    <div className="badge">{props.value}</div>
+    <BadgeWrapper>{props.value}</BadgeWrapper>
 )
 
 export default Badge

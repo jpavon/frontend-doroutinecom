@@ -4,7 +4,8 @@ import * as ReactDatetime from 'react-datetime'
 import moment from 'utils/moment'
 import { dateFormat, timeFormat } from 'utils/date'
 
-import './style.scss'
+import { dateTimeStyles } from './style'
+dateTimeStyles()
 
 export interface IDatetimeProps extends ReactDatetime.DatetimepickerProps {
     id: string

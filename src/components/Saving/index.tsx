@@ -1,9 +1,9 @@
 import * as React from 'react'
 
-import './style.scss'
+import { Saving as StyledSaving } from './style'
 
 const Saving: React.SFC<{}> = () => {
-    return <div className="saving" />
+    return <StyledSaving />
 }
 
 export default Saving

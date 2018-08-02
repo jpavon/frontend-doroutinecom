@@ -1,66 +1,42 @@
 import * as React from 'react'
-import * as classNames from 'classnames'
-import { Link, LinkProps } from 'react-router-dom'
-import { omit } from 'lodash'
+import { LinkProps } from 'react-router-dom'
 
-import './style.scss'
+import { Button as StyledButton, AnchorButton, LinkButton } from './style'
 
 import XSvg from 'media/x.svg'
 import ArrowLeftSvg from 'media/arrow-left.svg'
 
-interface IExtraProps {
+interface ExtraProps {
     disabled?: boolean
     danger?: boolean
-    removeIcon?: boolean
-    backIcon?: boolean
+    icon?: 'back' | 'remove'
 }
 
-export type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> &
-    IExtraProps
+export type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement>
+
 export type ButtonProps = LinkProps &
-    React.ButtonHTMLAttributes<HTMLButtonElement> &
-    IExtraProps
+    React.ButtonHTMLAttributes<HTMLButtonElement>
 
-type IButtonProps<T> = T extends undefined ? AnchorProps : ButtonProps
+type Props = AnchorProps & ButtonProps & ExtraProps
 
-interface IOwnButtonProps<T> {
-    to?: T
-}
+// todo: separate Button into ButtonLink and ButtonAnchor
+const Button: React.SFC<Partial<Props>> = (props) => {
+    const { icon, children, ...rest } = props
 
-class Button<T = undefined> extends React.Component<
-    IOwnButtonProps<T> & IButtonProps<T>
-> {
-    public render() {
-        // spread with generics not working https://github.com/Microsoft/TypeScript/issues/10727
-        const { className, danger, removeIcon, backIcon, children } = this.props
-        // omit used props
-        const rest = omit(
-            this.props,
-            'className',
-            'danger',
-            'removeIcon',
-            'backIcon',
-            'children'
-        )
+    const Element = props.to
+        ? LinkButton
+        : props.href
+            ? AnchorButton
+            : StyledButton
 
-        const Element = this.props.to ? Link : this.props.href ? 'a' : 'button'
+    return (
+        <Element {...rest}>
+            {icon === 'remove' && <XSvg />}
+            {icon === 'back' && <ArrowLeftSvg />}
 
-        return (
-            <Element
-                className={classNames(
-                    'button',
-                    danger && 'button--danger',
-                    className
-                )}
-                {...rest}
-            >
-                {removeIcon && <XSvg />}
-                {backIcon && <ArrowLeftSvg />}
-
-                {children}
-            </Element>
-        )
-    }
+            {children}
+        </Element>
+    )
 }
 
 export default Button
