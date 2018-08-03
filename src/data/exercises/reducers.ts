@@ -1,10 +1,10 @@
-import { IExercisesState, IExercisesAction } from 'data/exercises/types'
+import { ExercisesState, ExercisesAction } from 'data/exercises/types'
 
 import constants from 'data/exercises/constants'
 import { statusConstants } from 'data/constants'
 import * as utils from 'data/utils'
 
-const initialState: Readonly<IExercisesState> = {
+const initialState: Readonly<ExercisesState> = {
     status: statusConstants.STATUS_NONE,
     entities: {},
     entitiesOrder: [],
@@ -14,8 +14,8 @@ const initialState: Readonly<IExercisesState> = {
 
 const exercises = (
     state = initialState,
-    action: IExercisesAction
-): IExercisesState => {
+    action: ExercisesAction
+): ExercisesState => {
     switch (action.type) {
         case constants.EXERCISES_GET_REQUEST:
             return utils.request(state)

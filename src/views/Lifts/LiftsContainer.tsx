@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IRootState } from 'data/types'
+import { RootState } from 'data/types'
 
 import { liftsSelector } from 'data/lifts/selectors'
 import { postLift } from 'data/lifts/actions'
@@ -10,7 +10,7 @@ import { statusConstants } from 'data/constants'
 import NoData from 'components/NoData'
 import NavBar from 'components/NavBar'
 import Button from 'components/Button'
-import { Lifts, LiftListItem } from 'views/Lifts/style'
+import { Lifts, LiftListItem } from './style'
 
 interface OwnProps {}
 
@@ -58,7 +58,7 @@ class LiftsContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: OwnProps) => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     lifts: liftsSelector(state),
     isLoading: state.lifts.status === statusConstants.STATUS_LOADING
 })

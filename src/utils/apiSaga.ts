@@ -1,13 +1,13 @@
 import { put, call } from 'redux-saga/effects'
 
-import { IApiAction, IAction } from 'data/types'
+import { ApiAction, Action } from 'data/types'
 
 import api from 'utils/api'
 
 export default function* apiSaga(
-    action: IApiAction,
-    successAction: (payload: object) => IAction,
-    failureAction: (error: object) => IAction
+    action: ApiAction,
+    successAction: (payload: object) => Action,
+    failureAction: (error: object) => Action
 ) {
     try {
         const payload = yield call(

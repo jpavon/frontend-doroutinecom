@@ -1,7 +1,7 @@
-import { IStateMap } from 'data/types'
+import { StateMap } from 'data/types'
 import * as actions from 'data/workouts/actions'
 
-export interface IWorkout {
+export interface Workout {
     id: number
     userId: number
     routineId: number | null
@@ -13,13 +13,13 @@ export interface IWorkout {
     updatedAt: string
 }
 
-export type IWorkoutsState = IStateMap<IWorkout>
+export type WorkoutsState = StateMap<Workout>
 
-export type IWorkoutsAction = ReturnType<typeof actions[keyof typeof actions]>
+export type WorkoutsAction = ReturnType<typeof actions[keyof typeof actions]>
 
-export type IWorkoutRequestData = Partial<IWorkout & { workoutId: number }>
+export type WorkoutRequestData = Partial<Workout & { workoutId: number }>
 
-export interface IWorkoutFromRequestData {
+export interface WorkoutFromRequestData {
     workoutId?: number
     routineId: number | null
     startedAt: string

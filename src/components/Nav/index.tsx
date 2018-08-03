@@ -30,12 +30,12 @@ const isProfileActive = (
     return false
 }
 
-interface INavProps {
+interface NavProps {
     isTouchDevice: boolean
     isPendingWorkouts: boolean
 }
 
-const Nav: React.SFC<INavProps> = (props) => (
+const Nav: React.SFC<NavProps> = (props) => (
     <NavContainer>
         <StyledNav>
             <NavLogo to="/" className="nav-logo" activeClassName="active">

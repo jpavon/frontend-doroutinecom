@@ -6,7 +6,7 @@ import { theme } from 'styles'
 export const Info = styled.div`
     margin-bottom: ${theme.spacing}px;
 
-    .button {
+    a {
         padding: 0;
         margin: auto;
         color: ${darken(0.15, theme.colorInfo)};

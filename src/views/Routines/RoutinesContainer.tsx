@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IRootState } from 'data/types'
+import { RootState } from 'data/types'
 import { postRoutine } from 'data/routines/actions'
 import {
     routinesSelector,
@@ -12,7 +12,7 @@ import NoData from 'components/NoData'
 import NavBar from 'components/NavBar'
 // import Info from 'components/Info'
 import Button from 'components/Button'
-import { Routines, RoutineListItem } from 'views/Routines/style'
+import { Routines, RoutineListItem } from './style'
 
 interface OwnProps {}
 
@@ -77,7 +77,7 @@ class RoutinesContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: OwnProps) => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     routines: routinesSelector(state),
     defaultRoutines: defaultRoutinesSelector(state),
     isLoading: state.routines.status === statusConstants.STATUS_LOADING

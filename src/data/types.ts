@@ -1,27 +1,27 @@
-import { IUserState } from 'data/user/types'
-import { IExercisesState } from 'data/exercises/types'
-import { ILiftsState } from 'data/lifts/types'
-import { IRoutinesState } from 'data/routines/types'
-import { ISetsState } from 'data/sets/types'
-import { IWorkoutsState } from 'data/workouts/types'
-import { IUiState } from 'data/ui/types'
+import { UserState } from 'data/user/types'
+import { ExercisesState } from 'data/exercises/types'
+import { LiftsState } from 'data/lifts/types'
+import { RoutinesState } from 'data/routines/types'
+import { SetsState } from 'data/sets/types'
+import { WorkoutsState } from 'data/workouts/types'
+import { UiState } from 'data/ui/types'
 import { statusConstants } from 'data/constants'
 
-export interface IRootState {
-    user: IUserState
-    exercises: IExercisesState
-    lifts: ILiftsState
-    routines: IRoutinesState
-    sets: ISetsState
-    workouts: IWorkoutsState
-    ui: IUiState
+export interface RootState {
+    user: UserState
+    exercises: ExercisesState
+    lifts: LiftsState
+    routines: RoutinesState
+    sets: SetsState
+    workouts: WorkoutsState
+    ui: UiState
 }
 
-export interface IAction {
+export interface Action {
     type: string
 }
 
-export interface IApiAction extends IAction {
+export interface ApiAction extends Action {
     method: string
     endpoint: string
     data: object
@@ -29,25 +29,25 @@ export interface IApiAction extends IAction {
     reject?: (error: object) => void
 }
 
-export interface ISuccessAction<P> extends IAction {
+export interface SuccessAction<P> extends Action {
     payload: P
 }
 
-export interface IApiFailure {
+export interface ApiFailure {
     errors: Record<string, string[]>
     message: string
 }
 
-export interface IFailureAction extends IAction {
-    error: IApiFailure
+export interface FailureAction extends Action {
+    error: ApiFailure
 }
 
-export type IEntitiesStatus = Record<number, statusConstants>
+export type EntitiesStatus = Record<number, statusConstants>
 
-export interface IStateMap<T> {
+export interface StateMap<T> {
     status: statusConstants
     entities: Record<number, T>
-    entitiesStatus: IEntitiesStatus
+    entitiesStatus: EntitiesStatus
     entitiesOrder: number[]
-    error: IApiFailure | null
+    error: ApiFailure | null
 }

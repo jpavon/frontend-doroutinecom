@@ -1,7 +1,7 @@
-import { IStateMap } from 'data/types'
+import { StateMap } from 'data/types'
 import * as actions from 'data/lifts/actions'
 
-export interface ILift {
+export interface Lift {
     id: number
     userId: number
     name: string | null
@@ -9,8 +9,8 @@ export interface ILift {
     updatedAt: string
 }
 
-export type ILiftsState = IStateMap<ILift>
+export type LiftsState = StateMap<Lift>
 
-export type ILiftsAction = ReturnType<typeof actions[keyof typeof actions]>
+export type LiftsAction = ReturnType<typeof actions[keyof typeof actions]>
 
-export type ILiftRequestData = Partial<ILift>
+export type LiftRequestData = Partial<Lift>

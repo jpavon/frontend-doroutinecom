@@ -50,6 +50,7 @@
     "@vx/shape": "^0.0.170",
     "@vx/tooltip": "^0.0.165",
     "axios": "^0.18.0",
+    "babel-plugin-styled-components": "^1.5.1",
     "classnames": "^2.2.6",
     "d3-array": "^1.2.1",
     "faker": "^4.1.0",

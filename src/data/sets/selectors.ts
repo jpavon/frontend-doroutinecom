@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect'
 
-import { IRootState } from 'data/types'
-import { ISet, ITopSet } from 'data/sets/types'
-import { IExercise } from 'data/exercises/types'
-import { IWorkout } from 'data/workouts/types'
-import { ILift } from 'data/lifts/types'
+import { RootState } from 'data/types'
+import { Set, TopSet } from 'data/sets/types'
+import { Exercise } from 'data/exercises/types'
+import { Workout } from 'data/workouts/types'
+import { Lift } from 'data/lifts/types'
 
 import moment from 'utils/moment'
 import { dateFormat } from 'utils/date'
@@ -18,27 +18,27 @@ import { order } from 'data/utils'
 import calculateRepMax from 'utils/calculateRepMax'
 
 export const setsSelector = createSelector(
-    [(state: IRootState) => order(state.sets)],
-    (sets): ISet[] => sets
+    [(state: RootState) => order(state.sets)],
+    (sets): Set[] => sets
 )
 
 export const setsExerciseSelector = (exerciseId: number) =>
     createSelector(
         [setsSelector],
-        (sets): ISet[] => sets.filter((set) => set.exerciseId === exerciseId)
+        (sets): Set[] => sets.filter((set) => set.exerciseId === exerciseId)
     )
 
 export const completedSetsSelector = createSelector(
     [setsSelector],
-    (sets): ISet[] => sets.filter((set) => set.isCompleted)
+    (sets): Set[] => sets.filter((set) => set.isCompleted)
 )
 
 export const formatTopSets = (
-    exercises: IExercise[],
-    sets: ISet[],
-    workouts: IWorkout[],
-    lifts: ILift[] | null
-): ITopSet[] => {
+    exercises: Exercise[],
+    sets: Set[],
+    workouts: Workout[],
+    lifts: Lift[] | null
+): TopSet[] => {
     const completedExercisesIds = exercises.map((exercise) => exercise.id)
 
     const completedSets = sets.filter((set) =>
@@ -84,7 +84,7 @@ export const formatTopSets = (
                 }
             }
         },
-        {} as Record<number, ITopSet>
+        {} as Record<number, TopSet>
     )
 
     return Object.values(topSets).filter((set) => set.liftId)
@@ -97,7 +97,7 @@ export const topSetsCompletedSelector = createSelector(
         completedWorkoutsSelector,
         liftsSelector
     ],
-    (exercises, sets, workouts, lifts): ITopSet[] => {
+    (exercises, sets, workouts, lifts): TopSet[] => {
         return formatTopSets(exercises, sets, workouts, lifts).sort((a, b) => {
             // order by completeAt, otherwise by weight
             if (a.completeAtMoment < b.completeAtMoment) {
@@ -124,7 +124,7 @@ export const topSetsForALiftSelector = (liftId: number) =>
             setsSelector,
             completedWorkoutsSelector
         ],
-        (exercises, sets, workouts): ITopSet[] => {
+        (exercises, sets, workouts): TopSet[] => {
             return formatTopSets(exercises, sets, workouts, null).sort(
                 (a, b) => b.rm - a.rm
             )
@@ -138,7 +138,7 @@ export const previouslyCompletedSetsSelector = (liftId: number) =>
             setsSelector,
             completedWorkoutsSelector
         ],
-        (exercises, sets, workouts): ISet[] => {
+        (exercises, sets, workouts): Set[] => {
             const exercisesDates = exercises
                 .map((exercise) => {
                     const workout = workouts.find(

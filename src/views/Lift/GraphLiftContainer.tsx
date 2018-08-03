@@ -8,7 +8,7 @@ import { curveMonotoneX } from '@vx/curve'
 import { GlyphDot } from '@vx/glyph'
 import { max, min } from 'd3-array'
 
-import { IRootState } from 'data/types'
+import { RootState } from 'data/types'
 import { liftSetsGraphSelector } from 'data/graphs/selectors'
 import { LiftSetsGraph } from 'data/graphs/selectors'
 import GraphWrapper from 'components/Graph/GraphWrapper'
@@ -156,7 +156,7 @@ class GraphLiftContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: OwnProps) => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     liftSetsGraph: liftSetsGraphSelector(props.liftId)(state)
 })
 

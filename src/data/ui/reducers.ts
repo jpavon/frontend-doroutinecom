@@ -1,15 +1,15 @@
-import { IUiState, IUiAction } from 'data/ui/types'
+import { UiState, UiAction } from 'data/ui/types'
 
 import constants from 'data/ui/constants'
 
-const initialState: Readonly<IUiState> = {
+const initialState: Readonly<UiState> = {
     isLoading: false,
     alert: null,
     isServerError: false,
     isOffline: !window.navigator.onLine
 }
 
-const ui = (state = initialState, action: IUiAction): IUiState => {
+const ui = (state = initialState, action: UiAction): UiState => {
     switch (action.type) {
         case constants.SHOW_LOADING:
             return {

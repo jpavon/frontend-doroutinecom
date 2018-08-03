@@ -4,13 +4,13 @@ import { Transition as SpringTransition, animated } from 'react-spring'
 // tslint:disable-next-line:no-any
 type SFC<P = {}> = (props: P) => React.ReactElement<any> | null
 
-export interface Transition {
+export interface Props {
     // tslint:disable-next-line:no-any
     children: React.ReactElement<any> | Array<React.ReactElement<any>>
     e2e?: string
 }
 
-const Transition: SFC<Transition> = (props) => {
+const Transition: SFC<Props> = (props) => {
     if (Array.isArray(props.children) && props.children.length > 0) {
         return (
             <SpringTransition

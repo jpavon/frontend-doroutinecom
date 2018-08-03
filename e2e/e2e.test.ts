@@ -412,10 +412,12 @@ describe('routine shows validation errors', async () => {
         async () => {
             await page.click('[data-e2e=set-input-weight]')
             await page.type('[data-e2e=set-input-weight]', '.333')
-            await page.waitForSelector('[data-e2e=set-weight] .form-alert')
+            await page.waitForSelector(
+                '[data-e2e=set-weight] [data-e2e=form-alert]'
+            )
             await expectSelectorToContainText(
                 page,
-                '[data-e2e=set-weight] .form-alert',
+                '[data-e2e=set-weight] [data-e2e=form-alert]',
                 'format is invalid'
             )
         },
@@ -427,10 +429,12 @@ describe('routine shows validation errors', async () => {
         async () => {
             await page.click('[data-e2e=set-input-reps]')
             await page.type('[data-e2e=set-input-reps]', '.333')
-            await page.waitForSelector('[data-e2e=set-reps] .form-alert')
+            await page.waitForSelector(
+                '[data-e2e=set-reps] [data-e2e=form-alert]'
+            )
             await expectSelectorToContainText(
                 page,
-                '[data-e2e=set-reps] .form-alert',
+                '[data-e2e=set-reps] [data-e2e=form-alert]',
                 'format is invalid'
             )
         },
@@ -576,13 +580,13 @@ describe('top sets table have items', async () => {
     test('profile', async () => {
         await goTo(page, '/')
         await page.waitForSelector('[data-e2e=profile]')
-        await expectElementToBeOfLength(page, '.sets-table-item', 1)
+        await expectElementToBeOfLength(page, '[data-e2e=sets-table-item]', 1)
     })
 
     test('lift', async () => {
-        await page.click('.sets-table-item')
+        await page.click('[data-e2e=sets-table-item]')
         await page.waitForSelector('[data-e2e=lift]')
-        await expectElementToBeOfLength(page, '.sets-table-item', 1)
+        await expectElementToBeOfLength(page, '[data-e2e=sets-table-item]', 1)
     })
 })
 

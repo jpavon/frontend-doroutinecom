@@ -3,28 +3,26 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { IRootState } from 'data/types'
-
+import { RootState } from 'data/types'
 import { pendingWorkoutsSelector } from 'data/workouts/selectors'
-
 import Nav from 'components/Nav'
 import NavNoAuth from 'components/NavNoAuth'
 
-interface IOwnProps {}
+interface OwnProps {}
 
-interface IStateProps {
+interface StateProps {
     isAuth: boolean
     isPendingWorkouts: boolean
 }
 
-interface IDispatchProps {}
+interface DispatchProps {}
 
-interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
+interface Props extends OwnProps, StateProps, DispatchProps {}
 
-class NavContainer extends React.Component<IProps> {
+class NavContainer extends React.Component<Props> {
     private isTouchDevice: boolean
 
-    constructor(props: IProps) {
+    constructor(props: Props) {
         super(props)
 
         this.isTouchDevice = 'ontouchstart' in document.documentElement
@@ -42,12 +40,12 @@ class NavContainer extends React.Component<IProps> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
+const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
     isAuth: state.user.isAuth,
     isPendingWorkouts: pendingWorkoutsSelector(state).length > 0
 })
 
-const mapDispatchToProps: IDispatchProps = {}
+const mapDispatchToProps: DispatchProps = {}
 
 export default compose(
     withRouter,

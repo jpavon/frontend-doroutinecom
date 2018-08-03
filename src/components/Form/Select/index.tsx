@@ -3,19 +3,19 @@ import * as React from 'react'
 import ArrowDown from 'media/arrow-down.svg'
 import { SelectWrapper, Select as StyledSelect } from './style'
 
-interface IOption {
+interface Option {
     id: number | string
     name: string | null
 }
 
-export interface ISelectProps
+export interface SelectProps
     extends React.InputHTMLAttributes<HTMLSelectElement> {
-    options: IOption[]
+    options: Option[]
     defaultOptionMessage?: string
     inputRef?: () => void
 }
 
-const Select: React.SFC<ISelectProps> = (props) => {
+const Select: React.SFC<SelectProps> = (props) => {
     const {
         name,
         options,

@@ -6,7 +6,7 @@ import { loginUser } from 'data/user/actions'
 import Input from 'components/Form/Input'
 import Field from 'components/Field'
 import Auth from 'components/Auth'
-import { LoginPasswordForgotten } from 'views/auth/Login/style'
+import { LoginPasswordForgotten } from './style'
 
 interface OwnProps {}
 

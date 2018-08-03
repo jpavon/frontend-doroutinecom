@@ -1,17 +1,17 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IRootState } from 'data/types'
-import { IWorkout } from 'data/workouts/types'
+import { RootState } from 'data/types'
+import { Workout } from 'data/workouts/types'
 import {
     workoutDisplayNameSelector,
     workoutDisplayDaySelector,
     workoutLiftNamesSelector
 } from 'data/workouts/selectors'
-import { WorkoutListItem, WorkoutDay, WorkoutName } from 'views/Workouts/style'
+import { WorkoutListItem, WorkoutDay, WorkoutName } from './style'
 
 interface OwnProps {
-    workout: IWorkout
+    workout: Workout
 }
 
 type Props = OwnProps &
@@ -33,7 +33,7 @@ class WorkoutContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: OwnProps) => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     displayName: workoutDisplayNameSelector(state, props.workout.id),
     day: workoutDisplayDaySelector(state, props.workout.id),
     liftNames: workoutLiftNamesSelector(state, props.workout.id)

@@ -1,8 +1,8 @@
 import { Moment as MomentType } from 'moment'
-import { IStateMap } from 'data/types'
+import { StateMap } from 'data/types'
 import * as actions from 'data/sets/actions'
 
-export interface ISet {
+export interface Set {
     id: number
     userId: number
     exerciseId: number
@@ -13,11 +13,11 @@ export interface ISet {
     updatedAt: string
 }
 
-export type ISetsState = IStateMap<ISet>
+export type SetsState = StateMap<Set>
 
-export type ISetsAction = ReturnType<typeof actions[keyof typeof actions]>
+export type SetsAction = ReturnType<typeof actions[keyof typeof actions]>
 
-export interface ITopSet {
+export interface TopSet {
     reps: number
     rm: number
     weight: number
@@ -28,4 +28,4 @@ export interface ITopSet {
     lift: string | null
 }
 
-export type ISetRequestData = Partial<ISet>
+export type SetRequestData = Partial<Set>

@@ -9,11 +9,11 @@ import GraphLiftContainer from 'views/Lift/GraphLiftContainer'
 import LiftSetsTableContainer from 'views/Lift/LiftSetsTableContainer'
 import LiftDeleteContainer from 'views/Lift/LiftDeleteContainer'
 
-interface IParams {
+interface Params {
     liftId: string
 }
 
-const Lift = ({ match }: RouteComponentProps<IParams>) => (
+const Lift = ({ match }: RouteComponentProps<Params>) => (
     <Layout header={<title>Lift</title>}>
         <NavBar
             title="Edit lift"

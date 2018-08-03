@@ -9,7 +9,7 @@ import {
     FooterButton
 } from './style'
 
-const Footer: React.SFC<{}> = () => (
+const Footer: React.SFC = () => (
     <StyledFooter>
         <FooterInner>
             <FooterItem>

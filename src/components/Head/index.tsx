@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Helmet from 'react-helmet'
 
-const Head: React.SFC<{}> = (props) => (
+const Head: React.SFC = (props) => (
     <Helmet
         defaultTitle="doroutine | Keep track of your workouts"
         titleTemplate="%s | doroutine"

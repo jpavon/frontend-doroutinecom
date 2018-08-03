@@ -5,10 +5,10 @@ import TickSvg from 'media/tick.svg'
 
 import { Checkbox as StyledCheckbox, CheckboxTick } from './style'
 
-export interface ICheckboxProps
+export interface CheckboxProps
     extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-const Checkbox: React.SFC<ICheckboxProps> = (props) => {
+const Checkbox: React.SFC<CheckboxProps> = (props) => {
     const { id, name, className, checked, onChange } = props
 
     return (

@@ -5,13 +5,13 @@ import { AutoSaveFormConsumer } from 'components/AutoSaveForm'
 
 import { serverDateFormat } from 'utils/date'
 
-import UncontrolledDatetime, { IDatetimeProps } from 'components/Form/Datetime'
+import UncontrolledDatetime, { DatetimeProps } from 'components/Form/Datetime'
 import Alert from 'components/Form/Alert'
 import Saving from 'components/Saving'
 
-interface IAutoSaveDatetimeProps extends IDatetimeProps {}
+interface AutoSaveDatetimeProps extends DatetimeProps {}
 
-const Datetime: React.SFC<IAutoSaveDatetimeProps> = (props) => (
+const Datetime: React.SFC<AutoSaveDatetimeProps> = (props) => (
     <AutoSaveFormConsumer>
         {({ values, errors, onChange, updating }) => {
             return (

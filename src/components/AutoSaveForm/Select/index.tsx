@@ -3,15 +3,15 @@ import * as React from 'react'
 import { AutoSaveFormConsumer } from 'components/AutoSaveForm'
 
 import Alert from 'components/Form/Alert'
-import UncontrolledSelect, { ISelectProps } from 'components/Form/Select'
+import UncontrolledSelect, { SelectProps } from 'components/Form/Select'
 import Saving from 'components/Saving'
 
-interface IAutoSaveFormSelectProps extends ISelectProps {
+interface AutoSaveFormSelectProps extends SelectProps {
     name: string
     noOptionsMessage?: string
 }
 
-const Select: React.SFC<IAutoSaveFormSelectProps> = (props) => (
+const Select: React.SFC<AutoSaveFormSelectProps> = (props) => (
     <AutoSaveFormConsumer>
         {({ values, errors, onChange, updating }) => {
             const { noOptionsMessage, ...rest } = props

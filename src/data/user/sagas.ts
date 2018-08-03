@@ -1,8 +1,8 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import * as store from 'store'
 
-import { IApiAction, ISuccessAction, IFailureAction } from 'data/types'
-import { IAuth } from 'data/user/types'
+import { ApiAction, SuccessAction, FailureAction } from 'data/types'
+import { Auth } from 'data/user/types'
 import { unauthUser as unauthUserType } from 'data/user/actions'
 
 import apiSaga from 'utils/apiSaga'
@@ -11,19 +11,19 @@ import * as actions from 'data/user/actions'
 import * as uiActions from 'data/ui/actions'
 import { getAppDataSaga } from 'data/sagas'
 
-function* getUserSaga(action: IApiAction) {
+function* getUserSaga(action: ApiAction) {
     yield* apiSaga(action, actions.getUserSuccess, actions.getUserFailure)
 }
 
-function* putUserSaga(action: IApiAction) {
+function* putUserSaga(action: ApiAction) {
     yield* apiSaga(action, actions.putUserSuccess, actions.putUserFailure)
 }
 
-function* loginUserSaga(action: IApiAction) {
+function* loginUserSaga(action: ApiAction) {
     yield* apiSaga(action, actions.loginUserSuccess, actions.loginUserFailure)
 }
 
-function* registerUserSaga(action: IApiAction) {
+function* registerUserSaga(action: ApiAction) {
     yield* apiSaga(
         action,
         actions.registerUserSuccess,
@@ -31,7 +31,7 @@ function* registerUserSaga(action: IApiAction) {
     )
 }
 
-function* passwordForgottenUserSaga(action: IApiAction) {
+function* passwordForgottenUserSaga(action: ApiAction) {
     yield* apiSaga(
         action,
         actions.passwordForgottenUserSuccess,
@@ -48,7 +48,7 @@ function* authPasswordForgottenSuccessSaga() {
     )
 }
 
-function* passwordResetUserSaga(action: IApiAction) {
+function* passwordResetUserSaga(action: ApiAction) {
     yield* apiSaga(
         action,
         actions.passwordResetUserSuccess,
@@ -65,7 +65,7 @@ function* authPasswordResetSuccessSaga() {
     )
 }
 
-function* authErrorSaga(action: IFailureAction) {
+function* authErrorSaga(action: FailureAction) {
     yield put(
         uiActions.showAlert({
             type: 'error',
@@ -74,7 +74,7 @@ function* authErrorSaga(action: IFailureAction) {
     )
 }
 
-function* authSuccessSaga(action: ISuccessAction<IAuth>) {
+function* authSuccessSaga(action: SuccessAction<Auth>) {
     yield put(actions.authUser())
 
     yield store.set('token', action.payload.token)

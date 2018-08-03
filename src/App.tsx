@@ -3,7 +3,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { IRootState } from 'data/types'
+import { RootState } from 'data/types'
 
 import { getAppData } from 'data/actions'
 
@@ -15,31 +15,22 @@ import Loading from 'components/Loading'
 import Head from 'components/Head'
 import Offline from 'components/Offline'
 
-interface IOwnProps {}
+interface OwnProps {}
 
-interface IStateProps {
-    isAuth: boolean
-    isLoading: boolean
-    isServerError: boolean
-    isOffline: boolean
-}
+type Props = OwnProps &
+    ReturnType<typeof mapStateToProps> &
+    typeof mapDispatchToProps
 
-interface IDispatchProps {
-    getAppData: () => void
-}
-
-interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
-
-interface IState {
+interface State {
     isErrorApp: boolean
 }
 
-class App extends React.Component<IProps, IState> {
+class App extends React.Component<Props, State> {
     public readonly state = {
         isErrorApp: false
     }
 
-    constructor(props: IProps) {
+    constructor(props: Props) {
         super(props)
 
         if (props.isAuth) {
@@ -47,7 +38,7 @@ class App extends React.Component<IProps, IState> {
         }
     }
 
-    public componentWillReceiveProps(nextProps: IProps) {
+    public componentWillReceiveProps(nextProps: Props) {
         if (
             nextProps.isServerError &&
             nextProps.isServerError !== this.props.isServerError
@@ -81,14 +72,14 @@ class App extends React.Component<IProps, IState> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     isAuth: state.user.isAuth,
     isLoading: state.ui.isLoading,
     isServerError: state.ui.isServerError,
     isOffline: state.ui.isOffline
 })
 
-const mapDispatchToProps: IDispatchProps = {
+const mapDispatchToProps = {
     getAppData
 }
 

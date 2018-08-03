@@ -2,16 +2,16 @@ import * as React from 'react'
 import { Spring } from 'react-spring'
 import { isString } from 'lodash'
 
-import { IAlert } from 'data/ui/types'
+import { Alert as AlertProps } from 'data/ui/types'
 
 import { AlertWrapper } from './style'
 
-interface IProps extends IAlert {
+interface Props extends AlertProps {
     size?: string
     animate?: boolean
 }
 
-class Alert extends React.Component<IProps> {
+class Alert extends React.Component<Props> {
     public static defaultProps = {
         animate: true
     }

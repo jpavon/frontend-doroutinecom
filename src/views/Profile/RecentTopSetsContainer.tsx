@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IRootState } from 'data/types'
+import { RootState } from 'data/types'
 import { topSetsCompletedSelector } from 'data/sets/selectors'
 import { userSelector } from 'data/user/selectors'
 import SetsTable from 'components/SetsTable'
@@ -29,7 +29,7 @@ class RecentTopSetsContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: OwnProps) => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     topSets: topSetsCompletedSelector(state),
     user: userSelector(state)
 })

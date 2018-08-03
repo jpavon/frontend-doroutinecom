@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { theme } from 'styles'
 
 export const ListItem = styled(Link)`
+    position: relative;
     display: block;
     font-size: 1em;
     padding: ${theme.spacing - 4}px ${theme.spacing}px;
@@ -11,9 +12,6 @@ export const ListItem = styled(Link)`
     border-bottom: 1px solid ${theme.colorBorder};
     transition: border-color 0.2s;
     background-color: transparent;
-    background-image: url('~media/arrow-right.svg');
-    background-repeat: no-repeat;
-    background-position: right ${theme.spacing} center;
     transition: color 0.2s, background-position 0.2s;
 
     &:hover,
@@ -32,6 +30,13 @@ export const ListItem = styled(Link)`
 
     &:first-child {
         border-top: 1px solid ${theme.colorBorder};
+    }
+
+    svg {
+        position: absolute;
+        top: 50%;
+        margin-top: -10px;
+        right: ${theme.spacing}px;
     }
 `
 

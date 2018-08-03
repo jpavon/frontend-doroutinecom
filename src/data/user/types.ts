@@ -1,8 +1,8 @@
-import { IApiFailure } from 'data/types'
+import { ApiFailure } from 'data/types'
 import { statusConstants } from 'data/constants'
 import * as actions from 'data/user/actions'
 
-export interface IUser {
+export interface User {
     id: number
     name: string
     email: string
@@ -14,38 +14,38 @@ export interface IUser {
     updatedAt: string
 }
 
-export interface IAuth {
+export interface Auth {
     token: string
 }
 
-export interface IUserState {
+export interface UserState {
     status: statusConstants
     isAuth: boolean
-    entity: IUser | null
-    error: IApiFailure | null
+    entity: User | null
+    error: ApiFailure | null
 }
 
-export type IUserRequestData = Partial<IUser>
+export type UserRequestData = Partial<User>
 
-export type IUserAction = ReturnType<typeof actions[keyof typeof actions]>
+export type UserAction = ReturnType<typeof actions[keyof typeof actions]>
 
-export interface ILoginData {
+export interface LoginData {
     email: string
     password: string
 }
 
-export interface IRegisterData {
+export interface RegisterData {
     name: string
     email: string
     password: string
     passwordConfirmation: string
 }
 
-export interface IPasswordForgottenData {
+export interface PasswordForgottenData {
     email: string
 }
 
-export interface IPasswordResetData {
+export interface PasswordResetData {
     token: string
     email: string
     password: string

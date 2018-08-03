@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import * as store from 'store'
 
-import { IRootState } from 'data/types'
+import { RootState } from 'data/types'
 
 import { putUser, unauthUser } from 'data/user/actions'
 import { userSelector } from 'data/user/selectors'
@@ -12,7 +12,7 @@ import Field from 'components/Field'
 import AutoSaveForm from 'components/AutoSaveForm'
 import Select from 'components/AutoSaveForm/Select'
 import Input from 'components/AutoSaveForm/Input'
-import { Settings } from 'views/Settings/style'
+import { Settings } from './style'
 
 interface OwnProps {}
 
@@ -144,7 +144,7 @@ class UserSettingsContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: OwnProps) => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     user: userSelector(state)
 })
 

@@ -1,7 +1,7 @@
-import { IStateMap } from 'data/types'
+import { StateMap } from 'data/types'
 import * as actions from 'data/routines/actions'
 
-export interface IRoutine {
+export interface Routine {
     id: number
     userId: number
     name: string | null
@@ -15,8 +15,8 @@ export interface IRoutine {
     } | null
 }
 
-export type IRoutinesState = IStateMap<IRoutine>
+export type RoutinesState = StateMap<Routine>
 
-export type IRoutinesAction = ReturnType<typeof actions[keyof typeof actions]>
+export type RoutinesAction = ReturnType<typeof actions[keyof typeof actions]>
 
-export type IRoutineRequestData = Partial<IRoutine>
+export type RoutineRequestData = Partial<Routine>

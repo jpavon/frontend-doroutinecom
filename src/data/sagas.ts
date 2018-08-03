@@ -2,7 +2,7 @@ import { delay } from 'redux-saga'
 import { all, put, take, takeLatest, call, spawn } from 'redux-saga/effects'
 import * as store from 'store'
 
-import { IUser } from 'data/user/types'
+import { User } from 'data/user/types'
 
 import * as uiActions from 'data/ui/actions'
 import * as userActions from 'data/user/actions'
@@ -79,7 +79,7 @@ function* watchServerErrors() {
     }
 }
 
-function* userSettingsCheck(user: IUser) {
+function* userSettingsCheck(user: User) {
     if (
         user.startOfWeek !== store.get('startOfWeek') ||
         user.dateFormat !== store.get('dateFormat')

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IRootState } from 'data/types'
+import { RootState } from 'data/types'
 import { postSet, putSet, deleteSet } from 'data/sets/actions'
 import { userSelector } from 'data/user/selectors'
 import {
@@ -24,7 +24,7 @@ import {
     SetInnerItem,
     SetInnerItemWithAction,
     SetsButtonCreate
-} from 'views/shared/Sets/style'
+} from './style'
 
 interface OwnProps {
     exerciseId: number
@@ -174,7 +174,7 @@ class SetsContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: OwnProps) => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     sets: setsExerciseSelector(props.exerciseId)(state),
     entitiesStatus: state.sets.entitiesStatus,
     user: userSelector(state),

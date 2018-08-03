@@ -1,7 +1,7 @@
-import { IStateMap } from 'data/types'
+import { StateMap } from 'data/types'
 import * as actions from 'data/exercises/actions'
 
-export interface IExercise {
+export interface Exercise {
     id: number
     userId: number
     liftId: number | null
@@ -12,8 +12,8 @@ export interface IExercise {
     updatedAt: string
 }
 
-export type IExercisesState = IStateMap<IExercise>
+export type ExercisesState = StateMap<Exercise>
 
-export type IExercisesAction = ReturnType<typeof actions[keyof typeof actions]>
+export type ExercisesAction = ReturnType<typeof actions[keyof typeof actions]>
 
-export type IExerciseRequestData = Partial<IExercise>
+export type ExerciseRequestData = Partial<Exercise>

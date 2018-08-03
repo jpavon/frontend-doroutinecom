@@ -1,11 +1,9 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IRootState } from 'data/types'
-
+import { RootState } from 'data/types'
 import { deleteLift } from 'data/lifts/actions'
 import { statusConstants } from 'data/constants'
-
 import NavBar from 'components/NavBar'
 import Button from 'components/Button'
 
@@ -42,7 +40,7 @@ class LiftDeleteContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: OwnProps) => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     isDeleting:
         state.lifts.entitiesStatus[props.liftId] ===
         statusConstants.STATUS_DELETING

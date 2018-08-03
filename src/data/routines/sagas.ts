@@ -1,7 +1,7 @@
 import { takeLatest, put } from 'redux-saga/effects'
 
-import { IApiAction, ISuccessAction } from 'data/types'
-import { IRoutine } from 'data/routines/types'
+import { ApiAction, SuccessAction } from 'data/types'
+import { Routine } from 'data/routines/types'
 
 import history from 'utils/history'
 import apiSaga from 'utils/apiSaga'
@@ -9,7 +9,7 @@ import constants from 'data/routines/constants'
 import * as actions from 'data/routines/actions'
 import * as workoutsActions from 'data/workouts/actions'
 
-function* getRoutinesSaga(action: IApiAction) {
+function* getRoutinesSaga(action: ApiAction) {
     yield* apiSaga(
         action,
         actions.getRoutinesSuccess,
@@ -17,7 +17,7 @@ function* getRoutinesSaga(action: IApiAction) {
     )
 }
 
-function* postRoutineSaga(action: IApiAction) {
+function* postRoutineSaga(action: ApiAction) {
     yield* apiSaga(
         action,
         actions.postRoutineSuccess,
@@ -25,11 +25,11 @@ function* postRoutineSaga(action: IApiAction) {
     )
 }
 
-function* putRoutineSaga(action: IApiAction) {
+function* putRoutineSaga(action: ApiAction) {
     yield* apiSaga(action, actions.putRoutineSuccess, actions.putRoutineFailure)
 }
 
-function* deleteRoutineSaga(action: IApiAction) {
+function* deleteRoutineSaga(action: ApiAction) {
     yield* apiSaga(
         action,
         actions.deleteRoutineSuccess,
@@ -37,7 +37,7 @@ function* deleteRoutineSaga(action: IApiAction) {
     )
 }
 
-function* routinePostSuccess(action: ISuccessAction<IRoutine>) {
+function* routinePostSuccess(action: SuccessAction<Routine>) {
     yield history.push(`/routines/${action.payload.id}`)
 }
 

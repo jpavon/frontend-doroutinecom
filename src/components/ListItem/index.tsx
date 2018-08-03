@@ -1,13 +1,14 @@
 import * as React from 'react'
 
 import { ListItem as StyledListItem, ListItemInfo } from './style'
+import ArrowRight from 'media/arrow-right.svg'
 
-interface IListItemProps {
+interface ListItemProps {
     to: string
     info?: string[]
 }
 
-const ListItem: React.SFC<IListItemProps> = (props) => {
+const ListItem: React.SFC<ListItemProps> = (props) => {
     const { info, children, ...rest } = props
 
     return (
@@ -26,6 +27,7 @@ const ListItem: React.SFC<IListItemProps> = (props) => {
                             })}
                     </ListItemInfo>
                 )}
+            <ArrowRight />
         </StyledListItem>
     )
 }

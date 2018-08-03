@@ -4,7 +4,7 @@ import LogoFullSvg from 'media/logo-full.svg'
 
 import { NavNoAuthLink, NavNoAuthLinks, NavNoAuthLogo } from './style'
 
-const NavNoAuth: React.SFC<{}> = () => (
+const NavNoAuth: React.SFC = () => (
     <nav>
         <NavNoAuthLogo>
             <LogoFullSvg />

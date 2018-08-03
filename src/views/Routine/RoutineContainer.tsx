@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
-import { IRootState } from 'data/types'
+import { RootState } from 'data/types'
 import history from 'utils/history'
 import { now } from 'utils/date'
 import { putRoutine, deleteRoutine } from 'data/routines/actions'
@@ -16,7 +16,7 @@ import Input from 'components/AutoSaveForm/Input'
 import Textarea from 'components/AutoSaveForm/Textarea'
 import Field from 'components/Field'
 import ExercisesContainer from 'views/shared/Exercises/ExercisesContainer'
-import { Routine } from 'views/Routine/style'
+import { Routine } from './style'
 
 interface OwnProps {
     routineId: number
@@ -134,7 +134,7 @@ class RoutineContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: OwnProps) => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     routine: routineSelector(state, props.routineId),
     isStatusLoaded: state.routines.status === statusConstants.STATUS_LOADED,
     isDeleting:

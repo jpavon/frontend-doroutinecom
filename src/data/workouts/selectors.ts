@@ -1,24 +1,24 @@
 import { createSelector } from 'reselect'
 
-import { IRootState } from 'data/types'
-import { IWorkout } from 'data/workouts/types'
+import { RootState } from 'data/types'
+import { Workout } from 'data/workouts/types'
 
 import moment from 'utils/moment'
 import { order } from 'data/utils'
 import { formatDuration, longDateFormat } from 'utils/date'
 
 export const workoutSelector = createSelector(
-    [(state: IRootState, id: number) => state.workouts.entities[id]],
+    [(state: RootState, id: number) => state.workouts.entities[id]],
     (workout) => workout || null
 )
 
 export const workoutsSelector = createSelector(
-    [(state: IRootState) => order(state.workouts)],
-    (workouts): IWorkout[] => workouts
+    [(state: RootState) => order(state.workouts)],
+    (workouts): Workout[] => workouts
 )
 
 export const workoutDisplayNameSelector = createSelector(
-    [workoutSelector, (state: IRootState) => state.routines.entities],
+    [workoutSelector, (state: RootState) => state.routines.entities],
     (workout, routines) => {
         const routine =
             workout && workout.routineId ? routines[workout.routineId] : null
@@ -38,7 +38,7 @@ export const workoutDisplayDurationSelector = createSelector(
 )
 
 export const workoutRoutineSelector = createSelector(
-    [workoutSelector, (state: IRootState) => state.routines.entities],
+    [workoutSelector, (state: RootState) => state.routines.entities],
     (workout, routines) =>
         workout && workout.routineId ? routines[workout.routineId] : null
 )
@@ -70,7 +70,7 @@ export const workoutLiftNamesSelector = createSelector(
 
 export const completedWorkoutsSelector = createSelector(
     [workoutsSelector],
-    (workouts): IWorkout[] =>
+    (workouts): Workout[] =>
         workouts.filter((workout) => workout.completedAt).sort((a, b) => {
             if (!b.completedAt || !a.completedAt) {
                 return 0
@@ -81,7 +81,7 @@ export const completedWorkoutsSelector = createSelector(
 
 export const pendingWorkoutsSelector = createSelector(
     [workoutsSelector],
-    (workouts): IWorkout[] =>
+    (workouts): Workout[] =>
         workouts
             .filter((workout) => !workout.completedAt)
             .sort(

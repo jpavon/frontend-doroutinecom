@@ -4,6 +4,9 @@ import Transition from 'components/Transition'
 import { theme } from 'styles'
 
 export const Exercises = styled.div``
+export const Exercise = styled.div`
+    position: relative;
+`
 
 export const ExercisesButtonCreate = styled.div`
     display: flex;
@@ -19,7 +22,7 @@ export const ExerciseTransition = styled(Transition)`
     position: relative;
     margin-bottom: ${theme.spacing * 1.5}px;
 
-    .field:last-child {
+    [class*='Field']:last-child {
         margin-bottom: 0;
     }
 
@@ -51,7 +54,7 @@ export const ExerciseLift = styled.div`
         font-size: 1.1rem;
     }
 
-    .button {
+    a {
         display: inline-block;
         padding: 0;
         margin-bottom: 4px;

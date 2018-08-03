@@ -1,5 +1,5 @@
-import { IApiFailure } from 'data/types'
-import { IExercise, IExerciseRequestData } from 'data/exercises/types'
+import { ApiFailure } from 'data/types'
+import { Exercise, ExerciseRequestData } from 'data/exercises/types'
 
 import action from 'utils/action'
 import constants from 'data/exercises/constants'
@@ -11,30 +11,30 @@ export const getExercises = () =>
         endpoint: 'exercises'
     })
 
-export const getExercisesSuccess = (payload: IExercise[]) =>
+export const getExercisesSuccess = (payload: Exercise[]) =>
     action(constants.EXERCISES_GET_SUCCESS, {
         payload
     })
 
-export const getExercisesFailure = (payload: IApiFailure) =>
+export const getExercisesFailure = (payload: ApiFailure) =>
     action(constants.EXERCISES_GET_FAILURE, {
         error: payload
     })
 
 // post
-export const postExercise = (data?: IExerciseRequestData) =>
+export const postExercise = (data?: ExerciseRequestData) =>
     action(constants.EXERCISES_POST_REQUEST, {
         method: 'post',
         endpoint: 'exercises',
         data
     })
 
-export const postExerciseSuccess = (payload: IExercise) =>
+export const postExerciseSuccess = (payload: Exercise) =>
     action(constants.EXERCISES_POST_SUCCESS, {
         payload
     })
 
-export const postExerciseFailure = (payload: IApiFailure) =>
+export const postExerciseFailure = (payload: ApiFailure) =>
     action(constants.EXERCISES_POST_FAILURE, {
         error: payload
     })
@@ -42,7 +42,7 @@ export const postExerciseFailure = (payload: IApiFailure) =>
 // put
 export const putExercise = (
     id: number,
-    data: IExerciseRequestData,
+    data: ExerciseRequestData,
     resolve?: () => void,
     reject?: () => void
 ) =>
@@ -55,12 +55,12 @@ export const putExercise = (
         reject
     })
 
-export const putExerciseSuccess = (payload: IExercise) =>
+export const putExerciseSuccess = (payload: Exercise) =>
     action(constants.EXERCISES_PUT_SUCCESS, {
         payload
     })
 
-export const putExerciseFailure = (payload: IApiFailure) =>
+export const putExerciseFailure = (payload: ApiFailure) =>
     action(constants.EXERCISES_PUT_FAILURE, {
         error: payload
     })
@@ -73,12 +73,12 @@ export const deleteExercise = (id: number) =>
         id
     })
 
-export const deleteExerciseSuccess = (payload: IExercise) =>
+export const deleteExerciseSuccess = (payload: Exercise) =>
     action(constants.EXERCISES_DELETE_SUCCESS, {
         payload
     })
 
-export const deleteExerciseFailure = (payload: IApiFailure) =>
+export const deleteExerciseFailure = (payload: ApiFailure) =>
     action(constants.EXERCISES_DELETE_FAILURE, {
         error: payload
     })

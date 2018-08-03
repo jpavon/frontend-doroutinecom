@@ -1,5 +1,5 @@
-import { IApiFailure } from 'data/types'
-import { ILift, ILiftRequestData } from 'data/lifts/types'
+import { ApiFailure } from 'data/types'
+import { Lift, LiftRequestData } from 'data/lifts/types'
 
 import action from 'utils/action'
 import constants from 'data/lifts/constants'
@@ -11,30 +11,30 @@ export const getLifts = () =>
         endpoint: 'lifts'
     })
 
-export const getLiftsSuccess = (payload: ILift[]) =>
+export const getLiftsSuccess = (payload: Lift[]) =>
     action(constants.LIFTS_GET_SUCCESS, {
         payload
     })
 
-export const getLiftsFailure = (payload: IApiFailure) =>
+export const getLiftsFailure = (payload: ApiFailure) =>
     action(constants.LIFTS_GET_FAILURE, {
         error: payload
     })
 
 // post
-export const postLift = (data?: ILiftRequestData) =>
+export const postLift = (data?: LiftRequestData) =>
     action(constants.LIFTS_POST_REQUEST, {
         method: 'post',
         endpoint: 'lifts',
         data
     })
 
-export const postLiftSuccess = (payload: ILift) =>
+export const postLiftSuccess = (payload: Lift) =>
     action(constants.LIFTS_POST_SUCCESS, {
         payload
     })
 
-export const postLiftFailure = (payload: IApiFailure) =>
+export const postLiftFailure = (payload: ApiFailure) =>
     action(constants.LIFTS_POST_FAILURE, {
         error: payload
     })
@@ -42,7 +42,7 @@ export const postLiftFailure = (payload: IApiFailure) =>
 // put
 export const putLift = (
     id: number,
-    data: ILiftRequestData,
+    data: LiftRequestData,
     resolve?: () => void,
     reject?: () => void
 ) =>
@@ -55,12 +55,12 @@ export const putLift = (
         reject
     })
 
-export const putLiftSuccess = (payload: ILift) =>
+export const putLiftSuccess = (payload: Lift) =>
     action(constants.LIFTS_PUT_SUCCESS, {
         payload
     })
 
-export const putLiftFailure = (payload: IApiFailure) =>
+export const putLiftFailure = (payload: ApiFailure) =>
     action(constants.LIFTS_PUT_FAILURE, {
         error: payload
     })
@@ -73,12 +73,12 @@ export const deleteLift = (id: number) =>
         id
     })
 
-export const deleteLiftSuccess = (payload: ILift) =>
+export const deleteLiftSuccess = (payload: Lift) =>
     action(constants.LIFTS_DELETE_SUCCESS, {
         payload
     })
 
-export const deleteLiftFailure = (payload: IApiFailure) =>
+export const deleteLiftFailure = (payload: ApiFailure) =>
     action(constants.LIFTS_DELETE_FAILURE, {
         error: payload
     })

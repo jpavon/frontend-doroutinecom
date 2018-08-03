@@ -2,12 +2,12 @@ import * as React from 'react'
 
 import { Input as StyledInput } from './style'
 
-export interface IInputProps
+export interface InputProps
     extends React.InputHTMLAttributes<HTMLInputElement> {
     inputRef?: React.RefObject<HTMLInputElement>
 }
 
-const Input: React.SFC<IInputProps> = (props) => {
+const Input: React.SFC<InputProps> = (props) => {
     const { name, type, className, inputRef, ...rest } = props
 
     return (

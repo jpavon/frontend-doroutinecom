@@ -6,7 +6,7 @@ import { scaleBand, scaleLinear } from '@vx/scale'
 import { GridRows } from '@vx/grid'
 import { max } from 'd3-array'
 
-import { IRootState } from 'data/types'
+import { RootState } from 'data/types'
 import { weeklyWorkoutsSelector } from 'data/graphs/selectors'
 import GraphWrapper from 'components/Graph/GraphWrapper'
 import GraphAxisBottom from 'components/Graph/GraphAxisBottom'
@@ -118,7 +118,7 @@ class GraphWeeklyWorkoutsContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: OwnProps) => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     weeklyWorkouts: weeklyWorkoutsSelector(state)
 })
 

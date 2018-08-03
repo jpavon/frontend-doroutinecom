@@ -4,7 +4,7 @@ export const Auth = styled.div`
     max-width: 400px;
     margin: 0 auto;
 
-    .field {
+    [class*='Field'] {
         background-color: transparent;
 
         &:last-child {

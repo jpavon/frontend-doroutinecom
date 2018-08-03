@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import * as store from 'store'
 
-import { IRootState } from 'data/types'
+import { RootState } from 'data/types'
 import { completedSetsSelector } from 'data/sets/selectors'
 import {
     workoutsSelector,
@@ -17,7 +17,7 @@ import {
     StartMessageList,
     StartMessageListItem,
     StartMessageHideButton
-} from 'views/Profile/style'
+} from './style'
 
 interface OwnProps {}
 
@@ -87,7 +87,7 @@ class StartMessageContainer extends React.Component<Props, State> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: OwnProps) => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     hasWorkouts: workoutsSelector(state).length > 0,
     hasCompletedWorkouts: completedWorkoutsSelector(state).length > 0,
     hasCompletedSets: completedSetsSelector(state).length > 0

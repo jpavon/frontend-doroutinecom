@@ -1,22 +1,22 @@
 import { createSelector } from 'reselect'
 
-import { IRoutine } from 'data/routines/types'
-import { IRootState } from 'data/types'
+import { Routine } from 'data/routines/types'
+import { RootState } from 'data/types'
 import { order } from 'data/utils'
 
 export const routineSelector = createSelector(
-    [(state: IRootState, id: number) => state.routines.entities[id]],
-    (routine): IRoutine | null => {
+    [(state: RootState, id: number) => state.routines.entities[id]],
+    (routine): Routine | null => {
         return routine || null
     }
 )
 
 export const routinesSelector = createSelector(
-    [(state: IRootState) => order(state.routines)],
-    (routines): IRoutine[] => routines.filter((routine) => !routine.program)
+    [(state: RootState) => order(state.routines)],
+    (routines): Routine[] => routines.filter((routine) => !routine.program)
 )
 
 export const defaultRoutinesSelector = createSelector(
-    [(state: IRootState) => order(state.routines)],
-    (routines): IRoutine[] => routines.filter((routine) => routine.program)
+    [(state: RootState) => order(state.routines)],
+    (routines): Routine[] => routines.filter((routine) => routine.program)
 )

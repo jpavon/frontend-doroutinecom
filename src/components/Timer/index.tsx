@@ -4,17 +4,17 @@ import moment from 'utils/moment'
 
 import { Timer as StyledTimer } from './style'
 
-interface ITimerProps {
+interface Props {
     start: string
 }
 
-interface ITimerState {
+interface State {
     hours: string
     minutes: string
     seconds: string
 }
 
-class Timer extends React.Component<ITimerProps, ITimerState> {
+class Timer extends React.Component<Props, State> {
     public start: Date
 
     public timer: number
@@ -25,7 +25,7 @@ class Timer extends React.Component<ITimerProps, ITimerState> {
         seconds: '0'
     }
 
-    constructor(props: ITimerProps) {
+    constructor(props: Props) {
         super(props)
 
         this.start = moment(props.start).toDate()

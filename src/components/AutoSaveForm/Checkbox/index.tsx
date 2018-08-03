@@ -3,13 +3,13 @@ import * as React from 'react'
 import { AutoSaveFormConsumer } from 'components/AutoSaveForm'
 
 import Alert from 'components/Form/Alert'
-import UncontrolledCheckbox, { ICheckboxProps } from 'components/Form/Checkbox'
+import UncontrolledCheckbox, { CheckboxProps } from 'components/Form/Checkbox'
 
-interface IAutoSaveCheckboxProps extends ICheckboxProps {
+interface AutoSaveCheckboxProps extends CheckboxProps {
     name: string
 }
 
-const Checkbox: React.SFC<IAutoSaveCheckboxProps> = (props) => (
+const Checkbox: React.SFC<AutoSaveCheckboxProps> = (props) => (
     <AutoSaveFormConsumer>
         {({ values, errors, onChange }) => {
             return (

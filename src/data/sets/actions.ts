@@ -1,5 +1,5 @@
-import { IApiFailure } from 'data/types'
-import { ISet, ISetRequestData } from 'data/sets/types'
+import { ApiFailure } from 'data/types'
+import { Set, SetRequestData } from 'data/sets/types'
 
 import action from 'utils/action'
 import constants from 'data/sets/constants'
@@ -11,30 +11,30 @@ export const getSets = () =>
         endpoint: 'sets'
     })
 
-export const getSetsSuccess = (payload: ISet[]) =>
+export const getSetsSuccess = (payload: Set[]) =>
     action(constants.SETS_GET_SUCCESS, {
         payload
     })
 
-export const getSetsFailure = (payload: IApiFailure) =>
+export const getSetsFailure = (payload: ApiFailure) =>
     action(constants.SETS_GET_FAILURE, {
         error: payload
     })
 
 // post
-export const postSet = (data: ISetRequestData) =>
+export const postSet = (data: SetRequestData) =>
     action(constants.SETS_POST_REQUEST, {
         method: 'post',
         endpoint: 'sets',
         data
     })
 
-export const postSetSuccess = (payload: ISet) =>
+export const postSetSuccess = (payload: Set) =>
     action(constants.SETS_POST_SUCCESS, {
         payload
     })
 
-export const postSetFailure = (payload: IApiFailure) =>
+export const postSetFailure = (payload: ApiFailure) =>
     action(constants.SETS_POST_FAILURE, {
         error: payload
     })
@@ -42,7 +42,7 @@ export const postSetFailure = (payload: IApiFailure) =>
 // put
 export const putSet = (
     id: number,
-    data: ISetRequestData,
+    data: SetRequestData,
     resolve?: () => void,
     reject?: () => void
 ) =>
@@ -55,12 +55,12 @@ export const putSet = (
         reject
     })
 
-export const putSetSuccess = (payload: ISet) =>
+export const putSetSuccess = (payload: Set) =>
     action(constants.SETS_PUT_SUCCESS, {
         payload
     })
 
-export const putSetFailure = (payload: IApiFailure) =>
+export const putSetFailure = (payload: ApiFailure) =>
     action(constants.SETS_PUT_FAILURE, {
         error: payload
     })
@@ -73,12 +73,12 @@ export const deleteSet = (id: number) =>
         id
     })
 
-export const deleteSetSuccess = (payload: ISet) =>
+export const deleteSetSuccess = (payload: Set) =>
     action(constants.SETS_DELETE_SUCCESS, {
         payload
     })
 
-export const deleteSetFailure = (payload: IApiFailure) =>
+export const deleteSetFailure = (payload: ApiFailure) =>
     action(constants.SETS_DELETE_FAILURE, {
         error: payload
     })

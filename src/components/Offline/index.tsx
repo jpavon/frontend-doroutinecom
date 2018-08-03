@@ -9,7 +9,7 @@ import {
     OfflineButton
 } from './style'
 
-const Offline: React.SFC<{}> = () => (
+const Offline: React.SFC = () => (
     <StyledOffline>
         <OfflineLogo>
             <Logo />

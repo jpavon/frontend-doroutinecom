@@ -8,12 +8,12 @@ const layout = css`
     padding-right: ${theme.spacing / 2}px;
     flex: 1;
 
-    &.sets-table-right {
+    &.right {
         text-align: right;
     }
 
     @media (max-width: 600px) {
-        &.sets-table-number {
+        &.number {
             flex: 0 0 20%;
         }
     }

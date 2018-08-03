@@ -12,7 +12,7 @@ export const WorkoutRoutineName = styled.div`
     background-color: rgba(76, 144, 194, 0.05);
     font-size: 1.1rem;
 
-    .button {
+    a {
         display: inline-block;
         padding: 0;
         margin-left: ${theme.spacing}px;

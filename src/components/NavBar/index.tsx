@@ -2,13 +2,13 @@ import * as React from 'react'
 
 import { TopNav, TopNavTitle, TopNavLeft, TopNavRight } from './style'
 
-interface IProps {
+interface Props {
     title?: React.ReactNode
     leftButton?: React.ReactNode
     rightButton?: React.ReactNode
 }
 
-const NavBar: React.SFC<IProps> = (props) => {
+const NavBar: React.SFC<Props> = (props) => {
     return (
         <TopNav noTitle={!props.title}>
             {props.leftButton && <TopNavLeft>{props.leftButton}</TopNavLeft>}

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IRootState } from 'data/types'
+import { RootState } from 'data/types'
 
 import {
     completedWorkoutsSelector,
@@ -13,7 +13,7 @@ import NoData from 'components/NoData'
 import NavBar from 'components/NavBar'
 import Badge from 'components/Badge'
 import WorkoutContainer from 'views/Workouts/WorkoutContainer'
-import { Workouts } from 'views/Workouts/style'
+import { Workouts } from './style'
 
 interface OwnProps {}
 
@@ -63,7 +63,7 @@ class WorkoutsContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: OwnProps) => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     completedWorkouts: completedWorkoutsSelector(state),
     pendingWorkouts: pendingWorkoutsSelector(state)
 })

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
-import { IRootState } from 'data/types'
+import { RootState } from 'data/types'
 import history from 'utils/history'
 import { liftSelector } from 'data/lifts/selectors'
 import { putLift } from 'data/lifts/actions'
@@ -10,7 +10,7 @@ import { statusConstants } from 'data/constants'
 import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
 import Field from 'components/Field'
-import { Lift } from 'views/Lift/style'
+import { Lift } from './style'
 
 interface OwnProps {
     liftId: number
@@ -56,7 +56,7 @@ class LiftContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: OwnProps) => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     lift: liftSelector(state, props.liftId),
     isStatusLoaded: state.lifts.status === statusConstants.STATUS_LOADED
 })

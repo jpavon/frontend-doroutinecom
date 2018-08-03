@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 
-import { IRootState } from 'data/types'
-import { IWorkout } from 'data/workouts/types'
+import { RootState } from 'data/types'
+import { Workout } from 'data/workouts/types'
 
 import moment from 'utils/moment'
 import momentRange from 'utils/momentRange'
@@ -24,7 +24,7 @@ const ranges = weeks.map((week) => ({
     range: momentRange().range(week.startWeek, week.endWeek)
 }))
 
-const getWorkoutsDataset = (workouts: IWorkout[]) => {
+const getWorkoutsDataset = (workouts: Workout[]) => {
     const dataset = [0, 0, 0, 0, 0]
 
     workouts.forEach((workout) => {
@@ -78,7 +78,7 @@ export const liftSetsGraphSelector = (liftId: number) =>
             completedExercisesLiftSelector(liftId),
             setsSelector,
             completedWorkoutsSelector,
-            (state: IRootState) => state.user.entity
+            (state: RootState) => state.user.entity
         ],
         (exercises, sets, workouts, user): LiftSetsGraph[] => {
             const topSets = formatTopSets(exercises, sets, workouts, null).sort(

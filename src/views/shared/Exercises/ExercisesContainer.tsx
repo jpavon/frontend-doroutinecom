@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IRootState } from 'data/types'
+import { RootState } from 'data/types'
 
 import {
     postExercise,
@@ -22,11 +22,12 @@ import Select from 'components/AutoSaveForm/Select'
 import SetsContainer from 'views/shared/Sets/SetsContainer'
 import {
     Exercises,
+    Exercise,
     ExerciseTransition,
     ExercisesButtonCreate,
     ExerciseButtonDelete,
     ExerciseLift
-} from 'views/shared/Exercises/style'
+} from './style'
 
 interface OwnProps {
     id: number
@@ -74,7 +75,7 @@ class ExercisesContainer extends React.Component<Props, State> {
                     <ExerciseTransition e2e="exercise">
                         {this.props.exercises.length > 0 ? (
                             this.props.exercises.map((exercise, i) => (
-                                <React.Fragment key={exercise.id}>
+                                <Exercise key={exercise.id}>
                                     <AutoSaveForm
                                         update={this.props.putExercise}
                                         initialValues={exercise}
@@ -137,7 +138,7 @@ class ExercisesContainer extends React.Component<Props, State> {
                                             />
                                         </ExerciseButtonDelete>
                                     )}
-                                </React.Fragment>
+                                </Exercise>
                             ))
                         ) : (
                             <NoData text="No exercises created." />
@@ -157,7 +158,7 @@ class ExercisesContainer extends React.Component<Props, State> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: OwnProps) => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     exercises:
         props.entity === 'routine'
             ? exercisesRoutineSelector(props.id)(state)

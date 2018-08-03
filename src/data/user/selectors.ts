@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect'
 
-import { IUser } from 'data/user/types'
-import { IRootState } from 'data/types'
+import { User } from 'data/user/types'
+import { RootState } from 'data/types'
 
 export const userSelector = createSelector(
-    [(state: IRootState) => state.user.entity],
-    (user): IUser | null => user
+    [(state: RootState) => state.user.entity],
+    (user): User | null => user
 )

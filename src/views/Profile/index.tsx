@@ -3,10 +3,10 @@ import * as React from 'react'
 import Layout from 'views/Layout'
 import NavBar from 'components/NavBar'
 import Button from 'components/Button'
-import { ProfileWrapper } from 'views/Profile/style'
 import StartMessageContainer from 'views/Profile/StartMessageContainer'
 import GraphWeeklyWorkoutsContainer from 'views/Profile/GraphWeeklyWorkoutsContainer'
 import RecentTopSetsContainer from 'views/Profile/RecentTopSetsContainer'
+import { ProfileWrapper } from './style'
 
 const Profile = () => (
     <Layout header={<title>Profile</title>}>

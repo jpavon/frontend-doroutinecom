@@ -1,17 +1,17 @@
 import * as React from 'react'
-import { IApiFailure } from 'data/types'
+import { ApiFailure } from 'data/types'
 import * as actions from 'data/ui/actions'
 
-export interface IUiState {
+export interface UiState {
     isLoading: boolean
-    alert: IAlert | null
+    alert: Alert | null
     isServerError: boolean
     isOffline: boolean
 }
 
-export type IUiAction = ReturnType<typeof actions[keyof typeof actions]>
+export type UiAction = ReturnType<typeof actions[keyof typeof actions]>
 
-export interface IAlert {
+export interface Alert {
     type: string
-    message: string | string[] | IApiFailure['errors'] | React.ReactNode
+    message: string | string[] | ApiFailure['errors'] | React.ReactNode
 }

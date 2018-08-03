@@ -1,10 +1,10 @@
-import { IStateMap, IApiFailure } from 'data/types'
+import { StateMap, ApiFailure } from 'data/types'
 
 import { statusConstants } from 'data/constants'
 
 // selector utils
 
-export const order = <T>(entityState: IStateMap<T>): T[] =>
+export const order = <T>(entityState: StateMap<T>): T[] =>
     entityState.entitiesOrder.map((id) => entityState.entities[id])
 
 // reducer crud utils
@@ -13,16 +13,13 @@ interface Model {
     id: number
 }
 
-export const request = <T>(state: IStateMap<T>): IStateMap<T> => ({
+export const request = <T>(state: StateMap<T>): StateMap<T> => ({
     ...state,
     status: statusConstants.STATUS_LOADING,
     error: null
 })
 
-export const putRequest = <T>(
-    state: IStateMap<T>,
-    id: number
-): IStateMap<T> => ({
+export const putRequest = <T>(state: StateMap<T>, id: number): StateMap<T> => ({
     ...request(state),
     entitiesStatus: {
         ...state.entitiesStatus,
@@ -31,9 +28,9 @@ export const putRequest = <T>(
 })
 
 export const deleteRequest = <T>(
-    state: IStateMap<T>,
+    state: StateMap<T>,
     id: number
-): IStateMap<T> => ({
+): StateMap<T> => ({
     ...request(state),
     entitiesStatus: {
         ...state.entitiesStatus,
@@ -42,18 +39,18 @@ export const deleteRequest = <T>(
 })
 
 export const failure = <T>(
-    state: IStateMap<T>,
-    error: IApiFailure
-): IStateMap<T> => ({
+    state: StateMap<T>,
+    error: ApiFailure
+): StateMap<T> => ({
     ...state,
     status: statusConstants.STATUS_FAILED,
     error
 })
 
 export const getSuccess = <T extends Model>(
-    state: IStateMap<T>,
+    state: StateMap<T>,
     payload: T[]
-): IStateMap<T> => ({
+): StateMap<T> => ({
     ...state,
     status: statusConstants.STATUS_LOADED,
     entities: payload.reduce(
@@ -75,9 +72,9 @@ export const getSuccess = <T extends Model>(
 })
 
 export const postSuccess = <T extends Model>(
-    state: IStateMap<T>,
+    state: StateMap<T>,
     payload: T
-): IStateMap<T> => ({
+): StateMap<T> => ({
     ...state,
     status: statusConstants.STATUS_LOADED,
     entities: { ...state.entities, [payload.id]: payload },
@@ -90,9 +87,9 @@ export const postSuccess = <T extends Model>(
 })
 
 export const putSuccess = <T extends Model>(
-    state: IStateMap<T>,
+    state: StateMap<T>,
     payload: T
-): IStateMap<T> => ({
+): StateMap<T> => ({
     ...state,
     status: statusConstants.STATUS_LOADED,
     entities: { ...state.entities, [payload.id]: payload },
@@ -104,9 +101,9 @@ export const putSuccess = <T extends Model>(
 })
 
 export const deleteSuccess = <T extends Model>(
-    state: IStateMap<T>,
+    state: StateMap<T>,
     id: number
-): IStateMap<T> => ({
+): StateMap<T> => ({
     ...state,
     status: statusConstants.STATUS_LOADED,
     entities: Object.keys(state.entities)

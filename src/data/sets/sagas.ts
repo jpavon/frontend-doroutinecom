@@ -1,24 +1,24 @@
 import { takeLatest } from 'redux-saga/effects'
 
-import { IApiAction } from 'data/types'
+import { ApiAction } from 'data/types'
 
 import apiSaga from 'utils/apiSaga'
 import constants from 'data/sets/constants'
 import * as actions from 'data/sets/actions'
 
-function* getSetsSaga(action: IApiAction) {
+function* getSetsSaga(action: ApiAction) {
     yield* apiSaga(action, actions.getSetsSuccess, actions.getSetsFailure)
 }
 
-function* postSetSaga(action: IApiAction) {
+function* postSetSaga(action: ApiAction) {
     yield* apiSaga(action, actions.postSetSuccess, actions.postSetFailure)
 }
 
-function* putSetSaga(action: IApiAction) {
+function* putSetSaga(action: ApiAction) {
     yield* apiSaga(action, actions.putSetSuccess, actions.putSetFailure)
 }
 
-function* deleteSetSaga(action: IApiAction) {
+function* deleteSetSaga(action: ApiAction) {
     yield* apiSaga(action, actions.deleteSetSuccess, actions.deleteSetFailure)
 }
 

@@ -77,9 +77,9 @@ export const NavLink = styled(RRDNavLInk)`
         transition: opacity 0.2s;
     }
 
-    .nav-item--unauth & {
+    /* .nav-item--unauth & {
         padding: 24px 0;
-    }
+    } */
 
     &:visited {
         color: ${lighten(0.3, theme.colorFont)};

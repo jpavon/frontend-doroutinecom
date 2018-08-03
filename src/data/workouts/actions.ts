@@ -1,8 +1,8 @@
-import { IApiFailure } from 'data/types'
+import { ApiFailure } from 'data/types'
 import {
-    IWorkout,
-    IWorkoutRequestData,
-    IWorkoutFromRequestData
+    Workout,
+    WorkoutRequestData,
+    WorkoutFromRequestData
 } from 'data/workouts/types'
 
 import action from 'utils/action'
@@ -15,48 +15,48 @@ export const getWorkouts = () =>
         endpoint: 'workouts'
     })
 
-export const getWorkoutsSuccess = (payload: IWorkout[]) =>
+export const getWorkoutsSuccess = (payload: Workout[]) =>
     action(constants.WORKOUTS_GET_SUCCESS, {
         payload
     })
 
-export const getWorkoutsFailure = (payload: IApiFailure) =>
+export const getWorkoutsFailure = (payload: ApiFailure) =>
     action(constants.WORKOUTS_GET_FAILURE, {
         error: payload
     })
 
 // post
-export const postWorkout = (data: IWorkoutRequestData) =>
+export const postWorkout = (data: WorkoutRequestData) =>
     action(constants.WORKOUTS_POST_REQUEST, {
         method: 'post',
         endpoint: 'workouts',
         data
     })
 
-export const postWorkoutSuccess = (payload: IWorkout) =>
+export const postWorkoutSuccess = (payload: Workout) =>
     action(constants.WORKOUTS_POST_SUCCESS, {
         payload
     })
 
-export const postWorkoutFailure = (payload: IApiFailure) =>
+export const postWorkoutFailure = (payload: ApiFailure) =>
     action(constants.WORKOUTS_POST_FAILURE, {
         error: payload
     })
 
 // postFrom
-export const postWorkoutFrom = (data: IWorkoutFromRequestData) =>
+export const postWorkoutFrom = (data: WorkoutFromRequestData) =>
     action(constants.WORKOUTS_POST_FROM_REQUEST, {
         method: 'post',
         endpoint: 'workouts',
         data
     })
 
-export const postWorkoutFromSuccess = (payload: IWorkout) =>
+export const postWorkoutFromSuccess = (payload: Workout) =>
     action(constants.WORKOUTS_POST_FROM_SUCCESS, {
         payload
     })
 
-export const postWorkoutFromFailure = (payload: IApiFailure) =>
+export const postWorkoutFromFailure = (payload: ApiFailure) =>
     action(constants.WORKOUTS_POST_FROM_FAILURE, {
         error: payload
     })
@@ -64,7 +64,7 @@ export const postWorkoutFromFailure = (payload: IApiFailure) =>
 // put
 export const putWorkout = (
     id: number,
-    data: IWorkoutRequestData,
+    data: WorkoutRequestData,
     resolve?: () => void,
     reject?: () => void
 ) =>
@@ -77,12 +77,12 @@ export const putWorkout = (
         reject
     })
 
-export const putWorkoutSuccess = (payload: IWorkout) =>
+export const putWorkoutSuccess = (payload: Workout) =>
     action(constants.WORKOUTS_PUT_SUCCESS, {
         payload
     })
 
-export const putWorkoutFailure = (payload: IApiFailure) =>
+export const putWorkoutFailure = (payload: ApiFailure) =>
     action(constants.WORKOUTS_PUT_FAILURE, {
         error: payload
     })
@@ -95,12 +95,12 @@ export const deleteWorkout = (id: number) =>
         id
     })
 
-export const deleteWorkoutSuccess = (payload: IWorkout) =>
+export const deleteWorkoutSuccess = (payload: Workout) =>
     action(constants.WORKOUTS_DELETE_SUCCESS, {
         payload
     })
 
-export const deleteWorkoutFailure = (payload: IApiFailure) =>
+export const deleteWorkoutFailure = (payload: ApiFailure) =>
     action(constants.WORKOUTS_DELETE_FAILURE, {
         error: payload
     })

@@ -1,7 +1,7 @@
 import { takeLatest, take, put } from 'redux-saga/effects'
 
-import { IApiAction, ISuccessAction } from 'data/types'
-import { ILift } from 'data/lifts/types'
+import { ApiAction, SuccessAction } from 'data/types'
+import { Lift } from 'data/lifts/types'
 
 import history from 'utils/history'
 import apiSaga from 'utils/apiSaga'
@@ -9,23 +9,23 @@ import constants from 'data/lifts/constants'
 import * as actions from 'data/lifts/actions'
 import * as exercisesActions from 'data/exercises/actions'
 
-function* getLiftsSaga(action: IApiAction) {
+function* getLiftsSaga(action: ApiAction) {
     yield* apiSaga(action, actions.getLiftsSuccess, actions.getLiftsFailure)
 }
 
-function* postLiftSaga(action: IApiAction) {
+function* postLiftSaga(action: ApiAction) {
     yield* apiSaga(action, actions.postLiftSuccess, actions.postLiftFailure)
 }
 
-function* putLiftSaga(action: IApiAction) {
+function* putLiftSaga(action: ApiAction) {
     yield* apiSaga(action, actions.putLiftSuccess, actions.putLiftFailure)
 }
 
-function* deleteLiftSaga(action: IApiAction) {
+function* deleteLiftSaga(action: ApiAction) {
     yield* apiSaga(action, actions.deleteLiftSuccess, actions.deleteLiftFailure)
 }
 
-function* liftPostSuccess(action: ISuccessAction<ILift>) {
+function* liftPostSuccess(action: SuccessAction<Lift>) {
     yield history.push(`/lifts/${action.payload.id}`)
 }
 

@@ -7,12 +7,12 @@ import { dateFormat, timeFormat } from 'utils/date'
 import { dateTimeStyles } from './style'
 dateTimeStyles()
 
-export interface IDatetimeProps extends ReactDatetime.DatetimepickerProps {
+export interface DatetimeProps extends ReactDatetime.DatetimepickerProps {
     id: string
     name: string
 }
 
-const Datetime: React.SFC<IDatetimeProps> = ({ value, name, ...rest }) => (
+const Datetime: React.SFC<DatetimeProps> = ({ value, name, ...rest }) => (
     <ReactDatetime
         dateFormat={dateFormat}
         timeFormat={timeFormat}

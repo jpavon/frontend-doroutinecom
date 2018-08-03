@@ -15,7 +15,7 @@ export const StartMessage = styled.div`
 
     text-align: center;
 
-    .button {
+    a {
         font-size: 1rem;
         display: inline;
         padding: 0;
@@ -34,7 +34,7 @@ export const StartMessageList = styled.div`
         height: 24px;
     }
 
-    .button {
+    a {
         margin-left: 1rem;
     }
 `
@@ -52,5 +52,7 @@ export const StartMessageListItem = styled.div`
 `
 
 export const StartMessageHideButton = styled(Button)`
+    display: inline;
     margin-top: ${theme.spacing * 2}px;
+    padding: 0;
 `

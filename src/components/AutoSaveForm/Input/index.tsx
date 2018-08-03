@@ -3,14 +3,14 @@ import * as React from 'react'
 import { AutoSaveFormConsumer } from 'components/AutoSaveForm'
 
 import Alert from 'components/Form/Alert'
-import UncontrolledInput, { IInputProps } from 'components/Form/Input'
+import UncontrolledInput, { InputProps } from 'components/Form/Input'
 import Saving from 'components/Saving'
 
-interface IAutoSaveInputProps extends IInputProps {
+interface AutoSaveInputProps extends InputProps {
     name: string
 }
 
-const Input: React.SFC<IAutoSaveInputProps> = (props) => (
+const Input: React.SFC<AutoSaveInputProps> = (props) => (
     <AutoSaveFormConsumer>
         {({ values, errors, onChange, updating }) => {
             return (

@@ -1,12 +1,12 @@
 import { takeLatest } from 'redux-saga/effects'
 
-import { IApiAction } from 'data/types'
+import { ApiAction } from 'data/types'
 
 import apiSaga from 'utils/apiSaga'
 import constants from 'data/exercises/constants'
 import * as actions from 'data/exercises/actions'
 
-function* getExercisesSaga(action: IApiAction) {
+function* getExercisesSaga(action: ApiAction) {
     yield* apiSaga(
         action,
         actions.getExercisesSuccess,
@@ -14,7 +14,7 @@ function* getExercisesSaga(action: IApiAction) {
     )
 }
 
-function* postExerciseSaga(action: IApiAction) {
+function* postExerciseSaga(action: ApiAction) {
     yield* apiSaga(
         action,
         actions.postExerciseSuccess,
@@ -22,7 +22,7 @@ function* postExerciseSaga(action: IApiAction) {
     )
 }
 
-function* putExerciseSaga(action: IApiAction) {
+function* putExerciseSaga(action: ApiAction) {
     yield* apiSaga(
         action,
         actions.putExerciseSuccess,
@@ -30,7 +30,7 @@ function* putExerciseSaga(action: IApiAction) {
     )
 }
 
-function* deleteExerciseSaga(action: IApiAction) {
+function* deleteExerciseSaga(action: ApiAction) {
     yield* apiSaga(
         action,
         actions.deleteExerciseSuccess,

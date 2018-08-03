@@ -1,10 +1,10 @@
-import { ILiftsState, ILiftsAction } from 'data/lifts/types'
+import { LiftsState, LiftsAction } from 'data/lifts/types'
 
 import constants from 'data/lifts/constants'
 import { statusConstants } from 'data/constants'
 import * as utils from 'data/utils'
 
-const initialState: Readonly<ILiftsState> = {
+const initialState: Readonly<LiftsState> = {
     status: statusConstants.STATUS_NONE,
     entities: {},
     entitiesOrder: [],
@@ -12,7 +12,7 @@ const initialState: Readonly<ILiftsState> = {
     error: null
 }
 
-const lifts = (state = initialState, action: ILiftsAction): ILiftsState => {
+const lifts = (state = initialState, action: LiftsAction): LiftsState => {
     switch (action.type) {
         case constants.LIFTS_GET_REQUEST:
             return utils.request(state)

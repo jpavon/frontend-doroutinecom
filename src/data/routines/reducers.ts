@@ -1,10 +1,10 @@
-import { IRoutinesState, IRoutinesAction } from 'data/routines/types'
+import { RoutinesState, RoutinesAction } from 'data/routines/types'
 
 import constants from 'data/routines/constants'
 import { statusConstants } from 'data/constants'
 import * as utils from 'data/utils'
 
-const initialState: Readonly<IRoutinesState> = {
+const initialState: Readonly<RoutinesState> = {
     status: statusConstants.STATUS_NONE,
     entities: {},
     entitiesOrder: [],
@@ -14,8 +14,8 @@ const initialState: Readonly<IRoutinesState> = {
 
 const routines = (
     state = initialState,
-    action: IRoutinesAction
-): IRoutinesState => {
+    action: RoutinesAction
+): RoutinesState => {
     switch (action.type) {
         case constants.ROUTINES_GET_REQUEST:
             return utils.request(state)

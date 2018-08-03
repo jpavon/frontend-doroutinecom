@@ -4,15 +4,15 @@ import Button from 'components/Button'
 
 import { Info as StyledInfo, InfoContent } from './style'
 
-interface ILIftProps {
+interface Props {
     name: string
 }
 
-interface ILIftState {
+interface State {
     open: boolean
 }
 
-class Info extends React.Component<ILIftProps, ILIftState> {
+class Info extends React.Component<Props, State> {
     public readonly state = {
         open: false
     }

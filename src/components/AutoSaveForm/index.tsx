@@ -1,13 +1,13 @@
 import * as React from 'react'
 import { debounce } from 'lodash'
 
-export interface IAutoSaveFormState<T> {
+export interface AutoSaveFormState<T> {
     values: T
     errors: Record<string, string>
     updating: string | null
 }
 
-interface IAutoSaveFormProps<T> {
+interface AutoSaveFormProps<T> {
     initialValues: T
     update: (
         id: number,
@@ -15,32 +15,32 @@ interface IAutoSaveFormProps<T> {
         resolve?: () => void,
         reject?: () => void
     ) => void
-    render: (state: IAutoSaveFormState<T>) => React.ReactNode
+    render: (state: AutoSaveFormState<T>) => React.ReactNode
 }
 
-interface INameValue<T> {
+interface NameValue<T> {
     name: keyof T
     value: T[keyof T]
 }
 
-interface IAutoSaveFormChangeOptions<T> extends INameValue<T> {
+interface AutoSaveFormChangeOptions<T> extends NameValue<T> {
     debounced?: boolean
 }
 
-interface IUpdateData<T> extends INameValue<T> {
+interface UpdateData<T> extends NameValue<T> {
     id: number
 }
 
-export interface IAutoSaveFormContext<T> extends IAutoSaveFormState<T> {
-    onChange: (options: IAutoSaveFormChangeOptions<T>) => void
+export interface AutoSaveFormContext<T> extends AutoSaveFormState<T> {
+    onChange: (options: AutoSaveFormChangeOptions<T>) => void
 }
 
 // tslint:disable-next-line:no-any
-const Context = React.createContext({} as IAutoSaveFormContext<any>)
+const Context = React.createContext({} as AutoSaveFormContext<any>)
 
 class AutoSaveForm<T extends { id: number }> extends React.Component<
-    IAutoSaveFormProps<T>,
-    IAutoSaveFormState<T>
+    AutoSaveFormProps<T>,
+    AutoSaveFormState<T>
 > {
     private canUpdateState: boolean = false
 
@@ -64,7 +64,7 @@ class AutoSaveForm<T extends { id: number }> extends React.Component<
         })
     }
 
-    public handleChange = (options: IAutoSaveFormChangeOptions<T>) => {
+    public handleChange = (options: AutoSaveFormChangeOptions<T>) => {
         // spread issue with generics https://github.com/Microsoft/TypeScript/issues/10727
         // this.setState((prevState) => ({
         //     values: {
@@ -79,7 +79,7 @@ class AutoSaveForm<T extends { id: number }> extends React.Component<
             })
         }))
 
-        const data: IUpdateData<T> = {
+        const data: UpdateData<T> = {
             id: this.state.values.id,
             name: options.name,
             value: options.value
@@ -92,7 +92,7 @@ class AutoSaveForm<T extends { id: number }> extends React.Component<
         }
     }
 
-    public update = (data: IUpdateData<T>) => {
+    public update = (data: UpdateData<T>) => {
         new Promise((resolve, reject) => {
             this.props.update(
                 data.id,
@@ -129,7 +129,7 @@ class AutoSaveForm<T extends { id: number }> extends React.Component<
     public debounceUpdate = debounce(this.update, 300)
 
     public render() {
-        const store: IAutoSaveFormContext<T> = {
+        const store: AutoSaveFormContext<T> = {
             ...this.state,
             onChange: this.handleChange
         }

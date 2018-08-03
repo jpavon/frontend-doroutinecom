@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
-import { IRootState } from 'data/types'
+import { RootState } from 'data/types'
 import history from 'utils/history'
 import { now } from 'utils/date'
 import {
@@ -32,7 +32,7 @@ import {
     WorkoutRoutineNameDeleted,
     WorkoutDates,
     WorkoutRoutineName
-} from 'views/Workout/style'
+} from './style'
 
 interface OwnProps {
     workoutId: number
@@ -254,7 +254,7 @@ class WorkoutContainer extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: OwnProps) => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     workout: workoutSelector(state, props.workoutId),
     displayName: workoutDisplayNameSelector(state, props.workoutId),
     duration: workoutDisplayDurationSelector(state, props.workoutId),

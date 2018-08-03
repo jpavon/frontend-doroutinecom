@@ -2,28 +2,28 @@ import * as React from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 
-import { IRootState } from 'data/types'
-import { IAlert } from 'data/ui/types'
+import { RootState } from 'data/types'
+import { Alert as AlertProps } from 'data/ui/types'
 import { removeAlert } from 'data/ui/actions'
 import Alert from 'components/Alert'
 import { Container } from './style'
 
-interface IOwnProps {
+interface OwnProps {
     header: React.ReactNode
 }
 
-interface IStateProps {
-    alert: IAlert | null
+interface StateProps {
+    alert: AlertProps | null
 }
 
-interface IDispatchProps {
+interface DispatchProps {
     removeAlert: () => void
 }
 
-interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
+interface Props extends OwnProps, StateProps, DispatchProps {}
 
-class Layout extends React.Component<IProps> {
-    constructor(props: IProps) {
+class Layout extends React.Component<Props> {
+    constructor(props: Props) {
         super(props)
 
         if (this.props.alert) {
@@ -31,7 +31,7 @@ class Layout extends React.Component<IProps> {
         }
     }
 
-    public componentWillReceiveProps(nextProps: IProps) {
+    public componentWillReceiveProps(nextProps: Props) {
         if (nextProps.alert && nextProps.alert === this.props.alert) {
             this.props.removeAlert()
         }
@@ -55,11 +55,11 @@ class Layout extends React.Component<IProps> {
     }
 }
 
-const mapStateToProps = (state: IRootState, props: IOwnProps): IStateProps => ({
+const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
     alert: state.ui.alert
 })
 
-const mapDispatchToProps: IDispatchProps = {
+const mapDispatchToProps: DispatchProps = {
     removeAlert
 }
 

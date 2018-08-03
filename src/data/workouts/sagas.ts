@@ -1,7 +1,7 @@
 import { takeLatest, call } from 'redux-saga/effects'
 
-import { IApiAction, ISuccessAction } from 'data/types'
-import { IWorkout } from 'data/workouts/types'
+import { ApiAction, SuccessAction } from 'data/types'
+import { Workout } from 'data/workouts/types'
 
 import history from 'utils/history'
 import apiSaga from 'utils/apiSaga'
@@ -9,7 +9,7 @@ import constants from 'data/workouts/constants'
 import * as actions from 'data/workouts/actions'
 import { getWorkoutDataSaga } from 'data/sagas'
 
-function* getWorkoutsSaga(action: IApiAction) {
+function* getWorkoutsSaga(action: ApiAction) {
     yield* apiSaga(
         action,
         actions.getWorkoutsSuccess,
@@ -17,7 +17,7 @@ function* getWorkoutsSaga(action: IApiAction) {
     )
 }
 
-function* postWorkoutSaga(action: IApiAction) {
+function* postWorkoutSaga(action: ApiAction) {
     yield* apiSaga(
         action,
         actions.postWorkoutSuccess,
@@ -25,7 +25,7 @@ function* postWorkoutSaga(action: IApiAction) {
     )
 }
 
-function* postWorkoutFromSaga(action: IApiAction) {
+function* postWorkoutFromSaga(action: ApiAction) {
     yield* apiSaga(
         action,
         actions.postWorkoutFromSuccess,
@@ -33,11 +33,11 @@ function* postWorkoutFromSaga(action: IApiAction) {
     )
 }
 
-function* putWorkoutSaga(action: IApiAction) {
+function* putWorkoutSaga(action: ApiAction) {
     yield* apiSaga(action, actions.putWorkoutSuccess, actions.putWorkoutFailure)
 }
 
-function* deleteWorkoutSaga(action: IApiAction) {
+function* deleteWorkoutSaga(action: ApiAction) {
     yield* apiSaga(
         action,
         actions.deleteWorkoutSuccess,
@@ -49,7 +49,7 @@ function* workoutDeleteSuccess() {
     yield history.push(`/workouts`)
 }
 
-function* workoutPostFromSuccess(action: ISuccessAction<IWorkout>) {
+function* workoutPostFromSuccess(action: SuccessAction<Workout>) {
     yield call(getWorkoutDataSaga)
 
     yield history.push(`/workouts/${action.payload.id}`)

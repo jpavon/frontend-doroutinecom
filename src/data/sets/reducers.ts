@@ -1,10 +1,10 @@
-import { ISetsState, ISetsAction } from 'data/sets/types'
+import { SetsState, SetsAction } from 'data/sets/types'
 
 import constants from 'data/sets/constants'
 import { statusConstants } from 'data/constants'
 import * as utils from 'data/utils'
 
-const initialState: Readonly<ISetsState> = {
+const initialState: Readonly<SetsState> = {
     status: statusConstants.STATUS_NONE,
     entities: {},
     entitiesOrder: [],
@@ -12,7 +12,7 @@ const initialState: Readonly<ISetsState> = {
     error: null
 }
 
-const sets = (state = initialState, action: ISetsAction): ISetsState => {
+const sets = (state = initialState, action: SetsAction): SetsState => {
     switch (action.type) {
         case constants.SETS_GET_REQUEST:
             return utils.request(state)

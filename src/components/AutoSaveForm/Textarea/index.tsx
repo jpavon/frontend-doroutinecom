@@ -3,14 +3,14 @@ import * as React from 'react'
 import { AutoSaveFormConsumer } from 'components/AutoSaveForm'
 
 import Alert from 'components/Form/Alert'
-import UncontrolledTextarea, { ITextareaProps } from 'components/Form/Textarea'
+import UncontrolledTextarea, { TextareaProps } from 'components/Form/Textarea'
 import Saving from 'components/Saving'
 
-interface IAutoSaveFormTextareaProps extends ITextareaProps {
+interface AutoSaveFormTextareaProps extends TextareaProps {
     name: string
 }
 
-const Textarea: React.SFC<IAutoSaveFormTextareaProps> = (props) => (
+const Textarea: React.SFC<AutoSaveFormTextareaProps> = (props) => (
     <AutoSaveFormConsumer>
         {({ values, errors, onChange, updating }) => {
             return (

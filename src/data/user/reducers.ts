@@ -1,18 +1,18 @@
 import * as store from 'store'
 
-import { IUserState, IUserAction } from 'data/user/types'
+import { UserState, UserAction } from 'data/user/types'
 
 import constants from 'data/user/constants'
 import { statusConstants } from 'data/constants'
 
-const initialState: Readonly<IUserState> = {
+const initialState: Readonly<UserState> = {
     status: statusConstants.STATUS_NONE,
     isAuth: !!store.get('token'),
     entity: null,
     error: null
 }
 
-const user = (state = initialState, action: IUserAction): IUserState => {
+const user = (state = initialState, action: UserAction): UserState => {
     switch (action.type) {
         case constants.USER_GET_REQUEST:
             return {
