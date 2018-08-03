@@ -64,7 +64,6 @@ class RoutinesContainer extends React.Component<Props> {
                             {this.props.defaultRoutines.map((routine, i) => (
                                 <RoutineListItem
                                     to={`/routines/${routine.id}`}
-                                    className="routines-routine"
                                 >
                                     {routine.name || 'No routine name set.'}
                                 </RoutineListItem>

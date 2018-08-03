@@ -1,5 +1,4 @@
 import * as React from 'react'
-import * as classNames from 'classnames'
 
 import TickSvg from 'media/tick.svg'
 
@@ -9,7 +8,7 @@ export interface CheckboxProps
     extends React.InputHTMLAttributes<HTMLInputElement> {}
 
 const Checkbox: React.SFC<CheckboxProps> = (props) => {
-    const { id, name, className, checked, onChange } = props
+    const { id, name, checked, onChange } = props
 
     return (
         <>
@@ -21,7 +20,6 @@ const Checkbox: React.SFC<CheckboxProps> = (props) => {
                 name={name}
                 checked={checked}
                 type="checkbox"
-                className={classNames('checkbox', className)}
                 onChange={onChange}
                 aria-checked={checked}
             />

@@ -538,7 +538,7 @@ describe('create workout from routine', async () => {
             await page.waitForSelector('[name=startedAt]')
             await page.click('[name=startedAt]')
             await page.waitFor(1000)
-            await page.click('.datetime-startedAt [data-value="15"]')
+            await page.click('[data-e2e=datetime-startedAt] [data-value="15"]')
             await page.waitFor(1000)
         },
         fixtures.TIMEOUT
@@ -550,7 +550,9 @@ describe('create workout from routine', async () => {
             await page.waitForSelector('[name=completedAt]')
             await page.click('[name=completedAt]')
             await page.waitFor(1000)
-            await page.click('.datetime-completedAt [data-value="14"]')
+            await page.click(
+                '[data-e2e=datetime-completedAt] [data-value="14"]'
+            )
             await page.waitFor(1000)
         },
         fixtures.TIMEOUT

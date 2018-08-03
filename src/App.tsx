@@ -4,11 +4,8 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import { RootState } from 'data/types'
-
 import { getAppData } from 'data/actions'
-
 import NavContainer from 'views/Nav'
-
 import Routes from 'Routes'
 import ErrorApp from 'components/ErrorApp'
 import Loading from 'components/Loading'

@@ -16,14 +16,7 @@ export interface SelectProps
 }
 
 const Select: React.SFC<SelectProps> = (props) => {
-    const {
-        name,
-        options,
-        className,
-        inputRef,
-        defaultOptionMessage,
-        ...rest
-    } = props
+    const { name, options, inputRef, defaultOptionMessage, ...rest } = props
 
     return (
         <SelectWrapper>

@@ -29,7 +29,6 @@ const LiftSetsTable: React.SFC<Props> = (props) => (
                         ? `/lifts/${set.liftId}`
                         : `/workouts/${set.workoutId}`
                 }
-                className="sets-table-item"
                 data-e2e="sets-table-item"
             >
                 <div>{set.completedAt}</div>

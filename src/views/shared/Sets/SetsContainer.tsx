@@ -149,7 +149,6 @@ class SetsContainer extends React.Component<Props> {
                                                         )
                                                     }
                                                     disabled={isDeleting}
-                                                    className="set-button-delete"
                                                     title="Delete Set"
                                                     data-e2e="set-action-remove"
                                                 />

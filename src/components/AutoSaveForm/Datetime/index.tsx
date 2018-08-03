@@ -16,7 +16,7 @@ const Datetime: React.SFC<AutoSaveDatetimeProps> = (props) => (
         {({ values, errors, onChange, updating }) => {
             return (
                 <div
-                    className={`datetime-${props.name}`}
+                    data-e2e={`datetime-${props.name}`}
                     style={{ position: 'relative' }}
                 >
                     {updating === props.name && <Saving />}

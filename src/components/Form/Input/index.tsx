@@ -8,7 +8,7 @@ export interface InputProps
 }
 
 const Input: React.SFC<InputProps> = (props) => {
-    const { name, type, className, inputRef, ...rest } = props
+    const { name, type, inputRef, ...rest } = props
 
     return (
         <StyledInput

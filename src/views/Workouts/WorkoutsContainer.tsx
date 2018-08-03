@@ -8,7 +8,6 @@ import {
     pendingWorkoutsSelector
 } from 'data/workouts/selectors'
 
-import Layout from 'views/Layout'
 import NoData from 'components/NoData'
 import NavBar from 'components/NavBar'
 import Badge from 'components/Badge'
@@ -24,7 +23,7 @@ type Props = OwnProps &
 class WorkoutsContainer extends React.Component<Props> {
     public render() {
         return (
-            <Layout header={<title>Workouts</title>}>
+            <>
                 <NavBar
                     title={
                         <>
@@ -58,7 +57,7 @@ class WorkoutsContainer extends React.Component<Props> {
                         <NoData text="No completed workouts." />
                     )}
                 </Workouts>
-            </Layout>
+            </>
         )
     }
 }

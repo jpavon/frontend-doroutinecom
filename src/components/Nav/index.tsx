@@ -38,7 +38,7 @@ interface NavProps {
 const Nav: React.SFC<NavProps> = (props) => (
     <NavContainer>
         <StyledNav>
-            <NavLogo to="/" className="nav-logo" activeClassName="active">
+            <NavLogo to="/" activeClassName="active">
                 <LogoSvg />
             </NavLogo>
 
