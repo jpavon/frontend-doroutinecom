@@ -1,9 +1,10 @@
 import styled from 'styled-components'
-import Transition from 'components/Transition'
 
+import Transition from 'components/Transition'
 import { theme } from 'styles'
 
 export const Exercises = styled.div``
+
 export const Exercise = styled.div`
     position: relative;
 `

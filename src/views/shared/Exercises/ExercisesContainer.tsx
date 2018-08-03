@@ -2,7 +2,6 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
-
 import {
     postExercise,
     putExercise,

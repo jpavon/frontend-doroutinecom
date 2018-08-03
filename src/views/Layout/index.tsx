@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
-import { Alert as AlertProps } from 'data/ui/types'
 import { removeAlert } from 'data/ui/actions'
 import Alert from 'components/Alert'
 import { Container } from './style'
@@ -12,15 +11,9 @@ interface OwnProps {
     header: React.ReactNode
 }
 
-interface StateProps {
-    alert: AlertProps | null
-}
-
-interface DispatchProps {
-    removeAlert: () => void
-}
-
-interface Props extends OwnProps, StateProps, DispatchProps {}
+type Props = OwnProps &
+    ReturnType<typeof mapStateToProps> &
+    typeof mapDispatchToProps
 
 class Layout extends React.Component<Props> {
     constructor(props: Props) {
@@ -55,11 +48,11 @@ class Layout extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state: RootState, props: OwnProps): StateProps => ({
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
     alert: state.ui.alert
 })
 
-const mapDispatchToProps: DispatchProps = {
+const mapDispatchToProps = {
     removeAlert
 }
 
