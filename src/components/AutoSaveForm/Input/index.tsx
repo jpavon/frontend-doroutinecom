@@ -27,7 +27,7 @@ const Input: React.SFC<AutoSaveInputProps> = (props) => (
                         }}
                         {...props}
                     />
-                    <Alert message={errors[props.name]} />
+                    {errors && <Alert message={errors[props.name]} />}
                 </div>
             )
         }}

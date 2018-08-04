@@ -3,7 +3,7 @@ import { debounce } from 'lodash'
 
 export interface AutoSaveFormState<T> {
     values: T
-    errors: Record<string, string>
+    errors?: Record<string, string>
     updating: string | null
 }
 

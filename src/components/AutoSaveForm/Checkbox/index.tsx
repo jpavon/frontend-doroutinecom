@@ -26,7 +26,7 @@ const Checkbox: React.SFC<AutoSaveCheckboxProps> = (props) => (
                         }}
                         {...props}
                     />
-                    <Alert message={errors[props.name]} />
+                    {errors && <Alert message={errors[props.name]} />}
                 </>
             )
         }}

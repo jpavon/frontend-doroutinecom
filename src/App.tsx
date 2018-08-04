@@ -10,7 +10,6 @@ import Routes from 'Routes'
 import ErrorApp from 'components/ErrorApp'
 import Loading from 'components/Loading'
 import Head from 'components/Head'
-import Offline from 'components/Offline'
 
 interface OwnProps {}
 
@@ -19,12 +18,12 @@ type Props = OwnProps &
     typeof mapDispatchToProps
 
 interface State {
-    isErrorApp: boolean
+    isError: boolean
 }
 
 class App extends React.Component<Props, State> {
     public readonly state = {
-        isErrorApp: false
+        isError: false
     }
 
     constructor(props: Props) {
@@ -35,32 +34,19 @@ class App extends React.Component<Props, State> {
         }
     }
 
-    public componentWillReceiveProps(nextProps: Props) {
-        if (
-            nextProps.isServerError &&
-            nextProps.isServerError !== this.props.isServerError
-        ) {
-            this.setState({ isErrorApp: true })
-        }
-    }
-
-    public componentDidCatch(error: Error /*, info*/) {
-        this.setState({ isErrorApp: true })
+    public componentDidCatch() {
+        this.setState({ isError: true })
     }
 
     public render() {
-        if (this.props.isOffline) {
-            return <Offline />
-        }
-
         return (
             <>
                 <Head />
                 <NavContainer />
-                {this.props.isLoading ? (
-                    <Loading />
-                ) : this.state.isErrorApp ? (
+                {this.state.isError ? (
                     <ErrorApp />
+                ) : this.props.isLoading ? (
+                    <Loading />
                 ) : (
                     <Routes isAuth={this.props.isAuth} />
                 )}
@@ -71,9 +57,7 @@ class App extends React.Component<Props, State> {
 
 const mapStateToProps = (state: RootState, props: OwnProps) => ({
     isAuth: state.user.isAuth,
-    isLoading: state.ui.isLoading,
-    isServerError: state.ui.isServerError,
-    isOffline: state.ui.isOffline
+    isLoading: state.ui.isLoading
 })
 
 const mapDispatchToProps = {

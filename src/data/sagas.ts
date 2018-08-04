@@ -3,7 +3,6 @@ import { all, put, take, takeLatest, call, spawn } from 'redux-saga/effects'
 import * as store from 'store'
 
 import { User } from 'data/user/types'
-
 import * as uiActions from 'data/ui/actions'
 import * as userActions from 'data/user/actions'
 import { globalConstants } from 'data/constants'
@@ -19,6 +18,7 @@ import { getWorkouts } from 'data/workouts/actions'
 import { getExercises } from 'data/exercises/actions'
 import { getLifts } from 'data/lifts/actions'
 import { getSets } from 'data/sets/actions'
+import { SERVER_ERROR } from 'utils/api'
 
 export function* getAppDataSaga() {
     yield put(uiActions.showLoading())
@@ -65,14 +65,22 @@ function* watchServerErrors() {
             liftsConstants.LIFTS_GET_FAILURE
         ])
 
-        if (error.message === 'Unauthenticated.') {
+        if (error && error.message === 'Unauthenticated.') {
             yield put(
                 userActions.unauthUser(
                     'You need to log in for access to this page.'
                 )
             )
-        } else {
-            yield put(uiActions.setServerError())
+        }
+
+        if (error && error.message === SERVER_ERROR) {
+            yield put(uiActions.removeLoading())
+            yield put(
+                uiActions.showAlert({
+                    type: 'error',
+                    message: 'Unexpected error'
+                })
+            )
         }
 
         yield call(delay, 1000)

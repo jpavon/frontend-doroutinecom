@@ -4,6 +4,8 @@ import * as store from 'store'
 
 import env from 'env'
 
+export const SERVER_ERROR = 'server-error'
+
 const api = (
     method: string,
     endpoint: string,
@@ -28,18 +30,11 @@ const api = (
             return Promise.resolve(response.data)
         })
         .catch((error: AxiosError) => {
-            if (
-                error.response &&
-                error.response.data &&
-                error.response.data.errors
-            ) {
+            if (error.response && error.response.data) {
                 return Promise.reject(error.response.data)
             }
-            if (error.request) {
-                return Promise.reject(error.response && error.response.data)
-            }
 
-            return Promise.reject('Server Error')
+            return Promise.reject({ message: SERVER_ERROR })
         })
 }
 

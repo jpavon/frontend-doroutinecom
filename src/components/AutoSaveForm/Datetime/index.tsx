@@ -32,7 +32,7 @@ const Datetime: React.SFC<AutoSaveDatetimeProps> = (props) => (
                         }}
                         {...props}
                     />
-                    <Alert message={errors[props.name]} />
+                    {errors && <Alert message={errors[props.name]} />}
                 </div>
             )
         }}

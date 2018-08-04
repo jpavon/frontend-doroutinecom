@@ -27,7 +27,7 @@ const Textarea: React.SFC<AutoSaveFormTextareaProps> = (props) => (
                         }}
                         {...props}
                     />
-                    <Alert message={errors[props.name]} />
+                    {errors && <Alert message={errors[props.name]} />}
                 </div>
             )
         }}

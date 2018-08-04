@@ -36,7 +36,7 @@ const Select: React.SFC<AutoSaveFormSelectProps> = (props) => (
                                 : null
                         }
                     />
-                    <Alert message={errors[props.name]} />
+                    {errors && <Alert message={errors[props.name]} />}
                 </span>
             )
         }}
