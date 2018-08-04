@@ -18,6 +18,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "downlevelIteration": true,
+    "importHelpers": true,
     "baseUrl": "./src/",
     "paths": {
       "*": ["*"]
