@@ -7294,9 +7294,9 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-spring@^5.5.1:
-  version "5.5.1"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-5.5.1.tgz#3c66044bd3d1a960462491c3c2728b3357781c81"
+react-spring@^5.5.4:
+  version "5.5.4"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-5.5.4.tgz#1dd48057172f7f6a411f83e8fd17b36cca0d5a83"
   dependencies:
     "@babel/runtime" "7.0.0-beta.51"
 
