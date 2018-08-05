@@ -70,7 +70,7 @@ class ExercisesContainer extends React.Component<Props, State> {
         return (
             <>
                 <NavBar title="Exercises" />
-                <Exercises>
+                <Exercises key={this.props.id}>
                     <ExerciseTransition e2e="exercise">
                         {this.props.exercises.length > 0 ? (
                             this.props.exercises.map((exercise, i) => (
