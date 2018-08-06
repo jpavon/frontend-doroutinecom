@@ -28,7 +28,7 @@ type Props = OwnProps &
 const x = (d: Props['liftSetsGraph'][0]) => d.day
 const y = (d: Props['liftSetsGraph'][0]) => d.rm
 
-class GraphLiftContainer extends React.Component<Props> {
+class Graph extends React.Component<Props> {
     public render() {
         const data = this.props.liftSetsGraph
 
@@ -165,4 +165,4 @@ const mapDispatchToProps = {}
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(GraphLiftContainer)
+)(Graph)

@@ -18,7 +18,7 @@ type Props = OwnProps &
     ReturnType<typeof mapStateToProps> &
     typeof mapDispatchToProps
 
-class WorkoutContainer extends React.Component<Props> {
+class ListItem extends React.Component<Props> {
     public render() {
         return (
             <WorkoutListItem
@@ -44,4 +44,4 @@ const mapDispatchToProps = {}
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(WorkoutContainer)
+)(ListItem)

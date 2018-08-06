@@ -9,7 +9,7 @@ import { formatDuration, longDateFormat } from 'utils/date'
 
 export const workoutSelector = createSelector(
     [(state: RootState, id: number) => state.workouts.entities[id]],
-    (workout) => workout || null
+    (workout) => (workout ? workout : null)
 )
 
 export const workoutsSelector = createSelector(
@@ -46,6 +46,7 @@ export const workoutRoutineSelector = createSelector(
 export const workoutDisplayDaySelector = createSelector(
     [workoutSelector],
     (workout) =>
+        workout &&
         workout.completedAt &&
         moment(workout.completedAt).format(longDateFormat)
 )
@@ -58,7 +59,7 @@ export const workoutLiftNamesSelector = createSelector(
     ],
     (workout, exercises, lifts) => {
         const workoutExercisesLiftsIds = Object.values(exercises)
-            .filter((exercise) => exercise.workoutId === workout.id)
+            .filter((exercise) => workout && exercise.workoutId === workout.id)
             .map((exercise) => exercise.liftId)
 
         const workoutLifts = Object.values(lifts).filter((lift) =>

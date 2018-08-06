@@ -35,7 +35,7 @@ class LiftContainer extends React.Component<Props> {
                         <title>{this.props.lift.name}</title>
                     </Helmet>
                 )}
-                <Lift data-e2e="lift">
+                <Lift>
                     <AutoSaveForm
                         initialValues={this.props.lift}
                         update={this.props.putLift}

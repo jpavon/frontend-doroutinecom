@@ -1,6 +1,6 @@
 const ROUND_TO = 2.5
 
-const calculateRepMax = (reps: number, weight: number) => {
+const calculateRepMax = (reps: number, weight: number): number => {
     if (reps === 0) {
         return 0
     }

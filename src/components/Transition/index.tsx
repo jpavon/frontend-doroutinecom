@@ -14,7 +14,6 @@ const Transition: SFC<Props> = (props) => {
     if (Array.isArray(props.children) && props.children.length > 0) {
         return (
             <SpringTransition
-                config={{ duration: 200 }}
                 keys={props.children.map((item) => item.key)}
                 from={{ opacity: 0 }}
                 enter={{ opacity: 1 }}

@@ -12,7 +12,7 @@ import Button from 'components/Button'
 import TickSvg from 'media/tick.svg'
 import XSvg from 'media/x.svg'
 import {
-    StartMessage,
+    StartMessage as StartMessageWrapper,
     StartMessageTitle,
     StartMessageList,
     StartMessageListItem,
@@ -29,12 +29,12 @@ interface State {
     hideStartMessage: boolean
 }
 
-class StartMessageContainer extends React.Component<Props, State> {
+class StartMessage extends React.Component<Props, State> {
     public readonly state = {
         hideStartMessage: !!store.get('hideStartMessage')
     }
 
-    private handleHideStartMessage = () => {
+    private handleHide = () => {
         store.set('hideStartMessage', true)
 
         this.setState({
@@ -44,7 +44,7 @@ class StartMessageContainer extends React.Component<Props, State> {
 
     public render() {
         return !this.state.hideStartMessage ? (
-            <StartMessage data-e2e="start-message">
+            <StartMessageWrapper data-e2e="start-message">
                 <StartMessageTitle>
                     Getting Started - Completed{' '}
                     {Number(this.props.hasWorkouts) +
@@ -76,13 +76,13 @@ class StartMessageContainer extends React.Component<Props, State> {
                     this.props.hasCompletedSets &&
                     this.props.hasCompletedWorkouts && (
                         <StartMessageHideButton
-                            onClick={this.handleHideStartMessage}
+                            onClick={this.handleHide}
                             data-e2e="start-message-hide-button"
                         >
                             Hide this message
                         </StartMessageHideButton>
                     )}
-            </StartMessage>
+            </StartMessageWrapper>
         ) : null
     }
 }
@@ -98,4 +98,4 @@ const mapDispatchToProps = {}
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(StartMessageContainer)
+)(StartMessage)

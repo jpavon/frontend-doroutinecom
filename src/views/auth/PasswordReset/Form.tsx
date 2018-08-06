@@ -16,7 +16,7 @@ type Props = OwnProps &
     ReturnType<typeof mapStateToProps> &
     typeof mapDispatchToProps
 
-class PasswordResetContainer extends React.Component<Props> {
+class Form extends React.Component<Props> {
     private email = React.createRef<HTMLInputElement>()
     private password = React.createRef<HTMLInputElement>()
     private passwordConfirmation = React.createRef<HTMLInputElement>()
@@ -46,7 +46,7 @@ class PasswordResetContainer extends React.Component<Props> {
         return (
             <>
                 <NavBar title="Password Reset" />
-                <Auth e2e="password-reset" handleSubmit={this.handleSubmit}>
+                <Auth handleSubmit={this.handleSubmit}>
                     <Field label="Email" id="email">
                         <Input
                             id="email"
@@ -91,4 +91,4 @@ const mapDispatchToProps = {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(PasswordResetContainer)
+)(Form)

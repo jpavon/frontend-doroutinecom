@@ -3,24 +3,21 @@ import * as React from 'react'
 import Layout from 'views/Layout'
 import NavBar from 'components/NavBar'
 import Button from 'components/Button'
-import StartMessageContainer from 'views/Profile/StartMessageContainer'
-import GraphWeeklyWorkoutsContainer from 'views/Profile/GraphWeeklyWorkoutsContainer'
-import RecentTopSetsContainer from 'views/Profile/RecentTopSetsContainer'
-import { ProfileWrapper } from './style'
+import StartMessage from 'views/Profile/StartMessage'
+import WeeklyGraph from 'views/Profile/WeeklyGraph'
+import Table from 'views/Profile/Table'
 
 const Profile = () => (
-    <Layout header={<title>Profile</title>}>
-        <ProfileWrapper data-e2e="profile">
-            <NavBar
-                title="Profile"
-                rightButton={<Button to="/settings">Settings</Button>}
-            />
-            <StartMessageContainer />
-            <NavBar title="Weekly workouts" />
-            <GraphWeeklyWorkoutsContainer />
-            <NavBar title="Recent top sets" />
-            <RecentTopSetsContainer />
-        </ProfileWrapper>
+    <Layout header={<title>Profile</title>} e2e="profile">
+        <NavBar
+            title="Profile"
+            rightButton={<Button to="/settings">Settings</Button>}
+        />
+        <StartMessage />
+        <NavBar title="Weekly workouts" />
+        <WeeklyGraph />
+        <NavBar title="Recent top sets" />
+        <Table />
     </Layout>
 )
 

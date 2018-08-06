@@ -2,26 +2,26 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
-import { topSetsForALiftSelector } from 'data/sets/selectors'
+import { topSetsCompletedSelector } from 'data/sets/selectors'
 import { userSelector } from 'data/user/selectors'
 import SetsTable from 'components/SetsTable'
 import NoData from 'components/NoData'
 
-interface OwnProps {
-    liftId: number
-}
+interface OwnProps {}
 
 type Props = OwnProps &
     ReturnType<typeof mapStateToProps> &
     typeof mapDispatchToProps
 
-class LiftSetsTableContainer extends React.Component<Props> {
+class Table extends React.Component<Props> {
     public render() {
-        return this.props.user && this.props.topLiftSets.length > 0 ? (
+        return this.props.topSets.length > 0 ? (
             <SetsTable
-                sets={this.props.topLiftSets}
-                weightMeasure={this.props.user.weightMeasure}
-                showLiftColumn={false}
+                sets={this.props.topSets}
+                weightMeasure={
+                    this.props.user ? this.props.user.weightMeasure : ''
+                }
+                showLiftColumn={true}
             />
         ) : (
             <NoData text="List of top sets will be displayed here when you complete a workout." />
@@ -30,7 +30,7 @@ class LiftSetsTableContainer extends React.Component<Props> {
 }
 
 const mapStateToProps = (state: RootState, props: OwnProps) => ({
-    topLiftSets: topSetsForALiftSelector(props.liftId)(state),
+    topSets: topSetsCompletedSelector(state),
     user: userSelector(state)
 })
 
@@ -39,4 +39,4 @@ const mapDispatchToProps = {}
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(LiftSetsTableContainer)
+)(Table)

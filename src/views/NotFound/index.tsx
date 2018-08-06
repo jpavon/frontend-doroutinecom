@@ -5,7 +5,7 @@ import Layout from 'views/Layout'
 import { NotFoundWrapper, NotFoundTitle } from './style'
 
 const NotFound = () => (
-    <Layout header={<title>Not Found</title>}>
+    <Layout header={<title>Not Found</title>} e2e="not-found">
         <NotFoundWrapper>
             <NotFoundTitle>Page not found.</NotFoundTitle>
             <p>

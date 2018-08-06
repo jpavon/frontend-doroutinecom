@@ -7,6 +7,7 @@ export const Exercises = styled.div``
 
 export const Exercise = styled.div`
     position: relative;
+    margin-bottom: ${theme.spacing}px;
 `
 
 export const ExercisesButtonCreate = styled.div`

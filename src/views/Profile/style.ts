@@ -4,8 +4,6 @@ import { rgba } from 'polished'
 import { theme } from 'styles'
 import Button from 'components/Button'
 
-export const ProfileWrapper = styled.div``
-
 // start message
 
 export const StartMessage = styled.div`

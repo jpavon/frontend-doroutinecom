@@ -4,10 +4,12 @@ import Layout from 'views/Layout'
 import NavBar from 'components/NavBar'
 import Button from 'components/Button'
 import Footer from 'components/Footer'
-import UserSettingsContainer from 'views/Settings/UserSettingsContainer'
+import SettingsForm from 'views/Settings/SettingsForm'
+import UserForm from 'views/Settings/UserForm'
+import UnauthButton from 'views/Settings/UnauthButton'
 
 const Settings = () => (
-    <Layout header={<title>Settings</title>}>
+    <Layout header={<title>Settings</title>} e2e="settings">
         <NavBar
             title="Settings"
             leftButton={
@@ -17,7 +19,10 @@ const Settings = () => (
             }
         />
         <NavBar title="General" />
-        <UserSettingsContainer />
+        <SettingsForm />
+        <NavBar title="User" />
+        <UserForm />
+        <NavBar rightButton={<UnauthButton />} />
         <Footer />
     </Layout>
 )

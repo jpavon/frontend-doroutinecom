@@ -1,12 +1,11 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 
-import { loginUser } from 'data/user/actions'
+import { registerUser } from 'data/user/actions'
+
 import Input from 'components/Form/Input'
-import Field from 'components/Field'
 import Auth from 'components/Auth'
-import { LoginPasswordForgotten } from './style'
+import Field from 'components/Field'
 
 interface OwnProps {}
 
@@ -14,43 +13,44 @@ type Props = OwnProps &
     ReturnType<typeof mapStateToProps> &
     typeof mapDispatchToProps
 
-class LoginContainer extends React.Component<Props> {
+class Form extends React.Component<Props> {
+    private name = React.createRef<HTMLInputElement>()
     private email = React.createRef<HTMLInputElement>()
     private password = React.createRef<HTMLInputElement>()
+    private passwordConfirmation = React.createRef<HTMLInputElement>()
 
     private handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
         new Promise((resolve, reject) => {
-            this.props.loginUser(
+            this.props.registerUser(
                 {
+                    name: this.name.current!.value,
                     email: this.email.current!.value,
-                    password: this.password.current!.value
+                    password: this.password.current!.value,
+                    passwordConfirmation: this.passwordConfirmation.current!
+                        .value
                 },
                 resolve,
                 reject
             )
         }).catch(() => {
             this.password.current!.value = ''
+            this.passwordConfirmation.current!.value = ''
         })
     }
 
     public render() {
         return (
-            <Auth
-                e2e="login"
-                handleSubmit={this.handleSubmit}
-                footer={
-                    <LoginPasswordForgotten>
-                        <Link
-                            to="/password-forgotten"
-                            data-e2e="login-password-forgotten-button"
-                        >
-                            Password forgotten?
-                        </Link>
-                    </LoginPasswordForgotten>
-                }
-            >
+            <Auth handleSubmit={this.handleSubmit}>
+                <Field label="Name" id="name">
+                    <Input
+                        id="name"
+                        name="name"
+                        placeholder="Type your name"
+                        inputRef={this.name}
+                    />
+                </Field>
                 <Field label="Email" id="email">
                     <Input
                         id="email"
@@ -63,10 +63,19 @@ class LoginContainer extends React.Component<Props> {
                 <Field label="Password" id="password">
                     <Input
                         id="password"
-                        name="password"
                         type="password"
+                        name="password"
                         placeholder="Type your password"
                         inputRef={this.password}
+                    />
+                </Field>
+                <Field label="Type password again" id="passwordConfirmation">
+                    <Input
+                        id="passwordConfirmation"
+                        type="password"
+                        name="passwordConfirmation"
+                        placeholder="Type your password again"
+                        inputRef={this.passwordConfirmation}
                     />
                 </Field>
             </Auth>
@@ -77,10 +86,10 @@ class LoginContainer extends React.Component<Props> {
 const mapStateToProps = () => ({})
 
 const mapDispatchToProps = {
-    loginUser
+    registerUser
 }
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
-)(LoginContainer)
+)(Form)

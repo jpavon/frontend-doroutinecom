@@ -18,9 +18,8 @@ import NavBar from 'components/NavBar'
 import AutoSaveForm from 'components/AutoSaveForm'
 import Button from 'components/Button'
 import Select from 'components/AutoSaveForm/Select'
-import SetsContainer from 'views/shared/Sets/SetsContainer'
+import Sets from 'views/shared/Sets'
 import {
-    Exercises,
     Exercise,
     ExerciseTransition,
     ExercisesButtonCreate,
@@ -41,7 +40,7 @@ interface State {
     isRemoveButtonsVisible: boolean
 }
 
-class ExercisesContainer extends React.Component<Props, State> {
+class Exercises extends React.Component<Props, State> {
     public readonly state = {
         isRemoveButtonsVisible: this.props.entity === 'routine' ? true : false
     }
@@ -70,7 +69,7 @@ class ExercisesContainer extends React.Component<Props, State> {
         return (
             <>
                 <NavBar title="Exercises" />
-                <Exercises key={this.props.id}>
+                <div key={this.props.id}>
                     <ExerciseTransition e2e="exercise">
                         {this.props.exercises.length > 0 ? (
                             this.props.exercises.map((exercise, i) => (
@@ -104,7 +103,7 @@ class ExercisesContainer extends React.Component<Props, State> {
                                             </ExerciseLift>
                                         )}
                                     />
-                                    <SetsContainer
+                                    <Sets
                                         exerciseId={exercise.id}
                                         liftId={exercise.liftId}
                                         isWorkout={
@@ -143,7 +142,7 @@ class ExercisesContainer extends React.Component<Props, State> {
                             <NoData text="No exercises created." />
                         )}
                     </ExerciseTransition>
-                </Exercises>
+                </div>
                 <ExercisesButtonCreate>
                     <Button
                         data-e2e="exercises-button-create"
@@ -177,4 +176,4 @@ const mapDispatchToProps = {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ExercisesContainer)
+)(Exercises)

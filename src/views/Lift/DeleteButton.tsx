@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { RootState } from 'data/types'
 import { deleteLift } from 'data/lifts/actions'
 import { statusConstants } from 'data/constants'
-import NavBar from 'components/NavBar'
 import Button from 'components/Button'
 
 interface OwnProps {
@@ -15,7 +14,7 @@ type Props = OwnProps &
     ReturnType<typeof mapStateToProps> &
     typeof mapDispatchToProps
 
-class LiftDeleteContainer extends React.Component<Props> {
+class DeleteButton extends React.Component<Props> {
     private handleRemove = () => {
         if (window.confirm('Are you sure you want to delete this lift?')) {
             this.props.deleteLift(this.props.liftId)
@@ -24,18 +23,14 @@ class LiftDeleteContainer extends React.Component<Props> {
 
     public render() {
         return (
-            <NavBar
-                rightButton={
-                    <Button
-                        onClick={this.handleRemove}
-                        danger={true}
-                        disabled={this.props.isDeleting}
-                        data-e2e="lift-button-delete"
-                    >
-                        Delete Lift
-                    </Button>
-                }
-            />
+            <Button
+                onClick={this.handleRemove}
+                danger={true}
+                disabled={this.props.isDeleting}
+                data-e2e="lift-button-delete"
+            >
+                Delete Lift
+            </Button>
         )
     }
 }
@@ -53,4 +48,4 @@ const mapDispatchToProps = {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(LiftDeleteContainer)
+)(DeleteButton)

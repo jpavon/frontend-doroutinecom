@@ -2,8 +2,6 @@ import styled from 'styled-components'
 
 import { theme } from 'styles'
 
-export const Workout = styled.div``
-
 export const WorkoutRoutineName = styled.div`
     display: flex;
     align-items: center;

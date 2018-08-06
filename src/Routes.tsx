@@ -70,88 +70,69 @@ const GuestRoute = ({
     />
 )
 
-class Routes extends React.Component<Props> {
-    public render() {
-        return (
-            <Switch>
-                <GuestRoute
-                    exact={true}
-                    path="/login"
-                    component={Login}
-                    isAuth={this.props.isAuth}
-                />
-                <GuestRoute
-                    exact={true}
-                    path="/register"
-                    component={Register}
-                    isAuth={this.props.isAuth}
-                />
-                <GuestRoute
-                    exact={true}
-                    path="/password-forgotten"
-                    component={PasswordForgotten}
-                    isAuth={this.props.isAuth}
-                />
-                <GuestRoute
-                    exact={true}
-                    path="/password-reset/:token"
-                    component={PasswordReset}
-                    isAuth={this.props.isAuth}
-                />
+const Routes: React.SFC<Props> = (props) => (
+    <Switch>
+        <GuestRoute exact={true} path="/login" component={Login} {...props} />
+        <GuestRoute
+            exact={true}
+            path="/register"
+            component={Register}
+            {...props}
+        />
+        <GuestRoute
+            exact={true}
+            path="/password-forgotten"
+            component={PasswordForgotten}
+            {...props}
+        />
+        <GuestRoute
+            exact={true}
+            path="/password-reset/:token"
+            component={PasswordReset}
+            {...props}
+        />
 
-                <PrivateRoute
-                    exact={true}
-                    path="/"
-                    component={Profile}
-                    isAuth={this.props.isAuth}
-                />
-                <PrivateRoute
-                    exact={true}
-                    path="/settings"
-                    component={Settings}
-                    isAuth={this.props.isAuth}
-                />
-                <PrivateRoute
-                    exact={true}
-                    path="/workouts"
-                    component={Workouts}
-                    isAuth={this.props.isAuth}
-                />
-                <PrivateRoute
-                    exact={true}
-                    path="/workouts/:workoutId"
-                    component={Workout}
-                    isAuth={this.props.isAuth}
-                />
-                <PrivateRoute
-                    exact={true}
-                    path="/routines"
-                    component={Routines}
-                    isAuth={this.props.isAuth}
-                />
-                <PrivateRoute
-                    exact={true}
-                    path="/routines/:routineId"
-                    component={Routine}
-                    isAuth={this.props.isAuth}
-                />
-                <PrivateRoute
-                    exact={true}
-                    path="/lifts"
-                    component={Lifts}
-                    isAuth={this.props.isAuth}
-                />
-                <PrivateRoute
-                    exact={true}
-                    path="/lifts/:liftId"
-                    component={Lift}
-                    isAuth={this.props.isAuth}
-                />
+        <PrivateRoute exact={true} path="/" component={Profile} {...props} />
+        <PrivateRoute
+            exact={true}
+            path="/settings"
+            component={Settings}
+            {...props}
+        />
+        <PrivateRoute
+            exact={true}
+            path="/workouts"
+            component={Workouts}
+            {...props}
+        />
+        <PrivateRoute
+            exact={true}
+            path="/workouts/:workoutId"
+            component={Workout}
+            {...props}
+        />
+        <PrivateRoute
+            exact={true}
+            path="/routines"
+            component={Routines}
+            {...props}
+        />
+        <PrivateRoute
+            exact={true}
+            path="/routines/:routineId"
+            component={Routine}
+            {...props}
+        />
+        <PrivateRoute exact={true} path="/lifts" component={Lifts} {...props} />
+        <PrivateRoute
+            exact={true}
+            path="/lifts/:liftId"
+            component={Lift}
+            {...props}
+        />
 
-                <Route component={NotFound} />
-            </Switch>
-        )
-    }
-}
+        <Route component={NotFound} />
+    </Switch>
+)
 
 export default Routes

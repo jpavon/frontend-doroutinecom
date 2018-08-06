@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 import { passwordForgottenUser } from 'data/user/actions'
 
-import NavBar from 'components/NavBar'
 import Input from 'components/Form/Input'
 import Auth from 'components/Auth'
 import Field from 'components/Field'
@@ -14,7 +13,7 @@ type Props = OwnProps &
     ReturnType<typeof mapStateToProps> &
     typeof mapDispatchToProps
 
-class PasswordForgottenContainer extends React.Component<Props> {
+class Form extends React.Component<Props> {
     private email = React.createRef<HTMLInputElement>()
 
     private handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -27,20 +26,17 @@ class PasswordForgottenContainer extends React.Component<Props> {
 
     public render() {
         return (
-            <>
-                <NavBar title="Password Forgotten" />
-                <Auth e2e="password-forgotten" handleSubmit={this.handleSubmit}>
-                    <Field label="Email" id="email">
-                        <Input
-                            id="email"
-                            type="email"
-                            name="email"
-                            placeholder="Type your email"
-                            inputRef={this.email}
-                        />
-                    </Field>
-                </Auth>
-            </>
+            <Auth handleSubmit={this.handleSubmit}>
+                <Field label="Email" id="email">
+                    <Input
+                        id="email"
+                        type="email"
+                        name="email"
+                        placeholder="Type your email"
+                        inputRef={this.email}
+                    />
+                </Field>
+            </Auth>
         )
     }
 }
@@ -54,4 +50,4 @@ const mapDispatchToProps = {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(PasswordForgottenContainer)
+)(Form)

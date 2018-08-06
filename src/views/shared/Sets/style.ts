@@ -16,8 +16,6 @@ const Layout = css`
     }
 `
 
-export const Sets = styled.div``
-
 export const SetTransition = styled(Transition)``
 
 export const SetsButtonCreate = styled.div`

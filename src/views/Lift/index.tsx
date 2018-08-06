@@ -2,34 +2,37 @@ import * as React from 'react'
 import { RouteComponentProps } from 'react-router'
 
 import Layout from 'views/Layout'
-import LiftContainer from 'views/Lift/LiftContainer'
 import NavBar from 'components/NavBar'
 import Button from 'components/Button'
-import GraphLiftContainer from 'views/Lift/GraphLiftContainer'
-import LiftSetsTableContainer from 'views/Lift/LiftSetsTableContainer'
-import LiftDeleteContainer from 'views/Lift/LiftDeleteContainer'
+import Form from 'views/Lift/Form'
+import Graph from 'views/Lift/Graph'
+import Table from 'views/Lift/Table'
+import DeleteButton from 'views/Lift/DeleteButton'
 
 interface Params {
     liftId: string
 }
 
-const Lift = ({ match }: RouteComponentProps<Params>) => (
-    <Layout header={<title>Lift</title>}>
-        <NavBar
-            title="Edit lift"
-            leftButton={
-                <Button to="/lifts" icon="back">
-                    Back
-                </Button>
-            }
-        />
-        <LiftContainer liftId={Number(match.params.liftId)} />
-        <NavBar title="Recent progress" />
-        <GraphLiftContainer liftId={Number(match.params.liftId)} />
-        <NavBar title="Top sets" />
-        <LiftSetsTableContainer liftId={Number(match.params.liftId)} />
-        <LiftDeleteContainer liftId={Number(match.params.liftId)} />
-    </Layout>
-)
+const Lift = ({ match }: RouteComponentProps<Params>) => {
+    const liftId = Number(match.params.liftId)
+    return (
+        <Layout header={<title>Lift</title>} e2e="lift">
+            <NavBar
+                title="Edit lift"
+                leftButton={
+                    <Button to="/lifts" icon="back">
+                        Back
+                    </Button>
+                }
+            />
+            <Form liftId={liftId} />
+            <NavBar title="Recent progress" />
+            <Graph liftId={liftId} />
+            <NavBar title="Top sets" />
+            <Table liftId={liftId} />
+            <NavBar rightButton={<DeleteButton liftId={liftId} />} />
+        </Layout>
+    )
+}
 
 export default Lift

@@ -20,7 +20,7 @@ type Props = OwnProps &
 const x = (d: Props['weeklyWorkouts'][0]) => d.week
 const y = (d: Props['weeklyWorkouts'][0]) => d.completed
 
-class GraphWeeklyWorkoutsContainer extends React.Component<Props> {
+class WeeklyGraph extends React.Component<Props> {
     public render() {
         const data = this.props.weeklyWorkouts
         return (
@@ -127,4 +127,4 @@ const mapDispatchToProps = {}
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(GraphWeeklyWorkoutsContainer)
+)(WeeklyGraph)

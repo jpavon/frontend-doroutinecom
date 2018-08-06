@@ -16,7 +16,6 @@ import Checkbox from 'components/AutoSaveForm/Checkbox'
 import Label from 'components/Form/Label'
 import {
     SetTransition,
-    Sets,
     SetsHeader,
     SetsHeaderItem,
     SetsHeaderItemToggle,
@@ -38,7 +37,7 @@ type Props = OwnProps &
     ReturnType<typeof mapStateToProps> &
     typeof mapDispatchToProps
 
-class SetsContainer extends React.Component<Props> {
+class Sets extends React.Component<Props> {
     private handleCreate = () => {
         this.props.postSet({
             exerciseId: this.props.exerciseId
@@ -47,7 +46,7 @@ class SetsContainer extends React.Component<Props> {
 
     public render() {
         return this.props.user ? (
-            <Sets>
+            <>
                 <SetsHeader>
                     <SetsHeaderItem>
                         <small>Set</small>
@@ -168,7 +167,7 @@ class SetsContainer extends React.Component<Props> {
                         Add Set
                     </Button>
                 </SetsButtonCreate>
-            </Sets>
+            </>
         ) : null
     }
 }
@@ -191,4 +190,4 @@ const mapDispatchToProps = {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(SetsContainer)
+)(Sets)
