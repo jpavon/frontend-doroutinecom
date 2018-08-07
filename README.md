@@ -13,6 +13,7 @@
 - redux-sagas
 - react-router
 - reselect
+- styled-components
 - jest
 - puppeteer
 ```
