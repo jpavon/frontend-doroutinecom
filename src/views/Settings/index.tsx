@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { RouteComponentProps } from 'react-router-dom'
 
 import Layout from 'views/Layout'
 import NavBar from 'components/NavBar'
@@ -8,7 +9,7 @@ import SettingsForm from 'views/Settings/SettingsForm'
 import UserForm from 'views/Settings/UserForm'
 import UnauthButton from 'views/Settings/UnauthButton'
 
-const Settings = () => (
+const Settings: React.SFC<RouteComponentProps<{}>> = () => (
     <Layout header={<title>Settings</title>} e2e="settings">
         <NavBar
             title="Settings"

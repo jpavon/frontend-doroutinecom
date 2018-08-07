@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { RouteComponentProps } from 'react-router'
+import { RouteComponentProps } from 'react-router-dom'
 
 import Layout from 'views/Layout'
 import NavBar from 'components/NavBar'
@@ -13,8 +13,8 @@ interface Params {
     liftId: string
 }
 
-const Lift = ({ match }: RouteComponentProps<Params>) => {
-    const liftId = Number(match.params.liftId)
+const Lift: React.SFC<RouteComponentProps<Params>> = (props) => {
+    const liftId = Number(props.match.params.liftId)
     return (
         <Layout header={<title>Lift</title>} e2e="lift">
             <NavBar

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { RouteComponentProps } from 'react-router-dom'
 
 import {
     pendingWorkoutsSelector,
@@ -10,7 +11,7 @@ import NavBar from 'components/NavBar'
 import PendingBadge from 'views/Workouts/PendingBadge'
 // import Badge from 'components/Badge'
 
-const Workouts: React.SFC = () => (
+const Workouts: React.SFC<RouteComponentProps<{}>> = () => (
     <Layout header={<title>Workouts</title>} e2e="workouts">
         <NavBar
             title={

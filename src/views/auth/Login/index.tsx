@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, RouteComponentProps } from 'react-router-dom'
 
 import Layout from 'views/Layout'
 import Form from 'views/auth/Login/Form'
 import { LoginPasswordForgotten } from './style'
 
-const Login = () => (
+const Login: React.SFC<RouteComponentProps<{}>> = () => (
     <Layout header={<title>Login</title>} e2e="login">
         <Form />
         <LoginPasswordForgotten>

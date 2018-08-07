@@ -3,7 +3,8 @@ import TextareaAutosize from 'react-autosize-textarea'
 
 import { inputStyles } from 'components/Form/Input/style'
 
-export const Textarea = styled(TextareaAutosize)`
+// tslint:disable-next-line:no-any
+export const Textarea = styled(TextareaAutosize as any)`
     ${inputStyles};
     max-width: 100%;
     height: auto;

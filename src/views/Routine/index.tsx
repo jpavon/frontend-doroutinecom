@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { RouteComponentProps } from 'react-router'
+import { RouteComponentProps } from 'react-router-dom'
 
 import NavBar from 'components/NavBar'
 import Layout from 'views/Layout'
@@ -13,8 +13,8 @@ interface Params {
     routineId: string
 }
 
-const Routine = ({ match }: RouteComponentProps<Params>) => {
-    const routineId = Number(match.params.routineId)
+const Routine: React.SFC<RouteComponentProps<Params>> = (props) => {
+    const routineId = Number(props.match.params.routineId)
     return (
         <Layout header={<title>Routine</title>} e2e="routine">
             <NavBar

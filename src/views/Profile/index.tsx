@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { RouteComponentProps } from 'react-router-dom'
 
 import Layout from 'views/Layout'
 import NavBar from 'components/NavBar'
@@ -7,7 +8,7 @@ import StartMessage from 'views/Profile/StartMessage'
 import WeeklyGraph from 'views/Profile/WeeklyGraph'
 import Table from 'views/Profile/Table'
 
-const Profile = () => (
+const Profile: React.SFC<RouteComponentProps<{}>> = () => (
     <Layout header={<title>Profile</title>} e2e="profile">
         <NavBar
             title="Profile"
