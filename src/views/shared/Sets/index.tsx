@@ -38,6 +38,13 @@ type Props = OwnProps &
     typeof mapDispatchToProps
 
 class Sets extends React.Component<Props> {
+    constructor(props: Props) {
+        super(props);
+        if (props.sets.length == 0) {
+            this.handleCreate();
+        }
+    }
+
     private handleCreate = () => {
         this.props.postSet({
             exerciseId: this.props.exerciseId
@@ -67,8 +74,8 @@ class Sets extends React.Component<Props> {
                             </Button>
                         </SetsHeaderItemToggle>
                     ) : (
-                        <SetsHeaderItem />
-                    )}
+                            <SetsHeaderItem />
+                        )}
                 </SetsHeader>
                 <SetTransition e2e="set">
                     {this.props.sets.map((set, index) => {
@@ -100,7 +107,7 @@ class Sets extends React.Component<Props> {
                                                 name="reps"
                                                 placeholder={
                                                     previousSet &&
-                                                    previousSet.reps
+                                                        previousSet.reps
                                                         ? '' + previousSet.reps
                                                         : 'Reps'
                                                 }
@@ -113,9 +120,9 @@ class Sets extends React.Component<Props> {
                                                 name="weight"
                                                 placeholder={
                                                     previousSet &&
-                                                    previousSet.weight
+                                                        previousSet.weight
                                                         ? '' +
-                                                          previousSet.weight
+                                                        previousSet.weight
                                                         : 'Weight'
                                                 }
                                                 data-e2e="set-input-weight"
@@ -126,14 +133,14 @@ class Sets extends React.Component<Props> {
                                                 <Label
                                                     htmlFor={`set-checkbox${
                                                         values.id
-                                                    }`}
+                                                        }`}
                                                     title="Mark as Completed"
                                                     data-e2e="set-action-checkbox"
                                                 >
                                                     <Checkbox
                                                         id={`set-checkbox${
                                                             values.id
-                                                        }`}
+                                                            }`}
                                                         name="isCompleted"
                                                     />
                                                 </Label>
