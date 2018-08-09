@@ -301,6 +301,7 @@ describe('routines creation', async () => {
         async () => {
             await page.click('[data-e2e=exercises-button-create]')
             exercisesLength++
+            setsLength++
             await page.waitForSelector('[data-e2e=exercise]')
             await selectOption(
                 page,
@@ -317,6 +318,7 @@ describe('routines creation', async () => {
         async () => {
             await page.click('[data-e2e=exercises-button-create]')
             exercisesLength++
+            setsLength++
             await page.waitFor(1000)
             await expectElementToBeOfLength(
                 page,
