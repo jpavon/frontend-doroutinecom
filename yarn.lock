@@ -877,13 +877,13 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
-"@vx/axis@^0.0.170":
-  version "0.0.170"
-  resolved "https://registry.yarnpkg.com/@vx/axis/-/axis-0.0.170.tgz#b08d4bd396dd580119c5d6d1ffce83a28eda66c0"
+"@vx/axis@^0.0.171":
+  version "0.0.171"
+  resolved "https://registry.yarnpkg.com/@vx/axis/-/axis-0.0.171.tgz#30db283696a24ee1f4cf800cfd136fc9c6781af6"
   dependencies:
     "@vx/group" "0.0.170"
     "@vx/point" "0.0.165"
-    "@vx/shape" "0.0.170"
+    "@vx/shape" "0.0.171"
     "@vx/text" "0.0.165"
     classnames "^2.2.5"
     prop-types "^15.6.0"
@@ -908,13 +908,13 @@
     classnames "^2.2.5"
     d3-shape "^1.2.0"
 
-"@vx/grid@^0.0.170":
-  version "0.0.170"
-  resolved "https://registry.yarnpkg.com/@vx/grid/-/grid-0.0.170.tgz#3a198a4ef6e35f54bd688a3afbba8ca52060d946"
+"@vx/grid@^0.0.171":
+  version "0.0.171"
+  resolved "https://registry.yarnpkg.com/@vx/grid/-/grid-0.0.171.tgz#b7a531de57deeab6dcefa554e3d1da14e051fb73"
   dependencies:
     "@vx/group" "0.0.170"
     "@vx/point" "0.0.165"
-    "@vx/shape" "0.0.170"
+    "@vx/shape" "0.0.171"
     classnames "^2.2.5"
 
 "@vx/group@0.0.170", "@vx/group@^0.0.170":
@@ -941,9 +941,9 @@
   dependencies:
     d3-scale "^2.0.0"
 
-"@vx/shape@0.0.170", "@vx/shape@^0.0.170":
-  version "0.0.170"
-  resolved "https://registry.yarnpkg.com/@vx/shape/-/shape-0.0.170.tgz#55cf5968f7a6465484aac1a5541275b4813bb9a2"
+"@vx/shape@0.0.171", "@vx/shape@^0.0.171":
+  version "0.0.171"
+  resolved "https://registry.yarnpkg.com/@vx/shape/-/shape-0.0.171.tgz#65226fc7976025a343b40c57fff442eea32ee4c0"
   dependencies:
     "@vx/curve" "0.0.165"
     "@vx/group" "0.0.170"
@@ -7269,9 +7269,9 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-spring@^5.5.4:
-  version "5.5.4"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-5.5.4.tgz#1dd48057172f7f6a411f83e8fd17b36cca0d5a83"
+react-spring@^5.6.1:
+  version "5.6.1"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-5.6.1.tgz#f891d3129f4a3d36a139c7ec795ffb5ac977154f"
   dependencies:
     "@babel/runtime" "7.0.0-beta.51"
 
@@ -8342,9 +8342,9 @@ style-loader@^0.21.0:
     loader-utils "^1.1.0"
     schema-utils "^0.4.5"
 
-styled-components@^3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.4.1.tgz#a550783bba3a5bb9a41bf10d0e993c47d19a9125"
+styled-components@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.4.2.tgz#8f518419932327e47fe9144824e3184b3e2da95d"
   dependencies:
     buffer "^5.0.3"
     css-to-react-native "^2.0.3"
