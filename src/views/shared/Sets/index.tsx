@@ -19,10 +19,11 @@ import {
     SetsHeader,
     SetsHeaderItem,
     SetsHeaderItemToggle,
-    SetInner,
-    SetInnerItem,
-    SetInnerItemWithAction,
-    SetsButtonCreate
+    Set as SetWrapper,
+    SetItem,
+    SetItemWithAction,
+    SetsButtonCreate,
+    setHeight
 } from './style'
 
 interface OwnProps {
@@ -76,7 +77,7 @@ class Sets extends React.Component<Props> {
                         <SetsHeaderItem />
                     )}
                 </SetsHeader>
-                <SetTransition e2e="set">
+                <SetTransition e2e="set" animateHeight={setHeight}>
                     {this.props.sets.map((set, index) => {
                         const isDeleting =
                             this.props.entitiesStatus[set.id] ===
@@ -96,11 +97,13 @@ class Sets extends React.Component<Props> {
                                 initialValues={set}
                                 update={this.props.putSet}
                                 render={({ values }) => (
-                                    <SetInner isCompleted={values.isCompleted}>
-                                        <SetInnerItem>
+                                    <SetWrapper
+                                        isCompleted={values.isCompleted}
+                                    >
+                                        <SetItem>
                                             <small>#{index + 1}</small>
-                                        </SetInnerItem>
-                                        <SetInnerItem data-e2e="set-reps">
+                                        </SetItem>
+                                        <SetItem data-e2e="set-reps">
                                             <Input
                                                 type="number"
                                                 name="reps"
@@ -112,8 +115,8 @@ class Sets extends React.Component<Props> {
                                                 }
                                                 data-e2e="set-input-reps"
                                             />
-                                        </SetInnerItem>
-                                        <SetInnerItem data-e2e="set-weight">
+                                        </SetItem>
+                                        <SetItem data-e2e="set-weight">
                                             <Input
                                                 type="number"
                                                 name="weight"
@@ -126,8 +129,8 @@ class Sets extends React.Component<Props> {
                                                 }
                                                 data-e2e="set-input-weight"
                                             />
-                                        </SetInnerItem>
-                                        <SetInnerItemWithAction>
+                                        </SetItem>
+                                        <SetItemWithAction>
                                             {!isRemoveButtonsVisible && (
                                                 <Label
                                                     htmlFor={`set-checkbox${
@@ -158,8 +161,8 @@ class Sets extends React.Component<Props> {
                                                     data-e2e="set-action-remove"
                                                 />
                                             )}
-                                        </SetInnerItemWithAction>
-                                    </SetInner>
+                                        </SetItemWithAction>
+                                    </SetWrapper>
                                 )}
                             />
                         )

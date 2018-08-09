@@ -8,6 +8,7 @@ export interface Props {
     // tslint:disable-next-line:no-any
     children: React.ReactElement<any> | Array<React.ReactElement<any>>
     e2e?: string
+    animateHeight?: number
 }
 
 const Transition: SFC<Props> = (props) => {
@@ -15,9 +16,18 @@ const Transition: SFC<Props> = (props) => {
         return (
             <SpringTransition
                 keys={props.children.map((item) => item.key)}
-                from={{ opacity: 0 }}
-                enter={{ opacity: 1 }}
-                leave={{ opacity: 0 }}
+                from={{
+                    opacity: 0,
+                    height: props.animateHeight ? 0 : undefined
+                }}
+                enter={{
+                    opacity: 1,
+                    height: props.animateHeight
+                }}
+                leave={{
+                    opacity: 0,
+                    height: props.animateHeight ? 0 : undefined
+                }}
             >
                 {props.children.map((item) => (styles: object) => (
                     <div data-e2e={props.e2e} style={styles}>

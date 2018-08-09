@@ -48,16 +48,19 @@ export const SetsHeaderItemToggle = styled(SetsHeaderItem)`
     }
 `
 
-interface SetInnerProps {
+export const setHeight = 60
+
+interface SetProps {
     isCompleted: boolean
 }
 
-export const SetInner = styled.div<SetInnerProps>`
+export const Set = styled.div<SetProps>`
     position: relative;
     display: flex;
     border-bottom: 1px solid ${theme.colorBorder};
-    padding: ${theme.spacing / 4}px ${theme.spacing}px;
     align-items: center;
+    padding: 0 ${theme.spacing}px;
+    height: ${setHeight}px;
 
     background-color: ${(props) =>
         props.isCompleted ? rgba(theme.colorPrimary, 0.05) : 'transparent'};
@@ -70,13 +73,13 @@ export const SetInner = styled.div<SetInnerProps>`
     }
 `
 
-export const SetInnerItem = styled.div`
+export const SetItem = styled.div`
     ${Layout};
 `
 
 // form
 
-export const SetInnerItemWithAction = styled(SetInnerItem)`
+export const SetItemWithAction = styled(SetItem)`
     display: flex;
 
     > label,
