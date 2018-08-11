@@ -2,10 +2,7 @@ import * as React from 'react'
 import { Transition as SpringTransition } from 'react-spring'
 
 export interface Props {
-    // tslint:disable-next-line:no-any
-    children: React.ReactElement<any> | Array<React.ReactElement<any>>
     e2e?: string
-    animateHeight?: number
 }
 
 class Transition extends React.Component<Props> {
@@ -19,26 +16,24 @@ class Transition extends React.Component<Props> {
         const children = this.props.children
 
         if (Array.isArray(children)) {
-            const childrenArr = children as Array<
-                React.ReactElement<{ key: string }>
-            >
+            const childrenArr = children as React.ReactNode[]
             return (
                 <SpringTransition
                     items={childrenArr}
-                    keys={childrenArr.map((item) => item.key)}
+                    keys={childrenArr.map((item: { key: string }) => item.key)}
                     from={
                         this.mounted && {
                             opacity: 0,
-                            height: this.props.animateHeight ? 0 : undefined
+                            height: 0
                         }
                     }
                     enter={{
                         opacity: 1,
-                        height: this.props.animateHeight
+                        height: 'auto'
                     }}
                     leave={{
                         opacity: 0,
-                        height: this.props.animateHeight ? 0 : undefined
+                        height: 0
                     }}
                 >
                     {childrenArr.map((item) => (styles: object) => (
