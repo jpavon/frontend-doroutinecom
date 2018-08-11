@@ -1,19 +1,15 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { OutputSelector } from 'reselect'
+import { Selector } from 'reselect'
 
 import { RootState } from 'data/types'
-import NoData from 'components/NoData'
-import ListItem from 'views/Workouts/ListItem'
-import { Workouts } from './style'
 import { Workout } from 'data/workouts/types'
+import NoData from 'components/NoData'
+import ListItem from './ListItem'
+import { Workouts } from './style'
 
 interface OwnProps {
-    selector: OutputSelector<
-        RootState,
-        Workout[],
-        (res: Workout[]) => Workout[]
-    >
+    selector: Selector<RootState, Workout[]>
     noDataText: string
 }
 

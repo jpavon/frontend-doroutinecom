@@ -5,9 +5,9 @@ import Layout from 'views/Layout'
 import NavBar from 'components/NavBar'
 import Button from 'components/Button'
 import Footer from 'components/Footer'
-import SettingsForm from 'views/Settings/SettingsForm'
-import UserForm from 'views/Settings/UserForm'
-import UnauthButton from 'views/Settings/UnauthButton'
+import SettingsForm from './SettingsForm'
+import UserForm from './UserForm'
+import UnauthButton from './UnauthButton'
 
 const Settings: React.SFC<RouteComponentProps<{}>> = () => (
     <Layout header={<title>Settings</title>} e2e="settings">

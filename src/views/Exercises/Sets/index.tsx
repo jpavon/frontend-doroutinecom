@@ -22,8 +22,7 @@ import {
     Set as SetWrapper,
     SetItem,
     SetItemWithAction,
-    SetsButtonCreate,
-    setHeight
+    SetsButtonCreate
 } from './style'
 
 interface OwnProps {
@@ -77,7 +76,7 @@ class Sets extends React.Component<Props> {
                         <SetsHeaderItem />
                     )}
                 </SetsHeader>
-                <SetTransition e2e="set" animateHeight={setHeight}>
+                <SetTransition e2e="set">
                     {this.props.sets.map((set, index) => {
                         const isDeleting =
                             this.props.entitiesStatus[set.id] ===

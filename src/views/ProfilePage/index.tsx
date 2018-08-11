@@ -4,9 +4,9 @@ import { RouteComponentProps } from 'react-router-dom'
 import Layout from 'views/Layout'
 import NavBar from 'components/NavBar'
 import Button from 'components/Button'
-import StartMessage from 'views/Profile/StartMessage'
-import WeeklyGraph from 'views/Profile/WeeklyGraph'
-import Table from 'views/Profile/Table'
+import StartMessage from './StartMessage'
+import WeeklyGraph from './WeeklyGraph'
+import Table from './Table'
 
 const Profile: React.SFC<RouteComponentProps<{}>> = () => (
     <Layout header={<title>Profile</title>} e2e="profile">

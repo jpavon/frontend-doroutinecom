@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Link, RouteComponentProps } from 'react-router-dom'
 
 import Layout from 'views/Layout'
-import Form from 'views/auth/Login/Form'
+import Form from './Form'
 import { LoginPasswordForgotten } from './style'
 
 const Login: React.SFC<RouteComponentProps<{}>> = () => (

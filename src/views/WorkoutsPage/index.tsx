@@ -5,11 +5,10 @@ import {
     pendingWorkoutsSelector,
     completedWorkoutsSelector
 } from 'data/workouts/selectors'
-import Layout from 'views/Layout'
-import List from 'views/Workouts/List'
 import NavBar from 'components/NavBar'
-import PendingBadge from 'views/Workouts/PendingBadge'
-// import Badge from 'components/Badge'
+import Layout from 'views/Layout'
+import List from './List'
+import PendingBadge from './PendingBadge'
 
 const Workouts: React.SFC<RouteComponentProps<{}>> = () => (
     <Layout header={<title>Workouts</title>} e2e="workouts">

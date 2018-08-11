@@ -4,10 +4,10 @@ import { RouteComponentProps } from 'react-router-dom'
 import Layout from 'views/Layout'
 import NavBar from 'components/NavBar'
 import Button from 'components/Button'
-import Form from 'views/Lift/Form'
-import Graph from 'views/Lift/Graph'
-import Table from 'views/Lift/Table'
-import DeleteButton from 'views/Lift/DeleteButton'
+import Form from './Form'
+import Graph from './Graph'
+import Table from './Table'
+import DeleteButton from './DeleteButton'
 
 interface Params {
     liftId: string

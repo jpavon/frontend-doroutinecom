@@ -2,7 +2,7 @@ import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
 import Layout from 'views/Layout'
-import Form from 'views/auth/PasswordReset/Form'
+import Form from './Form'
 
 interface Params {
     token: string

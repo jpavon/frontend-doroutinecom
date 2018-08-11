@@ -3,11 +3,11 @@ import { RouteComponentProps } from 'react-router-dom'
 
 import NavBar from 'components/NavBar'
 import Layout from 'views/Layout'
-import Form from 'views/Routine/Form'
-import DeleteButton from 'views/Routine/DeleteButton'
-import CreateWorkoutButton from 'views/Routine/CreateWorkoutButton'
 import Button from 'components/Button'
-import Exercises from 'views/shared/Exercises'
+import Exercises from 'views/Exercises'
+import Form from './Form'
+import DeleteButton from './DeleteButton'
+import CreateWorkoutButton from './CreateWorkoutButton'
 
 interface Params {
     routineId: string

@@ -2,15 +2,15 @@ import * as React from 'react'
 import { RouteComponentProps } from 'react-router'
 
 import Layout from 'views/Layout'
-import Form from 'views/Workout/Form'
-import DeleteButton from 'views/Workout/DeleteButton'
 import NavBar from 'components/NavBar'
 import CompletedRestartButton from './CompletedRestartButton'
 import Button from 'components/Button'
-import CreateAgainNavButton from 'views/Workout/CreateAgainNavButton'
-import WorkoutRoutineName from 'views/Workout/WorkoutRoutineName'
-import Exercises from 'views/shared/Exercises'
-import Alert from 'views/Workout/Alert'
+import Exercises from 'views/Exercises'
+import Form from './Form'
+import DeleteButton from './DeleteButton'
+import CreateAgainNavButton from './CreateAgainNavButton'
+import WorkoutRoutineName from './WorkoutRoutineName'
+import Alert from './Alert'
 
 interface Params {
     workoutId: string
