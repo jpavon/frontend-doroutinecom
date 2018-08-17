@@ -194,7 +194,7 @@ describe('lift is saved', async () => {
     test(
         'lift is saved  on reload',
         async () => {
-            await page.waitFor(1000)
+            await page.waitFor(2000)
             await page.reload()
             await page.waitForSelector('[data-e2e=lift]')
             await expectSelectorToContainText(
@@ -285,7 +285,7 @@ describe('routines creation', async () => {
                 '[data-e2e=routine-input-name]',
                 fixtures.ROUTINE.name
             )
-            await page.waitFor(1000)
+            await page.waitFor(2000)
 
             await page.click('[data-e2e=routine-input-notes]')
             await page.type(
@@ -308,7 +308,7 @@ describe('routines creation', async () => {
                 '[data-e2e=exercise-lift-select]',
                 fixtures.LIFT.name
             )
-            await page.waitFor(1000)
+            await page.waitFor(2000)
         },
         fixtures.TIMEOUT
     )
@@ -319,7 +319,7 @@ describe('routines creation', async () => {
             await page.click('[data-e2e=exercises-button-create]')
             exercisesLength++
             setsLength++
-            await page.waitFor(1000)
+            await page.waitFor(2000)
             await expectElementToBeOfLength(
                 page,
                 '[data-e2e=exercise]',
@@ -337,10 +337,10 @@ describe('routines creation', async () => {
             await page.waitForSelector('[data-e2e=set]')
             await page.click('[data-e2e=set-input-weight]')
             await page.type('[data-e2e=set-input-weight]', fixtures.SET.weight)
-            await page.waitFor(1000)
+            await page.waitFor(2000)
             await page.click('[data-e2e=set-input-reps]')
             await page.type('[data-e2e=set-input-reps]', fixtures.SET.reps)
-            await page.waitFor(1000)
+            await page.waitFor(2000)
         },
         fixtures.TIMEOUT
     )
@@ -350,7 +350,7 @@ describe('routines creation', async () => {
         async () => {
             await page.click('[data-e2e=sets-button-create]')
             setsLength++
-            await page.waitFor(1000)
+            await page.waitFor(2000)
             await expectElementToBeOfLength(page, '[data-e2e=set]', setsLength)
         },
         fixtures.TIMEOUT
@@ -483,7 +483,7 @@ describe('create workout from routine', async () => {
         'complete a set',
         async () => {
             await page.click('[data-e2e=set-action-checkbox]')
-            await page.waitFor(1000)
+            await page.waitFor(2000)
         },
         fixtures.TIMEOUT
     )
@@ -502,7 +502,7 @@ describe('create workout from routine', async () => {
             await page.waitForSelector('[data-e2e=set-action-remove]')
             await page.click('[data-e2e=set-action-remove]')
             setsLength--
-            await page.waitFor(1000)
+            await page.waitFor(2000)
         },
         fixtures.TIMEOUT
     )
@@ -539,9 +539,9 @@ describe('create workout from routine', async () => {
         async () => {
             await page.waitForSelector('[name=startedAt]')
             await page.click('[name=startedAt]')
-            await page.waitFor(1000)
+            await page.waitFor(2000)
             await page.click('[data-e2e=datetime-startedAt] [data-value="15"]')
-            await page.waitFor(1000)
+            await page.waitFor(2000)
         },
         fixtures.TIMEOUT
     )
@@ -551,11 +551,11 @@ describe('create workout from routine', async () => {
         async () => {
             await page.waitForSelector('[name=completedAt]')
             await page.click('[name=completedAt]')
-            await page.waitFor(1000)
+            await page.waitFor(2000)
             await page.click(
                 '[data-e2e=datetime-completedAt] [data-value="14"]'
             )
-            await page.waitFor(1000)
+            await page.waitFor(2000)
         },
         fixtures.TIMEOUT
     )
@@ -677,11 +677,11 @@ describe('settings', async () => {
         async () => {
             await page.click('[name=name]')
             await page.type('[name=name]', 'updated')
-            await page.waitFor(1000)
+            await page.waitFor(2000)
 
             await page.click('[name=email]')
             await page.type('[name=email]', 'updated')
-            await page.waitFor(1000)
+            await page.waitFor(2000)
         },
         fixtures.TIMEOUT
     )
@@ -694,7 +694,7 @@ describe('settings', async () => {
                 '[name=weightMeasure]',
                 fixtures.USER.weightMeasure
             )
-            await page.waitFor(1000)
+            await page.waitFor(2000)
         },
         fixtures.TIMEOUT
     )
@@ -707,8 +707,7 @@ describe('settings', async () => {
                 '[name=startOfWeek]',
                 fixtures.USER.startOfWeek
             )
-            await page.waitForNavigation()
-            await page.waitForSelector('[data-e2e=settings]')
+            await page.waitFor(2000)
         },
         fixtures.TIMEOUT
     )
@@ -721,8 +720,7 @@ describe('settings', async () => {
                 '[name=dateFormat]',
                 fixtures.USER.dateFormat
             )
-            await page.waitForNavigation()
-            await page.waitForSelector('[data-e2e=settings]')
+            await page.waitFor(2000)
         },
         fixtures.TIMEOUT
     )

@@ -1,9 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import * as store from 'store'
 
 import { RootState } from 'data/types'
-
 import { putUser } from 'data/user/actions'
 import { userSelector } from 'data/user/selectors'
 import Field from 'components/Field'
@@ -17,28 +15,6 @@ type Props = OwnProps &
     typeof mapDispatchToProps
 
 class SettingsForm extends React.Component<Props> {
-    public componentWillReceiveProps(nextProps: Props) {
-        if (!nextProps.user || !this.props.user) {
-            return
-        }
-
-        if (
-            nextProps.user.startOfWeek &&
-            nextProps.user.startOfWeek !== this.props.user.startOfWeek
-        ) {
-            store.set('startOfWeek', nextProps.user.startOfWeek)
-            window.location.reload(true)
-        }
-
-        if (
-            nextProps.user.dateFormat &&
-            nextProps.user.dateFormat !== this.props.user.dateFormat
-        ) {
-            store.set('dateFormat', nextProps.user.dateFormat)
-            window.location.reload(true)
-        }
-    }
-
     public render() {
         return (
             this.props.user && (

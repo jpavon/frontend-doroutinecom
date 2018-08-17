@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect'
+import * as moment from 'moment'
 
 import { RootState } from 'data/types'
 import { Set, TopSet } from 'data/sets/types'
@@ -6,8 +7,6 @@ import { Exercise } from 'data/exercises/types'
 import { Workout } from 'data/workouts/types'
 import { Lift } from 'data/lifts/types'
 
-import moment from 'utils/moment'
-import { dateFormat } from 'utils/date'
 import {
     completedExercisesSelector,
     completedExercisesLiftSelector
@@ -16,6 +15,7 @@ import { completedWorkoutsSelector } from 'data/workouts/selectors'
 import { liftsSelector } from 'data/lifts/selectors'
 import { order } from 'data/utils'
 import calculateRepMax from 'utils/calculateRepMax'
+import { dateFormatSelector } from '../user/selectors'
 
 export const setsSelector = createSelector(
     [(state: RootState) => order(state.sets)],
@@ -37,7 +37,8 @@ export const formatTopSets = (
     exercises: Exercise[],
     sets: Set[],
     workouts: Workout[],
-    lifts: Lift[] | null
+    lifts: Lift[] | null,
+    dateFormat: string
 ): TopSet[] => {
     const completedExercisesIds = exercises.map((exercise) => exercise.id)
 
@@ -95,25 +96,28 @@ export const topSetsCompletedSelector = createSelector(
         completedExercisesSelector,
         setsSelector,
         completedWorkoutsSelector,
-        liftsSelector
+        liftsSelector,
+        dateFormatSelector
     ],
-    (exercises, sets, workouts, lifts): TopSet[] => {
-        return formatTopSets(exercises, sets, workouts, lifts).sort((a, b) => {
-            // order by completeAt, otherwise by weight
-            if (a.completeAtMoment < b.completeAtMoment) {
-                return 1
-            } else if (a.completeAtMoment > b.completeAtMoment) {
-                return -1
-            }
+    (exercises, sets, workouts, lifts, dateFormat): TopSet[] => {
+        return formatTopSets(exercises, sets, workouts, lifts, dateFormat).sort(
+            (a, b) => {
+                // order by completeAt, otherwise by weight
+                if (a.completeAtMoment < b.completeAtMoment) {
+                    return 1
+                } else if (a.completeAtMoment > b.completeAtMoment) {
+                    return -1
+                }
 
-            if (a.weight > b.weight) {
-                return -1
-            } else if (a.weight < b.weight) {
-                return 1
-            } else {
-                return 0
+                if (a.weight > b.weight) {
+                    return -1
+                } else if (a.weight < b.weight) {
+                    return 1
+                } else {
+                    return 0
+                }
             }
-        })
+        )
     }
 )
 
@@ -122,12 +126,17 @@ export const topSetsForALiftSelector = (liftId: number) =>
         [
             completedExercisesLiftSelector(liftId),
             setsSelector,
-            completedWorkoutsSelector
+            completedWorkoutsSelector,
+            dateFormatSelector
         ],
-        (exercises, sets, workouts): TopSet[] => {
-            return formatTopSets(exercises, sets, workouts, null).sort(
-                (a, b) => b.rm - a.rm
-            )
+        (exercises, sets, workouts, dateFormat): TopSet[] => {
+            return formatTopSets(
+                exercises,
+                sets,
+                workouts,
+                null,
+                dateFormat
+            ).sort((a, b) => b.rm - a.rm)
         }
     )
 

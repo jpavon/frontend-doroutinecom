@@ -1,49 +1,17 @@
 import { createSelector } from 'reselect'
 
 import { RootState } from 'data/types'
-import { Workout } from 'data/workouts/types'
 
-import moment from 'utils/moment'
-import momentRange from 'utils/momentRange'
-import { dayMonthFormat, dateFormat } from 'utils/date'
+import { graphWeeklyData, graphWeeklyRanges } from 'utils/date'
 import { completedWorkoutsSelector } from 'data/workouts/selectors'
 import { completedExercisesLiftSelector } from 'data/exercises/selectors'
 import { setsSelector } from 'data/sets/selectors'
 import { formatTopSets } from 'data/sets/selectors'
-
-const weeks = [0, 1, 2, 3, 4].map((id) => ({
-    startWeek: moment()
-        .subtract(id, 'weeks')
-        .startOf('week'),
-    endWeek: moment()
-        .subtract(id, 'weeks')
-        .endOf('week')
-}))
-
-const ranges = weeks.map((week) => ({
-    range: momentRange().range(week.startWeek, week.endWeek)
-}))
-
-const getWorkoutsDataset = (workouts: Workout[]) => {
-    const dataset = [0, 0, 0, 0, 0]
-
-    workouts.forEach((workout) => {
-        ranges.forEach((item, i) => {
-            if (
-                workout.completedAt &&
-                item.range.contains(moment(workout.completedAt))
-            ) {
-                dataset[i] = dataset[i] + 1
-            }
-        })
-    })
-
-    if (Math.max(...dataset) === 0) {
-        return []
-    }
-
-    return dataset
-}
+import {
+    dayMonthFormatSelector,
+    dateFormatSelector,
+    userMomentSelector
+} from '../user/selectors'
 
 export interface WeeklyWorkoutGraph {
     week: string
@@ -51,11 +19,14 @@ export interface WeeklyWorkoutGraph {
 }
 
 export const weeklyWorkoutsSelector = createSelector(
-    [completedWorkoutsSelector],
-    (workouts): WeeklyWorkoutGraph[] => {
-        const dataset = getWorkoutsDataset(workouts)
+    [completedWorkoutsSelector, dayMonthFormatSelector, userMomentSelector],
+    (completedWorkouts, dayMonthFormat, userMoment): WeeklyWorkoutGraph[] => {
+        const dataset = graphWeeklyData(
+            completedWorkouts.map((w) => w.completedAt!),
+            userMoment
+        )
 
-        return weeks
+        return graphWeeklyRanges(userMoment)
             .map((week, index) => ({
                 week: `${week.startWeek.format(
                     dayMonthFormat
@@ -78,10 +49,17 @@ export const liftSetsGraphSelector = (liftId: number) =>
             completedExercisesLiftSelector(liftId),
             setsSelector,
             completedWorkoutsSelector,
-            (state: RootState) => state.user.entity
+            (state: RootState) => state.user.entity,
+            dateFormatSelector
         ],
-        (exercises, sets, workouts, user): LiftSetsGraph[] => {
-            const topSets = formatTopSets(exercises, sets, workouts, null).sort(
+        (exercises, sets, workouts, user, dateFormat): LiftSetsGraph[] => {
+            const topSets = formatTopSets(
+                exercises,
+                sets,
+                workouts,
+                null,
+                dateFormat
+            ).sort(
                 (a, b) =>
                     Number(a.completeAtMoment) - Number(b.completeAtMoment)
             )

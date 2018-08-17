@@ -17,6 +17,7 @@ import Input from 'components/AutoSaveForm/Input'
 import Textarea from 'components/AutoSaveForm/Textarea'
 import Field from 'components/Field'
 import { WorkoutDates } from './style'
+import { dateFormatSelector } from 'data/user/selectors'
 
 interface OwnProps {
     workoutId: number
@@ -66,6 +67,9 @@ class Form extends React.Component<Props> {
                                             <Datetime
                                                 id="startedAt"
                                                 name="startedAt"
+                                                dateFormat={
+                                                    this.props.dateFormat
+                                                }
                                             />
                                         </Field>
 
@@ -76,6 +80,9 @@ class Form extends React.Component<Props> {
                                             <Datetime
                                                 id="completedAt"
                                                 name="completedAt"
+                                                dateFormat={
+                                                    this.props.dateFormat
+                                                }
                                             />
                                         </Field>
                                     </WorkoutDates>
@@ -109,7 +116,8 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
     workout: workoutSelector(state, props.workoutId),
     displayName: workoutDisplayNameSelector(state, props.workoutId),
     routine: workoutRoutineSelector(state, props.workoutId),
-    isStatusLoaded: state.workouts.status === statusConstants.STATUS_LOADED
+    isStatusLoaded: state.workouts.status === statusConstants.STATUS_LOADED,
+    dateFormat: dateFormatSelector(state)
 })
 
 const mapDispatchToProps = {

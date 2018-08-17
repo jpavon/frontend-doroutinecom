@@ -1,8 +1,6 @@
 import { delay } from 'redux-saga'
 import { all, put, take, takeLatest, call, spawn } from 'redux-saga/effects'
-import * as store from 'store'
 
-import { User } from 'data/user/types'
 import * as uiActions from 'data/ui/actions'
 import * as userActions from 'data/user/actions'
 import { globalConstants } from 'data/constants'
@@ -30,7 +28,7 @@ export function* getAppDataSaga() {
     yield put(getLifts())
     yield put(getSets())
 
-    const [user] = yield all([
+    yield all([
         take(userConstants.USER_GET_SUCCESS),
         take(routinesConstants.ROUTINES_GET_SUCCESS),
         take(workoutsConstants.WORKOUTS_GET_SUCCESS),
@@ -38,8 +36,6 @@ export function* getAppDataSaga() {
         take(setsConstants.SETS_GET_SUCCESS),
         take(liftsConstants.LIFTS_GET_SUCCESS)
     ])
-
-    yield call(userSettingsCheck, user.payload)
 
     yield put(uiActions.removeLoading())
 }
@@ -82,20 +78,6 @@ function* watchServerErrors() {
                 })
             )
         }
-
-        yield call(delay, 1000)
-    }
-}
-
-function* userSettingsCheck(user: User) {
-    if (
-        user.startOfWeek !== store.get('startOfWeek') ||
-        user.dateFormat !== store.get('dateFormat')
-    ) {
-        store.set('startOfWeek', user.startOfWeek)
-        store.set('dateFormat', user.dateFormat)
-
-        yield window.location.reload(true)
 
         yield call(delay, 1000)
     }

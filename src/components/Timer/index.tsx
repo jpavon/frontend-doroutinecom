@@ -1,6 +1,5 @@
 import * as React from 'react'
-
-import moment from 'utils/moment'
+import * as moment from 'moment'
 
 import { Timer as StyledTimer } from './style'
 

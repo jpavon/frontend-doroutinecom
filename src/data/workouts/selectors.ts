@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect'
+import * as moment from 'moment'
 
 import { RootState } from 'data/types'
 import { Workout } from 'data/workouts/types'
 
-import moment from 'utils/moment'
 import { order } from 'data/utils'
 import { formatDuration, longDateFormat } from 'utils/date'
 
