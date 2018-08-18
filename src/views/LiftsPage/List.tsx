@@ -5,7 +5,7 @@ import { RootState } from 'data/types'
 
 import { liftsSelector } from 'data/lifts/selectors'
 import { postLift } from 'data/lifts/actions'
-import { statusConstants } from 'data/constants'
+import { Status } from 'data/types'
 
 import NoData from 'components/NoData'
 import { Lifts, LiftListItem } from './style'
@@ -40,7 +40,7 @@ class List extends React.Component<Props> {
 
 const mapStateToProps = (state: RootState, props: OwnProps) => ({
     lifts: liftsSelector(state),
-    isLoading: state.lifts.status === statusConstants.STATUS_LOADING
+    isLoading: state.lifts.status === Status.STATUS_LOADING
 })
 
 const mapDispatchToProps = {

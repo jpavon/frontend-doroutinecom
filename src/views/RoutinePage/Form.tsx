@@ -6,7 +6,7 @@ import { RootState } from 'data/types'
 import history from 'utils/history'
 import { putRoutine } from 'data/routines/actions'
 import { routineSelector } from 'data/routines/selectors'
-import { statusConstants } from 'data/constants'
+import { Status } from 'data/types'
 import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
 import Textarea from 'components/AutoSaveForm/Textarea'
@@ -74,7 +74,7 @@ class Form extends React.Component<Props> {
 
 const mapStateToProps = (state: RootState, props: OwnProps) => ({
     routine: routineSelector(state, props.routineId),
-    isStatusLoaded: state.routines.status === statusConstants.STATUS_LOADED
+    isStatusLoaded: state.routines.status === Status.STATUS_LOADED
 })
 
 const mapDispatchToProps = {

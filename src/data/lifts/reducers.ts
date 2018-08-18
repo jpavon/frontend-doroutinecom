@@ -1,11 +1,11 @@
 import { LiftsState, LiftsAction } from 'data/lifts/types'
 
 import constants from 'data/lifts/constants'
-import { statusConstants } from 'data/constants'
+import { Status } from 'data/types'
 import * as utils from 'data/utils'
 
 const initialState: Readonly<LiftsState> = {
-    status: statusConstants.STATUS_NONE,
+    status: Status.STATUS_NONE,
     entities: {},
     entitiesOrder: [],
     entitiesStatus: {},

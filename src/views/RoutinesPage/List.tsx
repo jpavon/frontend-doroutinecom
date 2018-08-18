@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
 import { routinesSelector } from 'data/routines/selectors'
-import { statusConstants } from 'data/constants'
+import { Status } from 'data/types'
 import NoData from 'components/NoData'
 import { Routines, RoutineListItem } from './style'
 
@@ -37,7 +37,7 @@ class RoutinesContainer extends React.Component<Props> {
 
 const mapStateToProps = (state: RootState, props: OwnProps) => ({
     routines: routinesSelector(state),
-    isLoading: state.routines.status === statusConstants.STATUS_LOADING
+    isLoading: state.routines.status === Status.STATUS_LOADING
 })
 
 const mapDispatchToProps = {}

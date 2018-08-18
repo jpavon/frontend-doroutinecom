@@ -1,6 +1,6 @@
 import { StateMap, ApiFailure } from 'data/types'
 
-import { statusConstants } from 'data/constants'
+import { Status } from 'data/types'
 
 // selector utils
 
@@ -15,7 +15,7 @@ interface Model {
 
 export const request = <T>(state: StateMap<T>): StateMap<T> => ({
     ...state,
-    status: statusConstants.STATUS_LOADING,
+    status: Status.STATUS_LOADING,
     error: null
 })
 
@@ -23,7 +23,7 @@ export const putRequest = <T>(state: StateMap<T>, id: number): StateMap<T> => ({
     ...request(state),
     entitiesStatus: {
         ...state.entitiesStatus,
-        [id]: statusConstants.STATUS_UPDATING
+        [id]: Status.STATUS_UPDATING
     }
 })
 
@@ -34,7 +34,7 @@ export const deleteRequest = <T>(
     ...request(state),
     entitiesStatus: {
         ...state.entitiesStatus,
-        [id]: statusConstants.STATUS_DELETING
+        [id]: Status.STATUS_DELETING
     }
 })
 
@@ -43,7 +43,7 @@ export const failure = <T>(
     error: ApiFailure
 ): StateMap<T> => ({
     ...state,
-    status: statusConstants.STATUS_FAILED,
+    status: Status.STATUS_FAILED,
     error
 })
 
@@ -52,7 +52,7 @@ export const getSuccess = <T extends Model>(
     payload: T[]
 ): StateMap<T> => ({
     ...state,
-    status: statusConstants.STATUS_LOADED,
+    status: Status.STATUS_LOADED,
     entities: payload.reduce(
         (acc, current) => ({
             ...acc,
@@ -64,7 +64,7 @@ export const getSuccess = <T extends Model>(
     entitiesStatus: payload.reduce(
         (prev, current) => ({
             ...prev,
-            [current.id]: statusConstants.STATUS_LOADED
+            [current.id]: Status.STATUS_LOADED
         }),
         {}
     ),
@@ -76,12 +76,12 @@ export const postSuccess = <T extends Model>(
     payload: T
 ): StateMap<T> => ({
     ...state,
-    status: statusConstants.STATUS_LOADED,
+    status: Status.STATUS_LOADED,
     entities: { ...state.entities, [payload.id]: payload },
     entitiesOrder: [...state.entitiesOrder, payload.id],
     entitiesStatus: {
         ...state.entitiesStatus,
-        [payload.id]: statusConstants.STATUS_LOADED
+        [payload.id]: Status.STATUS_LOADED
     },
     error: null
 })
@@ -91,11 +91,11 @@ export const putSuccess = <T extends Model>(
     payload: T
 ): StateMap<T> => ({
     ...state,
-    status: statusConstants.STATUS_LOADED,
+    status: Status.STATUS_LOADED,
     entities: { ...state.entities, [payload.id]: payload },
     entitiesStatus: {
         ...state.entitiesStatus,
-        [payload.id]: statusConstants.STATUS_LOADED
+        [payload.id]: Status.STATUS_LOADED
     },
     error: null
 })
@@ -105,7 +105,7 @@ export const deleteSuccess = <T extends Model>(
     id: number
 ): StateMap<T> => ({
     ...state,
-    status: statusConstants.STATUS_LOADED,
+    status: Status.STATUS_LOADED,
     entities: Object.keys(state.entities)
         .filter((key) => Number(key) !== id)
         .reduce(

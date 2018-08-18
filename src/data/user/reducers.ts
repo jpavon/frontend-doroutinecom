@@ -3,10 +3,10 @@ import * as store from 'store'
 import { UserState, UserAction } from 'data/user/types'
 
 import constants from 'data/user/constants'
-import { statusConstants } from 'data/constants'
+import { Status } from 'data/types'
 
 const initialState: Readonly<UserState> = {
-    status: statusConstants.STATUS_NONE,
+    status: Status.STATUS_NONE,
     isAuth: !!store.get('token'),
     entity: null,
     error: null
@@ -17,13 +17,13 @@ const user = (state = initialState, action: UserAction): UserState => {
         case constants.USER_GET_REQUEST:
             return {
                 ...state,
-                status: statusConstants.STATUS_LOADING
+                status: Status.STATUS_LOADING
             }
 
         case constants.USER_GET_SUCCESS:
             return {
                 ...state,
-                status: statusConstants.STATUS_LOADED,
+                status: Status.STATUS_LOADED,
                 entity: {
                     ...state.entity,
                     ...action.payload
@@ -33,20 +33,20 @@ const user = (state = initialState, action: UserAction): UserState => {
         case constants.USER_GET_FAILURE:
             return {
                 ...state,
-                status: statusConstants.STATUS_FAILED,
+                status: Status.STATUS_FAILED,
                 error: action.error
             }
 
         case constants.USER_PUT_REQUEST:
             return {
                 ...state,
-                status: statusConstants.STATUS_LOADING
+                status: Status.STATUS_LOADING
             }
 
         case constants.USER_PUT_SUCCESS:
             return {
                 ...state,
-                status: statusConstants.STATUS_LOADED,
+                status: Status.STATUS_LOADED,
                 entity: {
                     ...state.entity,
                     ...action.payload
@@ -56,7 +56,7 @@ const user = (state = initialState, action: UserAction): UserState => {
         case constants.USER_PUT_FAILURE:
             return {
                 ...state,
-                status: statusConstants.STATUS_FAILED,
+                status: Status.STATUS_FAILED,
                 error: action.error
             }
 

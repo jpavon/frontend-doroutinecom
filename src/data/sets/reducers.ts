@@ -1,11 +1,11 @@
 import { SetsState, SetsAction } from 'data/sets/types'
 
 import constants from 'data/sets/constants'
-import { statusConstants } from 'data/constants'
+import { Status } from 'data/types'
 import * as utils from 'data/utils'
 
 const initialState: Readonly<SetsState> = {
-    status: statusConstants.STATUS_NONE,
+    status: Status.STATUS_NONE,
     entities: {},
     entitiesOrder: [],
     entitiesStatus: {},

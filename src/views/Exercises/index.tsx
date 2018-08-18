@@ -12,7 +12,7 @@ import {
     exercisesWorkoutSelector
 } from 'data/exercises/selectors'
 import { liftsSelector } from 'data/lifts/selectors'
-import { statusConstants } from 'data/constants'
+import { Status } from 'data/types'
 import NoData from 'components/NoData'
 import NavBar from 'components/NavBar'
 import AutoSaveForm from 'components/AutoSaveForm'
@@ -126,8 +126,7 @@ class Exercises extends React.Component<Props, State> {
                                             disabled={
                                                 this.props.entitiesStatus[
                                                     exercise.id
-                                                ] ===
-                                                statusConstants.STATUS_DELETING
+                                                ] === Status.STATUS_DELETING
                                             }
                                             title="Delete Exercise"
                                         />

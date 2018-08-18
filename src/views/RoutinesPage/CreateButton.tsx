@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
 import { postRoutine } from 'data/routines/actions'
-import { statusConstants } from 'data/constants'
+import { Status } from 'data/types'
 import Button from 'components/Button'
 
 interface OwnProps {}
@@ -31,7 +31,7 @@ class CreateButton extends React.Component<Props> {
 }
 
 const mapStateToProps = (state: RootState, props: OwnProps) => ({
-    isLoading: state.routines.status === statusConstants.STATUS_LOADING
+    isLoading: state.routines.status === Status.STATUS_LOADING
 })
 
 const mapDispatchToProps = {

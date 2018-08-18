@@ -8,7 +8,7 @@ import {
     setsExerciseSelector,
     previouslyCompletedSetsSelector
 } from 'data/sets/selectors'
-import { statusConstants } from 'data/constants'
+import { Status } from 'data/types'
 import Button from 'components/Button'
 import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
@@ -80,7 +80,7 @@ class Sets extends React.Component<Props> {
                     {this.props.sets.map((set, index) => {
                         const isDeleting =
                             this.props.entitiesStatus[set.id] ===
-                            statusConstants.STATUS_DELETING
+                            Status.STATUS_DELETING
 
                         const isRemoveButtonsVisible =
                             !this.props.isWorkout ||

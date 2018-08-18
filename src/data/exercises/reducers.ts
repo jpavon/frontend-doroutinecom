@@ -1,11 +1,11 @@
 import { ExercisesState, ExercisesAction } from 'data/exercises/types'
 
 import constants from 'data/exercises/constants'
-import { statusConstants } from 'data/constants'
+import { Status } from 'data/types'
 import * as utils from 'data/utils'
 
 const initialState: Readonly<ExercisesState> = {
-    status: statusConstants.STATUS_NONE,
+    status: Status.STATUS_NONE,
     entities: {},
     entitiesOrder: [],
     entitiesStatus: {},

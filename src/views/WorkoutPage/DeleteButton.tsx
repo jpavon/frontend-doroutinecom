@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
 import { deleteWorkout } from 'data/workouts/actions'
-import { statusConstants } from 'data/constants'
+import { Status } from 'data/types'
 
 import Button from 'components/Button'
 
@@ -39,7 +39,7 @@ class WorkoutContainer extends React.Component<Props> {
 const mapStateToProps = (state: RootState, props: OwnProps) => ({
     isDeleting:
         state.workouts.entitiesStatus[props.workoutId] ===
-        statusConstants.STATUS_DELETING
+        Status.STATUS_DELETING
 })
 
 const mapDispatchToProps = {

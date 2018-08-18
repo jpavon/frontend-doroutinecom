@@ -10,7 +10,7 @@ import {
     workoutDisplayNameSelector,
     workoutRoutineSelector
 } from 'data/workouts/selectors'
-import { statusConstants } from 'data/constants'
+import { Status } from 'data/types'
 import AutoSaveForm from 'components/AutoSaveForm'
 import Datetime from 'components/AutoSaveForm/Datetime'
 import Input from 'components/AutoSaveForm/Input'
@@ -116,7 +116,7 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
     workout: workoutSelector(state, props.workoutId),
     displayName: workoutDisplayNameSelector(state, props.workoutId),
     routine: workoutRoutineSelector(state, props.workoutId),
-    isStatusLoaded: state.workouts.status === statusConstants.STATUS_LOADED,
+    isStatusLoaded: state.workouts.status === Status.STATUS_LOADED,
     dateFormat: dateFormatSelector(state)
 })
 

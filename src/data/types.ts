@@ -5,7 +5,6 @@ import { RoutinesState } from 'data/routines/types'
 import { SetsState } from 'data/sets/types'
 import { WorkoutsState } from 'data/workouts/types'
 import { UiState } from 'data/ui/types'
-import { statusConstants } from 'data/constants'
 
 export interface RootState {
     user: UserState
@@ -42,10 +41,19 @@ export interface FailureAction extends Action {
     error: ApiFailure
 }
 
-export type EntitiesStatus = Record<number, statusConstants>
+export enum Status {
+    STATUS_NONE = 'NONE',
+    STATUS_LOADING = 'LOADING',
+    STATUS_LOADED = 'LOADED',
+    STATUS_FAILED = 'FAILED',
+    STATUS_UPDATING = 'UPDATING',
+    STATUS_DELETING = 'DELETING'
+}
+
+export type EntitiesStatus = Record<number, Status>
 
 export interface StateMap<T> {
-    status: statusConstants
+    status: Status
     entities: Record<number, T>
     entitiesStatus: EntitiesStatus
     entitiesOrder: number[]

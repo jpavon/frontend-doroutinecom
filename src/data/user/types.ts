@@ -1,5 +1,5 @@
 import { ApiFailure } from 'data/types'
-import { statusConstants } from 'data/constants'
+import { Status } from 'data/types'
 import * as actions from 'data/user/actions'
 
 export interface User {
@@ -19,7 +19,7 @@ export interface Auth {
 }
 
 export interface UserState {
-    status: statusConstants
+    status: Status
     isAuth: boolean
     entity: User | null
     error: ApiFailure | null

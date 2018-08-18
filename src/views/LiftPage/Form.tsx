@@ -6,7 +6,7 @@ import { RootState } from 'data/types'
 import history from 'utils/history'
 import { liftSelector } from 'data/lifts/selectors'
 import { putLift } from 'data/lifts/actions'
-import { statusConstants } from 'data/constants'
+import { Status } from 'data/types'
 import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
 import Field from 'components/Field'
@@ -58,7 +58,7 @@ class LiftContainer extends React.Component<Props> {
 
 const mapStateToProps = (state: RootState, props: OwnProps) => ({
     lift: liftSelector(state, props.liftId),
-    isStatusLoaded: state.lifts.status === statusConstants.STATUS_LOADED
+    isStatusLoaded: state.lifts.status === Status.STATUS_LOADED
 })
 
 const mapDispatchToProps = {

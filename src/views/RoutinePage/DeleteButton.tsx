@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
 import { deleteRoutine } from 'data/routines/actions'
-import { statusConstants } from 'data/constants'
+import { Status } from 'data/types'
 import Button from 'components/Button'
 
 interface OwnProps {
@@ -38,7 +38,7 @@ class DeleteButton extends React.Component<Props> {
 const mapStateToProps = (state: RootState, props: OwnProps) => ({
     isDeleting:
         state.routines.entitiesStatus[props.routineId] ===
-        statusConstants.STATUS_DELETING
+        Status.STATUS_DELETING
 })
 
 const mapDispatchToProps = {
