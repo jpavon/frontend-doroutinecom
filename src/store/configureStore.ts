@@ -1,13 +1,15 @@
 import { createStore, applyMiddleware, compose, Middleware } from 'redux'
 import { createLogger } from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
+import { connectRouter, routerMiddleware } from 'connected-react-router'
 
 import rootReducer from 'store/rootReducer'
 import rootSaga from 'store/rootSaga'
+import history from 'utils/history'
 
 const sagaMiddleware = createSagaMiddleware()
 
-const middleware: Middleware[] = [sagaMiddleware]
+const middleware: Middleware[] = [routerMiddleware(history), sagaMiddleware]
 if (process.env.NODE_ENV !== 'production') {
     const logger = createLogger({
         collapsed: true
@@ -17,7 +19,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const configureStore = () => {
     const store = createStore(
-        rootReducer,
+        connectRouter(history)(rootReducer),
         {},
         compose(applyMiddleware(...middleware))
     )

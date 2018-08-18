@@ -1,5 +1,4 @@
 import { UiState, UiAction } from 'data/ui/types'
-
 import constants from 'data/ui/constants'
 
 const initialState: Readonly<UiState> = {
@@ -48,6 +47,12 @@ const ui = (state = initialState, action: UiAction): UiState => {
             return {
                 ...state,
                 isOffline: true
+            }
+
+        case constants.LOCATION_CHANGE:
+            return {
+                ...state,
+                alert: null
             }
 
         default:

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { Router } from 'react-router-dom'
+import { ConnectedRouter } from 'connected-react-router'
 
 import { globalStyles } from 'styles'
 import history from 'utils/history'
@@ -16,11 +16,11 @@ const store = configureStore()
 
 render(
     <Provider store={store}>
-        <Router history={history}>
+        <ConnectedRouter history={history}>
             <ScrollToTop>
                 <App />
             </ScrollToTop>
-        </Router>
+        </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
 )

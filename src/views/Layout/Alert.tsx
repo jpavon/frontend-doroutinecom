@@ -2,7 +2,6 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
-import { removeAlert } from 'data/ui/actions'
 import AlertComponent from 'components/Alert'
 
 interface OwnProps {}
@@ -12,12 +11,6 @@ type Props = OwnProps &
     typeof mapDispatchToProps
 
 class Alert extends React.Component<Props> {
-    public componentDidMount() {
-        if (this.props.alert) {
-            this.props.removeAlert()
-        }
-    }
-
     public render() {
         return (
             this.props.alert && (
@@ -34,9 +27,7 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
     alert: state.ui.alert
 })
 
-const mapDispatchToProps = {
-    removeAlert
-}
+const mapDispatchToProps = {}
 
 export default connect(
     mapStateToProps,

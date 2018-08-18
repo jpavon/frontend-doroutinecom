@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { ApiFailure } from 'data/types'
 import * as actions from 'data/ui/actions'
+import constants from 'data/ui/constants'
 
 export interface UiState {
     isLoading: boolean
@@ -9,7 +10,9 @@ export interface UiState {
     isOffline: boolean
 }
 
-export type UiAction = ReturnType<typeof actions[keyof typeof actions]>
+export type UiAction =
+    | ReturnType<typeof actions[keyof typeof actions]>
+    | { type: constants.LOCATION_CHANGE }
 
 export interface Alert {
     type: string

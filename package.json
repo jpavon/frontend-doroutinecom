@@ -52,6 +52,7 @@
     "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.5.1",
     "classnames": "^2.2.6",
+    "connected-react-router": "^4.4.1",
     "d3-array": "^1.2.1",
     "faker": "^4.1.0",
     "history": "^4.7.2",
