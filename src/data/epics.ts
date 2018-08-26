@@ -44,33 +44,22 @@ const getAppDataEpic = (
         switchMap(() =>
             action$.pipe(
                 zip(
-                    action$
-                        .ofType(userConstants.USER_GET_SUCCESS)
-                        .pipe(take(1)),
-                    action$
-                        .ofType(routinesConstants.ROUTINES_GET_SUCCESS)
-                        .pipe(take(1)),
-                    action$
-                        .ofType(workoutsConstants.WORKOUTS_GET_SUCCESS)
-                        .pipe(take(1)),
-                    action$
-                        .ofType(exercisesConstants.EXERCISES_GET_SUCCESS)
-                        .pipe(take(1)),
-                    action$
-                        .ofType(setsConstants.SETS_GET_SUCCESS)
-                        .pipe(take(1)),
-                    action$
-                        .ofType(liftsConstants.LIFTS_GET_SUCCESS)
-                        .pipe(take(1))
+                    action$.ofType(userConstants.USER_GET_SUCCESS),
+                    action$.ofType(routinesConstants.ROUTINES_GET_SUCCESS),
+                    action$.ofType(workoutsConstants.WORKOUTS_GET_SUCCESS),
+                    action$.ofType(exercisesConstants.EXERCISES_GET_SUCCESS),
+                    action$.ofType(setsConstants.SETS_GET_SUCCESS),
+                    action$.ofType(liftsConstants.LIFTS_GET_SUCCESS)
                 ),
+                take(1),
                 mapTo(uiActions.removeLoading()),
-                startWith(uiActions.showLoading()),
                 startWith(userActions.getUserRequest()),
                 startWith(routinesActions.getRoutinesRequest()),
                 startWith(workoutsActions.getWorkoutsRequest()),
                 startWith(exercisesActions.getExercisesRequest()),
                 startWith(setsActions.getSetsRequest()),
-                startWith(liftsActions.getLiftsRequest())
+                startWith(liftsActions.getLiftsRequest()),
+                startWith(uiActions.showLoading())
             )
         )
     )

@@ -59,11 +59,10 @@ const loadEntitiesFromSuccesAndRedirectEpic = (
         switchMap((action: ReturnType<typeof actions.postWorkoutFromSuccess>) =>
             action$.pipe(
                 zip(
-                    action$
-                        .ofType(exercisesConstants.EXERCISES_GET_SUCCESS)
-                        .pipe(take(1)),
-                    action$.ofType(setsConstants.SETS_GET_SUCCESS).pipe(take(1))
+                    action$.ofType(exercisesConstants.EXERCISES_GET_SUCCESS),
+                    action$.ofType(setsConstants.SETS_GET_SUCCESS)
                 ),
+                take(1),
                 tap(() => history.push(`/workouts/${action.payload.id}`)),
                 ignoreElements(),
                 startWith(exercisesActions.getExercisesRequest()),
