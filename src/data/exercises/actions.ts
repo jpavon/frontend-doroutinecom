@@ -5,7 +5,7 @@ import action from 'utils/action'
 import constants from 'data/exercises/constants'
 
 // get
-export const getExercises = () =>
+export const getExercisesRequest = () =>
     action(constants.EXERCISES_GET_REQUEST, {
         method: 'get',
         endpoint: 'exercises'
@@ -22,7 +22,7 @@ export const getExercisesFailure = (payload: ApiFailure) =>
     })
 
 // post
-export const postExercise = (data?: ExerciseRequestData) =>
+export const postExerciseRequest = (data?: ExerciseRequestData) =>
     action(constants.EXERCISES_POST_REQUEST, {
         method: 'post',
         endpoint: 'exercises',
@@ -40,7 +40,7 @@ export const postExerciseFailure = (payload: ApiFailure) =>
     })
 
 // put
-export const putExercise = (
+export const putExerciseRequest = (
     id: number,
     data: ExerciseRequestData,
     resolve?: () => void,
@@ -66,7 +66,7 @@ export const putExerciseFailure = (payload: ApiFailure) =>
     })
 
 // delete
-export const deleteExercise = (id: number) =>
+export const deleteExerciseRequest = (id: number) =>
     action(constants.EXERCISES_DELETE_REQUEST, {
         method: 'delete',
         endpoint: `exercises/${id}`,

@@ -40,6 +40,7 @@ class Alert extends React.Component<Props> {
                 size={this.props.size}
                 type={this.props.type}
                 style={styles}
+                id="alert"
                 data-e2e="alert"
             >
                 {this.renderMessage()}

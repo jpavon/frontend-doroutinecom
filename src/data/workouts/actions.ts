@@ -9,7 +9,7 @@ import action from 'utils/action'
 import constants from 'data/workouts/constants'
 
 // get
-export const getWorkouts = () =>
+export const getWorkoutsRequest = () =>
     action(constants.WORKOUTS_GET_REQUEST, {
         method: 'get',
         endpoint: 'workouts'
@@ -26,7 +26,7 @@ export const getWorkoutsFailure = (payload: ApiFailure) =>
     })
 
 // post
-export const postWorkout = (data: WorkoutRequestData) =>
+export const postWorkoutRequest = (data: WorkoutRequestData) =>
     action(constants.WORKOUTS_POST_REQUEST, {
         method: 'post',
         endpoint: 'workouts',
@@ -44,7 +44,7 @@ export const postWorkoutFailure = (payload: ApiFailure) =>
     })
 
 // postFrom
-export const postWorkoutFrom = (data: WorkoutFromRequestData) =>
+export const postWorkoutFromRequest = (data: WorkoutFromRequestData) =>
     action(constants.WORKOUTS_POST_FROM_REQUEST, {
         method: 'post',
         endpoint: 'workouts',
@@ -62,7 +62,7 @@ export const postWorkoutFromFailure = (payload: ApiFailure) =>
     })
 
 // put
-export const putWorkout = (
+export const putWorkoutRequest = (
     id: number,
     data: WorkoutRequestData,
     resolve?: () => void,
@@ -88,7 +88,7 @@ export const putWorkoutFailure = (payload: ApiFailure) =>
     })
 
 // delete
-export const deleteWorkout = (id: number) =>
+export const deleteWorkoutRequest = (id: number) =>
     action(constants.WORKOUTS_DELETE_REQUEST, {
         method: 'delete',
         endpoint: `workouts/${id}`,

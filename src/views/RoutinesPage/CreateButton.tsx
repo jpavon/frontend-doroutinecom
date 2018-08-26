@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
-import { postRoutine } from 'data/routines/actions'
+import { postRoutineRequest } from 'data/routines/actions'
 import { Status } from 'data/types'
 import Button from 'components/Button'
 
@@ -14,7 +14,7 @@ type Props = OwnProps &
 
 class CreateButton extends React.Component<Props> {
     private handleCreate = () => {
-        this.props.postRoutine()
+        this.props.postRoutineRequest()
     }
 
     public render() {
@@ -35,7 +35,7 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
 })
 
 const mapDispatchToProps = {
-    postRoutine
+    postRoutineRequest
 }
 
 export default connect(

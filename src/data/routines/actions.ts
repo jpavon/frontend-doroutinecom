@@ -5,7 +5,7 @@ import action from 'utils/action'
 import constants from 'data/routines/constants'
 
 // get
-export const getRoutines = () =>
+export const getRoutinesRequest = () =>
     action(constants.ROUTINES_GET_REQUEST, {
         method: 'get',
         endpoint: 'routines'
@@ -22,7 +22,7 @@ export const getRoutinesFailure = (payload: ApiFailure) =>
     })
 
 // post
-export const postRoutine = (data?: RoutineRequestData) =>
+export const postRoutineRequest = (data?: RoutineRequestData) =>
     action(constants.ROUTINES_POST_REQUEST, {
         method: 'post',
         endpoint: 'routines',
@@ -40,7 +40,7 @@ export const postRoutineFailure = (payload: ApiFailure) =>
     })
 
 // put
-export const putRoutine = (
+export const putRoutineRequest = (
     id: number,
     data: RoutineRequestData,
     resolve?: () => void,
@@ -66,7 +66,7 @@ export const putRoutineFailure = (payload: ApiFailure) =>
     })
 
 // delete
-export const deleteRoutine = (id: number) =>
+export const deleteRoutineRequest = (id: number) =>
     action(constants.ROUTINES_DELETE_REQUEST, {
         method: 'delete',
         endpoint: `routines/${id}`,

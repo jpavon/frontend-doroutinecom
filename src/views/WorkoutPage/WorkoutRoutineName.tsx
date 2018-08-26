@@ -2,7 +2,10 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
-import { putWorkout, postWorkoutFrom } from 'data/workouts/actions'
+import {
+    putWorkoutRequest,
+    postWorkoutFromRequest
+} from 'data/workouts/actions'
 import {
     workoutSelector,
     workoutDisplayNameSelector,
@@ -54,8 +57,8 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
 })
 
 const mapDispatchToProps = {
-    postWorkoutFrom,
-    putWorkout
+    postWorkoutFromRequest,
+    putWorkoutRequest
 }
 
 export default connect(

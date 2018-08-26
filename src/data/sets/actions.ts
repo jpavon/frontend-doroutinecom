@@ -5,7 +5,7 @@ import action from 'utils/action'
 import constants from 'data/sets/constants'
 
 // get
-export const getSets = () =>
+export const getSetsRequest = () =>
     action(constants.SETS_GET_REQUEST, {
         method: 'get',
         endpoint: 'sets'
@@ -22,7 +22,7 @@ export const getSetsFailure = (payload: ApiFailure) =>
     })
 
 // post
-export const postSet = (data: SetRequestData) =>
+export const postSetRequest = (data: SetRequestData) =>
     action(constants.SETS_POST_REQUEST, {
         method: 'post',
         endpoint: 'sets',
@@ -40,7 +40,7 @@ export const postSetFailure = (payload: ApiFailure) =>
     })
 
 // put
-export const putSet = (
+export const putSetRequest = (
     id: number,
     data: SetRequestData,
     resolve?: () => void,
@@ -66,7 +66,7 @@ export const putSetFailure = (payload: ApiFailure) =>
     })
 
 // delete
-export const deleteSet = (id: number) =>
+export const deleteSetRequest = (id: number) =>
     action(constants.SETS_DELETE_REQUEST, {
         method: 'delete',
         endpoint: `sets/${id}`,

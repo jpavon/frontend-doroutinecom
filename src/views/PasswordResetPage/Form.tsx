@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { passwordResetUser } from 'data/user/actions'
+import { passwordResetUserRequest } from 'data/user/actions'
 
 import NavBar from 'components/NavBar'
 import Input from 'components/Form/Input'
@@ -25,7 +25,7 @@ class Form extends React.Component<Props> {
         event.preventDefault()
 
         new Promise((resolve, reject) => {
-            this.props.passwordResetUser(
+            this.props.passwordResetUserRequest(
                 {
                     token: this.props.token,
                     email: this.email.current!.value,
@@ -85,7 +85,7 @@ class Form extends React.Component<Props> {
 const mapStateToProps = () => ({})
 
 const mapDispatchToProps = {
-    passwordResetUser
+    passwordResetUserRequest
 }
 
 export default connect(

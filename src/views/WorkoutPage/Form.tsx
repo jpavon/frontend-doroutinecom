@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 
 import { RootState } from 'data/types'
 import history from 'utils/history'
-import { putWorkout } from 'data/workouts/actions'
+import { putWorkoutRequest } from 'data/workouts/actions'
 import {
     workoutSelector,
     workoutDisplayNameSelector,
@@ -49,7 +49,7 @@ class Form extends React.Component<Props> {
                             : 'notcompleted'
                     }`}
                     initialValues={this.props.workout}
-                    update={this.props.putWorkout}
+                    update={this.props.putWorkoutRequest}
                     render={() => (
                         <>
                             {!this.props.routine && (
@@ -93,7 +93,7 @@ class Form extends React.Component<Props> {
                 {this.props.children}
                 <AutoSaveForm
                     initialValues={this.props.workout}
-                    update={this.props.putWorkout}
+                    update={this.props.putWorkoutRequest}
                     render={({ values }) => (
                         <Field
                             label="Additional Notes"
@@ -121,7 +121,7 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
 })
 
 const mapDispatchToProps = {
-    putWorkout
+    putWorkoutRequest
 }
 
 export default connect(

@@ -5,14 +5,15 @@ import {
     RegisterData,
     PasswordForgottenData,
     PasswordResetData,
-    UserRequestData
+    UserRequestData,
+    Auth
 } from 'data/user/types'
 
 import action from 'utils/action'
 import constants from 'data/user/constants'
 
 // get
-export const getUser = () =>
+export const getUserRequest = () =>
     action(constants.USER_GET_REQUEST, {
         method: 'get',
         endpoint: 'user'
@@ -29,7 +30,7 @@ export const getUserFailure = (payload: ApiFailure) =>
     })
 
 // put
-export const putUser = (
+export const putUserRequest = (
     id: number,
     data: UserRequestData,
     resolve: () => void,
@@ -54,7 +55,7 @@ export const putUserFailure = (payload: ApiFailure) =>
     })
 
 // login
-export const loginUser = (
+export const loginUserRequest = (
     data: LoginData,
     resolve: () => void,
     reject: () => void
@@ -67,7 +68,7 @@ export const loginUser = (
         reject
     })
 
-export const loginUserSuccess = (payload: User) =>
+export const loginUserSuccess = (payload: Auth) =>
     action(constants.USER_LOGIN_SUCCESS, {
         payload
     })
@@ -78,7 +79,7 @@ export const loginUserFailure = (payload: ApiFailure) =>
     })
 
 // register
-export const registerUser = (
+export const registerUserRequest = (
     data: RegisterData,
     resolve: () => void,
     reject: () => void
@@ -91,7 +92,7 @@ export const registerUser = (
         reject
     })
 
-export const registerUserSuccess = (payload: User) =>
+export const registerUserSuccess = (payload: Auth) =>
     action(constants.USER_REGISTER_SUCCESS, {
         payload
     })
@@ -102,7 +103,7 @@ export const registerUserFailure = (payload: ApiFailure) =>
     })
 
 // passwordForgotten
-export const passwordForgottenUser = (data: PasswordForgottenData) =>
+export const passwordForgottenUserRequest = (data: PasswordForgottenData) =>
     action(constants.USER_PASSWORD_FORGOTTEN_REQUEST, {
         method: 'post',
         endpoint: 'password/email',
@@ -118,7 +119,7 @@ export const passwordForgottenUserFailure = (payload: ApiFailure) =>
     })
 
 // passwordReset
-export const passwordResetUser = (
+export const passwordResetUserRequest = (
     data: PasswordResetData,
     resolve: () => void,
     reject: () => void
@@ -143,7 +144,4 @@ export const passwordResetUserFailure = (payload: ApiFailure) =>
 export const authUser = () => action(constants.USER_AUTH)
 
 // unauth
-export const unauthUser = (error?: string) =>
-    action(constants.USER_UNAUTH, {
-        error
-    })
+export const unauthUser = () => action(constants.USER_UNAUTH)

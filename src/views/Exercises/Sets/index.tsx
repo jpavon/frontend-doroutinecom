@@ -2,7 +2,11 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
-import { postSet, putSet, deleteSet } from 'data/sets/actions'
+import {
+    postSetRequest,
+    putSetRequest,
+    deleteSetRequest
+} from 'data/sets/actions'
 import { userSelector } from 'data/user/selectors'
 import {
     setsExerciseSelector,
@@ -45,7 +49,7 @@ class Sets extends React.Component<Props> {
     }
 
     private handleCreate = () => {
-        this.props.postSet({
+        this.props.postSetRequest({
             exerciseId: this.props.exerciseId
         })
     }
@@ -94,7 +98,7 @@ class Sets extends React.Component<Props> {
                             <AutoSaveForm
                                 key={set.id}
                                 initialValues={set}
-                                update={this.props.putSet}
+                                update={this.props.putSetRequest}
                                 render={({ values }) => (
                                     <SetWrapper
                                         isCompleted={values.isCompleted}
@@ -151,7 +155,7 @@ class Sets extends React.Component<Props> {
                                                     icon="remove"
                                                     danger={true}
                                                     onClick={() =>
-                                                        this.props.deleteSet(
+                                                        this.props.deleteSetRequest(
                                                             set.id
                                                         )
                                                     }
@@ -190,9 +194,9 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
 })
 
 const mapDispatchToProps = {
-    postSet,
-    putSet,
-    deleteSet
+    postSetRequest,
+    putSetRequest,
+    deleteSetRequest
 }
 
 export default connect(

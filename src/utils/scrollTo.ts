@@ -13,20 +13,17 @@ const isElementInViewport = (el: Element) => {
     )
 }
 
-const scrollTo = (className: string, options?: {}) => {
-    setTimeout(() => {
-        const elements = document.getElementsByClassName(className)
-        const el = elements[elements.length - 1]
+const scrollTo = (id: string, options?: {}) => {
+    const el = document.getElementById(id)
 
-        if (el && !isElementInViewport(el)) {
-            const defaultOptions = {
-                tolerance: 15,
-                ...options
-            }
-            const move = new moveTo(defaultOptions)
-            move.move(el)
+    if (el && !isElementInViewport(el)) {
+        const defaultOptions = {
+            tolerance: 15,
+            ...options
         }
-    }, 100) // wait for element to mount
+        const move = new moveTo(defaultOptions)
+        move.move(el)
+    }
 }
 
 export default scrollTo

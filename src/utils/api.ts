@@ -1,6 +1,7 @@
 import axios, { AxiosPromise, AxiosResponse, AxiosError } from 'axios'
 import { camelizeKeys, decamelizeKeys } from 'humps'
 import * as store from 'store'
+import { from } from 'rxjs'
 
 import env from 'env'
 
@@ -38,9 +39,5 @@ const api = (
         })
 }
 
-export default {
-    get: (endpoint: string, data?: object) => api('get', endpoint, data),
-    post: (endpoint: string, data?: object) => api('post', endpoint, data),
-    put: (endpoint: string, data?: object) => api('put', endpoint, data),
-    delete: (endpoint: string, data?: object) => api('delete', endpoint, data)
-}
+export default (method: string, endpoint: string, data?: object) =>
+    from(api(method, endpoint, data))

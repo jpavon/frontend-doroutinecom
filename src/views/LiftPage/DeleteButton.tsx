@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
-import { deleteLift } from 'data/lifts/actions'
+import { deleteLiftRequest } from 'data/lifts/actions'
 import { Status } from 'data/types'
 import Button from 'components/Button'
 
@@ -17,7 +17,7 @@ type Props = OwnProps &
 class DeleteButton extends React.Component<Props> {
     private handleRemove = () => {
         if (window.confirm('Are you sure you want to delete this lift?')) {
-            this.props.deleteLift(this.props.liftId)
+            this.props.deleteLiftRequest(this.props.liftId)
         }
     }
 
@@ -41,7 +41,7 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
 })
 
 const mapDispatchToProps = {
-    deleteLift
+    deleteLiftRequest
 }
 
 export default connect(

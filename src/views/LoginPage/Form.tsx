@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { loginUser } from 'data/user/actions'
+import { loginUserRequest } from 'data/user/actions'
 import Input from 'components/Form/Input'
 import Field from 'components/Field'
 import Auth from 'components/Auth'
@@ -20,7 +20,7 @@ class Form extends React.Component<Props> {
         event.preventDefault()
 
         new Promise((resolve, reject) => {
-            this.props.loginUser(
+            this.props.loginUserRequest(
                 {
                     email: this.email.current!.value,
                     password: this.password.current!.value
@@ -62,7 +62,7 @@ class Form extends React.Component<Props> {
 const mapStateToProps = () => ({})
 
 const mapDispatchToProps = {
-    loginUser
+    loginUserRequest
 }
 
 export default connect(

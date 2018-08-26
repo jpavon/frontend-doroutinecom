@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
-import { postLift } from 'data/lifts/actions'
+import { postLiftRequest } from 'data/lifts/actions'
 import { Status } from 'data/types'
 import Button from 'components/Button'
 
@@ -16,7 +16,7 @@ class CreateButton extends React.Component<Props> {
     public render() {
         return (
             <Button
-                onClick={() => this.props.postLift()}
+                onClick={() => this.props.postLiftRequest()}
                 disabled={this.props.isLoading}
                 data-e2e="lift-button-create"
             >
@@ -31,7 +31,7 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
 })
 
 const mapDispatchToProps = {
-    postLift
+    postLiftRequest
 }
 
 export default connect(

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
-import { deleteRoutine } from 'data/routines/actions'
+import { deleteRoutineRequest } from 'data/routines/actions'
 import { Status } from 'data/types'
 import Button from 'components/Button'
 
@@ -17,7 +17,7 @@ type Props = OwnProps &
 class DeleteButton extends React.Component<Props> {
     private handleDelete = () => {
         if (window.confirm('Are you sure you want to delete this routine?')) {
-            this.props.deleteRoutine(this.props.routineId)
+            this.props.deleteRoutineRequest(this.props.routineId)
         }
     }
 
@@ -42,7 +42,7 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
 })
 
 const mapDispatchToProps = {
-    deleteRoutine
+    deleteRoutineRequest
 }
 
 export default connect(

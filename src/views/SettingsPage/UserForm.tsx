@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
-import { putUser } from 'data/user/actions'
+import { putUserRequest } from 'data/user/actions'
 import { userSelector } from 'data/user/selectors'
 import Field from 'components/Field'
 import AutoSaveForm from 'components/AutoSaveForm'
@@ -20,7 +20,7 @@ class UserForm extends React.Component<Props> {
             this.props.user && (
                 <AutoSaveForm
                     initialValues={this.props.user}
-                    update={this.props.putUser}
+                    update={this.props.putUserRequest}
                     render={() => (
                         <>
                             <Field label="Name" id="name">
@@ -42,7 +42,7 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
 })
 
 const mapDispatchToProps = {
-    putUser
+    putUserRequest
 }
 
 export default connect(

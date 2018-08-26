@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
 import { now } from 'utils/date'
-import { postWorkoutFrom } from 'data/workouts/actions'
+import { postWorkoutFromRequest } from 'data/workouts/actions'
 import Button from 'components/Button'
 
 interface OwnProps {
@@ -16,7 +16,7 @@ type Props = OwnProps &
 
 class CreateWorkoutButton extends React.Component<Props> {
     private handleCreateWorkout = () => {
-        this.props.postWorkoutFrom({
+        this.props.postWorkoutFromRequest({
             routineId: this.props.routineId,
             startedAt: now()
         })
@@ -37,7 +37,7 @@ class CreateWorkoutButton extends React.Component<Props> {
 const mapStateToProps = (state: RootState, props: OwnProps) => ({})
 
 const mapDispatchToProps = {
-    postWorkoutFrom
+    postWorkoutFromRequest
 }
 
 export default connect(

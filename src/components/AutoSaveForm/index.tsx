@@ -118,6 +118,7 @@ class AutoSaveForm<T extends { id: number }> extends React.Component<
                 }, 500)()
             })
             .catch((error) => {
+                console.log(error)
                 if (this.canUpdateState) {
                     this.setState({
                         errors: error ? error.errors : {}

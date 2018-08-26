@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { RootState } from 'data/types'
 
 import { liftsSelector } from 'data/lifts/selectors'
-import { postLift } from 'data/lifts/actions'
+import { postLiftRequest } from 'data/lifts/actions'
 import { Status } from 'data/types'
 
 import NoData from 'components/NoData'
@@ -44,7 +44,7 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
 })
 
 const mapDispatchToProps = {
-    postLift
+    postLiftRequest
 }
 
 export default connect(

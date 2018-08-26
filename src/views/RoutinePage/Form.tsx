@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 
 import { RootState } from 'data/types'
 import history from 'utils/history'
-import { putRoutine } from 'data/routines/actions'
+import { putRoutineRequest } from 'data/routines/actions'
 import { routineSelector } from 'data/routines/selectors'
 import { Status } from 'data/types'
 import AutoSaveForm from 'components/AutoSaveForm'
@@ -37,7 +37,7 @@ class Form extends React.Component<Props> {
                 )}
                 <AutoSaveForm
                     initialValues={this.props.routine}
-                    update={this.props.putRoutine}
+                    update={this.props.putRoutineRequest}
                     render={({ values }) => (
                         <Field label="Name" id={`name${values.id}`}>
                             <Input
@@ -52,7 +52,7 @@ class Form extends React.Component<Props> {
                 {this.props.children}
                 <AutoSaveForm
                     initialValues={this.props.routine}
-                    update={this.props.putRoutine}
+                    update={this.props.putRoutineRequest}
                     render={({ values }) => (
                         <Field
                             label="Additional Notes"
@@ -78,7 +78,7 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
 })
 
 const mapDispatchToProps = {
-    putRoutine
+    putRoutineRequest
 }
 
 export default connect(

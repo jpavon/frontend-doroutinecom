@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
 import { now } from 'utils/date'
-import { putWorkout } from 'data/workouts/actions'
+import { putWorkoutRequest } from 'data/workouts/actions'
 import { workoutSelector } from 'data/workouts/selectors'
 import Button from 'components/Button'
 
@@ -21,7 +21,7 @@ class WorkoutContainer extends React.Component<Props> {
             return
         }
 
-        this.props.putWorkout(this.props.workout.id, {
+        this.props.putWorkoutRequest(this.props.workout.id, {
             completedAt: now()
         })
     }
@@ -31,7 +31,7 @@ class WorkoutContainer extends React.Component<Props> {
             return
         }
 
-        this.props.putWorkout(this.props.workout.id, {
+        this.props.putWorkoutRequest(this.props.workout.id, {
             startedAt: now(),
             completedAt: null
         })
@@ -61,7 +61,7 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
 })
 
 const mapDispatchToProps = {
-    putWorkout
+    putWorkoutRequest
 }
 
 export default connect(

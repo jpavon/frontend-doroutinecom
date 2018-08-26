@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
 import {
-    postExercise,
-    putExercise,
-    deleteExercise
+    postExerciseRequest,
+    putExerciseRequest,
+    deleteExerciseRequest
 } from 'data/exercises/actions'
 import {
     exercisesRoutineSelector,
@@ -60,7 +60,7 @@ class Exercises extends React.Component<Props, State> {
             key = 'workoutId'
         }
 
-        this.props.postExercise({
+        this.props.postExerciseRequest({
             [key]: this.props.id
         })
     }
@@ -74,7 +74,7 @@ class Exercises extends React.Component<Props, State> {
                         this.props.exercises.map((exercise, i) => (
                             <Exercise key={exercise.id}>
                                 <AutoSaveForm
-                                    update={this.props.putExercise}
+                                    update={this.props.putExerciseRequest}
                                     initialValues={exercise}
                                     render={({ values }) => (
                                         <ExerciseLift>
@@ -119,7 +119,7 @@ class Exercises extends React.Component<Props, State> {
                                             icon="remove"
                                             danger={true}
                                             onClick={() =>
-                                                this.props.deleteExercise(
+                                                this.props.deleteExerciseRequest(
                                                     exercise.id
                                                 )
                                             }
@@ -163,9 +163,9 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
 })
 
 const mapDispatchToProps = {
-    postExercise,
-    putExercise,
-    deleteExercise
+    postExerciseRequest,
+    putExerciseRequest,
+    deleteExerciseRequest
 }
 
 export default connect(

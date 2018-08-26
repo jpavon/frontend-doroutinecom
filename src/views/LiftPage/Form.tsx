@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 import { RootState } from 'data/types'
 import history from 'utils/history'
 import { liftSelector } from 'data/lifts/selectors'
-import { putLift } from 'data/lifts/actions'
+import { putLiftRequest } from 'data/lifts/actions'
 import { Status } from 'data/types'
 import AutoSaveForm from 'components/AutoSaveForm'
 import Input from 'components/AutoSaveForm/Input'
@@ -38,7 +38,7 @@ class LiftContainer extends React.Component<Props> {
                 <Lift>
                     <AutoSaveForm
                         initialValues={this.props.lift}
-                        update={this.props.putLift}
+                        update={this.props.putLiftRequest}
                         render={() => (
                             <Field label="Name" id="name">
                                 <Input
@@ -62,7 +62,7 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
 })
 
 const mapDispatchToProps = {
-    putLift
+    putLiftRequest
 }
 
 export default connect(

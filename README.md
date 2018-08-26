@@ -10,7 +10,7 @@
 - typescript
 - react
 - redux
-- redux-sagas
+- redux-observable
 - react-router
 - reselect
 - styled-components

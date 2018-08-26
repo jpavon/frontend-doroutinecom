@@ -1,15 +1,15 @@
 import { createStore, applyMiddleware, compose, Middleware } from 'redux'
 import { createLogger } from 'redux-logger'
-import createSagaMiddleware from 'redux-saga'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
+import { createEpicMiddleware } from 'redux-observable'
 
+import rootEpic from 'store/rootEpic'
 import rootReducer from 'store/rootReducer'
-import rootSaga from 'store/rootSaga'
 import history from 'utils/history'
 
-const sagaMiddleware = createSagaMiddleware()
+const epicMiddleware = createEpicMiddleware()
 
-const middleware: Middleware[] = [routerMiddleware(history), sagaMiddleware]
+const middleware: Middleware[] = [routerMiddleware(history), epicMiddleware]
 if (process.env.NODE_ENV !== 'production') {
     const logger = createLogger({
         collapsed: true
@@ -24,7 +24,7 @@ const configureStore = () => {
         compose(applyMiddleware(...middleware))
     )
 
-    sagaMiddleware.run(rootSaga)
+    epicMiddleware.run(rootEpic)
 
     // if (process.env.NODE_ENV !== 'production') {
     //     if (module.hot) {

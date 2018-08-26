@@ -5,7 +5,7 @@ import action from 'utils/action'
 import constants from 'data/lifts/constants'
 
 // get
-export const getLifts = () =>
+export const getLiftsRequest = () =>
     action(constants.LIFTS_GET_REQUEST, {
         method: 'get',
         endpoint: 'lifts'
@@ -22,7 +22,7 @@ export const getLiftsFailure = (payload: ApiFailure) =>
     })
 
 // post
-export const postLift = (data?: LiftRequestData) =>
+export const postLiftRequest = (data?: LiftRequestData) =>
     action(constants.LIFTS_POST_REQUEST, {
         method: 'post',
         endpoint: 'lifts',
@@ -40,7 +40,7 @@ export const postLiftFailure = (payload: ApiFailure) =>
     })
 
 // put
-export const putLift = (
+export const putLiftRequest = (
     id: number,
     data: LiftRequestData,
     resolve?: () => void,
@@ -66,7 +66,7 @@ export const putLiftFailure = (payload: ApiFailure) =>
     })
 
 // delete
-export const deleteLift = (id: number) =>
+export const deleteLiftRequest = (id: number) =>
     action(constants.LIFTS_DELETE_REQUEST, {
         method: 'delete',
         endpoint: `lifts/${id}`,

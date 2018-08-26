@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
-import { deleteWorkout } from 'data/workouts/actions'
+import { deleteWorkoutRequest } from 'data/workouts/actions'
 import { Status } from 'data/types'
 
 import Button from 'components/Button'
@@ -18,7 +18,7 @@ type Props = OwnProps &
 class WorkoutContainer extends React.Component<Props> {
     private handleRemove = () => {
         if (window.confirm('Are you sure you want to delete this workout?')) {
-            this.props.deleteWorkout(this.props.workoutId)
+            this.props.deleteWorkoutRequest(this.props.workoutId)
         }
     }
 
@@ -43,7 +43,7 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
 })
 
 const mapDispatchToProps = {
-    deleteWorkout
+    deleteWorkoutRequest
 }
 
 export default connect(

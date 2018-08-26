@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { registerUser } from 'data/user/actions'
+import { registerUserRequest } from 'data/user/actions'
 
 import Input from 'components/Form/Input'
 import Auth from 'components/Auth'
@@ -23,7 +23,7 @@ class Form extends React.Component<Props> {
         event.preventDefault()
 
         new Promise((resolve, reject) => {
-            this.props.registerUser(
+            this.props.registerUserRequest(
                 {
                     name: this.name.current!.value,
                     email: this.email.current!.value,
@@ -86,7 +86,7 @@ class Form extends React.Component<Props> {
 const mapStateToProps = () => ({})
 
 const mapDispatchToProps = {
-    registerUser
+    registerUserRequest
 }
 
 export default connect(

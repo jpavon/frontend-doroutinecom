@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { RootState } from 'data/types'
 import { now } from 'utils/date'
-import { postWorkoutFrom } from 'data/workouts/actions'
+import { postWorkoutFromRequest } from 'data/workouts/actions'
 import { workoutSelector } from 'data/workouts/selectors'
 import NavBar from 'components/NavBar'
 import Button from 'components/Button'
@@ -22,7 +22,7 @@ class CreateAgainNavButton extends React.Component<Props> {
             return
         }
 
-        this.props.postWorkoutFrom({
+        this.props.postWorkoutFromRequest({
             routineId: this.props.workout.routineId,
             workoutId: this.props.workout.id,
             startedAt: now()
@@ -50,7 +50,7 @@ const mapStateToProps = (state: RootState, props: OwnProps) => ({
 })
 
 const mapDispatchToProps = {
-    postWorkoutFrom
+    postWorkoutFromRequest
 }
 
 export default connect(
