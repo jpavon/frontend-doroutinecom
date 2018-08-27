@@ -1,48 +1,44 @@
 import * as React from 'react'
 import { debounce } from 'lodash'
 
-export interface AutoSaveFormState<T> {
+export interface State<T> {
     values: T
     errors?: Record<string, string>
     updating: string | null
 }
 
-interface AutoSaveFormProps<T> {
+interface Props<T> {
     initialValues: T
     update: (
         id: number,
         data: Partial<T>,
-        resolve?: () => void,
-        reject?: () => void
+        resolve: () => void,
+        reject: () => void
     ) => void
-    render: (state: AutoSaveFormState<T>) => React.ReactNode
+    render: (state: State<T>) => React.ReactNode
 }
 
-interface NameValue<T> {
+interface ChangedData<T> {
     name: keyof T
     value: T[keyof T]
 }
 
-interface AutoSaveFormChangeOptions<T> extends NameValue<T> {
-    debounced?: boolean
-}
-
-interface UpdateData<T> extends NameValue<T> {
+interface UpdateData<T> extends ChangedData<T> {
     id: number
 }
 
-export interface AutoSaveFormContext<T> extends AutoSaveFormState<T> {
-    onChange: (options: AutoSaveFormChangeOptions<T>) => void
+export interface Context<T> extends State<T> {
+    onChange: (options: ChangedData<T>) => void
 }
 
 // tslint:disable-next-line:no-any
-const Context = React.createContext({} as AutoSaveFormContext<any>)
+const Context = React.createContext({} as Context<any>)
 
 class AutoSaveForm<T extends { id: number }> extends React.Component<
-    AutoSaveFormProps<T>,
-    AutoSaveFormState<T>
+    Props<T>,
+    State<T>
 > {
-    private canUpdateState: boolean = false
+    private mounted: boolean = false
 
     public readonly state = {
         values: this.props.initialValues,
@@ -51,45 +47,35 @@ class AutoSaveForm<T extends { id: number }> extends React.Component<
     }
 
     public componentDidMount() {
-        this.canUpdateState = true
+        this.mounted = true
     }
 
     public componentWillUnmount() {
-        this.canUpdateState = false
+        this.mounted = false
     }
 
-    public initialize = (values: T) => {
-        this.setState({
-            values
-        })
-    }
-
-    public handleChange = (options: AutoSaveFormChangeOptions<T>) => {
+    public handleChange = (data: ChangedData<T>) => {
         // spread issue with generics https://github.com/Microsoft/TypeScript/issues/10727
         // this.setState((prevState) => ({
         //     values: {
         //         ...prevState.values,
-        //         [options.name]: options.value
+        //         [data.name]: data.value
         //     }
         // }))
 
         this.setState((prevState) => ({
             values: Object.assign({}, prevState.values, {
-                [options.name]: options.value
+                [data.name]: data.value
             })
         }))
 
-        const data: UpdateData<T> = {
+        const updateData: UpdateData<T> = {
             id: this.state.values.id,
-            name: options.name,
-            value: options.value
+            name: data.name,
+            value: data.value
         }
 
-        if (options.debounced) {
-            this.debounceUpdate(data)
-        } else {
-            this.update(data)
-        }
+        this.debounceUpdate(updateData)
     }
 
     public update = (data: UpdateData<T>) => {
@@ -102,7 +88,7 @@ class AutoSaveForm<T extends { id: number }> extends React.Component<
             )
         })
             .then(() => {
-                if (this.canUpdateState) {
+                if (this.mounted) {
                     this.setState({
                         updating: data.name as string,
                         errors: {}
@@ -110,7 +96,7 @@ class AutoSaveForm<T extends { id: number }> extends React.Component<
                 }
 
                 debounce(() => {
-                    if (this.canUpdateState) {
+                    if (this.mounted) {
                         this.setState({
                             updating: null
                         })
@@ -118,8 +104,7 @@ class AutoSaveForm<T extends { id: number }> extends React.Component<
                 }, 500)()
             })
             .catch((error) => {
-                console.log(error)
-                if (this.canUpdateState) {
+                if (this.mounted) {
                     this.setState({
                         errors: error ? error.errors : {}
                     })
@@ -130,7 +115,7 @@ class AutoSaveForm<T extends { id: number }> extends React.Component<
     public debounceUpdate = debounce(this.update, 300)
 
     public render() {
-        const store: AutoSaveFormContext<T> = {
+        const store: Context<T> = {
             ...this.state,
             onChange: this.handleChange
         }

@@ -34,7 +34,7 @@ interface OwnProps {
     liftId: number | null
     isWorkout: boolean
     toggleRemoveButtons: () => void
-    isRemoveButtonsVisible: boolean
+    showRemoveButtons: boolean
 }
 
 type Props = OwnProps &
@@ -73,7 +73,7 @@ class Sets extends React.Component<Props> {
                                 onClick={this.props.toggleRemoveButtons}
                                 data-e2e="set-action-toggle-actions"
                             >
-                                {this.props.isRemoveButtonsVisible ? '✓' : 'X'}
+                                {this.props.showRemoveButtons ? '✓' : 'X'}
                             </Button>
                         </SetsHeaderItemToggle>
                     ) : (
@@ -86,9 +86,9 @@ class Sets extends React.Component<Props> {
                             this.props.entitiesStatus[set.id] ===
                             Status.STATUS_DELETING
 
-                        const isRemoveButtonsVisible =
+                        const showRemoveButtons =
                             !this.props.isWorkout ||
-                            this.props.isRemoveButtonsVisible
+                            this.props.showRemoveButtons
 
                         const previousSet =
                             this.props.previouslyCompletedSets &&
@@ -134,7 +134,7 @@ class Sets extends React.Component<Props> {
                                             />
                                         </SetItem>
                                         <SetItemWithAction>
-                                            {!isRemoveButtonsVisible && (
+                                            {!showRemoveButtons && (
                                                 <Label
                                                     htmlFor={`set-checkbox${
                                                         values.id
@@ -150,7 +150,7 @@ class Sets extends React.Component<Props> {
                                                     />
                                                 </Label>
                                             )}
-                                            {isRemoveButtonsVisible && (
+                                            {showRemoveButtons && (
                                                 <Button
                                                     icon="remove"
                                                     danger={true}

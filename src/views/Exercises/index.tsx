@@ -37,31 +37,23 @@ type Props = OwnProps &
     typeof mapDispatchToProps
 
 interface State {
-    isRemoveButtonsVisible: boolean
+    showRemoveButtons: boolean
 }
 
 class Exercises extends React.Component<Props, State> {
     public readonly state = {
-        isRemoveButtonsVisible: this.props.entity === 'routine' ? true : false
+        showRemoveButtons: this.props.entity === 'routine'
     }
 
     private handleToggleRemoveButtons = () => {
         this.setState((prevState) => ({
-            isRemoveButtonsVisible: !prevState.isRemoveButtonsVisible
+            showRemoveButtons: !prevState.showRemoveButtons
         }))
     }
 
     private handleCreate = () => {
-        let key: string
-
-        if (this.props.entity === 'routine') {
-            key = 'routineId'
-        } else {
-            key = 'workoutId'
-        }
-
         this.props.postExerciseRequest({
-            [key]: this.props.id
+            [`${this.props.entity}Id`]: this.props.id
         })
     }
 
@@ -106,14 +98,14 @@ class Exercises extends React.Component<Props, State> {
                                     exerciseId={exercise.id}
                                     liftId={exercise.liftId}
                                     isWorkout={this.props.entity === 'workout'}
-                                    isRemoveButtonsVisible={
-                                        this.state.isRemoveButtonsVisible
+                                    showRemoveButtons={
+                                        this.state.showRemoveButtons
                                     }
                                     toggleRemoveButtons={
                                         this.handleToggleRemoveButtons
                                     }
                                 />
-                                {this.state.isRemoveButtonsVisible && (
+                                {this.state.showRemoveButtons && (
                                     <ExerciseButtonDelete>
                                         <Button
                                             icon="remove"

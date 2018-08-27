@@ -1,7 +1,6 @@
 import * as faker from 'faker'
 
 const config = {
-    TIMEOUT: 10000,
     USER: {
         name: '_T_' + faker.name.firstName(),
         email: '_T_' + faker.internet.email(),

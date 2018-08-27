@@ -21,8 +21,7 @@ const Textarea: React.SFC<AutoSaveFormTextareaProps> = (props) => (
                         onChange={(event) => {
                             onChange({
                                 name: props.name,
-                                value: event.target.value,
-                                debounced: true
+                                value: event.target.value
                             })
                         }}
                         {...props}

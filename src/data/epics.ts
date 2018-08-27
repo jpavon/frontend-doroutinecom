@@ -11,7 +11,6 @@ import {
 } from 'rxjs/operators'
 import { of } from 'rxjs/index'
 
-import * as uiActions from 'data/ui/actions'
 import appConstants from 'data/constants'
 import userConstants from 'data/user/constants'
 import routinesConstants from 'data/routines/constants'
@@ -26,6 +25,7 @@ import * as workoutsActions from 'data/workouts/actions'
 import * as exercisesActions from 'data/exercises/actions'
 import * as liftsActions from 'data/lifts/actions'
 import * as setsActions from 'data/sets/actions'
+import * as uiActions from 'data/ui/actions'
 import { SERVER_ERROR } from 'utils/api'
 
 const getAppDataEpic = (

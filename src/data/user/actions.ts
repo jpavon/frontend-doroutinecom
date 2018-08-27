@@ -31,7 +31,7 @@ export const getUserFailure = (payload: ApiFailure) =>
 
 // put
 export const putUserRequest = (
-    id: number,
+    _: never,
     data: UserRequestData,
     resolve: () => void,
     reject: () => void
