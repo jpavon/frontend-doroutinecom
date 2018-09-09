@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Helmet } from 'react-helmet'
 
-import Alert from 'views/Layout/Alert'
+import Alert from 'views/shared/Layout/Alert'
 import { Container } from './style'
 
 interface Props {

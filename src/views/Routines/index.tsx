@@ -2,7 +2,7 @@ import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
 import NavBar from 'components/NavBar'
-import Layout from 'views/Layout'
+import Layout from 'views/shared/Layout'
 import List from './List'
 import CreateButton from './CreateButton'
 

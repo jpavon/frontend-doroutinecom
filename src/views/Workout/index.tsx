@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router'
 
-import Layout from 'views/Layout'
+import Layout from 'views/shared/Layout'
 import NavBar from 'components/NavBar'
 import CompletedRestartButton from './CompletedRestartButton'
 import Button from 'components/Button'
-import Exercises from 'views/Exercises'
+import Exercises from 'views/shared/Exercises'
 import Form from './Form'
 import DeleteButton from './DeleteButton'
 import CreateAgainNavButton from './CreateAgainNavButton'

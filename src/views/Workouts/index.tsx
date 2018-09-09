@@ -6,7 +6,7 @@ import {
     completedWorkoutsSelector
 } from 'data/workouts/selectors'
 import NavBar from 'components/NavBar'
-import Layout from 'views/Layout'
+import Layout from 'views/shared/Layout'
 import List from './List'
 import PendingBadge from './PendingBadge'
 

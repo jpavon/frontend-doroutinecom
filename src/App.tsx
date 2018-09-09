@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom'
 
 import { RootState } from 'data/types'
 import { getAppData } from 'data/actions'
-import NavContainer from 'views/Nav'
-import Routes from 'Routes'
+import NavContainer from 'views/shared/Nav'
+import Views from 'views'
 import ErrorApp from 'components/ErrorApp'
 import Loading from 'components/Loading'
 import Head from 'components/Head'
@@ -48,7 +48,7 @@ class App extends React.Component<Props, State> {
                 ) : this.props.isLoading ? (
                     <Loading />
                 ) : (
-                    <Routes isAuth={this.props.isAuth} />
+                    <Views isAuth={this.props.isAuth} />
                 )}
             </>
         )
