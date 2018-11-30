@@ -1,3 +1,4 @@
+import { RouterState } from 'connected-react-router'
 import { UserState } from 'data/user/types'
 import { ExercisesState } from 'data/exercises/types'
 import { LiftsState } from 'data/lifts/types'
@@ -14,6 +15,7 @@ export interface RootState {
     sets: SetsState
     workouts: WorkoutsState
     ui: UiState
+    router: RouterState
 }
 
 export interface Action {

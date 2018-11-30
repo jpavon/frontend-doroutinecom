@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose, Middleware } from 'redux'
 import { createLogger } from 'redux-logger'
-import { connectRouter, routerMiddleware } from 'connected-react-router'
+import { routerMiddleware } from 'connected-react-router'
 import { createEpicMiddleware } from 'redux-observable'
 
 import rootEpic from 'store/rootEpic'
@@ -19,7 +19,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const configureStore = () => {
     const store = createStore(
-        connectRouter(history)(rootReducer),
+        rootReducer,
         {},
         compose(applyMiddleware(...middleware))
     )

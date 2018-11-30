@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux'
+import { connectRouter } from 'connected-react-router'
 
+import history from 'utils/history'
 import { RootState } from 'data/types'
 import { UserAction } from 'data/user/types'
 import userConstants from 'data/user/constants'
-
 import user from 'data/user/reducers'
 import routines from 'data/routines/reducers'
 import workouts from 'data/workouts/reducers'
@@ -19,7 +20,8 @@ const appReducer = combineReducers({
     exercises,
     sets,
     lifts,
-    ui
+    ui,
+    router: connectRouter(history)
 })
 
 const rootReducer = (state: RootState, action: UserAction) => {
