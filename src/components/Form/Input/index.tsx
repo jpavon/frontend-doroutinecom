@@ -14,7 +14,7 @@ const Input: React.SFC<InputProps> = (props) => {
         <StyledInput
             name={name}
             type={type || 'text'}
-            innerRef={inputRef}
+            ref={inputRef}
             {...rest}
         />
     )

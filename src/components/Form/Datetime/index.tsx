@@ -4,8 +4,7 @@ import * as moment from 'moment'
 
 import { timeFormat } from 'utils/date'
 
-import { dateTimeStyles } from './style'
-dateTimeStyles()
+import { DateTimeStyles } from './style'
 
 export interface DatetimeProps extends ReactDatetime.DatetimepickerProps {
     id: string
@@ -19,16 +18,19 @@ const Datetime: React.SFC<DatetimeProps> = ({
     dateFormat,
     ...rest
 }) => (
-    <ReactDatetime
-        dateFormat={dateFormat}
-        timeFormat={timeFormat}
-        value={moment(value).format(`${dateFormat} ${timeFormat}`)}
-        inputProps={{
-            readOnly: true,
-            name
-        }}
-        {...rest}
-    />
+    <>
+        <DateTimeStyles />
+        <ReactDatetime
+            dateFormat={dateFormat}
+            timeFormat={timeFormat}
+            value={moment(value).format(`${dateFormat} ${timeFormat}`)}
+            inputProps={{
+                readOnly: true,
+                name
+            }}
+            {...rest}
+        />
+    </>
 )
 
 export default Datetime

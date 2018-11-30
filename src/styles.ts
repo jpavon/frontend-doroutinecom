@@ -1,4 +1,4 @@
-import { injectGlobal, css } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 import styledNormalize from 'styled-normalize'
 
 export const theme = {
@@ -67,7 +67,7 @@ export const mixins = {
     `
 }
 
-export const globalStyles = () => injectGlobal`
+export const GlobalStyles = createGlobalStyle`
     ${styledNormalize}
 
     html {

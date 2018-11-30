@@ -36,11 +36,11 @@ class Transition extends React.Component<Props> {
                         height: 0
                     }}
                 >
-                    {childrenArr.map((item) => (styles: object) => (
-                        <div data-e2e={this.props.e2e} style={styles}>
+                    {(item: React.ReactNode) => (props: object) => (
+                        <div data-e2e={this.props.e2e} style={props}>
                             {item}
                         </div>
-                    ))}
+                    )}
                 </SpringTransition>
             )
         }

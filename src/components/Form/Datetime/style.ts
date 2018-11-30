@@ -1,9 +1,9 @@
-import { injectGlobal } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 import { inputStyles } from 'components/Form/Input/style'
 import { theme } from 'styles'
 
-export const dateTimeStyles = () => injectGlobal`
+export const DateTimeStyles = createGlobalStyle`
     .rdt {
         position: relative;
     }
